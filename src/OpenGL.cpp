@@ -24,6 +24,7 @@ void ProcessInput(GLFWwindow *window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
   }
+
 }
 
 void InitOpenGL() {
@@ -52,10 +53,9 @@ int main() {
       2,
   };
 
-  unsigned int VAO;
   Geometry geometry = Geometry(Vertices, Indices);
   Shader shader = Shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
-
+  
   while (!glfwWindowShouldClose(Window)) {
     glClearColor(0.1, 0.15, 0.2, 1);
     glClear(GL_COLOR_BUFFER_BIT);

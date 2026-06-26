@@ -18,6 +18,8 @@ struct Vector2 {
   Vector2 &operator-=(const Vector2 &vec2);
   Vector2 &operator*=(float scalar);
   Vector2 &operator/=(float scalar);
+
+  static const Vector2 Zero;
 };
 Vector2 operator*(float scalar, const Vector2 &vec2);
 Vector2 operator/(float scalar, const Vector2 &vec2);
@@ -70,6 +72,8 @@ struct Vector4 {
   Vector4 &operator-=(const Vector4 &vec4);
   Vector4 &operator*=(float scalar);
   Vector4 &operator/=(float scalar);
+
+  static const Vector4 Zero;
 };
 Vector4 operator*(float scalar, const Vector4 &vec4);
 Vector4 operator/(float scalar, const Vector4 &vec4);

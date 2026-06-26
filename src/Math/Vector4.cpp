@@ -25,14 +25,13 @@ std::ostream &operator<<(std::ostream &os, const Vector4 &vec4) {
 }
 
 float Vector4::LengthSquared() const { return x * x + y * y + z * z + w * w; }
-
 float Vector4::Length() const { return std::sqrt(LengthSquared()); }
+float Vector4::Dot(const Vector4 &vec4) const { return x * vec4.x + y * vec4.y + z * vec4.z + w * vec4.w; }
+float Vector4::Distance(const Vector4 &vec4) const { return (*this - vec4).Length(); }
 
 Vector4 Vector4::Normalized() const {
   float length = Length();
   return {x / length, y / length, z / length, w / length};
 }
 
-float Vector4::Dot(const Vector4 &vec4) const { return x * vec4.x + y * vec4.y + z * vec4.z + w * vec4.w; }
-
-float Vector4::Distance(const Vector4 &vec4) const { return (*this - vec4).Length(); }
+Vector4 const Vector4::Zero = Vector4(0, 0, 0, 0);

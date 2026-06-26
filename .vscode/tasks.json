@@ -4,10 +4,10 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "cmake",
+            "command": "ninja",
             "args": [
-                "--build",
-                "build"
+                "-C",
+                "build",
             ],
             "group": {
                 "kind": "build",

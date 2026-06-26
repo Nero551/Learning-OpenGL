@@ -5,7 +5,10 @@
         "editor.tabSize": 4
     },
     "clangd.arguments": [
-        "--enable-config"
+        "--enable-config",
+        "--header-insertion=iwyu",
+        "--background-index",
+        "--completion-style=detailed",
     ],
     "clangd.checkUpdates": true,
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",

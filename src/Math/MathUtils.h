@@ -1,6 +1,6 @@
 #pragma  once
 #include <numbers>
 
-namespace MathUtils {
+namespace Math {
 float DegToRad(float deg);
 } // namespace MathUtils

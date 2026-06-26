@@ -1,6 +1,7 @@
 #pragma once
-#include "../Math/Math.h"
+#include <string>
 #include <vector>
+#include "../Math/Vector.h"
 
 struct Vertex {
   Vector3 Position;
@@ -38,6 +39,5 @@ private:
   unsigned int CreateVAO();
   unsigned int CreateVBO();
   unsigned int CreateEBO();
-
   void SetupVertAttrPointers();
 };

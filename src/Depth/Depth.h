@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Math/Math.h"
+#include "../Math/Vector.h"
 
 struct Entity {
   Vector3 Position = Vector3::Zero;

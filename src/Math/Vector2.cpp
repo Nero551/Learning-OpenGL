@@ -28,14 +28,13 @@ std::ostream &operator<<(std::ostream &os, const Vector2 &vec2) {
 }
 
 float Vector2::LengthSquared() const { return x * x + y * y; }
-
 float Vector2::Length() const { return std::sqrt(LengthSquared()); }
+float Vector2::Dot(const Vector2 &vec2) const { return x * vec2.x + y * vec2.y; }
+float Vector2::Distance(const Vector2 &vec2) const { return (*this - vec2).Length(); }
 
 Vector2 Vector2::Normalized() const {
   float length = Length();
   return {x / length, y / length};
 }
 
-float Vector2::Dot(const Vector2 &vec2) const { return x * vec2.x + y * vec2.y; }
-
-float Vector2::Distance(const Vector2 &vec2) const { return (*this - vec2).Length(); }
+Vector2 const Vector2::Zero = Vector2(0, 0);
