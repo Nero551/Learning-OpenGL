@@ -1,0 +1,18 @@
+{
+    "[cpp]": {
+        "diffEditor.codeLens": true,
+        "editor.tabCompletion": "on",
+        "editor.tabSize": 4
+    },
+    "clangd.arguments": [
+        "--enable-config"
+    ],
+    "clangd.checkUpdates": true,
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+    "editor.tabCompletion": "on",
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+
+    "shader-validator.glsl.targetClient": "OpenGL450",
+    "shader-validator.validate": false
+}

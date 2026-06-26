@@ -1,0 +1,13 @@
+BasedOnStyle: LLVM
+ColumnLimit: 160
+BinPackArguments: true
+BinPackParameters: true
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+SortIncludes: false
+AlignOperands: DontAlign
+AlignAfterOpenBracket: DontAlign
+ContinuationIndentWidth: 2
+BreakBeforeBinaryOperators: NonAssignment
+AlignConsecutiveAssignments: false
+AlignEscapedNewlines: DontAlign
