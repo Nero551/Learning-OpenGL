@@ -10,8 +10,8 @@
     "clangd.checkUpdates": true,
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     "editor.tabCompletion": "on",
-    "editor.formatOnSave": false,
-    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
 
     "shader-validator.glsl.targetClient": "OpenGL450",
     "shader-validator.validate": false
