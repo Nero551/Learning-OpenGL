@@ -3,5 +3,6 @@
 
 struct Vertex{
     Vector3 Position;
-    Vertex(Vector3 position);
+    Vector4 Color;
+    Vertex(Vector3 pos, Vector4 col);
 };

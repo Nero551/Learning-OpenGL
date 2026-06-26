@@ -1,5 +1,6 @@
 #include "OpenGL.h"
 #include <cmath>
+#include <cstddef>
 #include <iostream>
 #include <vector>
 #include "Math/Vector.h"
@@ -102,9 +103,14 @@ void CreateVAO(unsigned int &VAO, std::vector<Vertex> &vertices,std::vector<unsi
   glGenBuffers(1, &EBO);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(float), indices.data(), GL_STATIC_DRAW);
-  
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)0);
+
+  //Position
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex) , (void *)offsetof(Vertex, Position));
   glEnableVertexAttribArray(0);
+
+  //Color
+  glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex) , (void *) offsetof(Vertex, Color));
+  glEnableVertexAttribArray(1);
 }
 
 void Draw(unsigned int &ShaderProgram, unsigned int &VAO, int indicesCount) {
@@ -117,36 +123,7 @@ float DegToRad(float deg){
   return deg * std::numbers::pi / 180;
 }
 
-void CreateShape(float sides,std::vector<Vertex> &vertices, std::vector<unsigned int> &indices){
-  Vertex centerVertex = Vertex(Vector3(0,0,0));
-  unsigned int centerIndex = 0;
-  vertices.push_back(centerVertex);
-
-
-  for (int i = 0; i < 360; i += (360 / sides)){
-    float cos = std::cos(DegToRad(i));
-    float sin = std::sin(DegToRad(i));
-
-    Vector3 vec3 = Vector3(cos/ 2 ,sin/ 2,0);
-    vertices.push_back(Vertex(vec3));
-    
-  }
-
-  for (unsigned int current = 1; current < vertices.size(); current++)
-  {
-    unsigned int next = current + 1;
-
-    if (next == vertices.size())
-        next = 1;
-
-    indices.push_back(0);
-    indices.push_back(current);
-    indices.push_back(next);
-  }
-}
-
-std::string ReadFile(const std::string& path)
-{
+std::string ReadFile(const std::string& path){
     std::ifstream file(path);
 
     std::stringstream buffer;
@@ -163,14 +140,12 @@ int main() {
   GLFWwindow *Window = CreateWindow(WindowWidth, WindowHeight, "Plus Ultra");
 
   std::vector<Vertex> Vertices = {
-    Vertex(Vector3(0.5,0.5,0)),
-    Vertex(Vector3(0.5,-0.5,0)),
-    Vertex(Vector3(-0.5,-0.5,0)),
-    Vertex(Vector3(-0.5,0.5,0))
+    Vertex(Vector3(0.5,-0.5,0), Vector4(1,0,1,1)),
+    Vertex(Vector3(-0.5,-0.5,0), Vector4(0,1,1,1)),
+    Vertex(Vector3(0,0.5,0), Vector4(1,1,0,1)),
   };
   std::vector<unsigned int> Indices = {
     0,1,2,
-    0,2,3
   };
 
   std::string vertexShaderSource = ReadFile("src/Shaders/shader.vert");
@@ -181,15 +156,15 @@ int main() {
   CreateShader(ShaderProgram, vertexShaderSource, fragShaderSource);
   CreateVAO(VAO, Vertices, Indices);
 
+    int timeLocation = glGetUniformLocation(ShaderProgram, "Time");
+
   while (!glfwWindowShouldClose(Window)) {
     glClearColor(0.1, 0.15, 0.2, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    int timeLocation = glGetUniformLocation(ShaderProgram, "Time");
-
-    Draw(ShaderProgram, VAO, Indices.size());
 
     glUniform1f(timeLocation,glfwGetTime());
+    Draw(ShaderProgram, VAO, Indices.size());
 
     
     glfwSwapBuffers(Window);
