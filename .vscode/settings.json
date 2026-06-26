@@ -14,5 +14,9 @@
     "editor.formatOnPaste": true,
 
     "shader-validator.glsl.targetClient": "OpenGL450",
-    "shader-validator.validate": false
+    "shader-validator.validate": false,
+
+    "material-icon-theme.folders.associations": {
+        "Renderer": "Container",
+    }
 }

@@ -25,6 +25,14 @@ void Shader::SetFloat(const std::string &name, float value) {
   int location = glGetUniformLocation(Id, name.c_str());
   glUniform1f(location, value);
 }
+void Shader::SetInt(const std::string &name, int value) {
+  int location = glGetUniformLocation(Id, name.c_str());
+  glUniform1i(location, value);
+}
+void Shader::SetBool(const std::string &name, bool value) {
+  int location = glGetUniformLocation(Id, name.c_str());
+  glUniform1i(location, value);
+}
 
 unsigned int Shader::CreateShaderProgram(unsigned int &fragShader, unsigned int &vertShader) {
   unsigned int id = glCreateProgram();

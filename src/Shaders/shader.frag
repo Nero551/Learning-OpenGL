@@ -4,9 +4,9 @@ out vec4 FragColor;
 in vec4 vColor;
 in vec3 vPosition;
 
-uniform float Time;
+uniform float uTime;
 
 void main()
 {
-    FragColor = vColor;
+    FragColor = vColor * sin(uTime);
 }

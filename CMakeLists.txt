@@ -14,6 +14,7 @@ add_executable(Engine
     src/Math/Vector3.cpp
     src/Math/Vector4.cpp
     src/Renderer/Shader.cpp
+    src/Renderer/Geometry.cpp
     src/FileSystem/FileSystem.cpp
     Libraries/lib/glad.c
 )
