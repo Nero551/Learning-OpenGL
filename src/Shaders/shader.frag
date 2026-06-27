@@ -12,5 +12,5 @@ uniform float uTime;
 
 void main()
 {
-    FragColor = texture(uTexture0, vUV) * vColor;
+    FragColor =  mix(texture(uTexture2, vUV), mix(texture(uTexture0, vUV) * vColor, texture(uTexture1, vUV), 0.5), 0.5) ;
 }

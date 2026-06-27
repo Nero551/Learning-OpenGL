@@ -1,10 +1,8 @@
-#define STB_IMAGE_IMPLEMENTATION
 #include "OpenGL.h"
 #include <iostream>
 #include <vector>
 #include "Math/Vector.h"
 #include "Renderer/Renderer.h"
-#include "stb_image.h"
 
 GLFWwindow *CreateWindow(int width, int height, const char *name) {
   GLFWwindow *window = glfwCreateWindow(width, height, name, NULL, NULL);
@@ -45,16 +43,21 @@ int main() {
   GLFWwindow *Window = CreateWindow(WindowWidth, WindowHeight, "Plus Ultra");
 
   std::vector<Vertex> Vertices = {
-      Vertex(Vector3(0, 0.5, 0), Vector4(1, 0, 1, 1), Vector2(0.5, 1)),
-      Vertex(Vector3(-0.5, -0.5, 0), Vector4(0, 1, 1, 1), Vector2(0, 0)),
+      Vertex(Vector3(0.5, 0.5, 0), Vector4(1, 0, 1, 1), Vector2(1, 1)),
       Vertex(Vector3(0.5, -0.5, 0), Vector4(1, 1, 0, 1), Vector2(1, 0)),
+      Vertex(Vector3(-0.5, -0.5, 0), Vector4(0, 1, 1, 1), Vector2(0, 0)),
+      Vertex(Vector3(-0.5, 0.5, 0), Vector4(1, 1, 0, 1), Vector2(0, 1)),
   };
-  std::vector<unsigned int> Indices = {0, 1, 2};
+  std::vector<unsigned int> Indices = {0, 1, 2, 0, 2, 3};
 
   Texture texture = Texture(0, "src/Images/HexagonsOutline_Niki.png");
+  Texture texture2 = Texture(1, "src/Images/ruby.png");
+  Texture texture3 = Texture(2, "src/Images/skull.png");
   Shader shader = Shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
   Material material = Material(shader);
   material.Texture0 = &texture;
+  material.Texture1 = &texture2;
+  material.Texture2 = &texture3;
   Geometry geometry = Geometry(Vertices, Indices);
 
   while (!glfwWindowShouldClose(Window)) {

@@ -1,3 +1,4 @@
+#define STB_IMAGE_IMPLEMENTATION
 #include "Renderer.h"
 #include <iostream>
 #include <string>

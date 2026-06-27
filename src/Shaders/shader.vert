@@ -12,7 +12,7 @@ uniform float uTime;
 void main()
 {
     vColor = aColor;
-    vPosition = aPosition * sin(uTime);
+    vPosition = aPosition;
     vUV = aUV;
 
     gl_Position = vec4(vPosition, 1.0);
