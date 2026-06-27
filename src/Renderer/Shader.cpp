@@ -2,6 +2,7 @@
 #include "../FileSystem/FileSystem.h"
 #include "../OpenGL.h"
 #include <iostream>
+#include <string>
 
 Shader::Shader(const std::string &fragFilepath, const std::string &vertFilepath) {
   std::string fragCode = FileSystem::ReadFile(fragFilepath);
@@ -25,16 +26,37 @@ void Shader::Use() {
 }
 
 void Shader::SetFloat(const std::string &name, float value) {
-  int location = glGetUniformLocation(Id, name.c_str());
+  int location = GetUniformLocation(name);
   glUniform1f(location, value);
 }
 void Shader::SetInt(const std::string &name, int value) {
-  int location = glGetUniformLocation(Id, name.c_str());
+  int location = GetUniformLocation(name);
   glUniform1i(location, value);
 }
 void Shader::SetBool(const std::string &name, bool value) {
-  int location = glGetUniformLocation(Id, name.c_str());
+  int location = GetUniformLocation(name);
   glUniform1i(location, value);
+}
+
+int Shader::GetUniformLocation(const std::string &name) {
+  int location;
+
+  if (UniformLocations.contains(name)) {
+    location = UniformLocations[name];
+
+  } else {
+
+    location = glGetUniformLocation(Id, name.c_str());
+    CheckUniformExistence(name, location);
+    UniformLocations[name] = location;
+  }
+  return location;
+}
+
+void Shader::CheckUniformExistence(const std::string &name, int location) {
+  if (location == -1) {
+    std::cout << "Uniform not found: " << name << '\n';
+  }
 }
 
 void Shader::SetBasicUniforms() { SetFloat("uTime", glfwGetTime()); }

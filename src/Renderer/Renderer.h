@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <unordered_map>
 #include <vector>
 #include "../Math/Vector.h"
 
@@ -22,10 +23,14 @@ public:
   void SetBool(const std::string &name, bool value);
 
 private:
+  std::unordered_map<std::string, unsigned int> UniformLocations;
+  
   void SetBasicUniforms();
   unsigned int CreateShaderProgram(unsigned int &fragShader, unsigned int &vertShader);
   unsigned int CreateVertShader(const char *vertSource);
   unsigned int CreateFragShader(const char *fragSource);
+  void CheckUniformExistence(const std::string &name, int location);
+  int GetUniformLocation(const std::string &name);
 };
 
 class Geometry {
