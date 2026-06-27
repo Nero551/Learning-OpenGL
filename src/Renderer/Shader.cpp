@@ -19,7 +19,10 @@ Shader::Shader(const std::string &fragFilepath, const std::string &vertFilepath)
   glDeleteShader(fragShader);
 }
 
-void Shader::Use() { glUseProgram(Id); }
+void Shader::Use() {
+  glUseProgram(Id);
+  SetBasicUniforms();
+}
 
 void Shader::SetFloat(const std::string &name, float value) {
   int location = glGetUniformLocation(Id, name.c_str());
@@ -34,6 +37,8 @@ void Shader::SetBool(const std::string &name, bool value) {
   glUniform1i(location, value);
 }
 
+void Shader::SetBasicUniforms() { SetFloat("uTime", glfwGetTime()); }
+
 unsigned int Shader::CreateShaderProgram(unsigned int &fragShader, unsigned int &vertShader) {
   unsigned int id = glCreateProgram();
   glAttachShader(id, vertShader);
@@ -42,9 +47,9 @@ unsigned int Shader::CreateShaderProgram(unsigned int &fragShader, unsigned int 
 
   int success;
   char infoLog[512];
-  glGetProgramiv(Id, GL_LINK_STATUS, &success);
+  glGetProgramiv(id, GL_LINK_STATUS, &success);
   if (!success) {
-    glGetProgramInfoLog(Id, 512, NULL, infoLog);
+    glGetProgramInfoLog(id, 512, NULL, infoLog);
     std::cout << "ERROR SHADER PROGRAM LINKING: " << infoLog << "\n";
   }
 

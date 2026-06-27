@@ -1,7 +1,10 @@
+#define STB_IMAGE_IMPLEMENTATION
 #include "OpenGL.h"
 #include <iostream>
 #include <vector>
+#include "Math/Vector.h"
 #include "Renderer/Renderer.h"
+#include "stb_image.h"
 
 GLFWwindow *CreateWindow(int width, int height, const char *name) {
   GLFWwindow *window = glfwCreateWindow(width, height, name, NULL, NULL);
@@ -24,7 +27,6 @@ void ProcessInput(GLFWwindow *window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
   }
-
 }
 
 void InitOpenGL() {
@@ -43,25 +45,23 @@ int main() {
   GLFWwindow *Window = CreateWindow(WindowWidth, WindowHeight, "Plus Ultra");
 
   std::vector<Vertex> Vertices = {
-      Vertex(Vector3(0.5, -0.5, 0), Vector4(1, 0, 1, 1)),
-      Vertex(Vector3(-0.5, -0.5, 0), Vector4(0, 1, 1, 1)),
-      Vertex(Vector3(0, 0.5, 0), Vector4(1, 1, 0, 1)),
+      Vertex(Vector3(0, 0.5, 0), Vector4(1, 0, 1, 1), Vector2(0.5, 1)),
+      Vertex(Vector3(-0.5, -0.5, 0), Vector4(0, 1, 1, 1), Vector2(0, 0)),
+      Vertex(Vector3(0.5, -0.5, 0), Vector4(1, 1, 0, 1), Vector2(1, 0)),
   };
-  std::vector<unsigned int> Indices = {
-      0,
-      1,
-      2,
-  };
+  std::vector<unsigned int> Indices = {0, 1, 2};
 
-  Geometry geometry = Geometry(Vertices, Indices);
+  Texture texture = Texture(0, "src/Images/HexagonsOutline_Niki.png");
   Shader shader = Shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
-  
+  Material material = Material(shader);
+  material.Texture0 = &texture;
+  Geometry geometry = Geometry(Vertices, Indices);
+
   while (!glfwWindowShouldClose(Window)) {
     glClearColor(0.1, 0.15, 0.2, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    shader.SetFloat("uTime", glfwGetTime());
-    shader.Use();
+    material.Use();
     geometry.Draw();
 
     glfwSwapBuffers(Window);

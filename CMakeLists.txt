@@ -16,7 +16,10 @@ add_executable(Engine
     src/Renderer/Shader.cpp
     src/Renderer/Geometry.cpp
     src/FileSystem/FileSystem.cpp
+    src/Renderer/Texture.cpp
+    src/Renderer/Material.cpp
     Libraries/lib/glad.c
+
 )
 
 

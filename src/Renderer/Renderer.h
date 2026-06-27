@@ -1,4 +1,5 @@
 #pragma once
+#include <cstddef>
 #include <string>
 #include <vector>
 #include "../Math/Vector.h"
@@ -6,7 +7,8 @@
 struct Vertex {
   Vector3 Position;
   Vector4 Color;
-  Vertex(Vector3 pos, Vector4 col);
+  Vector2 UV;
+  Vertex(Vector3 pos, Vector4 col, Vector2 uv);
 };
 
 class Shader {
@@ -21,6 +23,7 @@ public:
   void SetBool(const std::string &name, bool value);
 
 private:
+  void SetBasicUniforms();
   unsigned int CreateShaderProgram(unsigned int &fragShader, unsigned int &vertShader);
   unsigned int CreateVertShader(const char *vertSource);
   unsigned int CreateFragShader(const char *fragSource);
@@ -36,8 +39,36 @@ public:
   void Draw();
 
 private:
+  unsigned int VBO;
+  unsigned int EBO;
+
   unsigned int CreateVAO();
   unsigned int CreateVBO();
   unsigned int CreateEBO();
   void SetupVertAttrPointers();
+};
+
+class Texture {
+public:
+  unsigned int Id;
+  unsigned int Unit;
+  Texture(unsigned int unit, const std::string &imagePath);
+
+  void Bind();
+
+private:
+  void SetParameters();
+};
+
+struct Material {
+
+public:
+  Shader &Shader;
+  Texture *Texture0 = nullptr;
+  Texture *Texture1 = nullptr;
+  Texture *Texture2 = nullptr;
+
+  Material(class Shader &shader);
+
+  void Use();
 };

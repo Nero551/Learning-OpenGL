@@ -1,11 +1,10 @@
 #include "Renderer.h"
-#include <vector>
 #include "../OpenGL.h"
 
 Geometry::Geometry(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices) : Vertices(vertices), Indices(indices) {
   Id = CreateVAO();
-  CreateVBO();
-  CreateEBO();
+  VBO = CreateVBO();
+  EBO = CreateEBO();
   SetupVertAttrPointers();
 }
 
@@ -48,4 +47,8 @@ void Geometry::SetupVertAttrPointers() {
   // Color
   glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, Color));
   glEnableVertexAttribArray(1);
+
+  // UV
+  glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, UV));
+  glEnableVertexAttribArray(2);
 }
