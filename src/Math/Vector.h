@@ -10,7 +10,7 @@ struct Vector2 {
   Vector2 Normalized() const;
   float Dot(const Vector2 &vec2) const;
   float Distance(const Vector2 &vec2) const;
-  
+
   Vector2 operator+(const Vector2 &vec2) const;
   Vector2 operator-(const Vector2 &vec2) const;
 
@@ -50,6 +50,7 @@ struct Vector3 {
   float Length() const;
   Vector3 Normalized() const;
   float Dot(const Vector3 &vec3) const;
+  Vector3 Cross(const Vector3 &vec3) const;
   float Distance(const Vector3 &vec3) const;
 
   Vector3 operator+(const Vector3 &vec3) const;

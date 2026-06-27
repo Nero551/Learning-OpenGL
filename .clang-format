@@ -1,5 +1,5 @@
 BasedOnStyle: LLVM
-ColumnLimit: 160
+ColumnLimit: 120
 BinPackArguments: true
 BinPackParameters: true
 AllowAllArgumentsOnNextLine: false

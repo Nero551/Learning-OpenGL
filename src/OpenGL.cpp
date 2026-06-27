@@ -60,8 +60,8 @@ int main() {
   material.Texture2 = &texture3;
   Geometry geometry = Geometry(Vertices, Indices);
 
-  Vector2 vec2 = Vector2(1, 2);
-  2 / vec2;
+  Vector3 vec3 = Vector3(1, 2, 3);
+  Vector3 vvec3 = Vector3(1, 2, 3);
   while (!glfwWindowShouldClose(Window)) {
     glClearColor(0.1, 0.15, 0.2, 1);
     glClear(GL_COLOR_BUFFER_BIT);
