@@ -4,6 +4,7 @@
 struct Vector2 {
   float x;
   float y;
+
   Vector2(float x, float y);
   float LengthSquared() const;
   float Length() const;

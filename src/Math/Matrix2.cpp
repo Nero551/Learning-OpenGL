@@ -19,7 +19,7 @@ Matrix2 Matrix2::operator-(const Matrix2 &mat2) const {
 }
 
 Matrix2 Matrix2::operator*(const Matrix2 &mat2) const {
-  Matrix2 result = Matrix2::Zero;
+  Matrix2 result(0, 0, 0, 0);
 
   for (int row = 0; row < 2; row++) {
     for (int col = 0; col < 2; col++) {
@@ -54,8 +54,26 @@ Matrix2 Matrix2::operator/(float scalar) const {
 
 Matrix2 &Matrix2::operator*=(float scalar) { return *this = *this * scalar; }
 Matrix2 &Matrix2::operator/=(float scalar) { return *this = *this / scalar; }
-
 Matrix2 Matrix2::operator-() const { return *this * -1; }
+
+//* Equality
+bool Matrix2::operator==(const Matrix2 &mat2) const {
+  for (int row = 0; row < 2; row++) {
+    for (int col = 0; col < 2; col++) {
+      if (m[row][col] != mat2.m[row][col])
+        return false;
+    }
+  }
+  return true;
+}
+bool Matrix2::operator!=(const Matrix2 &mat2) const { return !(*this == mat2); }
+
+//* Others
+std::ostream &operator<<(std::ostream &os, const Matrix2 &mat) {
+  os << "[ " << mat.m[0][0] << "  " << mat.m[0][1] << " ]\n";
+  os << "[ " << mat.m[1][0] << "  " << mat.m[1][1] << " ]";
+  return os;
+}
 
 //? Methods
 

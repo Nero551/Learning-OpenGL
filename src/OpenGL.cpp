@@ -39,8 +39,10 @@ void InitOpenGL() {
 
 int main() {
 
-  Matrix2 mat2 = Matrix2::Zero;
-  Vector2 vec2 = Vector2(1, 2);
+  Matrix2 scale = Matrix2(2, 0, 0, 1);
+  Matrix2 trans = Matrix2(1, 3, 0, 1);
+  Vector2 vec2 = Vector2(2, 1);
+  std::cout << trans * scale << "\n";
 
   // int WindowWidth = 800;
   // int WindowHeight = 800;
