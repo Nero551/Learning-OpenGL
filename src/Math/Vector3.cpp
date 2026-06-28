@@ -60,3 +60,6 @@ Vector3 Vector3::Normalized() const {
 
 //?Statics
 Vector3 const Vector3::Zero = Vector3(0, 0, 0);
+Vector3 const Vector3::Up = Vector3(0, 1, 0);
+Vector3 const Vector3::One = Vector3(1, 1, 1);
+Vector3 const Vector3::Forward = Vector3(0, 0, 1);
