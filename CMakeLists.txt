@@ -16,6 +16,7 @@ add_executable(Engine
     src/Math/Matrix2.cpp
     src/Math/Matrix3.cpp
     src/Math/Matrix4.cpp
+    src/Math/MathUtils.cpp
 
     src/Renderer/Shader.cpp
     src/Renderer/Geometry.cpp

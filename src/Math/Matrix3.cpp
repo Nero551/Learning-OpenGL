@@ -1,5 +1,6 @@
 #include "Matrix.h"
 #include "Vector.h"
+#include <cmath>
 
 Matrix3::Matrix3(float mAll) {
   for (int row = 0; row < 3; row++) {
@@ -39,7 +40,7 @@ Matrix3 Matrix3::operator-(const Matrix3 &mat3) const {
 }
 
 Matrix3 Matrix3::operator*(const Matrix3 &mat3) const {
-  Matrix3 result(0, 0, 0, 0, 0, 0, 0, 0, 0);
+  Matrix3 result(0);
 
   for (int row = 0; row < 3; row++) {
     for (int col = 0; col < 3; col++) {
@@ -111,7 +112,36 @@ Matrix3 Matrix3::Scale(const Vector3 &scale) const {
   return *this * scaleMatrix;
 }
 
-//? Statics
-Matrix3 const Matrix3::Zero = Matrix3(0, 0, 0, 0, 0, 0, 0, 0, 0);
+Matrix3 Matrix3::RotateX(float radian) const {
+  Matrix3 rotationMatrix = Matrix3::Identity;
+  rotationMatrix.m[1][1] = std::cos(radian);
+  rotationMatrix.m[2][1] = std::sin(radian);
+  rotationMatrix.m[1][2] = -std::sin(radian);
+  rotationMatrix.m[2][2] = std::cos(radian);
 
+  return *this * rotationMatrix;
+}
+
+Matrix3 Matrix3::RotateY(float radian) const {
+  Matrix3 rotationMatrix = Matrix3::Identity;
+  rotationMatrix.m[0][0] = std::cos(radian);
+  rotationMatrix.m[0][2] = std::sin(radian);
+  rotationMatrix.m[2][0] = -std::sin(radian);
+  rotationMatrix.m[2][2] = std::cos(radian);
+
+  return *this * rotationMatrix;
+}
+
+Matrix3 Matrix3::RotateZ(float radian) const {
+  Matrix3 rotationMatrix = Matrix3::Identity;
+  rotationMatrix.m[0][0] = std::cos(radian);
+  rotationMatrix.m[1][0] = std::sin(radian);
+  rotationMatrix.m[0][1] = -std::sin(radian);
+  rotationMatrix.m[1][1] = std::cos(radian);
+
+  return *this * rotationMatrix;
+}
+
+//? Statics
+Matrix3 const Matrix3::Zero = Matrix3(0);
 Matrix3 const Matrix3::Identity = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);

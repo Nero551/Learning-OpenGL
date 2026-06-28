@@ -3,12 +3,13 @@
 #include <unordered_map>
 #include <vector>
 #include "../Math/Vector.h"
+#include "../Math/Matrix.h"
 
 struct Vertex {
-  Vector3 Position;
+  Vector4 Position;
   Vector4 Color;
   Vector2 UV;
-  Vertex(Vector3 pos, Vector4 col, Vector2 uv);
+  Vertex(Vector4 pos, Vector4 col, Vector2 uv);
 };
 
 class Shader {
@@ -21,6 +22,7 @@ public:
   void SetFloat(const std::string &name, float value);
   void SetInt(const std::string &name, int value);
   void SetBool(const std::string &name, bool value);
+  void SetMat4(const std::string &name, Matrix4 &mat4);
 
 private:
   std::unordered_map<std::string, unsigned int> UniformLocations;

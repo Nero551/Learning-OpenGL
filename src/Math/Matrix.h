@@ -1,3 +1,5 @@
+#pragma  once
+
 #include "Vector.h"
 #include <ostream>
 struct Matrix2 {
@@ -8,6 +10,7 @@ struct Matrix2 {
   Matrix2(float m00, float m01, float m10, float m11);
 
   Matrix2 Scale(const Vector2 &scale) const;
+  Matrix2 Rotate(float radian) const;
 
   Matrix2 operator+(const Matrix2 &mat2) const;
   Matrix2 operator-(const Matrix2 &mat2) const;
@@ -44,6 +47,9 @@ struct Matrix3 {
   Matrix3(float m00, float m01, float m02, float m10, float m11, float m12, float m20, float m21, float m22);
 
   Matrix3 Scale(const Vector3 &scale) const;
+  Matrix3 RotateX(float radian) const;
+  Matrix3 RotateY(float radian) const;
+  Matrix3 RotateZ(float radian) const;
 
   Matrix3 operator+(const Matrix3 &mat3) const;
   Matrix3 operator-(const Matrix3 &mat3) const;
@@ -83,6 +89,9 @@ struct Matrix4 {
 
   Matrix4 Translate(const Vector3 &translation) const;
   Matrix4 Scale(const Vector3 &scale) const;
+  Matrix4 RotateX(float radian) const;
+  Matrix4 RotateY(float radian) const;
+  Matrix4 RotateZ(float radian) const;
 
   Matrix4 operator+(const Matrix4 &mat4) const;
   Matrix4 operator-(const Matrix4 &mat4) const;

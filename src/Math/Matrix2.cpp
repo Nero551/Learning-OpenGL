@@ -1,5 +1,6 @@
 #include "Matrix.h"
 #include "Vector.h"
+#include <cmath>
 
 Matrix2::Matrix2(float mAll) {
   for (int row = 0; row < 2; row++) {
@@ -27,11 +28,10 @@ Matrix2 Matrix2::operator-(const Matrix2 &mat2) const {
 }
 
 Matrix2 Matrix2::operator*(const Matrix2 &mat2) const {
-  Matrix2 result(0, 0, 0, 0);
+  Matrix2 result(0);
 
   for (int row = 0; row < 2; row++) {
     for (int col = 0; col < 2; col++) {
-      result.m[row][col] = 0;
 
       for (int k = 0; k < 2; k++) {
         result.m[row][col] += m[row][k] * mat2.m[k][col];
@@ -91,6 +91,16 @@ Matrix2 Matrix2::Scale(const Vector2 &scale) const {
 
   return *this * scaleMatrix;
 }
+
+Matrix2 Matrix2::Rotate(float radian) const {
+  Matrix2 rotationMatrix = Matrix2::Identity;
+  rotationMatrix.m[0][0] = std::cos(radian);
+  rotationMatrix.m[1][0] = std::sin(radian);
+  rotationMatrix.m[0][1] = -std::sin(radian);
+  rotationMatrix.m[1][1] = std::cos(radian);
+
+  return *this * rotationMatrix;
+}
 //? Statics
-Matrix2 const Matrix2::Zero = Matrix2(0, 0, 0, 0);
+Matrix2 const Matrix2::Zero = Matrix2(0);
 Matrix2 const Matrix2::Identity = Matrix2(1, 0, 0, 1);

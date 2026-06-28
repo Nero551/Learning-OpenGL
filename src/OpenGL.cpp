@@ -1,6 +1,9 @@
 #include "OpenGL.h"
+#include <GLFW/glfw3.h>
+#include <cmath>
 #include <iostream>
 #include <vector>
+#include "Math/MathUtils.h"
 #include "Math/Vector.h"
 #include "Renderer/Renderer.h"
 #include "Math/Matrix.h"
@@ -38,52 +41,42 @@ void InitOpenGL() {
 }
 
 int main() {
-  Vector4 vec(1, 2, 3, 1);
   Matrix4 trans = Matrix4::Identity;
-  trans = trans.Scale({5, 2, 3});
-  vec = trans * vec;
 
-  std::cout << vec << "\n";
+  int WindowWidth = 800;
+  int WindowHeight = 800;
 
-  // int WindowWidth = 800;
-  // int WindowHeight = 800;
+  InitOpenGL();
+  GLFWwindow *Window = CreateWindow(WindowWidth, WindowHeight, "Plus Ultra");
 
-  // InitOpenGL();
-  // GLFWwindow *Window = CreateWindow(WindowWidth, WindowHeight, "Plus Ultra");
+  std::vector<Vertex> Vertices = {
+      Vertex(Vector4(0, 0.5, 0, 1), Vector4(1, 0, 1, 1), Vector2(0.5, 1)),
+      Vertex(Vector4(0.5, -0.5, 0, 1), Vector4(1, 1, 0, 1), Vector2(1, 0)),
+      Vertex(Vector4(-0.5, -0.5, 0, 1), Vector4(0, 1, 1, 1), Vector2(0, 0)),
+  };
 
-  // std::vector<Vertex> Vertices = {
-  //     Vertex(Vector3(0.5, 0.5, 0), Vector4(1, 0, 1, 1), Vector2(1, 1)),
-  //     Vertex(Vector3(0.5, -0.5, 0), Vector4(1, 1, 0, 1), Vector2(1, 0)),
-  //     Vertex(Vector3(-0.5, -0.5, 0), Vector4(0, 1, 1, 1), Vector2(0, 0)),
-  //     Vertex(Vector3(-0.5, 0.5, 0), Vector4(1, 1, 0, 1), Vector2(0, 1)),
-  // };
-  // std::vector<unsigned int> Indices = {0, 1, 2, 0, 2, 3};
+  std::vector<unsigned int> Indices = {0, 1, 2};
 
-  // Texture texture = Texture(0, "src/Images/HexagonsOutline_Niki.png");
-  // Texture texture2 = Texture(1, "src/Images/ruby.png");
-  // Texture texture3 = Texture(2, "src/Images/skull.png");
-  // Shader shader = Shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
-  // Material material = Material(shader);
-  // material.Texture0 = &texture;
-  // material.Texture1 = &texture2;
-  // material.Texture2 = &texture3;
-  // Geometry geometry = Geometry(Vertices, Indices);
+  Shader shader = Shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
+  Material material = Material(shader);
+  Geometry geometry = Geometry(Vertices, Indices);
 
-  // Vector3 vec3 = Vector3(1, 2, 3);
-  // Vector3 vvec3 = Vector3(1, 2, 3);
-  // while (!glfwWindowShouldClose(Window)) {
-  //   glClearColor(0.1, 0.15, 0.2, 1);
-  //   glClear(GL_COLOR_BUFFER_BIT);
+  while (!glfwWindowShouldClose(Window)) {
+    glClearColor(0.1, 0.15, 0.2, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-  //   material.Use();
-  //   geometry.Draw();
+    material.Use();
 
-  //   glfwSwapBuffers(Window);
+    trans = trans.RotateZ(0.1);
+    material.Shader.SetMat4("uTransform", trans);
+    geometry.Draw();
 
-  //   ProcessInput(Window);
-  //   glfwPollEvents();
-  // }
+    glfwSwapBuffers(Window);
 
-  // glfwTerminate();
-  // return 0;
+    ProcessInput(Window);
+    glfwPollEvents();
+  }
+
+  glfwTerminate();
+  return 0;
 }

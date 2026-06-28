@@ -3,6 +3,7 @@
 #include <iostream>
 #include <ostream>
 
+
 Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 
 //?Operators

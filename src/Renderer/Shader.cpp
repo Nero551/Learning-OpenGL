@@ -38,6 +38,11 @@ void Shader::SetBool(const std::string &name, bool value) {
   glUniform1i(location, value);
 }
 
+void Shader::SetMat4(const std::string &name, Matrix4 &mat4) {
+  int location = GetUniformLocation(name);
+  glUniformMatrix4fv(location, 1, GL_FALSE, *mat4.m);
+}
+
 int Shader::GetUniformLocation(const std::string &name) {
   int location;
 

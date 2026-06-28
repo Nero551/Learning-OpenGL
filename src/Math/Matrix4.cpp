@@ -1,5 +1,6 @@
 #include "Matrix.h"
 #include "Vector.h"
+#include <cmath>
 
 Matrix4::Matrix4(float mAll) {
   for (int row = 0; row < 4; row++) {
@@ -50,7 +51,7 @@ Matrix4 Matrix4::operator-(const Matrix4 &mat4) const {
 }
 
 Matrix4 Matrix4::operator*(const Matrix4 &mat4) const {
-  Matrix4 result(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  Matrix4 result(0);
 
   for (int row = 0; row < 4; row++) {
     for (int col = 0; col < 4; col++) {
@@ -137,7 +138,36 @@ Matrix4 Matrix4::Translate(const Vector3 &translation) const {
   return *this * transMatrix;
 }
 
-//? Statics
-Matrix4 const Matrix4::Zero = Matrix4(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+Matrix4 Matrix4::RotateX(float radian) const {
+  Matrix4 rotationMatrix = Matrix4::Identity;
+  rotationMatrix.m[1][1] = std::cos(radian);
+  rotationMatrix.m[2][1] = std::sin(radian);
+  rotationMatrix.m[1][2] = -std::sin(radian);
+  rotationMatrix.m[2][2] = std::cos(radian);
 
+  return *this * rotationMatrix;
+}
+
+Matrix4 Matrix4::RotateY(float radian) const {
+  Matrix4 rotationMatrix = Matrix4::Identity;
+  rotationMatrix.m[0][0] = std::cos(radian);
+  rotationMatrix.m[0][2] = std::sin(radian);
+  rotationMatrix.m[2][0] = -std::sin(radian);
+  rotationMatrix.m[2][2] = std::cos(radian);
+
+  return *this * rotationMatrix;
+}
+
+Matrix4 Matrix4::RotateZ(float radian) const {
+  Matrix4 rotationMatrix = Matrix4::Identity;
+  rotationMatrix.m[0][0] = std::cos(radian);
+  rotationMatrix.m[1][0] = std::sin(radian);
+  rotationMatrix.m[0][1] = -std::sin(radian);
+  rotationMatrix.m[1][1] = std::cos(radian);
+
+  return *this * rotationMatrix;
+}
+
+//? Statics
+Matrix4 const Matrix4::Zero = Matrix4(0);
 Matrix4 const Matrix4::Identity = Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
