@@ -4,7 +4,10 @@ struct Matrix2 {
   float m[2][2];
 
   Matrix2();
+  Matrix2(float mAll);
   Matrix2(float m00, float m01, float m10, float m11);
+
+  Matrix2 Scale(const Vector2 &scale) const;
 
   Matrix2 operator+(const Matrix2 &mat2) const;
   Matrix2 operator-(const Matrix2 &mat2) const;
@@ -37,7 +40,10 @@ struct Matrix3 {
   float m[3][3];
 
   Matrix3();
+  Matrix3(float mAll);
   Matrix3(float m00, float m01, float m02, float m10, float m11, float m12, float m20, float m21, float m22);
+
+  Matrix3 Scale(const Vector3 &scale) const;
 
   Matrix3 operator+(const Matrix3 &mat3) const;
   Matrix3 operator-(const Matrix3 &mat3) const;
@@ -71,8 +77,12 @@ struct Matrix4 {
   float m[4][4];
 
   Matrix4();
+  Matrix4(float mAll);
   Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21,
       float m22, float m23, float m30, float m31, float m32, float m33);
+
+  Matrix4 Translate(const Vector3 &translation) const;
+  Matrix4 Scale(const Vector3 &scale) const;
 
   Matrix4 operator+(const Matrix4 &mat4) const;
   Matrix4 operator-(const Matrix4 &mat4) const;

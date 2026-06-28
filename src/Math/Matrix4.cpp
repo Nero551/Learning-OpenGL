@@ -1,6 +1,14 @@
 #include "Matrix.h"
 #include "Vector.h"
 
+Matrix4::Matrix4(float mAll) {
+  for (int row = 0; row < 4; row++) {
+    for (int col = 0; col < 4; col++) {
+      m[row][col] = mAll;
+    }
+  }
+}
+
 Matrix4::Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20,
     float m21, float m22, float m23, float m30, float m31, float m32, float m33) {
   m[0][0] = m00;
@@ -111,6 +119,23 @@ std::ostream &operator<<(std::ostream &os, const Matrix4 &mat) {
 }
 
 //? Methods
+Matrix4 Matrix4::Scale(const Vector3 &scale) const {
+  Matrix4 scaleMatrix = Matrix4::Identity;
+  scaleMatrix.m[0][0] = scale.x;
+  scaleMatrix.m[1][1] = scale.y;
+  scaleMatrix.m[2][2] = scale.z;
+
+  return *this * scaleMatrix;
+}
+
+Matrix4 Matrix4::Translate(const Vector3 &translation) const {
+  Matrix4 transMatrix = Matrix4::Identity;
+  transMatrix.m[0][3] = translation.x;
+  transMatrix.m[1][3] = translation.y;
+  transMatrix.m[2][3] = translation.z;
+
+  return *this * transMatrix;
+}
 
 //? Statics
 Matrix4 const Matrix4::Zero = Matrix4(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);

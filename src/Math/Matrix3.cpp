@@ -1,6 +1,14 @@
 #include "Matrix.h"
 #include "Vector.h"
 
+Matrix3::Matrix3(float mAll) {
+  for (int row = 0; row < 3; row++) {
+    for (int col = 0; col < 3; col++) {
+      m[row][col] = mAll;
+    }
+  }
+}
+
 Matrix3::Matrix3(float m00, float m01, float m02, float m10, float m11, float m12, float m20, float m21, float m22) {
   m[0][0] = m00;
   m[0][1] = m01;
@@ -94,6 +102,14 @@ std::ostream &operator<<(std::ostream &os, const Matrix3 &mat) {
 }
 
 //? Methods
+Matrix3 Matrix3::Scale(const Vector3 &scale) const {
+  Matrix3 scaleMatrix = Matrix3::Identity;
+  scaleMatrix.m[0][0] = scale.x;
+  scaleMatrix.m[1][1] = scale.y;
+  scaleMatrix.m[2][2] = scale.z;
+
+  return *this * scaleMatrix;
+}
 
 //? Statics
 Matrix3 const Matrix3::Zero = Matrix3(0, 0, 0, 0, 0, 0, 0, 0, 0);

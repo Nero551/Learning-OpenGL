@@ -5,6 +5,7 @@ struct Vector2 {
   float x;
   float y;
 
+  Vector2();
   Vector2(float x, float y);
   float LengthSquared() const;
   float Length() const;
@@ -45,6 +46,7 @@ struct Vector3 {
   float y;
   float z;
 
+  Vector3();
   Vector3(float x, float y, float z);
 
   float LengthSquared() const;
@@ -92,6 +94,7 @@ struct Vector4 {
   float z;
   float w;
 
+  Vector4();
   Vector4(float x, float y, float z, float w);
 
   float LengthSquared() const;

@@ -38,11 +38,12 @@ void InitOpenGL() {
 }
 
 int main() {
+  Vector4 vec(1, 2, 3, 1);
+  Matrix4 trans = Matrix4::Identity;
+  trans = trans.Scale({5, 2, 3});
+  vec = trans * vec;
 
-  Matrix2 scale = Matrix2(2, 0, 0, 1);
-  Matrix2 trans = Matrix2(1, 3, 0, 1);
-  Vector2 vec2 = Vector2(2, 1);
-  std::cout << trans * scale << "\n";
+  std::cout << vec << "\n";
 
   // int WindowWidth = 800;
   // int WindowHeight = 800;

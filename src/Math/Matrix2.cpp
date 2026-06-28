@@ -1,6 +1,14 @@
 #include "Matrix.h"
 #include "Vector.h"
 
+Matrix2::Matrix2(float mAll) {
+  for (int row = 0; row < 2; row++) {
+    for (int col = 0; col < 2; col++) {
+      m[row][col] = mAll;
+    }
+  }
+}
+
 Matrix2::Matrix2(float m00, float m01, float m10, float m11) {
   m[0][0] = m00;
   m[0][1] = m01;
@@ -76,7 +84,13 @@ std::ostream &operator<<(std::ostream &os, const Matrix2 &mat) {
 }
 
 //? Methods
+Matrix2 Matrix2::Scale(const Vector2 &scale) const {
+  Matrix2 scaleMatrix = Matrix2::Identity;
+  scaleMatrix.m[0][0] = scale.x;
+  scaleMatrix.m[1][1] = scale.y;
 
+  return *this * scaleMatrix;
+}
 //? Statics
 Matrix2 const Matrix2::Zero = Matrix2(0, 0, 0, 0);
 Matrix2 const Matrix2::Identity = Matrix2(1, 0, 0, 1);
