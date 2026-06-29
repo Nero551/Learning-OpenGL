@@ -12,5 +12,5 @@ uniform float uTime;
 
 void main()
 {
-    FragColor =  vPosition;
+    FragColor = vColor + texture(uTexture0, vUV);
 }

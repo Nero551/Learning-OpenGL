@@ -24,6 +24,8 @@ Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
     std::cout << "Failed To Load Texture" << "\n";
   }
   stbi_image_free(data);
+
+  glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Texture::Bind() {

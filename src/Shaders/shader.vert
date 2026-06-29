@@ -7,13 +7,15 @@ out vec4 vPosition;
 out vec4 vColor;
 out vec2 vUV;
 
-uniform mat4 uTransform;
+uniform mat4 uModel;
+uniform mat4 uView;
+uniform mat4 uProjection;
 uniform float uTime;
 
 void main()
 {
     vColor = aColor;
-    vPosition = aPosition * uTransform;
+    vPosition = uProjection * uView * uModel * aPosition;
     vUV = aUV;
     gl_Position = vPosition;
 }

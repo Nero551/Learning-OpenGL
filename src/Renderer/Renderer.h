@@ -9,6 +9,7 @@ struct Vertex {
   Vector4 Position;
   Vector4 Color;
   Vector2 UV;
+
   Vertex(Vector4 pos, Vector4 col, Vector2 uv);
 };
 
@@ -26,7 +27,7 @@ public:
 
 private:
   std::unordered_map<std::string, unsigned int> UniformLocations;
-  
+
   void SetBasicUniforms();
   unsigned int CreateShaderProgram(unsigned int &fragShader, unsigned int &vertShader);
   unsigned int CreateVertShader(const char *vertSource);

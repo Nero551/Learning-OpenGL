@@ -21,7 +21,7 @@ GLFWwindow *CreateWindow(int width, int height, const char *name) {
 
   glViewport(0, 0, width, height);
   glfwSetFramebufferSizeCallback(window,
-      [](GLFWwindow *window, int width, int height) { glViewport(0, 0, width, height); });
+    [](GLFWwindow *window, int width, int height) { glViewport(0, 0, width, height); });
 
   return window;
 }
@@ -33,7 +33,6 @@ void ProcessInput(GLFWwindow *window) {
 }
 
 void InitOpenGL() {
-
   glfwInit();
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -41,34 +40,48 @@ void InitOpenGL() {
 }
 
 int main() {
-  Matrix4 trans = Matrix4::Identity;
 
-  int WindowWidth = 800;
-  int WindowHeight = 800;
+  float WindowWidth = 800;
+  float WindowHeight = 800;
 
   InitOpenGL();
   GLFWwindow *Window = CreateWindow(WindowWidth, WindowHeight, "Plus Ultra");
 
-  std::vector<Vertex> Vertices = {
-      Vertex(Vector4(0, 0.5, 0, 1), Vector4(1, 0, 1, 1), Vector2(0.5, 1)),
-      Vertex(Vector4(0.5, -0.5, 0, 1), Vector4(1, 1, 0, 1), Vector2(1, 0)),
-      Vertex(Vector4(-0.5, -0.5, 0, 1), Vector4(0, 1, 1, 1), Vector2(0, 0)),
-  };
+  std::vector<Vertex> Vertices = {Vertex(Vector4(0.5, 0.5, 0.5, 1), Vector4(1, 0, 1, 1), Vector2(4, 4)),
+    Vertex(Vector4(0.5, -0.5, 0.5, 1), Vector4(1, 1, 0, 1), Vector2(4, 0)),
+    Vertex(Vector4(-0.5, -0.5, 0.5, 1), Vector4(0, 1, 1, 1), Vector2(0, 0)),
+    Vertex(Vector4(-0.5, 0.5, 0.5, 1), Vector4(1, 1, 1, 1), Vector2(0, 4))};
 
-  std::vector<unsigned int> Indices = {0, 1, 2};
+  std::vector<unsigned int> Indices = {0, 1, 2, 0, 2, 3};
 
-  Shader shader = Shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
-  Material material = Material(shader);
-  Geometry geometry = Geometry(Vertices, Indices);
+  Matrix4 model = Matrix4::Identity;
+  Matrix4 view = Matrix4::Identity;
+
+  // model = model.RotateX(Math::DegToRad(30));
+  // model = model.RotateY(Math::DegToRad(25));
+
+  model = model.Scale({100, 100, 100});
+
+  // view = view.Translate({0, 0, 0.5});
+
+  Matrix4 projection = Matrix4::Orthographic(0, 100, 0, 100, 1, 100);
+
+  Texture texture(0, "src/Images/ruby.png");
+  Shader shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
+  Material material(shader);
+  material.Texture0 = &texture;
+  Geometry geometry(Vertices, Indices);
 
   while (!glfwWindowShouldClose(Window)) {
     glClearColor(0.1, 0.15, 0.2, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
     material.Use();
+    // model = model.RotateZ(Math::DegToRad(16));
+    material.Shader.SetMat4("uModel", model);
+    material.Shader.SetMat4("uView", view);
+    material.Shader.SetMat4("uProjection", projection);
 
-    trans = trans.RotateZ(0.1);
-    material.Shader.SetMat4("uTransform", trans);
     geometry.Draw();
 
     glfwSwapBuffers(Window);

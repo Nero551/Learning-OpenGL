@@ -7,7 +7,7 @@ AllowAllParametersOfDeclarationOnNextLine: false
 SortIncludes: false
 AlignOperands: DontAlign
 AlignAfterOpenBracket: DontAlign
-ContinuationIndentWidth: 4
+ContinuationIndentWidth: 2
 BreakBeforeBinaryOperators: NonAssignment
 AlignConsecutiveAssignments: false
 AlignEscapedNewlines: DontAlign
