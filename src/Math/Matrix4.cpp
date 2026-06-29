@@ -170,17 +170,35 @@ Matrix4 Matrix4::RotateZ(float radian) const {
   return *this * rotationMatrix;
 }
 
-Matrix4 Matrix4::Orthographic(float left, float right, float top, float bottom, float near, float far) {
-  float width = right - left;
-  float height = bottom - top;
-  float volume = far - near;
+Matrix4 Matrix4::Orthographic(float left, float right, float bottom, float top, float near, float far) {
+  Matrix4 m = Matrix4::Identity;
 
-  Matrix4 orthoMatrix = Matrix4::Identity;
-  orthoMatrix = orthoMatrix.Translate({0, 1 / height / 2, 1 / volume / 2});
-  orthoMatrix = orthoMatrix.Scale({1 / width, 1 / height, 1 / volume});
+  m.m[0][0] = 2.0f / (right - left);
+  m.m[1][1] = 2.0f / (top - bottom);
+  m.m[2][2] = -2.0f / (far - near);
 
-  return orthoMatrix;
-};
+  m.m[0][3] = -(right + left) / (right - left);
+  m.m[1][3] = -(top + bottom) / (top - bottom);
+  m.m[2][3] = -(far + near) / (far - near);
+
+  return m;
+}
+
+Matrix4 Matrix4::Perspective(float fov, float aspect, float near, float far) {
+  Matrix4 m = Matrix4::Zero;
+
+  float f = 1.0f / std::tan(fov * 0.5f);
+
+  m.m[0][0] = f / aspect;
+  m.m[1][1] = f;
+
+  m.m[2][2] = -(far + near) / (far - near);
+  m.m[2][3] = -(2.0f * far * near) / (far - near);
+
+  m.m[3][2] = -1.0f;
+
+  return m;
+}
 
 //? Statics
 Matrix4 const Matrix4::Zero = Matrix4(0);

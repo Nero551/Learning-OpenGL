@@ -39,6 +39,14 @@ void InitOpenGL() {
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
+void Bullshit(){
+
+}
+
+Vector3 Project(Vector3 p){
+  
+}
+
 int main() {
 
   float WindowWidth = 800;
@@ -54,42 +62,32 @@ int main() {
 
   std::vector<unsigned int> Indices = {0, 1, 2, 0, 2, 3};
 
-  Matrix4 model = Matrix4::Identity;
-  Matrix4 view = Matrix4::Identity;
+  Bullshit();
+  
+  // Texture texture(0, "src/Images/ruby.png");
+  // Shader shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
+  // Material material(shader);
+  // material.Texture0 = &texture;
+  // Geometry geometry(Vertices, Indices);
 
-  // model = model.RotateX(Math::DegToRad(30));
-  // model = model.RotateY(Math::DegToRad(25));
+  // while (!glfwWindowShouldClose(Window)) {
+  //   glClearColor(0.1, 0.15, 0.2, 1);
+  //   glClear(GL_COLOR_BUFFER_BIT);
 
-  model = model.Scale({100, 100, 100});
+  //   material.Use();
+  //   // model = model.RotateZ(Math::DegToRad(16));
+  //   material.Shader.SetMat4("uModel", model);
+  //   material.Shader.SetMat4("uView", view);
+  //   material.Shader.SetMat4("uProjection", projection);
 
-  // view = view.Translate({0, 0, 0.5});
+  //   geometry.Draw();
 
-  Matrix4 projection = Matrix4::Orthographic(0, 100, 0, 100, 1, 100);
+  //   glfwSwapBuffers(Window);
 
-  Texture texture(0, "src/Images/ruby.png");
-  Shader shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
-  Material material(shader);
-  material.Texture0 = &texture;
-  Geometry geometry(Vertices, Indices);
+  //   ProcessInput(Window);
+  //   glfwPollEvents();
+  // }
 
-  while (!glfwWindowShouldClose(Window)) {
-    glClearColor(0.1, 0.15, 0.2, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    material.Use();
-    // model = model.RotateZ(Math::DegToRad(16));
-    material.Shader.SetMat4("uModel", model);
-    material.Shader.SetMat4("uView", view);
-    material.Shader.SetMat4("uProjection", projection);
-
-    geometry.Draw();
-
-    glfwSwapBuffers(Window);
-
-    ProcessInput(Window);
-    glfwPollEvents();
-  }
-
-  glfwTerminate();
+  // glfwTerminate();
   return 0;
 }
