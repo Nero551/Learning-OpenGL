@@ -215,6 +215,17 @@ float Matrix4::Determinant() const {
       + m[1][2] * (m[2][0] * m[3][1] - m[2][1] * m[3][0]));
 }
 
+Matrix4 Matrix4::Transpose() const {
+  Matrix4 result;
+
+  for (int row = 0; row < 4; row++) {
+    for (int col = 0; col < 4; col++) {
+      result.m[row][col] = m[col][row];
+    }
+  }
+  return result;
+}
+
 //? Statics
 Matrix4 const Matrix4::Zero = Matrix4(0);
 Matrix4 const Matrix4::Identity = Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);

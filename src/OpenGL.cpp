@@ -41,17 +41,16 @@ void InitOpenGL() {
 void Bullshit() {
   Vector2 vec2 = Vector2(1, 2);
 
-  Matrix2 mat2 = Matrix2::Identity;
-  mat2 = mat2.Scale({2, 3});
-
-  Matrix2 mat22 = Matrix2::Identity;
-  mat22 = mat22.Scale({3, 5});
+  Matrix2 mat2 = {1, 2, 3, 4};
+  // mat2 = mat2.Scale({2, 3});
 
   Matrix3 mat3 = Matrix3::Identity;
   mat3 = mat3.Scale({2, 3, 5});
 
-  auto result = mat2 * vec2;
-  std::cout << mat3.Determinant();
+  Matrix4 mat4 = Matrix4::Identity;
+  mat4 = mat4.Scale({2, 3, 4});
+
+  std::cout << mat2.Transpose();
   // TODO- just mess around with matrices , transformations , projection , all dat.
 }
 

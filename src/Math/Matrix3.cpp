@@ -158,6 +158,18 @@ float Matrix3::Determinant() const {
     + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]);
 }
 
+Matrix3 Matrix3::Transpose() const {
+  Matrix3 result;
+
+  for (int row = 0; row < 3; row++) {
+    for (int col = 0; col < 3; col++) {
+      result.m[row][col] = m[col][row];
+    }
+  }
+
+  return result;
+}
+
 //? Statics
 Matrix3 const Matrix3::Zero = Matrix3(0);
 Matrix3 const Matrix3::Identity = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);

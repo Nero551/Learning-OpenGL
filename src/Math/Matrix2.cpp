@@ -1,6 +1,7 @@
 #include "Matrix.h"
 #include "Vector.h"
 #include <cmath>
+#include <cstddef>
 
 Matrix2::Matrix2() {}
 
@@ -102,6 +103,18 @@ Matrix2 Matrix2::Rotate(float radian) const {
   rotationMatrix.m[1][1] = std::cos(radian);
 
   return *this * rotationMatrix;
+}
+
+Matrix2 Matrix2::Transpose() const {
+  Matrix2 result;
+
+  for (int row = 0; row < 2; row++) {
+    for (int col = 0; col < 2; col++) {
+      result.m[row][col] = m[col][row];
+    }
+  }
+
+  return result;
 }
 
 float Matrix2::Determinant() const { return m[0][0] * m[1][1] - m[0][1] * m[1][0]; }

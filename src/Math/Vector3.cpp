@@ -45,6 +45,7 @@ std::ostream &operator<<(std::ostream &os, const Vector3 &vec3) {
 float Vector3::LengthSquared() const { return x * x + y * y + z * z; }
 float Vector3::Length() const { return std::sqrt(LengthSquared()); }
 float Vector3::Dot(const Vector3 &vec3) const { return x * vec3.x + y * vec3.y + z * vec3.z; }
+
 Vector3 Vector3::Cross(const Vector3 &vec3) const {
   return {y * vec3.z - z * vec3.y, z * vec3.x - x * vec3.z, x * vec3.y - y * vec3.x};
 }
