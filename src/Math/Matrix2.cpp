@@ -103,6 +103,11 @@ Matrix2 Matrix2::Rotate(float radian) const {
 
   return *this * rotationMatrix;
 }
+
+float Matrix2::Determinant() const { return m[0][0] * m[1][1] - m[0][1] * m[1][0]; }
+
+Matrix2 Matrix2::Inverse() const { return Matrix2(m[1][1], -m[0][1], -m[1][0], m[0][0]) / Determinant(); }
+
 //? Statics
 Matrix2 const Matrix2::Zero = Matrix2(0);
 Matrix2 const Matrix2::Identity = Matrix2(1, 0, 0, 1);

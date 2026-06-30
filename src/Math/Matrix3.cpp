@@ -31,14 +31,14 @@ Matrix3::Matrix3(float m00, float m01, float m02, float m10, float m11, float m1
 //* Matrices
 Matrix3 Matrix3::operator+(const Matrix3 &mat3) const {
   return {m[0][0] + mat3.m[0][0], m[0][1] + mat3.m[0][1], m[0][2] + mat3.m[0][2], m[1][0] + mat3.m[1][0],
-      m[1][1] + mat3.m[1][1], m[1][2] + mat3.m[1][2], m[2][0] + mat3.m[2][0], m[2][1] + mat3.m[2][1],
-      m[2][2] + mat3.m[2][2]};
+    m[1][1] + mat3.m[1][1], m[1][2] + mat3.m[1][2], m[2][0] + mat3.m[2][0], m[2][1] + mat3.m[2][1],
+    m[2][2] + mat3.m[2][2]};
 }
 
 Matrix3 Matrix3::operator-(const Matrix3 &mat3) const {
   return {m[0][0] - mat3.m[0][0], m[0][1] - mat3.m[0][1], m[0][2] - mat3.m[0][2], m[1][0] - mat3.m[1][0],
-      m[1][1] - mat3.m[1][1], m[1][2] - mat3.m[1][2], m[2][0] - mat3.m[2][0], m[2][1] - mat3.m[2][1],
-      m[2][2] - mat3.m[2][2]};
+    m[1][1] - mat3.m[1][1], m[1][2] - mat3.m[1][2], m[2][0] - mat3.m[2][0], m[2][1] - mat3.m[2][1],
+    m[2][2] - mat3.m[2][2]};
 }
 
 Matrix3 Matrix3::operator*(const Matrix3 &mat3) const {
@@ -62,18 +62,18 @@ Matrix3 &Matrix3::operator*=(const Matrix3 &mat3) { return *this = *this * mat3;
 //* Vectors
 Vector3 Matrix3::operator*(const Vector3 &vec3) const {
   return {m[0][0] * vec3.x + m[0][1] * vec3.y + m[0][2] * vec3.z,
-      m[1][0] * vec3.x + m[1][1] * vec3.y + m[1][2] * vec3.z, m[2][0] * vec3.x + m[2][1] * vec3.y + m[2][2] * vec3.z};
+    m[1][0] * vec3.x + m[1][1] * vec3.y + m[1][2] * vec3.z, m[2][0] * vec3.x + m[2][1] * vec3.y + m[2][2] * vec3.z};
 }
 
 //* Scalars
 Matrix3 Matrix3::operator*(float scalar) const {
   return {scalar * m[0][0], scalar * m[0][1], scalar * m[0][2], scalar * m[1][0], scalar * m[1][1], scalar * m[1][2],
-      scalar * m[2][0], scalar * m[2][1], scalar * m[2][2]};
+    scalar * m[2][0], scalar * m[2][1], scalar * m[2][2]};
 }
 
 Matrix3 Matrix3::operator/(float scalar) const {
   return {m[0][0] / scalar, m[0][1] / scalar, m[0][2] / scalar, m[1][0] / scalar, m[1][1] / scalar, m[1][2] / scalar,
-      m[2][0] / scalar, m[2][1] / scalar, m[2][2] / scalar};
+    m[2][0] / scalar, m[2][1] / scalar, m[2][2] / scalar};
 }
 
 Matrix3 &Matrix3::operator*=(float scalar) { return *this = *this * scalar; }
@@ -114,6 +114,15 @@ Matrix3 Matrix3::Scale(const Vector3 &scale) const {
   return *this * scaleMatrix;
 }
 
+Matrix3 Matrix3::Translate(const Vector2 &trans) const {
+  Matrix3 transMatrix = Matrix3::Identity;
+
+  transMatrix.m[0][2] = trans.x;
+  transMatrix.m[1][2] = trans.y;
+
+  return *this *transMatrix;
+}
+
 Matrix3 Matrix3::RotateX(float radian) const {
   Matrix3 rotationMatrix = Matrix3::Identity;
   rotationMatrix.m[1][1] = std::cos(radian);
@@ -142,6 +151,11 @@ Matrix3 Matrix3::RotateZ(float radian) const {
   rotationMatrix.m[1][1] = std::cos(radian);
 
   return *this * rotationMatrix;
+}
+
+float Matrix3::Determinant() const {
+  return m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]) - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0])
+    + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]);
 }
 
 //? Statics

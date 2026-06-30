@@ -1,14 +1,17 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "C++",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${workspaceFolder}/build/Engine",
-      "cwd": "${workspaceFolder}",
-      "MIMode": "gdb",
-      "preLaunchTask": "build"
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/Engine",
+            "cwd": "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "preLaunchTask": "build",
+            "stopAtEntry": false,
+            "externalConsole": false
+        }
+    ]
 }
