@@ -1,25 +1,15 @@
 #pragma once
 #include "../OpenGL.h"
 #include <string>
-class Engine {
-public:
+struct Engine {
   bool Running;
-
-public:
   double Time;
-
-public:
   void Start();
-
-public:
   void Process(double delta);
-
-public:
   void Stop();
 };
 
-class Window {
-public:
+struct Window {
   Window(int width, int height, std::string name);
   ~Window();
 

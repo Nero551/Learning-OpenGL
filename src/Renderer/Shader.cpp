@@ -3,6 +3,7 @@
 #include "../OpenGL.h"
 #include <iostream>
 #include <string>
+#include "../Services/Service.h"
 
 Shader::Shader(const std::string &fragFilepath, const std::string &vertFilepath) {
   std::string fragCode = FileSystem::ReadFile(fragFilepath);
@@ -60,13 +61,13 @@ int Shader::GetUniformLocation(const std::string &name) {
 
 void Shader::CheckUniformExistence(const std::string &name, int location) {
   if (location == -1) {
-    std::cout << "Uniform not found: " << name << '\n';
+    LoggerService::Warning("Uniform Not Found: " + name);
   }
 }
 
 void Shader::SetBasicUniforms() { SetFloat("uTime", glfwGetTime()); }
 
-unsigned int Shader::CreateShaderProgram(unsigned int &fragShader, unsigned int &vertShader) {
+unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int vertShader) {
   unsigned int id = glCreateProgram();
   glAttachShader(id, vertShader);
   glAttachShader(id, fragShader);
@@ -77,7 +78,7 @@ unsigned int Shader::CreateShaderProgram(unsigned int &fragShader, unsigned int 
   glGetProgramiv(id, GL_LINK_STATUS, &success);
   if (!success) {
     glGetProgramInfoLog(id, 512, NULL, infoLog);
-    std::cout << "ERROR SHADER PROGRAM LINKING: " << infoLog << "\n";
+    LoggerService::Error(std::string("Shader program linking failed: ") + infoLog);
   }
 
   return id;
@@ -94,7 +95,7 @@ unsigned int Shader::CreateFragShader(const char *fragSource) {
   glGetShaderiv(fragShader, GL_COMPILE_STATUS, &success);
   if (!success) {
     glGetShaderInfoLog(fragShader, 512, NULL, infoLog);
-    std::cout << "ERROR FRAGMENT SHADER: " << infoLog << "\n";
+    LoggerService::Error(std::string("Fragment Shader: ") + infoLog);
   }
 
   return fragShader;
@@ -111,7 +112,7 @@ unsigned int Shader::CreateVertShader(const char *vertSource) {
   glGetShaderiv(vertShader, GL_COMPILE_STATUS, &success);
   if (!success) {
     glGetShaderInfoLog(vertShader, 512, NULL, infoLog);
-    std::cout << "ERROR VERTEX SHADER: " << infoLog << "\n";
+    LoggerService::Error(std::string("Vertex Shader: ") + infoLog);
   }
 
   return vertShader;

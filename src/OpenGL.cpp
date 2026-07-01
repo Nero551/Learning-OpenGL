@@ -4,6 +4,7 @@
 #include "Engine/Engine.h"
 #include "Renderer/Renderer.h"
 #include "Math/Math.h"
+#include "Services/Service.h"
 
 void Bullshit() {
   Vector3 vec3 = Vector3(1, 0, 0);
@@ -16,7 +17,7 @@ void Bullshit() {
   Matrix2 mat2 = Matrix2::Identity;
   mat2 = mat2.Scale({2, 3});
 
-  std::cout << mat2 * vec2 << "\n";
+  LoggerService::Info(mat2 * vec2);
 }
 
 int main() {

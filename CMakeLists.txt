@@ -23,6 +23,7 @@ add_executable(Engine
 
 add_subdirectory(src/Math)
 add_subdirectory(src/Renderer)
+add_subdirectory(src/Services)
 
 
 find_package(glfw3 REQUIRED)

@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include <iostream>
+#include "../Services/Service.h"
 #include <string>
 
 Window::Window(int width, int height, std::string name) {
@@ -9,12 +10,12 @@ Window::Window(int width, int height, std::string name) {
 
   GLFWwindow *window = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
   if (!window) {
-    std::cout << "Failed To Create Window";
+    LoggerService::Error("Failed To Create Window");
   }
   glfwMakeContextCurrent(window);
 
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-    std::cout << "Failed To Initialize GLAD";
+    LoggerService::Error("Failed To Initialize GLAD");
   }
 
   glViewport(0, 0, width, height);

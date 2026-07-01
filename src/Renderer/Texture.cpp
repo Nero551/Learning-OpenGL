@@ -4,6 +4,7 @@
 #include <string>
 #include "../OpenGL.h"
 #include "stb_image.h"
+#include "../Services/Service.h"
 
 Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
   glGenTextures(1, &Id);
@@ -21,7 +22,7 @@ Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);
   } else {
-    std::cout << "Failed To Load Texture" << "\n";
+    LoggerService::Error("Failed To Load Texture");
   }
   stbi_image_free(data);
 

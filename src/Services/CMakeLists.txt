@@ -1,0 +1,5 @@
+file(GLOB_RECURSE SERVICE_SOURCES CONFIGURE_DEPENDS *.cpp)
+
+target_sources(Engine PRIVATE
+    ${SERVICE_SOURCES}
+)

@@ -1,5 +1,4 @@
-#include "Matrix.h"
-#include "../Vector/Vector.h"
+#include "../Math.h"
 #include <cmath>
 #include <cstddef>
 
