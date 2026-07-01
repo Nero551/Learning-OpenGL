@@ -56,6 +56,8 @@ struct Matrix3 {
   Matrix3 Translate(const Vector2 &trans) const;
   float Determinant() const;
   Matrix3 Transpose() const;
+  Matrix3 Inverse() const;
+  Matrix2 Minor(int row, int col) const;
 
   Matrix3 operator+(const Matrix3 &mat3) const;
   Matrix3 operator-(const Matrix3 &mat3) const;
@@ -100,6 +102,8 @@ struct Matrix4 {
   Matrix4 RotateZ(float radian) const;
   float Determinant() const;
   Matrix4 Transpose() const;
+  Matrix4 Inverse() const;
+  Matrix3 Minor(int row, int col) const;
 
   Matrix4 operator+(const Matrix4 &mat4) const;
   Matrix4 operator-(const Matrix4 &mat4) const;

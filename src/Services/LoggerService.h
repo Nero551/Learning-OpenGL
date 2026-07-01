@@ -11,13 +11,15 @@ constexpr const char *Blue = "\033[34m";
 
 struct LoggerService {
 
-  template <typename T> static void Info(const T &message){
+  template <typename T> static void Print(const T &message) { std::cout << message << "\n"; }
+
+  template <typename T> static void Info(const T &message) {
     std::cout << ConsoleColors::Green << "[INFO] " << ConsoleColors::Reset << message << "\n";
   }
-  template <typename T> static void Warning(const T &message){
+  template <typename T> static void Warning(const T &message) {
     std::cout << ConsoleColors::Yellow << "[WARNING] " << ConsoleColors::Reset << message << "\n";
   }
-  template <typename T> static void Error(const T &message){
+  template <typename T> static void Error(const T &message) {
     std::cerr << ConsoleColors::Red << "[ERROR] " << ConsoleColors::Reset << message << "\n";
   }
 };

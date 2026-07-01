@@ -1,6 +1,7 @@
 #include "../Math.h"
 #include <cmath>
 #include <cstddef>
+#include "../../Services/Service.h"
 
 Matrix2::Matrix2() {}
 
@@ -118,7 +119,14 @@ Matrix2 Matrix2::Transpose() const {
 
 float Matrix2::Determinant() const { return m[0][0] * m[1][1] - m[0][1] * m[1][0]; }
 
-Matrix2 Matrix2::Inverse() const { return Matrix2(m[1][1], -m[0][1], -m[1][0], m[0][0]) / Determinant(); }
+Matrix2 Matrix2::Inverse() const {
+  float det = Determinant();
+  if (std::abs(det) < Math::EPSILONF) {
+    LoggerService::Error("Matrix is not invertible");
+    return Matrix2::Identity;
+  }
+  return Matrix2(m[1][1], -m[0][1], -m[1][0], m[0][0]) / det;
+}
 
 //? Statics
 Matrix2 const Matrix2::Zero = Matrix2(0);

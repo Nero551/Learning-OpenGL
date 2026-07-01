@@ -1,5 +1,6 @@
 #include "../Math.h"
 #include <cmath>
+#include "../../Services/Service.h"
 
 Matrix4::Matrix4() {}
 
@@ -223,6 +224,54 @@ Matrix4 Matrix4::Transpose() const {
     }
   }
   return result;
+}
+
+Matrix4 Matrix4::Inverse() const {
+  Matrix4 cofactorMatrix;
+
+  for (int row = 0; row < 4; row++) {
+    for (int col = 0; col < 4; col++) {
+      Matrix3 minor = Minor(row, col);
+
+      float det = minor.Determinant();
+
+      if ((row + col) % 2 == 1) {
+        det = -det;
+      }
+
+      cofactorMatrix.m[row][col] = det;
+    }
+  }
+
+  float det = Determinant();
+
+  if (std::abs(det) < Math::EPSILONF) {
+    LoggerService::Error("Matrix is not invertible");
+    return Matrix4::Identity;
+  }
+
+  return cofactorMatrix.Transpose() / det;
+}
+
+Matrix3 Matrix4::Minor(int row, int col) const {
+  Matrix3 minor;
+  int minorRow = 0;
+
+  for (int r = 0; r < 4; r++) {
+    if (r != row) {
+      int minorCol = 0;
+
+      for (int c = 0; c < 4; c++) {
+        if (c != col) {
+          minor.m[minorRow][minorCol] = m[r][c];
+          minorCol++;
+        }
+      }
+      minorRow++;
+    }
+  }
+
+  return minor;
 }
 
 //? Statics
