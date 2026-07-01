@@ -1,3 +1,6 @@
+#pragma once
+#include "../OpenGL.h"
+#include <string>
 class Engine {
 public:
   bool Running;
@@ -13,4 +16,19 @@ public:
 
 public:
   void Stop();
+};
+
+class Window {
+public:
+  Window(int width, int height, std::string name);
+  ~Window();
+
+  bool ShouldClose();
+
+  void SwapBuffers();
+
+  void ProcessInput();
+
+private:
+  GLFWwindow *GlfwWindow;
 };

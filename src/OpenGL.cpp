@@ -2,99 +2,61 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
-#include "Math/MathUtils.h"
-#include "Math/Vector.h"
+#include "Engine/Engine.h"
 #include "Renderer/Renderer.h"
-#include "Math/Matrix.h"
-
-GLFWwindow *CreateWindow(int width, int height, const char *name) {
-  GLFWwindow *window = glfwCreateWindow(width, height, name, NULL, NULL);
-  if (!window) {
-    std::cout << "Failed To Create Window";
-  }
-  glfwMakeContextCurrent(window);
-
-  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-    std::cout << "Failed To Initialize GLAD";
-  }
-
-  glViewport(0, 0, width, height);
-  glfwSetFramebufferSizeCallback(window,
-    [](GLFWwindow *window, int width, int height) { glViewport(0, 0, width, height); });
-
-  return window;
-}
-
-void ProcessInput(GLFWwindow *window) {
-  if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-    glfwSetWindowShouldClose(window, true);
-  }
-}
-
-void InitOpenGL() {
-  glfwInit();
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-}
+#include "Math/Math.h"
 
 void Bullshit() {
-  Vector2 vec2 = Vector2(1, 2);
-
-  Matrix2 mat2 = {1, 2, 3, 4};
-  // mat2 = mat2.Scale({2, 3});
-
-  Matrix3 mat3 = Matrix3::Identity;
-  mat3 = mat3.Scale({2, 3, 5});
-
+  Vector3 vec3 = Vector3(1, 0, 0);
+  Vector3 vec33 = Vector3(0, 1, 0);
   Matrix4 mat4 = Matrix4::Identity;
+  mat4 = mat4.Translate({1, 2, 3});
   mat4 = mat4.Scale({2, 3, 4});
 
-  std::cout << mat2.Transpose();
-  // TODO- just mess around with matrices , transformations , projection , all dat.
+  Vector2 vec2 = {1, 2};
+  Matrix2 mat2 = Matrix2::Identity;
+  mat2 = mat2.Scale({2, 3});
+
+  std::cout << mat2 * vec2 << "\n";
 }
 
 int main() {
-
-  // float WindowWidth = 800;
-  // float WindowHeight = 800;
-
-  // InitOpenGL();
-  // GLFWwindow *Window = CreateWindow(WindowWidth, WindowHeight, "Plus Ultra");
-
-  // std::vector<Vertex> Vertices = {Vertex(Vector4(0.5, 0.5, 0.5, 1), Vector4(1, 0, 1, 1), Vector2(4, 4)),
-  //   Vertex(Vector4(0.5, -0.5, 0.5, 1), Vector4(1, 1, 0, 1), Vector2(4, 0)),
-  //   Vertex(Vector4(-0.5, -0.5, 0.5, 1), Vector4(0, 1, 1, 1), Vector2(0, 0)),
-  //   Vertex(Vector4(-0.5, 0.5, 0.5, 1), Vector4(1, 1, 1, 1), Vector2(0, 4))};
-
-  // std::vector<unsigned int> Indices = {0, 1, 2, 0, 2, 3};
-
   Bullshit();
 
-  // Texture texture(0, "src/Images/ruby.png");
-  // Shader shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
-  // Material material(shader);
-  // material.Texture0 = &texture;
-  // Geometry geometry(Vertices, Indices);
+  float WindowWidth = 800;
+  float WindowHeight = 800;
 
-  // while (!glfwWindowShouldClose(Window)) {
-  //   glClearColor(0.1, 0.15, 0.2, 1);
-  //   glClear(GL_COLOR_BUFFER_BIT);
+  Window window(800, 800, "Plus Ultra");
 
-  //   material.Use();
-  //   // model = model.RotateZ(Math::DegToRad(16));
-  //   material.Shader.SetMat4("uModel", model);
-  //   material.Shader.SetMat4("uView", view);
-  //   material.Shader.SetMat4("uProjection", projection);
+  std::vector<Vertex> Vertices = {Vertex(Vector4(0.5, 0.5, 0.5, 1), Vector4(1, 0, 1, 1), Vector2(4, 4)),
+    Vertex(Vector4(0.5, -0.5, 0.5, 1), Vector4(1, 1, 0, 1), Vector2(4, 0)),
+    Vertex(Vector4(-0.5, -0.5, 0.5, 1), Vector4(0, 1, 1, 1), Vector2(0, 0)),
+    Vertex(Vector4(-0.5, 0.5, 0.5, 1), Vector4(1, 1, 1, 1), Vector2(0, 4))};
 
-  //   geometry.Draw();
+  std::vector<unsigned int> Indices = {0, 1, 2, 0, 2, 3};
 
-  //   glfwSwapBuffers(Window);
+  Texture texture(0, "src/Images/ruby.png");
+  Shader shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
+  Material material(shader);
+  material.Texture0 = &texture;
+  Geometry geometry(Vertices, Indices);
 
-  //   ProcessInput(Window);
-  //   glfwPollEvents();
-  // }
+  while (!window.ShouldClose()) {
+    glClearColor(0.1, 0.15, 0.2, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
 
-  // glfwTerminate();
+    material.Use();
+    // material.Shader.SetMat4("uModel", model);
+    // material.Shader.SetMat4("uView", view);
+    // material.Shader.SetMat4("uProjection", projection);
+
+    geometry.Draw();
+
+    window.SwapBuffers();
+
+    window.ProcessInput();
+    glfwPollEvents();
+  }
+
   return 0;
 }
