@@ -10,49 +10,48 @@
 void Bullshit() {
   Matrix4 mat4 = Matrix4::Identity;
   mat4 = mat4.Scale({2, 2, 2});
-  mat4 = mat4.Translate({1, 6, 7});
 
-  LoggerService::Print(mat4 * mat4.Inverse());
+  LoggerService::Print(mat4.Determinant());
 }
 
 int main() {
   Bullshit();
 
-  glfwInit();
-  Window window(800, 800, "Plus Ultra");
+  // glfwInit();
+  // Window window(800, 800, "Plus Ultra");
 
-    std::vector<Vertex>
-      Vertices = {Vertex(Vector4(0.5, 0.5, 0.5, 1), Vector4(1, 0, 1, 1), Vector2(4, 4)),
-        Vertex(Vector4(0.5, -0.5, 0.5, 1), Vector4(1, 1, 0, 1), Vector2(4, 0)),
-        Vertex(Vector4(-0.5, -0.5, 0.5, 1), Vector4(0, 1, 1, 1), Vector2(0, 0)),
-        Vertex(Vector4(-0.5, 0.5, 0.5, 1), Vector4(1, 1, 1, 1), Vector2(0, 4))};
+  //   std::vector<Vertex>
+  //     Vertices = {Vertex(Vector4(0.5, 0.5, 0.5, 1), Vector4(1, 0, 1, 1), Vector2(4, 4)),
+  //       Vertex(Vector4(0.5, -0.5, 0.5, 1), Vector4(1, 1, 0, 1), Vector2(4, 0)),
+  //       Vertex(Vector4(-0.5, -0.5, 0.5, 1), Vector4(0, 1, 1, 1), Vector2(0, 0)),
+  //       Vertex(Vector4(-0.5, 0.5, 0.5, 1), Vector4(1, 1, 1, 1), Vector2(0, 4))};
 
-  std::vector<unsigned int> Indices = {0, 1, 2, 0, 2, 3};
+  // std::vector<unsigned int> Indices = {0, 1, 2, 0, 2, 3};
 
-  Texture texture(0, "src/Images/ruby.png");
-  Shader shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
-  
-  Material material(shader);
-  material.Texture0 = &texture;
-  Geometry geometry(Vertices, Indices);
+  // Texture texture(0, "src/Images/ruby.png");
+  // Shader shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
 
-  while (!window.ShouldClose()) {
-    glClearColor(0.1, 0.15, 0.2, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
+  // Material material(shader);
+  // material.Texture0 = &texture;
+  // Geometry geometry(Vertices, Indices);
 
-    material.Use();
-    // material.Shader.SetMat4("uModel", model);
-    // material.Shader.SetMat4("uView", view);
-    // material.Shader.SetMat4("uProjection", projection);
+  // while (!window.ShouldClose()) {
+  //   glClearColor(0.1, 0.15, 0.2, 1);
+  //   glClear(GL_COLOR_BUFFER_BIT);
 
-    geometry.Draw();
+  //   material.Use();
+  //   // material.Shader.SetMat4("uModel", model);
+  //   // material.Shader.SetMat4("uView", view);
+  //   // material.Shader.SetMat4("uProjection", projection);
 
-    window.SwapBuffers();
+  //   geometry.Draw();
 
-    window.ProcessInput();
-    glfwPollEvents();
-  }
+  //   window.SwapBuffers();
 
-  glfwTerminate();
+  //   window.ProcessInput();
+  //   glfwPollEvents();
+  // }
+
+  // glfwTerminate();
   return 0;
 }
