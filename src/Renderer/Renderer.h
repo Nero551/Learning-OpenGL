@@ -1,8 +1,8 @@
 #pragma once
+#include "../Math/Math.h"
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "../Math/Math.h"
 
 struct Vertex {
   Vector4 Position;
@@ -13,7 +13,6 @@ struct Vertex {
 };
 
 class Shader {
-
 public:
   unsigned int Id;
 
@@ -67,7 +66,6 @@ private:
 };
 
 struct Material {
-
 public:
   Shader &Shader;
   Texture *Texture0 = nullptr;

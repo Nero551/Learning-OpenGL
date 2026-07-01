@@ -1,10 +1,10 @@
+#include "Engine/Engine.h"
+#include "Math/Math.h"
+#include "Renderer/Renderer.h"
+#include "Services/Service.h"
 #include <cmath>
 #include <iostream>
 #include <vector>
-#include "Engine/Engine.h"
-#include "Renderer/Renderer.h"
-#include "Math/Math.h"
-#include "Services/Service.h"
 
 void Bullshit() {
   Vector3 vec3 = Vector3(1, 0, 0);
@@ -17,7 +17,7 @@ void Bullshit() {
   Matrix2 mat2 = Matrix2::Identity;
   mat2 = mat2.Scale({2, 3});
 
-  LoggerService::Info(mat2 * vec2);
+  LoggerService::Info(mat2 * mat2.Inverse() * vec2);
 }
 
 int main() {

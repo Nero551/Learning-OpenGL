@@ -3,7 +3,6 @@
 #include <iostream>
 #include <ostream>
 
-
 Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 
 //?Operators
@@ -27,9 +26,13 @@ Vector4 &Vector4::operator*=(float scalar) { return *this = *this * scalar; }
 Vector4 &Vector4::operator/=(float scalar) { return *this = *this / scalar; }
 
 Vector4 operator+(float scalar, const Vector4 &vec4) { return vec4 + scalar; }
-Vector4 operator-(float scalar, const Vector4 &vec4) { return {scalar - vec4.x, scalar - vec4.y, scalar - vec4.z, scalar - vec4.w}; }
+Vector4 operator-(float scalar, const Vector4 &vec4) {
+  return {scalar - vec4.x, scalar - vec4.y, scalar - vec4.z, scalar - vec4.w};
+}
 Vector4 operator*(float scalar, const Vector4 &vec4) { return vec4 * scalar; }
-Vector4 operator/(float scalar, const Vector4 &vec4) { return {scalar / vec4.x, scalar / vec4.y, scalar / vec4.z, scalar / vec4.w}; }
+Vector4 operator/(float scalar, const Vector4 &vec4) {
+  return {scalar / vec4.x, scalar / vec4.y, scalar / vec4.z, scalar / vec4.w};
+}
 Vector4 Vector4::operator-() const { return -1 * *this; }
 
 //*Equality
@@ -44,8 +47,11 @@ std::ostream &operator<<(std::ostream &os, const Vector4 &vec4) {
 
 //?Methods
 float Vector4::LengthSquared() const { return x * x + y * y + z * z + w * w; }
+
 float Vector4::Length() const { return std::sqrt(LengthSquared()); }
+
 float Vector4::Dot(const Vector4 &vec4) const { return x * vec4.x + y * vec4.y + z * vec4.z + w * vec4.w; }
+
 float Vector4::Distance(const Vector4 &vec4) const { return (*this - vec4).Length(); }
 
 Vector4 Vector4::Normalized() const {

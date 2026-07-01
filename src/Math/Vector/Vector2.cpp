@@ -43,8 +43,11 @@ std::ostream &operator<<(std::ostream &os, const Vector2 &vec2) {
 
 //?Methods
 float Vector2::LengthSquared() const { return x * x + y * y; }
+
 float Vector2::Length() const { return std::sqrt(LengthSquared()); }
+
 float Vector2::Dot(const Vector2 &vec2) const { return x * vec2.x + y * vec2.y; }
+
 float Vector2::Distance(const Vector2 &vec2) const { return (*this - vec2).Length(); }
 
 Vector2 Vector2::Normalized() const {

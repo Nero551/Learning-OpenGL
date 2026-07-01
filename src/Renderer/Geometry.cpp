@@ -1,9 +1,9 @@
-#include "Renderer.h"
 #include "../OpenGL.h"
+#include "Renderer.h"
 
-Geometry::Geometry(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)
+Geometry::Geometry(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices)
     : Vertices(vertices), Indices(indices) {
-      
+
   Id = CreateVAO();
   VBO = CreateVBO();
   EBO = CreateEBO();
@@ -36,21 +36,25 @@ unsigned int Geometry::CreateEBO() {
   unsigned int EBO;
   glGenBuffers(1, &EBO);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, Indices.size() * sizeof(unsigned int), Indices.data(), GL_STATIC_DRAW);
+  glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+               Indices.size() * sizeof(unsigned int),
+               Indices.data(),
+               GL_STATIC_DRAW);
 
   return EBO;
 }
 
 void Geometry::SetupVertAttrPointers() {
   // Position
-  glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, Position));
+  glVertexAttribPointer(
+      0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Position));
   glEnableVertexAttribArray(0);
 
   // Color
-  glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, Color));
+  glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Color));
   glEnableVertexAttribArray(1);
 
   // UV
-  glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, UV));
+  glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, UV));
   glEnableVertexAttribArray(2);
 }

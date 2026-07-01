@@ -2,12 +2,18 @@ BasedOnStyle: LLVM
 ColumnLimit: 120
 BinPackArguments: true
 BinPackParameters: true
+
 AllowAllArgumentsOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: true
+
 SortIncludes: false
-AlignOperands: DontAlign
-AlignAfterOpenBracket: DontAlign
 ContinuationIndentWidth: 2
 BreakBeforeBinaryOperators: NonAssignment
+
+AlignOperands: DontAlign
+AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: false
 AlignEscapedNewlines: DontAlign
