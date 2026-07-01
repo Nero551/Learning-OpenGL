@@ -18,6 +18,7 @@ add_executable(Engine
     src/OpenGL.cpp
     src/Engine/Window.cpp
     src/FileSystem/FileSystem.cpp
+    src/Image/Image.cpp
     Libraries/lib/glad.c
 )
 

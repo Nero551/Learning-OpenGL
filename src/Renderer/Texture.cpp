@@ -5,6 +5,7 @@
 #include "../OpenGL.h"
 #include "stb_image.h"
 #include "../Services/Service.h"
+#include "../Image/Image.h"
 
 Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
   glGenTextures(1, &Id);
@@ -13,18 +14,9 @@ Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
 
   SetParameters();
 
-  int width, height, nrChannels;
-
-  stbi_set_flip_vertically_on_load(true);
-  unsigned char *data = stbi_load(imagePath.c_str(), &width, &height, &nrChannels, 0);
-
-  if (data) {
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-    glGenerateMipmap(GL_TEXTURE_2D);
-  } else {
-    LoggerService::Error("Failed To Load Texture");
-  }
-  stbi_image_free(data);
+  Image image(imagePath);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.Width, image.Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.Data);
+  glGenerateMipmap(GL_TEXTURE_2D);
 
   glBindTexture(GL_TEXTURE_2D, 0);
 }

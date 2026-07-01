@@ -16,6 +16,7 @@
 
 - Shader class
 - Textures & texture class
+- UV / Texture Coordinates
 - Mipmaps
 - Texture Filtering
 - Transformations
