@@ -11,26 +11,18 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 project(Engine)
+
 add_executable(Engine
+
+    
     src/OpenGL.cpp
-    src/Renderer/Vertex.cpp
-    src/Math/Vector2.cpp
-    src/Math/Vector3.cpp
-    src/Math/Vector4.cpp
-    src/Math/Matrix2.cpp
-    src/Math/Matrix3.cpp
-    src/Math/Matrix4.cpp
-    src/Math/MathUtils.cpp
     src/Engine/Window.cpp
-
-    src/Renderer/Shader.cpp
-    src/Renderer/Geometry.cpp
     src/FileSystem/FileSystem.cpp
-    src/Renderer/Texture.cpp
-    src/Renderer/Material.cpp
     Libraries/lib/glad.c
-
 )
+
+add_subdirectory(src/Math)
+add_subdirectory(src/Renderer)
 
 
 find_package(glfw3 REQUIRED)

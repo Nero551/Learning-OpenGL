@@ -1,5 +1,5 @@
 #include "Matrix.h"
-#include "Vector.h"
+#include "../Vector/Vector.h"
 #include <cmath>
 
 Matrix4::Matrix4() {}

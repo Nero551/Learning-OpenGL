@@ -1,4 +1,3 @@
-#include "OpenGL.h"
 #include <cmath>
 #include <iostream>
 #include <vector>
@@ -23,9 +22,7 @@ void Bullshit() {
 int main() {
   Bullshit();
 
-  float WindowWidth = 800;
-  float WindowHeight = 800;
-
+  glfwInit();
   Window window(800, 800, "Plus Ultra");
 
   std::vector<Vertex> Vertices = {Vertex(Vector4(0.5, 0.5, 0.5, 1), Vector4(1, 0, 1, 1), Vector2(4, 4)),
@@ -58,5 +55,6 @@ int main() {
     glfwPollEvents();
   }
 
+  glfwTerminate();
   return 0;
 }

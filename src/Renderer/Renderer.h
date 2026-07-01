@@ -2,8 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "../Math/Vector.h"
-#include "../Math/Matrix.h"
+#include "../Math/Math.h"
 
 struct Vertex {
   Vector4 Position;

@@ -1,5 +1,5 @@
 #include "Matrix.h"
-#include "Vector.h"
+#include "../Vector/Vector.h"
 #include <cmath>
 
 Matrix3::Matrix3() {}
@@ -120,7 +120,7 @@ Matrix3 Matrix3::Translate(const Vector2 &trans) const {
   transMatrix.m[0][2] = trans.x;
   transMatrix.m[1][2] = trans.y;
 
-  return *this *transMatrix;
+  return *this * transMatrix;
 }
 
 Matrix3 Matrix3::RotateX(float radian) const {
