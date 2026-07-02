@@ -1,7 +1,8 @@
+#define STB_IMAGE_IMPLEMENTATION
 #include "Image.h"
 #include <string>
 #include <stb_image.h>
-#include "../Services/Service.h"
+#include "Utilities/Services/LoggerService.h"
 
 Image::Image(const std::string &filePath) {
   stbi_set_flip_vertically_on_load(true);

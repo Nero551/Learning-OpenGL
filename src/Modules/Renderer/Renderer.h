@@ -1,8 +1,9 @@
 #pragma once
+#include "Utilities/Math/Math.h"
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "../Math/Math.h"
+#include "Core/Core.h"
 
 struct Vertex {
   Vector4 Position;
@@ -86,4 +87,14 @@ struct Object {
   Material *Material = nullptr;
   Mesh *Mesh = nullptr;
   Matrix4 ModelMatrix = Matrix4::Identity;
+};
+
+struct Renderer : Module {
+  void Start() override;
+  void Update(double dt) override;
+  void Stop() override;
+  void Render();
+
+  std::vector<Object> Objects;
+  void RenderObject(const Object &object) { Objects.push_back(object); }
 };

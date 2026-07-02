@@ -1,4 +1,4 @@
-#include "../OpenGL.h"
+#include "glad/glad.h"
 #include "Renderer.h"
 #include <GL/gl.h>
 

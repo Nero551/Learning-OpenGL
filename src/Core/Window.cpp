@@ -1,10 +1,11 @@
 #include <glad/glad.h>
-#include "../Services/Service.h"
-#include "Engine.h"
+#include "Core.h"
 #include <iostream>
 #include <string>
+#include "Utilities/Services/LoggerService.h"
 
 Window::Window(int width, int height, std::string name) {
+
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);

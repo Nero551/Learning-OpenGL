@@ -4,6 +4,7 @@ set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 set(CMAKE_C_COMPILER /usr/bin/clang)
 
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -13,24 +14,18 @@ endif()
 project(Engine)
 
 add_executable(Engine
-
-    
-    src/OpenGL.cpp
-    src/Engine/Window.cpp
-    src/FileSystem/FileSystem.cpp
-    src/Image/Image.cpp
     Libraries/lib/glad.c
 )
 
-add_subdirectory(src/Math)
-add_subdirectory(src/Renderer)
-add_subdirectory(src/Services)
-
-
 find_package(glfw3 REQUIRED)
+
+add_subdirectory(src/Core)
+add_subdirectory(src/Utilities)
+add_subdirectory(src/Modules)
 
 target_include_directories(Engine PRIVATE
     Libraries/include
+    src
 )
 
 target_link_libraries(Engine
