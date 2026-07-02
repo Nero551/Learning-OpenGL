@@ -1,0 +1,110 @@
+[
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/OpenGL.cpp.o.modmap -o CMakeFiles/Engine.dir/src/OpenGL.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/OpenGL.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/OpenGL.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/OpenGL.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Engine/Window.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Engine/Window.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Engine/Window.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Engine/Window.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Engine/Window.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/FileSystem/FileSystem.cpp.o.modmap -o CMakeFiles/Engine.dir/src/FileSystem/FileSystem.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/FileSystem/FileSystem.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/FileSystem/FileSystem.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/FileSystem/FileSystem.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Image/Image.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Image/Image.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Image/Image.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Image/Image.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Image/Image.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -Wall -Wextra -Wpedantic -o CMakeFiles/Engine.dir/Libraries/lib/glad.c.o -c \"/home/nero551/Main/Dev/PU Engine/Libraries/lib/glad.c\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/Libraries/lib/glad.c",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/Libraries/lib/glad.c.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math/MathUtils.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Math/MathUtils.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math/MathUtils.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Math/MathUtils.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math/MathUtils.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math/Matrix/Matrix2.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Math/Matrix/Matrix2.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math/Matrix/Matrix2.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Math/Matrix/Matrix2.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math/Matrix/Matrix2.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math/Matrix/Matrix3.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Math/Matrix/Matrix3.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math/Matrix/Matrix3.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Math/Matrix/Matrix3.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math/Matrix/Matrix3.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math/Matrix/Matrix4.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Math/Matrix/Matrix4.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math/Matrix/Matrix4.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Math/Matrix/Matrix4.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math/Matrix/Matrix4.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math/Vector/Vector2.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Math/Vector/Vector2.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math/Vector/Vector2.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Math/Vector/Vector2.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math/Vector/Vector2.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math/Vector/Vector3.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Math/Vector/Vector3.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math/Vector/Vector3.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Math/Vector/Vector3.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math/Vector/Vector3.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math/Vector/Vector4.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Math/Vector/Vector4.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math/Vector/Vector4.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Math/Vector/Vector4.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math/Vector/Vector4.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Renderer/Material.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Renderer/Material.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Renderer/Material.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Renderer/Material.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Renderer/Material.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Renderer/Mesh.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Renderer/Mesh.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Renderer/Mesh.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Renderer/Mesh.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Renderer/Mesh.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Renderer/Object.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Renderer/Object.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Renderer/Object.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Renderer/Object.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Renderer/Object.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Renderer/Shader.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Renderer/Shader.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Renderer/Shader.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Renderer/Shader.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Renderer/Shader.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Renderer/Texture.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Renderer/Texture.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Renderer/Texture.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Renderer/Texture.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Renderer/Texture.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Renderer/Vertex.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Renderer/Vertex.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Renderer/Vertex.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Renderer/Vertex.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Renderer/Vertex.cpp.o"
+}
+]

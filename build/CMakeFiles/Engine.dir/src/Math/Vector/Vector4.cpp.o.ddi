@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Math/Vector/Vector4.cpp.o"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,35 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/Engine.dir/src/OpenGL.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Engine/Window.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/FileSystem/FileSystem.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Image/Image.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Math/MathUtils.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Math/Matrix/Matrix2.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Math/Matrix/Matrix3.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Math/Matrix/Matrix4.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Math/Vector/Vector2.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Math/Vector/Vector3.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Math/Vector/Vector4.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Renderer/Material.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Renderer/Mesh.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Renderer/Object.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Renderer/Shader.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Renderer/Texture.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Renderer/Vertex.cpp.o: dyndep
+
