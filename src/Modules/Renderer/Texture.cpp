@@ -1,11 +1,8 @@
-#define STB_IMAGE_IMPLEMENTATION
-#include "../OpenGL.h"
+#include "glad/glad.h"
 #include "Renderer.h"
 #include <iostream>
 #include <string>
-#include "stb_image.h"
-#include "../Services/Service.h"
-#include "../Image/Image.h"
+#include "Utilities/Image/Image.h"
 
 Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
   glGenTextures(1, &Id);

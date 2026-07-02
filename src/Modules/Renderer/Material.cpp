@@ -1,6 +1,6 @@
 #include "Renderer.h"
 #include <GL/gl.h>
-#include "../Services/LoggerService.h"
+#include "Utilities/Services/LoggerService.h"
 
 Material::Material(class Shader &shader) : Shader(shader) {}
 
