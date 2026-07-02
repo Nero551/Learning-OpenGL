@@ -2,13 +2,17 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "Modules/Renderer/Renderer.h"
+#include "Modules/Input/Input.h"
+#include "Utilities/Services/LoggerService.h"
 
-Engine::Engine() : window(800, 600, "P") {}
+Engine::Engine() : window(800, 600, "Plus Ultra") {}
 
 Renderer RendererModule;
+Input InputModule;
+
+Engine *Engine::Instance = nullptr;
 
 void Engine::Start() {
-
   RendererModule.Start();
 
   std::vector<Vertex> Vertices = {
@@ -44,17 +48,11 @@ void Engine::Start() {
 
   Texture texture = Texture(0, "src/Assets/Images/ruby.png");
   Shader shader = Shader("src/Assets/Shaders/shader.frag", "src/Assets/Shaders/shader.vert");
-  Material material = Material(shader);
-  material.Texture0 = &texture;
-
+  Material material = Material(shader, texture);
   Mesh mesh(Vertices, Indices);
-
-  Object object;
-  object.AssignMesh(mesh);
-  object.AssignMaterial(material);
-
-  object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(120));
-  object.ModelMatrix = object.ModelMatrix.RotateZ(Math::DegToRad(45));
+  Object object(mesh, material);
+  object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
+  object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
 
   RendererModule.RenderObject(object);
 }
@@ -65,9 +63,19 @@ void Engine::BeginFrame() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Engine::EndFrame() { window.SwapBuffers(); }
+void Engine::EndFrame() {
+  float currentFrame = glfwGetTime();
+  DeltaTime = currentFrame - LastFrame;
+  LastFrame = currentFrame;
+
+  window.SwapBuffers();
+}
 
 void Engine::Render() { RendererModule.Render(); }
-void Engine::Update() {}
+void Engine::Update() {
+  if (InputModule.IsKeyDown(Key::W)) {
+    LoggerService::Info("Nice");
+  }
+}
 
 void Engine::Stop() {}

@@ -1,4 +1,5 @@
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "Core.h"
 #include <iostream>
 #include <string>
@@ -28,6 +29,7 @@ Window::Window(int width, int height, std::string name) {
 
 Window::~Window() { glfwDestroyWindow(GlfwWindow); }
 
+GLFWwindow *Window::GetGlfwWindow() { return GlfwWindow; }
 bool Window::ShouldClose() { return glfwWindowShouldClose(GlfwWindow); }
 void Window::SwapBuffers() { glfwSwapBuffers(GlfwWindow); }
 

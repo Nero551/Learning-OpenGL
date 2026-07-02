@@ -79,6 +79,12 @@
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Input/Input.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Input/Input.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
   "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp\"",
   "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp",
   "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o"

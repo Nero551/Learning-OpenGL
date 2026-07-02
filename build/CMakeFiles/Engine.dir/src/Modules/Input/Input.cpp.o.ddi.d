@@ -1,7 +1,15 @@
-CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/glad/glad.h \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/KHR/khrplatform.h \
+CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi: \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Input/Input.cpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Input/Input.h \
+  /usr/include/GLFW/glfw3.h /usr/lib/clang/22/include/stddef.h \
+  /usr/lib/clang/22/include/__stddef_header_macro.h \
+  /usr/lib/clang/22/include/__stddef_ptrdiff_t.h \
+  /usr/lib/clang/22/include/__stddef_size_t.h \
+  /usr/lib/clang/22/include/__stddef_wchar_t.h \
+  /usr/lib/clang/22/include/__stddef_null.h \
+  /usr/lib/clang/22/include/__stddef_nullptr_t.h \
+  /usr/lib/clang/22/include/__stddef_max_align_t.h \
+  /usr/lib/clang/22/include/__stddef_offsetof.h \
   /usr/lib/clang/22/include/stdint.h /usr/include/stdint.h \
   /usr/include/bits/libc-header-start.h /usr/include/features.h \
   /usr/include/features-time64.h /usr/include/bits/wordsize.h \
@@ -11,16 +19,9 @@ CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /usr/include/bits/types.h /usr/include/bits/typesizes.h \
   /usr/include/bits/time64.h /usr/include/bits/wchar.h \
   /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
-  /usr/include/bits/stdint-least.h /usr/include/GLFW/glfw3.h \
-  /usr/lib/clang/22/include/stddef.h \
-  /usr/lib/clang/22/include/__stddef_header_macro.h \
-  /usr/lib/clang/22/include/__stddef_ptrdiff_t.h \
-  /usr/lib/clang/22/include/__stddef_size_t.h \
-  /usr/lib/clang/22/include/__stddef_wchar_t.h \
-  /usr/lib/clang/22/include/__stddef_null.h \
-  /usr/lib/clang/22/include/__stddef_nullptr_t.h \
-  /usr/lib/clang/22/include/__stddef_max_align_t.h \
-  /usr/lib/clang/22/include/__stddef_offsetof.h \
+  /usr/include/bits/stdint-least.h /usr/include/GL/gl.h \
+  /usr/include/GL/glext.h \
+  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/KHR/khrplatform.h \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Core.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/concepts \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/version.h \
@@ -144,81 +145,4 @@ CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_vector.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_bvector.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/vector.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/formatfwd.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ostream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ios \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/exception \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/exception_ptr.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/cxxabi_init_exception.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/typeinfo \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/nested_exception.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ios_base.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ext/atomicity.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/gthr.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/gthr-default.h \
-  /usr/include/pthread.h /usr/include/sched.h /usr/include/bits/sched.h \
-  /usr/include/linux/sched/types.h /usr/include/linux/types.h \
-  /usr/include/asm/types.h /usr/include/asm-generic/types.h \
-  /usr/include/asm-generic/int-ll64.h /usr/include/asm/bitsperlong.h \
-  /usr/include/asm-generic/bitsperlong.h \
-  /usr/include/linux/posix_types.h /usr/include/linux/stddef.h \
-  /usr/include/asm/posix_types.h /usr/include/asm/posix_types_64.h \
-  /usr/include/asm-generic/posix_types.h \
-  /usr/include/bits/types/struct_sched_param.h \
-  /usr/include/bits/cpu-set.h /usr/include/time.h \
-  /usr/include/bits/time.h /usr/include/bits/timex.h \
-  /usr/include/bits/types/struct_tm.h \
-  /usr/include/bits/types/struct_itimerspec.h /usr/include/bits/setjmp.h \
-  /usr/include/bits/types/struct___jmp_buf_tag.h \
-  /usr/include/bits/pthread_stack_min-dynamic.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/atomic_word.h \
-  /usr/include/sys/single_threaded.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/locale_classes.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/functexcept.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/locale_classes.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/system_error \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/error_constants.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/stdexcept \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stdexcept_except.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/streambuf \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/streambuf.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/basic_ios.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/locale_facets.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/cwctype \
-  /usr/include/wctype.h /usr/include/bits/wctype-wchar.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/ctype_base.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/streambuf_iterator.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/ctype_inline.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/locale_facets.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/basic_ios.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/format \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/array \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/charconv \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/locale \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/locale_facets_nonio.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ctime \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/time_members.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/messages_members.h \
-  /usr/include/libintl.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/codecvt.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/locale_facets_nonio.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/locale_conv.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/optional \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/enable_special_members.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/span \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/monostate.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unicode.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/cstdint \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_algo.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/algorithmfwd.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_heap.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/uniform_int_dist.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_tempbuf.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unicode-data.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream_print.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/istream.tcc \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.h
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/formatfwd.h

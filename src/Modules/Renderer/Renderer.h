@@ -68,24 +68,21 @@ private:
 
 struct Material {
 public:
-  Shader &Shader;
-  Texture *Texture0 = nullptr;
-  Texture *Texture1 = nullptr;
-  Texture *Texture2 = nullptr;
+  Shader Shader;
+  Texture Texture0;
 
-  Material(class Shader &shader);
+  Material(class Shader shader, Texture texture);
 
   void Use();
 };
 
 struct Object {
 
-  void AssignMaterial(struct Material &material);
-  void AssignMesh(class Mesh &mesh);
+  Object(class Mesh mesh, struct Material material);
   void Draw(Matrix4 viewMatrix, Matrix4 projectionMatrix);
 
-  Material *Material = nullptr;
-  Mesh *Mesh = nullptr;
+  Material Material;
+  Mesh Mesh;
   Matrix4 ModelMatrix = Matrix4::Identity;
 };
 

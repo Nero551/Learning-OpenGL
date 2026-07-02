@@ -12,6 +12,8 @@ struct Window {
   void SwapBuffers();
   void ProcessInput();
 
+  GLFWwindow *GetGlfwWindow();
+
 private:
   GLFWwindow *GlfwWindow;
 };
@@ -23,12 +25,13 @@ struct Module {
   virtual ~Module() {}
 };
 
-
 struct Engine {
+  static Engine *Instance;
+
   std::vector<Module> Modules;
-  const double DeltaTime = 0.016;
   bool Running;
-  double Time;
+  double Time = 0;
+  double DeltaTime = 0;
   Window window;
 
   Engine();
@@ -39,4 +42,7 @@ struct Engine {
   void EndFrame();
   void Update();
   void Render();
+
+private:
+  double LastFrame = 0;
 };
