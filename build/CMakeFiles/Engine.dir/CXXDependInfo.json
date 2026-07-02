@@ -1,0 +1,121 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "Clang",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/nero551/Main/Dev/PU Engine/build",
+	"dir-cur-src" : "/home/nero551/Main/Dev/PU Engine",
+	"dir-top-bld" : "/home/nero551/Main/Dev/PU Engine/build",
+	"dir-top-src" : "/home/nero551/Main/Dev/PU Engine",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+		"/home/nero551/Main/Dev/PU Engine/src"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir",
+	"sources" : 
+	{
+		"CMakeFiles/Engine.dir/src/Core/Engine.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Core/Main.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Main.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Core/Window.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Object.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Object.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/FileSystem/FileSystem.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/MathUtils.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix2.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix3.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix4.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector2.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cpp"
+		}
+	}
+}

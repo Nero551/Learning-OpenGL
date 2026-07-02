@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o"
+    }
+  ],
+  "version": 1
+}
