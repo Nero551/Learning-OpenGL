@@ -23,6 +23,8 @@ build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o: dyndep
 
+build CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o: dyndep
+
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o: dyndep

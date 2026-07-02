@@ -6,6 +6,7 @@ int main() {
 
   glfwInit();
   Engine engine;
+  Engine::Instance = &engine;
 
   glEnable(GL_DEPTH_TEST);
 

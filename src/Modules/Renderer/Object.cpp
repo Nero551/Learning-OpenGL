@@ -1,17 +1,12 @@
 #include "Renderer.h"
 #include <vector>
 
-void Object::AssignMaterial(struct Material &material) { Material = &material; }
-void Object::AssignMesh(class Mesh &mesh) { Mesh = &mesh; }
+Object::Object(class Mesh mesh, struct Material material) : Material(material), Mesh(mesh) {}
 
 void Object::Draw(Matrix4 viewMatrix, Matrix4 projectionMatrix) {
-  if (Material) {
-    Material->Use();
-    Material->Shader.SetMat4("uModel", ModelMatrix);
-    Material->Shader.SetMat4("uView", viewMatrix);
-    Material->Shader.SetMat4("uProjection", projectionMatrix);
-  }
-  if (Mesh) {
-    Mesh->Draw();
-  }
+  Material.Use();
+  Material.Shader.SetMat4("uModel", ModelMatrix);
+  Material.Shader.SetMat4("uView", viewMatrix);
+  Material.Shader.SetMat4("uProjection", projectionMatrix);
+  Mesh.Draw();
 }
