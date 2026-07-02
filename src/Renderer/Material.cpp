@@ -1,9 +1,12 @@
 #include "Renderer.h"
+#include <GL/gl.h>
+#include "../Services/LoggerService.h"
 
 Material::Material(class Shader &shader) : Shader(shader) {}
 
 void Material::Use() {
   Shader.Use();
+  
 
   if (Texture0) {
     Shader.SetInt("uTexture0", Texture0->Unit);
@@ -19,4 +22,6 @@ void Material::Use() {
     Shader.SetInt("uTexture2", Texture2->Unit);
     Texture2->Bind();
   }
+
+  
 }

@@ -6,11 +6,11 @@
 #include "../Services/Service.h"
 #include "Renderer.h"
 
-Shader::Shader(const std::string& fragFilepath, const std::string& vertFilepath) {
+Shader::Shader(const std::string &fragFilepath, const std::string &vertFilepath) {
   std::string fragCode = FileSystem::ReadFile(fragFilepath);
   std::string vertCode = FileSystem::ReadFile(vertFilepath);
-  const char* fragSource = fragCode.c_str();
-  const char* vertSource = vertCode.c_str();
+  const char *fragSource = fragCode.c_str();
+  const char *vertSource = vertCode.c_str();
 
   unsigned int fragShader = CreateFragShader(fragSource);
   unsigned int vertShader = CreateVertShader(vertSource);
@@ -27,25 +27,25 @@ void Shader::Use() {
   SetBasicUniforms();
 }
 
-void Shader::SetFloat(const std::string& name, float value) {
+void Shader::SetFloat(const std::string &name, float value) {
   int location = GetUniformLocation(name);
   glUniform1f(location, value);
 }
-void Shader::SetInt(const std::string& name, int value) {
+void Shader::SetInt(const std::string &name, int value) {
   int location = GetUniformLocation(name);
   glUniform1i(location, value);
 }
-void Shader::SetBool(const std::string& name, bool value) {
+void Shader::SetBool(const std::string &name, bool value) {
   int location = GetUniformLocation(name);
   glUniform1i(location, value);
 }
 
-void Shader::SetMat4(const std::string& name, Matrix4& mat4) {
+void Shader::SetMat4(const std::string &name, Matrix4 &mat4) {
   int location = GetUniformLocation(name);
-  glUniformMatrix4fv(location, 1, GL_FALSE, *mat4.m);
+  glUniformMatrix4fv(location, 1, GL_TRUE, *mat4.m);
 }
 
-int Shader::GetUniformLocation(const std::string& name) {
+int Shader::GetUniformLocation(const std::string &name) {
   int location;
 
   if (UniformLocations.contains(name)) {
@@ -58,15 +58,13 @@ int Shader::GetUniformLocation(const std::string& name) {
   return location;
 }
 
-void Shader::CheckUniformExistence(const std::string& name, int location) {
+void Shader::CheckUniformExistence(const std::string &name, int location) {
   if (location == -1) {
     LoggerService::Warning("Uniform Not Found: " + name);
   }
 }
 
-void Shader::SetBasicUniforms() {
-  SetFloat("uTime", glfwGetTime());
-}
+void Shader::SetBasicUniforms() { SetFloat("uTime", glfwGetTime()); }
 
 unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int vertShader) {
   unsigned int id = glCreateProgram();
@@ -85,7 +83,7 @@ unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int v
   return id;
 }
 
-unsigned int Shader::CreateFragShader(const char* fragSource) {
+unsigned int Shader::CreateFragShader(const char *fragSource) {
   unsigned int fragShader;
   fragShader = glCreateShader(GL_FRAGMENT_SHADER);
   glShaderSource(fragShader, 1, &fragSource, NULL);
@@ -102,7 +100,7 @@ unsigned int Shader::CreateFragShader(const char* fragSource) {
   return fragShader;
 }
 
-unsigned int Shader::CreateVertShader(const char* vertSource) {
+unsigned int Shader::CreateVertShader(const char *vertSource) {
   unsigned int vertShader;
   vertShader = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(vertShader, 1, &vertSource, NULL);

@@ -10,12 +10,13 @@ out vec2 vUV;
 uniform mat4 uModel;
 uniform mat4 uView;
 uniform mat4 uProjection;
+
 uniform float uTime;
 
 void main()
 {
     vColor = aColor;
-    vPosition = aPosition;
+    vPosition = uProjection * uView * uModel* aPosition;
     vUV = aUV;
-    gl_Position = vPosition;
+    gl_Position =  vPosition;
 }

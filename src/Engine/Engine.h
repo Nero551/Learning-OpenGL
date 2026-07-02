@@ -1,5 +1,5 @@
 #pragma once
-#include "../OpenGL.h"
+#include <GLFW/glfw3.h>
 #include <string>
 struct Engine {
   bool Running;

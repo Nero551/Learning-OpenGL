@@ -1,3 +1,4 @@
+#include <glad/glad.h>
 #include "../Services/Service.h"
 #include "Engine.h"
 #include <iostream>
@@ -8,7 +9,7 @@ Window::Window(int width, int height, std::string name) {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  GLFWwindow* window = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
+  GLFWwindow *window = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
   if (!window) {
     LoggerService::Error("Failed To Create Window");
   }
@@ -19,22 +20,15 @@ Window::Window(int width, int height, std::string name) {
   }
 
   glViewport(0, 0, width, height);
-  glfwSetFramebufferSizeCallback(
-      window, [](GLFWwindow*, int width, int height) { glViewport(0, 0, width, height); });
+  glfwSetFramebufferSizeCallback(window, [](GLFWwindow *, int width, int height) { glViewport(0, 0, width, height); });
 
   GlfwWindow = window;
 }
 
-Window::~Window() {
-  glfwDestroyWindow(GlfwWindow);
-}
+Window::~Window() { glfwDestroyWindow(GlfwWindow); }
 
-bool Window::ShouldClose() {
-  return glfwWindowShouldClose(GlfwWindow);
-}
-void Window::SwapBuffers() {
-  glfwSwapBuffers(GlfwWindow);
-}
+bool Window::ShouldClose() { return glfwWindowShouldClose(GlfwWindow); }
+void Window::SwapBuffers() { glfwSwapBuffers(GlfwWindow); }
 
 void Window::ProcessInput() {
   if (glfwGetKey(GlfwWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {

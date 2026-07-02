@@ -9,7 +9,7 @@
 
 Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
   glGenTextures(1, &Id);
-  glActiveTexture(GL_TEXTURE0 + Unit);
+  glActiveTexture(Unit);
   glBindTexture(GL_TEXTURE_2D, Id);
 
   SetParameters();
@@ -22,7 +22,7 @@ Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
 }
 
 void Texture::Bind() {
-  glActiveTexture(GL_TEXTURE0 + Unit);
+  glActiveTexture(Unit);
   glBindTexture(GL_TEXTURE_2D, Id);
 }
 
