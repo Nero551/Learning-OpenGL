@@ -1,8 +1,8 @@
 #pragma once
-#include "../Math/Math.h"
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include "../Math/Math.h"
 
 struct Vertex {
   Vector4 Position;
@@ -34,13 +34,13 @@ private:
   int GetUniformLocation(const std::string &name);
 };
 
-class Geometry {
+class Mesh {
 public:
   unsigned int Id;
   std::vector<Vertex> Vertices;
   std::vector<unsigned int> Indices;
 
-  Geometry(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
+  Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
   void Draw();
 
 private:
@@ -75,4 +75,15 @@ public:
   Material(class Shader &shader);
 
   void Use();
+};
+
+struct Object {
+
+  void AssignMaterial(struct Material &material);
+  void AssignMesh(class Mesh &mesh);
+  void Draw(Matrix4 viewMatrix, Matrix4 projectionMatrix);
+
+  Material *Material = nullptr;
+  Mesh *Mesh = nullptr;
+  Matrix4 ModelMatrix = Matrix4::Identity;
 };

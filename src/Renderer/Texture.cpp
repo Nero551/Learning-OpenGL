@@ -1,8 +1,8 @@
 #define STB_IMAGE_IMPLEMENTATION
+#include "../OpenGL.h"
 #include "Renderer.h"
 #include <iostream>
 #include <string>
-#include "../OpenGL.h"
 #include "stb_image.h"
 #include "../Services/Service.h"
 #include "../Image/Image.h"

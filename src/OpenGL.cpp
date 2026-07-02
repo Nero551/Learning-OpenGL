@@ -58,7 +58,7 @@ int main() {
   Shader shader("src/Shaders/shader.frag", "src/Shaders/shader.vert");
   Material material(shader);
   material.Texture0 = &texture;
-  Geometry geometry(Vertices, Indices);
+  Mesh mesh(Vertices, Indices);
 
   while (!window.ShouldClose()) {
     glClearColor(0.1, 0.15, 0.2, 1);
@@ -72,7 +72,7 @@ int main() {
     material.Shader.SetMat4("uView", view);
     material.Shader.SetMat4("uProjection", projection);
 
-    geometry.Draw();
+    mesh.Draw();
 
     window.SwapBuffers();
     window.ProcessInput();

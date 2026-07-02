@@ -2,9 +2,10 @@
 #include <string>
 
 #include "../FileSystem/FileSystem.h"
-#include "../OpenGL.h"
+#include "../Math/Math.h"
 #include "../Services/Service.h"
 #include "Renderer.h"
+#include "../OpenGL.h"
 
 Shader::Shader(const std::string &fragFilepath, const std::string &vertFilepath) {
   std::string fragCode = FileSystem::ReadFile(fragFilepath);

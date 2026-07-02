@@ -2,7 +2,7 @@
 #include "Renderer.h"
 #include <GL/gl.h>
 
-Geometry::Geometry(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)
+Mesh::Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)
     : Vertices(vertices), Indices(indices) {
 
   Id = CreateVAO();
@@ -11,12 +11,12 @@ Geometry::Geometry(const std::vector<Vertex> &vertices, const std::vector<unsign
   SetupVertAttrPointers();
 }
 
-void Geometry::Draw() {
+void Mesh::Draw() {
   glBindVertexArray(Id);
   glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, 0);
 }
 
-unsigned int Geometry::CreateVAO() {
+unsigned int Mesh::CreateVAO() {
   unsigned int VAO;
   glGenVertexArrays(1, &VAO);
   glBindVertexArray(VAO);
@@ -24,7 +24,7 @@ unsigned int Geometry::CreateVAO() {
   return VAO;
 }
 
-unsigned int Geometry::CreateVBO() {
+unsigned int Mesh::CreateVBO() {
   unsigned int VBO;
   glGenBuffers(1, &VBO);
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -33,7 +33,7 @@ unsigned int Geometry::CreateVBO() {
   return VBO;
 }
 
-unsigned int Geometry::CreateEBO() {
+unsigned int Mesh::CreateEBO() {
   unsigned int EBO;
   glGenBuffers(1, &EBO);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -42,7 +42,7 @@ unsigned int Geometry::CreateEBO() {
   return EBO;
 }
 
-void Geometry::SetupVertAttrPointers() {
+void Mesh::SetupVertAttrPointers() {
   // Position
   glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, Position));
   glEnableVertexAttribArray(0);
