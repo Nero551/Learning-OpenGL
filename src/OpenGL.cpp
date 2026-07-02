@@ -18,15 +18,15 @@ int main() {
   std::vector<Vertex> Vertices = {
     // front face
     Vertex({-0.5, -0.5, 0.5, 1}, {1, 0, 0, 1}, {0, 0}), // 0
-    Vertex({0.5, -0.5, 0.5, 1}, {1, 0, 0, 1}, {1, 0}),  // 1
-    Vertex({0.5, 0.5, 0.5, 1}, {1, 0, 0, 1}, {1, 1}),   // 2
-    Vertex({-0.5, 0.5, 0.5, 1}, {1, 0, 0, 1}, {0, 1}),  // 3
+    Vertex({0.5, -0.5, 0.5, 1}, {0, 1, 0, 1}, {1, 0}),  // 1
+    Vertex({0.5, 0.5, 0.5, 1}, {0, 0, 1, 1}, {1, 1}),   // 2
+    Vertex({-0.5, 0.5, 0.5, 1}, {1, 0, 1, 1}, {0, 1}),  // 3
 
     // back face
-    Vertex({-0.5, -0.5, -0.5, 1}, {0, 1, 0, 1}, {1, 0}), // 4
+    Vertex({-0.5, -0.5, -0.5, 1}, {1, 0, 0, 1}, {1, 0}), // 4
     Vertex({0.5, -0.5, -0.5, 1}, {0, 1, 0, 1}, {0, 0}),  // 5
-    Vertex({0.5, 0.5, -0.5, 1}, {0, 1, 0, 1}, {0, 1}),   // 6
-    Vertex({-0.5, 0.5, -0.5, 1}, {0, 1, 0, 1}, {1, 1})   // 7
+    Vertex({0.5, 0.5, -0.5, 1}, {0, 0, 1, 1}, {0, 1}),   // 6
+    Vertex({-0.5, 0.5, -0.5, 1}, {1, 0, 1, 1}, {1, 1})   // 7
   };
   std::vector<unsigned int> Indices = {// front
     0, 1, 2, 2, 3, 0,
@@ -60,19 +60,18 @@ int main() {
   material.Texture0 = &texture;
   Mesh mesh(Vertices, Indices);
 
+  Object object;
+  object.AssignMaterial(material);
+  object.AssignMesh(mesh);
+
   while (!window.ShouldClose()) {
     glClearColor(0.1, 0.15, 0.2, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    model = model.RotateY(Math::DegToRad(2));
-    model = model.RotateX(Math::DegToRad(2));
+    object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(2));
+    object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(2));
 
-    material.Use();
-    material.Shader.SetMat4("uModel", model);
-    material.Shader.SetMat4("uView", view);
-    material.Shader.SetMat4("uProjection", projection);
-
-    mesh.Draw();
+    object.Draw(view, projection);
 
     window.SwapBuffers();
     window.ProcessInput();

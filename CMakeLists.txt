@@ -13,8 +13,6 @@ endif()
 project(Engine)
 
 add_executable(Engine
-
-    
     src/OpenGL.cpp
     src/Engine/Window.cpp
     src/FileSystem/FileSystem.cpp
