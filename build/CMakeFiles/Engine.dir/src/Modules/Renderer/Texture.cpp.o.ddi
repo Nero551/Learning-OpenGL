@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o"
+    }
+  ],
+  "version": 1
+}
