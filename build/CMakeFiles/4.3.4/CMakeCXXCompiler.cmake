@@ -91,12 +91,12 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/usr/include/c++/16;/usr/include/c++/16/x86_64-pc-linux-gnu;/usr/include/c++/16/backward;/usr/lib/clang/22/include;/usr/local/include;/usr/include")
-set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc_s;gcc;c;gcc_s;gcc")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/usr/include/c++/v1;/usr/lib/clang/22/include;/usr/local/include;/usr/include")
+set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "c++;m;gcc_s;gcc;c;gcc_s;gcc")
 set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/lib64/gcc/x86_64-pc-linux-gnu/16;/usr/lib64;/lib64;/lib;/usr/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")
 set(CMAKE_CXX_COMPILER_CLANG_RESOURCE_DIR "/usr/lib/clang/22")
 
-set(CMAKE_CXX_COMPILER_IMPORT_STD "")
-set(CMAKE_CXX_COMPILER_IMPORT_STD_ERROR_MESSAGE  "Experimental `import std` support not enabled when detecting toolchain; it must be set before `CXX` is enabled (usually a `project()` call)")
-set(CMAKE_CXX_STDLIB_MODULES_JSON "")
+set(CMAKE_CXX_COMPILER_IMPORT_STD "23;26")
+set(CMAKE_CXX_COMPILER_IMPORT_STD_ERROR_MESSAGE  "")
+set(CMAKE_CXX_STDLIB_MODULES_JSON "/usr/lib64/libc++.modules.json")

@@ -1,0 +1,65 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "Clang",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : 
+	{
+		"CMakeFiles/__cmake_cxx_std_23.dir/usr/share/libc++/v1/std.compat.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : 
+			[
+				"cxx_std_23"
+			],
+			"compile-options" : [],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/usr/share/libc++/v1"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "",
+			"source" : "/usr/share/libc++/v1/std.compat.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/__cmake_cxx_std_23.dir/usr/share/libc++/v1/std.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : 
+			[
+				"cxx_std_23"
+			],
+			"compile-options" : [],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/usr/share/libc++/v1"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "",
+			"source" : "/usr/share/libc++/v1/std.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		}
+	},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/nero551/Main/Dev/PU Engine/build",
+	"dir-cur-src" : "/home/nero551/Main/Dev/PU Engine",
+	"dir-top-bld" : "/home/nero551/Main/Dev/PU Engine/build",
+	"dir-top-src" : "/home/nero551/Main/Dev/PU Engine",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"/usr/share/libc++/v1"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/__cmake_cxx_std_23.dir",
+	"sources" : {}
+}

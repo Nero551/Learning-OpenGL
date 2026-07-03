@@ -1,5 +1,35 @@
 {
-	"modules" : {},
-	"references" : {},
-	"usages" : {}
+	"modules" : 
+	{
+		"Math" : 
+		{
+			"bmi" : "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/Math.pcm",
+			"is-private" : false
+		}
+	},
+	"references" : 
+	{
+		"Math" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/Engine.dir/Math.pcm"
+		},
+		"std" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/__cmake_cxx_std_23.dir/std.pcm"
+		},
+		"std.compat" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/__cmake_cxx_std_23.dir/std.compat.pcm"
+		}
+	},
+	"usages" : 
+	{
+		"std.compat" : 
+		[
+			"std"
+		]
+	}
 }

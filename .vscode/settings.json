@@ -7,8 +7,9 @@
     "clangd.arguments": [
         "--enable-config",
         "--header-insertion=iwyu",
-        "--background-index",
         "--completion-style=detailed",
+        "--all-scopes-completion",
+        "--background-index",
     ],
     "clangd.checkUpdates": true,
     "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
@@ -21,5 +22,16 @@
 
     "material-icon-theme.folders.associations": {
         "Renderer": "Container",
-    }
+    },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.wordBasedSuggestions": "allDocuments",
+
+  "editor.suggest.showWords": true,
+"editor.inlineSuggest.enabled": true,
+  "C_Cpp.intelliSenseEngine": "disabled",
 }

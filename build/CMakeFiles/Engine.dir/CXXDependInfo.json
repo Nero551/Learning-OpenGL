@@ -4,7 +4,33 @@
 	"compiler-id" : "Clang",
 	"compiler-simulate-id" : "",
 	"config" : "Debug",
-	"cxx-modules" : {},
+	"cxx-modules" : 
+	{
+		"CMakeFiles/Engine.dir/src/math.ixx.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "src",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/math.ixx",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		}
+	},
 	"database-info" : null,
 	"dir-cur-bld" : "/home/nero551/Main/Dev/PU Engine/build",
 	"dir-cur-src" : "/home/nero551/Main/Dev/PU Engine",
@@ -18,109 +44,17 @@
 		"/home/nero551/Main/Dev/PU Engine/src"
 	],
 	"language" : "CXX",
-	"linked-target-dirs" : [],
+	"linked-target-dirs" : 
+	[
+		"/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/__cmake_cxx_std_23.dir"
+	],
 	"module-dir" : "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir",
 	"sources" : 
 	{
-		"CMakeFiles/Engine.dir/src/Core/Engine.cpp.o" : 
+		"CMakeFiles/Engine.dir/src/main.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Core/Main.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Main.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Core/Window.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Input/Input.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Object.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Object.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/FileSystem/FileSystem.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/MathUtils.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix2.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix3.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix4.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector2.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cpp"
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/main.cpp"
 		}
 	}
 }

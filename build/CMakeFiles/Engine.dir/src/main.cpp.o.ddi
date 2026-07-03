@@ -1,0 +1,14 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/main.cpp.o",
+      "requires": [
+        {
+          "logical-name": "Math"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

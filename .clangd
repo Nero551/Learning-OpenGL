@@ -1,2 +1,19 @@
 Diagnostics:
   UnusedIncludes: None
+
+CompileFlags:
+  Add: [-std=c++23]
+  CompilationDatabase: build
+
+Index:
+  Background: Build   # or Skip if too heavy
+
+Completion:
+  AllScopes: true
+  TriggerOnTyping: true
+
+Diagnostics:
+  UnusedIncludes: Strict
+
+Hover:
+  ShowAKA: true

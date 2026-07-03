@@ -1,9 +1,0 @@
-{
-  "revision": 0,
-  "rules": [
-    {
-      "primary-output": "CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o"
-    }
-  ],
-  "version": 1
-}

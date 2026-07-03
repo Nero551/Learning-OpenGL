@@ -1,41 +1,6 @@
 ninja_dyndep_version = 1.0
-build CMakeFiles/Engine.dir/src/Core/Engine.cpp.o: dyndep
+build CMakeFiles/Engine.dir/src/main.cpp.o: dyndep | CMakeFiles/Engine.dir/Math.pcm
 
-build CMakeFiles/Engine.dir/src/Core/Main.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Core/Window.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Object.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o: dyndep
+build CMakeFiles/Engine.dir/src/math.ixx.o | CMakeFiles/Engine.dir/Math.pcm: dyndep
+  restat = 1
 
