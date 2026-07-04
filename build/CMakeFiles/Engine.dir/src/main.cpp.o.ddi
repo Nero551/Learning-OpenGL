@@ -6,6 +6,12 @@
       "requires": [
         {
           "logical-name": "Math"
+        },
+        {
+          "logical-name": "test"
+        },
+        {
+          "logical-name": "Math"
         }
       ]
     }

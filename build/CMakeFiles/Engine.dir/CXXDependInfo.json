@@ -6,7 +6,7 @@
 	"config" : "Debug",
 	"cxx-modules" : 
 	{
-		"CMakeFiles/Engine.dir/src/math.ixx.o" : 
+		"CMakeFiles/Engine.dir/src/Math.ixx.o" : 
 		{
 			"bmi-only" : false,
 			"compile-features" : [],
@@ -26,7 +26,31 @@
 			],
 			"name" : "CXX_MODULES",
 			"relative-directory" : "src",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/math.ixx",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Math.ixx",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/test.ixx.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "src",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/test.ixx",
 			"type" : "CXX_MODULES",
 			"visibility" : "PUBLIC"
 		}

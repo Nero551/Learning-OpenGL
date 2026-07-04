@@ -7,9 +7,15 @@
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/math.ixx.o.modmap -o CMakeFiles/Engine.dir/src/math.ixx.o -c \"/home/nero551/Main/Dev/PU Engine/src/math.ixx\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/math.ixx",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/math.ixx.o"
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math.ixx.o.modmap -o CMakeFiles/Engine.dir/src/Math.ixx.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math.ixx\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Math.ixx",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math.ixx.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/test.ixx.o.modmap -o CMakeFiles/Engine.dir/src/test.ixx.o -c \"/home/nero551/Main/Dev/PU Engine/src/test.ixx\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/test.ixx",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/test.ixx.o"
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",

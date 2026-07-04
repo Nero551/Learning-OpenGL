@@ -23,7 +23,8 @@ target_sources(Engine
     PUBLIC
     FILE_SET CXX_MODULES
     FILES
-        src/math.ixx
+        src/Math.ixx
+        src/test.ixx
 )
 
 

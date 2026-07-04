@@ -1,6 +1,9 @@
 ninja_dyndep_version = 1.0
-build CMakeFiles/Engine.dir/src/main.cpp.o: dyndep | CMakeFiles/Engine.dir/Math.pcm
+build CMakeFiles/Engine.dir/src/main.cpp.o: dyndep | CMakeFiles/Engine.dir/Math.pcm CMakeFiles/Engine.dir/test.pcm CMakeFiles/Engine.dir/Math.pcm
 
-build CMakeFiles/Engine.dir/src/math.ixx.o | CMakeFiles/Engine.dir/Math.pcm: dyndep
+build CMakeFiles/Engine.dir/src/Math.ixx.o | CMakeFiles/Engine.dir/Math.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/test.ixx.o | CMakeFiles/Engine.dir/test.pcm: dyndep | CMakeFiles/Engine.dir/Math.pcm
   restat = 1
 
