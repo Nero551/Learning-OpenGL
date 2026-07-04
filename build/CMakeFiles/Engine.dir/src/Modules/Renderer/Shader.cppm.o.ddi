@@ -1,0 +1,24 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Shader",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "LoggerService"
+        },
+        {
+          "logical-name": "Math"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

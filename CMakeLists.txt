@@ -20,15 +20,19 @@ add_executable(Engine)
 
 target_sources(Engine
     PRIVATE
-        src/main.cpp
+        src/Core/Main.cpp
 
     PUBLIC
     FILE_SET CXX_MODULES
+    BASE_DIRS
+        ${CMAKE_SOURCE_DIR}/src
     FILES
-        src/Math.ixx
-        src/test.ixx
 )
 
+add_subdirectory(src/Core)
+add_subdirectory(src/Utilities)
+add_subdirectory(src/Modules)
+add_subdirectory(src/World)
 
 target_include_directories(Engine PRIVATE
     Libraries/include

@@ -1,0 +1,24 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Vertex",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "Vector2"
+        },
+        {
+          "logical-name": "Vector4"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

@@ -4,10 +4,9 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "ninja",
+            "command": "source",
             "args": [
-                "-C",
-                "build",
+                "build.sh",
             ],
             "group": {
                 "kind": "build",

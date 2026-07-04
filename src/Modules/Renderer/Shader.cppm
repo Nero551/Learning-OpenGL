@@ -1,0 +1,123 @@
+module;
+
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include "OpenGL.h"
+
+export module Shader;
+
+import FileSystem;
+import LoggerService;
+import Math;
+
+export class Shader {
+public:
+  unsigned int Id;
+
+  Shader(const std::string &fragFilepath, const std::string &vertFilepath) {
+    std::string fragCode = FileSystem::ReadFile(fragFilepath);
+    std::string vertCode = FileSystem::ReadFile(vertFilepath);
+    const char *fragSource = fragCode.c_str();
+    const char *vertSource = vertCode.c_str();
+
+    unsigned int fragShader = CreateFragShader(fragSource);
+    unsigned int vertShader = CreateVertShader(vertSource);
+
+    Id = CreateShaderProgram(fragShader, vertShader);
+
+    //* Cleanup
+    glDeleteShader(vertShader);
+    glDeleteShader(fragShader);
+  }
+  void Use() {
+    glUseProgram(Id);
+    SetBasicUniforms();
+  }
+  void SetFloat(const std::string &name, float value) {
+    int location = GetUniformLocation(name);
+    glUniform1f(location, value);
+  }
+  void SetInt(const std::string &name, int value) {
+    int location = GetUniformLocation(name);
+    glUniform1i(location, value);
+  }
+  void SetBool(const std::string &name, bool value) {
+    int location = GetUniformLocation(name);
+    glUniform1i(location, value);
+  }
+  void SetMat4(const std::string &name, Matrix4 &mat4) {
+    int location = GetUniformLocation(name);
+    glUniformMatrix4fv(location, 1, GL_TRUE, *mat4.m);
+  }
+
+private:
+  std::unordered_map<std::string, unsigned int> UniformLocations;
+
+  void SetBasicUniforms() { SetFloat("uTime", glfwGetTime()); }
+  unsigned int CreateShaderProgram(unsigned int fragShader, unsigned int vertShader) {
+    unsigned int id = glCreateProgram();
+    glAttachShader(id, vertShader);
+    glAttachShader(id, fragShader);
+    glLinkProgram(id);
+
+    int success;
+    char infoLog[512];
+    glGetProgramiv(id, GL_LINK_STATUS, &success);
+    if (!success) {
+      glGetProgramInfoLog(id, 512, NULL, infoLog);
+      LoggerService::Error(std::string("Shader program linking failed: ") + infoLog);
+    }
+
+    return id;
+  }
+  unsigned int CreateVertShader(const char *vertSource) {
+    unsigned int vertShader;
+    vertShader = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertShader, 1, &vertSource, NULL);
+    glCompileShader(vertShader);
+
+    int success;
+    char infoLog[512];
+    glGetShaderiv(vertShader, GL_COMPILE_STATUS, &success);
+    if (!success) {
+      glGetShaderInfoLog(vertShader, 512, NULL, infoLog);
+      LoggerService::Error(std::string("Vertex Shader: ") + infoLog);
+    }
+
+    return vertShader;
+  }
+  unsigned int CreateFragShader(const char *fragSource) {
+    unsigned int fragShader;
+    fragShader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragShader, 1, &fragSource, NULL);
+    glCompileShader(fragShader);
+
+    int success;
+    char infoLog[512];
+    glGetShaderiv(fragShader, GL_COMPILE_STATUS, &success);
+    if (!success) {
+      glGetShaderInfoLog(fragShader, 512, NULL, infoLog);
+      LoggerService::Error(std::string("Fragment Shader: ") + infoLog);
+    }
+
+    return fragShader;
+  }
+  void CheckUniformExistence(const std::string &name, int location) {
+    if (location == -1) {
+      LoggerService::Warning("Uniform Not Found: " + name);
+    }
+  }
+  int GetUniformLocation(const std::string &name) {
+    int location;
+
+    if (UniformLocations.contains(name)) {
+      location = UniformLocations[name];
+    } else {
+      location = glGetUniformLocation(Id, name.c_str());
+      CheckUniformExistence(name, location);
+      UniformLocations[name] = location;
+    }
+    return location;
+  }
+};

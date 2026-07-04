@@ -1,0 +1,16 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Core/Module.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Module",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Core/Module.cppm"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

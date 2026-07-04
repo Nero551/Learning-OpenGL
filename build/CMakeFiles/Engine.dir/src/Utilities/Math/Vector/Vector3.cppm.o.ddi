@@ -1,0 +1,16 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Vector3",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cppm"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

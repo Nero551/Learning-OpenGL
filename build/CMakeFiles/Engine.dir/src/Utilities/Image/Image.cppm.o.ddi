@@ -1,0 +1,21 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Utilities/Image/Image.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Image",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "LoggerService"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

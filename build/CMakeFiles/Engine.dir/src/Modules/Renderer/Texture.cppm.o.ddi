@@ -1,0 +1,21 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Texture",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "Image"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

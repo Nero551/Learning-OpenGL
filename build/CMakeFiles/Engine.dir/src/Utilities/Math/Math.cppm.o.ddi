@@ -1,0 +1,39 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Utilities/Math/Math.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Math",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Math.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "MathUtils"
+        },
+        {
+          "logical-name": "Vector2"
+        },
+        {
+          "logical-name": "Vector3"
+        },
+        {
+          "logical-name": "Vector4"
+        },
+        {
+          "logical-name": "Matrix2"
+        },
+        {
+          "logical-name": "Matrix3"
+        },
+        {
+          "logical-name": "Matrix4"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

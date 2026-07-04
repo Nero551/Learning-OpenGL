@@ -1,9 +1,57 @@
 ninja_dyndep_version = 1.0
-build CMakeFiles/Engine.dir/src/main.cpp.o: dyndep | CMakeFiles/Engine.dir/Math.pcm CMakeFiles/Engine.dir/test.pcm CMakeFiles/__cmake_cxx_std_23.dir/std.pcm
+build CMakeFiles/Engine.dir/src/Core/Main.cpp.o: dyndep | CMakeFiles/Engine.dir/Engine.pcm
 
-build CMakeFiles/Engine.dir/src/Math.ixx.o | CMakeFiles/Engine.dir/Math.pcm: dyndep
+build CMakeFiles/Engine.dir/src/Core/Engine.cppm.o | CMakeFiles/Engine.dir/Engine.pcm: dyndep | CMakeFiles/Engine.dir/Window.pcm CMakeFiles/Engine.dir/Mesh.pcm CMakeFiles/Engine.dir/Material.pcm CMakeFiles/Engine.dir/Texture.pcm CMakeFiles/Engine.dir/Math.pcm
   restat = 1
 
-build CMakeFiles/Engine.dir/src/test.ixx.o | CMakeFiles/Engine.dir/test.pcm: dyndep | CMakeFiles/Engine.dir/Math.pcm
+build CMakeFiles/Engine.dir/src/Core/Module.cppm.o | CMakeFiles/Engine.dir/Module.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Core/Window.cppm.o | CMakeFiles/Engine.dir/Window.pcm: dyndep | CMakeFiles/Engine.dir/LoggerService.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Image/Image.cppm.o | CMakeFiles/Engine.dir/Image.pcm: dyndep | CMakeFiles/Engine.dir/LoggerService.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Math/Math.cppm.o | CMakeFiles/Engine.dir/Math.pcm: dyndep | CMakeFiles/Engine.dir/MathUtils.pcm CMakeFiles/Engine.dir/Vector2.pcm CMakeFiles/Engine.dir/Vector3.pcm CMakeFiles/Engine.dir/Vector4.pcm CMakeFiles/Engine.dir/Matrix2.pcm CMakeFiles/Engine.dir/Matrix3.pcm CMakeFiles/Engine.dir/Matrix4.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cppm.o | CMakeFiles/Engine.dir/MathUtils.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cppm.o | CMakeFiles/Engine.dir/Matrix2.pcm: dyndep | CMakeFiles/Engine.dir/LoggerService.pcm CMakeFiles/Engine.dir/MathUtils.pcm CMakeFiles/Engine.dir/Vector2.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cppm.o | CMakeFiles/Engine.dir/Matrix3.pcm: dyndep | CMakeFiles/Engine.dir/LoggerService.pcm CMakeFiles/Engine.dir/MathUtils.pcm CMakeFiles/Engine.dir/Matrix2.pcm CMakeFiles/Engine.dir/Vector2.pcm CMakeFiles/Engine.dir/Vector3.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cppm.o | CMakeFiles/Engine.dir/Matrix4.pcm: dyndep | CMakeFiles/Engine.dir/LoggerService.pcm CMakeFiles/Engine.dir/MathUtils.pcm CMakeFiles/Engine.dir/Matrix3.pcm CMakeFiles/Engine.dir/Vector3.pcm CMakeFiles/Engine.dir/Vector4.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cppm.o | CMakeFiles/Engine.dir/Vector2.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cppm.o | CMakeFiles/Engine.dir/Vector3.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cppm.o | CMakeFiles/Engine.dir/Vector4.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Utilities/Services/LoggerService.cppm.o | CMakeFiles/Engine.dir/LoggerService.pcm: dyndep
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cppm.o | CMakeFiles/Engine.dir/Material.pcm: dyndep | CMakeFiles/Engine.dir/Shader.pcm CMakeFiles/Engine.dir/Texture.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cppm.o | CMakeFiles/Engine.dir/Mesh.pcm: dyndep | CMakeFiles/Engine.dir/Vertex.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cppm.o | CMakeFiles/Engine.dir/Shader.pcm: dyndep | CMakeFiles/Engine.dir/LoggerService.pcm CMakeFiles/Engine.dir/Math.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cppm.o | CMakeFiles/Engine.dir/Texture.pcm: dyndep | CMakeFiles/Engine.dir/Image.pcm
+  restat = 1
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cppm.o | CMakeFiles/Engine.dir/Vertex.pcm: dyndep | CMakeFiles/Engine.dir/Vector2.pcm CMakeFiles/Engine.dir/Vector4.pcm
   restat = 1
 

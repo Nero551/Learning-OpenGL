@@ -1,0 +1,5 @@
+-x c++-module
+-fmodule-output="CMakeFiles/Engine.dir/Matrix2.pcm"
+-fmodule-file="LoggerService=CMakeFiles/Engine.dir/LoggerService.pcm"
+-fmodule-file="MathUtils=CMakeFiles/Engine.dir/MathUtils.pcm"
+-fmodule-file="Vector2=CMakeFiles/Engine.dir/Vector2.pcm"

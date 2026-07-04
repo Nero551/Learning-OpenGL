@@ -1,0 +1,21 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Core/Window.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Window",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Core/Window.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "LoggerService"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

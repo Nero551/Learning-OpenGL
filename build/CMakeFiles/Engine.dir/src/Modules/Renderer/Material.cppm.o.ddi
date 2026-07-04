@@ -1,0 +1,24 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Material",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "Shader"
+        },
+        {
+          "logical-name": "Texture"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

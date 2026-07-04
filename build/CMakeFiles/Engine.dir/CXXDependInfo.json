@@ -6,7 +6,7 @@
 	"config" : "Debug",
 	"cxx-modules" : 
 	{
-		"CMakeFiles/Engine.dir/src/Math.ixx.o" : 
+		"CMakeFiles/Engine.dir/src/Core/Engine.cppm.o" : 
 		{
 			"bmi-only" : false,
 			"compile-features" : [],
@@ -25,12 +25,12 @@
 				"/usr/include"
 			],
 			"name" : "CXX_MODULES",
-			"relative-directory" : "src",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Math.ixx",
+			"relative-directory" : "Core",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cppm",
 			"type" : "CXX_MODULES",
 			"visibility" : "PUBLIC"
 		},
-		"CMakeFiles/Engine.dir/src/test.ixx.o" : 
+		"CMakeFiles/Engine.dir/src/Core/Module.cppm.o" : 
 		{
 			"bmi-only" : false,
 			"compile-features" : [],
@@ -49,8 +49,392 @@
 				"/usr/include"
 			],
 			"name" : "CXX_MODULES",
-			"relative-directory" : "src",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/test.ixx",
+			"relative-directory" : "Core",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Module.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Core/Window.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Core",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Window.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Modules/Renderer",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Modules/Renderer",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Modules/Renderer",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Modules/Renderer",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Modules/Renderer",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Image/Image.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Image",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Math.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Math",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Math.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Math",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/MathUtils.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Math/Matrix",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix2.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Math/Matrix",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix3.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Math/Matrix",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix4.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Math/Vector",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector2.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Math/Vector",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Math/Vector",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cppm",
+			"type" : "CXX_MODULES",
+			"visibility" : "PUBLIC"
+		},
+		"CMakeFiles/Engine.dir/src/Utilities/Services/LoggerService.cppm.o" : 
+		{
+			"bmi-only" : false,
+			"compile-features" : [],
+			"compile-options" : 
+			[
+				"-Wall",
+				"-Wextra",
+				"-Wpedantic"
+			],
+			"definitions" : [],
+			"destination" : null,
+			"include-directories" : 
+			[
+				"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+				"/home/nero551/Main/Dev/PU Engine/src",
+				"/usr/include"
+			],
+			"name" : "CXX_MODULES",
+			"relative-directory" : "Utilities/Services",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Services/LoggerService.cppm",
 			"type" : "CXX_MODULES",
 			"visibility" : "PUBLIC"
 		}
@@ -75,10 +459,10 @@
 	"module-dir" : "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir",
 	"sources" : 
 	{
-		"CMakeFiles/Engine.dir/src/main.cpp.o" : 
+		"CMakeFiles/Engine.dir/src/Core/Main.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/main.cpp"
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Main.cpp"
 		}
 	}
 }

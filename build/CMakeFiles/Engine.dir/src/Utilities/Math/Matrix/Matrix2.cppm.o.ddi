@@ -1,0 +1,27 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Matrix2",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix2.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "LoggerService"
+        },
+        {
+          "logical-name": "MathUtils"
+        },
+        {
+          "logical-name": "Vector2"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

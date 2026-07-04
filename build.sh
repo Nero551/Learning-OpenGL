@@ -1,2 +1,3 @@
 rm -rf build
-cmake -B build -G Ninja -Wno-dev -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ninja -C build -j2

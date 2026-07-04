@@ -129,6 +129,15 @@ rule RERUN_CMAKE
 
 
 #############################################
+# Rule for re-checking globbed directories.
+
+rule VERIFY_GLOBS
+  command = /usr/bin/cmake -P "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/VerifyGlobs.cmake"
+  description = Re-checking globbed directories...
+  generator = 1
+
+
+#############################################
 # Rule for cleaning all built files.
 
 rule CLEAN

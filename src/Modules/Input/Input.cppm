@@ -1,0 +1,21 @@
+module;
+
+#include <GLFW/glfw3.h>
+
+export module Input;
+
+export enum class Key {
+  A = GLFW_KEY_A,
+  B = GLFW_KEY_B,
+  C = GLFW_KEY_C,
+  W = GLFW_KEY_W,
+  Escape = GLFW_KEY_ESCAPE,
+  Space = GLFW_KEY_SPACE,
+  LeftShift = GLFW_KEY_LEFT_SHIFT,
+};
+
+export struct Input {
+  bool IsKeyDown(Key key) {
+    return glfwGetKey(glfwGetCurrentContext(), static_cast<int>(key)) == GLFW_PRESS;
+  }
+};

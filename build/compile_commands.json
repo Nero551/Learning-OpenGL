@@ -1,21 +1,117 @@
 [
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/main.cpp.o.modmap -o CMakeFiles/Engine.dir/src/main.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/main.cpp\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/main.cpp",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/main.cpp.o"
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Core/Main.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Core/Main.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Core/Main.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Core/Main.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Core/Main.cpp.o"
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Math.ixx.o.modmap -o CMakeFiles/Engine.dir/src/Math.ixx.o -c \"/home/nero551/Main/Dev/PU Engine/src/Math.ixx\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/Math.ixx",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Math.ixx.o"
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Core/Engine.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Core/Engine.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Core/Engine.cppm.o"
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/test.ixx.o.modmap -o CMakeFiles/Engine.dir/src/test.ixx.o -c \"/home/nero551/Main/Dev/PU Engine/src/test.ixx\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/test.ixx",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/test.ixx.o"
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Core/Module.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Core/Module.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Core/Module.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Core/Module.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Core/Module.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Core/Window.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Core/Window.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Core/Window.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Core/Window.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Core/Window.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Image/Image.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Image/Image.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Image/Image.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Math/Math.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Math/Math.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Math.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Math.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Math/Math.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/MathUtils.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/MathUtils.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix2.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix2.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix3.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix3.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix4.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix4.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector2.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector2.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Utilities/Services/LoggerService.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Utilities/Services/LoggerService.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Utilities/Services/LoggerService.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Utilities/Services/LoggerService.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Utilities/Services/LoggerService.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cppm.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/Libraries/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -stdlib=libc++ -Wno-reserved-module-identifier -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cppm.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cppm.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cppm\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cppm",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cppm.o"
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",

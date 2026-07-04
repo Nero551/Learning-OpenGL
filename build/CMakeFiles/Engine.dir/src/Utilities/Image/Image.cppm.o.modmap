@@ -1,0 +1,3 @@
+-x c++-module
+-fmodule-output="CMakeFiles/Engine.dir/Image.pcm"
+-fmodule-file="LoggerService=CMakeFiles/Engine.dir/LoggerService.pcm"

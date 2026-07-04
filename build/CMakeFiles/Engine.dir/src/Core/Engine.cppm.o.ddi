@@ -1,0 +1,33 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Core/Engine.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Engine",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "Window"
+        },
+        {
+          "logical-name": "Mesh"
+        },
+        {
+          "logical-name": "Material"
+        },
+        {
+          "logical-name": "Texture"
+        },
+        {
+          "logical-name": "Math"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

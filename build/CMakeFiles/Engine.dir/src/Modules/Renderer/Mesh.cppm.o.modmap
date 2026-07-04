@@ -1,0 +1,5 @@
+-x c++-module
+-fmodule-output="CMakeFiles/Engine.dir/Mesh.pcm"
+-fmodule-file="Vertex=CMakeFiles/Engine.dir/Vertex.pcm"
+-fmodule-file="Vector2=CMakeFiles/Engine.dir/Vector2.pcm"
+-fmodule-file="Vector4=CMakeFiles/Engine.dir/Vector4.pcm"

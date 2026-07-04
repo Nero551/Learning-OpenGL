@@ -1,0 +1,8 @@
+file(GLOB_RECURSE WORLD_SOURCES CONFIGURE_DEPENDS *.cppm)
+
+target_sources(Engine PRIVATE
+    PUBLIC
+    FILE_SET CXX_MODULES
+    FILES
+    ${WORLD_SOURCES}
+)
