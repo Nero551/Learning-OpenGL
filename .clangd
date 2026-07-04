@@ -6,7 +6,7 @@ CompileFlags:
   CompilationDatabase: build
 
 Index:
-  Background: Build   # or Skip if too heavy
+  Background: Build
 
 Completion:
   AllScopes: true

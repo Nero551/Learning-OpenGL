@@ -1,0 +1,3 @@
+-x c++-module
+-fmodule-output="CMakeFiles/Engine.dir/test.pcm"
+-fmodule-file="Math=CMakeFiles/Engine.dir/Math.pcm"

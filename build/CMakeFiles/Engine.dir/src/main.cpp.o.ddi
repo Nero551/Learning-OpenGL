@@ -11,7 +11,7 @@
           "logical-name": "test"
         },
         {
-          "logical-name": "Math"
+          "logical-name": "std"
         }
       ]
     }
