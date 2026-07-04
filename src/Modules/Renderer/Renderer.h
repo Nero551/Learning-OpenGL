@@ -76,22 +76,10 @@ public:
   void Use();
 };
 
-struct Object {
-
-  Object(class Mesh mesh, struct Material material);
-  void Draw(Matrix4 viewMatrix, Matrix4 projectionMatrix);
-
-  Material Material;
-  Mesh Mesh;
-  Matrix4 ModelMatrix = Matrix4::Identity;
-};
 
 struct Renderer : Module {
   void Start() override;
   void Update(double dt) override;
   void Stop() override;
   void Render();
-
-  std::vector<Object> Objects;
-  void RenderObject(const Object &object) { Objects.push_back(object); }
 };

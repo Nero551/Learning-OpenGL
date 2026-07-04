@@ -3,6 +3,7 @@
 #include <concepts>
 #include <string>
 #include <vector>
+#include "World/World.h"
 
 struct Window {
   Window(int width, int height, std::string name);
@@ -33,6 +34,7 @@ struct Engine {
   double Time = 0;
   double DeltaTime = 0;
   Window window;
+  World world;
 
   Engine();
   void Start();
