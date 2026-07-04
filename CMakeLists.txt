@@ -14,7 +14,7 @@ endif()
 project(Engine)
 
 add_executable(Engine
-    Libraries/lib/glad.c
+    External/lib/glad.c
 )
 
 find_package(glfw3 REQUIRED)
@@ -24,7 +24,7 @@ add_subdirectory(src/Utilities)
 add_subdirectory(src/Modules)
 
 target_include_directories(Engine PRIVATE
-    Libraries/include
+    External/include
     src
 )
 

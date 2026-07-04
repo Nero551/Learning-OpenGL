@@ -1,7 +1,7 @@
 CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/glad/glad.h \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/KHR/khrplatform.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
   /usr/lib/clang/22/include/stdint.h /usr/include/stdint.h \
   /usr/include/bits/libc-header-start.h /usr/include/features.h \
   /usr/include/features-time64.h /usr/include/bits/wordsize.h \
@@ -145,7 +145,6 @@ CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_bvector.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/vector.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/formatfwd.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/World/World.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.h \

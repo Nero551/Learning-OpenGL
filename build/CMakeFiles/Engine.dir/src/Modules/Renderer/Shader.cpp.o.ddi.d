@@ -215,8 +215,8 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/istream.tcc \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.h \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/glad/glad.h \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/KHR/khrplatform.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/FileSystem/FileSystem.h \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector.h \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Renderer.h \
@@ -235,5 +235,4 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_bvector.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/vector.tcc \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Core.h \
-  /usr/include/GLFW/glfw3.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/World/World.h
+  /usr/include/GLFW/glfw3.h
