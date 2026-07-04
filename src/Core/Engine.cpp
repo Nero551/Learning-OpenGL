@@ -54,7 +54,6 @@ void Engine::Start() {
   object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
   object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
 
-  RendererModule.RenderObject(object);
 }
 
 void Engine::BeginFrame() {
