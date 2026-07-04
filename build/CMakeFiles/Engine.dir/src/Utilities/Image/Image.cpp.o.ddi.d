@@ -136,7 +136,7 @@ CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/uses_allocator.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/uses_allocator_args.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tuple \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/stb_image.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/stb_image.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/stdlib.h \
   /usr/lib/clang/22/include/__stdarg_header_macro.h \
   /usr/lib/clang/22/include/__stdarg_va_list.h \

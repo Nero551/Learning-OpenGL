@@ -14,7 +14,7 @@
 	"forward-modules-from-target-dirs" : [],
 	"include-dirs" : 
 	[
-		"/home/nero551/Main/Dev/PU Engine/Libraries/include",
+		"/home/nero551/Main/Dev/PU Engine/External/include",
 		"/home/nero551/Main/Dev/PU Engine/src"
 	],
 	"language" : "CXX",
@@ -51,11 +51,6 @@
 		{
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Object.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Object.cpp"
 		},
 		"CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o" : 
 		{

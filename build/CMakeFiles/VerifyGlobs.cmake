@@ -35,7 +35,6 @@ set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Input/Input.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cpp"
-  "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Object.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cpp"

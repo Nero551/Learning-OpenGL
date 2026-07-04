@@ -29,8 +29,6 @@ build CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o: dyndep
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Object.cpp.o: dyndep
-
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o: dyndep

@@ -1,7 +1,7 @@
 CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Texture.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/glad/glad.h \
-  /home/nero551/Main/Dev/PU\ Engine/Libraries/include/KHR/khrplatform.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
   /usr/lib/clang/22/include/stdint.h /usr/include/stdint.h \
   /usr/include/bits/libc-header-start.h /usr/include/features.h \
   /usr/include/features-time64.h /usr/include/bits/wordsize.h \
@@ -230,7 +230,6 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/vector.tcc \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Core.h \
   /usr/include/GLFW/glfw3.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/World/World.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/istream.tcc \
