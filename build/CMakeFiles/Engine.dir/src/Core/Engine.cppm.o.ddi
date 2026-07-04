@@ -12,19 +12,40 @@
       ],
       "requires": [
         {
-          "logical-name": "Window"
+          "logical-name": "Input"
         },
         {
-          "logical-name": "Mesh"
+          "logical-name": "LoggerService"
         },
         {
           "logical-name": "Material"
         },
         {
+          "logical-name": "Math"
+        },
+        {
+          "logical-name": "Mesh"
+        },
+        {
+          "logical-name": "Module"
+        },
+        {
+          "logical-name": "Renderer"
+        },
+        {
+          "logical-name": "Shader"
+        },
+        {
           "logical-name": "Texture"
         },
         {
-          "logical-name": "Math"
+          "logical-name": "Vertex"
+        },
+        {
+          "logical-name": "Window"
+        },
+        {
+          "logical-name": "World"
         }
       ]
     }

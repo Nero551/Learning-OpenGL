@@ -2,6 +2,7 @@
 -fmodule-output="CMakeFiles/Engine.dir/Material.pcm"
 -fmodule-file="Shader=CMakeFiles/Engine.dir/Shader.pcm"
 -fmodule-file="Texture=CMakeFiles/Engine.dir/Texture.pcm"
+-fmodule-file="FileSystem=CMakeFiles/Engine.dir/FileSystem.pcm"
 -fmodule-file="Image=CMakeFiles/Engine.dir/Image.pcm"
 -fmodule-file="LoggerService=CMakeFiles/Engine.dir/LoggerService.pcm"
 -fmodule-file="Math=CMakeFiles/Engine.dir/Math.pcm"

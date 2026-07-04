@@ -4,9 +4,10 @@ module;
 #include <string>
 #include <stb_image.h>
 
+export module Image;
+
 import LoggerService;
 
-export module Image;
 
 export struct Image {
   Image(const std::string &filePath) {

@@ -32,8 +32,10 @@ endif()
 # MODULES_SOURCES at src/Modules/CMakeLists.txt:1 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Engine/src/Modules/*.cppm")
 set(OLD_GLOB
+  "/home/nero551/Main/Dev/PU Engine/src/Modules/Input/Input.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cppm"
+  "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cppm"
@@ -62,6 +64,7 @@ endif()
 # UTILITIES_SOURCES at src/Utilities/CMakeLists.txt:1 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Engine/src/Utilities/*.cppm")
 set(OLD_GLOB
+  "/home/nero551/Main/Dev/PU Engine/src/Utilities/FileSystem/FileSystem.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Math.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/MathUtils.cppm"
@@ -72,6 +75,32 @@ set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cppm"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Services/LoggerService.cppm"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  set(NEW_ONLY ${NEW_GLOB})
+  set(OLD_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
+  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
+  if(NEW_ONLY)
+    message("The following files were added:")
+    foreach(VAR_FILE IN LISTS NEW_ONLY)
+      message("  +${VAR_FILE}")
+    endforeach()
+  endif()
+  if(OLD_ONLY)
+    message("The following files were removed:")
+    foreach(VAR_FILE IN LISTS OLD_ONLY)
+      message("  -${VAR_FILE}")
+    endforeach()
+  endif()
+  file(TOUCH_NOCREATE "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/cmake.verify_globs")
+endif()
+
+# WORLD_SOURCES at src/World/CMakeLists.txt:1 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Engine/src/World/*.cppm")
+set(OLD_GLOB
+  "/home/nero551/Main/Dev/PU Engine/src/World/World.cppm"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

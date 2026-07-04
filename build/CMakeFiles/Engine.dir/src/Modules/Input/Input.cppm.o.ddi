@@ -1,0 +1,16 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Modules/Input/Input.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Input",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Modules/Input/Input.cppm"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

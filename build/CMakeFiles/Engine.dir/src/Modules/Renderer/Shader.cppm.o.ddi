@@ -12,6 +12,9 @@
       ],
       "requires": [
         {
+          "logical-name": "FileSystem"
+        },
+        {
           "logical-name": "LoggerService"
         },
         {

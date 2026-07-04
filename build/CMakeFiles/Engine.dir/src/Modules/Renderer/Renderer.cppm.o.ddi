@@ -1,0 +1,27 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "Renderer",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "Math"
+        },
+        {
+          "logical-name": "Module"
+        },
+        {
+          "logical-name": "World"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,27 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/World/World.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "World",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/World/World.cppm"
+        }
+      ],
+      "requires": [
+        {
+          "logical-name": "Material"
+        },
+        {
+          "logical-name": "Math"
+        },
+        {
+          "logical-name": "Mesh"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

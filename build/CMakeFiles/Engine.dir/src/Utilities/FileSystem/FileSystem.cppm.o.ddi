@@ -1,0 +1,16 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cppm.o",
+      "provides": [
+        {
+          "is-interface": true,
+          "logical-name": "FileSystem",
+          "source-path": "/home/nero551/Main/Dev/PU Engine/src/Utilities/FileSystem/FileSystem.cppm"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}

@@ -1,5 +1,6 @@
 -x c++-module
 -fmodule-output="CMakeFiles/Engine.dir/Shader.pcm"
+-fmodule-file="FileSystem=CMakeFiles/Engine.dir/FileSystem.pcm"
 -fmodule-file="LoggerService=CMakeFiles/Engine.dir/LoggerService.pcm"
 -fmodule-file="Math=CMakeFiles/Engine.dir/Math.pcm"
 -fmodule-file="MathUtils=CMakeFiles/Engine.dir/MathUtils.pcm"

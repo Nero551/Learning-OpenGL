@@ -5,9 +5,10 @@ module;
 #include <iostream>
 #include <string>
 
+export module Window;
+
 import LoggerService;
 
-export module Window;
 
 export struct Window {
   Window(int width, int height, std::string name) {

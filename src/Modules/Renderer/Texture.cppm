@@ -4,8 +4,9 @@ module;
 #include <string>
 #include "OpenGL.h"
 
-import Image;
 export module Texture;
+
+import Image;
 
 export class Texture {
 public:
