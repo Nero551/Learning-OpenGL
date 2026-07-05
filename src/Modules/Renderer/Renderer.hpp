@@ -1,9 +1,11 @@
 #pragma once
-#include "Utilities/Math/Math.h"
+#include "Utilities/Math/Math.hpp"
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "Core/Core.h"
+#include "Core/Core.hpp"
+
+struct Object;
 
 struct Vertex {
   Vector4 Position;
@@ -78,6 +80,8 @@ public:
 
 
 struct Renderer : Module {
+  std::vector<Object> Objects;
+
   void Start() override;
   void Update(double dt) override;
   void Stop() override;

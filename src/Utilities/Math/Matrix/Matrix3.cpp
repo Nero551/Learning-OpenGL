@@ -1,7 +1,7 @@
-#include "../Math.h"
-#include "Matrix.h"
+#include "../Math.hpp"
+#include "Matrix.hpp"
 #include <cmath>
-#include "Utilities/Services/LoggerService.h"
+#include "Utilities/Services/LoggerService.hpp"
 
 Matrix3::Matrix3() {}
 

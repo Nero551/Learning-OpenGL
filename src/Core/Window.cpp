@@ -1,9 +1,8 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include "Core.h"
+#include <OpenGL.hpp>
+#include "Core.hpp"
 #include <iostream>
 #include <string>
-#include "Utilities/Services/LoggerService.h"
+#include "Utilities/Services/LoggerService.hpp"
 
 Window::Window(int width, int height, std::string name) {
 

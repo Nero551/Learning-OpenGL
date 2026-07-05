@@ -1,4 +1,4 @@
-#include <GLFW/glfw3.h>
+#include <OpenGL.hpp>
 
 enum class Key {
   A = GLFW_KEY_A,

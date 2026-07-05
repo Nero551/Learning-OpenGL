@@ -21,5 +21,9 @@
 
     "material-icon-theme.folders.associations": {
         "Renderer": "Container",
-    }
+    },
+
+    "catppuccin-icons.associations.folders": {
+
+    },
 }

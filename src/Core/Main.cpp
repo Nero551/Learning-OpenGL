@@ -1,5 +1,5 @@
-#include "Core.h"
-#include <GLFW/glfw3.h>
+#include "Core.hpp"
+#include <OpenGL.hpp>
 #include <iostream>
 
 int main() {

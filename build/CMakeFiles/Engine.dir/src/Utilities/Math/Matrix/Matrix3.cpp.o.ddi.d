@@ -1,7 +1,7 @@
 CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix3.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Math.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Vector/Vector.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Math.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Vector/Vector.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/requires_hosted.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -213,8 +213,8 @@ CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unicode-data.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream_print.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Matrix/Matrix.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../MathUtils.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Matrix/Matrix.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../MathUtils.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/cmath \
   /usr/include/math.h /usr/include/bits/math-vector.h \
   /usr/include/bits/libm-simd-decl-stubs.h \
@@ -236,7 +236,7 @@ CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/poly_hermite.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/poly_laguerre.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/riemann_zeta.tcc \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/istream.tcc

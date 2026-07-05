@@ -7,3 +7,5 @@
 /home/nero551/Main/Dev/PU Engine/build/src/Utilities/CMakeFiles/rebuild_cache.dir
 /home/nero551/Main/Dev/PU Engine/build/src/Modules/CMakeFiles/edit_cache.dir
 /home/nero551/Main/Dev/PU Engine/build/src/Modules/CMakeFiles/rebuild_cache.dir
+/home/nero551/Main/Dev/PU Engine/build/src/World/CMakeFiles/edit_cache.dir
+/home/nero551/Main/Dev/PU Engine/build/src/World/CMakeFiles/rebuild_cache.dir
