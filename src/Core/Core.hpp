@@ -3,6 +3,7 @@
 #include <concepts>
 #include <string>
 #include <vector>
+#include "World/World.hpp"
 
 struct Window {
   Window(int width, int height, std::string name);
@@ -10,7 +11,7 @@ struct Window {
 
   bool ShouldClose();
   void SwapBuffers();
-  void ProcessInput();
+  void Close();
 
   GLFWwindow *GetGlfwWindow();
 
@@ -25,7 +26,7 @@ struct Module {
   virtual ~Module() {}
 };
 
-#include "World/World.hpp"
+//TODO- make each cpp file have itts own header to fix cyclic header dependancy
 
 struct Engine {
   static Engine *Instance;
