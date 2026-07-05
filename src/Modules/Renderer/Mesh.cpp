@@ -1,5 +1,5 @@
 #include "glad/glad.h"
-#include "Renderer.h"
+#include "Renderer.hpp"
 #include <GL/gl.h>
 
 Mesh::Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)

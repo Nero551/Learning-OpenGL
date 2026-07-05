@@ -1,6 +1,6 @@
 CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/numbers \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/version.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \

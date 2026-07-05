@@ -1,6 +1,6 @@
-#include "../Math.h"
+#include "../Math.hpp"
 #include <cmath>
-#include "Utilities/Services/LoggerService.h"
+#include "Utilities/Services/LoggerService.hpp"
 
 Matrix4::Matrix4() {}
 

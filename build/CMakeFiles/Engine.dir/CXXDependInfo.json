@@ -116,6 +116,16 @@
 		{
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/World/Object.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/World/World.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/World/World.cpp"
 		}
 	}
 }

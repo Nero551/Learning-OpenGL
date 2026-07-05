@@ -1,9 +1,9 @@
-#include "Core.h"
-#include <GLFW/glfw3.h>
+#include "Core.hpp"
+#include <OpenGL.hpp>
 #include <iostream>
-#include "Modules/Renderer/Renderer.h"
-#include "Modules/Input/Input.h"
-#include "Utilities/Services/LoggerService.h"
+#include "Modules/Renderer/Renderer.hpp"
+#include "Modules/Input/Input.hpp"
+#include "Utilities/Services/LoggerService.hpp"
 
 Engine::Engine() : window(800, 600, "Plus Ultra") {}
 

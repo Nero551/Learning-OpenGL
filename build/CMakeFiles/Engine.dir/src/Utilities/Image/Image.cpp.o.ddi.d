@@ -1,6 +1,6 @@
 CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Image/Image.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Image/Image.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Image/Image.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/string \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/requires_hosted.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -177,7 +177,7 @@ CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.ddi: \
   /usr/lib/clang/22/include/xmmintrin.h \
   /usr/lib/clang/22/include/mmintrin.h \
   /usr/lib/clang/22/include/mm_malloc.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.h \

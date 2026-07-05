@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Vector/Vector.h"
+#include "../Vector/Vector.hpp"
 #include <ostream>
 struct Matrix2 {
   float m[2][2];

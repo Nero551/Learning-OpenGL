@@ -1,6 +1,6 @@
 CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector2.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/requires_hosted.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \

@@ -1,4 +1,4 @@
-#include "MathUtils.h"
+#include "MathUtils.hpp"
 #include <numbers>
 
 float Math::DegToRad(float deg) {

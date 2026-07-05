@@ -419,7 +419,45 @@ build CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o: CXX_COMPILER__Eng
   TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
   dyndep = CMakeFiles/Engine.dir/CXX.dd
 
-build CMakeFiles/Engine.dir/CXX.dd | CMakeFiles/Engine.dir/CXXModules.json CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap CMakeFiles/Engine.dir/src/Core/Main.cpp.o.modmap CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap: CXX_DYNDEP__Engine_Debug CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.ddi CMakeFiles/Engine.dir/src/Core/Main.cpp.o.ddi CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.ddi | /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/Engine.dir/CXXDependInfo.json
+build CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/World/Object.cpp || cmake_object_order_depends_target_Engine
+  DEP_FILE = CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi
+  FLAGS = -g -std=gnu++23 -Wall -Wextra -Wpedantic
+  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
+  OBJ_FILE = CMakeFiles/Engine.dir/src/World/Object.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi.i
+
+build CMakeFiles/Engine.dir/src/World/Object.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/World/Object.cpp | CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/Engine.dir/src/World/Object.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap
+  FLAGS = -g -std=gnu++23 -Wall -Wextra -Wpedantic
+  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/World
+  TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
+  dyndep = CMakeFiles/Engine.dir/CXX.dd
+
+build CMakeFiles/Engine.dir/src/World/World.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/World/World.cpp || cmake_object_order_depends_target_Engine
+  DEP_FILE = CMakeFiles/Engine.dir/src/World/World.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/World/World.cpp.o.ddi
+  FLAGS = -g -std=gnu++23 -Wall -Wextra -Wpedantic
+  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
+  OBJ_FILE = CMakeFiles/Engine.dir/src/World/World.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/World/World.cpp.o.ddi.i
+
+build CMakeFiles/Engine.dir/src/World/World.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/World/World.cpp | CMakeFiles/Engine.dir/src/World/World.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/Engine.dir/src/World/World.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/World/World.cpp.o.modmap
+  FLAGS = -g -std=gnu++23 -Wall -Wextra -Wpedantic
+  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/World
+  TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
+  dyndep = CMakeFiles/Engine.dir/CXX.dd
+
+build CMakeFiles/Engine.dir/CXX.dd | CMakeFiles/Engine.dir/CXXModules.json CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap CMakeFiles/Engine.dir/src/Core/Main.cpp.o.modmap CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap CMakeFiles/Engine.dir/src/World/World.cpp.o.modmap: CXX_DYNDEP__Engine_Debug CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.ddi CMakeFiles/Engine.dir/src/Core/Main.cpp.o.ddi CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.ddi CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi CMakeFiles/Engine.dir/src/World/World.cpp.o.ddi | /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/Engine.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -429,7 +467,7 @@ build CMakeFiles/Engine.dir/CXX.dd | CMakeFiles/Engine.dir/CXXModules.json CMake
 #############################################
 # Link the executable Engine
 
-build Engine: CXX_EXECUTABLE_LINKER__Engine_Debug CMakeFiles/Engine.dir/External/lib/glad.c.o CMakeFiles/Engine.dir/src/Core/Engine.cpp.o CMakeFiles/Engine.dir/src/Core/Main.cpp.o CMakeFiles/Engine.dir/src/Core/Window.cpp.o CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o | /usr/lib/libglfw.so.3.4
+build Engine: CXX_EXECUTABLE_LINKER__Engine_Debug CMakeFiles/Engine.dir/External/lib/glad.c.o CMakeFiles/Engine.dir/src/Core/Engine.cpp.o CMakeFiles/Engine.dir/src/Core/Main.cpp.o CMakeFiles/Engine.dir/src/Core/Window.cpp.o CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o CMakeFiles/Engine.dir/src/World/Object.cpp.o CMakeFiles/Engine.dir/src/World/World.cpp.o | /usr/lib/libglfw.so.3.4
   CONFIG = Debug
   DEP_FILE = CMakeFiles/Engine.dir/link.d
   FLAGS = -g
@@ -554,6 +592,35 @@ build src/Modules/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 build src/Modules/rebuild_cache: phony src/Modules/CMakeFiles/rebuild_cache.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/nero551/Main/Dev/PU Engine/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build src/World/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/home/nero551/Main/Dev/PU Engine/build/src/World" && /usr/bin/ccmake -S"/home/nero551/Main/Dev/PU Engine" -B"/home/nero551/Main/Dev/PU Engine/build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build src/World/edit_cache: phony src/World/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build src/World/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd "/home/nero551/Main/Dev/PU Engine/build/src/World" && /usr/bin/cmake --regenerate-during-build -S"/home/nero551/Main/Dev/PU Engine" -B"/home/nero551/Main/Dev/PU Engine/build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build src/World/rebuild_cache: phony src/World/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
 # Target aliases.
 
 # =============================================================================
@@ -564,7 +631,7 @@ build src/Modules/rebuild_cache: phony src/Modules/CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/nero551/Main/Dev/PU Engine/build
 
-build codegen: phony src/Core/codegen src/Utilities/codegen src/Modules/codegen
+build codegen: phony src/Core/codegen src/Utilities/codegen src/Modules/codegen src/World/codegen
 
 # =============================================================================
 
@@ -590,9 +657,16 @@ build src/Utilities/codegen: phony
 # =============================================================================
 
 #############################################
+# Folder: /home/nero551/Main/Dev/PU Engine/build/src/World
+
+build src/World/codegen: phony
+
+# =============================================================================
+
+#############################################
 # Folder: /home/nero551/Main/Dev/PU Engine/build
 
-build all: phony Engine src/Core/all src/Utilities/all src/Modules/all
+build all: phony Engine src/Core/all src/Utilities/all src/Modules/all src/World/all
 
 # =============================================================================
 
@@ -616,6 +690,13 @@ build src/Modules/all: phony
 build src/Utilities/all: phony
 
 # =============================================================================
+
+#############################################
+# Folder: /home/nero551/Main/Dev/PU Engine/build/src/World
+
+build src/World/all: phony
+
+# =============================================================================
 # Built-in targets
 
 
@@ -636,14 +717,14 @@ build /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/cmake.verify_globs: VER
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /home/nero551/Main/Dev/PU$ Engine/build/cmake_install.cmake /home/nero551/Main/Dev/PU$ Engine/build/src/Core/cmake_install.cmake /home/nero551/Main/Dev/PU$ Engine/build/src/Utilities/cmake_install.cmake /home/nero551/Main/Dev/PU$ Engine/build/src/Modules/cmake_install.cmake: RERUN_CMAKE /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/cmake.verify_globs | /home/nero551/Main/Dev/PU$ Engine/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/VerifyGlobs.cmake /home/nero551/Main/Dev/PU$ Engine/src/Core/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/Modules/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/Utilities/CMakeLists.txt /usr/lib/cmake/glfw3/glfw3Config.cmake /usr/lib/cmake/glfw3/glfw3ConfigVersion.cmake /usr/lib/cmake/glfw3/glfw3Targets-none.cmake /usr/lib/cmake/glfw3/glfw3Targets.cmake /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-C.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-C.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.3.4/CMakeCCompiler.cmake CMakeFiles/4.3.4/CMakeCXXCompiler.cmake CMakeFiles/4.3.4/CMakeSystem.cmake
+build build.ninja /home/nero551/Main/Dev/PU$ Engine/build/cmake_install.cmake /home/nero551/Main/Dev/PU$ Engine/build/src/Core/cmake_install.cmake /home/nero551/Main/Dev/PU$ Engine/build/src/Utilities/cmake_install.cmake /home/nero551/Main/Dev/PU$ Engine/build/src/Modules/cmake_install.cmake /home/nero551/Main/Dev/PU$ Engine/build/src/World/cmake_install.cmake: RERUN_CMAKE /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/cmake.verify_globs | /home/nero551/Main/Dev/PU$ Engine/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/VerifyGlobs.cmake /home/nero551/Main/Dev/PU$ Engine/src/Core/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/Modules/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/Utilities/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/World/CMakeLists.txt /usr/lib/cmake/glfw3/glfw3Config.cmake /usr/lib/cmake/glfw3/glfw3ConfigVersion.cmake /usr/lib/cmake/glfw3/glfw3Targets-none.cmake /usr/lib/cmake/glfw3/glfw3Targets.cmake /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-C.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-C.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.3.4/CMakeCCompiler.cmake CMakeFiles/4.3.4/CMakeCXXCompiler.cmake CMakeFiles/4.3.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/nero551/Main/Dev/PU$ Engine/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/VerifyGlobs.cmake /home/nero551/Main/Dev/PU$ Engine/src/Core/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/Modules/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/Utilities/CMakeLists.txt /usr/lib/cmake/glfw3/glfw3Config.cmake /usr/lib/cmake/glfw3/glfw3ConfigVersion.cmake /usr/lib/cmake/glfw3/glfw3Targets-none.cmake /usr/lib/cmake/glfw3/glfw3Targets.cmake /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-C.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-C.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.3.4/CMakeCCompiler.cmake CMakeFiles/4.3.4/CMakeCXXCompiler.cmake CMakeFiles/4.3.4/CMakeSystem.cmake: phony
+build /home/nero551/Main/Dev/PU$ Engine/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/VerifyGlobs.cmake /home/nero551/Main/Dev/PU$ Engine/src/Core/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/Modules/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/Utilities/CMakeLists.txt /home/nero551/Main/Dev/PU$ Engine/src/World/CMakeLists.txt /usr/lib/cmake/glfw3/glfw3Config.cmake /usr/lib/cmake/glfw3/glfw3ConfigVersion.cmake /usr/lib/cmake/glfw3/glfw3Targets-none.cmake /usr/lib/cmake/glfw3/glfw3Targets.cmake /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeFindDependencyMacro.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/CheckCSourceCompiles.cmake /usr/share/cmake/Modules/CheckIncludeFile.cmake /usr/share/cmake/Modules/CheckLibraryExists.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/Clang-C.cmake /usr/share/cmake/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake/Modules/Compiler/Clang.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake/Modules/FindPackageMessage.cmake /usr/share/cmake/Modules/FindThreads.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-C.cmake /usr/share/cmake/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.3.4/CMakeCCompiler.cmake CMakeFiles/4.3.4/CMakeCXXCompiler.cmake CMakeFiles/4.3.4/CMakeSystem.cmake: phony
 
 
 #############################################

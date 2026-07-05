@@ -1,5 +1,5 @@
-#include "Renderer.h"
-#include "Utilities/Services/LoggerService.h"
+#include "Renderer.hpp"
+#include "Utilities/Services/LoggerService.hpp"
 
 Matrix4 view = Matrix4::Identity;
 

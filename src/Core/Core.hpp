@@ -1,9 +1,8 @@
 #pragma once
-#include <GLFW/glfw3.h>
+#include <OpenGL.hpp>
 #include <concepts>
 #include <string>
 #include <vector>
-#include "World/World.h"
 
 struct Window {
   Window(int width, int height, std::string name);
@@ -25,6 +24,8 @@ struct Module {
   virtual void Stop() {}
   virtual ~Module() {}
 };
+
+#include "World/World.hpp"
 
 struct Engine {
   static Engine *Instance;

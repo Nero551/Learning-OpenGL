@@ -118,5 +118,17 @@
   "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp\"",
   "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp",
   "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap -o CMakeFiles/Engine.dir/src/World/Object.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/World/Object.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++23 -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/World/World.cpp.o.modmap -o CMakeFiles/Engine.dir/src/World/World.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/World/World.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/World/World.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/World/World.cpp.o"
 }
 ]
