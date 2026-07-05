@@ -4,8 +4,9 @@
 #include "Modules/Renderer/Renderer.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Utilities/Services/LoggerService.hpp"
+#include "World/World.hpp"
 
-Engine::Engine() : window(800, 600, "Plus Ultra") {}
+Engine::Engine() : window(800, 600, "Plus Ultra"), world() {}
 
 Renderer RendererModule;
 Input InputModule;
@@ -53,7 +54,6 @@ void Engine::Start() {
   Object object(mesh, material);
   object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
   object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
-
 }
 
 void Engine::BeginFrame() {
@@ -65,13 +65,18 @@ void Engine::BeginFrame() {
 void Engine::EndFrame() {
   float currentFrame = glfwGetTime();
   DeltaTime = currentFrame - LastFrame;
-  LastFrame = currentFrame;
+  LastFrame = currentFrame; 
 
   window.SwapBuffers();
 }
 
 void Engine::Render() { RendererModule.Render(); }
 void Engine::Update() {
+
+  if (InputModule.IsKeyDown(Key::Escape)) {
+    window.Close();
+  }
+
   if (InputModule.IsKeyDown(Key::W)) {
     LoggerService::Info("Nice");
   }

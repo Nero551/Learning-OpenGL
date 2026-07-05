@@ -32,8 +32,6 @@ GLFWwindow *Window::GetGlfwWindow() { return GlfwWindow; }
 bool Window::ShouldClose() { return glfwWindowShouldClose(GlfwWindow); }
 void Window::SwapBuffers() { glfwSwapBuffers(GlfwWindow); }
 
-void Window::ProcessInput() {
-  if (glfwGetKey(GlfwWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-    glfwSetWindowShouldClose(GlfwWindow, true);
-  }
+void Window::Close() {
+  glfwSetWindowShouldClose(GlfwWindow, true);
 }
