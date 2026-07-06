@@ -1,14 +1,14 @@
-#include "glad/glad.h"
+#include <OpenGL.hpp>
 #include "Renderer.hpp"
-#include <GL/gl.h>
 
 Mesh::Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)
     : Vertices(vertices), Indices(indices) {
-      
+
   Id = CreateVAO();
   VBO = CreateVBO();
   EBO = CreateEBO();
   SetupVertAttrPointers();
+  glBindVertexArray(0);
 }
 
 void Mesh::Draw() {

@@ -13,7 +13,7 @@ int main() {
   engine.Start();
   engine.Running = true;
 
-  while (!engine.window.ShouldClose()) {
+  while (!engine.Running) {
     engine.BeginFrame();
 
     engine.Update();
@@ -23,6 +23,5 @@ int main() {
   }
 
   engine.Stop();
-  glfwTerminate();
   return 0;
 }

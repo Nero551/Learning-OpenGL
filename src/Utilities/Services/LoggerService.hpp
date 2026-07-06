@@ -1,25 +1,23 @@
 #pragma once
 
 #include <iostream>
-namespace ConsoleColors {
-constexpr const char *Reset = "\033[0m";
-constexpr const char *Red = "\033[31m";
-constexpr const char *Yellow = "\033[33m";
-constexpr const char *Green = "\033[32m";
-constexpr const char *Blue = "\033[34m";
-} // namespace ConsoleColors
 
-namespace LoggerService {
+struct LoggerService {
+  static constexpr const char *Reset = "\033[0m";
+  static constexpr const char *Red = "\033[31m";
+  static constexpr const char *Green = "\033[32m";
+  static constexpr const char *Yellow = "\033[33m";
+  static constexpr const char *Blue = "\033[34m";
 
-template <typename T> static void Print(const T &message) { std::cout << ConsoleColors::Blue << message << "\n"; }
+  template <typename T> static void Print(const T &message) { std::cout << Blue << message << "\n"; }
 
-template <typename T> static void Info(const T &message) {
-  std::cout << ConsoleColors::Green << "[INFO] " << ConsoleColors::Reset << message << "\n";
-}
-template <typename T> static void Warning(const T &message) {
-  std::cout << ConsoleColors::Yellow << "[WARNING] " << ConsoleColors::Reset << message << "\n";
-}
-template <typename T> static void Error(const T &message) {
-  std::cerr << ConsoleColors::Red << "[ERROR] " << ConsoleColors::Reset << message << "\n";
-}
-}; // namespace LoggerService
+  template <typename T> static void Info(const T &message) {
+    std::cout << Green << "[INFO] " << Reset << message << "\n";
+  }
+  template <typename T> static void Warning(const T &message) {
+    std::cout << Yellow << "[WARNING] " << Reset << message << "\n";
+  }
+  template <typename T> static void Error(const T &message) {
+    std::cerr << Red << "[ERROR] " << Reset << message << "\n";
+  }
+};

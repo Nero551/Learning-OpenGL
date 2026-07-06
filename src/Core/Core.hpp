@@ -23,10 +23,11 @@ struct Module {
   virtual void Start() {}
   virtual void Update(double dt) {}
   virtual void Stop() {}
+  virtual void Render(){}
   virtual ~Module() {}
 };
 
-//TODO- make each cpp file have itts own header to fix cyclic header dependancy
+//TODO- make each cpp file have its own header to fix cyclic header dependancy
 
 struct Engine {
   static Engine *Instance;
