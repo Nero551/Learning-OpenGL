@@ -1,4 +1,5 @@
 #include "Core.hpp"
+#include <GLFW/glfw3.h>
 #include <OpenGL.hpp>
 #include <iostream>
 #include "Modules/Renderer/Renderer.hpp"
@@ -65,7 +66,7 @@ void Engine::BeginFrame() {
 void Engine::EndFrame() {
   float currentFrame = glfwGetTime();
   DeltaTime = currentFrame - LastFrame;
-  LastFrame = currentFrame; 
+  LastFrame = currentFrame;
 
   window.SwapBuffers();
 }
@@ -74,6 +75,7 @@ void Engine::Render() { RendererModule.Render(); }
 void Engine::Update() {
 
   if (InputModule.IsKeyDown(Key::Escape)) {
+    Running = false;
     window.Close();
   }
 
@@ -82,4 +84,4 @@ void Engine::Update() {
   }
 }
 
-void Engine::Stop() {}
+void Engine::Stop() { glfwTerminate(); }

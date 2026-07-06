@@ -85,5 +85,5 @@ struct Renderer : Module {
   void Start() override;
   void Update(double dt) override;
   void Stop() override;
-  void Render();
+  void Render() override;
 };
