@@ -1,0 +1,35 @@
+{
+	"modules" : 
+	{
+		"std" : 
+		{
+			"bmi" : "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/__cmake_cxx_std_26.dir/std.pcm",
+			"is-private" : false
+		},
+		"std.compat" : 
+		{
+			"bmi" : "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/__cmake_cxx_std_26.dir/std.compat.pcm",
+			"is-private" : false
+		}
+	},
+	"references" : 
+	{
+		"std" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/__cmake_cxx_std_26.dir/std.pcm"
+		},
+		"std.compat" : 
+		{
+			"lookup-method" : "by-name",
+			"path" : "CMakeFiles/__cmake_cxx_std_26.dir/std.compat.pcm"
+		}
+	},
+	"usages" : 
+	{
+		"std.compat" : 
+		[
+			"std"
+		]
+	}
+}

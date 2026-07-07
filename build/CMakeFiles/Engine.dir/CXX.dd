@@ -1,9 +1,11 @@
 ninja_dyndep_version = 1.0
+build CMakeFiles/Engine.dir/src/Main.cpp.o: dyndep
+
 build CMakeFiles/Engine.dir/src/Core/Engine.cpp.o: dyndep
 
-build CMakeFiles/Engine.dir/src/Core/Main.cpp.o: dyndep
-
 build CMakeFiles/Engine.dir/src/Core/Module.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Core/ModuleStore.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Core/Window.cpp.o: dyndep
 
