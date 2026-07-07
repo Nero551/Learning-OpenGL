@@ -2,8 +2,6 @@
 #include "Utilities/Services/LoggerService.hpp"
 #include <OpenGL.hpp>
 #include "Utilities/FileSystem/FileSystem.hpp"
-#include "Utilities/Math/Vector/Vector.hpp"
-#include "Utilities/Math/Matrix/Matrix.hpp"
 #include "Shader.hpp"
 
 Shader::Shader(const std::string &fragFilepath, const std::string &vertFilepath) {

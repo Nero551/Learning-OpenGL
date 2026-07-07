@@ -1,3 +1,3 @@
-# rm -rf build
-# cmake -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ rm -rf build
+ cmake -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 ninja -C build

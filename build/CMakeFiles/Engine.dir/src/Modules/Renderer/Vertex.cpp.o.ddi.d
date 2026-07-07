@@ -1,7 +1,7 @@
 CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Vertex.cpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Vertex.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector2.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/requires_hosted.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -212,4 +212,5 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_tempbuf.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unicode-data.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream_print.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector4.hpp

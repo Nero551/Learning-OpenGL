@@ -1,4 +1,5 @@
-#include "../Math.hpp"
+#include "Matrix4.hpp"
+#include "Utilities/Math/MathUtils.hpp"
 #include <cmath>
 #include "Utilities/Services/LoggerService.hpp"
 
@@ -141,7 +142,7 @@ Matrix4 Matrix4::Translate(const Vector3 &translation) const {
 }
 
 Matrix4 Matrix4::RotateX(float radian) const {
-  Matrix4 rotationMatrix = Matrix4::Identity;
+  Matrix4 rotationMatrix = Identity;
   rotationMatrix.m[1][1] = std::cos(radian);
   rotationMatrix.m[2][1] = std::sin(radian);
   rotationMatrix.m[1][2] = -std::sin(radian);
@@ -151,7 +152,7 @@ Matrix4 Matrix4::RotateX(float radian) const {
 }
 
 Matrix4 Matrix4::RotateY(float radian) const {
-  Matrix4 rotationMatrix = Matrix4::Identity;
+  Matrix4 rotationMatrix = Identity;
   rotationMatrix.m[0][0] = std::cos(radian);
   rotationMatrix.m[0][2] = std::sin(radian);
   rotationMatrix.m[2][0] = -std::sin(radian);
@@ -161,7 +162,7 @@ Matrix4 Matrix4::RotateY(float radian) const {
 }
 
 Matrix4 Matrix4::RotateZ(float radian) const {
-  Matrix4 rotationMatrix = Matrix4::Identity;
+  Matrix4 rotationMatrix = Identity;
   rotationMatrix.m[0][0] = std::cos(radian);
   rotationMatrix.m[1][0] = std::sin(radian);
   rotationMatrix.m[0][1] = -std::sin(radian);
@@ -171,7 +172,7 @@ Matrix4 Matrix4::RotateZ(float radian) const {
 }
 
 Matrix4 Matrix4::Orthographic(float left, float right, float bottom, float top, float near, float far) {
-  Matrix4 m = Matrix4::Identity;
+  Matrix4 m = Identity;
 
   m.m[0][0] = 2.0f / (right - left);
   m.m[1][1] = 2.0f / (top - bottom);
@@ -185,7 +186,7 @@ Matrix4 Matrix4::Orthographic(float left, float right, float bottom, float top, 
 }
 
 Matrix4 Matrix4::Perspective(float fov, float aspect, float near, float far) {
-  Matrix4 m = Matrix4::Zero;
+  Matrix4 m = Zero;
 
   float f = 1.0f / std::tan(fov * 0.5f);
 

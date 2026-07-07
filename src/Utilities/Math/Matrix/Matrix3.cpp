@@ -1,5 +1,8 @@
-#include "../Math.hpp"
-#include "Matrix.hpp"
+
+#include "Matrix3.hpp"
+
+#include "Utilities/Math/MathUtils.hpp"
+
 #include <cmath>
 #include "Utilities/Services/LoggerService.hpp"
 

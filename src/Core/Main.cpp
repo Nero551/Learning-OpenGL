@@ -10,9 +10,8 @@ int main() {
   glEnable(GL_DEPTH_TEST);
 
   engine.Start();
-  engine.Running = true;
 
-  while (!engine.Running) {
+  while (engine.Running) {
     engine.BeginFrame();
 
     engine.Update();
