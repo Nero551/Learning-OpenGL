@@ -1,6 +1,6 @@
-#include "../Math.hpp"
+#include "Matrix2.hpp"
+#include "Utilities/Math/MathUtils.hpp"
 #include <cmath>
-#include <cstddef>
 #include "Utilities/Services/LoggerService.hpp"
 
 Matrix2::Matrix2() {}
@@ -88,7 +88,7 @@ std::ostream &operator<<(std::ostream &os, const Matrix2 &mat) {
 
 //? Methods
 Matrix2 Matrix2::Scale(const Vector2 &scale) const {
-  Matrix2 scaleMatrix = Matrix2::Identity;
+  Matrix2 scaleMatrix = Identity;
   scaleMatrix.m[0][0] = scale.x;
   scaleMatrix.m[1][1] = scale.y;
 
@@ -96,7 +96,7 @@ Matrix2 Matrix2::Scale(const Vector2 &scale) const {
 }
 
 Matrix2 Matrix2::Rotate(float radian) const {
-  Matrix2 rotationMatrix = Matrix2::Identity;
+  Matrix2 rotationMatrix = Identity;
   rotationMatrix.m[0][0] = std::cos(radian);
   rotationMatrix.m[1][0] = std::sin(radian);
   rotationMatrix.m[0][1] = -std::sin(radian);
@@ -123,7 +123,7 @@ Matrix2 Matrix2::Inverse() const {
   float det = Determinant();
   if (std::abs(det) < Math::EPSILONF) {
     LoggerService::Error("Matrix is not invertible");
-    return Matrix2::Identity;
+    return Identity;
   }
   return Matrix2(m[1][1], -m[0][1], -m[1][0], m[0][0]) / det;
 }

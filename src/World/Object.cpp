@@ -1,5 +1,5 @@
 #include "World.hpp"
-#include "Utilities/Math/Matrix/Matrix.hpp"
+#include "Utilities/Math/Matrix/Matrix4.hpp"
 
 Object::Object(class Mesh mesh, struct Material material) : Material(material), Mesh(mesh) {}
 

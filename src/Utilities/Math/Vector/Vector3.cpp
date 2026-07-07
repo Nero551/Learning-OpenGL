@@ -1,6 +1,5 @@
-#include "Vector.hpp"
+#include "Vector3.hpp"
 #include <cmath>
-#include <iostream>
 #include <ostream>
 
 Vector3::Vector3(){}

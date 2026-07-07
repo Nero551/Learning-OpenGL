@@ -1,7 +1,9 @@
 CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix4.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Math.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Vector/Vector.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix4.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix3.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix2.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector2.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/requires_hosted.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -213,8 +215,9 @@ CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unicode-data.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream_print.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Matrix/Matrix.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../MathUtils.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector3.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector4.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/cmath \
   /usr/include/math.h /usr/include/bits/math-vector.h \
   /usr/include/bits/libm-simd-decl-stubs.h \

@@ -11,7 +11,7 @@
 #include "Utilities/Services/LoggerService.hpp"
 #include "World/World.hpp"
 
-Engine::Engine() : window(800, 600, "Plus Ultra"), world() {}
+Engine::Engine() : window(800, 600, "Plus Ultra"), world() { Running = true; }
 
 Renderer RendererModule;
 Input InputModule;
@@ -52,13 +52,14 @@ void Engine::Start() {
     // bottom
     4, 5, 1, 1, 0, 4};
 
-  Texture texture = Texture(0, "src/Assets/Images/ruby.png");
-  Shader shader = Shader("src/Assets/Shaders/shader.frag", "src/Assets/Shaders/shader.vert");
+  Texture texture = Texture(0, "Assets/Images/ruby.png");
+  Shader shader = Shader("Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
   Material material = Material(shader, texture);
   Mesh mesh(Vertices, Indices);
   Object object(mesh, material);
   object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
   object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
+  RendererModule.Objects.push_back(object);
 }
 
 void Engine::BeginFrame() {

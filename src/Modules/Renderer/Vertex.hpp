@@ -1,5 +1,6 @@
 #pragma once
-#include "Utilities/Math/Vector/Vector.hpp"
+#include "Utilities/Math/Vector/Vector2.hpp"
+#include "Utilities/Math/Vector/Vector4.hpp"
 
 struct Vertex {
   Vector4 Position;

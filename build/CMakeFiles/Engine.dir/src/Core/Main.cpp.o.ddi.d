@@ -152,8 +152,10 @@ CMakeFiles/Engine.dir/src/Core/Main.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ext/aligned_buffer.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/enable_special_members.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/node_handle.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/../Vector/Vector.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix4.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix3.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix2.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector2.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ios \
@@ -227,6 +229,8 @@ CMakeFiles/Engine.dir/src/Core/Main.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unicode-data.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream_print.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector3.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector4.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Texture.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Mesh.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Vertex.hpp \

@@ -1,6 +1,5 @@
-#include "Vector.hpp"
+#include "Vector4.hpp"
 #include <cmath>
-#include <iostream>
 #include <ostream>
 
 
@@ -57,7 +56,7 @@ float Vector4::Dot(const Vector4 &vec4) const { return x * vec4.x + y * vec4.y +
 float Vector4::Distance(const Vector4 &vec4) const { return (*this - vec4).Length(); }
 
 Vector4 Vector4::Normalized() const {
-  float length = Length();
+  const float length = Length();
   if (length == 0) {
     return Zero;
   }
