@@ -1,3 +1,4 @@
+#pragma once
 #include <OpenGL.hpp>
 
 enum class Key {
@@ -11,5 +12,5 @@ enum class Key {
 };
 
 struct Input {
-    bool IsKeyDown(Key key);
+  bool IsKeyDown(Key key);
 };

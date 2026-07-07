@@ -1,8 +1,8 @@
 #pragma once
 
-#include "World/World.hpp"
 #include <vector>
 #include "Core/Module.hpp"
+#include "World/Object.hpp"
 
 struct Renderer : Module {
   std::vector<Object> Objects;

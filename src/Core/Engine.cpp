@@ -11,15 +11,12 @@
 #include "Utilities/Services/LoggerService.hpp"
 #include "World/World.hpp"
 
-Engine::Engine() : window(800, 600, "Plus Ultra"), world() { Running = true; }
-
-Renderer RendererModule;
-Input InputModule;
+Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
 
 Engine *Engine::Instance = nullptr;
 
 void Engine::Start() {
-  RendererModule.Start();
+  ModuleStore.RendererModule.Start();
 
   std::vector<Vertex> Vertices = {
     // front face
@@ -59,7 +56,7 @@ void Engine::Start() {
   Object object(mesh, material);
   object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
   object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
-  RendererModule.Objects.push_back(object);
+  ModuleStore.RendererModule.Objects.push_back(object);
 }
 
 void Engine::BeginFrame() {
@@ -76,18 +73,17 @@ void Engine::EndFrame() {
   window.SwapBuffers();
 }
 
-void Engine::Render() { RendererModule.Render(); }
-
 void Engine::Update() {
-
-  if (InputModule.IsKeyDown(Key::Escape)) {
+  if (ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
     Running = false;
     window.Close();
   }
 
-  if (InputModule.IsKeyDown(Key::W)) {
+  if (ModuleStore.InputModule.IsKeyDown(Key::W)) {
     LoggerService::Info("Nice");
   }
 }
 
 void Engine::Stop() { glfwTerminate(); }
+
+void Engine::Render() { ModuleStore.RendererModule.Render(); }

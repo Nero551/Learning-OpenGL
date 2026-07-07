@@ -1,4 +1,4 @@
-#include "Renderer.hpp"
+#include "Material.hpp"
 
 Material::Material(class Shader shader, Texture texture) : Shader(shader), Texture0(texture) {}
 
@@ -7,5 +7,4 @@ void Material::Use() {
 
   Shader.SetInt("uTexture0", Texture0.Unit);
   Texture0.Bind();
-
 }
