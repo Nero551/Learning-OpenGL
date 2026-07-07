@@ -101,10 +101,10 @@ bool Matrix3::operator!=(const Matrix3 &mat3) const { return !(*this == mat3); }
 //* Others
 Matrix3 operator*(float scalar, const Matrix3 &mat3) { return mat3 * scalar; }
 
-std::ostream &operator<<(std::ostream &os, const Matrix3 &mat) {
-  os << "[ " << mat.m[0][0] << "  " << mat.m[0][1] << "  " << mat.m[0][2] << " ]\n";
-  os << "[ " << mat.m[1][0] << "  " << mat.m[1][1] << "  " << mat.m[1][2] << " ]\n";
-  os << "[ " << mat.m[2][0] << "  " << mat.m[2][1] << "  " << mat.m[2][2] << " ]";
+std::ostream &operator<<(std::ostream &os, const Matrix3 &mat3) {
+  os << "[ " << mat3.m[0][0] << "  " << mat3.m[0][1] << "  " << mat3.m[0][2] << " ]\n";
+  os << "[ " << mat3.m[1][0] << "  " << mat3.m[1][1] << "  " << mat3.m[1][2] << " ]\n";
+  os << "[ " << mat3.m[2][0] << "  " << mat3.m[2][1] << "  " << mat3.m[2][2] << " ]";
   return os;
 }
 

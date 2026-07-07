@@ -114,11 +114,11 @@ bool Matrix4::operator!=(const Matrix4 &mat4) const { return !(*this == mat4); }
 //* Others
 Matrix4 operator*(float scalar, const Matrix4 &mat4) { return mat4 * scalar; }
 
-std::ostream &operator<<(std::ostream &os, const Matrix4 &mat) {
-  os << "[ " << mat.m[0][0] << "  " << mat.m[0][1] << "  " << mat.m[0][2] << "  " << mat.m[0][3] << " ]\n";
-  os << "[ " << mat.m[1][0] << "  " << mat.m[1][1] << "  " << mat.m[1][2] << "  " << mat.m[1][3] << " ]\n";
-  os << "[ " << mat.m[2][0] << "  " << mat.m[2][1] << "  " << mat.m[2][2] << "  " << mat.m[2][3] << " ]\n";
-  os << "[ " << mat.m[3][0] << "  " << mat.m[3][1] << "  " << mat.m[3][2] << "  " << mat.m[3][3] << " ]";
+std::ostream &operator<<(std::ostream &os, const Matrix4 &mat4) {
+  os << "[ " << mat4.m[0][0] << "  " << mat4.m[0][1] << "  " << mat4.m[0][2] << "  " << mat4.m[0][3] << " ]\n";
+  os << "[ " << mat4.m[1][0] << "  " << mat4.m[1][1] << "  " << mat4.m[1][2] << "  " << mat4.m[1][3] << " ]\n";
+  os << "[ " << mat4.m[2][0] << "  " << mat4.m[2][1] << "  " << mat4.m[2][2] << "  " << mat4.m[2][3] << " ]\n";
+  os << "[ " << mat4.m[3][0] << "  " << mat4.m[3][1] << "  " << mat4.m[3][2] << "  " << mat4.m[3][3] << " ]";
   return os;
 }
 
@@ -185,12 +185,12 @@ Matrix4 Matrix4::Orthographic(float left, float right, float bottom, float top, 
   return m;
 }
 
-Matrix4 Matrix4::Perspective(float fov, float aspect, float near, float far) {
+Matrix4 Matrix4::Perspective(float fovRad, float aspectRatio, float near, float far) {
   Matrix4 m = Zero;
 
-  float f = 1.0f / std::tan(fov * 0.5f);
+  float f = 1.0f / std::tan(fovRad * 0.5f);
 
-  m.m[0][0] = f / aspect;
+  m.m[0][0] = f / aspectRatio;
   m.m[1][1] = f;
 
   m.m[2][2] = -(far + near) / (far - near);

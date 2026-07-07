@@ -80,9 +80,9 @@ bool Matrix2::operator==(const Matrix2 &mat2) const {
 bool Matrix2::operator!=(const Matrix2 &mat2) const { return !(*this == mat2); }
 
 //* Others
-std::ostream &operator<<(std::ostream &os, const Matrix2 &mat) {
-  os << "[ " << mat.m[0][0] << "  " << mat.m[0][1] << " ]\n";
-  os << "[ " << mat.m[1][0] << "  " << mat.m[1][1] << " ]";
+std::ostream &operator<<(std::ostream &os, const Matrix2 &mat2) {
+  os << "[ " << mat2.m[0][0] << "  " << mat2.m[0][1] << " ]\n";
+  os << "[ " << mat2.m[1][0] << "  " << mat2.m[1][1] << " ]";
   return os;
 }
 
