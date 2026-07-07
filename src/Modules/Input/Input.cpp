@@ -1,5 +1,5 @@
 #include "Input.hpp"
-#include "Core/Core.hpp"
+#include "Core/Engine.hpp"
 #include <OpenGL.hpp>
 
 bool Input::IsKeyDown(Key key) {

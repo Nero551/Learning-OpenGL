@@ -3,6 +3,8 @@ build CMakeFiles/Engine.dir/src/Core/Engine.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Core/Main.cpp.o: dyndep
 
+build CMakeFiles/Engine.dir/src/Core/Module.cpp.o: dyndep
+
 build CMakeFiles/Engine.dir/src/Core/Window.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o: dyndep

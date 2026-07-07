@@ -1,5 +1,5 @@
 #include <OpenGL.hpp>
-#include "Renderer.hpp"
+#include "Texture.hpp"
 #include <iostream>
 #include <string>
 #include "Utilities/Image/Image.hpp"

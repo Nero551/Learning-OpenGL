@@ -9,4 +9,5 @@ void Material::Use() {
 
   Shader.SetInt("uTexture0", Texture0.Unit);
   Texture0.Bind();
+
 }

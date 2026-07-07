@@ -1,16 +1,13 @@
-#include <OpenGL.hpp>
-#include "Core.hpp"
-#include <iostream>
-#include <string>
+#include "Window.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
-Window::Window(int width, int height, std::string name) {
+Window::Window(int width, int height, const char* name) {
 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   
-  GLFWwindow *window = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
+  GLFWwindow *window = glfwCreateWindow(width, height, name, nullptr, nullptr);
   if (!window) {
     LoggerService::Error("Failed To Create Window");
   }
