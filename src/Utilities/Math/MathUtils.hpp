@@ -1,5 +1,4 @@
 #pragma once
-#include <numbers>
 
 namespace Math {
 constexpr float EPSILONF = 1e-6f;

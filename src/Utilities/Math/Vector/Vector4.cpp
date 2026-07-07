@@ -2,9 +2,8 @@
 #include <cmath>
 #include <ostream>
 
-
-Vector4::Vector4(){}
-Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+Vector4::Vector4() {}
+Vector4::Vector4(const float x, const float y, const float z, const float w) : x(x), y(y), z(z), w(w) {}
 
 //?Operators
 
@@ -16,22 +15,22 @@ Vector4 &Vector4::operator+=(const Vector4 &vec4) { return *this = *this + vec4;
 Vector4 &Vector4::operator-=(const Vector4 &vec4) { return *this = *this - vec4; }
 
 //*Scalars
-Vector4 Vector4::operator+(float scalar) const { return {x + scalar, y + scalar, z + scalar, w + scalar}; }
-Vector4 Vector4::operator-(float scalar) const { return {x - scalar, y - scalar, z - scalar, w - scalar}; }
-Vector4 Vector4::operator*(float scalar) const { return {x * scalar, y * scalar, z * scalar, w * scalar}; }
-Vector4 Vector4::operator/(float scalar) const { return {x / scalar, y / scalar, z / scalar, w / scalar}; }
+Vector4 Vector4::operator+(const float scalar) const { return {x + scalar, y + scalar, z + scalar, w + scalar}; }
+Vector4 Vector4::operator-(const float scalar) const { return {x - scalar, y - scalar, z - scalar, w - scalar}; }
+Vector4 Vector4::operator*(const float scalar) const { return {x * scalar, y * scalar, z * scalar, w * scalar}; }
+Vector4 Vector4::operator/(const float scalar) const { return {x / scalar, y / scalar, z / scalar, w / scalar}; }
 
-Vector4 &Vector4::operator+=(float scalar) { return *this = *this + scalar; }
-Vector4 &Vector4::operator-=(float scalar) { return *this = *this - scalar; }
-Vector4 &Vector4::operator*=(float scalar) { return *this = *this * scalar; }
-Vector4 &Vector4::operator/=(float scalar) { return *this = *this / scalar; }
+Vector4 &Vector4::operator+=(const float scalar) { return *this = *this + scalar; }
+Vector4 &Vector4::operator-=(const float scalar) { return *this = *this - scalar; }
+Vector4 &Vector4::operator*=(const float scalar) { return *this = *this * scalar; }
+Vector4 &Vector4::operator/=(const float scalar) { return *this = *this / scalar; }
 
-Vector4 operator+(float scalar, const Vector4 &vec4) { return vec4 + scalar; }
-Vector4 operator-(float scalar, const Vector4 &vec4) {
+Vector4 operator+(const float scalar, const Vector4 &vec4) { return vec4 + scalar; }
+Vector4 operator-(const float scalar, const Vector4 &vec4) {
   return {scalar - vec4.x, scalar - vec4.y, scalar - vec4.z, scalar - vec4.w};
 }
-Vector4 operator*(float scalar, const Vector4 &vec4) { return vec4 * scalar; }
-Vector4 operator/(float scalar, const Vector4 &vec4) {
+Vector4 operator*(const float scalar, const Vector4 &vec4) { return vec4 * scalar; }
+Vector4 operator/(const float scalar, const Vector4 &vec4) {
   return {scalar / vec4.x, scalar / vec4.y, scalar / vec4.z, scalar / vec4.w};
 }
 Vector4 Vector4::operator-() const { return -1 * *this; }
