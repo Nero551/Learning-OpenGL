@@ -1,9 +1,13 @@
-#include "Core.hpp"
-#include <GLFW/glfw3.h>
+#include "Engine.hpp"
 #include <OpenGL.hpp>
-#include <iostream>
 #include "Modules/Renderer/Renderer.hpp"
 #include "Modules/Input/Input.hpp"
+#include "Modules/Renderer/Material.hpp"
+#include "Modules/Renderer/Mesh.hpp"
+#include "Modules/Renderer/Shader.hpp"
+#include "Modules/Renderer/Texture.hpp"
+#include "Modules/Renderer/Vertex.hpp"
+#include "Utilities/Math/MathUtils.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 #include "World/World.hpp"
 
@@ -72,6 +76,7 @@ void Engine::EndFrame() {
 }
 
 void Engine::Render() { RendererModule.Render(); }
+
 void Engine::Update() {
 
   if (InputModule.IsKeyDown(Key::Escape)) {

@@ -1,6 +1,5 @@
-#include "Core.hpp"
+#include "Engine.hpp"
 #include <OpenGL.hpp>
-#include <iostream>
 
 int main() {
 

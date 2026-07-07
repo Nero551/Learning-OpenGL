@@ -1,0 +1,142 @@
+{
+	"configurations" : 
+	[
+		{
+			"abstractTargets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Threads::Threads::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Threads__Threads-Debug-730d78e19d157b26d6fc.json",
+					"name" : "Threads::Threads",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "glfw::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-glfw-Debug-f8b92ba360bf28b0419b.json",
+					"name" : "glfw",
+					"projectIndex" : 0
+				}
+			],
+			"directories" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1
+					],
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"jsonFile" : "directory-.-Debug-9ad1a58d4644cf6543fa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "4.1.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "src/Core",
+					"jsonFile" : "directory-src.Core-Debug-1de71ee59df5d12e2e3e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "4.1.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/Core"
+				},
+				{
+					"build" : "src/Utilities",
+					"jsonFile" : "directory-src.Utilities-Debug-345505f200969786b871.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "4.1.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/Utilities"
+				},
+				{
+					"build" : "src/Modules",
+					"jsonFile" : "directory-src.Modules-Debug-c248652908a27267fb9a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "4.1.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/Modules"
+				},
+				{
+					"build" : "src/World",
+					"jsonFile" : "directory-src.World-Debug-ca89c9b295edbd034d0d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "4.1.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/World"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					],
+					"name" : "Engine",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Engine::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Engine-Debug-cc5451204cec81aae1b9.json",
+					"name" : "Engine",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/nero551/Main/Dev/PU Engine/build",
+		"source" : "/home/nero551/Main/Dev/PU Engine"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 9
+	}
+}

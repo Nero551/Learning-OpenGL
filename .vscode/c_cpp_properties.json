@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "name": "linux-gcc-x64",
+      "compilerPath": "/usr/bin/g++",
+      "compileCommands": "${workspaceFolder}/build-vscode/compile_commands.json",
+      "cStandard": "c17",
+      "cppStandard": "c++23",
+      "intelliSenseMode": "linux-gcc-x64",
+      "compilerArgs": []
+    }
+  ],
+  "version": 4
+}

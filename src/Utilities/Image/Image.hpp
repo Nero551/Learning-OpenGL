@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 struct Image {
@@ -7,10 +8,4 @@ struct Image {
   int Width = 0;
   int Height = 0;
   int NrChannels = 0;
-
-  Image(const Image &) = delete;
-  Image &operator=(const Image &) = delete;
-
-  Image(Image &&) noexcept;
-  Image &operator=(Image &&) noexcept;
 };
