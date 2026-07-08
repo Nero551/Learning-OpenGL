@@ -9,6 +9,7 @@ struct Engine {
   bool Running;
   double Time = 0;
   double DeltaTime = 0;
+
   Window window;
   ModuleStore ModuleStore;
   World world;
@@ -19,6 +20,7 @@ struct Engine {
 
   void BeginFrame();
   void EndFrame();
+
   void Update();
   void Render();
 

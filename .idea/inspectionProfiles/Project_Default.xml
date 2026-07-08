@@ -189,7 +189,7 @@
     <inspection_tool class="CppLocalVariableMightNotBeInitialized" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="CppLocalVariableWithNonTrivialDtorIsNeverUsed" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="CppLongFloat" enabled="true" level="WARNING" enabled_by_default="true" />
-    <inspection_tool class="CppMemberFunctionMayBeConst" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="CppMemberFunctionMayBeConst" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="CppMemberFunctionMayBeStatic" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="CppMemberInitializersOrder" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="CppMismatchedClassTags" enabled="true" level="WARNING" enabled_by_default="true" />

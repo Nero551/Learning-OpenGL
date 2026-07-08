@@ -6,8 +6,6 @@
 			"paths" : 
 			[
 				"/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cpp",
-				"/home/nero551/Main/Dev/PU Engine/src/Core/Module.cpp",
-				"/home/nero551/Main/Dev/PU Engine/src/Core/ModuleStore.cpp",
 				"/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp"
 			],
 			"recurse" : true

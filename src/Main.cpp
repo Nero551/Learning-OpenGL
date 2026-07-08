@@ -7,8 +7,6 @@ int main() {
   Engine engine;
   Engine::Instance = &engine;
 
-  glEnable(GL_DEPTH_TEST);
-
   engine.Start();
 
   while (engine.Running) {

@@ -1,4 +1,6 @@
 #pragma once
+
+#include "Core/Module.hpp"
 #include <OpenGL.hpp>
 
 enum class Key {
@@ -11,6 +13,6 @@ enum class Key {
   LeftShift = GLFW_KEY_LEFT_SHIFT,
 };
 
-struct Input {
+struct Input : Module {
   bool IsKeyDown(Key key);
 };

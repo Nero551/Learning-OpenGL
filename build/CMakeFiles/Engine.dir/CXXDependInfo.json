@@ -27,16 +27,6 @@
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cpp"
 		},
-		"CMakeFiles/Engine.dir/src/Core/Module.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/Module.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Core/ModuleStore.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Core/ModuleStore.cpp"
-		},
 		"CMakeFiles/Engine.dir/src/Core/Window.cpp.o" : 
 		{
 			"language" : "CXX",
