@@ -5,8 +5,6 @@
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Engine/src/Core/*.cpp")
 set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cpp"
-  "/home/nero551/Main/Dev/PU Engine/src/Core/Module.cpp"
-  "/home/nero551/Main/Dev/PU Engine/src/Core/ModuleStore.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

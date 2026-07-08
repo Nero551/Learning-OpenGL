@@ -7,6 +7,7 @@ struct Window {
 
   bool ShouldClose();
   void SwapBuffers();
+  void PollEvents();
   void Close();
 
   GLFWwindow *GetGlfwWindow();

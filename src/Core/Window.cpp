@@ -1,12 +1,12 @@
 #include "Window.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
-Window::Window(int width, int height, const char* name) {
+Window::Window(int width, int height, const char *name) {
 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  
+
   GLFWwindow *window = glfwCreateWindow(width, height, name, nullptr, nullptr);
   if (!window) {
     LoggerService::Error("Failed To Create Window");
@@ -28,7 +28,6 @@ Window::~Window() { glfwDestroyWindow(GlfwWindow); }
 GLFWwindow *Window::GetGlfwWindow() { return GlfwWindow; }
 bool Window::ShouldClose() { return glfwWindowShouldClose(GlfwWindow); }
 void Window::SwapBuffers() { glfwSwapBuffers(GlfwWindow); }
+void Window::PollEvents() { glfwPollEvents(); }
 
-void Window::Close() {
-  glfwSetWindowShouldClose(GlfwWindow, true);
-}
+void Window::Close() { glfwSetWindowShouldClose(GlfwWindow, true); }

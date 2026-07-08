@@ -19,18 +19,6 @@
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Core/Module.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Core/Module.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Core/Module.cpp\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/Core/Module.cpp",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Core/Module.cpp.o"
-},
-{
-  "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Core/ModuleStore.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Core/ModuleStore.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Core/ModuleStore.cpp\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/Core/ModuleStore.cpp",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Core/ModuleStore.cpp.o"
-},
-{
-  "directory": "/home/nero551/Main/Dev/PU Engine/build",
   "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Core/Window.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp\"",
   "file": "/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp",
   "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Core/Window.cpp.o"

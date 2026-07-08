@@ -238,4 +238,8 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Texture.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Mesh.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Vertex.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/OpenGL.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
+  /usr/include/GLFW/glfw3.h \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp
