@@ -227,4 +227,13 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector3.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector4.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Texture.hpp
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Texture.hpp \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/vector \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_uninitialized.h \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_vector.h \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_bvector.h \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/vector.tcc \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.hpp \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/istream.tcc

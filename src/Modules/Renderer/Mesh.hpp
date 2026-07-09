@@ -9,7 +9,7 @@ public:
   std::vector<Vertex> Vertices;
   std::vector<unsigned int> Indices;
 
-  Mesh(std::vector<Vertex> &vertices, std::vector<unsigned int> &indices);
+  Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
   void Draw();
 
 private:

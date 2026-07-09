@@ -1,7 +1,7 @@
 #include "Object.hpp"
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
-Object::Object(class Mesh mesh, struct Material material) : Material(material), Mesh(mesh) {}
+Object::Object(class Mesh &mesh, struct Material &material) : Material(material), Mesh(mesh) {}
 
 void Object::Draw(Matrix4 viewMatrix, Matrix4 projectionMatrix) {
   Material.Use();

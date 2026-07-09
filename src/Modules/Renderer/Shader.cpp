@@ -58,7 +58,7 @@ int Shader::GetUniformLocation(const std::string &name) {
 
 void Shader::CheckUniformExistence(const std::string &name, int location) {
   if (location == -1) {
-    LoggerService::Warning("Uniform Not Found: " + name);
+    // LoggerService::Warning("Uniform Not Found: " + name);
   }
 }
 

@@ -4,7 +4,8 @@
 #include <string>
 #include "Utilities/Image/Image.hpp"
 
-Texture::Texture(unsigned int unit, const std::string &imagePath) : Unit(unit) {
+Texture::Texture(const std::string &name, unsigned int unit, const std::string &imagePath) : Unit(unit) {
+  Name = name;
   glGenTextures(1, &Id);
   glActiveTexture(Unit);
   glBindTexture(GL_TEXTURE_2D, Id);

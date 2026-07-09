@@ -5,7 +5,7 @@
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
 struct Object {
-  Object(Mesh mesh, Material material);
+  Object(Mesh &mesh, Material &material);
   void Draw(Matrix4 viewMatrix, Matrix4 projectionMatrix);
 
   Material Material;

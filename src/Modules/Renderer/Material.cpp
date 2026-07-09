@@ -1,10 +1,16 @@
 #include "Material.hpp"
 
-Material::Material(class Shader shader, Texture texture) : Shader(shader), Texture0(texture) {}
+#include "Utilities/Services/LoggerService.hpp"
+
+Material::Material(const class Shader &shader) : Shader(shader) {}
 
 void Material::Use() {
   Shader.Use();
 
-  Shader.SetInt("uTexture0", Texture0.Unit);
-  Texture0.Bind();
+  for (Texture texture : Textures) {
+    Shader.SetInt(texture.Name, texture.Unit);
+    texture.Bind();
+  }
 }
+
+void Material::AssignTexture(const Texture &texture) { Textures.push_back(texture); }

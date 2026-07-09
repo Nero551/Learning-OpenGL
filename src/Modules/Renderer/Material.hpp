@@ -2,12 +2,15 @@
 
 #include "Shader.hpp"
 #include "Texture.hpp"
+#include <vector>
 
 struct Material {
   Shader Shader;
-  Texture Texture0;
+  std::vector<Texture> Textures;
 
-  Material(class Shader shader, Texture texture);
+  Material(const class Shader &shader);
+
+  void AssignTexture(const Texture &texture);
 
   void Use();
 };

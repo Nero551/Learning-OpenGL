@@ -50,14 +50,14 @@ void Engine::Start() {
     // bottom
     4, 5, 1, 1, 0, 4};
 
-  auto texture = Texture(0, "Assets/Images/ruby.png");
+  auto texture = Texture("uTexture0", 0, "Assets/Images/ruby.png");
   auto shader = Shader("Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
-  auto material = Material(shader, texture);
+
+  auto material = Material(shader);
+  material.AssignTexture(texture);
+
   auto mesh = Mesh(Vertices, Indices);
   auto object = Object(mesh, material);
-
-  // object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
-  object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
 
   ModuleStore.RendererModule.Objects.push_back(object);
   ModuleStore.InputModule.SetMouseMode(MouseMode::Disabled);
