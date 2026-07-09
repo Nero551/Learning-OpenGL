@@ -222,15 +222,16 @@ CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/monostate.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream_print.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Renderer.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/../Modules/Renderer/Renderer.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/vector \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_uninitialized.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_vector.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_bvector.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/vector.tcc \
   /home/nero551/Main/Dev/PU\ Engine/src/World/Object.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Material.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Shader.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Material.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Shader.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Resource.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/unordered_map \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unordered_map.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/hashtable.h \
@@ -242,11 +243,14 @@ CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Matrix/Matrix2.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector3.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector4.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Texture.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Mesh.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Vertex.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Texture.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Camera.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/World/World.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Entity.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Component.hpp \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/typeindex \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \

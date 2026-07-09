@@ -1,25 +1,36 @@
 #include "Engine.hpp"
 #include <OpenGL.hpp>
-#include "Modules/Renderer/Renderer.hpp"
+#include "../Modules/Renderer/Renderer.hpp"
 #include "Modules/Input/Input.hpp"
-#include "Modules/Renderer/Material.hpp"
-#include "Modules/Renderer/Mesh.hpp"
-#include "Modules/Renderer/Shader.hpp"
-#include "Modules/Renderer/Texture.hpp"
+#include "Modules/Renderer/Resources/Material.hpp"
+#include "Modules/Renderer/Resources/Mesh.hpp"
+#include "Modules/Renderer/Resources/Shader.hpp"
+#include "Modules/Renderer/Resources/Texture.hpp"
 #include "Modules/Renderer/Vertex.hpp"
-#include "Utilities/Math/MathUtils.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 #include "World/World.hpp"
 
 Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
 
+/*
+  ? engine owns Scenes, or world owns scenes, idc , scenes own entities, entities own components. system run on scene.
+  ? 5 things, Resources , Entities , Components , Systems, Utilities
+
+  ? Resources - things that don't really exist, shaders, textures , meshes, etc.
+  ? Entities - just ids and contain components.
+  ? Components - just data, no logic.
+  ? Systems - loop over entities in a scene and does logic on components.
+  ? Utilities - it's in the name.
+*/
+
 Engine *Engine::Instance = nullptr;
 
 void Engine::Start() {
+  World.Start();
   ModuleStore.RendererModule.Start();
   ModuleStore.InputModule.Start();
 
-  std::vector<Vertex> Vertices = {
+  std::vector Vertices = {
     // front face
     Vertex({-0.5, -0.5, 0.5, 1}, {1, 0, 0, 1}, {0, 0}), // 0
     Vertex({0.5, -0.5, 0.5, 1}, {1, 0, 1, 1}, {1, 0}),  // 1
@@ -61,40 +72,49 @@ void Engine::Start() {
 
   ModuleStore.RendererModule.Objects.push_back(object);
   ModuleStore.InputModule.SetMouseMode(MouseMode::Disabled);
+
+  auto entity = World.ActiveScene->CreateEntity<Entity>();
+  LoggerService::Info(entity.Id);
 }
+
+// TODO- first job, make camera an entity and system style
 
 constexpr float cameraSpeed = 5;
 
 void Engine::Update() {
+  World.Update();
   Time = glfwGetTime();
 
-  Camera.ComputeFront();
+  World.ActiveScene->ActiveCamera->ComputeFront();
   if (ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
     Running = false;
     window.Close();
   }
   if (ModuleStore.InputModule.IsKeyDown(Key::W)) {
-    Camera.Position += cameraSpeed * DeltaTime * Camera.Front;
+    World.ActiveScene->ActiveCamera->Position += cameraSpeed * DeltaTime * World.ActiveScene->ActiveCamera->Front;
   }
 
   if (ModuleStore.InputModule.IsKeyDown(Key::S)) {
-    Camera.Position -= cameraSpeed * DeltaTime * Camera.Front;
+    World.ActiveScene->ActiveCamera->Position -= cameraSpeed * DeltaTime * World.ActiveScene->ActiveCamera->Front;
   }
   if (ModuleStore.InputModule.IsKeyDown(Key::A)) {
-    Camera.Position += cameraSpeed * DeltaTime * Camera.GetRight();
+    World.ActiveScene->ActiveCamera->Position += cameraSpeed * DeltaTime * World.ActiveScene->ActiveCamera->GetRight();
   }
   if (ModuleStore.InputModule.IsKeyDown(Key::D)) {
-    Camera.Position -= cameraSpeed * DeltaTime * Camera.GetRight();
+    World.ActiveScene->ActiveCamera->Position -= cameraSpeed * DeltaTime * World.ActiveScene->ActiveCamera->GetRight();
   }
   if (ModuleStore.InputModule.IsKeyDown(Key::Space)) {
-    Camera.Position += cameraSpeed * DeltaTime * Vector3(0, 1, 0);
+    World.ActiveScene->ActiveCamera->Position += cameraSpeed * DeltaTime * Vector3(0, 1, 0);
   }
   if (ModuleStore.InputModule.IsKeyDown(Key::LeftShift)) {
-    Camera.Position -= cameraSpeed * DeltaTime * Vector3(0, 1, 0);
+    World.ActiveScene->ActiveCamera->Position -= cameraSpeed * DeltaTime * Vector3(0, 1, 0);
   }
 }
 
-void Engine::Stop() { glfwTerminate(); }
+void Engine::Stop() {
+  World.Stop();
+  glfwTerminate();
+}
 
 void Engine::Render() { ModuleStore.RendererModule.Render(); }
 

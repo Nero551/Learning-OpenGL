@@ -91,33 +91,33 @@
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o"
-},
-{
-  "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cpp\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cpp",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o"
-},
-{
-  "directory": "/home/nero551/Main/Dev/PU Engine/build",
   "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cpp\"",
   "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cpp",
   "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o"
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cpp\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cpp",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o"
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Material.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Material.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o"
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cpp\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cpp",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o"
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Mesh.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Mesh.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Shader.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Shader.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Texture.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Texture.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o"
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",

@@ -27,15 +27,15 @@ build CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o: dyndep
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o: dyndep
-
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o: dyndep
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o: dyndep
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o: dyndep
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o: dyndep
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o: dyndep
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o: dyndep
 

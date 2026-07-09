@@ -13,8 +13,7 @@ struct Engine {
 
   Window window;
   ModuleStore ModuleStore;
-  World world;
-  Camera Camera;
+  World World;
 
   Engine();
   void Start();

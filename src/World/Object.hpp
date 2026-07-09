@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Modules/Renderer/Material.hpp"
-#include "Modules/Renderer/Mesh.hpp"
+#include "Modules/Renderer/Resources/Material.hpp"
+#include "Modules/Renderer/Resources/Mesh.hpp"
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
 struct Object {

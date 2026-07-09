@@ -324,44 +324,6 @@ build CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o: CXX_COMPILER__Eng
   TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
   dyndep = CMakeFiles/Engine.dir/CXX.dd
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Material.cpp || cmake_object_order_depends_target_Engine
-  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi
-  FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
-  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
-  OBJ_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi.i
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Material.cpp | CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap
-  FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
-  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
-  OBJECT_DIR = CMakeFiles/Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/Modules/Renderer
-  TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
-  dyndep = CMakeFiles/Engine.dir/CXX.dd
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Mesh.cpp || cmake_object_order_depends_target_Engine
-  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.ddi
-  FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
-  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
-  OBJ_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.ddi.i
-
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Mesh.cpp | CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
-  CONFIG = Debug
-  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.modmap
-  FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
-  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
-  OBJECT_DIR = CMakeFiles/Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/Modules/Renderer
-  TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
-  dyndep = CMakeFiles/Engine.dir/CXX.dd
-
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Renderer.cpp || cmake_object_order_depends_target_Engine
   DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi.d
   DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi
@@ -381,41 +343,79 @@ build CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o: CXX_COMPILER__E
   TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
   dyndep = CMakeFiles/Engine.dir/CXX.dd
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Shader.cpp || cmake_object_order_depends_target_Engine
-  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Resources/Material.cpp || cmake_object_order_depends_target_Engine
+  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.ddi
   FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
   INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
-  OBJ_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi.i
+  OBJ_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.ddi.i
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Shader.cpp | CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Resources/Material.cpp | CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.modmap
+  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap
   FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
   INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
   OBJECT_DIR = CMakeFiles/Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/Modules/Renderer
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources
   TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
   dyndep = CMakeFiles/Engine.dir/CXX.dd
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Texture.cpp || cmake_object_order_depends_target_Engine
-  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Resources/Mesh.cpp || cmake_object_order_depends_target_Engine
+  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi
   FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
   INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
-  OBJ_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi.i
+  OBJ_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi.i
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Texture.cpp | CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Resources/Mesh.cpp | CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.modmap
+  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap
   FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
   INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
   OBJECT_DIR = CMakeFiles/Engine.dir
-  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/Modules/Renderer
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources
+  TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
+  dyndep = CMakeFiles/Engine.dir/CXX.dd
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Resources/Shader.cpp || cmake_object_order_depends_target_Engine
+  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.ddi
+  FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
+  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
+  OBJ_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.ddi.i
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Resources/Shader.cpp | CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap
+  FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
+  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources
+  TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
+  dyndep = CMakeFiles/Engine.dir/CXX.dd
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.ddi: CXX_SCAN__Engine_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Resources/Texture.cpp || cmake_object_order_depends_target_Engine
+  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.ddi
+  FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
+  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
+  OBJ_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.ddi.i
+
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o: CXX_COMPILER__Engine_scanned_Debug /home/nero551/Main/Dev/PU$ Engine/src/Modules/Renderer/Resources/Texture.cpp | CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap || cmake_object_order_depends_target_Engine CMakeFiles/Engine.dir/CXX.dd
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap
+  FLAGS = -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic
+  INCLUDES = -I"/home/nero551/Main/Dev/PU Engine/External/include" -I"/home/nero551/Main/Dev/PU Engine/src"
+  OBJECT_DIR = CMakeFiles/Engine.dir
+  OBJECT_FILE_DIR = CMakeFiles/Engine.dir/src/Modules/Renderer/Resources
   TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
   dyndep = CMakeFiles/Engine.dir/CXX.dd
 
@@ -476,7 +476,7 @@ build CMakeFiles/Engine.dir/src/World/World.cpp.o: CXX_COMPILER__Engine_scanned_
   TARGET_SUPPORT_DIR = CMakeFiles/Engine.dir
   dyndep = CMakeFiles/Engine.dir/CXX.dd
 
-build CMakeFiles/Engine.dir/CXX.dd | CMakeFiles/Engine.dir/CXXModules.json CMakeFiles/Engine.dir/src/Main.cpp.o.modmap CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap CMakeFiles/Engine.dir/src/World/World.cpp.o.modmap: CXX_DYNDEP__Engine_Debug CMakeFiles/Engine.dir/src/Main.cpp.o.ddi CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.ddi CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.ddi CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi CMakeFiles/Engine.dir/src/World/World.cpp.o.ddi | /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/Engine.dir/CXXDependInfo.json
+build CMakeFiles/Engine.dir/CXX.dd | CMakeFiles/Engine.dir/CXXModules.json CMakeFiles/Engine.dir/src/Main.cpp.o.modmap CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap CMakeFiles/Engine.dir/src/World/World.cpp.o.modmap: CXX_DYNDEP__Engine_Debug CMakeFiles/Engine.dir/src/Main.cpp.o.ddi CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.ddi CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.ddi CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.ddi CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.ddi CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi CMakeFiles/Engine.dir/src/World/World.cpp.o.ddi | /home/nero551/Main/Dev/PU$ Engine/build/CMakeFiles/Engine.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -486,7 +486,7 @@ build CMakeFiles/Engine.dir/CXX.dd | CMakeFiles/Engine.dir/CXXModules.json CMake
 #############################################
 # Link the executable Engine
 
-build Engine: CXX_EXECUTABLE_LINKER__Engine_Debug CMakeFiles/Engine.dir/External/lib/glad.c.o CMakeFiles/Engine.dir/src/Main.cpp.o CMakeFiles/Engine.dir/src/Core/Engine.cpp.o CMakeFiles/Engine.dir/src/Core/Window.cpp.o CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o CMakeFiles/Engine.dir/src/World/Object.cpp.o CMakeFiles/Engine.dir/src/World/World.cpp.o | /usr/lib/libglfw.so.3.4
+build Engine: CXX_EXECUTABLE_LINKER__Engine_Debug CMakeFiles/Engine.dir/External/lib/glad.c.o CMakeFiles/Engine.dir/src/Main.cpp.o CMakeFiles/Engine.dir/src/Core/Engine.cpp.o CMakeFiles/Engine.dir/src/Core/Window.cpp.o CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o CMakeFiles/Engine.dir/src/World/Object.cpp.o CMakeFiles/Engine.dir/src/World/World.cpp.o | /usr/lib/libglfw.so.3.4
   CONFIG = Debug
   DEP_FILE = CMakeFiles/Engine.dir/link.d
   FLAGS = -g

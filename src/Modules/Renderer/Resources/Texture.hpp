@@ -1,8 +1,9 @@
 #pragma once
 
 #include <string>
+#include "Core/Resource.hpp"
 
-class Texture {
+class Texture : Resource {
 public:
   std::string Name;
   unsigned int Id;
