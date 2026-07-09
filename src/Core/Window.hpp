@@ -2,7 +2,10 @@
 #include <OpenGL.hpp>
 
 struct Window {
-  Window(int width, int height, const char* name);
+  int Width;
+  int Height;
+
+  Window(int width, int height, const char *name);
   ~Window();
 
   bool ShouldClose();

@@ -8,7 +8,10 @@
 #include "Modules/Renderer/Texture.hpp"
 #include "Modules/Renderer/Vertex.hpp"
 #include "Utilities/Math/MathUtils.hpp"
+#include "Utilities/Services/LoggerService.hpp"
 #include "World/World.hpp"
+
+#include <cmath>
 
 Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
 
@@ -16,6 +19,7 @@ Engine *Engine::Instance = nullptr;
 
 void Engine::Start() {
   ModuleStore.RendererModule.Start();
+  ModuleStore.InputModule.Start();
 
   std::vector<Vertex> Vertices = {
     // front face
@@ -53,24 +57,12 @@ void Engine::Start() {
   auto material = Material(shader, texture);
   auto mesh = Mesh(Vertices, Indices);
   auto object = Object(mesh, material);
+
   // object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
   object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
+
   ModuleStore.RendererModule.Objects.push_back(object);
-
-  camera.Position = {0, 0, 0};
-}
-
-void Engine::BeginFrame() {
-  window.PollEvents();
-  glClearColor(0.1, 0.15, 0.2, 1);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-void Engine::EndFrame() {
-  const float currentFrame = glfwGetTime();
-  DeltaTime = currentFrame - LastFrame;
-  LastFrame = currentFrame;
-
-  window.SwapBuffers();
+  ModuleStore.InputModule.SetMouseMode(MouseMode::Disabled);
 }
 
 constexpr float cameraSpeed = 5;
@@ -78,27 +70,45 @@ constexpr float cameraSpeed = 5;
 void Engine::Update() {
   Time = glfwGetTime();
 
+  Camera.ComputeFront();
   if (ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
     Running = false;
     window.Close();
   }
-
   if (ModuleStore.InputModule.IsKeyDown(Key::W)) {
-    camera.Position += cameraSpeed * DeltaTime * camera.Front;
+    Camera.Position += cameraSpeed * DeltaTime * Camera.Front;
   }
 
   if (ModuleStore.InputModule.IsKeyDown(Key::S)) {
-    camera.Position -= cameraSpeed * DeltaTime * camera.Front;
+    Camera.Position -= cameraSpeed * DeltaTime * Camera.Front;
   }
   if (ModuleStore.InputModule.IsKeyDown(Key::A)) {
-    camera.Position -= cameraSpeed * DeltaTime * camera.GetRight();
+    Camera.Position += cameraSpeed * DeltaTime * Camera.GetRight();
   }
-
   if (ModuleStore.InputModule.IsKeyDown(Key::D)) {
-    camera.Position += cameraSpeed * DeltaTime * camera.GetRight();
+    Camera.Position -= cameraSpeed * DeltaTime * Camera.GetRight();
+  }
+  if (ModuleStore.InputModule.IsKeyDown(Key::Space)) {
+    Camera.Position += cameraSpeed * DeltaTime * Vector3(0, 1, 0);
+  }
+  if (ModuleStore.InputModule.IsKeyDown(Key::LeftShift)) {
+    Camera.Position -= cameraSpeed * DeltaTime * Vector3(0, 1, 0);
   }
 }
 
 void Engine::Stop() { glfwTerminate(); }
 
 void Engine::Render() { ModuleStore.RendererModule.Render(); }
+
+void Engine::BeginFrame() {
+  window.PollEvents();
+  glClearColor(0.1, 0.15, 0.2, 1);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+void Engine::EndFrame() {
+  const float currentFrame = Time;
+  DeltaTime = currentFrame - LastFrame;
+  LastFrame = currentFrame;
+
+  window.SwapBuffers();
+}
