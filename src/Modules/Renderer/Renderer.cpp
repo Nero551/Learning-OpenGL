@@ -8,7 +8,7 @@ void Renderer::Update(double dt) {}
 
 void Renderer::Render() {
   for (Object object : Objects) {
-    object.Draw(Engine::Instance->camera.GetViewMatrix(), Engine::Instance->camera.GetProjectionMatrix());
+    object.Draw(Engine::Instance->Camera.GetViewMatrix(), Engine::Instance->Camera.GetProjectionMatrix());
   }
 }
 

@@ -1,8 +1,11 @@
 #include "Window.hpp"
+
+#include "Engine.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
 Window::Window(int width, int height, const char *name) {
-
+  Width = width;
+  Height = height;
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -18,7 +21,11 @@ Window::Window(int width, int height, const char *name) {
   }
 
   glViewport(0, 0, width, height);
-  glfwSetFramebufferSizeCallback(window, [](GLFWwindow *, int width, int height) { glViewport(0, 0, width, height); });
+  glfwSetFramebufferSizeCallback(window, [](GLFWwindow *, int width, int height) {
+    glViewport(0, 0, width, height);
+    Engine::Instance->window.Width = width;
+    Engine::Instance->window.Height = height;
+  });
   GlfwWindow = window;
   glEnable(GL_DEPTH_TEST);
 }

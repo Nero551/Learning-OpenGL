@@ -1,29 +1,21 @@
 #pragma once
 
+#include "Keys.hpp"
 #include "Core/Module.hpp"
-#include <OpenGL.hpp>
+#include "Utilities/Math/Vector/Vector2.hpp"
 
-enum class Key {
-  A = GLFW_KEY_A,
-  B = GLFW_KEY_B,
-  C = GLFW_KEY_C,
-  W = GLFW_KEY_W,
-  S = GLFW_KEY_S,
-  D = GLFW_KEY_D,
-  E = GLFW_KEY_E,
-  Q = GLFW_KEY_Q,
-  R = GLFW_KEY_R,
-  T = GLFW_KEY_T,
-  Y = GLFW_KEY_Y,
-  U = GLFW_KEY_U,
-  I = GLFW_KEY_I,
-  O = GLFW_KEY_O,
-  P = GLFW_KEY_P,
-  Escape = GLFW_KEY_ESCAPE,
-  Space = GLFW_KEY_SPACE,
-  LeftShift = GLFW_KEY_LEFT_SHIFT,
+enum class MouseMode {
+  Normal = GLFW_CURSOR_NORMAL,
+  Hidden = GLFW_CURSOR_HIDDEN,
+  Disabled = GLFW_CURSOR_DISABLED,
+  Captured = GLFW_CURSOR_CAPTURED
 };
 
 struct Input : Module {
+  MouseMode MouseMode = MouseMode::Normal;
+  Vector2 MousePosition = Vector2::Zero;
   bool IsKeyDown(Key key);
+  void SetMouseMode(enum MouseMode mode);
+
+  void Start() override;
 };
