@@ -8,7 +8,6 @@
 #include "Modules/Renderer/Texture.hpp"
 #include "Modules/Renderer/Vertex.hpp"
 #include "Utilities/Math/MathUtils.hpp"
-#include "Utilities/Services/LoggerService.hpp"
 #include "World/World.hpp"
 
 Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
@@ -49,17 +48,16 @@ void Engine::Start() {
     // bottom
     4, 5, 1, 1, 0, 4};
 
-  Texture texture = Texture(0, "Assets/Images/ruby.png");
-  Shader shader = Shader("Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
-  Material material = Material(shader, texture);
-  Mesh mesh(Vertices, Indices);
-  Object object(mesh, material);
+  auto texture = Texture(0, "Assets/Images/ruby.png");
+  auto shader = Shader("Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
+  auto material = Material(shader, texture);
+  auto mesh = Mesh(Vertices, Indices);
+  auto object = Object(mesh, material);
   // object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
   object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
   ModuleStore.RendererModule.Objects.push_back(object);
 
-  camera.Position = {0, 0, -3};
-  camera.Target = {0, 0, 0};
+  camera.Position = {0, 0, 0};
 }
 
 void Engine::BeginFrame() {
@@ -67,23 +65,37 @@ void Engine::BeginFrame() {
   glClearColor(0.1, 0.15, 0.2, 1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
-
 void Engine::EndFrame() {
-  float currentFrame = glfwGetTime();
+  const float currentFrame = glfwGetTime();
   DeltaTime = currentFrame - LastFrame;
   LastFrame = currentFrame;
 
   window.SwapBuffers();
 }
 
+constexpr float cameraSpeed = 5;
+
 void Engine::Update() {
+  Time = glfwGetTime();
+
   if (ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
     Running = false;
     window.Close();
   }
 
   if (ModuleStore.InputModule.IsKeyDown(Key::W)) {
-    LoggerService::Info("Nice");
+    camera.Position += cameraSpeed * DeltaTime * camera.Front;
+  }
+
+  if (ModuleStore.InputModule.IsKeyDown(Key::S)) {
+    camera.Position -= cameraSpeed * DeltaTime * camera.Front;
+  }
+  if (ModuleStore.InputModule.IsKeyDown(Key::A)) {
+    camera.Position -= cameraSpeed * DeltaTime * camera.GetRight();
+  }
+
+  if (ModuleStore.InputModule.IsKeyDown(Key::D)) {
+    camera.Position += cameraSpeed * DeltaTime * camera.GetRight();
   }
 }
 

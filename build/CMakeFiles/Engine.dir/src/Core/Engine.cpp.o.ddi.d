@@ -246,8 +246,4 @@ CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Camera.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/World/World.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/istream.tcc
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp
