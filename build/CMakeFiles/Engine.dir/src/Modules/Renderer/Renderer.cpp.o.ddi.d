@@ -242,4 +242,10 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
   /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
   /usr/include/GLFW/glfw3.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Engine.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/ModuleStore.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Input/Input.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Camera.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/World/World.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp

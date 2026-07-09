@@ -244,4 +244,5 @@ CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Mesh.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Vertex.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Camera.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/World/World.hpp
