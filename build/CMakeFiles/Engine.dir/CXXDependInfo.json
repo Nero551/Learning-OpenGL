@@ -42,6 +42,11 @@
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Input/Input.cpp"
 		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Camera.cpp"
+		},
 		"CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o" : 
 		{
 			"language" : "CXX",

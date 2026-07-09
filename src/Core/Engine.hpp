@@ -1,6 +1,7 @@
 #pragma once
 #include "ModuleStore.hpp"
 #include "Window.hpp"
+#include "Modules/Renderer/Camera.hpp"
 #include "World/World.hpp"
 
 struct Engine {
@@ -13,6 +14,7 @@ struct Engine {
   Window window;
   ModuleStore ModuleStore;
   World world;
+  Camera camera;
 
   Engine();
   void Start();

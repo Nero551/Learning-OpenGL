@@ -85,6 +85,12 @@
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Camera.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Camera.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o"
+},
+{
+  "directory": "/home/nero551/Main/Dev/PU Engine/build",
   "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp\"",
   "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp",
   "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o"
