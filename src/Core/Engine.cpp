@@ -11,8 +11,6 @@
 #include "Utilities/Services/LoggerService.hpp"
 #include "World/World.hpp"
 
-#include <cmath>
-
 Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
 
 Engine *Engine::Instance = nullptr;
