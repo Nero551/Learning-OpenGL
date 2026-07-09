@@ -72,9 +72,6 @@ void Engine::Start() {
 
   ModuleStore.RendererModule.Objects.push_back(object);
   ModuleStore.InputModule.SetMouseMode(MouseMode::Disabled);
-
-  auto entity = World.ActiveScene->CreateEntity<Entity>();
-  LoggerService::Info(entity.Id);
 }
 
 // TODO- first job, make camera an entity and system style
@@ -82,8 +79,8 @@ void Engine::Start() {
 constexpr float cameraSpeed = 5;
 
 void Engine::Update() {
-  World.Update();
   Time = glfwGetTime();
+  World.Update();
 
   World.ActiveScene->ActiveCamera->ComputeFront();
   if (ModuleStore.InputModule.IsKeyDown(Key::Escape)) {

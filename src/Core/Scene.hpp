@@ -7,6 +7,7 @@ concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
   Camera *ActiveCamera;
+  Camera camera;
   std::unordered_map<unsigned int, Entity> Entities;
 
   template <EntityType T> T CreateEntity() {

@@ -24,3 +24,10 @@
 - Coordinate systems
 
 ![Textured Quad](Docs/Screenshots/Textured%20Quad.png)
+
+### Week 3
+
+- Camera
+- Building ECS-style framework
+
+![3D Cube](Docs/Screenshots/3D%20Cube.png)
