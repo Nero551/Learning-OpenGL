@@ -1,10 +1,12 @@
 #pragma once
 
+#include "Core/Resource.hpp"
+
 #include <string>
 #include <unordered_map>
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
-class Shader {
+class Shader : Resource {
 public:
   unsigned int Id;
 

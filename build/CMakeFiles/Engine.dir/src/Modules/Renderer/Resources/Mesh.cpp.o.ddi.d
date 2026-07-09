@@ -1,15 +1,32 @@
-CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Renderer.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Renderer.hpp \
+CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi: \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.cpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/OpenGL.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
+  /usr/lib/clang/22/include/stdint.h /usr/include/stdint.h \
+  /usr/include/bits/libc-header-start.h /usr/include/features.h \
+  /usr/include/features-time64.h /usr/include/bits/wordsize.h \
+  /usr/include/bits/timesize.h /usr/include/stdc-predef.h \
+  /usr/include/sys/cdefs.h /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+  /usr/include/bits/time64.h /usr/include/bits/wchar.h \
+  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
+  /usr/include/bits/stdint-least.h /usr/include/GLFW/glfw3.h \
+  /usr/lib/clang/22/include/stddef.h \
+  /usr/lib/clang/22/include/__stddef_header_macro.h \
+  /usr/lib/clang/22/include/__stddef_ptrdiff_t.h \
+  /usr/lib/clang/22/include/__stddef_size_t.h \
+  /usr/lib/clang/22/include/__stddef_wchar_t.h \
+  /usr/lib/clang/22/include/__stddef_null.h \
+  /usr/lib/clang/22/include/__stddef_nullptr_t.h \
+  /usr/lib/clang/22/include/__stddef_max_align_t.h \
+  /usr/lib/clang/22/include/__stddef_offsetof.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Renderer.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/vector \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/requires_hosted.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/os_defines.h \
-  /usr/include/features.h /usr/include/features-time64.h \
-  /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
-  /usr/include/stdc-predef.h /usr/include/sys/cdefs.h \
-  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
-  /usr/include/gnu/stubs-64.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/cpu_defines.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/pstl/pstl_config.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_algobase.h \
@@ -68,15 +85,6 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/vector.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/memory_resource.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/cstddef \
-  /usr/lib/clang/22/include/stddef.h \
-  /usr/lib/clang/22/include/__stddef_header_macro.h \
-  /usr/lib/clang/22/include/__stddef_ptrdiff_t.h \
-  /usr/lib/clang/22/include/__stddef_size_t.h \
-  /usr/lib/clang/22/include/__stddef_wchar_t.h \
-  /usr/lib/clang/22/include/__stddef_null.h \
-  /usr/lib/clang/22/include/__stddef_nullptr_t.h \
-  /usr/lib/clang/22/include/__stddef_max_align_t.h \
-  /usr/lib/clang/22/include/__stddef_offsetof.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/uses_allocator.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/uses_allocator_args.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tuple \
@@ -91,12 +99,10 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/char_traits.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/postypes.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/cwchar \
-  /usr/include/wchar.h /usr/include/bits/libc-header-start.h \
-  /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
-  /usr/lib/clang/22/include/stdarg.h \
+  /usr/include/wchar.h /usr/include/bits/floatn.h \
+  /usr/include/bits/floatn-common.h /usr/lib/clang/22/include/stdarg.h \
   /usr/lib/clang/22/include/__stdarg___gnuc_va_list.h \
-  /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
-  /usr/include/bits/types/mbstate_t.h \
+  /usr/include/bits/types/wint_t.h /usr/include/bits/types/mbstate_t.h \
   /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
   /usr/include/bits/types/FILE.h /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/__locale_t.h \
@@ -106,9 +112,8 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /usr/include/locale.h /usr/include/bits/locale.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iosfwd \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/cctype \
-  /usr/include/ctype.h /usr/include/bits/types.h \
-  /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
-  /usr/include/bits/endian.h /usr/include/bits/endianness.h \
+  /usr/include/ctype.h /usr/include/bits/endian.h \
+  /usr/include/bits/endianness.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream_insert.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/cxxabi_forced.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/basic_string.h \
@@ -128,10 +133,9 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
   /usr/include/bits/types/clock_t.h /usr/include/bits/types/clockid_t.h \
   /usr/include/bits/types/time_t.h /usr/include/bits/types/timer_t.h \
-  /usr/include/bits/stdint-intn.h /usr/include/endian.h \
-  /usr/include/bits/byteswap.h /usr/include/bits/uintn-identity.h \
-  /usr/include/sys/select.h /usr/include/bits/select.h \
-  /usr/include/bits/types/sigset_t.h \
+  /usr/include/endian.h /usr/include/bits/byteswap.h \
+  /usr/include/bits/uintn-identity.h /usr/include/sys/select.h \
+  /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/__sigset_t.h \
   /usr/include/bits/types/struct_timeval.h \
   /usr/include/bits/types/struct_timespec.h \
@@ -195,8 +199,6 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unicode.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/array \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/cstdint \
-  /usr/lib/clang/22/include/stdint.h /usr/include/stdint.h \
-  /usr/include/bits/stdint-uintn.h /usr/include/bits/stdint-least.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_algo.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/algorithmfwd.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_heap.h \
@@ -238,18 +240,4 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector4.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Texture.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Engine.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/ModuleStore.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Input/Input.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Input/Keys.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/OpenGL.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
-  /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
-  /usr/include/GLFW/glfw3.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Camera.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/World/World.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Entity.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Component.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/typeindex
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp

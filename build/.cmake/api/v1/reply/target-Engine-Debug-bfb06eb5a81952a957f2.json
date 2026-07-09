@@ -374,31 +374,31 @@
 		{
 			"backtrace" : 10,
 			"compileGroupIndex" : 1,
-			"path" : "src/Modules/Renderer/Material.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 10,
-			"compileGroupIndex" : 1,
-			"path" : "src/Modules/Renderer/Mesh.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 10,
-			"compileGroupIndex" : 1,
 			"path" : "src/Modules/Renderer/Renderer.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 10,
 			"compileGroupIndex" : 1,
-			"path" : "src/Modules/Renderer/Shader.cpp",
+			"path" : "src/Modules/Renderer/Resources/Material.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 10,
 			"compileGroupIndex" : 1,
-			"path" : "src/Modules/Renderer/Texture.cpp",
+			"path" : "src/Modules/Renderer/Resources/Mesh.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 10,
+			"compileGroupIndex" : 1,
+			"path" : "src/Modules/Renderer/Resources/Shader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 10,
+			"compileGroupIndex" : 1,
+			"path" : "src/Modules/Renderer/Resources/Texture.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

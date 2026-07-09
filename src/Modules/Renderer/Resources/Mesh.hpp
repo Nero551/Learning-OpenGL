@@ -1,9 +1,10 @@
 #pragma once
-#include "Vertex.hpp"
+#include "../Vertex.hpp"
+#include "Core/Resource.hpp"
 
 #include <vector>
 
-class Mesh {
+class Mesh : Resource {
 public:
   unsigned int Id;
   std::vector<Vertex> Vertices;

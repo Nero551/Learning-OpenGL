@@ -47,30 +47,30 @@
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Camera.cpp"
 		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Material.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Mesh.cpp"
-		},
 		"CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o" : 
 		{
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cpp"
 		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o" : 
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Shader.cpp"
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Material.cpp"
 		},
-		"CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o" : 
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Texture.cpp"
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Mesh.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Shader.cpp"
+		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Texture.cpp"
 		},
 		"CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o" : 
 		{

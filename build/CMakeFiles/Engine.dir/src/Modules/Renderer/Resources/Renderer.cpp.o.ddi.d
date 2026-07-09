@@ -1,6 +1,6 @@
-CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Renderer.cpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Renderer.hpp \
+CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Renderer.cpp.o.ddi: \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Renderer.cpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Renderer.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/vector \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/requires_hosted.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
@@ -85,7 +85,6 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/World/Object.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Material.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Shader.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Resource.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/string \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stringfwd.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/char_traits.h \

@@ -2,9 +2,11 @@
 
 #include "Shader.hpp"
 #include "Texture.hpp"
+#include "Core/Resource.hpp"
+
 #include <vector>
 
-struct Material {
+struct Material : Resource {
   Shader Shader;
   std::vector<Texture> Textures;
 

@@ -1,27 +1,16 @@
 #pragma once
-#include "Entity.hpp"
-#include <unordered_map>
-#include <concepts>
-
-template <typename T>
-concept EntityType = std::derived_from<T, Entity>;
+#include "Core/Scene.hpp"
+#include <memory>
+#include <vector>
 
 struct World {
-  // TODO- this guy should own runtime world state (stuff that exist).
-  std::unordered_map<unsigned int, Entity> Entities;
+  Scene *ActiveScene = nullptr;
+  std::vector<std::unique_ptr<Scene>> Scenes;
 
-  template <EntityType T> void CreateEntity() {
-    if (id >= max) {
-      return;
-    }
+  Scene &CreateScene();
+  void SetActiveScene(Scene &scene);
 
-    T entity(id);
-    Entities.insert({id, entity});
-
-    id++;
-  }
-
-private:
-  unsigned int id = 0;
-  unsigned int max = 10000;
+  void Start();
+  void Update();
+  void Stop();
 };
