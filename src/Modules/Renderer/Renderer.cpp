@@ -2,7 +2,7 @@
 #include "OpenGL.hpp"
 #include "Core/Engine.hpp"
 
-void Renderer::Start() { glEnable(GL_DEPTH_TEST); }
+void Renderer::Start() {}
 
 void Renderer::Update(double dt) {}
 
