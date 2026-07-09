@@ -7,15 +7,13 @@
 #include <cmath>
 
 Matrix4 Camera::GetViewMatrix() {
-  Matrix4 view = Matrix4::Identity;
-
-  // TODO- make a LookAt() method in Matrix4 , so i can do view.LookAt(Position, Target, Up)
-  view = Matrix4::LookAt(Position, Position + Front, GetUp());
-  return view;
+  return Matrix4::LookAt(Position, Position + Front, GetUp());
+  ;
 }
 
 Matrix4 Camera::GetProjectionMatrix() {
-  Matrix4 projection = Matrix4::Perspective(Math::DegToRad(FOV), 800.0f / 800.0f, 0.1, 100);
+  Matrix4 projection = Matrix4::Perspective(Math::DegToRad(FOV),
+    static_cast<float>(Engine::Instance->window.Width) / static_cast<float>(Engine::Instance->window.Height), 0.1, 100);
   return projection;
 }
 
@@ -23,6 +21,12 @@ Vector3 Camera::GetRight() { return Vector3(0, 1, 0).Cross(Front).Normalized(); 
 Vector3 Camera::GetUp() { return Front.Cross(GetRight()).Normalized(); }
 
 void Camera::ComputeFront() {
+  if (firstMouse) {
+    lastX = Engine::Instance->ModuleStore.InputModule.MousePosition.x;
+    lastY = Engine::Instance->ModuleStore.InputModule.MousePosition.y;
+    firstMouse = false;
+  }
+
   float xOffset = Engine::Instance->ModuleStore.InputModule.MousePosition.x - lastX;
   float yOffset = lastY - Engine::Instance->ModuleStore.InputModule.MousePosition.y;
   xOffset *= Sensitivity;

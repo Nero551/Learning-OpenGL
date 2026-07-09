@@ -4,7 +4,7 @@
 struct Camera {
 
   float Yaw = -90.0f;
-  float Pitch;
+  float Pitch = 0;
   float Sensitivity = 0.05f;
   float FOV = 45.0f;
   Vector3 Position;
@@ -17,6 +17,7 @@ struct Camera {
   void ComputeFront();
 
 private:
-  float lastX;
-  float lastY;
+  bool firstMouse = true;
+  float lastX = 800 / 2;
+  float lastY = 600 / 2;
 };
