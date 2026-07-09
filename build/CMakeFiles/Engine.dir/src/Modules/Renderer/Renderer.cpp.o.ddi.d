@@ -247,5 +247,4 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Input/Input.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Camera.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/World/World.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp
+  /home/nero551/Main/Dev/PU\ Engine/src/World/World.hpp

@@ -43,6 +43,7 @@ struct Matrix4 {
 
   static Matrix4 Orthographic(float left, float right, float bottom, float top, float near, float far);
   static Matrix4 Perspective(float fovRad, float aspectRatio, float near, float far);
+  static Matrix4 LookAt(const Vector3 pos, const Vector3 target, const Vector3 up);
 
   static const Matrix4 Zero;
   static const Matrix4 Identity;
