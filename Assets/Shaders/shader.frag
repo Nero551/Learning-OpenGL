@@ -1,17 +1,16 @@
 #version 330 core
+
 out vec4 FragColor;
 
-in vec4 vColor;
-in vec4 vPosition;
 in vec2 vUV;
 
-uniform sampler2D uTexture0;
-uniform sampler2D uTexture1;
-uniform sampler2D uTexture2;
-
-uniform float uTime;
+uniform sampler2D rubyTexture;
 
 void main()
 {
-    FragColor =  vColor + texture(uTexture0, vUV);
+    float dist = distance(vUV, vec2(0.5, 0.5));
+
+    float factor = 0.9 - smoothstep(0, 0.95, dist);
+
+    FragColor = vec4(vec3(factor), 1.0) + texture(rubyTexture, vUV);
 }
