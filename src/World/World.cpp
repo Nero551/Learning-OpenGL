@@ -9,6 +9,7 @@ void World::SetActiveScene(Scene &scene) { ActiveScene = &scene; }
 
 void World::Start() {
   Scene &scene = CreateScene();
+  // scene.ActiveCamera = scene.CreateEntity<Camera>();
   scene.ActiveCamera = &scene.camera;
   SetActiveScene(scene);
 

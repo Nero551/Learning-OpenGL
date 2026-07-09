@@ -9,16 +9,15 @@ concept ComponentType = std::derived_from<T, Component>;
 
 struct Entity {
   unsigned int Id;
+  Entity(const unsigned int id) : Id(id) { Entity::Initialize(); }
 
-  Entity(unsigned int id) : Id(id) {}
-
-  template <ComponentType T> T AddComponent() {
+  template <ComponentType T> T &AddComponent() {
     T component;
     Components.insert({std::type_index(typeid(T)), component});
-    return component;
+    return Components.at(component);
   }
 
-  template <ComponentType T> T GetComponent() {
+  template <ComponentType T> T &GetComponent() {
     auto component = Components.find(std::type_index(typeid(T)));
 
     if (component != Components.end()) {
@@ -34,6 +33,9 @@ struct Entity {
     }
     return false;
   }
+
+protected:
+  virtual void Initialize();
 
 private:
   std::unordered_map<std::type_index, Component> Components;
