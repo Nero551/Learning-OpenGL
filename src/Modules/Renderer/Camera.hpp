@@ -4,7 +4,6 @@
 
 struct Camera {
   Vector3 Position;
-  Vector3 Direction;
   Vector3 Target;
 
   Matrix4 GetViewMatrix();

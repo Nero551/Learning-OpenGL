@@ -1,9 +1,6 @@
 #include "Renderer.hpp"
 #include "OpenGL.hpp"
 #include "Core/Engine.hpp"
-#include "Utilities/Math/MathUtils.hpp"
-
-// TODO- view and projection should be owned by the camera.
 
 void Renderer::Start() { glEnable(GL_DEPTH_TEST); }
 

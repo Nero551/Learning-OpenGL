@@ -54,11 +54,11 @@ void Engine::Start() {
   Material material = Material(shader, texture);
   Mesh mesh(Vertices, Indices);
   Object object(mesh, material);
-  object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
+  // object.ModelMatrix = object.ModelMatrix.RotateX(Math::DegToRad(45));
   object.ModelMatrix = object.ModelMatrix.RotateY(Math::DegToRad(45));
   ModuleStore.RendererModule.Objects.push_back(object);
 
-  camera.Position = {0, 0, 3};
+  camera.Position = {0, 0, -3};
   camera.Target = {0, 0, 0};
 }
 
