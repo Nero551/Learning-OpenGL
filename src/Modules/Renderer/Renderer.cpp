@@ -1,5 +1,4 @@
 #include "Renderer.hpp"
-#include "OpenGL.hpp"
 #include "Core/Engine.hpp"
 
 void Renderer::Start() {}
