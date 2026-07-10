@@ -292,6 +292,7 @@ CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
   /usr/include/GLFW/glfw3.h \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Systems/CameraSystem.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Basis.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ranges \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iterator \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stream_iterator.h \

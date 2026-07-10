@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Core/Component.hpp"
-#include "Utilities/Math/Matrix/Matrix4.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"
-
 #include <cmath>
 
 struct TransformComponent : Component {
@@ -20,14 +18,14 @@ struct TransformComponent : Component {
     return modelMatrix;
   }
 
-  Vector3 GetRight() const { return GetForward().Cross(Vector3::Up).Normalized(); }
-  Vector3 GetUp() const { return GetRight().Cross(GetForward()).Normalized(); }
+  Vector3 GetRight() const { return Vector3::Up.Cross(GetForward()).Normalized(); }
+  Vector3 GetUp() const { return GetForward().Cross(GetRight()).Normalized(); }
 
   Vector3 GetForward() const {
     Vector3 direction;
-    direction.x = std::cos(EulerRotation.y) * std::cos(EulerRotation.x);
+    direction.x = std::sin(EulerRotation.y) * std::cos(EulerRotation.x);
     direction.y = std::sin(EulerRotation.x);
-    direction.z = std::sin(EulerRotation.y) * std::cos(EulerRotation.x);
+    direction.z = std::cos(EulerRotation.y) * std::cos(EulerRotation.x);
 
     return direction.Normalized();
   }

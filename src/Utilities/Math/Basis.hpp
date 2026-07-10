@@ -8,4 +8,5 @@ struct Basis {
   Vector3 Forward = Vector3::Forward;
 
   Matrix4 GetMatrix() const;
+  Matrix4 GetInverseMatrix() const;
 };
