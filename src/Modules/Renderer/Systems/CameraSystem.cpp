@@ -34,27 +34,27 @@ void CameraSystem::Update(double dt) {
     transform.EulerRotation.x = std::clamp(transform.EulerRotation.x, -maxPitch, maxPitch);
 
     if (inputModule.IsKeyDown(Key::W)) {
-      transform.Position += cameraSpeed * dt * transform.GetForward();
+      transform.Position += cameraComponent.Speed * dt * transform.GetForward();
     }
 
     if (inputModule.IsKeyDown(Key::S)) {
-      transform.Position -= cameraSpeed * dt * transform.GetForward();
+      transform.Position -= cameraComponent.Speed * dt * transform.GetForward();
     }
 
     if (inputModule.IsKeyDown(Key::A)) {
-      transform.Position -= cameraSpeed * dt * transform.GetRight();
+      transform.Position -= cameraComponent.Speed * dt * transform.GetRight();
     }
 
     if (inputModule.IsKeyDown(Key::D)) {
-      transform.Position += cameraSpeed * dt * transform.GetRight();
+      transform.Position += cameraComponent.Speed * dt * transform.GetRight();
     }
 
     if (inputModule.IsKeyDown(Key::Space)) {
-      transform.Position += cameraSpeed * dt * Vector3(0, 1, 0);
+      transform.Position += cameraComponent.Speed * dt * Vector3(0, 1, 0);
     }
 
     if (inputModule.IsKeyDown(Key::LeftShift)) {
-      transform.Position -= cameraSpeed * dt * Vector3(0, 1, 0);
+      transform.Position -= cameraComponent.Speed * dt * Vector3(0, 1, 0);
     }
   }
 }

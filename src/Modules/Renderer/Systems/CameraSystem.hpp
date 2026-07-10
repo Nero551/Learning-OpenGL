@@ -8,7 +8,6 @@ struct CameraSystem : System {
   Matrix4 GetViewMatrix();
 
 private:
-  const float cameraSpeed = 5;
   bool firstMouse = true;
   float lastX = 800 / 2;
   float lastY = 600 / 2;

@@ -10,6 +10,7 @@ struct CameraComponent : Component {
   float Near = 0.1f;
   float Far = 100.0f;
   float AspectRatio = 1.0f;
+  float Speed = 5.0f;
 
   Matrix4 GetProjectionMatrix() { return Matrix4::Perspective(Math::DegToRad(FOV), AspectRatio, Near, Far); }
 };
