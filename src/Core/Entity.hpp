@@ -3,7 +3,7 @@
 #include "Component.hpp"
 #include <concepts>
 #include <memory>
-#include <vector>
+#include <format>
 #include <typeindex>
 #include <unordered_map>
 
@@ -31,7 +31,7 @@ struct Entity {
   template <ComponentType T> T &GetComponent() {
     auto component = Components.find(typeid(T));
     if (component == Components.end()) {
-      throw std::runtime_error("No corresponding component.");
+      throw std::runtime_error(std::format("Component Not Found: {}", typeid(T).name()));
     }
     return static_cast<T &>((*component->second));
   }
