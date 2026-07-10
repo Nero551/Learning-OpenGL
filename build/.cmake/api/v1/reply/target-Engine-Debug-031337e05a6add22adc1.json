@@ -193,8 +193,7 @@
 				19,
 				20,
 				21,
-				22,
-				23
+				22
 			]
 		}
 	],
@@ -266,8 +265,7 @@
 				19,
 				20,
 				21,
-				22,
-				23
+				22
 			]
 		}
 	],
@@ -409,12 +407,6 @@
 			"backtrace" : 10,
 			"compileGroupIndex" : 1,
 			"path" : "src/Modules/Renderer/Vertex.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 10,
-			"compileGroupIndex" : 1,
-			"path" : "src/Modules/ResourceManager/ResourceManager.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

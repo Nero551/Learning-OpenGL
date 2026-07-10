@@ -1,5 +1,6 @@
 #pragma once
 #include "Module.hpp"
+#include "ResourceManager.hpp"
 #include "Window.hpp"
 #include "Core/World.hpp"
 
@@ -15,6 +16,7 @@ struct Engine {
 
   Window window;
   World World;
+  ResourceManager ResourceManager;
 
   Engine();
   void Start();

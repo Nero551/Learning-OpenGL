@@ -40,7 +40,6 @@ set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Texture.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Systems/CameraSystem.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp"
-  "/home/nero551/Main/Dev/PU Engine/src/Modules/ResourceManager/ResourceManager.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

@@ -8,7 +8,7 @@
 template <typename T>
 concept ResourceType = std::derived_from<T, Resource>;
 
-struct ResourceManager : Module {
+struct ResourceManager {
   std::unordered_map<std::string, std::unique_ptr<Resource>> Resources;
 
   template <ResourceType T, typename... Args> T &Load(const std::string &name, Args &&...args) {

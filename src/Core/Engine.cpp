@@ -8,7 +8,7 @@
 #include "Modules/Renderer/Resources/Texture.hpp"
 #include "Modules/Renderer/Vertex.hpp"
 #include "Core/World.hpp"
-#include "Modules/ResourceManager/ResourceManager.hpp"
+#include "Core/ResourceManager.hpp"
 
 #include <ranges>
 
@@ -31,7 +31,6 @@ Engine *Engine::Ins = nullptr;
 void Engine::AddModules() {
   AddModule<Renderer>();
   AddModule<Input>();
-  AddModule<ResourceManager>();
 }
 
 void Engine::Start() {

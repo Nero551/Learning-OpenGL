@@ -224,15 +224,8 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Engine.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Module.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/OpenGL.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
-  /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
-  /usr/include/GLFW/glfw3.h \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/World.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Scene.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Entity.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Component.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/ResourceManager.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Resource.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/memory \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_uninitialized.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_raw_storage_iter.h \
@@ -254,12 +247,21 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/indirect.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/pstl/glue_memory_defs.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/pstl/execution_defs.h \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/typeindex \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/unordered_map \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/unordered_map.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/hashtable.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/hashtable_policy.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/node_handle.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/OpenGL.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
+  /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
+  /usr/include/GLFW/glfw3.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/World.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Scene.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Entity.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Component.hpp \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/typeindex \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Entities/Camera.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/CameraComponent.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/TransformComponent.hpp \
