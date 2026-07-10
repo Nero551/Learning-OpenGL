@@ -1,9 +1,0 @@
-{
-  "revision": 0,
-  "rules": [
-    {
-      "primary-output": "CMakeFiles/Engine.dir/src/Modules/ResourceManager/ResourceManager.cpp.o"
-    }
-  ],
-  "version": 1
-}
