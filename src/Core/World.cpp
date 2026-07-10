@@ -22,10 +22,15 @@ void World::Start() {
   auto &resourceManager = Engine::Ins->ResourceManager;
 
   auto &texture = resourceManager.Load<Texture>("rubyTexture", 0, "Assets/Images/ruby.png");
+  auto &texture2 = resourceManager.Load<Texture>("skullTexture", 1 , "Assets/Images/skull.png");
   auto &shader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
   auto &material = resourceManager.Load<Material>("material");
   material.AssignShader(shader);
   material.AssignTexture(texture);
+  material.AssignTexture(texture2);
+
+  //TODO- go back to textures chapter. specifically the Texture Units part. it seems i forgot it completely
+
   auto &mesh = resourceManager.Load<Mesh>("mesh",
     std::vector<Vertex>{
       // front face

@@ -6,7 +6,7 @@
 
 Texture::Texture(const std::string &name, unsigned int unit, const std::string &imagePath) : Name(name), Unit(unit) {
   glGenTextures(1, &Id);
-  glActiveTexture(Unit);
+  glActiveTexture(GL_TEXTURE0 + Unit);
   glBindTexture(GL_TEXTURE_2D, Id);
 
   SetParameters();
@@ -15,11 +15,12 @@ Texture::Texture(const std::string &name, unsigned int unit, const std::string &
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.Width, image.Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.Data);
   glGenerateMipmap(GL_TEXTURE_2D);
 
+  glActiveTexture(0);
   glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Texture::Bind() {
-  glActiveTexture(Unit);
+  glActiveTexture(GL_TEXTURE0 + Unit);
   glBindTexture(GL_TEXTURE_2D, Id);
 }
 
