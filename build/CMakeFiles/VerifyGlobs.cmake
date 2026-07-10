@@ -66,6 +66,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Eng
 set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/FileSystem/FileSystem.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cpp"
+  "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Basis.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/MathUtils.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix2.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Matrix/Matrix3.cpp"

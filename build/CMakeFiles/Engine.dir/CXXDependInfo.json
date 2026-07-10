@@ -87,6 +87,11 @@
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Image/Image.cpp"
 		},
+		"CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Basis.cpp"
+		},
 		"CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o" : 
 		{
 			"language" : "CXX",

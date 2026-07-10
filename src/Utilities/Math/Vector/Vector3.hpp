@@ -15,6 +15,8 @@ struct Vector3 {
   float Dot(const Vector3 &vec3) const;
   Vector3 Cross(const Vector3 &vec3) const;
   float Distance(const Vector3 &vec3) const;
+  bool IsParallelTo(const Vector3 &vec3) const;
+  bool IsPerpendicularTo(const Vector3 &vec3) const;
 
   Vector3 operator+(const Vector3 &vec3) const;
   Vector3 operator-(const Vector3 &vec3) const;
@@ -40,6 +42,7 @@ struct Vector3 {
   static const Vector3 Zero;
   static const Vector3 One;
   static const Vector3 Up;
+  static const Vector3 Right;
   static const Vector3 Forward;
 };
 Vector3 operator+(float scalar, const Vector3 &vec3);

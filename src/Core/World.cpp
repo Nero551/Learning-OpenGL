@@ -3,8 +3,6 @@
 #include "Modules/Input/Keys.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 
-#include <cmath>
-
 Scene &World::CreateScene(const std::string &name) {
   std::unique_ptr<Scene> &scene = Scenes.emplace_back(std::make_unique<Scene>(name));
   return *scene;
@@ -19,6 +17,8 @@ void World::Start() {
   camera.GetComponent<CameraComponent>().AspectRatio = 800.0f / 600.0f;
   scene.SetActiveCamera(camera);
   SetActiveScene(scene);
+
+  //? Quick Test.
 }
 
 constexpr float cameraSpeed = 5;
@@ -27,7 +27,6 @@ float lastX = 800 / 2;
 float lastY = 600 / 2;
 
 void World::Update(double dt) {
-
   auto &inputModule = Engine::Instance->ModuleStore.InputModule;
   auto &camera = *ActiveScene->ActiveCamera;
   auto &transform = camera.GetComponent<TransformComponent>();
