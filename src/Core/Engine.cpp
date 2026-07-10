@@ -16,12 +16,13 @@ Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
 
 /*
   ? engine owns Scenes, or world owns scenes, idc , scenes own entities, entities own components. system run on scene.
-  ? 5 things, Resources , Entities , Components , Systems, Utilities
+  ? 6 things. Modules, Resources , Entities , Components , Systems, Utilities
 
+  ? Modules - big chunks of all the following grouped together. like renderer, input, physics, asset loading
   ? Resources - things that don't really exist, shaders, textures , meshes, etc.
   ? Entities - just ids and contain components.
   ? Components - just data, no logic.
-  ? Systems - loop over entities in a scene and does logic on components.
+  ? Systems - loop over entities in a scene and does logic on components. can do logic on its own as well.
   ? Utilities - it's in the name.
 */
 

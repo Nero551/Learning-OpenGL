@@ -231,26 +231,15 @@ Matrix4 Matrix4::Perspective(float fovRad, float aspectRatio, float near, float 
 }
 
 Matrix4 Matrix4::LookAt(const Vector3 pos, const Vector3 target, const Vector3 up) {
-  Matrix4 lookAtMatrix = Matrix4::Identity;
   Matrix4 trans = Matrix4::Identity;
   trans = trans.Translate(-pos);
 
-  Vector3 forward = (pos - target).Normalized();
+  Vector3 forward = (target - pos).Normalized();
   Vector3 right = up.Cross(forward).Normalized();
+  Vector3 upCorrect = forward.Cross(right);
 
-  lookAtMatrix.m[0][0] = right.x;
-  lookAtMatrix.m[0][1] = right.y;
-  lookAtMatrix.m[0][2] = right.z;
-
-  lookAtMatrix.m[1][0] = up.x;
-  lookAtMatrix.m[1][1] = up.y;
-  lookAtMatrix.m[1][2] = up.z;
-
-  lookAtMatrix.m[2][0] = forward.x;
-  lookAtMatrix.m[2][1] = forward.y;
-  lookAtMatrix.m[2][2] = forward.z;
-
-  return lookAtMatrix * trans;
+  Basis basis(right, upCorrect, -forward);
+  return basis.GetInverseMatrix() * trans;
 }
 
 float Matrix4::Determinant() const {

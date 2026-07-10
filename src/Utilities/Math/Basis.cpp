@@ -17,3 +17,5 @@ Matrix4 Basis::GetMatrix() const {
 
   return basisMatrix;
 }
+
+Matrix4 Basis::GetInverseMatrix() const { return GetMatrix().Transpose(); }
