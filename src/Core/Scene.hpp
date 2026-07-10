@@ -36,5 +36,4 @@ struct Scene {
 
 private:
   unsigned int id = 1;
-  unsigned int max = 10000;
 };

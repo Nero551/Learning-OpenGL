@@ -31,7 +31,7 @@ struct Entity {
   template <ComponentType T> T &GetComponent() {
     auto component = Components.find(typeid(T));
     if (component == Components.end()) {
-      throw std::runtime_error("No corresponding component");
+      throw std::runtime_error("No corresponding component.");
     }
     return static_cast<T &>((*component->second));
   }

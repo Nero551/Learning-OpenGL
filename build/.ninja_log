@@ -1,84 +1,84 @@
 # ninja log v7
-11	21	1783666301244049059	/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/cmake.verify_globs	db8b57e1b0e1a7f6
+13	20	1783668876682051261	/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/cmake.verify_globs	db8b57e1b0e1a7f6
 7	59	1783414006394703664	CMakeFiles/Engine.dir/src/Core/Module.cpp.o.ddi	ea0bd66f155137a5
 19	239	1783573216649513180	CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.ddi	bee13c13b8aa01b2
 6	61	1783414055217810667	CMakeFiles/Engine.dir/src/Core/Main.cpp.o.ddi	dee7cf2a957ea59e
 239	343	1783573216869511674	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.ddi	bd5155e5cfa7355c
-40	395	1783664460702260587	CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi	6527f633ca973a87
+9	149	1783668813526392002	CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi	6527f633ca973a87
 40	344	1783664460702803860	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.ddi	131396b56e75676b
 17	308	1783573216647937109	CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.ddi	f728c9c13f876c53
 18	414	1783573216648513186	CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.ddi	8d5a32b83ac6f68c
-40	352	1783664460702108844	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.ddi	b84f979f0971c11a
+9	146	1783668813526123155	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.ddi	b84f979f0971c11a
 309	468	1783573216939511195	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.ddi	7091dda97a52136c
-9	59	1783665770351029327	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi	186577399719044e
-340	461	1783664461001786597	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi	53bfd30ef2953228
-12	64	1783664818803525900	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.ddi	eedafa8b46abcfd7
+16	99	1783667004924714074	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi	186577399719044e
+11	135	1783668813527482483	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi	53bfd30ef2953228
+11	118	1783666301310637289	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.ddi	eedafa8b46abcfd7
 107	199	1783638950097459193	CMakeFiles/Engine.dir/src/World/World.cpp.o.ddi	17e79241b871981a
 104	199	1783592272159765200	CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.ddi	4ba87b9d2f79698e
 344	433	1783573216974510956	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.ddi	99a515252bd61c6
 95	180	1783592272150765263	CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.ddi	cea6666465777610
-344	503	1783664461005786568	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi	a5525367afae4f93
+11	111	1783668813528140159	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi	a5525367afae4f93
 146	250	1783591733348003923	CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.ddi	9746b5a7d99b52f1
 15	73	1783591854515686584	CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.ddi	d11dcd13d4c1caee
 571	652	1783573217201567929	CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.ddi	76467bb673016f17
-458	541	1783664461119785747	CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi	96326463c3a03975
+115	209	1783667005023574009	CMakeFiles/Engine.dir/src/World/Object.cpp.o.ddi	96326463c3a03975
 586	689	1783573217217763972	CMakeFiles/Engine.dir/External/lib/glad.c.o	8b7f40d4011764e1
-59	63	1783665770401028946	CMakeFiles/Engine.dir/CXX.dd	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/CXXModules.json	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap	a0d27dcc360dce51
+155	160	1783668813671481501	CMakeFiles/Engine.dir/CXX.dd	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/CXXModules.json	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap	23d09eaac7f820d7
 54	58	1783414121290134521	CMakeFiles/Engine.dir/src/Core/Main.cpp.o.modmap	9632c5e77d759d20
 100	105	1783422803765849787	CMakeFiles/Engine.dir/src/Core/Module.cpp.o.modmap	26a64c2688e18ed1
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap	a0d27dcc360dce51
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap	23d09eaac7f820d7
 73	78	1783595379254484254	CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o.modmap	8a5effd630e9af3
 73	78	1783595379254484254	CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o.modmap	8a5effd630e9af3
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap	a0d27dcc360dce51
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap	23d09eaac7f820d7
 73	78	1783595379254484254	CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o.modmap	8a5effd630e9af3
 73	78	1783595379254484254	CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o.modmap	8a5effd630e9af3
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap	a0d27dcc360dce51
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap	23d09eaac7f820d7
 199	214	1783638950188458403	CMakeFiles/Engine.dir/src/World/World.cpp.o.modmap	7094a1852d70450d
 370	393	1783414006757006112	CMakeFiles/Engine.dir/src/Core/Module.cpp.o	ad337b84db99743e
 689	792	1783573217319508595	CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o	b9d09399c5932cf8
 663	3157	1783573217293508773	CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o	d46e11afb6d27b5
 792	3497	1783573217422507891	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o	3d540b0a7cf4722e
 125	518	1783414055336171553	CMakeFiles/Engine.dir/src/Core/Main.cpp.o	fb2e846df558f10c
-63	1661	1783665770405711300	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o	7f62f2cbd29c40bd
-549	3092	1783664461211560221	CMakeFiles/Engine.dir/src/Core/Window.cpp.o	79ef8aea2e71e2ab
+219	2537	1783667005127062223	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o	7f62f2cbd29c40bd
+160	3158	1783668813677693556	CMakeFiles/Engine.dir/src/Core/Window.cpp.o	79ef8aea2e71e2ab
 551	2772	1783664461213857018	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o	6760513f410d807a
 3498	5712	1783573220128489377	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o	8abca668beea7630
-77	1591	1783664818868125414	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o	33d35df367a1ee3a
-549	3603	1783664461211199391	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o	7e7c4121ddbac395
+125	1948	1783666301424653497	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o	33d35df367a1ee3a
+160	3400	1783668813677544958	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o	7e7c4121ddbac395
 664	3816	1783573217294508766	CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o	aa52d16d984a2f54
 3035	5106	1783638953024433792	CMakeFiles/Engine.dir/src/World/World.cpp.o	9b6ef515f0049114
 3737	5963	1783573220367487742	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o	219f68a9a903717
-2948	5339	1783664463609767827	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o	2415b5fde7406c22
+161	3011	1783668813678363951	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o	2415b5fde7406c22
 2560	4221	1783592274615748155	CMakeFiles/Engine.dir/src/Modules/Renderer/Mesh.cpp.o	43f4952331c32a1e
 78	1634	1783591854578686139	CMakeFiles/Engine.dir/src/Modules/Renderer/Shader.cpp.o	e1f8f930fbad6ed8
 64	2590	1783591742530142966	CMakeFiles/Engine.dir/src/Modules/Renderer/Texture.cpp.o	798d5b50effe6dd6
-3092	5703	1783664463754766783	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o	c618af3ea17c5f51
+161	3145	1783668813678622554	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o	c618af3ea17c5f51
 120	2537	1783573250569890359	CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o	4529a61cccd80a81
 2519	4268	1783592274574748439	CMakeFiles/Engine.dir/src/Modules/Renderer/Material.cpp.o	183abf0ad0d966a5
-4918	6558	1783664465579753650	CMakeFiles/Engine.dir/src/World/Object.cpp.o	b377230a8c8f1158
-1661	1787	1783665772003016725	Engine	383dbf21752d82aa
-10	55	1783666301291048711	build.ninja	3beecfd3501f5047
-10	55	1783666301290048718	/home/nero551/Main/Dev/PU Engine/build/cmake_install.cmake	3beecfd3501f5047
-10	55	1783666301290048718	/home/nero551/Main/Dev/PU Engine/build/src/Core/cmake_install.cmake	3beecfd3501f5047
-10	55	1783666301291048711	/home/nero551/Main/Dev/PU Engine/build/src/Utilities/cmake_install.cmake	3beecfd3501f5047
-10	55	1783666301291048711	/home/nero551/Main/Dev/PU Engine/build/src/Modules/cmake_install.cmake	3beecfd3501f5047
-10	55	1783666301291048711	/home/nero551/Main/Dev/PU Engine/build/src/World/cmake_install.cmake	3beecfd3501f5047
-39	340	1783664460701788756	CMakeFiles/Engine.dir/src/Main.cpp.o.ddi	553ad6eb6d0c1473
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Main.cpp.o.modmap	a0d27dcc360dce51
-549	3336	1783664461210785092	CMakeFiles/Engine.dir/src/Main.cpp.o	61b985363ed746e5
+3136	4907	1783667008043855882	CMakeFiles/Engine.dir/src/World/Object.cpp.o	b377230a8c8f1158
+3613	3731	1783668817129457915	Engine	277d606016cb44d0
+21	75	1783668876712051056	build.ninja	3beecfd3501f5047
+21	75	1783668876711051062	/home/nero551/Main/Dev/PU Engine/build/cmake_install.cmake	3beecfd3501f5047
+21	75	1783668876711051062	/home/nero551/Main/Dev/PU Engine/build/src/Core/cmake_install.cmake	3beecfd3501f5047
+21	75	1783668876711051062	/home/nero551/Main/Dev/PU Engine/build/src/Utilities/cmake_install.cmake	3beecfd3501f5047
+21	75	1783668876711051062	/home/nero551/Main/Dev/PU Engine/build/src/Modules/cmake_install.cmake	3beecfd3501f5047
+21	75	1783668876711051062	/home/nero551/Main/Dev/PU Engine/build/src/World/cmake_install.cmake	3beecfd3501f5047
+8	155	1783668813525482497	CMakeFiles/Engine.dir/src/Main.cpp.o.ddi	553ad6eb6d0c1473
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Main.cpp.o.modmap	23d09eaac7f820d7
+160	3272	1783668813676481467	CMakeFiles/Engine.dir/src/Main.cpp.o	61b985363ed746e5
 18	233	1783422780688320610	CMakeFiles/Engine.dir/src/Core/ModuleStore.cpp.o.ddi	ff6d178a765bb024
 100	105	1783422803765849787	CMakeFiles/Engine.dir/src/Core/ModuleStore.cpp.o.modmap	26a64c2688e18ed1
 303	342	1783422780973111670	CMakeFiles/Engine.dir/src/Core/ModuleStore.cpp.o	db3621db493d00e9
@@ -90,59 +90,102 @@
 10	104	1783592272066837946	CMakeFiles/Engine.dir/src/Modules/AssetLoading/AssetLoading.cpp.o.ddi	16db37d14776fe8e
 72	76	1783592355474187590	CMakeFiles/Engine.dir/src/Modules/AssetLoading/AssetLoading.cpp.o.modmap	7eba5fcf5f0d67a9
 211	2612	1783592272266764458	CMakeFiles/Engine.dir/src/Modules/AssetLoading/AssetLoading.cpp.o	1b48832f6f325340
-352	458	1783664461013786510	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.ddi	ba93c39475bcf73a
+94	195	1783667005001687504	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.ddi	ba93c39475bcf73a
 118	227	1783597680916085344	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.ddi	5a492919f619efe8
-367	516	1783664461028786402	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi	94fa30662e22b634
+99	209	1783667005005878093	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi	94fa30662e22b634
 197	290	1783597419336814206	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Renderer.cpp.o.ddi	e8dc734d224b2613
-395	509	1783664461056786201	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.ddi	2655c6f29b34fcaa
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap	a0d27dcc360dce51
+115	210	1783667005021877976	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.ddi	2655c6f29b34fcaa
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap	23d09eaac7f820d7
 293	298	1783597419432813582	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Renderer.cpp.o.modmap	aaca5288509bcd0e
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap	a0d27dcc360dce51
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap	a0d27dcc360dce51
-3291	5388	1783664463952765358	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o	e367284fc660a6e0
-3336	5415	1783664463997765034	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o	306d3613de1fe77
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap	23d09eaac7f820d7
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap	23d09eaac7f820d7
+2843	4582	1783667007750858024	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o	e367284fc660a6e0
+2908	5042	1783667007815857548	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o	306d3613de1fe77
 2224	4087	1783597421364801043	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Renderer.cpp.o	2e7676ab5caa48f5
-3603	5449	1783664464264763113	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o	217bfe286e95c4b0
+2940	5067	1783667007847857314	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o	217bfe286e95c4b0
 2661	4077	1783597683459068277	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o	abce44c2bf6cf4f2
-23	87	1783665737686278888	CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi	a7b7bdddeac11c64
-59	63	1783665770401028946	CMakeFiles/Engine.dir/src/Core/World.cpp.o.modmap	a0d27dcc360dce51
-97	1991	1783665737760278321	CMakeFiles/Engine.dir/src/Core/World.cpp.o	376d33b94e671a89
-21	75	1783666301291048711	build.ninja	3beecfd3501f5047
-21	75	1783666301291048711	/home/nero551/Main/Dev/PU Engine/build/cmake_install.cmake	3beecfd3501f5047
-21	75	1783666301291048711	/home/nero551/Main/Dev/PU Engine/build/src/Core/cmake_install.cmake	3beecfd3501f5047
-21	75	1783666301291048711	/home/nero551/Main/Dev/PU Engine/build/src/Utilities/cmake_install.cmake	3beecfd3501f5047
-21	75	1783666301291048711	/home/nero551/Main/Dev/PU Engine/build/src/Modules/cmake_install.cmake	3beecfd3501f5047
-21	75	1783666301291048711	/home/nero551/Main/Dev/PU Engine/build/src/World/cmake_install.cmake	3beecfd3501f5047
-1	4	1783666301299048652	/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/cmake.verify_globs	db8b57e1b0e1a7f6
-10	107	1783666301308048585	CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o.ddi	27da724946529437
-11	107	1783666301309048578	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.ddi	186577399719044e
-11	118	1783666301310637289	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.ddi	eedafa8b46abcfd7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/CXX.dd	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/CXXModules.json	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Main.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Core/World.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap	23d09eaac7f820d7
-118	124	1783666301416047785	CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap	23d09eaac7f820d7
-125	1854	1783666301423047734	CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o	6e70290d49817c69
-125	1946	1783666301424387788	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o	7f62f2cbd29c40bd
-125	1948	1783666301424653497	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o	33d35df367a1ee3a
-1948	2098	1783666303246034236	Engine	277d606016cb44d0
+9	120	1783668813526500104	CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi	a7b7bdddeac11c64
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Core/World.cpp.o.modmap	23d09eaac7f820d7
+160	3613	1783668813677837163	CMakeFiles/Engine.dir/src/Core/World.cpp.o	376d33b94e671a89
+16	94	1783667004924593552	CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o.ddi	27da724946529437
+155	160	1783668813671481501	CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o.modmap	23d09eaac7f820d7
+218	2161	1783667005126739356	CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o	6e70290d49817c69
+20	57	1783668876712051056	build.ninja	3beecfd3501f5047
+20	57	1783668876712051056	/home/nero551/Main/Dev/PU Engine/build/cmake_install.cmake	3beecfd3501f5047
+20	57	1783668876712051056	/home/nero551/Main/Dev/PU Engine/build/src/Core/cmake_install.cmake	3beecfd3501f5047
+20	57	1783668876712051056	/home/nero551/Main/Dev/PU Engine/build/src/Utilities/cmake_install.cmake	3beecfd3501f5047
+20	57	1783668876712051056	/home/nero551/Main/Dev/PU Engine/build/src/Modules/cmake_install.cmake	3beecfd3501f5047
+20	57	1783668876712051056	/home/nero551/Main/Dev/PU Engine/build/src/World/cmake_install.cmake	3beecfd3501f5047
+1	4	1783668876720051001	/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/cmake.verify_globs	db8b57e1b0e1a7f6
+15	239	1783668876735413626	CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o.ddi	94c765b7ae5fb156
+15	239	1783668876734050906	CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi	a7b7bdddeac11c64
+239	243	1783668876958049375	CMakeFiles/Engine.dir/CXX.dd	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/CXXModules.json	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Main.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Core/World.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap	1c068e0938387f88
+239	243	1783668876958049375	CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap	1c068e0938387f88
+244	1937	1783668876964161235	CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o	8cd31c963c90dc88
+244	2201	1783668876963049340	CMakeFiles/Engine.dir/src/Core/World.cpp.o	376d33b94e671a89
+2201	2346	1783668878920035963	Engine	1c17ee6182056634
+15	23	1783669018209081769	/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/cmake.verify_globs	db8b57e1b0e1a7f6
+36	134	1783669018231483354	CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi	a7b7bdddeac11c64
+36	134	1783669018231599687	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.ddi	53bfd30ef2953228
+36	137	1783669018231347038	CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi	6527f633ca973a87
+35	139	1783669018229081632	CMakeFiles/Engine.dir/src/Main.cpp.o.ddi	553ad6eb6d0c1473
+38	145	1783669018232081611	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi	a5525367afae4f93
+36	147	1783669018230081625	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.ddi	b84f979f0971c11a
+134	230	1783669018328080952	CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o.ddi	94c765b7ae5fb156
+230	235	1783669018424080293	CMakeFiles/Engine.dir/CXX.dd	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/CXXModules.json	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Main.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Core/Window.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Core/World.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Math/Basis.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Math/MathUtils.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix2.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix3.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Math/Matrix/Matrix4.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector2.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector3.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o.modmap	1c068e0938387f88
+230	235	1783669018424080293	CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap	1c068e0938387f88
+236	3059	1783669018431116854	CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o	2415b5fde7406c22
+235	3209	1783669018430699456	CMakeFiles/Engine.dir/src/Core/Window.cpp.o	79ef8aea2e71e2ab
+235	3287	1783669018429379307	CMakeFiles/Engine.dir/src/Main.cpp.o	61b985363ed746e5
+236	3452	1783669018431241178	CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o	c618af3ea17c5f51
+236	3480	1783669018430944553	CMakeFiles/Engine.dir/src/Core/World.cpp.o	376d33b94e671a89
+235	3557	1783669018430576636	CMakeFiles/Engine.dir/src/Core/Engine.cpp.o	7e7c4121ddbac395
+3060	5042	1783669021254060867	CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o	8cd31c963c90dc88
+5042	5157	1783669023236047262	Engine	1c17ee6182056634

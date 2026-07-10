@@ -38,6 +38,7 @@ set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Mesh.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Shader.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Texture.cpp"
+  "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Systems/CameraSystem.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

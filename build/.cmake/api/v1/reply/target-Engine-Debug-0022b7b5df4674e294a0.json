@@ -203,7 +203,8 @@
 				19,
 				20,
 				21,
-				22
+				22,
+				23
 			]
 		}
 	],
@@ -275,7 +276,8 @@
 				19,
 				20,
 				21,
-				22
+				22,
+				23
 			]
 		}
 	],
@@ -405,6 +407,12 @@
 			"backtrace" : 10,
 			"compileGroupIndex" : 1,
 			"path" : "src/Modules/Renderer/Resources/Texture.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 10,
+			"compileGroupIndex" : 1,
+			"path" : "src/Modules/Renderer/Systems/CameraSystem.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

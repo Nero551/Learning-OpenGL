@@ -72,6 +72,11 @@
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Texture.cpp"
 		},
+		"CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Systems/CameraSystem.cpp"
+		},
 		"CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o" : 
 		{
 			"language" : "CXX",

@@ -173,16 +173,16 @@ Matrix4 Matrix4::RotateZ(float radian) const {
   return *this * rotationMatrix;
 }
 
-Matrix4 Matrix4::Rotate(const Vector3 &vec3) const {
+Matrix4 Matrix4::Rotate(const Vector3 &eulerRotation) const {
   Matrix4 rotationMatrix = Identity;
-  rotationMatrix = rotationMatrix.RotateZ(vec3.z);
-  rotationMatrix = rotationMatrix.RotateY(vec3.y);
-  rotationMatrix = rotationMatrix.RotateX(vec3.x);
+  rotationMatrix = rotationMatrix.RotateZ(eulerRotation.z);
+  rotationMatrix = rotationMatrix.RotateY(eulerRotation.y);
+  rotationMatrix = rotationMatrix.RotateX(eulerRotation.x);
 
   return *this * rotationMatrix;
 }
 
-Matrix4 Matrix4::RotateAxis(const Vector3 &axis, float radian) const {
+Matrix4 Matrix4::RotateAroundAxis(const Vector3 &axis, float radian) const {
   Matrix4 rotationMatrix = Identity;
   rotationMatrix = rotationMatrix.RotateZ(radian);
 
