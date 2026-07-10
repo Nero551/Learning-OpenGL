@@ -58,3 +58,16 @@ void CameraSystem::Update(double dt) {
     }
   }
 }
+
+Matrix4 CameraSystem::GetViewMatrix() {
+  auto camera = Engine::Ins->World.ActiveScene->ActiveCamera;
+  auto &transformComponent = camera->GetComponent<TransformComponent>();
+
+  Vector3 pos = transformComponent.Position;
+  Vector3 forward = transformComponent.GetForward();
+  Vector3 up = transformComponent.GetUp();
+
+  Matrix4 view = Matrix4::LookAt(pos, pos + forward, up);
+
+  return view;
+}

@@ -15,9 +15,13 @@ struct Entity {
 
   virtual ~Entity() {}
 
-  virtual void Initialize() {}
+  Entity() = default;
+  Entity(const Entity &) = delete;
+  Entity &operator=(const Entity &) = delete;
+  Entity(Entity &&) = default;
+  Entity &operator=(Entity &&) = default;
 
-  // TODO- rework how components are stored
+  virtual void Initialize() {}
 
   template <ComponentType T> T &AddComponent() {
     auto component = std::make_unique<T>();

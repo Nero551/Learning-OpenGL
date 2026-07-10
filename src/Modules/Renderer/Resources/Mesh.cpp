@@ -1,8 +1,8 @@
 #include <OpenGL.hpp>
 #include "../Renderer.hpp"
 
-Mesh::Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)
-    : Vertices(vertices), Indices(indices) {
+Mesh::Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)
+    : Name(name), Vertices(vertices), Indices(indices) {
 
   Id = CreateVAO();
   VBO = CreateVBO();

@@ -40,6 +40,7 @@ set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Texture.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Systems/CameraSystem.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp"
+  "/home/nero551/Main/Dev/PU Engine/src/Modules/ResourceManager/ResourceManager.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -75,32 +76,6 @@ set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector2.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cpp"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  set(NEW_ONLY ${NEW_GLOB})
-  set(OLD_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM NEW_ONLY ${OLD_GLOB})
-  list(REMOVE_ITEM OLD_ONLY ${NEW_GLOB})
-  if(NEW_ONLY)
-    message("The following files were added:")
-    foreach(VAR_FILE IN LISTS NEW_ONLY)
-      message("  +${VAR_FILE}")
-    endforeach()
-  endif()
-  if(OLD_ONLY)
-    message("The following files were removed:")
-    foreach(VAR_FILE IN LISTS OLD_ONLY)
-      message("  -${VAR_FILE}")
-    endforeach()
-  endif()
-  file(TOUCH_NOCREATE "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# WORLD_SOURCES at src/World/CMakeLists.txt:1 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Engine/src/World/*.cpp")
-set(OLD_GLOB
-  "/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

@@ -4,8 +4,7 @@
 		"/home/nero551/Main/Dev/PU Engine/build/cmake_install.cmake",
 		"/home/nero551/Main/Dev/PU Engine/build/src/Core/cmake_install.cmake",
 		"/home/nero551/Main/Dev/PU Engine/build/src/Utilities/cmake_install.cmake",
-		"/home/nero551/Main/Dev/PU Engine/build/src/Modules/cmake_install.cmake",
-		"/home/nero551/Main/Dev/PU Engine/build/src/World/cmake_install.cmake"
+		"/home/nero551/Main/Dev/PU Engine/build/src/Modules/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

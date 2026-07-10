@@ -4,7 +4,7 @@
 #include "Utilities/FileSystem/FileSystem.hpp"
 #include "Shader.hpp"
 
-Shader::Shader(const std::string &fragFilepath, const std::string &vertFilepath) {
+Shader::Shader(const std::string &name, const std::string &fragFilepath, const std::string &vertFilepath) : Name(name) {
   std::string fragCode = FileSystem::ReadFile(fragFilepath);
   std::string vertCode = FileSystem::ReadFile(vertFilepath);
   const char *fragSource = fragCode.c_str();
@@ -58,7 +58,7 @@ int Shader::GetUniformLocation(const std::string &name) {
 
 void Shader::CheckUniformExistence(const std::string &name, int location) {
   if (location == -1) {
-    // LoggerService::Warning("Uniform Not Found: " + name);
+    LoggerService::Warning("Uniform Not Found: " + name);
   }
 }
 

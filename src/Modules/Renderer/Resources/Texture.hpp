@@ -3,8 +3,7 @@
 #include <string>
 #include "Core/Resource.hpp"
 
-class Texture : Resource {
-public:
+struct Texture : Resource {
   std::string Name;
   unsigned int Id;
   unsigned int Unit;

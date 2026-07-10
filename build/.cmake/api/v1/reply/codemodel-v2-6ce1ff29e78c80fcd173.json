@@ -32,8 +32,7 @@
 					[
 						1,
 						2,
-						3,
-						4
+						3
 					],
 					"jsonFile" : "directory-.-Debug-9ad1a58d4644cf6543fa.json",
 					"minimumCMakeVersion" : 
@@ -79,17 +78,6 @@
 					"parentIndex" : 0,
 					"projectIndex" : 0,
 					"source" : "src/Modules"
-				},
-				{
-					"build" : "src/World",
-					"jsonFile" : "directory-src.World-Debug-ca89c9b295edbd034d0d.json",
-					"minimumCMakeVersion" : 
-					{
-						"string" : "4.1.2"
-					},
-					"parentIndex" : 0,
-					"projectIndex" : 0,
-					"source" : "src/World"
 				}
 			],
 			"name" : "Debug",
@@ -106,8 +94,7 @@
 						0,
 						1,
 						2,
-						3,
-						4
+						3
 					],
 					"name" : "Engine",
 					"targetIndexes" : 
@@ -121,7 +108,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Engine::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Engine-Debug-0022b7b5df4674e294a0.json",
+					"jsonFile" : "target-Engine-Debug-54be069fc6c9468d2493.json",
 					"name" : "Engine",
 					"projectIndex" : 0
 				}

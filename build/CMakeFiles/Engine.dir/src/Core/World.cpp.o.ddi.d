@@ -276,10 +276,6 @@ CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/poly_hermite.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/poly_laguerre.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/riemann_zeta.tcc \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/istream.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/vector \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_vector.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_bvector.h \
@@ -291,8 +287,17 @@ CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
   /home/nero551/Main/Dev/PU\ Engine/External/include/KHR/khrplatform.h \
   /usr/include/GLFW/glfw3.h \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Entities/Cube.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/MaterialComponent.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Material.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Shader.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Resource.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Texture.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/MeshComponent.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Systems/CameraSystem.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Basis.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/ResourceManager/ResourceManager.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ranges \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iterator \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stream_iterator.h \
