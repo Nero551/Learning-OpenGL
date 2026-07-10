@@ -19,8 +19,6 @@ void World::Start() {
   camera.GetComponent<CameraComponent>().AspectRatio = 800.0f / 600.0f;
   scene.SetActiveCamera(camera);
   SetActiveScene(scene);
-
-  // TODO- camera will be an entity inside the scene
 }
 
 constexpr float cameraSpeed = 5;
@@ -30,9 +28,10 @@ float lastY = 600 / 2;
 
 void World::Update(double dt) {
 
+  auto &inputModule = Engine::Instance->ModuleStore.InputModule;
   auto &camera = *ActiveScene->ActiveCamera;
   auto &transform = camera.GetComponent<TransformComponent>();
-  auto &inputModule = Engine::Instance->ModuleStore.InputModule;
+  auto &cameraComponent = camera.GetComponent<CameraComponent>();
 
   if (firstMouse) {
     lastX = inputModule.MousePosition.x;
@@ -43,10 +42,10 @@ void World::Update(double dt) {
   float xOffset = inputModule.MousePosition.x - lastX;
   float yOffset = lastY - inputModule.MousePosition.y;
 
-  xOffset *= camera.GetComponent<CameraComponent>().Sensitivity;
-  yOffset *= camera.GetComponent<CameraComponent>().Sensitivity;
   xOffset = Math::DegToRad(xOffset);
   yOffset = Math::DegToRad(yOffset);
+  xOffset *= cameraComponent.Sensitivity;
+  yOffset *= cameraComponent.Sensitivity;
 
   lastX = inputModule.MousePosition.x;
   lastY = inputModule.MousePosition.y;
@@ -55,30 +54,22 @@ void World::Update(double dt) {
 
   transform.EulerRotation.y += xOffset;
   transform.EulerRotation.x += yOffset;
-  transform.EulerRotation.x = transform.EulerRotation.x > maxPitch ? maxPitch : transform.EulerRotation.x;
-  transform.EulerRotation.x = transform.EulerRotation.x < -maxPitch ? -maxPitch : transform.EulerRotation.x;
-
-  Vector3 direction;
-  direction.x = std::cos(transform.EulerRotation.y) * std::cos(transform.EulerRotation.x);
-  direction.y = std::sin(transform.EulerRotation.x);
-  direction.z = std::sin(transform.EulerRotation.y) * std::cos(transform.EulerRotation.x);
-
-  transform.Forward = direction.Normalized();
+  transform.EulerRotation.x = std::clamp(transform.EulerRotation.x, -maxPitch, maxPitch);
 
   if (inputModule.IsKeyDown(Key::W)) {
-    transform.Position += cameraSpeed * dt * transform.Forward;
+    transform.Position += cameraSpeed * dt * transform.GetForward();
   }
 
   if (inputModule.IsKeyDown(Key::S)) {
-    transform.Position -= cameraSpeed * dt * transform.Forward;
+    transform.Position -= cameraSpeed * dt * transform.GetForward();
   }
 
   if (inputModule.IsKeyDown(Key::A)) {
-    transform.Position += cameraSpeed * dt * transform.GetRight();
+    transform.Position -= cameraSpeed * dt * transform.GetRight();
   }
 
   if (inputModule.IsKeyDown(Key::D)) {
-    transform.Position -= cameraSpeed * dt * transform.GetRight();
+    transform.Position += cameraSpeed * dt * transform.GetRight();
   }
 
   if (inputModule.IsKeyDown(Key::Space)) {

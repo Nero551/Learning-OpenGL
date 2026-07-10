@@ -7,7 +7,6 @@
 
 struct Camera : Entity {
   void Initialize() override {
-    //
     AddComponent<CameraComponent>();
     AddComponent<TransformComponent>();
   }
