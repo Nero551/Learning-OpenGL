@@ -1,9 +1,0 @@
-{
-  "revision": 0,
-  "rules": [
-    {
-      "primary-output": "CMakeFiles/Engine.dir/src/Image/Image.cpp.o"
-    }
-  ],
-  "version": 1
-}
