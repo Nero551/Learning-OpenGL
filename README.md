@@ -26,8 +26,10 @@
 ![Textured Quad](Docs/Screenshots/Textured%20Quad.png)
 
 ### Week 3
-
+- Complete Architecture redesign
 - Camera
-- Building ECS-style framework
+- ECS-style framework
+- LookAt Matrix
+- Arbitrary Axis Rotation
 
 ![3D Cube](Docs/Screenshots/3D%20Cube.png)
