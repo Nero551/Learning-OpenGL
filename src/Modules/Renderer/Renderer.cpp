@@ -8,9 +8,13 @@ void Renderer::Update(double dt) {}
 void Renderer::Render() {
   auto camera = Engine::Instance->World.ActiveScene->ActiveCamera;
 
-  Matrix4 projection = Engine::Instance->World.ActiveScene->ActiveCamera->cameraComponent.GetProjectionMatrix();
-  Matrix4 view = Matrix4::LookAt(camera->transformComponent.Position,
-    camera->transformComponent.Position + camera->transformComponent.Forward, camera->transformComponent.GetUp());
+  Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
+
+  Vector3 pos = camera->GetComponent<TransformComponent>().Position;
+  Vector3 forward = camera->GetComponent<TransformComponent>().Forward;
+  Vector3 up = camera->GetComponent<TransformComponent>().GetUp();
+
+  Matrix4 view = Matrix4::LookAt(pos, forward, up);
 
   for (Object object : Objects) {
     object.Draw(view, projection);

@@ -33,7 +33,6 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Engine/src/Modules/*.cpp")
 set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Input/Input.cpp"
-  "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Camera.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Renderer.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Material.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Mesh.cpp"

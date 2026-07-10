@@ -6,12 +6,9 @@
 #include "Utilities/Services/LoggerService.hpp"
 
 struct Camera : Entity {
-  CameraComponent cameraComponent;
-  TransformComponent transformComponent;
-
   void Initialize() override {
     //
-    cameraComponent = AddComponent<CameraComponent>();
-    transformComponent = AddComponent<TransformComponent>();
+    AddComponent<CameraComponent>();
+    AddComponent<TransformComponent>();
   }
 };
