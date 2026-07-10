@@ -5,6 +5,8 @@ build CMakeFiles/Engine.dir/src/Core/Engine.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Core/Window.cpp.o: dyndep
 
+build CMakeFiles/Engine.dir/src/Core/World.cpp.o: dyndep
+
 build CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Utilities/Image/Image.cpp.o: dyndep
@@ -40,6 +42,4 @@ build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o: dyndep
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/World/Object.cpp.o: dyndep
-
-build CMakeFiles/Engine.dir/src/World/World.cpp.o: dyndep
 

@@ -15,6 +15,7 @@ struct Matrix4 {
   Matrix4 RotateX(float radian) const;
   Matrix4 RotateY(float radian) const;
   Matrix4 RotateZ(float radian) const;
+  Matrix4 Rotate(const Vector3 &vec3) const;
   float Determinant() const;
   Matrix4 Transpose() const;
   Matrix4 Inverse() const;

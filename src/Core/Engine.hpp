@@ -2,7 +2,7 @@
 #include "ModuleStore.hpp"
 #include "Window.hpp"
 #include "Modules/Renderer/Camera.hpp"
-#include "World/World.hpp"
+#include "Core/World.hpp"
 
 struct Engine {
   static Engine *Instance;

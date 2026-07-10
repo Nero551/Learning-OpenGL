@@ -1,8 +1,11 @@
 #pragma once
 #include "Core/Entity.hpp"
+#include "Modules/Renderer/Components/CameraComponent.hpp"
+#include "Modules/Renderer/Components/TransformComponent.hpp"
 
 struct Camera : Entity {
-
-protected:
-  void Initialize() override {}
+  void Initialize() override {
+    AddComponent<CameraComponent>();
+    AddComponent<TransformComponent>();
+  }
 };

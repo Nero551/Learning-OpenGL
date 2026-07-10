@@ -11,6 +11,6 @@ struct World {
   void SetActiveScene(Scene &scene);
 
   void Start();
-  void Update();
+  void Update(double dt);
   void Stop();
 };
