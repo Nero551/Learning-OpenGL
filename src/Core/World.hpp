@@ -7,7 +7,7 @@ struct World {
   Scene *ActiveScene = nullptr;
   std::vector<std::unique_ptr<Scene>> Scenes;
 
-  Scene &CreateScene();
+  Scene &CreateScene(const std::string &name);
   void SetActiveScene(Scene &scene);
 
   void Start();

@@ -78,7 +78,7 @@ void Engine::Update() {
   Time = glfwGetTime();
   World.Update(DeltaTime);
 
-  if (Engine::Instance->ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
+  if (ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
     Running = false;
     window.Close();
   }

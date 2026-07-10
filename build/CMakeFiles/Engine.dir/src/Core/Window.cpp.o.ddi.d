@@ -246,12 +246,10 @@ CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Texture.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Camera.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/World.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Scene.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Entity.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Component.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/typeindex \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/memory \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/align.h \
@@ -271,6 +269,11 @@ CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/indirect.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/pstl/glue_memory_defs.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/pstl/execution_defs.h \
+  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/typeindex \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Entities/Camera.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/CameraComponent.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/MathUtils.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/TransformComponent.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
