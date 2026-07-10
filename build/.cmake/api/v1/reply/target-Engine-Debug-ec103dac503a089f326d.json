@@ -306,6 +306,12 @@
 			"sourceGroupIndex" : 0
 		},
 		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 1,
+			"path" : "src/Core/World.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
 			"backtrace" : 8,
 			"compileGroupIndex" : 1,
 			"path" : "src/Utilities/FileSystem/FileSystem.cpp",
@@ -411,12 +417,6 @@
 			"backtrace" : 12,
 			"compileGroupIndex" : 1,
 			"path" : "src/World/Object.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 12,
-			"compileGroupIndex" : 1,
-			"path" : "src/World/World.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

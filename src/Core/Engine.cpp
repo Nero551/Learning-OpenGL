@@ -8,7 +8,7 @@
 #include "Modules/Renderer/Resources/Texture.hpp"
 #include "Modules/Renderer/Vertex.hpp"
 #include "Utilities/Services/LoggerService.hpp"
-#include "World/World.hpp"
+#include "Core/World.hpp"
 
 Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
 
@@ -74,37 +74,13 @@ void Engine::Start() {
   ModuleStore.InputModule.SetMouseMode(MouseMode::Disabled);
 }
 
-// TODO- first job, make camera an entity and system style
-
-constexpr float cameraSpeed = 5;
-
 void Engine::Update() {
   Time = glfwGetTime();
-  World.Update();
+  World.Update(DeltaTime);
 
-  World.ActiveScene->ActiveCamera->ComputeFront();
-  if (ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
+  if (Engine::Instance->ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
     Running = false;
     window.Close();
-  }
-  if (ModuleStore.InputModule.IsKeyDown(Key::W)) {
-    World.ActiveScene->ActiveCamera->Position += cameraSpeed * DeltaTime * World.ActiveScene->ActiveCamera->Front;
-  }
-
-  if (ModuleStore.InputModule.IsKeyDown(Key::S)) {
-    World.ActiveScene->ActiveCamera->Position -= cameraSpeed * DeltaTime * World.ActiveScene->ActiveCamera->Front;
-  }
-  if (ModuleStore.InputModule.IsKeyDown(Key::A)) {
-    World.ActiveScene->ActiveCamera->Position += cameraSpeed * DeltaTime * World.ActiveScene->ActiveCamera->GetRight();
-  }
-  if (ModuleStore.InputModule.IsKeyDown(Key::D)) {
-    World.ActiveScene->ActiveCamera->Position -= cameraSpeed * DeltaTime * World.ActiveScene->ActiveCamera->GetRight();
-  }
-  if (ModuleStore.InputModule.IsKeyDown(Key::Space)) {
-    World.ActiveScene->ActiveCamera->Position += cameraSpeed * DeltaTime * Vector3(0, 1, 0);
-  }
-  if (ModuleStore.InputModule.IsKeyDown(Key::LeftShift)) {
-    World.ActiveScene->ActiveCamera->Position -= cameraSpeed * DeltaTime * Vector3(0, 1, 0);
   }
 }
 

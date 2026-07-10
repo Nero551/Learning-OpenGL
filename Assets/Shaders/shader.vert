@@ -10,7 +10,6 @@ out vec2 vUV;
 uniform mat4 uModel;
 uniform mat4 uView;
 uniform mat4 uProjection;
-
 uniform float uTime;
 
 void main()

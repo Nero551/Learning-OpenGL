@@ -6,7 +6,8 @@
 			"paths" : 
 			[
 				"/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cpp",
-				"/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp"
+				"/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp",
+				"/home/nero551/Main/Dev/PU Engine/src/Core/World.cpp"
 			],
 			"recurse" : true
 		},
@@ -45,8 +46,7 @@
 			"expression" : "/home/nero551/Main/Dev/PU Engine/src/World/*.cpp",
 			"paths" : 
 			[
-				"/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp",
-				"/home/nero551/Main/Dev/PU Engine/src/World/World.cpp"
+				"/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp"
 			],
 			"recurse" : true
 		}

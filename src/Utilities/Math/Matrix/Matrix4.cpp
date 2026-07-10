@@ -171,6 +171,15 @@ Matrix4 Matrix4::RotateZ(float radian) const {
   return *this * rotationMatrix;
 }
 
+Matrix4 Matrix4::Rotate(const Vector3 &vec3) const {
+  Matrix4 rotationMatrix = Identity;
+  rotationMatrix = rotationMatrix.RotateZ(vec3.z);
+  rotationMatrix = rotationMatrix.RotateY(vec3.y);
+  rotationMatrix = rotationMatrix.RotateX(vec3.x);
+
+  return *this * rotationMatrix;
+}
+
 Matrix4 Matrix4::Orthographic(float left, float right, float bottom, float top, float near, float far) {
   Matrix4 m = Identity;
 

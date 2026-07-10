@@ -6,6 +6,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Eng
 set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/Core/Engine.cpp"
   "/home/nero551/Main/Dev/PU Engine/src/Core/Window.cpp"
+  "/home/nero551/Main/Dev/PU Engine/src/Core/World.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -99,7 +100,6 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/nero551/Main/Dev/PU Engine/src/World/*.cpp")
 set(OLD_GLOB
   "/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp"
-  "/home/nero551/Main/Dev/PU Engine/src/World/World.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

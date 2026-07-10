@@ -9,7 +9,11 @@ concept ComponentType = std::derived_from<T, Component>;
 
 struct Entity {
   unsigned int Id;
-  Entity(const unsigned int id) : Id(id) { Entity::Initialize(); }
+
+  virtual ~Entity() {};
+  Entity(const unsigned int id) : Id(id) {}
+
+  virtual void Initialize() {}
 
   template <ComponentType T> T &AddComponent() {
     T component;
@@ -33,9 +37,6 @@ struct Entity {
     }
     return false;
   }
-
-protected:
-  virtual void Initialize();
 
 private:
   std::unordered_map<std::type_index, Component> Components;

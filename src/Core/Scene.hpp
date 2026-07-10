@@ -6,9 +6,16 @@ template <typename T>
 concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
-  Camera *ActiveCamera;
+  Camera *ActiveCamera = nullptr;
   Camera camera;
   std::unordered_map<unsigned int, Entity> Entities;
+
+  virtual void Start() {}
+  virtual void Update(double dt) {}
+  virtual void Stop() {}
+  virtual ~Scene() {}
+
+  void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
 
   template <EntityType T> T CreateEntity() {
     if (id >= max) {
@@ -16,6 +23,7 @@ struct Scene {
     }
 
     T entity(id);
+    entity.Initialize();
     Entities.insert({id, entity});
 
     id++;
