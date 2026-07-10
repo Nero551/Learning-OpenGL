@@ -1,4 +1,7 @@
 #include "Vector3.hpp"
+
+#include "Utilities/Math/MathUtils.hpp"
+
 #include <cmath>
 #include <ostream>
 
@@ -62,8 +65,25 @@ Vector3 Vector3::Normalized() const {
   return {x / length, y / length, z / length};
 }
 
+bool Vector3::IsParallelTo(const Vector3 &vec3) const {
+  if (*this == Vector3::Zero || vec3 == Vector3::Zero) {
+    return false;
+  }
+
+  return Cross(vec3).LengthSquared() < Math::EPSILONF;
+}
+
+bool Vector3::IsPerpendicularTo(const Vector3 &vec3) const {
+  if (*this == Vector3::Zero || vec3 == Vector3::Zero) {
+    return false;
+  }
+
+  return std::abs(Dot(vec3)) < Math::EPSILONF;
+}
+
 //?Statics
 Vector3 const Vector3::Zero = Vector3(0, 0, 0);
 Vector3 const Vector3::Up = Vector3(0, 1, 0);
 Vector3 const Vector3::One = Vector3(1, 1, 1);
+Vector3 const Vector3::Right = Vector3(1, 0, 0);
 Vector3 const Vector3::Forward = Vector3(0, 0, 1);

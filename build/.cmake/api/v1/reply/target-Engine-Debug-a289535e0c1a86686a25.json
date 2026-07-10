@@ -202,7 +202,8 @@
 				18,
 				19,
 				20,
-				21
+				21,
+				22
 			]
 		}
 	],
@@ -273,7 +274,8 @@
 				18,
 				19,
 				20,
-				21
+				21,
+				22
 			]
 		}
 	],
@@ -319,6 +321,12 @@
 			"backtrace" : 8,
 			"compileGroupIndex" : 1,
 			"path" : "src/Utilities/Image/Image.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 8,
+			"compileGroupIndex" : 1,
+			"path" : "src/Utilities/Math/Basis.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

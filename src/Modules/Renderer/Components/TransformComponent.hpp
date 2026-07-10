@@ -7,9 +7,9 @@
 #include <cmath>
 
 struct TransformComponent : Component {
-  Vector3 Position{0, 0, 0};
-  Vector3 EulerRotation{0, 0, 0}; // Radians
-  Vector3 Scale{1, 1, 1};
+  Vector3 Position = Vector3::Zero;
+  Vector3 EulerRotation = Vector3::Zero; // Radians
+  Vector3 Scale = Vector3::One;
 
   Matrix4 GetModelMatrix() const {
     Matrix4 modelMatrix = Matrix4::Identity;
@@ -20,9 +20,9 @@ struct TransformComponent : Component {
     return modelMatrix;
   }
 
-  Vector3 GetRight() const { return GetForward().Cross(Vector3(0, 1, 0)).Normalized(); }
+  Vector3 GetRight() const { return GetForward().Cross(Vector3::Up).Normalized(); }
   Vector3 GetUp() const { return GetRight().Cross(GetForward()).Normalized(); }
-  
+
   Vector3 GetForward() const {
     Vector3 direction;
     direction.x = std::cos(EulerRotation.y) * std::cos(EulerRotation.x);

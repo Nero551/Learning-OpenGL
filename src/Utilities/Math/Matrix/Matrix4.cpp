@@ -1,4 +1,6 @@
 #include "Matrix4.hpp"
+
+#include "Utilities/Math/Basis.hpp"
 #include "Utilities/Math/MathUtils.hpp"
 #include <cmath>
 #include "Utilities/Services/LoggerService.hpp"
@@ -178,6 +180,24 @@ Matrix4 Matrix4::Rotate(const Vector3 &vec3) const {
   rotationMatrix = rotationMatrix.RotateX(vec3.x);
 
   return *this * rotationMatrix;
+}
+
+Matrix4 Matrix4::RotateAxis(const Vector3 &axis, float radian) const {
+  Matrix4 rotationMatrix = Identity;
+  rotationMatrix = rotationMatrix.RotateZ(radian);
+
+  Vector3 forward = axis.Normalized();
+  Vector3 helper = forward.IsParallelTo(Vector3::Up) ? Vector3::Right : Vector3::Up;
+
+  Vector3 right = helper.Cross(forward);
+  Vector3 up = forward.Cross(right);
+
+  Basis basis{right, up, forward};
+  Matrix4 basisMatrix = basis.GetMatrix();
+
+  Matrix4 finalMatrix = basisMatrix * rotationMatrix * basisMatrix.Inverse();
+
+  return *this * finalMatrix;
 }
 
 Matrix4 Matrix4::Orthographic(float left, float right, float bottom, float top, float near, float far) {
