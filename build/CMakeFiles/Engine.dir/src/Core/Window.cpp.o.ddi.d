@@ -247,6 +247,7 @@ CMakeFiles/Engine.dir/src/Core/Window.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/World.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/System.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Scene.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Entity.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Component.hpp \

@@ -39,6 +39,8 @@ build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Shader.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Texture.cpp.o: dyndep
 
+build CMakeFiles/Engine.dir/src/Modules/Renderer/Systems/CameraSystem.cpp.o: dyndep
+
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Vertex.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/World/Object.cpp.o: dyndep
