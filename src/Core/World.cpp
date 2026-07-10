@@ -16,7 +16,7 @@ void World::Start() {
   Scene &scene = CreateScene("First Scene");
 
   Camera &camera = scene.CreateEntity<Camera>();
-  camera.cameraComponent.AspectRatio = 800.0f / 600.0f;
+  camera.GetComponent<CameraComponent>().AspectRatio = 800.0f / 600.0f;
   scene.SetActiveCamera(camera);
   SetActiveScene(scene);
 
@@ -31,7 +31,7 @@ float lastY = 600 / 2;
 void World::Update(double dt) {
 
   auto &camera = *ActiveScene->ActiveCamera;
-  auto &transform = camera.transformComponent;
+  auto &transform = camera.GetComponent<TransformComponent>();
   auto &inputModule = Engine::Instance->ModuleStore.InputModule;
 
   if (firstMouse) {
@@ -43,8 +43,8 @@ void World::Update(double dt) {
   float xOffset = inputModule.MousePosition.x - lastX;
   float yOffset = lastY - inputModule.MousePosition.y;
 
-  xOffset *= camera.cameraComponent.Sensitivity;
-  yOffset *= camera.cameraComponent.Sensitivity;
+  xOffset *= camera.GetComponent<CameraComponent>().Sensitivity;
+  yOffset *= camera.GetComponent<CameraComponent>().Sensitivity;
   xOffset = Math::DegToRad(xOffset);
   yOffset = Math::DegToRad(yOffset);
 

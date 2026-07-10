@@ -27,8 +27,6 @@ build CMakeFiles/Engine.dir/src/Utilities/Math/Vector/Vector4.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Modules/Input/Input.cpp.o: dyndep
 
-build CMakeFiles/Engine.dir/src/Modules/Renderer/Camera.cpp.o: dyndep
-
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o: dyndep
 
 build CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Material.cpp.o: dyndep

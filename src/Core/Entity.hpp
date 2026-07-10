@@ -24,10 +24,23 @@ struct Entity {
 
     T &ref = *component;
 
-    Components.push_back(std::move(component));
+    Components.emplace(typeid(T), std::move(component));
     return ref;
   }
 
+  template <ComponentType T> T &GetComponent() {
+    auto component = Components.find(typeid(T));
+    if (component == Components.end()) {
+      throw std::runtime_error("No corresponding component");
+    }
+    return static_cast<T &>((*component->second));
+  }
+
+  template <ComponentType T> bool HasComponent() {
+    auto component = Components.find(typeid(T));
+    return component != Components.end();
+  }
+
 private:
-  std::vector<std::unique_ptr<Component>> Components;
+  std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;
 };
