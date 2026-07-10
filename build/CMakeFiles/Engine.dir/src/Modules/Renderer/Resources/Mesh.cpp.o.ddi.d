@@ -90,9 +90,8 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tuple \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/formatfwd.h \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Module.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/World/Object.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Material.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Shader.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Resources/Material.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Resources/Shader.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Resource.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/string \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stringfwd.h \
@@ -238,6 +237,6 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Resources/Mesh.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/ostream.tcc \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector3.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Math/Vector/Vector4.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Texture.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Resources/Texture.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Resources/Mesh.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Resources/../Vertex.hpp

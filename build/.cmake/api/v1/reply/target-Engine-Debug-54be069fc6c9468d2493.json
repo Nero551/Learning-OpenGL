@@ -21,8 +21,7 @@
 			"CMakeLists.txt",
 			"src/Core/CMakeLists.txt",
 			"src/Utilities/CMakeLists.txt",
-			"src/Modules/CMakeLists.txt",
-			"src/World/CMakeLists.txt"
+			"src/Modules/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -38,19 +37,19 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 33,
+				"line" : 32,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 38,
+				"line" : 37,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 28,
+				"line" : 27,
 				"parent" : 0
 			},
 			{
@@ -79,15 +78,6 @@
 				"file" : 3,
 				"line" : 3,
 				"parent" : 9
-			},
-			{
-				"file" : 4
-			},
-			{
-				"command" : 4,
-				"file" : 4,
-				"line" : 3,
-				"parent" : 11
 			}
 		]
 	},
@@ -422,9 +412,9 @@
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 12,
+			"backtrace" : 10,
 			"compileGroupIndex" : 1,
-			"path" : "src/World/Object.cpp",
+			"path" : "src/Modules/ResourceManager/ResourceManager.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

@@ -82,7 +82,6 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tuple \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/formatfwd.h \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Module.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/World/Object.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Material.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Shader.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Resource.hpp \
@@ -239,6 +238,9 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Texture.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/MaterialComponent.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Component.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/MeshComponent.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Engine.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/OpenGL.hpp \
@@ -249,7 +251,6 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/System.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Scene.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Entity.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Component.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/memory \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stl_raw_storage_iter.h \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/align.h \
@@ -295,10 +296,7 @@ CMakeFiles/Engine.dir/src/Modules/Renderer/Renderer.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/poly_hermite.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/poly_laguerre.tcc \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/tr1/riemann_zeta.tcc \
-  /home/nero551/Main/Dev/PU\ Engine/src/Utilities/Services/LoggerService.hpp \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iostream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/istream \
-  /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/istream.tcc \
+  /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Systems/CameraSystem.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ranges \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iterator \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stream_iterator.h \

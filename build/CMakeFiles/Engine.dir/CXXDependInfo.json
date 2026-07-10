@@ -82,6 +82,11 @@
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp"
 		},
+		"CMakeFiles/Engine.dir/src/Modules/ResourceManager/ResourceManager.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/nero551/Main/Dev/PU Engine/src/Modules/ResourceManager/ResourceManager.cpp"
+		},
 		"CMakeFiles/Engine.dir/src/Utilities/FileSystem/FileSystem.cpp.o" : 
 		{
 			"language" : "CXX",
@@ -131,11 +136,6 @@
 		{
 			"language" : "CXX",
 			"source" : "/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cpp"
-		},
-		"CMakeFiles/Engine.dir/src/World/Object.cpp.o" : 
-		{
-			"language" : "CXX",
-			"source" : "/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp"
 		}
 	}
 }

@@ -22,7 +22,8 @@
 				"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Shader.cpp",
 				"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Resources/Texture.cpp",
 				"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Systems/CameraSystem.cpp",
-				"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp"
+				"/home/nero551/Main/Dev/PU Engine/src/Modules/Renderer/Vertex.cpp",
+				"/home/nero551/Main/Dev/PU Engine/src/Modules/ResourceManager/ResourceManager.cpp"
 			],
 			"recurse" : true
 		},
@@ -40,14 +41,6 @@
 				"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector2.cpp",
 				"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector3.cpp",
 				"/home/nero551/Main/Dev/PU Engine/src/Utilities/Math/Vector/Vector4.cpp"
-			],
-			"recurse" : true
-		},
-		{
-			"expression" : "/home/nero551/Main/Dev/PU Engine/src/World/*.cpp",
-			"paths" : 
-			[
-				"/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp"
 			],
 			"recurse" : true
 		}
@@ -328,9 +321,6 @@
 		},
 		{
 			"path" : "src/Modules/CMakeLists.txt"
-		},
-		{
-			"path" : "src/World/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

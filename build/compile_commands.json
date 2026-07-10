@@ -139,8 +139,8 @@
 },
 {
   "directory": "/home/nero551/Main/Dev/PU Engine/build",
-  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/World/Object.cpp.o.modmap -o CMakeFiles/Engine.dir/src/World/Object.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp\"",
-  "file": "/home/nero551/Main/Dev/PU Engine/src/World/Object.cpp",
-  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/World/Object.cpp.o"
+  "command": "/usr/bin/clang++ -I\"/home/nero551/Main/Dev/PU Engine/External/include\" -I\"/home/nero551/Main/Dev/PU Engine/src\" -g -std=gnu++26 -fcolor-diagnostics -Wall -Wextra -Wpedantic @CMakeFiles/Engine.dir/src/Modules/ResourceManager/ResourceManager.cpp.o.modmap -o CMakeFiles/Engine.dir/src/Modules/ResourceManager/ResourceManager.cpp.o -c \"/home/nero551/Main/Dev/PU Engine/src/Modules/ResourceManager/ResourceManager.cpp\"",
+  "file": "/home/nero551/Main/Dev/PU Engine/src/Modules/ResourceManager/ResourceManager.cpp",
+  "output": "/home/nero551/Main/Dev/PU Engine/build/CMakeFiles/Engine.dir/src/Modules/ResourceManager/ResourceManager.cpp.o"
 }
 ]

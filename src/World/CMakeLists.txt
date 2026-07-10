@@ -1,5 +1,0 @@
-file(GLOB_RECURSE WORLD_SOURCES CONFIGURE_DEPENDS *.cpp)
-
-target_sources(Engine PRIVATE
-    ${WORLD_SOURCES}
-)

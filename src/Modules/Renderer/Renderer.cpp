@@ -1,5 +1,8 @@
 #include "Renderer.hpp"
+#include "Components/MaterialComponent.hpp"
+#include "Components/MeshComponent.hpp"
 #include "Core/Engine.hpp"
+#include "Systems/CameraSystem.hpp"
 
 #include <ranges>
 
@@ -7,32 +10,31 @@ void Renderer::Start() {}
 
 void Renderer::Update(double dt) {}
 
-Matrix4 CreateViewMatrix() {
-  auto camera = Engine::Ins->World.ActiveScene->ActiveCamera;
-
-  Vector3 pos = camera->GetComponent<TransformComponent>().Position;
-  Vector3 forward = camera->GetComponent<TransformComponent>().GetForward();
-  Vector3 up = camera->GetComponent<TransformComponent>().GetUp();
-
-  Matrix4 view = Matrix4::LookAt(pos, pos + forward, up);
-
-  return view;
-}
-
 void Renderer::Render() {
-  auto camera = Engine::Ins->World.ActiveScene->ActiveCamera;
+  auto *scene = Engine::Ins->World.ActiveScene;
+  auto *camera = scene->ActiveCamera;
 
   Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
-  Matrix4 view = CreateViewMatrix();
+  Matrix4 view = Engine::Ins->World.GetSystem<CameraSystem>().GetViewMatrix();
 
-  // for (auto &entity : *Engine::Instance->World.ActiveScene | std::views::values) {
-  //   if (entity->HasComponent<TransformComponent>() && entity->HasComponent<MeshComponent>()) {
-  //
-  //   }
-  // }
+  for (auto &entity : *scene | std::views::values) {
+    if (!entity->HasComponent<TransformComponent>()) {
+      continue;
+    }
+    auto &transformComponent = entity->GetComponent<TransformComponent>();
 
-  for (Object object : Objects) {
-    object.Draw(view, projection);
+    if (entity->HasComponent<MaterialComponent>()) {
+      auto &materialComponent = entity->GetComponent<MaterialComponent>();
+      materialComponent.Material->Use();
+      materialComponent.Material->Shader->SetMat4("uModel", transformComponent.GetModelMatrix());
+      materialComponent.Material->Shader->SetMat4("uView", view);
+      materialComponent.Material->Shader->SetMat4("uProjection", projection);
+    }
+
+    if (entity->HasComponent<MeshComponent>()) {
+      auto &meshComponent = entity->GetComponent<MeshComponent>();
+      meshComponent.Mesh->Draw();
+    }
   }
 }
 

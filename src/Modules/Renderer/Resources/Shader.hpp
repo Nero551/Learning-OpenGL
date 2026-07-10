@@ -6,11 +6,11 @@
 #include <unordered_map>
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
-class Shader : Resource {
-public:
+struct Shader : Resource {
+  std::string Name;
   unsigned int Id;
 
-  Shader(const std::string &fragFilepath, const std::string &vertFilepath);
+  Shader(const std::string &name, const std::string &fragFilepath, const std::string &vertFilepath);
   void Use();
   void SetFloat(const std::string &name, float value);
   void SetInt(const std::string &name, int value);

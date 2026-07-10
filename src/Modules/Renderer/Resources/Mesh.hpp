@@ -4,13 +4,13 @@
 
 #include <vector>
 
-class Mesh : Resource {
-public:
+struct Mesh : Resource {
+  std::string Name;
   unsigned int Id;
   std::vector<Vertex> Vertices;
   std::vector<unsigned int> Indices;
 
-  Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
+  Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
   void Draw();
 
 private:

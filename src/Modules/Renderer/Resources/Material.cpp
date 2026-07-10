@@ -2,15 +2,17 @@
 
 #include "Utilities/Services/LoggerService.hpp"
 
-Material::Material(const class Shader &shader) : Shader(shader) {}
+Material::Material(const std::string &name) : Name(name) {}
 
 void Material::Use() {
-  Shader.Use();
+  Shader->Use();
 
-  for (Texture texture : Textures) {
-    Shader.SetInt(texture.Name, texture.Unit);
-    texture.Bind();
+  for (Texture *texture : Textures) {
+    Shader->SetInt(texture->Name, texture->Unit);
+    texture->Bind();
   }
 }
 
-void Material::AssignTexture(const Texture &texture) { Textures.push_back(texture); }
+void Material::AssignShader(struct Shader &shader) { Shader = &shader; }
+
+void Material::AssignTexture(Texture &texture) { Textures.push_back(&texture); }
