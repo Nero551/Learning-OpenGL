@@ -10,9 +10,5 @@ uniform sampler2D rubyTexture;
 
 void main()
 {
-    float dist = distance(vUV, vec2(0.5, 0.5));
-
-    float factor = 0.9 - smoothstep(0, 0.95, dist);
-
-    FragColor = vec4(vec3(factor), 1.0) + texture(rubyTexture, vUV);
+    FragColor = vec4(0, vUV, 1) - texture(rubyTexture, vUV);
 }

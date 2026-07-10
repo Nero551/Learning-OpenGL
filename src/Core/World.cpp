@@ -3,7 +3,7 @@
 #include "Modules/Renderer/Entities/Camera.hpp"
 #include "Modules/Renderer/Entities/Cube.hpp"
 #include "Modules/Renderer/Systems/CameraSystem.hpp"
-#include "Modules/ResourceManager/ResourceManager.hpp"
+#include "Core/ResourceManager.hpp"
 #include "Modules/Renderer/Resources/Texture.hpp"
 
 #include <ranges>
@@ -19,7 +19,7 @@ void World::Start() {
   scene.SetActiveCamera(camera);
   SetActiveScene(scene);
 
-  auto &resourceManager = Engine::Ins->GetModule<ResourceManager>();
+  auto &resourceManager = Engine::Ins->ResourceManager;
 
   auto &texture = resourceManager.Load<Texture>("rubyTexture", 0, "Assets/Images/ruby.png");
   auto &shader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");

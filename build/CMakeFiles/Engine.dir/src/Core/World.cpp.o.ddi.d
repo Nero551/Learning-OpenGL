@@ -282,6 +282,8 @@ CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi: \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/vector.tcc \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Engine.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Module.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/ResourceManager.hpp \
+  /home/nero551/Main/Dev/PU\ Engine/src/Core/Resource.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Core/Window.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/OpenGL.hpp \
   /home/nero551/Main/Dev/PU\ Engine/External/include/glad/glad.h \
@@ -291,13 +293,11 @@ CMakeFiles/Engine.dir/src/Core/World.cpp.o.ddi: \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/MaterialComponent.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Material.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Shader.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Core/Resource.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Texture.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Components/MeshComponent.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/Mesh.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Resources/../Vertex.hpp \
   /home/nero551/Main/Dev/PU\ Engine/src/Modules/Renderer/Systems/CameraSystem.hpp \
-  /home/nero551/Main/Dev/PU\ Engine/src/Modules/ResourceManager/ResourceManager.hpp \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/ranges \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/iterator \
   /usr/bin/../lib64/gcc/x86_64-pc-linux-gnu/16/../../../../include/c++/16/bits/stream_iterator.h \
