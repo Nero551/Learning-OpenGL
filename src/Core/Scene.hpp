@@ -1,14 +1,17 @@
 #pragma once
 #include "Entity.hpp"
-#include "Modules/Renderer/Camera.hpp"
+#include "Modules/Renderer/Entities/Camera.hpp"
+#include <unordered_map>
 
 template <typename T>
 concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
+  std::string Name;
   Camera *ActiveCamera = nullptr;
-  Camera camera;
-  std::unordered_map<unsigned int, Entity> Entities;
+  std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
+
+  Scene(const std::string &name) : Name(name) {}
 
   virtual void Start() {}
   virtual void Update(double dt) {}
@@ -17,18 +20,18 @@ struct Scene {
 
   void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
 
-  template <EntityType T> T CreateEntity() {
-    if (id >= max) {
-      return NULL;
-    }
+  template <EntityType T> T &CreateEntity() {
+    auto entity = std::make_unique<T>();
+    entity->Id = id;
+    entity->Initialize();
 
-    T entity(id);
-    entity.Initialize();
-    Entities.insert({id, entity});
+    T &ref = *entity;
+
+    Entities.insert({id, std::move(entity)});
 
     id++;
 
-    return entity;
+    return ref;
   }
 
 private:

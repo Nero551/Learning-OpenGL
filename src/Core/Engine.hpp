@@ -1,7 +1,6 @@
 #pragma once
 #include "ModuleStore.hpp"
 #include "Window.hpp"
-#include "Modules/Renderer/Camera.hpp"
 #include "Core/World.hpp"
 
 struct Engine {
