@@ -23,8 +23,8 @@ Window::Window(int width, int height, const char *name) {
   glViewport(0, 0, width, height);
   glfwSetFramebufferSizeCallback(window, [](GLFWwindow *, int width, int height) {
     glViewport(0, 0, width, height);
-    Engine::Instance->window.Width = width;
-    Engine::Instance->window.Height = height;
+    Engine::Ins->window.Width = width;
+    Engine::Ins->window.Height = height;
   });
   GlfwWindow = window;
   glEnable(GL_DEPTH_TEST);

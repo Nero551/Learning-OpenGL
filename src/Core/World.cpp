@@ -2,6 +2,7 @@
 #include "Engine.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 #include "Modules/Renderer/Systems/CameraSystem.hpp"
+#include <ranges>
 
 void World::AddSystems() { AddSystem<CameraSystem>(); }
 
@@ -14,21 +15,21 @@ void World::Start() {
   scene.SetActiveCamera(camera);
   SetActiveScene(scene);
 
-  for (auto &pair : Systems) {
-    pair.second->Start();
+  for (auto &system : Systems | std::views::values) {
+    system->Start();
   }
 }
 
 void World::Update(double dt) {
 
-  for (auto &pair : Systems) {
-    pair.second->Update(dt);
+  for (auto &system : Systems | std::views::values) {
+    system->Update(dt);
   }
 }
 
 void World::Stop() {
 
-  for (auto &pair : Systems) {
-    pair.second->Stop();
+  for (auto &system : Systems | std::views::values) {
+    system->Stop();
   }
 }

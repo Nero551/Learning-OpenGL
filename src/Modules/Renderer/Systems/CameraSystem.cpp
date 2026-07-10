@@ -1,11 +1,12 @@
 #include "CameraSystem.hpp"
 #include "Utilities/Math/MathUtils.hpp"
 #include "Core/Engine.hpp"
+#include "Modules/Input/Input.hpp"
 
 void CameraSystem::Update(double dt) {
   {
-    auto &inputModule = Engine::Instance->ModuleStore.InputModule;
-    auto &camera = *Engine::Instance->World.ActiveScene->ActiveCamera;
+    auto &inputModule = Engine::Ins->GetModule<Input>();
+    auto &camera = *Engine::Ins->World.ActiveScene->ActiveCamera;
     auto &transform = camera.GetComponent<TransformComponent>();
     const auto &cameraComponent = camera.GetComponent<CameraComponent>();
 

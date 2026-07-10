@@ -1,12 +1,14 @@
 #include "Renderer.hpp"
 #include "Core/Engine.hpp"
 
+#include <ranges>
+
 void Renderer::Start() {}
 
 void Renderer::Update(double dt) {}
 
 Matrix4 CreateViewMatrix() {
-  auto camera = Engine::Instance->World.ActiveScene->ActiveCamera;
+  auto camera = Engine::Ins->World.ActiveScene->ActiveCamera;
 
   Vector3 pos = camera->GetComponent<TransformComponent>().Position;
   Vector3 forward = camera->GetComponent<TransformComponent>().GetForward();
@@ -18,10 +20,16 @@ Matrix4 CreateViewMatrix() {
 }
 
 void Renderer::Render() {
-  auto camera = Engine::Instance->World.ActiveScene->ActiveCamera;
+  auto camera = Engine::Ins->World.ActiveScene->ActiveCamera;
 
   Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
   Matrix4 view = CreateViewMatrix();
+
+  // for (auto &entity : *Engine::Instance->World.ActiveScene | std::views::values) {
+  //   if (entity->HasComponent<TransformComponent>() && entity->HasComponent<MeshComponent>()) {
+  //
+  //   }
+  // }
 
   for (Object object : Objects) {
     object.Draw(view, projection);

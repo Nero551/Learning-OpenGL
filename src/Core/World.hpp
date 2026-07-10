@@ -44,7 +44,7 @@ struct World {
   template <SystemType T> T &GetSystem() {
     auto system = Systems.find(typeid(T));
     if (system == Systems.end()) {
-      throw std::runtime_error("No corresponding system");
+      throw std::runtime_error(std::format("System Not Found: {}", typeid(T).name()));
     }
     return static_cast<T &>((*system->second));
   }

@@ -10,6 +10,8 @@
 #include "Utilities/Services/LoggerService.hpp"
 #include "Core/World.hpp"
 
+#include <ranges>
+
 Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
 
 /*
@@ -23,12 +25,20 @@ Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
   ? Utilities - it's in the name.
 */
 
-Engine *Engine::Instance = nullptr;
+Engine *Engine::Ins = nullptr;
+
+void Engine::AddModules() {
+  AddModule<Renderer>();
+  AddModule<Input>();
+}
 
 void Engine::Start() {
+  AddModules();
+
   World.Start();
-  ModuleStore.RendererModule.Start();
-  ModuleStore.InputModule.Start();
+  for (auto &module : Modules | std::views::values) {
+    module->Start();
+  }
 
   std::vector Vertices = {
     // front face
@@ -70,26 +80,38 @@ void Engine::Start() {
   auto mesh = Mesh(Vertices, Indices);
   auto object = Object(mesh, material);
 
-  ModuleStore.RendererModule.Objects.push_back(object);
-  ModuleStore.InputModule.SetMouseMode(MouseMode::Disabled);
+  GetModule<Renderer>().Objects.push_back(object);
+  GetModule<Input>().SetMouseMode(MouseMode::Disabled);
 }
 
 void Engine::Update() {
   Time = glfwGetTime();
   World.Update(DeltaTime);
 
-  if (ModuleStore.InputModule.IsKeyDown(Key::Escape)) {
+  if (GetModule<Input>().IsKeyDown(Key::Escape)) {
     Running = false;
     window.Close();
+  }
+
+  for (auto &module : Modules | std::views::values) {
+    module->Update(DeltaTime);
   }
 }
 
 void Engine::Stop() {
   World.Stop();
+  for (auto &module : Modules | std::views::values) {
+    module->Stop();
+  }
+
   glfwTerminate();
 }
 
-void Engine::Render() { ModuleStore.RendererModule.Render(); }
+void Engine::Render() {
+  for (auto &module : Modules | std::views::values) {
+    module->Render();
+  }
+}
 
 void Engine::BeginFrame() {
   window.PollEvents();

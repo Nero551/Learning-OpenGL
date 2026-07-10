@@ -2,6 +2,7 @@
 #include "Entity.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 #include <unordered_map>
+#include <vector>
 
 template <typename T>
 concept EntityType = std::derived_from<T, Entity>;
@@ -33,6 +34,12 @@ struct Scene {
 
     return ref;
   }
+
+  auto begin() { return Entities.begin(); }
+  auto end() { return Entities.end(); }
+
+  auto begin() const { return Entities.begin(); }
+  auto end() const { return Entities.end(); }
 
 private:
   unsigned int id = 1;

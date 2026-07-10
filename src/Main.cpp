@@ -5,7 +5,7 @@ int main() {
 
   glfwInit();
   Engine engine;
-  Engine::Instance = &engine;
+  Engine::Ins = &engine;
 
   engine.Start();
 
