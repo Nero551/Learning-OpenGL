@@ -13,6 +13,12 @@ struct Module {
     virtual void Render() {
     }
 
+    virtual void BeginFrame(double dt) {
+    }
+
+    virtual void EndFrame(double dt) {
+    }
+
     virtual ~Module() {
     }
 

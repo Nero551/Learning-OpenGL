@@ -75,6 +75,8 @@ void World::Start() {
   Cube &cube4 = scene.CreateEntity<Cube>();
   cube4.GetComponent<MeshComponent>().Mesh = &mesh;
   cube4.GetComponent<MaterialComponent>().Material = &material;
+  cube4.GetComponent<TransformComponent>().Scale = {1, 2.5, 0.7};
+  cube4.GetComponent<TransformComponent>().EulerRotation = {Math::DegToRad(45), Math::DegToRad(45), Math::DegToRad(45)};
   cube4.GetComponent<TransformComponent>().Position = {0, 0, 2};
 
   for (auto &system : Systems | std::views::values) {

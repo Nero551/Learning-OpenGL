@@ -35,8 +35,8 @@ void Engine::AddModules() {
 
 void Engine::Start() {
   AddModules();
-
   World.Start();
+
   for (auto &module : Modules | std::views::values) {
     module->Start();
   }
@@ -48,9 +48,18 @@ void Engine::Update() {
   Time = glfwGetTime();
   World.Update(DeltaTime);
 
-  if (GetModule<Input>().IsKeyDown(Key::Escape)) {
+  if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
     Running = false;
     Window.Close();
+  }
+
+  if (GetModule<Input>().IsKeyReleased(Key::Q)) {
+    if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
+      GetModule<Input>().SetMouseMode(MouseMode::Normal);
+
+    } else {
+      GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+    }
   }
 
   for (auto &module : Modules | std::views::values) {
@@ -60,6 +69,7 @@ void Engine::Update() {
 
 void Engine::Stop() {
   World.Stop();
+
   for (auto &module : Modules | std::views::values) {
     module->Stop();
   }
@@ -77,12 +87,19 @@ void Engine::BeginFrame() {
   Window.PollEvents();
   glClearColor(0.1, 0.15, 0.2, 1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  for (auto &module : Modules | std::views::values) {
+    module->BeginFrame(DeltaTime);
+  }
 }
 
 void Engine::EndFrame() {
   const float currentFrame = Time;
   DeltaTime = currentFrame - LastFrame;
   LastFrame = currentFrame;
-
   Window.SwapBuffers();
+
+  for (auto &module : Modules | std::views::values) {
+    module->EndFrame(DeltaTime);
+  }
 }
