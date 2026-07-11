@@ -3,28 +3,28 @@
 #include "Engine.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
-Window::Window(int width, int height, const char *name) {
+Window::Window(int width, int height, const std::string &name) {
   Width = width;
   Height = height;
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  GLFWwindow *window = glfwCreateWindow(width, height, name, nullptr, nullptr);
+  GLFWwindow *window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
   if (!window) {
     LoggerService::Error("Failed To Create Window");
   }
   glfwMakeContextCurrent(window);
 
-  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+  if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
     LoggerService::Error("Failed To Initialize GLAD");
   }
 
   glViewport(0, 0, width, height);
   glfwSetFramebufferSizeCallback(window, [](GLFWwindow *, int width, int height) {
     glViewport(0, 0, width, height);
-    Engine::Ins->window.Width = width;
-    Engine::Ins->window.Height = height;
+    Engine::Ins->Window.Width = width;
+    Engine::Ins->Window.Height = height;
   });
   GlfwWindow = window;
   glEnable(GL_DEPTH_TEST);

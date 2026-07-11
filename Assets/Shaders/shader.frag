@@ -7,9 +7,8 @@ in vec4 vPosition;
 in vec4 vColor;
 
 uniform sampler2D rubyTexture;
-uniform sampler2D skullTexture;
 
 void main()
 {
-    FragColor = vColor + texture(skullTexture, vUV) + texture(rubyTexture, vUV);
+    FragColor = vColor + texture(rubyTexture, vUV);
 }

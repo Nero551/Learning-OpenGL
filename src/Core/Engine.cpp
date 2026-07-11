@@ -12,7 +12,7 @@
 
 #include <ranges>
 
-Engine::Engine() : window(800, 600, "Plus Ultra") { Running = true; }
+Engine::Engine() : Window(800, 600, "Plus Ultra") { Running = true; }
 
 /*
   ? engine owns Scenes, or world owns scenes, idc , scenes own entities, entities own components. system run on scene.
@@ -50,7 +50,7 @@ void Engine::Update() {
 
   if (GetModule<Input>().IsKeyDown(Key::Escape)) {
     Running = false;
-    window.Close();
+    Window.Close();
   }
 
   for (auto &module : Modules | std::views::values) {
@@ -74,14 +74,15 @@ void Engine::Render() {
 }
 
 void Engine::BeginFrame() {
-  window.PollEvents();
+  Window.PollEvents();
   glClearColor(0.1, 0.15, 0.2, 1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
+
 void Engine::EndFrame() {
   const float currentFrame = Time;
   DeltaTime = currentFrame - LastFrame;
   LastFrame = currentFrame;
 
-  window.SwapBuffers();
+  Window.SwapBuffers();
 }

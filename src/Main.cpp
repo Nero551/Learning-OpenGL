@@ -1,10 +1,6 @@
 #include "Core/Engine.hpp"
 #include <OpenGL.hpp>
 
-void Lol() {
-
-}
-
 int main() {
 
   glfwInit();

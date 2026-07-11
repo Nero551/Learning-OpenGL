@@ -14,18 +14,22 @@ struct Engine {
   double Time = 0;
   double DeltaTime = 0;
 
-  Window window;
+  Window Window;
   World World;
   ResourceManager ResourceManager;
 
   Engine();
+
   void Start();
+
   void Stop();
 
   void BeginFrame();
+
   void EndFrame();
 
   void Update();
+
   void Render();
 
   template <ModuleType T> T &AddModule() {
@@ -45,6 +49,7 @@ struct Engine {
 
 private:
   void AddModules();
-  std::unordered_map<std::type_index, std::unique_ptr<Module>> Modules;
+
+  std::unordered_map<std::type_index, std::unique_ptr<Module> > Modules;
   double LastFrame = 0;
 };

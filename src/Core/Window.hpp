@@ -1,16 +1,21 @@
 #pragma once
 #include <OpenGL.hpp>
+#include <string>
 
 struct Window {
-  int Width;
-  int Height;
+  float Width;
+  float Height;
 
-  Window(int width, int height, const char *name);
+  Window(int width, int height, const std::string &name);
+
   ~Window();
 
   bool ShouldClose();
+
   void SwapBuffers();
+
   void PollEvents();
+
   void Close();
 
   GLFWwindow *GetGlfwWindow();
