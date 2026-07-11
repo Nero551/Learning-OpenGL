@@ -31,8 +31,8 @@ void Shader::Use() {
 }
 
 void Shader::UploadUniforms() {
-   for (auto &uniformPtr: PendingUniforms | std::views::values) {
-      uniformPtr->Upload(GetUniformLocation(uniformPtr->Name));
+   for (auto &[location, uniform]: PendingUniforms) {
+      uniform->Upload(location);
    }
 }
 
@@ -43,19 +43,16 @@ int Shader::GetUniformLocation(const std::string &name) {
       location = UniformLocations[name];
    } else {
       location = glGetUniformLocation(Id, name.c_str());
-      CheckUniformExistence(name, location);
+
+      if (location == -1) {
+         LoggerService::Warning("Uniform Not Found: " + name);
+      }
+
       UniformLocations[name] = location;
    }
    return location;
 }
 
-bool Shader::CheckUniformExistence(const std::string &name, int location) {
-   if (location == -1) {
-      LoggerService::Warning("Uniform Not Found: " + name);
-      return false;
-   }
-   return true;
-}
 
 unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int vertShader) {
    unsigned int id = glCreateProgram();

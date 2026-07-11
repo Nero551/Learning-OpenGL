@@ -33,7 +33,5 @@ private:
 
    unsigned int CreateFragShader(const char *fragSource);
 
-   bool CheckUniformExistence(const std::string &name, int location);
-
    void UploadUniforms();
 };
