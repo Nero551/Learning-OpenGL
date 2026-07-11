@@ -1,5 +1,5 @@
 #include <OpenGL.hpp>
-#include "../Renderer.hpp"
+#include "Mesh.hpp"
 
 Mesh::Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)
     : Name(name), Vertices(vertices), Indices(indices) {

@@ -6,11 +6,11 @@
 
 #include <ranges>
 
-void Renderer::Start() {
-}
+#include "Uniforms/Matrix4Uniform.hpp"
 
-void Renderer::Update(double dt) {
-}
+void Renderer::Start() {}
+
+void Renderer::Update(double dt) {}
 
 void Renderer::Render() {
    auto *scene = Engine::Ins->World.ActiveScene;
@@ -27,10 +27,12 @@ void Renderer::Render() {
 
       if (entity->HasComponent<MaterialComponent>()) {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
+         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uModel",
+            transformComponent.GetModelMatrix()));
+         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uView", view));
+         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uProjection", projection));
+
          materialComponent.Material->Use();
-         materialComponent.Material->Shader->SetMat4("uModel", transformComponent.GetModelMatrix());
-         materialComponent.Material->Shader->SetMat4("uView", view);
-         materialComponent.Material->Shader->SetMat4("uProjection", projection);
       }
 
       if (entity->HasComponent<MeshComponent>()) {
@@ -40,5 +42,4 @@ void Renderer::Render() {
    }
 }
 
-void Renderer::Stop() {
-}
+void Renderer::Stop() {}

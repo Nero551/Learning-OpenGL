@@ -1,16 +1,17 @@
 #include "Material.hpp"
 
+#include "../Uniforms/IntUniform.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
 Material::Material(const std::string &name) : Name(name) {}
 
 void Material::Use() {
-  Shader->Use();
+   Shader->Use();
 
-  for (Texture *texture : Textures) {
-    Shader->SetInt(texture->Name, texture->Unit);
-    texture->Bind();
-  }
+   for (Texture *texture: Textures) {
+      Shader->SetUniform(IntUniform(texture->Name, texture->Unit));
+      texture->Bind();
+   }
 }
 
 void Material::AssignShader(struct Shader &shader) { Shader = &shader; }

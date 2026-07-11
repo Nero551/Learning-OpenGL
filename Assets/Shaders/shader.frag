@@ -11,5 +11,5 @@ uniform vec4 LightColor;
 
 void main()
 {
-    FragColor = ObjectColor;
+    FragColor = LightColor * ObjectColor;
 }

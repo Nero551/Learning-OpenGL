@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Core/Resource.hpp"
-
+#include "../Uniform.hpp"
+#include <memory>
 #include <string>
 #include <unordered_map>
-#include <variant>
+#include "Core/Resource.hpp"
 
-#include "Utilities/Math/Matrix/Matrix4.hpp"
+template<typename T>concept UniformType = std::derived_from<T, Uniform>;
 
 struct Shader : Resource {
    std::string Name;
@@ -17,20 +17,15 @@ struct Shader : Resource {
 
    void Use();
 
-   void SetFloat(const std::string &name, float value);
+   template<UniformType T> void SetUniform(const T &uniform) {
+      PendingUniforms[uniform.Name] = std::make_unique<T>(uniform);
+   }
 
-   void SetInt(const std::string &name, int value);
-
-   void SetBool(const std::string &name, bool value);
-
-   void SetVec3(const std::string &name, const Vector3 &vec3);
-
-   void SetVec4(const std::string &name, const Vector4 &vec4);
-
-   void SetMat4(const std::string &name, const Matrix4 &mat4);
+   int GetUniformLocation(const std::string &name);
 
 private:
    std::unordered_map<std::string, unsigned int> UniformLocations;
+   std::unordered_map<std::string, std::unique_ptr<Uniform> > PendingUniforms;
 
    void SetBasicUniforms();
 
@@ -42,5 +37,5 @@ private:
 
    bool CheckUniformExistence(const std::string &name, int location);
 
-   int GetUniformLocation(const std::string &name);
+   void UploadUniforms();
 };

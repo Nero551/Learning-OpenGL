@@ -4,6 +4,10 @@
 #include "Utilities/FileSystem/FileSystem.hpp"
 #include "Shader.hpp"
 
+#include <ranges>
+
+#include "../Uniforms/FloatUniform.hpp"
+
 Shader::Shader(const std::string &name, const std::string &fragFilepath,
    const std::string &vertFilepath) : Name(name) {
    std::string fragCode = FileSystem::ReadFile(fragFilepath);
@@ -19,41 +23,19 @@ Shader::Shader(const std::string &name, const std::string &fragFilepath,
    //* Cleanup
    glDeleteShader(vertShader);
    glDeleteShader(fragShader);
+
+   SetBasicUniforms();
 }
 
 void Shader::Use() {
    glUseProgram(Id);
-   SetBasicUniforms();
+   UploadUniforms();
 }
 
-void Shader::SetFloat(const std::string &name, float value) {
-   int location = GetUniformLocation(name);
-   glUniform1f(location, value);
-}
-
-void Shader::SetInt(const std::string &name, int value) {
-   int location = GetUniformLocation(name);
-   glUniform1i(location, value);
-}
-
-void Shader::SetBool(const std::string &name, bool value) {
-   int location = GetUniformLocation(name);
-   glUniform1i(location, value);
-}
-
-void Shader::SetVec3(const std::string &name, const Vector3 &vec3) {
-   int location = GetUniformLocation(name);
-   glUniform3f(location, vec3.x, vec3.y, vec3.z);
-}
-
-void Shader::SetVec4(const std::string &name, const Vector4 &vec4) {
-   int location = GetUniformLocation(name);
-   glUniform4f(location, vec4.x, vec4.y, vec4.z, vec4.w);
-}
-
-void Shader::SetMat4(const std::string &name, const Matrix4 &mat4) {
-   int location = GetUniformLocation(name);
-   glUniformMatrix4fv(location, 1, GL_TRUE, *mat4.m);
+void Shader::UploadUniforms() {
+   for (auto &uniformPtr: PendingUniforms | std::views::values) {
+      uniformPtr->Upload(*this);
+   }
 }
 
 int Shader::GetUniformLocation(const std::string &name) {
@@ -77,7 +59,7 @@ bool Shader::CheckUniformExistence(const std::string &name, int location) {
    return true;
 }
 
-void Shader::SetBasicUniforms() { SetFloat("uTime", glfwGetTime()); }
+void Shader::SetBasicUniforms() { SetUniform(FloatUniform("uTime", glfwGetTime())); }
 
 unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int vertShader) {
    unsigned int id = glCreateProgram();
