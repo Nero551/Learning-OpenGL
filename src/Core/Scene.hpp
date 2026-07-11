@@ -4,38 +4,44 @@
 #include <unordered_map>
 #include <vector>
 
-template <typename T>
-concept EntityType = std::derived_from<T, Entity>;
+template<typename T>concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
-  std::string Name;
-  Camera *ActiveCamera = nullptr;
-  std::unordered_map<unsigned int, std::unique_ptr<Entity> > Entities;
+   std::string Name;
+   Camera *ActiveCamera = nullptr;
+   std::unordered_map<unsigned int, std::unique_ptr<Entity> > Entities;
 
-  Scene() = default;
+   Scene() = default;
 
-  virtual void Initialize() {
-  }
+   virtual ~Scene() = default;
 
-  virtual ~Scene() {
-  }
+   Scene(const Scene &) = delete;
 
-  void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
+   Scene &operator=(const Scene &) = delete;
 
-  template <EntityType T> T &CreateEntity() {
-    auto entity = std::make_unique<T>();
-    entity->Id = id;
-    entity->Initialize();
+   Scene(Scene &&) = default;
 
-    T &ref = *entity;
+   Scene &operator=(Scene &&) = default;
 
-    Entities.insert({id, std::move(entity)});
+   virtual void Initialize() {
+   }
 
-    id++;
+   void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
 
-    return ref;
-  }
+   template<EntityType T> T &CreateEntity() {
+      auto entity = std::make_unique<T>();
+      entity->Id = id;
+      entity->Initialize();
+
+      T &ref = *entity;
+
+      Entities.insert({id, std::move(entity)});
+
+      id++;
+
+      return ref;
+   }
 
 private:
-  unsigned int id = 1;
+   unsigned int id = 1;
 };
