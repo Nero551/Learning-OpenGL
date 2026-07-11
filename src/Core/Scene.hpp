@@ -10,14 +10,21 @@ concept EntityType = std::derived_from<T, Entity>;
 struct Scene {
   std::string Name;
   Camera *ActiveCamera = nullptr;
-  std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
+  std::unordered_map<unsigned int, std::unique_ptr<Entity> > Entities;
 
-  Scene(const std::string &name) : Name(name) {}
+  Scene() = default;
 
-  virtual void Start() {}
-  virtual void Update(double dt) {}
-  virtual void Stop() {}
-  virtual ~Scene() {}
+  virtual void Start() {
+  }
+
+  virtual void Update(double dt) {
+  }
+
+  virtual void Stop() {
+  }
+
+  virtual ~Scene() {
+  }
 
   void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
 

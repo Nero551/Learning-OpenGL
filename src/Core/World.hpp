@@ -14,7 +14,9 @@ struct World {
   Scene *ActiveScene = nullptr;
 
   template <SceneType T> T &CreateScene(const std::string &name) {
-    auto scene = std::make_unique<T>(name);
+    auto scene = std::make_unique<T>();
+    scene->Name = name;
+    scene->Start();
     T &ref = *scene;
     Scenes.emplace(name, std::move(scene));
     return ref;
@@ -50,11 +52,14 @@ struct World {
   }
 
   void Start();
+
   void Update(double dt);
+
   void Stop();
 
 private:
   void AddSystems();
-  std::unordered_map<std::string, std::unique_ptr<Scene>> Scenes;
-  std::unordered_map<std::type_index, std::unique_ptr<System>> Systems;
+
+  std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
+  std::unordered_map<std::type_index, std::unique_ptr<System> > Systems;
 };
