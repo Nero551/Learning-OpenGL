@@ -3,8 +3,8 @@
 #include <iostream>
 #include <ostream>
 
-Vector2::Vector2(){}
-Vector2::Vector2(float x, float y) : x(x), y(y) {}
+Vector2::Vector2(float x, float y) : x(x), y(y) {
+}
 
 //?Operators
 
@@ -38,8 +38,8 @@ bool Vector2::operator!=(const Vector2 &vec2) const { return !(*this == vec2); }
 
 //* Others
 std::ostream &operator<<(std::ostream &os, const Vector2 &vec2) {
-  os << "(" << vec2.x << ", " << vec2.y << ")";
-  return os;
+   os << "(" << vec2.x << ", " << vec2.y << ")";
+   return os;
 }
 
 //?Methods
@@ -52,11 +52,11 @@ float Vector2::Dot(const Vector2 &vec2) const { return x * vec2.x + y * vec2.y; 
 float Vector2::Distance(const Vector2 &vec2) const { return (*this - vec2).Length(); }
 
 Vector2 Vector2::Normalized() const {
-  float length = Length();
-  if (length == 0) {
-    return Zero;
-  }
-  return {x / length, y / length};
+   float length = Length();
+   if (length == 0) {
+      return Zero;
+   }
+   return {x / length, y / length};
 }
 
 //?Statics

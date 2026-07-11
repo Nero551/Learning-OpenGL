@@ -1,65 +1,70 @@
 #pragma once
-#include "System.hpp"
-#include "Core/Scene.hpp"
 #include <memory>
 #include <vector>
 
-template <typename T>
+#include "Core/Scene.hpp"
+#include "System.hpp"
+
+template<typename T>
 concept SceneType = std::derived_from<T, Scene>;
 
-template <typename T>
+template<typename T>
 concept SystemType = std::derived_from<T, System>;
 
 struct World {
-  Scene *ActiveScene = nullptr;
+   Scene *ActiveScene = nullptr;
 
-  template <SceneType T> T &CreateScene(const std::string &name) {
-    auto scene = std::make_unique<T>();
-    scene->Name = name;
-    scene->Initialize();
-    T &ref = *scene;
-    Scenes.emplace(name, std::move(scene));
-    return ref;
-  }
+   template<SceneType T> T &CreateScene(const std::string &name) {
+      auto scene = std::make_unique<T>();
+      scene->Name = name;
+      scene->Initialize();
+      T &ref = *scene;
+      Scenes.emplace(name, std::move(scene));
+      return ref;
+   }
 
-  template <SceneType T> T &GetScene(const std::string &name) {
-    auto scene = Scenes.find(name);
-    if (scene == Scenes.end()) {
-      throw std::runtime_error("No corresponding system.");
-    }
-    return static_cast<T &>(*scene->second);
-  }
+   template<SceneType T> T &GetScene(const std::string &name) {
+      auto scene = Scenes.find(name);
+      if (scene == Scenes.end()) {
+         throw std::runtime_error("No corresponding Scene.");
+      }
+      return static_cast<T &>(*scene->second);
+   }
 
-  void SetActiveScene(Scene &scene) { ActiveScene = &scene; }
+   void SetActiveScene(Scene &scene) { ActiveScene = &scene; }
 
-  template <SystemType T> T &AddSystem() {
-    if (Systems.contains(std::type_index(typeid(T)))) {
-      throw std::runtime_error("System already exists.");
-    }
+   template<SceneType T = Scene> T &GetActiveScene() {
+      return static_cast<T &>(*ActiveScene);
+   }
 
-    auto system = std::make_unique<T>();
-    T &ref = *system;
-    Systems.emplace(typeid(T), std::move(system));
-    return ref;
-  }
+   template<SystemType T> T &AddSystem() {
+      if (Systems.contains(std::type_index(typeid(T)))) {
+         throw std::runtime_error("System already exists.");
+      }
 
-  template <SystemType T> T &GetSystem() {
-    auto system = Systems.find(typeid(T));
-    if (system == Systems.end()) {
-      throw std::runtime_error(std::format("System Not Found: {}", typeid(T).name()));
-    }
-    return static_cast<T &>((*system->second));
-  }
+      auto system = std::make_unique<T>();
+      T &ref = *system;
+      Systems.emplace(typeid(T), std::move(system));
+      return ref;
+   }
 
-  void Start();
+   template<SystemType T> T &GetSystem() {
+      auto system = Systems.find(typeid(T));
+      if (system == Systems.end()) {
+         throw std::runtime_error(std::format("System Not Found: {}", typeid(T).name()));
+      }
+      return static_cast<T &>((*system->second));
+   }
 
-  void Update(double dt);
+   void Start();
 
-  void Stop();
+   void Update(double dt);
+
+   void Stop();
 
 private:
-  void AddSystems();
+   void AddSystems();
 
-  std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
-  std::unordered_map<std::type_index, std::unique_ptr<System> > Systems;
+   std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
+   std::unordered_map<std::type_index, std::unique_ptr<System> > Systems;
 };

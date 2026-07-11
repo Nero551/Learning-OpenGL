@@ -2,8 +2,8 @@
 #include <cmath>
 #include <ostream>
 
-Vector4::Vector4() {}
-Vector4::Vector4(const float x, const float y, const float z, const float w) : x(x), y(y), z(z), w(w) {}
+Vector4::Vector4(const float x, const float y, const float z, const float w) : x(x), y(y), z(z), w(w) {
+}
 
 //?Operators
 
@@ -26,13 +26,17 @@ Vector4 &Vector4::operator*=(const float scalar) { return *this = *this * scalar
 Vector4 &Vector4::operator/=(const float scalar) { return *this = *this / scalar; }
 
 Vector4 operator+(const float scalar, const Vector4 &vec4) { return vec4 + scalar; }
+
 Vector4 operator-(const float scalar, const Vector4 &vec4) {
-  return {scalar - vec4.x, scalar - vec4.y, scalar - vec4.z, scalar - vec4.w};
+   return {scalar - vec4.x, scalar - vec4.y, scalar - vec4.z, scalar - vec4.w};
 }
+
 Vector4 operator*(const float scalar, const Vector4 &vec4) { return vec4 * scalar; }
+
 Vector4 operator/(const float scalar, const Vector4 &vec4) {
-  return {scalar / vec4.x, scalar / vec4.y, scalar / vec4.z, scalar / vec4.w};
+   return {scalar / vec4.x, scalar / vec4.y, scalar / vec4.z, scalar / vec4.w};
 }
+
 Vector4 Vector4::operator-() const { return -1 * *this; }
 
 //*Equality
@@ -41,8 +45,8 @@ bool Vector4::operator!=(const Vector4 &vec4) const { return !(*this == vec4); }
 
 //* Others
 std::ostream &operator<<(std::ostream &os, const Vector4 &vec4) {
-  os << "(" << vec4.x << ", " << vec4.y << ", " << vec4.z << ", " << vec4.w << ")";
-  return os;
+   os << "(" << vec4.x << ", " << vec4.y << ", " << vec4.z << ", " << vec4.w << ")";
+   return os;
 }
 
 //?Methods
@@ -55,11 +59,11 @@ float Vector4::Dot(const Vector4 &vec4) const { return x * vec4.x + y * vec4.y +
 float Vector4::Distance(const Vector4 &vec4) const { return (*this - vec4).Length(); }
 
 Vector4 Vector4::Normalized() const {
-  const float length = Length();
-  if (length == 0) {
-    return Zero;
-  }
-  return {x / length, y / length, z / length, w / length};
+   const float length = Length();
+   if (length == 0) {
+      return Zero;
+   }
+   return {x / length, y / length, z / length, w / length};
 }
 
 //?Statics

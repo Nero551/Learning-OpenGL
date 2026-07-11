@@ -5,8 +5,8 @@
 #include <cmath>
 #include <ostream>
 
-Vector3::Vector3() {}
-Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
+Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {
+}
 
 //?Operators
 
@@ -40,8 +40,8 @@ bool Vector3::operator!=(const Vector3 &vec3) const { return !(*this == vec3); }
 
 //* Others
 std::ostream &operator<<(std::ostream &os, const Vector3 &vec3) {
-  os << "(" << vec3.x << ", " << vec3.y << ", " << vec3.z << ")";
-  return os;
+   os << "(" << vec3.x << ", " << vec3.y << ", " << vec3.z << ")";
+   return os;
 }
 
 //?Methods
@@ -52,33 +52,33 @@ float Vector3::Length() const { return std::sqrt(LengthSquared()); }
 float Vector3::Dot(const Vector3 &vec3) const { return x * vec3.x + y * vec3.y + z * vec3.z; }
 
 Vector3 Vector3::Cross(const Vector3 &vec3) const {
-  return {y * vec3.z - z * vec3.y, z * vec3.x - x * vec3.z, x * vec3.y - y * vec3.x};
+   return {y * vec3.z - z * vec3.y, z * vec3.x - x * vec3.z, x * vec3.y - y * vec3.x};
 }
 
 float Vector3::Distance(const Vector3 &vec3) const { return (*this - vec3).Length(); }
 
 Vector3 Vector3::Normalized() const {
-  float length = Length();
-  if (length == 0) {
-    return Zero;
-  }
-  return {x / length, y / length, z / length};
+   float length = Length();
+   if (length == 0) {
+      return Zero;
+   }
+   return {x / length, y / length, z / length};
 }
 
 bool Vector3::IsParallelTo(const Vector3 &vec3) const {
-  if (*this == Vector3::Zero || vec3 == Vector3::Zero) {
-    return false;
-  }
+   if (*this == Vector3::Zero || vec3 == Vector3::Zero) {
+      return false;
+   }
 
-  return Cross(vec3).LengthSquared() < Math::EPSILONF;
+   return Cross(vec3).LengthSquared() < Math::EPSILONF;
 }
 
 bool Vector3::IsPerpendicularTo(const Vector3 &vec3) const {
-  if (*this == Vector3::Zero || vec3 == Vector3::Zero) {
-    return false;
-  }
+   if (*this == Vector3::Zero || vec3 == Vector3::Zero) {
+      return false;
+   }
 
-  return std::abs(Dot(vec3)) < Math::EPSILONF;
+   return std::abs(Dot(vec3)) < Math::EPSILONF;
 }
 
 //?Statics
