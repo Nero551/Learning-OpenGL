@@ -6,9 +6,7 @@ in vec2 vUV;
 in vec4 vPosition;
 in vec4 vColor;
 
-uniform sampler2D rubyTexture;
-
 void main()
 {
-    FragColor = vColor + texture(rubyTexture, vUV);
+    FragColor = vColor;
 }

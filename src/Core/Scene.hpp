@@ -14,13 +14,7 @@ struct Scene {
 
   Scene() = default;
 
-  virtual void Start() {
-  }
-
-  virtual void Update(double dt) {
-  }
-
-  virtual void Stop() {
+  virtual void Initialize() {
   }
 
   virtual ~Scene() {
