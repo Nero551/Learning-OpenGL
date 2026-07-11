@@ -2,14 +2,7 @@
 #include <OpenGL.hpp>
 #include "../Modules/Renderer/Renderer.hpp"
 #include "Modules/Input/Input.hpp"
-#include "Modules/Renderer/Resources/Material.hpp"
-#include "Modules/Renderer/Resources/Mesh.hpp"
-#include "Modules/Renderer/Resources/Shader.hpp"
-#include "Modules/Renderer/Resources/Texture.hpp"
-#include "Modules/Renderer/Vertex.hpp"
 #include "Core/World.hpp"
-#include "Core/ResourceManager.hpp"
-
 #include <ranges>
 
 Engine::Engine() : Window(800, 600, "Plus Ultra") { Running = true; }
