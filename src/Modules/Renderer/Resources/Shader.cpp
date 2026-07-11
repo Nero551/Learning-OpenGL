@@ -23,8 +23,6 @@ Shader::Shader(const std::string &name, const std::string &fragFilepath,
    //* Cleanup
    glDeleteShader(vertShader);
    glDeleteShader(fragShader);
-
-   SetBasicUniforms();
 }
 
 void Shader::Use() {
@@ -58,8 +56,6 @@ bool Shader::CheckUniformExistence(const std::string &name, int location) {
    }
    return true;
 }
-
-void Shader::SetBasicUniforms() { SetUniform(FloatUniform("uTime", glfwGetTime())); }
 
 unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int vertShader) {
    unsigned int id = glCreateProgram();

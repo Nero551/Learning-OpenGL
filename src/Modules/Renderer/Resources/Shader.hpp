@@ -27,8 +27,6 @@ private:
    std::unordered_map<std::string, unsigned int> UniformLocations;
    std::unordered_map<int, std::unique_ptr<Uniform> > PendingUniforms;
 
-   void SetBasicUniforms();
-
    unsigned int CreateShaderProgram(unsigned int fragShader, unsigned int vertShader);
 
    unsigned int CreateVertShader(const char *vertSource);

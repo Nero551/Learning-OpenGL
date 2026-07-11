@@ -6,6 +6,7 @@
 
 #include <ranges>
 
+#include "Uniforms/FloatUniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
 
 void Renderer::Start() {}
@@ -25,11 +26,16 @@ void Renderer::Render() {
       }
       auto &transformComponent = entity->GetComponent<TransformComponent>();
 
+
       if (entity->HasComponent<MaterialComponent>()) {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Time", glfwGetTime()));
+
          materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uModel",
             transformComponent.GetModelMatrix()));
+
          materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uView", view));
+
          materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uProjection", projection));
 
          materialComponent.Material->Use();

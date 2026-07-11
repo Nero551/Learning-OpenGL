@@ -8,6 +8,7 @@ in vec4 vColor;
 
 uniform vec4 ObjectColor;
 uniform vec4 LightColor;
+uniform float Time;
 
 void main()
 {
