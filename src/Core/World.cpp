@@ -22,6 +22,10 @@ void World::Start() {
    auto &scene = CreateScene<FirstScene>("First Scene");
    SetActiveScene(scene);
 
+
+   auto &ruby = resourceManager.Load<Texture>("ruby", 0, "Assets/Images/ruby.png");
+   auto &skull = resourceManager.Load<Texture>("skull", 1, "Assets/Images/skull.png");
+
    auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
       "Assets/Shaders/shader.vert");
 
@@ -30,6 +34,8 @@ void World::Start() {
 
    auto &objectMaterial = resourceManager.Load<Material>("material");
    objectMaterial.AssignShader(objectShader);
+   objectMaterial.AssignTexture(ruby);
+   objectMaterial.AssignTexture(skull);
 
    Cube &cube = scene.CreateEntity<Cube>();
    cube.GetComponent<MaterialComponent>().Material = &objectMaterial;

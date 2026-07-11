@@ -9,7 +9,7 @@
 struct Material : Resource {
    std::string Name;
    Shader *Shader = nullptr;
-   std::vector<Texture *> Textures;
+   std::array<Texture *, 16> Textures{};
 
    Material(const std::string &name);
 

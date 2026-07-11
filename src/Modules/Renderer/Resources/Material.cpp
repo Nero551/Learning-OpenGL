@@ -9,11 +9,19 @@ void Material::Use() {
    Shader->Use();
 
    for (Texture *texture: Textures) {
-      Shader->SetUniform(IntUniform(texture->Name, texture->Unit));
-      texture->Bind();
+      if (texture != nullptr) {
+         Shader->SetUniform(IntUniform(texture->Name, texture->Unit));
+         texture->Bind();
+      }
    }
 }
 
 void Material::AssignShader(struct Shader &shader) { Shader = &shader; }
 
-void Material::AssignTexture(Texture &texture) { Textures.push_back(&texture); }
+void Material::AssignTexture(Texture &texture) {
+   if (texture.Unit >= Textures.size()) {
+      LoggerService::Error("Texture out of bounds: " + texture.Name);
+   }
+
+   Textures[texture.Unit] = &texture;
+}

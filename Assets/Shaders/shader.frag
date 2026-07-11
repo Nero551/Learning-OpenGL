@@ -9,8 +9,10 @@ in vec4 vColor;
 uniform vec4 ObjectColor;
 uniform vec4 LightColor;
 uniform float Time;
+uniform sampler2D ruby;
+uniform sampler2D skull;
 
 void main()
 {
-    FragColor = LightColor * ObjectColor;
+    FragColor = ObjectColor + texture(ruby, vUV) + texture(skull, vUV);
 }
