@@ -2,7 +2,7 @@
 Language: Cpp
 BasedOnStyle: LLVM
 AccessModifierOffset: -3
-AlignAfterOpenBracket: DontAlign
+AlignAfterOpenBracket: false
 AlignConsecutiveAssignments: false
 AlignConsecutiveDeclarations: false
 AlignEscapedNewlines: DontAlign
@@ -11,9 +11,9 @@ AlignTrailingComments: false
 AllowAllArgumentsOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortCaseLabelsOnASingleLine: true
-AllowShortFunctionsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
-AlwaysBreakAfterDefinitionReturnType: false
+AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakTemplateDeclarations: No
 BraceWrapping:
   AfterCaseLabel: false
@@ -34,22 +34,7 @@ BraceWrapping:
   SplitEmptyNamespace: true
   AfterObjCDeclaration: false
   IndentBraces: false
-  AfterCaseLabel: false
-  AfterClass: false
-  AfterControlStatement: false
-  AfterEnum: false
-  AfterFunction: false
-  AfterNamespace: false
-  AfterStruct: false
-  AfterUnion: false
-  AfterExternBlock: false
-  BeforeCatch: false
-  BeforeElse: false
-  BeforeLambdaBody: false
-  BeforeWhile: false
-  SplitEmptyFunction: true
-  SplitEmptyRecord: true
-  SplitEmptyNamespace: true
+
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
 BreakConstructorInitializers: AfterColon

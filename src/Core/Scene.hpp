@@ -1,8 +1,8 @@
 #pragma once
+#include <unordered_map>
+
 #include "Entity.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
-#include <unordered_map>
-#include <vector>
 
 template<typename T>concept EntityType = std::derived_from<T, Entity>;
 

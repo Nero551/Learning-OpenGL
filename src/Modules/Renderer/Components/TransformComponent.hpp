@@ -1,8 +1,9 @@
 #pragma once
 
+#include <cmath>
+
 #include "Core/Component.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"
-#include <cmath>
 
 struct TransformComponent : Component {
   Vector3 Position = Vector3::Zero;

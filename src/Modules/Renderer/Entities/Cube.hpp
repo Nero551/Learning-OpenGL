@@ -44,8 +44,8 @@ struct Cube : Entity {
          4, 5, 1, 1, 0, 4
       });
 
-      AddComponent<TransformComponent>();
       auto &meshComponent = AddComponent<MeshComponent>();
+      AddComponent<TransformComponent>();
       AddComponent<MaterialComponent>();
 
       meshComponent.Mesh = &mesh;

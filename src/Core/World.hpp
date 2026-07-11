@@ -5,11 +5,9 @@
 #include "Core/Scene.hpp"
 #include "System.hpp"
 
-template<typename T>
-concept SceneType = std::derived_from<T, Scene>;
+template<typename T>concept SceneType = std::derived_from<T, Scene>;
 
-template<typename T>
-concept SystemType = std::derived_from<T, System>;
+template<typename T>concept SystemType = std::derived_from<T, System>;
 
 struct World {
    Scene *ActiveScene = nullptr;
@@ -25,17 +23,13 @@ struct World {
 
    template<SceneType T> T &GetScene(const std::string &name) {
       auto scene = Scenes.find(name);
-      if (scene == Scenes.end()) {
-         throw std::runtime_error("No corresponding Scene.");
-      }
+      if (scene == Scenes.end()) { throw std::runtime_error("No corresponding Scene."); }
       return static_cast<T &>(*scene->second);
    }
 
    void SetActiveScene(Scene &scene) { ActiveScene = &scene; }
 
-   template<SceneType T = Scene> T &GetActiveScene() {
-      return static_cast<T &>(*ActiveScene);
-   }
+   template<SceneType T = Scene> T &GetActiveScene() { return static_cast<T &>(*ActiveScene); }
 
    template<SystemType T> T &AddSystem() {
       if (Systems.contains(std::type_index(typeid(T)))) {
@@ -61,6 +55,10 @@ struct World {
    void Update(double dt);
 
    void Stop();
+
+   void BeginFrame(double dt);
+
+   void EndFrame(double dt);
 
 private:
    void AddSystems();

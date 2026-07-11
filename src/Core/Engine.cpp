@@ -1,9 +1,11 @@
 #include "Engine.hpp"
+
 #include <OpenGL.hpp>
-#include "../Modules/Renderer/Renderer.hpp"
-#include "Modules/Input/Input.hpp"
-#include "Core/World.hpp"
 #include <ranges>
+
+#include "../Modules/Renderer/Renderer.hpp"
+#include "Core/World.hpp"
+#include "Modules/Input/Input.hpp"
 
 Engine::Engine() : Window(1000, 800, "Plus Ultra") { Running = true; }
 
@@ -80,6 +82,8 @@ void Engine::BeginFrame() {
    glClearColor(0.1, 0.15, 0.2, 1);
    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+   World.BeginFrame(DeltaTime);
+
    for (auto &module: Modules | std::views::values) {
       module->BeginFrame(DeltaTime);
    }
@@ -90,6 +94,8 @@ void Engine::EndFrame() {
    DeltaTime = currentFrame - LastFrame;
    LastFrame = currentFrame;
    Window.SwapBuffers();
+
+   World.EndFrame(DeltaTime);
 
    for (auto &module: Modules | std::views::values) {
       module->EndFrame(DeltaTime);
