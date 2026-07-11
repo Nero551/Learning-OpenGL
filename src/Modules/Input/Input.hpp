@@ -3,14 +3,7 @@
 #include "Keys.hpp"
 #include "Core/Module.hpp"
 #include "Utilities/Math/Vector/Vector2.hpp"
-
-enum class MouseMode {
-  Normal = GLFW_CURSOR_NORMAL,
-  Hidden = GLFW_CURSOR_HIDDEN,
-  Disabled = GLFW_CURSOR_DISABLED,
-  Captured = GLFW_CURSOR_CAPTURED
-};
-
+#include "Mouse.hpp"
 
 struct Input : Module {
 
@@ -20,7 +13,15 @@ struct Input : Module {
 
   bool IsKeyReleased(Key key);
 
+  bool IsMouseButtonHeld(MouseButton button);
+
+  bool IsMouseButtonPressed(MouseButton button);
+
+  bool IsMouseButtonReleased(MouseButton button);
+
   Vector2 &GetMousePosition();
+
+  Vector2 &GetMouseDelta();
 
   enum MouseMode GetMouseMode();
 
