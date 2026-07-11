@@ -24,9 +24,13 @@ struct Vector2 {
 
    Vector2 operator-(const Vector2 &vec2) const;
 
+   Vector2 operator*(const Vector2 &vec2) const;
+
    Vector2 &operator+=(const Vector2 &vec2);
 
    Vector2 &operator-=(const Vector2 &vec2);
+
+   Vector2 &operator*=(const Vector2 &vec2);
 
    Vector2 operator+(float scalar) const;
 

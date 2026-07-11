@@ -5,17 +5,26 @@
 #include <cmath>
 #include <ostream>
 
-Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {
-}
+Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
 
 //?Operators
 
 //*Vectors
-Vector3 Vector3::operator+(const Vector3 &vec3) const { return {x + vec3.x, y + vec3.y, z + vec3.z}; }
-Vector3 Vector3::operator-(const Vector3 &vec3) const { return {x - vec3.x, y - vec3.y, z - vec3.z}; }
+Vector3 Vector3::operator+(const Vector3 &vec3) const {
+   return {x + vec3.x, y + vec3.y, z + vec3.z};
+}
+
+Vector3 Vector3::operator-(const Vector3 &vec3) const {
+   return {x - vec3.x, y - vec3.y, z - vec3.z};
+}
+
+Vector3 Vector3::operator*(const Vector3 &vec3) const {
+   return {x * vec3.x, y * vec3.y, z * vec3.z};
+}
 
 Vector3 &Vector3::operator+=(const Vector3 &vec3) { return *this = *this + vec3; }
 Vector3 &Vector3::operator-=(const Vector3 &vec3) { return *this = *this - vec3; }
+Vector3 &Vector3::operator*=(const Vector3 &vec3) { return *this = *this * vec3; }
 
 //*Scalars
 Vector3 Vector3::operator+(float scalar) const { return {x + scalar, y + scalar, z + scalar}; }
@@ -29,13 +38,24 @@ Vector3 &Vector3::operator*=(float scalar) { return *this = *this * scalar; }
 Vector3 &Vector3::operator/=(float scalar) { return *this = *this / scalar; }
 
 Vector3 operator+(float scalar, const Vector3 &vec3) { return vec3 + scalar; }
-Vector3 operator-(float scalar, const Vector3 &vec3) { return {scalar - vec3.x, scalar - vec3.y, scalar - vec3.z}; }
+
+Vector3 operator-(float scalar, const Vector3 &vec3) {
+   return {scalar - vec3.x, scalar - vec3.y, scalar - vec3.z};
+}
+
 Vector3 operator*(float scalar, const Vector3 &vec3) { return vec3 * scalar; }
-Vector3 operator/(float scalar, const Vector3 &vec3) { return {scalar / vec3.x, scalar / vec3.y, scalar / vec3.z}; }
+
+Vector3 operator/(float scalar, const Vector3 &vec3) {
+   return {scalar / vec3.x, scalar / vec3.y, scalar / vec3.z};
+}
+
 Vector3 Vector3::operator-() const { return -1 * *this; }
 
 //*Equality
-bool Vector3::operator==(const Vector3 &vec3) const { return x == vec3.x && y == vec3.y && z == vec3.z; }
+bool Vector3::operator==(const Vector3 &vec3) const {
+   return x == vec3.x && y == vec3.y && z == vec3.z;
+}
+
 bool Vector3::operator!=(const Vector3 &vec3) const { return !(*this == vec3); }
 
 //* Others

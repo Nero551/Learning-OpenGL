@@ -3,17 +3,26 @@
 #include <iostream>
 #include <ostream>
 
-Vector2::Vector2(float x, float y) : x(x), y(y) {
-}
+Vector2::Vector2(float x, float y) : x(x), y(y) {}
 
 //?Operators
 
 //* Vectors
-Vector2 Vector2::operator+(const Vector2 &vec2) const { return {x + vec2.x, y + vec2.y}; }
-Vector2 Vector2::operator-(const Vector2 &vec2) const { return {x - vec2.x, y - vec2.y}; }
+Vector2 Vector2::operator+(const Vector2 &vec2) const {
+   return {x + vec2.x, y + vec2.y};
+}
+
+Vector2 Vector2::operator-(const Vector2 &vec2) const {
+   return {x - vec2.x, y - vec2.y};
+}
+
+Vector2 Vector2::operator*(const Vector2 &vec2) const {
+   return {x * vec2.x, y * vec2.y};
+}
 
 Vector2 &Vector2::operator+=(const Vector2 &vec2) { return *this = *this + vec2; }
 Vector2 &Vector2::operator-=(const Vector2 &vec2) { return *this = *this - vec2; }
+Vector2 &Vector2::operator*=(const Vector2 &vec2) { return *this = *this * vec2; }
 
 //* Scalars
 Vector2 Vector2::operator+(float scalar) const { return {x + scalar, y + scalar}; }
