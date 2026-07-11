@@ -18,14 +18,14 @@ struct Shader : Resource {
    void Use();
 
    template<UniformType T> void SetUniform(const T &uniform) {
-      PendingUniforms[uniform.Name] = std::make_unique<T>(uniform);
+      PendingUniforms[GetUniformLocation(uniform.Name)] = std::make_unique<T>(uniform);
    }
 
    int GetUniformLocation(const std::string &name);
 
 private:
    std::unordered_map<std::string, unsigned int> UniformLocations;
-   std::unordered_map<std::string, std::unique_ptr<Uniform> > PendingUniforms;
+   std::unordered_map<int, std::unique_ptr<Uniform> > PendingUniforms;
 
    void SetBasicUniforms();
 

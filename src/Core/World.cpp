@@ -26,20 +26,19 @@ void World::Start() {
 
    auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
       "Assets/Shaders/shader.vert");
-   auto &objectMaterial = resourceManager.Load<Material>("material");
-   objectMaterial.AssignShader(objectShader);
+
    objectShader.SetUniform(Vector4Uniform("ObjectColor", {1, 0.5, 0.31, 1}));
    objectShader.SetUniform(Vector4Uniform("LightColor", {1, 1, 1, 1}));
 
-   //TODO- unable to set custom uniforms. fix that. issue is: u can't set it after the Use(). gotta queue them and upload on Use()
-   //TODO- make a uniform struct with value and Upload method. then all uniform types inherit it.
-   //TODO- shader just queues them in a vector and Use() runs Upload on all of them
+   auto &objectMaterial = resourceManager.Load<Material>("material");
+   objectMaterial.AssignShader(objectShader);
 
    Cube &cube = scene.CreateEntity<Cube>();
    cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
 
    auto &lightShader = resourceManager.Load<Shader>("lightShader",
       "Assets/Shaders/lightShader.frag", "Assets/Shaders/shader.vert");
+
    Material &lightMaterial = resourceManager.Load<Material>("lightMaterial");
    lightMaterial.AssignShader(lightShader);
 

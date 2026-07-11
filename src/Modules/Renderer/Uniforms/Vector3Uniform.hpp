@@ -7,7 +7,7 @@ struct Vector3Uniform : Uniform {
 
    Vector3Uniform(const std::string &name, Vector3 &value) : Uniform(name), Value(value) {}
 
-   void Upload(Shader &shader) override {
-      glUniform3f(shader.GetUniformLocation(Name), Value.x, Value.y, Value.z);
+   void Upload(int location) override {
+      glUniform3f(location, Value.x, Value.y, Value.z);
    }
 };

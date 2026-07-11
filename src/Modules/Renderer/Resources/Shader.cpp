@@ -34,7 +34,7 @@ void Shader::Use() {
 
 void Shader::UploadUniforms() {
    for (auto &uniformPtr: PendingUniforms | std::views::values) {
-      uniformPtr->Upload(*this);
+      uniformPtr->Upload(GetUniformLocation(uniformPtr->Name));
    }
 }
 

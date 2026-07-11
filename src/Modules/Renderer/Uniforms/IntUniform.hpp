@@ -9,7 +9,7 @@ struct IntUniform : Uniform {
 
    IntUniform(const std::string &name, int value) : Uniform(name), Value(value) {}
 
-   void Upload(Shader &shader) override {
-      glUniform1f(shader.GetUniformLocation(Name), Value);
+   void Upload(int location) override {
+      glUniform1i(location, Value);
    }
 };

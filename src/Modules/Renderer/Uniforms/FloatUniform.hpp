@@ -7,7 +7,7 @@ struct FloatUniform : Uniform {
 
    FloatUniform(const std::string &name, float value) : Uniform(name), Value(value) {}
 
-   void Upload(Shader &shader) override {
-      glUniform1f(shader.GetUniformLocation(Name), Value);
+   void Upload(int location) override {
+      glUniform1f(location, Value);
    }
 };

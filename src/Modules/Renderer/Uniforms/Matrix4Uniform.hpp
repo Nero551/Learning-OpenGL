@@ -9,7 +9,7 @@ struct Matrix4Uniform : Uniform {
 
    Matrix4Uniform(const std::string &name, const Matrix4 &value) : Uniform(name), Value(value) {}
 
-   void Upload(Shader &shader) override {
-      glUniformMatrix4fv(shader.GetUniformLocation(Name), 1, GL_TRUE, *Value.m);
+   void Upload(int location) override {
+      glUniformMatrix4fv(location, 1, GL_TRUE, *Value.m);
    }
 };
