@@ -7,15 +7,15 @@
 #include <vector>
 
 struct Material : Resource {
-  std::string Name;
-  Shader *Shader = nullptr;
-  std::vector<Texture *> Textures;
+   std::string Name;
+   Shader *Shader = nullptr;
+   std::vector<Texture *> Textures;
 
-  Material(const std::string &name);
+   Material(const std::string &name);
 
-  void AssignTexture(Texture &texture);
+   void AssignTexture(Texture &texture);
 
-  void AssignShader(struct Shader &shader);
+   void AssignShader(struct Shader &shader);
 
-  void Use();
+   void Use();
 };

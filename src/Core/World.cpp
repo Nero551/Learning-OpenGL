@@ -5,6 +5,7 @@
 #include "Core/ResourceManager.hpp"
 #include "Engine.hpp"
 #include "Modules/Renderer/Entities/Cube.hpp"
+#include "Modules/Renderer/Entities/Light.hpp"
 #include "Modules/Renderer/Systems/CameraSystem.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 #include "World/Scenes/FirstScene.hpp"
@@ -20,18 +21,27 @@ void World::Start() {
    auto &scene = CreateScene<FirstScene>("First Scene");
    SetActiveScene(scene);
 
-   Vector4 lightColor{1, 1, 1, 1};
-   Vector4 toyColor{1, 0.5, 0.31, 1};
-
-   LoggerService::Info(lightColor * toyColor);
-
-   auto &shader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
+   auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
       "Assets/Shaders/shader.vert");
-   auto &material = resourceManager.Load<Material>("material");
-   material.AssignShader(shader);
+   auto &objectMaterial = resourceManager.Load<Material>("material");
+   objectMaterial.AssignShader(objectShader);
+   objectShader.SetVec4("ObjectColor", {1, 0.5, 0.31, 1});
+   objectShader.SetVec4("LightColor", {1, 1, 1, 1});
+
+   //TODO- unable to set custom uniforms. fix that. issue is: u can't set it after the Use(). gotta queue them and upload on Use()
 
    Cube &cube = scene.CreateEntity<Cube>();
-   cube.GetComponent<MaterialComponent>().Material = &material;
+   cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
+
+   auto &lightShader = resourceManager.Load<Shader>("lightShader",
+      "Assets/Shaders/lightShader.frag", "Assets/Shaders/shader.vert");
+   Material &lightMaterial = resourceManager.Load<Material>("lightMaterial");
+   lightMaterial.AssignShader(lightShader);
+
+   Light &light = scene.CreateEntity<Light>();
+   light.GetComponent<MaterialComponent>().Material = &lightMaterial;
+
+   light.GetComponent<TransformComponent>().Position = {2, 2, 2};
 
    for (auto &system: Systems | std::views::values) {
       system->Start();

@@ -4,36 +4,43 @@
 
 #include <string>
 #include <unordered_map>
+#include <variant>
+
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
 struct Shader : Resource {
-    std::string Name;
-    unsigned int Id;
+   std::string Name;
+   unsigned int Id;
 
-    Shader(const std::string &name, const std::string &fragFilepath, const std::string &vertFilepath);
+   Shader(const std::string &name, const std::string &fragFilepath,
+      const std::string &vertFilepath);
 
-    void Use();
+   void Use();
 
-    void SetFloat(const std::string &name, float value);
+   void SetFloat(const std::string &name, float value);
 
-    void SetInt(const std::string &name, int value);
+   void SetInt(const std::string &name, int value);
 
-    void SetBool(const std::string &name, bool value);
+   void SetBool(const std::string &name, bool value);
 
-    void SetMat4(const std::string &name, const Matrix4 &mat4);
+   void SetVec3(const std::string &name, const Vector3 &vec3);
+
+   void SetVec4(const std::string &name, const Vector4 &vec4);
+
+   void SetMat4(const std::string &name, const Matrix4 &mat4);
 
 private:
-    std::unordered_map<std::string, unsigned int> UniformLocations;
+   std::unordered_map<std::string, unsigned int> UniformLocations;
 
-    void SetBasicUniforms();
+   void SetBasicUniforms();
 
-    unsigned int CreateShaderProgram(unsigned int fragShader, unsigned int vertShader);
+   unsigned int CreateShaderProgram(unsigned int fragShader, unsigned int vertShader);
 
-    unsigned int CreateVertShader(const char *vertSource);
+   unsigned int CreateVertShader(const char *vertSource);
 
-    unsigned int CreateFragShader(const char *fragSource);
+   unsigned int CreateFragShader(const char *fragSource);
 
-    bool CheckUniformExistence(const std::string &name, int location);
+   bool CheckUniformExistence(const std::string &name, int location);
 
-    int GetUniformLocation(const std::string &name);
+   int GetUniformLocation(const std::string &name);
 };

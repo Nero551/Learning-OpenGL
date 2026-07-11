@@ -17,7 +17,7 @@ Vector4 Vector4::operator-(const Vector4 &vec4) const {
 }
 
 Vector4 Vector4::operator*(const Vector4 &vec4) const {
-   return {x - vec4.x, y - vec4.y, z - vec4.z, w - vec4.w};
+   return {x * vec4.x, y * vec4.y, z * vec4.z, w * vec4.w};
 }
 
 Vector4 &Vector4::operator+=(const Vector4 &vec4) { return *this = *this + vec4; }
