@@ -1,12 +1,15 @@
 #include "Core/Engine.hpp"
 #include <OpenGL.hpp>
 
+void Lol() {
+
+}
+
 int main() {
 
   glfwInit();
   Engine engine;
   Engine::Ins = &engine;
-
   engine.Start();
 
   while (engine.Running) {

@@ -14,6 +14,7 @@ struct Material : Resource {
   Material(const std::string &name);
 
   void AssignTexture(Texture &texture);
+
   void AssignShader(struct Shader &shader);
 
   void Use();

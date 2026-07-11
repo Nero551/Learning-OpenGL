@@ -11,7 +11,7 @@ Texture::Texture(const std::string &name, unsigned int unit, const std::string &
 
   SetParameters();
 
-  Image image(imagePath);
+  Image image(imagePath, true);
   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.Width, image.Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.Data);
   glGenerateMipmap(GL_TEXTURE_2D);
 

@@ -15,7 +15,7 @@ uniform float uTime;
 void main()
 {
     vColor = aColor;
-    vPosition = uProjection * uView * uModel* aPosition;
+    vPosition = uProjection * uView * uModel * aPosition;
     vUV = aUV;
     gl_Position =  vPosition;
 }

@@ -4,8 +4,9 @@
 #include <stb_image.h>
 #include "Utilities/Services/LoggerService.hpp"
 
-Image::Image(const std::string &filePath) {
-  stbi_set_flip_vertically_on_load(true);
+Image::Image(const std::string &filePath, bool flip) {
+  stbi_set_flip_vertically_on_load(flip);
+  Flipped = flip;
   Data = stbi_load(filePath.c_str(), &Width, &Height, &NrChannels, 0);
 
   if (!Data) {

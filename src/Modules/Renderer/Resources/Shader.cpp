@@ -29,10 +29,12 @@ void Shader::SetFloat(const std::string &name, float value) {
   int location = GetUniformLocation(name);
   glUniform1f(location, value);
 }
+
 void Shader::SetInt(const std::string &name, int value) {
   int location = GetUniformLocation(name);
   glUniform1i(location, value);
 }
+
 void Shader::SetBool(const std::string &name, bool value) {
   int location = GetUniformLocation(name);
   glUniform1i(location, value);
@@ -56,10 +58,12 @@ int Shader::GetUniformLocation(const std::string &name) {
   return location;
 }
 
-void Shader::CheckUniformExistence(const std::string &name, int location) {
+bool Shader::CheckUniformExistence(const std::string &name, int location) {
   if (location == -1) {
     LoggerService::Warning("Uniform Not Found: " + name);
+    return false;
   }
+  return true;
 }
 
 void Shader::SetBasicUniforms() { SetFloat("uTime", glfwGetTime()); }

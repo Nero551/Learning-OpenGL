@@ -7,13 +7,13 @@ AllowAllArgumentsOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
-AllowShortFunctionsOnASingleLine: true
+#AllowShortFunctionsOnASingleLine: true
 
 SortIncludes: false
 ContinuationIndentWidth: 2
 BreakBeforeBinaryOperators: NonAssignment
 
 AlignOperands: DontAlign
-AlignAfterOpenBracket: DontAlign
+#AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: false
 AlignEscapedNewlines: DontAlign

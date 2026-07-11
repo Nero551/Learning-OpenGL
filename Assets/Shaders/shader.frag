@@ -11,5 +11,5 @@ uniform sampler2D skullTexture;
 
 void main()
 {
-    FragColor = texture(skullTexture, vUV) + texture(rubyTexture, vUV);
+    FragColor = vColor + texture(skullTexture, vUV) + texture(rubyTexture, vUV);
 }
