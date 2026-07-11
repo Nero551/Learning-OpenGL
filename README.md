@@ -31,5 +31,6 @@
 - ECS-style framework
 - LookAt Matrix
 - Arbitrary Axis Rotation
+- Input
 
 ![3D Cube](Docs/Screenshots/3D%20Cube.png)

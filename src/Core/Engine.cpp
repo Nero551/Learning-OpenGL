@@ -5,7 +5,7 @@
 #include "Core/World.hpp"
 #include <ranges>
 
-Engine::Engine() : Window(800, 600, "Plus Ultra") { Running = true; }
+Engine::Engine() : Window(1000, 800, "Plus Ultra") { Running = true; }
 
 /*
   ? engine owns Scenes, or world owns scenes, idc , scenes own entities, entities own components. system run on scene.
@@ -22,77 +22,76 @@ Engine::Engine() : Window(800, 600, "Plus Ultra") { Running = true; }
 Engine *Engine::Ins = nullptr;
 
 void Engine::AddModules() {
-  AddModule<Renderer>();
-  AddModule<Input>();
+   AddModule<Renderer>();
+   AddModule<Input>();
 }
 
 void Engine::Start() {
-  AddModules();
-  World.Start();
+   AddModules();
+   World.Start();
 
-  for (auto &module : Modules | std::views::values) {
-    module->Start();
-  }
+   for (auto &module: Modules | std::views::values) {
+      module->Start();
+   }
 
-  GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+   GetModule<Input>().SetMouseMode(MouseMode::Disabled);
 }
 
 void Engine::Update() {
-  Time = glfwGetTime();
-  World.Update(DeltaTime);
+   Time = glfwGetTime();
+   World.Update(DeltaTime);
 
-  if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
-    Running = false;
-    Window.Close();
-  }
+   if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
+      Running = false;
+      Window.Close();
+   }
 
-  if (GetModule<Input>().IsKeyReleased(Key::Q)) {
-    if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
-      GetModule<Input>().SetMouseMode(MouseMode::Normal);
+   if (GetModule<Input>().IsKeyReleased(Key::Q)) {
+      if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
+         GetModule<Input>().SetMouseMode(MouseMode::Normal);
+      } else {
+         GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+      }
+   }
 
-    } else {
-      GetModule<Input>().SetMouseMode(MouseMode::Disabled);
-    }
-  }
-
-  for (auto &module : Modules | std::views::values) {
-    module->Update(DeltaTime);
-  }
+   for (auto &module: Modules | std::views::values) {
+      module->Update(DeltaTime);
+   }
 }
 
 void Engine::Stop() {
-  World.Stop();
+   World.Stop();
 
-  for (auto &module : Modules | std::views::values) {
-    module->Stop();
-  }
+   for (auto &module: Modules | std::views::values) {
+      module->Stop();
+   }
 
-  glfwTerminate();
+   glfwTerminate();
 }
 
 void Engine::Render() {
-  for (auto &module : Modules | std::views::values) {
-    module->Render();
-  }
+   for (auto &module: Modules | std::views::values) {
+      module->Render();
+   }
 }
 
 void Engine::BeginFrame() {
-  Window.PollEvents();
-  glClearColor(0.1, 0.15, 0.2, 1);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+   Window.PollEvents();
+   glClearColor(0.1, 0.15, 0.2, 1);
+   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  for (auto &module : Modules | std::views::values) {
-    module->BeginFrame(DeltaTime);
-  }
+   for (auto &module: Modules | std::views::values) {
+      module->BeginFrame(DeltaTime);
+   }
 }
 
 void Engine::EndFrame() {
-  const float currentFrame = Time;
-  DeltaTime = currentFrame - LastFrame;
-  LastFrame = currentFrame;
-  Window.SwapBuffers();
+   const float currentFrame = Time;
+   DeltaTime = currentFrame - LastFrame;
+   LastFrame = currentFrame;
+   Window.SwapBuffers();
 
-  for (auto &module : Modules | std::views::values) {
-    module->EndFrame(DeltaTime);
-  }
+   for (auto &module: Modules | std::views::values) {
+      module->EndFrame(DeltaTime);
+   }
 }
