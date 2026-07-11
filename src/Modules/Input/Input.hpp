@@ -19,9 +19,9 @@ struct Input : Module {
 
   bool IsMouseButtonReleased(MouseButton button);
 
-  Vector2 &GetMousePosition();
+  Vector2 GetMousePosition();
 
-  Vector2 &GetMouseDelta();
+  Vector2 GetMouseDelta();
 
   enum MouseMode GetMouseMode();
 
@@ -31,9 +31,13 @@ struct Input : Module {
 
   void BeginFrame(double dt) override;
 
+  void EndFrame(double dt) override;
+
 private:
-  MouseMode MouseMode = MouseMode::Normal;
-  Vector2 MousePosition = Vector2::Zero;
+  MouseMode mouseMode = MouseMode::Normal;
+  Vector2 mousePosition = Vector2::Zero;
+  Vector2 previousMousePosition = Vector2::Zero;
+  bool firstMouse = true;
 
   static constexpr unsigned int KeyCount = GLFW_KEY_LAST + 1;
 

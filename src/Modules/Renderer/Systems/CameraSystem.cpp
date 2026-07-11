@@ -11,22 +11,13 @@ void CameraSystem::Update(double dt) {
     const auto &cameraComponent = camera.GetComponent<CameraComponent>();
 
     if (inputModule.GetMouseMode() == MouseMode::Disabled) {
-      if (firstMouse) {
-        lastX = inputModule.GetMousePosition().x;
-        lastY = inputModule.GetMousePosition().y;
-        firstMouse = false;
-      }
-
-      float xOffset = inputModule.GetMousePosition().x - lastX;
-      float yOffset = lastY - inputModule.GetMousePosition().y;
+      float xOffset = inputModule.GetMouseDelta().x;
+      float yOffset = -inputModule.GetMouseDelta().y;
 
       xOffset = Math::DegToRad(xOffset);
       yOffset = Math::DegToRad(yOffset);
       xOffset *= cameraComponent.Sensitivity;
       yOffset *= cameraComponent.Sensitivity;
-
-      lastX = inputModule.GetMousePosition().x;
-      lastY = inputModule.GetMousePosition().y;
 
       const float maxPitch = Math::DegToRad(89.0f);
 

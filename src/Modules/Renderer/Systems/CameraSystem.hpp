@@ -6,9 +6,4 @@ struct CameraSystem : System {
 
   void Update(double dt) override;
   Matrix4 GetViewMatrix();
-
-private:
-  bool firstMouse = true;
-  float lastX = 800 / 2;
-  float lastY = 600 / 2;
 };
