@@ -16,17 +16,20 @@ void Input::BeginFrame(double dt) {
     firstMouse = false;
   }
 
-  PreviousKeys = CurrentKeys;
   GLFWwindow *window = Engine::Ins->Window.GetGlfwWindow();
-
   for (unsigned int i = 0; i < CurrentKeys.size(); i++) {
     CurrentKeys[i] = glfwGetKey(window, static_cast<int>(i)) == GLFW_PRESS;
+  }
+
+  for (unsigned int i = 0; i < CurrentMouseButtons.size(); i++) {
+    CurrentMouseButtons[i] = glfwGetMouseButton(window, static_cast<int>(i));
   }
 }
 
 void Input::EndFrame(double dt) {
   previousMousePosition = mousePosition;
-
+  PreviousKeys = CurrentKeys;
+  PreviousMouseButtons = CurrentMouseButtons;
 }
 
 bool Input::IsKeyHeld(Key key) {
@@ -39,6 +42,18 @@ bool Input::IsKeyPressed(Key key) {
 
 bool Input::IsKeyReleased(Key key) {
   return !CurrentKeys[ToIndex(key)] && PreviousKeys[ToIndex(key)];
+}
+
+bool Input::IsMouseButtonHeld(MouseButton button) {
+  return CurrentMouseButtons[ToIndex(button)];
+}
+
+bool Input::IsMouseButtonPressed(MouseButton button) {
+  return CurrentMouseButtons[ToIndex(button)] && !PreviousMouseButtons[ToIndex(button)];
+}
+
+bool Input::IsMouseButtonReleased(MouseButton button) {
+  return !CurrentMouseButtons[ToIndex(button)] && PreviousMouseButtons[ToIndex(button)];
 }
 
 void Input::SetMouseMode(enum MouseMode mode) {
