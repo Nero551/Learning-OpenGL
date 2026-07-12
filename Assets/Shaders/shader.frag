@@ -14,17 +14,16 @@ uniform vec3 ViewPosition;
 uniform float Time;
 
 struct material {
+    vec4 Color;
     vec3 Diffuse;
     vec3 Ambient;
     vec3 Specular;
     float Shininess;
-    vec4 Color;
 };
 
 uniform material Material;
 
 vec3 ApplyLighting(){
-
     //Ambient Lighting
     vec3 ambient = Material.Ambient * LightColor;
 
@@ -38,7 +37,6 @@ vec3 ApplyLighting(){
     vec3 reflectDir = reflect(-lightDir, vNormal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
     vec3 specular = spec * LightColor * Material.Specular;
-
 
     vec3 result = (ambient + diffuse + specular);
     return result;

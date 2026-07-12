@@ -4,12 +4,16 @@
 #include "Core/Resource.hpp"
 
 struct Texture : Resource {
-  unsigned int Id;
-  unsigned int Unit;
-  Texture(const std::string &name, unsigned int unit, const std::string &imagePath);
+   Texture(const std::string &name, unsigned int unit, const std::string &imagePath);
 
-  void Bind();
+   unsigned int GetId() const { return Id; }
+   unsigned int GetUnit() const { return Unit; }
+
+   void Bind();
 
 private:
-  void SetParameters();
+   void SetParameters();
+
+   unsigned int Id;
+   unsigned int Unit;
 };

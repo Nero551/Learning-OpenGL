@@ -30,14 +30,14 @@ struct Scene {
 
    template<EntityType T> T &CreateEntity() {
       auto entity = std::make_unique<T>();
-      entity->Id = id;
+      entity->Id = currentEntityId;
       entity->Initialize();
 
       T &ref = *entity;
 
-      Entities.insert({id, std::move(entity)});
+      Entities.insert({currentEntityId, std::move(entity)});
 
-      id++;
+      currentEntityId++;
 
       return ref;
    }
@@ -52,5 +52,5 @@ struct Scene {
 
 private:
    Camera *ActiveCamera = nullptr;
-   unsigned int id = 1;
+   unsigned int currentEntityId = 1;
 };

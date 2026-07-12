@@ -117,7 +117,7 @@ void World::Update(double dt) {
 
    auto &materialComponent = ActiveScene->GetEntity<Cube>(cubeId).GetComponent<MaterialComponent>();
 
-   materialComponent.Material->Shader->SetUniform(Vector3Uniform("LightPosition", transformComponent.Position));
+   materialComponent.Material->GetShader().SetUniform(Vector3Uniform("LightPosition", transformComponent.Position));
 }
 
 void World::Stop() {}

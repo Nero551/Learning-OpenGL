@@ -32,19 +32,19 @@ void Renderer::OnRender() {
 
       if (entity->HasComponent<MaterialComponent>()) {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
-         materialComponent.Material->Shader->SetUniform(FloatUniform("Time", Engine::Ins->Time));
+         materialComponent.Material->GetShader().SetUniform(FloatUniform("Time", Engine::Ins->Time));
 
-         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ModelMatrix",
+         materialComponent.Material->GetShader().SetUniform(Matrix4Uniform("ModelMatrix",
             transformComponent.GetModelMatrix()));
 
-         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ViewMatrix", view));
+         materialComponent.Material->GetShader().SetUniform(Matrix4Uniform("ViewMatrix", view));
 
-         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
+         materialComponent.Material->GetShader().SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
 
-         materialComponent.Material->Shader->SetUniform(Matrix3Uniform("NormalMatrix",
+         materialComponent.Material->GetShader().SetUniform(Matrix3Uniform("NormalMatrix",
             transformComponent.GetNormalMatrix()));
 
-         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
+         materialComponent.Material->GetShader().SetUniform(Vector3Uniform("ViewPosition",
             camera.GetComponent<TransformComponent>().Position));
 
          materialComponent.Material->Use();

@@ -9,9 +9,9 @@
 template<typename T>concept UniformType = std::derived_from<T, Uniform>;
 
 struct Shader : Resource {
-   unsigned int Id;
-
    Shader(const std::string &name, const std::string &fragFilepath, const std::string &vertFilepath);
+
+   unsigned int GetId() const { return Id; };
 
    void Use();
 
@@ -22,6 +22,7 @@ struct Shader : Resource {
    int GetUniformLocation(const std::string &name);
 
 private:
+   unsigned int Id;
    std::unordered_map<std::string, unsigned int> UniformLocations;
    std::unordered_map<int, std::unique_ptr<Uniform> > PendingUniforms;
 
