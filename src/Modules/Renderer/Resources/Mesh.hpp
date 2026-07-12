@@ -5,7 +5,6 @@
 #include <vector>
 
 struct Mesh : Resource {
-  std::string Name;
   unsigned int Id;
   std::vector<Vertex> Vertices;
   std::vector<unsigned int> Indices;

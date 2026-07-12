@@ -3,7 +3,7 @@
 #include "../Uniforms/IntUniform.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
-Material::Material(const std::string &name) : Name(name) {}
+Material::Material(const std::string &name) : Resource(name) {}
 
 void Material::Use() {
    Shader->Use();

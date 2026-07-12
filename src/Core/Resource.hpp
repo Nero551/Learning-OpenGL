@@ -1,7 +1,10 @@
 #pragma once
+#include <string>
 
 struct Resource {
-   Resource() = default;
+   std::string Name;
+
+   Resource(const std::string &name) : Name(name) {};
 
    Resource(const Resource &) = delete;
 

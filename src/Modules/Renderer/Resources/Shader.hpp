@@ -9,7 +9,6 @@
 template<typename T>concept UniformType = std::derived_from<T, Uniform>;
 
 struct Shader : Resource {
-   std::string Name;
    unsigned int Id;
 
    Shader(const std::string &name, const std::string &fragFilepath, const std::string &vertFilepath);

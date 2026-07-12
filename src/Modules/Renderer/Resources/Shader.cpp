@@ -9,7 +9,7 @@
 #include "../Uniforms/FloatUniform.hpp"
 
 Shader::Shader(const std::string &name, const std::string &fragFilepath,
-   const std::string &vertFilepath) : Name(name) {
+   const std::string &vertFilepath) : Resource(name) {
    std::string fragCode = FileSystem::ReadFile(fragFilepath);
    std::string vertCode = FileSystem::ReadFile(vertFilepath);
    const char *fragSource = fragCode.c_str();
