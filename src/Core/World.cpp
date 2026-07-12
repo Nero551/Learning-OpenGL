@@ -7,7 +7,6 @@
 #include "Modules/Renderer/Entities/Light.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
 #include "Modules/Renderer/Uniforms/Vector4Uniform.hpp"
-#include "Utilities/Math/Color.hpp"
 #include "World/Scenes/FirstScene.hpp"
 
 unsigned int lightId;

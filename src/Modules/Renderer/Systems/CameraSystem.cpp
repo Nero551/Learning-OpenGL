@@ -8,9 +8,12 @@ void CameraSystem::Update(double dt) {
       auto &inputModule = Engine::Ins->GetModule<Input>();
       auto &camera = Engine::Ins->World.GetActiveScene().GetActiveCamera();
       auto &transform = camera.GetComponent<TransformComponent>();
-      const auto &cameraComponent = camera.GetComponent<CameraComponent>();
+      auto &cameraComponent = camera.GetComponent<CameraComponent>();
 
       if (inputModule.GetMouseMode() == MouseMode::Disabled) {
+         cameraComponent.Speed += inputModule.GetScrollDelta().y / 3;
+         cameraComponent.Speed = std::clamp(cameraComponent.Speed, 5.0f, 50.0f);
+
          float xOffset = inputModule.GetMouseDelta().x;
          float yOffset = -inputModule.GetMouseDelta().y;
 

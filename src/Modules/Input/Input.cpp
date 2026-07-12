@@ -2,11 +2,15 @@
 #include "Core/Engine.hpp"
 #include <OpenGL.hpp>
 #include "magic_enum/magic_enum.hpp"
-#include "Utilities/Services/LoggerService.hpp"
 
 void Input::OnStart() {
-   glfwSetCursorPosCallback(Engine::Ins->Window.GetGlfwWindow(), [](GLFWwindow *, double xPos, double yPos) {
+   Window &window = Engine::Ins->Window;
+   glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow *, double xPos, double yPos) {
       Engine::Ins->GetModule<Input>().mousePosition = Vector2(static_cast<float>(xPos), static_cast<float>(yPos));
+   });
+
+   glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow *, double xOffset, double yOffset) {
+      Engine::Ins->GetModule<Input>().scrollOffset = Vector2(static_cast<float>(xOffset), static_cast<float>(yOffset));
    });
 }
 
@@ -27,6 +31,7 @@ void Input::OnBeginFrame(double dt) {
 }
 
 void Input::OnEndFrame(double dt) {
+   scrollOffset = {0, 0};
    previousMousePosition = mousePosition;
    PreviousKeys = CurrentKeys;
    PreviousMouseButtons = CurrentMouseButtons;
@@ -63,8 +68,12 @@ void Input::SetMouseMode(enum MouseMode mode) {
 
 Vector2 Input::GetMousePosition() { return mousePosition; }
 
-Vector2 Input::GetMouseDelta() {
-   return (GetMousePosition() - previousMousePosition);
-}
+Vector2 Input::GetMouseDelta() { return (GetMousePosition() - previousMousePosition); }
 
 enum MouseMode Input::GetMouseMode() { return mouseMode; }
+
+Vector2 Input::GetScrollDelta() { return scrollOffset; }
+
+bool Input::IsScrolling() {
+   return scrollOffset != Vector2::Zero;
+}
