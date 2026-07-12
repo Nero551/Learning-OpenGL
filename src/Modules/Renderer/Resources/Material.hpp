@@ -8,7 +8,9 @@
 struct Material : Resource {
    static constexpr int MaxTextures = 16;
    Shader *Shader = nullptr;
-   std::array<Texture *, MaxTextures> Textures{};
+
+   float AmbientStrength = 0.1;
+   float DiffuseStrength = 1;
 
    Material(const std::string &name);
 
@@ -17,4 +19,7 @@ struct Material : Resource {
    void AssignShader(struct Shader &shader);
 
    void Use();
+
+protected:
+   std::array<Texture *, MaxTextures> Textures{};
 };

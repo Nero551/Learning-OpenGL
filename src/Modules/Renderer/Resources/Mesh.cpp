@@ -54,4 +54,8 @@ void Mesh::SetupVertAttrPointers() {
    // UV
    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void *>(offsetof(Vertex, UV)));
    glEnableVertexAttribArray(2);
+
+   //Normal
+   glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void *>(offsetof(Vertex, Normal)));
+   glEnableVertexAttribArray(3);
 }

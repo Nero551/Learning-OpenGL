@@ -3,7 +3,6 @@
 #include <vector>
 
 #include "Core/Scene.hpp"
-#include "System.hpp"
 
 template<typename T>concept SceneType = std::derived_from<T, Scene>;
 
@@ -38,6 +37,6 @@ struct World {
    void EndFrame(double dt);
 
 private:
-   std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
    Scene *ActiveScene = nullptr;
+   std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
 };

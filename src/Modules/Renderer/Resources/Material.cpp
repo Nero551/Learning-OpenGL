@@ -1,5 +1,6 @@
 #include "Material.hpp"
 
+#include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
@@ -7,6 +8,9 @@ Material::Material(const std::string &name) : Resource(name) {}
 
 void Material::Use() {
    Shader->Use();
+
+   Shader->SetUniform(FloatUniform("AmbientStrength", AmbientStrength));
+   Shader->SetUniform(FloatUniform("DiffuseStrength", DiffuseStrength));
 
    for (Texture *texture: Textures) {
       if (texture) {

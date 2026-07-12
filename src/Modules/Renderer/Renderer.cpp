@@ -7,6 +7,7 @@
 #include <ranges>
 
 #include "Uniforms/FloatUniform.hpp"
+#include "Uniforms/IntUniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
 
 void Renderer::AddSystems() {
