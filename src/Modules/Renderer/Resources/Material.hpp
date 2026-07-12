@@ -11,9 +11,9 @@ struct Material : Resource {
    static constexpr int MaxTextures = 16;
 
    Vector4 Color = {1};
-   Vector3 Ambient = {0.1};
+   Vector3 Ambient = {1};
    Vector3 Diffuse = {1};
-   Vector3 Specular = {0.2};
+   Vector3 Specular = {1};
    float Shininess = 32;
 
    Material(const std::string &name);

@@ -84,6 +84,9 @@ void FirstScene::Initialize() {
       light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
       light.GetComponent<TransformComponent>().Scale = {0.2};
 
+      light.GetComponent<LightComponent>().Ambient = {0.2};
+      light.GetComponent<LightComponent>().Diffuse = {0.5};
+
       lightId = light.Id;
    }
 }
