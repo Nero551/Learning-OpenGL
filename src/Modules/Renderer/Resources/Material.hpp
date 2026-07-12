@@ -11,6 +11,8 @@ struct Material : Resource {
 
    float AmbientStrength = 0.1;
    float DiffuseStrength = 1;
+   float SpecularStrength = 1;
+   float SpecularShininess = 32;
 
    Material(const std::string &name);
 

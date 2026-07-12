@@ -11,6 +11,8 @@ void Material::Use() {
 
    Shader->SetUniform(FloatUniform("AmbientStrength", AmbientStrength));
    Shader->SetUniform(FloatUniform("DiffuseStrength", DiffuseStrength));
+   Shader->SetUniform(FloatUniform("SpecularStrength", SpecularStrength));
+   Shader->SetUniform(FloatUniform("SpecularShininess", SpecularShininess));
 
    for (Texture *texture: Textures) {
       if (texture) {

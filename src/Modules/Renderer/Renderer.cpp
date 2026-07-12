@@ -10,6 +10,7 @@
 #include "Uniforms/IntUniform.hpp"
 #include "Uniforms/Matrix3Uniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
+#include "Uniforms/Vector3Uniform.hpp"
 
 void Renderer::AddSystems() {
    AddSystem<CameraSystem>();
@@ -42,6 +43,9 @@ void Renderer::OnRender() {
 
          materialComponent.Material->Shader->SetUniform(Matrix3Uniform("NormalMatrix",
             transformComponent.GetNormalMatrix()));
+
+         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
+            camera.GetComponent<TransformComponent>().Position));
 
          materialComponent.Material->Use();
       }

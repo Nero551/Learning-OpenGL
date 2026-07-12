@@ -13,11 +13,12 @@ uniform mat4 ModelMatrix;
 uniform mat4 ViewMatrix;
 uniform mat4 ProjectionMatrix;
 uniform mat3 NormalMatrix;
+
 uniform float Time;
 
 void main()
 {
-    vNormal = NormalMatrix * aNormal;
+    vNormal = normalize(NormalMatrix * aNormal);
     vColor = aColor;
     vPosition = ModelMatrix * aPosition;
     vUV = aUV;

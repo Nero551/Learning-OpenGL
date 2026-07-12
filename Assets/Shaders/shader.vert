@@ -19,7 +19,7 @@ uniform float Time;
 
 void main()
 {
-    vNormal = NormalMatrix * aNormal;
+    vNormal = normalize(NormalMatrix * aNormal);
     vColor = aColor;
     vPosition = ModelMatrix * aPosition;
     vUV = aUV;
