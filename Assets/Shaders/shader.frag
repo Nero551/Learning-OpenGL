@@ -7,7 +7,6 @@ in vec4 vPosition;
 in vec4 vColor;
 in vec3 vNormal;
 
-uniform vec4 ObjectColor;
 uniform vec4 LightColor;
 uniform vec3 LightPosition;
 uniform vec3 ViewPosition;
@@ -18,6 +17,7 @@ uniform float AmbientStrength;
 uniform float DiffuseStrength;
 uniform float SpecularStrength;
 uniform float SpecularShininess;
+uniform vec4 MaterialColor;
 
 vec4 ApplyLighting(){
 
@@ -43,5 +43,5 @@ vec4 ApplyLighting(){
 void main()
 {
     vec4 Lighting = ApplyLighting();
-    FragColor = Lighting * ObjectColor;
+    FragColor = Lighting * MaterialColor;
 }

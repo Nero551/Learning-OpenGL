@@ -42,6 +42,14 @@ struct Scene {
       return ref;
    }
 
+   template<EntityType T> T &GetEntity(unsigned int id) {
+      auto entity = Entities.find(id);
+      if (entity == Entities.end()) {
+         throw std::runtime_error(std::format("Entity Not Found: {}", typeid(T).name()));
+      }
+      return static_cast<T &>((*entity->second));
+   }
+
 private:
    Camera *ActiveCamera = nullptr;
    unsigned int id = 1;

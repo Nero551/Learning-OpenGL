@@ -2,11 +2,16 @@
 
 #include "Core/ResourceManager.hpp"
 #include "Engine.hpp"
+#include "Modules/Input/Input.hpp"
 #include "Modules/Renderer/Entities/Cube.hpp"
 #include "Modules/Renderer/Entities/Light.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
 #include "Modules/Renderer/Uniforms/Vector4Uniform.hpp"
+#include "Utilities/Math/Color.hpp"
 #include "World/Scenes/FirstScene.hpp"
+
+unsigned int lightId;
+unsigned int cubeId;
 
 void World::Start() {
    auto &resourceManager = Engine::Ins->ResourceManager;
@@ -58,9 +63,7 @@ void World::Start() {
    auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
       "Assets/Shaders/shader.vert");
 
-   objectShader.SetUniform(Vector4Uniform("ObjectColor", {0.3, 0.3, 0.3, 1}));
    objectShader.SetUniform(Vector4Uniform("LightColor", {1, 1, 1, 1}));
-   objectShader.SetUniform(Vector3Uniform("LightPosition", {1.2, 1, 2}));
 
    auto &objectMaterial = resourceManager.Load<Material>("material");
    objectMaterial.AssignShader(objectShader);
@@ -68,6 +71,8 @@ void World::Start() {
    Cube &cube = scene.CreateEntity<Cube>();
    cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
    cube.GetComponent<MeshComponent>().Mesh = &mesh;
+
+   cubeId = cube.Id;
 
    auto &lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
       "Assets/Shaders/lightShader.vert");
@@ -81,9 +86,39 @@ void World::Start() {
 
    light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
    light.GetComponent<TransformComponent>().Scale = {0.2, 0.2, 0.2};
+
+   lightId = light.Id;
 }
 
-void World::Update(double dt) {}
+void World::Update(double dt) {
+   Light &light = ActiveScene->GetEntity<Light>(lightId);
+   auto &transformComponent = light.GetComponent<TransformComponent>();
+   auto &input = Engine::Ins->GetModule<Input>();
+
+   if (input.IsKeyHeld(Key::Up)) {
+      transformComponent.Position.z += 2 * dt;
+   }
+   if (input.IsKeyHeld(Key::Down)) {
+      transformComponent.Position.z -= 2 * dt;
+   }
+   if (input.IsKeyHeld(Key::Left)) {
+      transformComponent.Position.x -= 2 * dt;
+   }
+   if (input.IsKeyHeld(Key::Right)) {
+      transformComponent.Position.x += 2 * dt;
+   }
+
+   if (input.IsKeyHeld(Key::I)) {
+      transformComponent.Position.y += 2 * dt;
+   }
+   if (input.IsKeyHeld(Key::O)) {
+      transformComponent.Position.y -= 2 * dt;
+   }
+
+   auto &materialComponent = ActiveScene->GetEntity<Cube>(cubeId).GetComponent<MaterialComponent>();
+
+   materialComponent.Material->Shader->SetUniform(Vector3Uniform("LightPosition", transformComponent.Position));
+}
 
 void World::Stop() {}
 

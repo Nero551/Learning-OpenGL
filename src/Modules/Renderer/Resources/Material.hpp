@@ -3,6 +3,7 @@
 #include "Shader.hpp"
 #include "Texture.hpp"
 #include "Core/Resource.hpp"
+#include "Utilities/Math/Vector/Vector4.hpp"
 
 
 struct Material : Resource {
@@ -13,6 +14,7 @@ struct Material : Resource {
    float DiffuseStrength = 1;
    float SpecularStrength = 1;
    float SpecularShininess = 32;
+   Vector4 MaterialColor = Vector4(1, 1, 1, 1);
 
    Material(const std::string &name);
 

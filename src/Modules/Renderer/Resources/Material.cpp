@@ -2,6 +2,7 @@
 
 #include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
+#include "../Uniforms/Vector4Uniform.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
 Material::Material(const std::string &name) : Resource(name) {}
@@ -13,6 +14,7 @@ void Material::Use() {
    Shader->SetUniform(FloatUniform("DiffuseStrength", DiffuseStrength));
    Shader->SetUniform(FloatUniform("SpecularStrength", SpecularStrength));
    Shader->SetUniform(FloatUniform("SpecularShininess", SpecularShininess));
+   Shader->SetUniform(Vector4Uniform("MaterialColor", MaterialColor));
 
    for (Texture *texture: Textures) {
       if (texture) {
