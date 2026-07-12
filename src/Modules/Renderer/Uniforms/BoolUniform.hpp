@@ -3,10 +3,10 @@
 #include "OpenGL.hpp"
 
 
-struct IntUniform : Uniform {
-   int Value;
+struct BoolUniform : Uniform {
+   bool Value;
 
-   IntUniform(const std::string &name, int value) : Uniform(name), Value(value) {}
+   BoolUniform(const std::string &name, bool value) : Uniform(name), Value(value) {}
 
    void Upload(int location) override {
       glUniform1i(location, Value);

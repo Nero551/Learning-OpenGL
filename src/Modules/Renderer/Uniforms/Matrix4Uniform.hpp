@@ -1,5 +1,4 @@
 #pragma once
-#include "../Resources/Shader.hpp"
 #include "../Uniform.hpp"
 #include "OpenGL.hpp"
 #include "Utilities/Math/Matrix/Matrix4.hpp"

@@ -29,10 +29,9 @@ void Renderer::Render() {
 
       if (entity->HasComponent<MaterialComponent>()) {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
-         materialComponent.Material->Shader->SetUniform(FloatUniform("Time", glfwGetTime()));
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Time", Engine::Ins->Time));
 
-         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uModel",
-            transformComponent.GetModelMatrix()));
+         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uModel", transformComponent.GetModelMatrix()));
 
          materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uView", view));
 

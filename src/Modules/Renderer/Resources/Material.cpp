@@ -9,7 +9,7 @@ void Material::Use() {
    Shader->Use();
 
    for (Texture *texture: Textures) {
-      if (texture != nullptr) {
+      if (texture) {
          Shader->SetUniform(IntUniform(texture->Name, texture->Unit));
          texture->Bind();
       }

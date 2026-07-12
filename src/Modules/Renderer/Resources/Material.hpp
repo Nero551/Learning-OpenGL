@@ -4,12 +4,12 @@
 #include "Texture.hpp"
 #include "Core/Resource.hpp"
 
-#include <vector>
 
 struct Material : Resource {
+   static constexpr int MaxTextures = 16;
    std::string Name;
    Shader *Shader = nullptr;
-   std::array<Texture *, 16> Textures{};
+   std::array<Texture *, MaxTextures> Textures{};
 
    Material(const std::string &name);
 
