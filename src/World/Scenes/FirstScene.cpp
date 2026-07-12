@@ -60,7 +60,6 @@ void FirstScene::Initialize() {
       auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
          "Assets/Shaders/shader.vert");
 
-      objectShader.SetUniform(Vector3Uniform("LightColor", {1}));
 
       auto &objectMaterial = resourceManager.Load<Material>("material");
       objectMaterial.AssignShader(objectShader);

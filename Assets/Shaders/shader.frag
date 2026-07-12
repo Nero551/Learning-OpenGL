@@ -31,7 +31,7 @@ uniform light Light;
 
 vec3 ApplyLighting(){
     //Ambient Lighting
-    vec3 ambient = Material.Ambient * Light.Color * Light.Ambient;
+    vec3 ambient = Light.Color * Material.Ambient * Light.Ambient;
 
     //Diffuse Lighting
     vec3 lightDir = normalize(Light.Position - vPosition.xyz);
