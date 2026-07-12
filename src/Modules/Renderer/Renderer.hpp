@@ -3,9 +3,9 @@
 #include "Core/Module.hpp"
 
 struct Renderer : Module {
+protected:
+   void OnRender() override;
 
-  void Start() override;
-  void Update(double dt) override;
-  void Stop() override;
-  void Render() override;
+private:
+   void AddSystems() override;
 };

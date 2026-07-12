@@ -9,16 +9,16 @@
 #include "Uniforms/FloatUniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
 
-void Renderer::Start() {}
+void Renderer::AddSystems() {
+   AddSystem<CameraSystem>();
+}
 
-void Renderer::Update(double dt) {}
-
-void Renderer::Render() {
+void Renderer::OnRender() {
    auto *scene = Engine::Ins->World.ActiveScene;
    auto *camera = scene->ActiveCamera;
 
    Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
-   Matrix4 view = Engine::Ins->World.GetSystem<CameraSystem>().GetViewMatrix();
+   Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
    for (auto &entity: scene->Entities | std::views::values) {
       if (!entity->HasComponent<TransformComponent>()) {
@@ -46,5 +46,3 @@ void Renderer::Render() {
       }
    }
 }
-
-void Renderer::Stop() {}

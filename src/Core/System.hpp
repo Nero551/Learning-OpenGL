@@ -11,5 +11,7 @@ struct System {
 
    virtual void BeginFrame(double dt) {}
 
+   virtual void Render() {}
+
    virtual void EndFrame(double dt) {}
 };

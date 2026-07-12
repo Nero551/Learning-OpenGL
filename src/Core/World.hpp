@@ -7,8 +7,6 @@
 
 template<typename T>concept SceneType = std::derived_from<T, Scene>;
 
-template<typename T>concept SystemType = std::derived_from<T, System>;
-
 struct World {
    Scene *ActiveScene = nullptr;
 
@@ -31,25 +29,6 @@ struct World {
 
    template<SceneType T = Scene> T &GetActiveScene() { return static_cast<T &>(*ActiveScene); }
 
-   template<SystemType T> T &AddSystem() {
-      if (Systems.contains(std::type_index(typeid(T)))) {
-         throw std::runtime_error("System already exists.");
-      }
-
-      auto system = std::make_unique<T>();
-      T &ref = *system;
-      Systems.emplace(typeid(T), std::move(system));
-      return ref;
-   }
-
-   template<SystemType T> T &GetSystem() {
-      auto system = Systems.find(typeid(T));
-      if (system == Systems.end()) {
-         throw std::runtime_error(std::format("System Not Found: {}", typeid(T).name()));
-      }
-      return static_cast<T &>((*system->second));
-   }
-
    void Start();
 
    void Update(double dt);
@@ -61,8 +40,5 @@ struct World {
    void EndFrame(double dt);
 
 private:
-   void AddSystems();
-
    std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
-   std::unordered_map<std::type_index, std::unique_ptr<System> > Systems;
 };

@@ -27,11 +27,11 @@ struct Input : Module {
 
   void SetMouseMode(enum MouseMode mode);
 
-  void Start() override;
+  void OnStart() override;
 
-  void BeginFrame(double dt) override;
+  void OnBeginFrame(double dt) override;
 
-  void EndFrame(double dt) override;
+  void OnEndFrame(double dt) override;
 
 private:
   MouseMode mouseMode = MouseMode::Normal;
