@@ -4,7 +4,6 @@
 #include "../Components/TransformComponent.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
 
-
 void LightingSystem::Render() {
    auto &scene = Engine::Ins->World.GetActiveScene();
    auto &camera = scene.GetActiveCamera();

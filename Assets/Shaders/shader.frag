@@ -38,7 +38,7 @@ vec3 ApplyLighting(){
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
     vec3 specular = spec * LightColor * Material.Specular;
 
-    vec3 result = (ambient + diffuse + specular);
+    vec3 result = ambient + diffuse + specular;
     return result;
 }
 

@@ -24,6 +24,12 @@ struct Scene {
 
    virtual void Initialize() {}
 
+   virtual void Update(double dt) {}
+   virtual void Render() {}
+   virtual void BeginFrame(double dt) {}
+   virtual void EndFrame(double dt) {}
+   virtual void Stop() {}
+
    void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
    Camera &GetActiveCamera() { return static_cast<Camera &>(*ActiveCamera); }
 

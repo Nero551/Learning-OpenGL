@@ -36,6 +36,8 @@ struct World {
 
    void EndFrame(double dt);
 
+   void Render();
+
 private:
    Scene *ActiveScene = nullptr;
    std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
