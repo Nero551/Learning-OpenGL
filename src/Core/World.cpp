@@ -63,7 +63,7 @@ void World::Start() {
    auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
       "Assets/Shaders/shader.vert");
 
-   objectShader.SetUniform(Vector4Uniform("LightColor", {1, 1, 1, 1}));
+   objectShader.SetUniform(Vector3Uniform("LightColor", {1, 1, 1}));
 
    auto &objectMaterial = resourceManager.Load<Material>("material");
    objectMaterial.AssignShader(objectShader);

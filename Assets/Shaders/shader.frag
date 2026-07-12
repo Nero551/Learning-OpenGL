@@ -7,41 +7,45 @@ in vec4 vPosition;
 in vec4 vColor;
 in vec3 vNormal;
 
-uniform vec4 LightColor;
+uniform vec3 LightColor;
 uniform vec3 LightPosition;
 uniform vec3 ViewPosition;
 
 uniform float Time;
 
-uniform float AmbientStrength;
-uniform float DiffuseStrength;
-uniform float SpecularStrength;
-uniform float SpecularShininess;
-uniform vec4 MaterialColor;
+struct material {
+    vec3 Diffuse;
+    vec3 Ambient;
+    vec3 Specular;
+    float Shininess;
+    vec4 Color;
+};
 
-vec4 ApplyLighting(){
+uniform material Material;
+
+vec3 ApplyLighting(){
 
     //Ambient Lighting
-    vec4 ambient = AmbientStrength * LightColor;
+    vec3 ambient = Material.Ambient * LightColor;
 
     //Diffuse Lighting
-    vec3 lightDir = normalize(LightPosition - vec3(vPosition.xyz));
-    float diff = max(dot(vNormal, lightDir), 0.0) * DiffuseStrength;
-    vec4 diffuse = diff * LightColor * DiffuseStrength;
+    vec3 lightDir = normalize(LightPosition - vPosition.xyz);
+    float diff = max(dot(vNormal, lightDir), 0.0);
+    vec3 diffuse = diff * LightColor * Material.Diffuse;
 
     //Specular Lighting;
     vec3 viewDir = normalize(ViewPosition - vec3(vPosition.xyz));
     vec3 reflectDir = reflect(-lightDir, vNormal);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), SpecularShininess);
-    vec4 specular = spec * LightColor * SpecularStrength;
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
+    vec3 specular = spec * LightColor * Material.Specular;
 
 
-    vec4 result = (ambient + diffuse + specular);
+    vec3 result = (ambient + diffuse + specular);
     return result;
 }
 
 void main()
 {
-    vec4 Lighting = ApplyLighting();
-    FragColor = Lighting * MaterialColor;
+    vec3 Lighting = ApplyLighting();
+    FragColor = vec4(Lighting, 1) * Material.Color;
 }
