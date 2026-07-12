@@ -14,13 +14,13 @@ void Renderer::AddSystems() {
 }
 
 void Renderer::OnRender() {
-   auto *scene = Engine::Ins->World.ActiveScene;
-   auto *camera = scene->ActiveCamera;
+   auto &scene = Engine::Ins->World.GetActiveScene();
+   auto &camera = scene.GetActiveCamera();
 
-   Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
+   Matrix4 projection = camera.GetComponent<CameraComponent>().GetProjectionMatrix();
    Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
-   for (auto &entity: scene->Entities | std::views::values) {
+   for (auto &entity: scene.Entities | std::views::values) {
       if (!entity->HasComponent<TransformComponent>()) {
          continue;
       }

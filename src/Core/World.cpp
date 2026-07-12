@@ -1,14 +1,10 @@
 #include "World.hpp"
 
-#include <ranges>
-
 #include "Core/ResourceManager.hpp"
 #include "Engine.hpp"
 #include "Modules/Renderer/Entities/Cube.hpp"
 #include "Modules/Renderer/Entities/Light.hpp"
-#include "Modules/Renderer/Systems/CameraSystem.hpp"
 #include "Modules/Renderer/Uniforms/Vector4Uniform.hpp"
-#include "Utilities/Services/LoggerService.hpp"
 #include "World/Scenes/FirstScene.hpp"
 
 void World::Start() {

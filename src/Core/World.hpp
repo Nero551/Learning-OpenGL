@@ -8,8 +8,6 @@
 template<typename T>concept SceneType = std::derived_from<T, Scene>;
 
 struct World {
-   Scene *ActiveScene = nullptr;
-
    template<SceneType T> T &CreateScene(const std::string &name) {
       auto scene = std::make_unique<T>();
       scene->Name = name;
@@ -41,4 +39,5 @@ struct World {
 
 private:
    std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
+   Scene *ActiveScene = nullptr;
 };

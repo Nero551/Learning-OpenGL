@@ -8,7 +8,6 @@ template<typename T>concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
    std::string Name;
-   Camera *ActiveCamera = nullptr;
    std::unordered_map<unsigned int, std::unique_ptr<Entity> > Entities;
 
    Scene() = default;
@@ -23,10 +22,11 @@ struct Scene {
 
    Scene &operator=(Scene &&) = default;
 
-   virtual void Initialize() {
-   }
+   virtual void Initialize() {}
 
    void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
+   Camera &GetActiveCamera() { return static_cast<Camera &>(*ActiveCamera); }
+
 
    template<EntityType T> T &CreateEntity() {
       auto entity = std::make_unique<T>();
@@ -43,5 +43,6 @@ struct Scene {
    }
 
 private:
+   Camera *ActiveCamera = nullptr;
    unsigned int id = 1;
 };
