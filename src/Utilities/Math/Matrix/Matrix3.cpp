@@ -4,6 +4,8 @@
 #include "Utilities/Math/MathUtils.hpp"
 
 #include <cmath>
+
+#include "../Basis.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
 
@@ -69,8 +71,8 @@ Matrix3 &Matrix3::operator*=(const Matrix3 &mat3) { return *this = *this * mat3;
 //* Vectors
 Vector3 Matrix3::operator*(const Vector3 &vec3) const {
    return {
-      m[0][0] * vec3.x + m[0][1] * vec3.y + m[0][2] * vec3.z,
-      m[1][0] * vec3.x + m[1][1] * vec3.y + m[1][2] * vec3.z, m[2][0] * vec3.x + m[2][1] * vec3.y + m[2][2] * vec3.z
+      m[0][0] * vec3.x + m[0][1] * vec3.y + m[0][2] * vec3.z, m[1][0] * vec3.x + m[1][1] * vec3.y + m[1][2] * vec3.z,
+      m[2][0] * vec3.x + m[2][1] * vec3.y + m[2][2] * vec3.z
    };
 }
 
@@ -166,9 +168,36 @@ Matrix3 Matrix3::RotateZ(float radian) const {
    return *this * rotationMatrix;
 }
 
+Matrix3 Matrix3::Rotate(const Vector3 &eulerRotation) const {
+   Matrix3 rotationMatrix = Identity;
+   rotationMatrix = rotationMatrix.RotateZ(eulerRotation.z);
+   rotationMatrix = rotationMatrix.RotateY(eulerRotation.y);
+   rotationMatrix = rotationMatrix.RotateX(eulerRotation.x);
+
+   return *this * rotationMatrix;
+}
+
+Matrix3 Matrix3::RotateAroundAxis(const Vector3 &axis, float radian) const {
+   Matrix3 rotationMatrix = Identity;
+   rotationMatrix = rotationMatrix.RotateZ(radian);
+
+   Vector3 forward = axis.Normalized();
+   Vector3 helper = forward.IsParallelTo(Vector3::Up) ? Vector3::Right : Vector3::Up;
+
+   Vector3 right = helper.Cross(forward);
+   Vector3 up = forward.Cross(right);
+
+   Basis basis{right, up, forward};
+   Matrix3 basisMatrix = basis.GetMatrix().ToMatrix3();
+
+   Matrix3 finalMatrix = basisMatrix * rotationMatrix * basisMatrix.Inverse();
+
+   return *this * finalMatrix;
+}
+
 float Matrix3::Determinant() const {
-   return (
-      m[0][0] * Minor(0, 0).Determinant() - m[0][1] * Minor(0, 1).Determinant() + m[0][2] * Minor(0, 2).Determinant());
+   return (m[0][0] * Minor(0, 0).Determinant() - m[0][1] * Minor(0, 1).Determinant() + m[0][2] * Minor(0, 2).
+      Determinant());
 }
 
 Matrix3 Matrix3::Transpose() const {

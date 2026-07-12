@@ -26,6 +26,8 @@ struct Matrix4 {
 
    Matrix4 RotateAroundAxis(const Vector3 &axis, float radian) const;
 
+   Matrix3 ToMatrix3() const;
+
    float Determinant() const;
 
    Matrix4 Transpose() const;

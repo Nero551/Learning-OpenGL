@@ -19,6 +19,10 @@ struct Matrix3 {
 
    Matrix3 RotateZ(float radian) const;
 
+   Matrix3 Rotate(const Vector3 &eulerRotation) const;
+
+   Matrix3 RotateAroundAxis(const Vector3 &axis, float radian) const;
+
    Matrix3 Translate(const Vector2 &trans) const;
 
    float Determinant() const;

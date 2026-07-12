@@ -8,6 +8,7 @@
 
 #include "Uniforms/FloatUniform.hpp"
 #include "Uniforms/IntUniform.hpp"
+#include "Uniforms/Matrix3Uniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
 
 void Renderer::AddSystems() {
@@ -32,11 +33,15 @@ void Renderer::OnRender() {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
          materialComponent.Material->Shader->SetUniform(FloatUniform("Time", Engine::Ins->Time));
 
-         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uModel", transformComponent.GetModelMatrix()));
+         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ModelMatrix",
+            transformComponent.GetModelMatrix()));
 
-         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uView", view));
+         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ViewMatrix", view));
 
-         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("uProjection", projection));
+         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
+
+         materialComponent.Material->Shader->SetUniform(Matrix3Uniform("NormalMatrix",
+            transformComponent.GetNormalMatrix()));
 
          materialComponent.Material->Use();
       }

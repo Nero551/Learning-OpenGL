@@ -4,7 +4,6 @@ layout (location = 1) in vec4 aColor;
 layout (location = 2) in vec2 aUV;
 layout (location = 3) in vec3 aNormal;
 
-
 out vec4 vPosition;
 out vec4 vColor;
 out vec2 vUV;
@@ -14,7 +13,6 @@ uniform mat4 ModelMatrix;
 uniform mat4 ViewMatrix;
 uniform mat4 ProjectionMatrix;
 uniform mat3 NormalMatrix;
-
 uniform float Time;
 
 void main()
