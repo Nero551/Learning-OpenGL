@@ -8,6 +8,8 @@ struct Vector2 {
 
    Vector2() = default;
 
+   Vector2(float all);
+
    Vector2(float x, float y);
 
    float LengthSquared() const;

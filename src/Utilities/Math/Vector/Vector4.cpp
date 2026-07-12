@@ -2,8 +2,10 @@
 #include <cmath>
 #include <ostream>
 
-Vector4::Vector4(const float x, const float y, const float z, const float w) : x(x), y(y), z(z),
-   w(w) {}
+
+Vector4::Vector4(float all) : x(all), y(all), z(all), w(all) {}
+
+Vector4::Vector4(const float x, const float y, const float z, const float w) : x(x), y(y), z(z), w(w) {}
 
 //?Operators
 

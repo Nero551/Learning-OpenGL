@@ -8,6 +8,8 @@ struct Vector3 {
 
    Vector3() = default;
 
+   Vector3(float all);
+
    Vector3(float x, float y, float z);
 
    float LengthSquared() const;

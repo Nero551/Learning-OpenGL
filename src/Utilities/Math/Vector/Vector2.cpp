@@ -3,6 +3,8 @@
 #include <iostream>
 #include <ostream>
 
+
+Vector2::Vector2(float all) : x(all), y(all) {}
 Vector2::Vector2(float x, float y) : x(x), y(y) {}
 
 //?Operators
