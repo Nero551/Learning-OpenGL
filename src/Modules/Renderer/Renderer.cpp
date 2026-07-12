@@ -6,6 +6,7 @@
 
 #include <ranges>
 
+#include "Systems/LightingSystem.hpp"
 #include "Uniforms/FloatUniform.hpp"
 #include "Uniforms/IntUniform.hpp"
 #include "Uniforms/Matrix3Uniform.hpp"
@@ -14,6 +15,7 @@
 
 void Renderer::AddSystems() {
    AddSystem<CameraSystem>();
+   AddSystem<LightingSystem>();
 }
 
 void Renderer::OnRender() {
@@ -43,9 +45,6 @@ void Renderer::OnRender() {
 
          materialComponent.Material->GetShader().SetUniform(Matrix3Uniform("NormalMatrix",
             transformComponent.GetNormalMatrix()));
-
-         materialComponent.Material->GetShader().SetUniform(Vector3Uniform("ViewPosition",
-            camera.GetComponent<TransformComponent>().Position));
 
          materialComponent.Material->Use();
       }

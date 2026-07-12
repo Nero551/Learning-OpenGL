@@ -8,14 +8,17 @@
 
 Material::Material(const std::string &name) : Resource(name) {}
 
-void Material::Use() {
-   GetShader().Use();
-
+void Material::SetProperties() {
    GetShader().SetUniform(Vector3Uniform("Material.Ambient", Ambient));
    GetShader().SetUniform(Vector3Uniform("Material.Diffuse", Diffuse));
    GetShader().SetUniform(Vector3Uniform("Material.Specular", Specular));
    GetShader().SetUniform(FloatUniform("Material.Shininess", Shininess));
-   GetShader().SetUniform(Vector4Uniform("Material.Color", MaterialColor));
+   GetShader().SetUniform(Vector4Uniform("Material.Color", Color));
+}
+
+void Material::Use() {
+   SetProperties();
+   GetShader().Use();
 
    for (Texture *texture: Textures) {
       if (texture) {

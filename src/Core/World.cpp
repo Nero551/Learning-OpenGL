@@ -62,7 +62,7 @@ void World::Start() {
    auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
       "Assets/Shaders/shader.vert");
 
-   objectShader.SetUniform(Vector3Uniform("LightColor", {1, 1, 1}));
+   objectShader.SetUniform(Vector3Uniform("LightColor", {1}));
 
    auto &objectMaterial = resourceManager.Load<Material>("material");
    objectMaterial.AssignShader(objectShader);
@@ -84,7 +84,9 @@ void World::Start() {
    light.GetComponent<MeshComponent>().Mesh = &mesh;
 
    light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
-   light.GetComponent<TransformComponent>().Scale = {0.2, 0.2, 0.2};
+   light.GetComponent<TransformComponent>().Scale = {0.2};
+
+   //TODO- make script templates for components, resources, entities, scenes, systems, modules.
 
    lightId = light.Id;
 }

@@ -10,7 +10,7 @@
 struct Material : Resource {
    static constexpr int MaxTextures = 16;
 
-   Vector4 MaterialColor = {1};
+   Vector4 Color = {1};
    Vector3 Ambient = {0.1};
    Vector3 Diffuse = {1};
    Vector3 Specular = {0.2};
@@ -29,4 +29,6 @@ struct Material : Resource {
 protected:
    std::array<Texture *, MaxTextures> Textures{};
    Shader *Shader = nullptr;
+
+   void SetProperties();
 };
