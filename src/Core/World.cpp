@@ -5,7 +5,7 @@
 
 void World::Start() {
    auto &scene = CreateScene<FirstScene>("First Scene");
-   SetActiveScene(scene);
+   ActiveScene = &scene;
 }
 
 void World::Update(double dt) {

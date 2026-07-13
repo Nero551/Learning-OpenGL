@@ -15,11 +15,6 @@ template<typename T> struct SafePtr {
       return *this;
    }
 
-   SafePtr &operator=(std::nullptr_t) {
-      ptr = nullptr;
-      return *this;
-   }
-
    T *operator->() const {
       if (!ptr) {
          LoggerService::Fatal(nullMessage);

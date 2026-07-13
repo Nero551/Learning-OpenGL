@@ -6,9 +6,9 @@
 void CameraSystem::Update(double dt) {
    {
       auto &inputModule = Engine::Ins->GetModule<Input>();
-      auto &camera = Engine::Ins->World.GetActiveScene().GetActiveCamera();
-      auto &transform = camera.GetComponent<TransformComponent>();
-      auto &cameraComponent = camera.GetComponent<CameraComponent>();
+      auto &camera = Engine::Ins->World.ActiveScene->ActiveCamera;
+      auto &transform = camera->GetComponent<TransformComponent>();
+      auto &cameraComponent = camera->GetComponent<CameraComponent>();
 
       if (inputModule.GetMouseMode() == MouseMode::Disabled) {
          cameraComponent.Speed += inputModule.GetScrollDelta().y / 3;
@@ -56,8 +56,8 @@ void CameraSystem::Update(double dt) {
 }
 
 Matrix4 CameraSystem::GetViewMatrix() {
-   auto &camera = Engine::Ins->World.GetActiveScene().GetActiveCamera();
-   auto &transformComponent = camera.GetComponent<TransformComponent>();
+   auto &camera = Engine::Ins->World.ActiveScene->ActiveCamera;
+   auto &transformComponent = camera->GetComponent<TransformComponent>();
 
    Vector3 pos = transformComponent.Position;
    Vector3 forward = transformComponent.GetForward();

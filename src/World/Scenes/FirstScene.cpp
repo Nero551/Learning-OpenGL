@@ -15,7 +15,7 @@ void FirstScene::Initialize() {
       auto &resourceManager = Engine::Ins->ResourceManager;
       Camera &camera = CreateEntity<Camera>();
       camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
-      SetActiveCamera(camera);
+      ActiveCamera = &camera;
 
       auto &mesh = Primitives::CreateCube("cubeMesh");
 
@@ -26,7 +26,7 @@ void FirstScene::Initialize() {
 
       Cube &cube = CreateEntity<Cube>();
       cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-      cube.GetComponent<MeshComponent>().SetMesh(mesh);
+      cube.GetComponent<MeshComponent>().Mesh = &mesh;
 
       cubeId = cube.Id; //Temporary
 
@@ -38,7 +38,7 @@ void FirstScene::Initialize() {
 
       Light &light = CreateEntity<Light>();
       light.GetComponent<MaterialComponent>().Material = &lightMaterial;
-      light.GetComponent<MeshComponent>().SetMesh(mesh);
+      light.GetComponent<MeshComponent>().Mesh = &mesh;
 
       light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
       light.GetComponent<TransformComponent>().Scale = {0.2};

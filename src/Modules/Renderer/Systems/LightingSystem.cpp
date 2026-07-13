@@ -6,10 +6,10 @@
 #include "../Uniforms/Vector3Uniform.hpp"
 
 void LightingSystem::Render() {
-   auto &scene = Engine::Ins->World.GetActiveScene();
-   auto &camera = scene.GetActiveCamera();
+   auto &scene = Engine::Ins->World.ActiveScene;
+   auto &camera = scene->ActiveCamera;
 
-   for (auto &entity: scene.Entities | std::views::values) {
+   for (auto &entity: scene->Entities | std::views::values) {
       if (!entity->HasComponent<TransformComponent>()) {
          continue;
       }
@@ -37,7 +37,7 @@ void LightingSystem::Render() {
 
 
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
-            camera.GetComponent<TransformComponent>().Position));
+            camera->GetComponent<TransformComponent>().Position));
 
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Color", lightColor));
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Position", lightPos));

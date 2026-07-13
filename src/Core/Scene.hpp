@@ -3,12 +3,14 @@
 
 #include "Entity.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
+#include "Utilities/SafePtr.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
 template<typename T>concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
    std::string Name;
+   SafePtr<Camera> ActiveCamera{"Scene Has No Active Camera Assigned"};
    std::unordered_map<unsigned int, std::unique_ptr<Entity> > Entities;
 
    Scene() = default;
@@ -30,13 +32,6 @@ struct Scene {
    virtual void BeginFrame(double dt) {}
    virtual void EndFrame(double dt) {}
    virtual void Stop() {}
-
-   void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
-
-   Camera &GetActiveCamera() {
-      return LoggerService::Require(ActiveCamera, "Scene Has No Active Camera");
-   }
-
 
    template<EntityType T> T &CreateEntity() {
       auto entity = std::make_unique<T>();
@@ -61,6 +56,5 @@ struct Scene {
    }
 
 private:
-   Camera *ActiveCamera = nullptr;
    unsigned int currentEntityId = 1;
 };

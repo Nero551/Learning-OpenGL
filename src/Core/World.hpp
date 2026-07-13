@@ -8,6 +8,8 @@
 template<typename T>concept SceneType = std::derived_from<T, Scene>;
 
 struct World {
+   SafePtr<Scene> ActiveScene;
+
    template<SceneType T> T &CreateScene(const std::string &name) {
       auto scene = std::make_unique<T>();
       scene->Name = name;
@@ -23,12 +25,6 @@ struct World {
       return static_cast<T &>(*scene->second);
    }
 
-   void SetActiveScene(Scene &scene) { ActiveScene = &scene; }
-
-   template<SceneType T = Scene> T &GetActiveScene() {
-      return (LoggerService::Require(static_cast<T *>(ActiveScene), "World Has No Active Scene"));
-   }
-
    void Start();
 
    void Update(double dt);
@@ -42,6 +38,5 @@ struct World {
    void Render();
 
 private:
-   Scene *ActiveScene = nullptr;
    std::unordered_map<std::string, std::unique_ptr<Scene> > Scenes;
 };
