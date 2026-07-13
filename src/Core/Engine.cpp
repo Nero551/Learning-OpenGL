@@ -6,6 +6,7 @@
 #include "../Modules/Renderer/Renderer.hpp"
 #include "Core/World.hpp"
 #include "Modules/Input/Input.hpp"
+#include "Modules/Profiling/Profiling.hpp"
 
 Engine::Engine() : Window(1000, 800, "Plus Ultra") { Running = true; }
 
@@ -26,9 +27,12 @@ SafePtr<Engine> Engine::Ins;
 void Engine::AddModules() {
    AddModule<Renderer>();
    AddModule<Input>();
+   AddModule<Profiling>();
 }
 
 void Engine::Start() {
+   // glfwSwapInterval(0);
+
    AddModules();
    World.Start();
 
@@ -38,6 +42,7 @@ void Engine::Start() {
 
    GetModule<Input>().SetMouseMode(MouseMode::Disabled);
 }
+
 
 void Engine::Update() {
    Time = glfwGetTime();

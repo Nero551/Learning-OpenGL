@@ -16,6 +16,8 @@ struct Window {
 
    void PollEvents();
 
+   void SetTitle(const std::string &name);
+
    void Close();
 
    GLFWwindow *GetGlfwWindow();

@@ -33,9 +33,9 @@ void FirstScene::Initialize() {
       objectMaterial.EmissionMap = &emissionMap;
 
       // objectMaterial.Diffuse = {0};
-      // objectMaterial.Ambient = {0.3};
-      // objectMaterial.Specular = {0.3};
-      // objectMaterial.Diffuse = {0.5};
+      // objectMaterial.Ambient = {0};
+      // objectMaterial.Specular = {0};
+      // objectMaterial.Diffuse = {0};
       objectMaterial.Emission = {3};
 
       Cube &cube = CreateEntity<Cube>();
