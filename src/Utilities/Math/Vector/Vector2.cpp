@@ -3,8 +3,11 @@
 #include <iostream>
 #include <ostream>
 
+#include "../MathUtils.hpp"
+
 
 Vector2::Vector2(float all) : x(all), y(all) {}
+
 Vector2::Vector2(float x, float y) : x(x), y(y) {}
 
 //?Operators
@@ -61,6 +64,10 @@ float Vector2::Length() const { return std::sqrt(LengthSquared()); }
 float Vector2::Dot(const Vector2 &vec2) const { return x * vec2.x + y * vec2.y; }
 
 float Vector2::Distance(const Vector2 &vec2) const { return (*this - vec2).Length(); }
+
+bool Vector2::NearlyEquals(const Vector2 &vec2) const {
+   return Math::NearlyEquals(x, vec2.x) && Math::NearlyEquals(y, vec2.y);
+}
 
 Vector2 Vector2::Normalized() const {
    float length = Length();

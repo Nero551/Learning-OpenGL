@@ -10,7 +10,7 @@ struct Matrix4 {
    Matrix4(float mAll);
 
    Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21,
-           float m22, float m23, float m30, float m31, float m32, float m33);
+      float m22, float m23, float m30, float m31, float m32, float m33);
 
    Matrix4 Translate(const Vector3 &translation) const;
 
@@ -35,6 +35,8 @@ struct Matrix4 {
    Matrix4 Inverse() const;
 
    Matrix3 Minor(int row, int col) const;
+
+   bool NearlyEquals(const Matrix4 &mat4) const;
 
    Matrix4 operator+(const Matrix4 &mat4) const;
 

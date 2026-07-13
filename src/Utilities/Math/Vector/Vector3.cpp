@@ -6,6 +6,7 @@
 #include <ostream>
 
 Vector3::Vector3(float all) : x(all), y(all), z(all) {}
+
 Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
 
 //?Operators
@@ -77,6 +78,10 @@ Vector3 Vector3::Cross(const Vector3 &vec3) const {
 }
 
 float Vector3::Distance(const Vector3 &vec3) const { return (*this - vec3).Length(); }
+
+bool Vector3::NearlyEquals(const Vector3 &vec3) const {
+   return Math::NearlyEquals(x, vec3.x) && Math::NearlyEquals(y, vec3.y) && Math::NearlyEquals(z, vec3.z);
+}
 
 Vector3 Vector3::Normalized() const {
    float length = Length();

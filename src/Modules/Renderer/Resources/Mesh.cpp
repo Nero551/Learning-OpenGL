@@ -1,8 +1,8 @@
 #include <OpenGL.hpp>
 #include "Mesh.hpp"
 
-Mesh::Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices) :
-   Resource(name), Vertices(vertices), Indices(indices) {
+Mesh::Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices) : Resource(name),
+   Vertices(vertices), Indices(indices) {
    Id = CreateVAO();
    VBO = CreateVBO();
    EBO = CreateEBO();

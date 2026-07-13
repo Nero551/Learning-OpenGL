@@ -24,6 +24,8 @@ struct Vector3 {
 
    float Distance(const Vector3 &vec3) const;
 
+   bool NearlyEquals(const Vector3 &vec3) const;
+
    bool IsParallelTo(const Vector3 &vec3) const;
 
    bool IsPerpendicularTo(const Vector3 &vec3) const;

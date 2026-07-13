@@ -22,6 +22,8 @@ struct Matrix2 {
 
    Matrix2 Transpose() const;
 
+   bool NearlyEquals(const Matrix2 &mat2) const;
+
    Matrix2 operator+(const Matrix2 &mat2) const;
 
    Matrix2 operator-(const Matrix2 &mat2) const;

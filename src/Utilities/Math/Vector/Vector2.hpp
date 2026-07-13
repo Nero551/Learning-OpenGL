@@ -22,6 +22,8 @@ struct Vector2 {
 
    float Distance(const Vector2 &vec2) const;
 
+   bool NearlyEquals(const Vector2 &vec2) const;
+
    Vector2 operator+(const Vector2 &vec2) const;
 
    Vector2 operator-(const Vector2 &vec2) const;

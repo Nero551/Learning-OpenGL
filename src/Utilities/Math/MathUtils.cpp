@@ -1,4 +1,7 @@
 #include "MathUtils.hpp"
+
+#include <cmath>
+#include <limits>
 #include <numbers>
 
 float Math::Radians(float deg) {
@@ -7,4 +10,8 @@ float Math::Radians(float deg) {
 
 float Math::Degrees(float rad) {
    return rad * 180 / std::numbers::pi;
+}
+
+bool Math::NearlyEquals(float a, float b) {
+   return std::abs(a - b) < EPSILONF;
 }

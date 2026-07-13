@@ -2,6 +2,8 @@
 #include <cmath>
 #include <ostream>
 
+#include "../MathUtils.hpp"
+
 
 Vector4::Vector4(float all) : x(all), y(all), z(all), w(all) {}
 
@@ -88,6 +90,11 @@ float Vector4::Dot(const Vector4 &vec4) const {
 }
 
 float Vector4::Distance(const Vector4 &vec4) const { return (*this - vec4).Length(); }
+
+bool Vector4::NearlyEquals(const Vector4 &vec4) const {
+   return Math::NearlyEquals(x, vec4.x) && Math::NearlyEquals(y, vec4.y) && Math::NearlyEquals(z, vec4.z) && Math::NearlyEquals(w,
+      vec4.w);
+}
 
 Vector4 Vector4::Normalized() const {
    const float length = Length();

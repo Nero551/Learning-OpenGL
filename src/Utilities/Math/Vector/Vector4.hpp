@@ -23,6 +23,8 @@ struct Vector4 {
 
    float Distance(const Vector4 &vec4) const;
 
+   bool NearlyEquals(const Vector4 &vec4) const;
+
    Vector4 operator+(const Vector4 &vec4) const;
 
    Vector4 operator-(const Vector4 &vec4) const;

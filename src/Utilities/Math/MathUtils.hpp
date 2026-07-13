@@ -7,4 +7,7 @@ namespace Math {
    float Radians(float deg);
 
    float Degrees(float rad);
+
+   bool NearlyEquals(float a, float b);
+
 } // namespace Math

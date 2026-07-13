@@ -116,6 +116,17 @@ Matrix2 Matrix2::Transpose() const {
    return result;
 }
 
+bool Matrix2::NearlyEquals(const Matrix2 &mat2) const {
+   for (int row = 0; row < 2; row++) {
+      for (int col = 0; col < 2; col++) {
+         if (!Math::NearlyEquals(m[row][col], mat2.m[row][col])) {
+            return false;
+         }
+      }
+   }
+   return true;
+}
+
 float Matrix2::Determinant() const { return m[0][0] * m[1][1] - m[0][1] * m[1][0]; }
 
 Matrix2 Matrix2::Inverse() const {
