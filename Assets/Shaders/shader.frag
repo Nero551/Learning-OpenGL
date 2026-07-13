@@ -38,7 +38,7 @@ vec3 ApplyLighting(){
     float diff = max(dot(vNormal, lightDir), 0.0);
     vec3 diffuse = diff * Light.Color * Material.Diffuse * Light.Diffuse;
 
-    //Specular Lighting;
+    //Specular Lighting
     vec3 viewDir = normalize(ViewPosition - vec3(vPosition.xyz));
     vec3 reflectDir = reflect(-lightDir, vNormal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);

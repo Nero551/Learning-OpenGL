@@ -29,46 +29,25 @@ BraceWrapping:
   BeforeElse: false
   BeforeLambdaBody: false
   BeforeWhile: false
-  SplitEmptyFunction: true
-  SplitEmptyRecord: true
-  SplitEmptyNamespace: true
-  AfterObjCDeclaration: false
-  IndentBraces: false
-
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
 BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Custom
 BreakConstructorInitializers: AfterColon
 BreakConstructorInitializersBeforeComma: false
 BreakTemplateDeclarations: No
-ColumnLimit: 120100100
+ColumnLimit: 130
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ContinuationIndentWidth: 6
 IncludeCategories:
-  - Regex: ^<.*
-    Priority: 1
-  - Regex: ^".*
-    Priority: 2
-  - Regex: .*
-    Priority: 3
-  - Regex: ^<.*
-    Priority: 1
-  - Regex: ^".*
-    Priority: 2
-  - Regex: .*
-    Priority: 3
-  - Regex: ^<.*
-    Priority: 1
-  - Regex: ^".*
-    Priority: 2
-  - Regex: .*
-    Priority: 3
   - Regex: '^<.*'
     Priority: 1
   - Regex: '^".*'
     Priority: 2
   - Regex: '.*'
     Priority: 3
-IncludeIsMainRegex: ([-_](test|unittest))?$'([-_](test|unittest))?$''([-_](test|unittest))?$''([-_](test|unittest))?$'
+IncludeIsMainRegex: '([-_](test|unittest))?$'
 IndentCaseLabels: true
 IndentWidth: 3
 InsertNewlineAtEOF: true
