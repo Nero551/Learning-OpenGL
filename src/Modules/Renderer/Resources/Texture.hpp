@@ -5,18 +5,16 @@
 
 struct Texture : Resource {
 
-   Texture(const std::string &name, unsigned int unit, int width, int height, unsigned char pixels[]);
+   Texture(const std::string &name, int width, int height, unsigned char pixels[]);
 
-   Texture(const std::string &name, unsigned int unit, const std::string &imagePath);
+   Texture(const std::string &name, const std::string &imagePath);
 
    unsigned int GetId() const { return Id; }
-   unsigned int GetUnit() const { return Unit; }
 
-   void Bind();
+   void Bind(unsigned int unit);
 
 private:
    void SetParameters();
 
    unsigned int Id;
-   unsigned int Unit;
 };

@@ -5,10 +5,10 @@
 #include "Utilities/Image/Image.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
-Texture::Texture(const std::string &name, unsigned int unit, int width, int height, unsigned char pixels[]) :
-   Resource(name), Unit(unit) {
+Texture::Texture(const std::string &name, int width, int height, unsigned char pixels[]) :
+   Resource(name) {
    glGenTextures(1, &Id);
-   glActiveTexture(GL_TEXTURE0 + Unit);
+   glActiveTexture(GL_TEXTURE0);
    glBindTexture(GL_TEXTURE_2D, Id);
 
    SetParameters();
@@ -20,10 +20,10 @@ Texture::Texture(const std::string &name, unsigned int unit, int width, int heig
    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-Texture::Texture(const std::string &name, unsigned int unit, const std::string &imagePath) :
-   Resource(name), Unit(unit) {
+Texture::Texture(const std::string &name, const std::string &imagePath) :
+   Resource(name) {
    glGenTextures(1, &Id);
-   glActiveTexture(GL_TEXTURE0 + Unit);
+   glActiveTexture(GL_TEXTURE0);
    glBindTexture(GL_TEXTURE_2D, Id);
 
    SetParameters();
@@ -49,8 +49,8 @@ Texture::Texture(const std::string &name, unsigned int unit, const std::string &
    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Texture::Bind() {
-   glActiveTexture(GL_TEXTURE0 + Unit);
+void Texture::Bind(unsigned int unit) {
+   glActiveTexture(GL_TEXTURE0 + unit);
    glBindTexture(GL_TEXTURE_2D, Id);
 }
 

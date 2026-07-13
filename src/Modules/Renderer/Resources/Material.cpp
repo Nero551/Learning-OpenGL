@@ -23,32 +23,31 @@ void Material::SetProperties() {
    Shader->SetUniform(FloatUniform("Material.Shininess", Shininess));
    Shader->SetUniform(Vector4Uniform("Material.Color", Color));
 
-   Shader->SetUniform(IntUniform("Material.DiffuseMap", DiffuseMap->GetUnit()));
-   DiffuseMap->Bind();
+   Shader->SetUniform(IntUniform("Material.DiffuseMap", 16));
+   DiffuseMap->Bind(16);
 
-   Shader->SetUniform(IntUniform("Material.SpecularMap", SpecularMap->GetUnit()));
-   SpecularMap->Bind();
+   Shader->SetUniform(IntUniform("Material.SpecularMap", 15));
+   SpecularMap->Bind(15);
 
-   Shader->SetUniform(IntUniform("Material.EmissionMap", EmissionMap->GetUnit()));
-   EmissionMap->Bind();
+   Shader->SetUniform(IntUniform("Material.EmissionMap", 14));
+   EmissionMap->Bind(14);
 }
 
 void Material::Use() {
-   SetProperties();
    Shader->Use();
+   SetProperties();
 
-   for (Texture *texture: Textures) {
-      if (texture) {
-         Shader->SetUniform(IntUniform(texture->Name, texture->GetUnit()));
-         texture->Bind();
+   for (int slot = 0; slot < MaxTextures; slot++) {
+      if (CustomTextures[slot]) {
+         Shader->SetUniform(IntUniform(CustomTextures[slot]->Name, slot));
+         CustomTextures[slot]->Bind(slot);
       }
    }
 }
 
-void Material::AssignTexture(Texture &texture) {
-   if (texture.GetUnit() >= Textures.size()) {
-      LoggerService::Error("Texture out of bounds: " + texture.Name);
+void Material::AssignTexture(Texture &texture, unsigned int slot) {
+   if (slot >= MaxTextures) {
+      LoggerService::Error("Texture slot out of bounds: " + texture.Name);
    }
-
-   Textures[texture.GetUnit()] = &texture;
+   CustomTextures[slot] = &texture;
 }

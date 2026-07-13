@@ -35,6 +35,8 @@ struct material {
 uniform material Material;
 uniform light Light;
 
+uniform sampler2D rubyTexture;
+
 vec3 ApplyLighting(){
     vec3 diffuseMap = vec3(texture(Material.DiffuseMap, vUV));
     vec3 specularMap = vec3(texture(Material.SpecularMap, vUV));
@@ -64,5 +66,5 @@ vec3 ApplyLighting(){
 void main()
 {
     vec3 Lighting = ApplyLighting();
-    FragColor = vec4(Lighting, 1) * Material.Color;
+    FragColor = vec4(Lighting, 1) * Material.Color + texture(rubyTexture, vUV);
 }

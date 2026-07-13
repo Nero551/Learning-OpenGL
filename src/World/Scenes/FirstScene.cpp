@@ -21,10 +21,12 @@ void FirstScene::Initialize() {
 
       auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
 
-      auto &diffuseMap = resourceManager.Load<Texture>("diffuseMap", 13, "Assets/Images/diffuseMap.png");
-      auto &specularMap = resourceManager.Load<Texture>("specularMap", 12, "Assets/Images/specularMap.png");
-      auto &emissionMap = resourceManager.Load<Texture>("emissionMap", 11, "Assets/Images/emissionMap.jpg");
+      auto &diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
+      auto &specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
+      auto &emissionMap = resourceManager.Load<Texture>("emissionMap", "Assets/Images/emissionMap.jpg");
+      auto &rubyTexture = resourceManager.Load<Texture>("rubyTexture", "Assets/Images/ruby.png");
       auto &objectMaterial = resourceManager.Load<Material>("material");
+      objectMaterial.AssignTexture(rubyTexture, 0);
       objectMaterial.Shader = &objectShader;
       objectMaterial.DiffuseMap = &diffuseMap;
       objectMaterial.SpecularMap = &specularMap;
@@ -33,7 +35,7 @@ void FirstScene::Initialize() {
       // objectMaterial.Ambient = {0.3};
       // objectMaterial.Specular = {0.3};
       // objectMaterial.Diffuse = {0.5};
-      objectMaterial.Emission = {0.8};
+      objectMaterial.Emission = {5};
 
       Cube &cube = CreateEntity<Cube>();
       cube.GetComponent<MaterialComponent>().Material = &objectMaterial;

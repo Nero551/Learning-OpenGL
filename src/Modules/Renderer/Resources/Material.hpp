@@ -27,12 +27,12 @@ struct Material : Resource {
 
    Material(const std::string &name);
 
-   void AssignTexture(Texture &texture);
+   void AssignTexture(Texture &texture, unsigned int slot);
 
    void Use();
 
 protected:
-   std::array<Texture *, MaxTextures> Textures{};
+   std::array<Texture *, MaxTextures> CustomTextures{};
 
    void SetProperties();
 };
