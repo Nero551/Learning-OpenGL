@@ -5,6 +5,8 @@
 #include <vector>
 
 struct Mesh : Resource {
+   bool Wireframe = false;
+
    Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
 
    unsigned int GetId() const { return Id; };

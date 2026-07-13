@@ -1,8 +1,8 @@
 #include <OpenGL.hpp>
 #include "Mesh.hpp"
 
-Mesh::Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices)
-   : Resource(name), Vertices(vertices), Indices(indices) {
+Mesh::Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices) :
+   Resource(name), Vertices(vertices), Indices(indices) {
    Id = CreateVAO();
    VBO = CreateVBO();
    EBO = CreateEBO();
@@ -11,6 +11,12 @@ Mesh::Mesh(const std::string &name, const std::vector<Vertex> &vertices, const s
 }
 
 void Mesh::Draw() {
+   if (Wireframe) {
+      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+   } else {
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+   }
+
    glBindVertexArray(Id);
    glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, nullptr);
 }
@@ -43,8 +49,7 @@ unsigned int Mesh::CreateEBO() {
 
 void Mesh::SetupVertAttrPointers() {
    // Position
-   glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),
-      reinterpret_cast<void *>(offsetof(Vertex, Position)));
+   glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void *>(offsetof(Vertex, Position)));
    glEnableVertexAttribArray(0);
 
    // Color

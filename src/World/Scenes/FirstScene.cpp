@@ -17,7 +17,7 @@ void FirstScene::Initialize() {
       camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
       ActiveCamera = &camera;
 
-      auto &mesh = Primitives::CreateCube("cubeMesh");
+      auto &mesh = Primitives::CreateCube("mesh");
 
       auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
 
@@ -32,10 +32,9 @@ void FirstScene::Initialize() {
       objectMaterial.SpecularMap = &specularMap;
       objectMaterial.EmissionMap = &emissionMap;
 
-      // objectMaterial.Diffuse = {0};
-      // objectMaterial.Ambient = {0};
-      // objectMaterial.Specular = {0};
-      // objectMaterial.Diffuse = {0};
+      // objectMaterial.Diffuse = {0.5};
+      // objectMaterial.Ambient = {0.3};
+      // objectMaterial.Specular = {0.3};
       objectMaterial.Emission = {3};
 
       Cube &cube = CreateEntity<Cube>();
