@@ -61,9 +61,14 @@ Matrix2 Matrix2::operator/(float scalar) const {
    return {m[0][0] / scalar, m[0][1] / scalar, m[1][0] / scalar, m[1][1] / scalar};
 }
 
+Matrix2 operator*(float scalar, const Matrix2 &mat2) {
+   return mat2 * scalar;
+}
+
 Matrix2 &Matrix2::operator*=(float scalar) { return *this = *this * scalar; }
 Matrix2 &Matrix2::operator/=(float scalar) { return *this = *this / scalar; }
 Matrix2 Matrix2::operator-() const { return *this * -1; }
+
 
 //* Equality
 bool Matrix2::operator==(const Matrix2 &mat2) const {
