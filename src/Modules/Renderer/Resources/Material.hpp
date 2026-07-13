@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../Primitives/Primitives.hpp"
 #include "Shader.hpp"
 #include "Texture.hpp"
 #include "Core/Resource.hpp"
@@ -9,14 +10,20 @@
 
 
 struct Material : Resource {
-   static constexpr int MaxTextures = 16;
+   static constexpr int MaxTextures = 8;
    SafePtr<Shader> Shader{"Material Has No Shader Assigned"};
 
    Vector4 Color = {1};
    Vector3 Ambient = {1};
    Vector3 Diffuse = {1};
    Vector3 Specular = {1};
+   Vector3 Emission = {0};
    float Shininess = 32;
+
+   SafePtr<Texture> DiffuseMap;
+   SafePtr<Texture> SpecularMap;
+   SafePtr<Texture> EmissionMap;
+
 
    Material(const std::string &name);
 

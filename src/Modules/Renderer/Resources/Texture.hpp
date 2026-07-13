@@ -4,6 +4,9 @@
 #include "Core/Resource.hpp"
 
 struct Texture : Resource {
+
+   Texture(const std::string &name, unsigned int unit, int width, int height, unsigned char pixels[]);
+
    Texture(const std::string &name, unsigned int unit, const std::string &imagePath);
 
    unsigned int GetId() const { return Id; }

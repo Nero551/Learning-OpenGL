@@ -21,8 +21,19 @@ void FirstScene::Initialize() {
 
       auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
 
+      auto &diffuseMap = resourceManager.Load<Texture>("diffuseMap", 13, "Assets/Images/diffuseMap.png");
+      auto &specularMap = resourceManager.Load<Texture>("specularMap", 12, "Assets/Images/specularMap.png");
+      auto &emissionMap = resourceManager.Load<Texture>("emissionMap", 11, "Assets/Images/emissionMap.jpg");
       auto &objectMaterial = resourceManager.Load<Material>("material");
       objectMaterial.Shader = &objectShader;
+      objectMaterial.DiffuseMap = &diffuseMap;
+      objectMaterial.SpecularMap = &specularMap;
+      objectMaterial.EmissionMap = &emissionMap;
+
+      // objectMaterial.Ambient = {0.3};
+      // objectMaterial.Specular = {0.3};
+      // objectMaterial.Diffuse = {0.5};
+      objectMaterial.Emission = {0.8};
 
       Cube &cube = CreateEntity<Cube>();
       cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
@@ -42,10 +53,6 @@ void FirstScene::Initialize() {
 
       light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
       light.GetComponent<TransformComponent>().Scale = {0.2};
-
-      light.GetComponent<LightComponent>().Ambient = {0.2};
-      light.GetComponent<LightComponent>().Diffuse = {0.5};
-      light.GetComponent<LightComponent>().Specular = {0.2};
 
       lightId = light.Id; //Temporary
    }

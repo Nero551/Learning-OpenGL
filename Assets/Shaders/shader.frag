@@ -20,31 +20,44 @@ struct light {
 
 struct material {
     vec4 Color;
-    vec3 Diffuse;
     vec3 Ambient;
+    vec3 Diffuse;
     vec3 Specular;
+    vec3 Emission;
+
     float Shininess;
+
+    sampler2D DiffuseMap;
+    sampler2D SpecularMap;
+    sampler2D EmissionMap;
 };
 
 uniform material Material;
 uniform light Light;
 
 vec3 ApplyLighting(){
+    vec3 diffuseMap = vec3(texture(Material.DiffuseMap, vUV));
+    vec3 specularMap = vec3(texture(Material.SpecularMap, vUV));
+    vec3 emissionMap = vec3(texture(Material.EmissionMap, vUV));
+
     //Ambient Lighting
-    vec3 ambient = Light.Color * Material.Ambient * Light.Ambient;
+    vec3 ambient = Light.Color * diffuseMap * Light.Ambient * Material.Ambient;
 
     //Diffuse Lighting
     vec3 lightDir = normalize(Light.Position - vPosition.xyz);
     float diff = max(dot(vNormal, lightDir), 0.0);
-    vec3 diffuse = diff * Light.Color * Material.Diffuse * Light.Diffuse;
+    vec3 diffuse = diff * Light.Color * diffuseMap * Light.Diffuse * Material.Diffuse;
 
     //Specular Lighting
     vec3 viewDir = normalize(ViewPosition - vec3(vPosition.xyz));
     vec3 reflectDir = reflect(-lightDir, vNormal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
-    vec3 specular = spec * Light.Color * Material.Specular * Light.Specular;
+    vec3 specular = spec * Light.Color * specularMap * Material.Specular * Light.Specular;
 
-    vec3 result = ambient + diffuse + specular;
+    //Emission
+    vec3 emission = emissionMap * Material.Emission;
+
+    vec3 result = ambient + diffuse + specular + emission;
     return result;
 }
 
