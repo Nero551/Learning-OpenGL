@@ -1,5 +1,6 @@
 #include "Material.hpp"
 
+#include "../Primitives/Primitives.hpp"
 #include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
@@ -48,6 +49,7 @@ void Material::Use() {
 void Material::AssignTexture(Texture &texture, unsigned int slot) {
    if (slot >= MaxTextures) {
       LoggerService::Error("Texture slot out of bounds: " + texture.Name);
+      return;
    }
    CustomTextures[slot] = &texture;
 }

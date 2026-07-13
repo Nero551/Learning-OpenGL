@@ -32,10 +32,11 @@ void FirstScene::Initialize() {
       objectMaterial.SpecularMap = &specularMap;
       objectMaterial.EmissionMap = &emissionMap;
 
+      // objectMaterial.Diffuse = {0};
       // objectMaterial.Ambient = {0.3};
       // objectMaterial.Specular = {0.3};
       // objectMaterial.Diffuse = {0.5};
-      objectMaterial.Emission = {5};
+      objectMaterial.Emission = {3};
 
       Cube &cube = CreateEntity<Cube>();
       cube.GetComponent<MaterialComponent>().Material = &objectMaterial;

@@ -42,5 +42,7 @@
 - Normals & Normal Matrix
 - Light entity
 - Material properties
+- Emission
+- Diffuse , Specular & Emission maps
 
-![Lighted Cube](Docs/Screenshots/Lighted%20Cube.png)
+![Cube](Docs/Screenshots/MaybeACube.png)

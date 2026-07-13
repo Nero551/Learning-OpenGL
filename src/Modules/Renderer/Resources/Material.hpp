@@ -1,13 +1,11 @@
 #pragma once
 
-#include "../Primitives/Primitives.hpp"
+#include "Core/Resource.hpp"
 #include "Shader.hpp"
 #include "Texture.hpp"
-#include "Core/Resource.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"
 #include "Utilities/Math/Vector/Vector4.hpp"
 #include "Utilities/SafePtr.hpp"
-
 
 struct Material : Resource {
    static constexpr int MaxTextures = 8;
