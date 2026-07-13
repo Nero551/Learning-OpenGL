@@ -4,6 +4,7 @@
 #include "Modules/Input/Keys.hpp"
 #include "Modules/Renderer/Entities/Cube.hpp"
 #include "Modules/Renderer/Entities/Light.hpp"
+#include "../../Modules/Renderer/Primitives/Primitives.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
 
 unsigned int lightId;
@@ -16,46 +17,7 @@ void FirstScene::Initialize() {
       camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
       SetActiveCamera(camera);
 
-      auto &mesh = Engine::Ins->ResourceManager.Load<Mesh>("mesh", std::vector<Vertex>{
-         // Front (+Z)
-         Vertex({-0.5f, -0.5f, 0.5f, 1}, {1, 0, 0, 1}, {0, 0}, {0, 0, 1}),
-         Vertex({0.5f, -0.5f, 0.5f, 1}, {1, 0, 1, 1}, {1, 0}, {0, 0, 1}),
-         Vertex({0.5f, 0.5f, 0.5f, 1}, {0, 1, 0, 1}, {1, 1}, {0, 0, 1}),
-         Vertex({-0.5f, 0.5f, 0.5f, 1}, {1, 1, 1, 1}, {0, 1}, {0, 0, 1}),
-
-         // Back (-Z)
-         Vertex({0.5f, -0.5f, -0.5f, 1}, {1, 0, 0, 1}, {0, 0}, {0, 0, -1}),
-         Vertex({-0.5f, -0.5f, -0.5f, 1}, {1, 0, 1, 1}, {1, 0}, {0, 0, -1}),
-         Vertex({-0.5f, 0.5f, -0.5f, 1}, {0, 1, 0, 1}, {1, 1}, {0, 0, -1}),
-         Vertex({0.5f, 0.5f, -0.5f, 1}, {1, 1, 1, 1}, {0, 1}, {0, 0, -1}),
-
-         // Left (-X)
-         Vertex({-0.5f, -0.5f, -0.5f, 1}, {1, 0, 0, 1}, {0, 0}, {-1, 0, 0}),
-         Vertex({-0.5f, -0.5f, 0.5f, 1}, {1, 0, 1, 1}, {1, 0}, {-1, 0, 0}),
-         Vertex({-0.5f, 0.5f, 0.5f, 1}, {0, 1, 0, 1}, {1, 1}, {-1, 0, 0}),
-         Vertex({-0.5f, 0.5f, -0.5f, 1}, {1, 1, 1, 1}, {0, 1}, {-1, 0, 0}),
-
-         // Right (+X)
-         Vertex({0.5f, -0.5f, 0.5f, 1}, {1, 0, 0, 1}, {0, 0}, {1, 0, 0}),
-         Vertex({0.5f, -0.5f, -0.5f, 1}, {1, 0, 1, 1}, {1, 0}, {1, 0, 0}),
-         Vertex({0.5f, 0.5f, -0.5f, 1}, {0, 1, 0, 1}, {1, 1}, {1, 0, 0}),
-         Vertex({0.5f, 0.5f, 0.5f, 1}, {1, 1, 1, 1}, {0, 1}, {1, 0, 0}),
-
-         // Top (+Y)
-         Vertex({-0.5f, 0.5f, 0.5f, 1}, {1, 0, 0, 1}, {0, 0}, {0, 1, 0}),
-         Vertex({0.5f, 0.5f, 0.5f, 1}, {1, 0, 1, 1}, {1, 0}, {0, 1, 0}),
-         Vertex({0.5f, 0.5f, -0.5f, 1}, {0, 1, 0, 1}, {1, 1}, {0, 1, 0}),
-         Vertex({-0.5f, 0.5f, -0.5f, 1}, {1, 1, 1, 1}, {0, 1}, {0, 1, 0}),
-
-         // Bottom (-Y)
-         Vertex({-0.5f, -0.5f, -0.5f, 1}, {1, 0, 0, 1}, {0, 0}, {0, -1, 0}),
-         Vertex({0.5f, -0.5f, -0.5f, 1}, {1, 0, 1, 1}, {1, 0}, {0, -1, 0}),
-         Vertex({0.5f, -0.5f, 0.5f, 1}, {0, 1, 0, 1}, {1, 1}, {0, -1, 0}),
-         Vertex({-0.5f, -0.5f, 0.5f, 1}, {1, 1, 1, 1}, {0, 1}, {0, -1, 0}),
-      }, std::vector<unsigned int>{
-         0, 1, 2, 2, 3, 0, 4, 5, 6, 6, 7, 4, 8, 9, 10, 10, 11, 8, 12, 13, 14, 14, 15, 12, 16, 17, 18, 18, 19, 16, 20, 21, 22, 22,
-         23, 20
-      });
+      auto &mesh = Primitives::CreateCube("cubeMesh");
 
       auto &objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag", "Assets/Shaders/shader.vert");
 
