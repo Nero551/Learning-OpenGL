@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Core/Module.hpp"
 #include "Core/Resource.hpp"
 #include <memory>
 #include <unordered_map>

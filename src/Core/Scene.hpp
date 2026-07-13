@@ -3,6 +3,7 @@
 
 #include "Entity.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
+#include "Utilities/Services/LoggerService.hpp"
 
 template<typename T>concept EntityType = std::derived_from<T, Entity>;
 
@@ -31,7 +32,10 @@ struct Scene {
    virtual void Stop() {}
 
    void SetActiveCamera(Camera &camera) { ActiveCamera = &camera; }
-   Camera &GetActiveCamera() { return static_cast<Camera &>(*ActiveCamera); }
+
+   Camera &GetActiveCamera() {
+      return LoggerService::Require(ActiveCamera, "Scene Has No Active Camera");
+   }
 
 
    template<EntityType T> T &CreateEntity() {

@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Core/Scene.hpp"
+#include "Utilities/Services/LoggerService.hpp"
 
 template<typename T>concept SceneType = std::derived_from<T, Scene>;
 
@@ -24,7 +25,9 @@ struct World {
 
    void SetActiveScene(Scene &scene) { ActiveScene = &scene; }
 
-   template<SceneType T = Scene> T &GetActiveScene() { return static_cast<T &>(*ActiveScene); }
+   template<SceneType T = Scene> T &GetActiveScene() {
+      return (LoggerService::Require(static_cast<T *>(ActiveScene), "World Has No Active Scene"));
+   }
 
    void Start();
 

@@ -21,6 +21,8 @@ void LightingSystem::Render() {
       Vector3 specular;
       Vector3 lightPos;
 
+      //TODO- rn this can only work with 1 light, fix that. it breaks with multiple lights.
+
       if (entity->HasComponent<LightComponent>()) {
          auto &lightComponent = entity->GetComponent<LightComponent>();
          lightColor = lightComponent.Color;
@@ -33,14 +35,15 @@ void LightingSystem::Render() {
       if (entity->HasComponent<MaterialComponent>()) {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
 
-         materialComponent.Material->GetShader().SetUniform(Vector3Uniform("ViewPosition",
+
+         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("ViewPosition",
             camera.GetComponent<TransformComponent>().Position));
 
-         materialComponent.Material->GetShader().SetUniform(Vector3Uniform("Light.Color", lightColor));
-         materialComponent.Material->GetShader().SetUniform(Vector3Uniform("Light.Position", lightPos));
-         materialComponent.Material->GetShader().SetUniform(Vector3Uniform("Light.Ambient", ambient));
-         materialComponent.Material->GetShader().SetUniform(Vector3Uniform("Light.Diffuse", diffuse));
-         materialComponent.Material->GetShader().SetUniform(Vector3Uniform("Light.Specular", specular));
+         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Color", lightColor));
+         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Position", lightPos));
+         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Ambient", ambient));
+         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Diffuse", diffuse));
+         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Specular", specular));
       }
    }
 }

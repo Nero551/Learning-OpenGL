@@ -20,9 +20,9 @@ struct Material : Resource {
 
    void AssignTexture(Texture &texture);
 
-   void AssignShader(struct Shader &shader);
+   void AssignShader(Shader &shader);
 
-   struct Shader &GetShader();
+   Shader &GetShader();
 
    void Use();
 

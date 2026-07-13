@@ -25,10 +25,10 @@ void FirstScene::Initialize() {
       objectMaterial.AssignShader(objectShader);
 
       Cube &cube = CreateEntity<Cube>();
-      cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-      cube.GetComponent<MeshComponent>().Mesh = &mesh;
+      cube.GetComponent<MaterialComponent>().SetMaterial(objectMaterial);
+      cube.GetComponent<MeshComponent>().SetMesh(mesh);
 
-      cubeId = cube.Id;
+      cubeId = cube.Id; //Temporary
 
       auto &lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
          "Assets/Shaders/lightShader.vert");
@@ -37,16 +37,17 @@ void FirstScene::Initialize() {
       lightMaterial.AssignShader(lightShader);
 
       Light &light = CreateEntity<Light>();
-      light.GetComponent<MaterialComponent>().Material = &lightMaterial;
-      light.GetComponent<MeshComponent>().Mesh = &mesh;
+      light.GetComponent<MaterialComponent>().SetMaterial(lightMaterial);
+      light.GetComponent<MeshComponent>().SetMesh(mesh);
 
       light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
       light.GetComponent<TransformComponent>().Scale = {0.2};
 
       light.GetComponent<LightComponent>().Ambient = {0.2};
       light.GetComponent<LightComponent>().Diffuse = {0.5};
+      light.GetComponent<LightComponent>().Specular = {0.2};
 
-      lightId = light.Id;
+      lightId = light.Id; //Temporary
    }
 }
 
@@ -77,5 +78,5 @@ void FirstScene::Update(double dt) {
 
    auto &materialComponent = GetEntity<Cube>(cubeId).GetComponent<MaterialComponent>();
 
-   materialComponent.Material->GetShader().SetUniform(Vector3Uniform("LightPosition", transformComponent.Position));
+   materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("LightPosition", transformComponent.Position));
 }

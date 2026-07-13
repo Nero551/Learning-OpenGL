@@ -34,24 +34,24 @@ void Renderer::OnRender() {
 
       if (entity->HasComponent<MaterialComponent>()) {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
-         materialComponent.Material->GetShader().SetUniform(FloatUniform("Time", Engine::Ins->Time));
 
-         materialComponent.Material->GetShader().SetUniform(Matrix4Uniform("ModelMatrix",
-            transformComponent.GetModelMatrix()));
+         materialComponent.GetMaterial().GetShader().SetUniform(FloatUniform("Time", Engine::Ins->Time));
 
-         materialComponent.Material->GetShader().SetUniform(Matrix4Uniform("ViewMatrix", view));
+         materialComponent.GetMaterial().GetShader().SetUniform(Matrix4Uniform("ModelMatrix", transformComponent.GetModelMatrix()));
 
-         materialComponent.Material->GetShader().SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
+         materialComponent.GetMaterial().GetShader().SetUniform(Matrix4Uniform("ViewMatrix", view));
 
-         materialComponent.Material->GetShader().SetUniform(Matrix3Uniform("NormalMatrix",
-            transformComponent.GetNormalMatrix()));
+         materialComponent.GetMaterial().GetShader().SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
 
-         materialComponent.Material->Use();
+         materialComponent.GetMaterial().GetShader().SetUniform(Matrix3Uniform("NormalMatrix", transformComponent.GetNormalMatrix()));
+
+         materialComponent.GetMaterial().Use();
       }
 
       if (entity->HasComponent<MeshComponent>()) {
          auto &meshComponent = entity->GetComponent<MeshComponent>();
-         meshComponent.Mesh->Draw();
+
+         meshComponent.GetMesh().Draw();
       }
    }
 }

@@ -31,7 +31,7 @@ void Material::Use() {
 void Material::AssignShader(struct Shader &shader) { Shader = &shader; }
 
 Shader &Material::GetShader() {
-   return *Shader;
+   return LoggerService::Require(Shader, "Material Has No Shader Assigned");
 }
 
 void Material::AssignTexture(Texture &texture) {
