@@ -1,0 +1,11 @@
+##!/bin/sh
+#
+#set -e
+#
+#echo "🔨 Building UnitTests..."
+#cmake --build ../build --target UnitTests
+#
+#echo "🧪 Running UnitTests..."
+#./../build/src/Tests/UnitTests
+#
+#echo "✅ All tests passed."
