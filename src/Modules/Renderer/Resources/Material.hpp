@@ -5,10 +5,12 @@
 #include "Core/Resource.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"
 #include "Utilities/Math/Vector/Vector4.hpp"
+#include "Utilities/SafePtr.hpp"
 
 
 struct Material : Resource {
    static constexpr int MaxTextures = 16;
+   SafePtr<Shader> Shader{"Material Has No Shader Assigned"};
 
    Vector4 Color = {1};
    Vector3 Ambient = {1};
@@ -20,15 +22,10 @@ struct Material : Resource {
 
    void AssignTexture(Texture &texture);
 
-   void AssignShader(Shader &shader);
-
-   Shader &GetShader();
-
    void Use();
 
 protected:
    std::array<Texture *, MaxTextures> Textures{};
-   Shader *Shader = nullptr;
 
    void SetProperties();
 };

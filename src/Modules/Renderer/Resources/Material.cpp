@@ -6,32 +6,27 @@
 #include "../Uniforms/Vector4Uniform.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
-Material::Material(const std::string &name) : Resource(name) {}
+Material::Material(const std::string &name) :
+   Resource(name) {}
 
 void Material::SetProperties() {
-   GetShader().SetUniform(Vector3Uniform("Material.Ambient", Ambient));
-   GetShader().SetUniform(Vector3Uniform("Material.Diffuse", Diffuse));
-   GetShader().SetUniform(Vector3Uniform("Material.Specular", Specular));
-   GetShader().SetUniform(FloatUniform("Material.Shininess", Shininess));
-   GetShader().SetUniform(Vector4Uniform("Material.Color", Color));
+   Shader->SetUniform(Vector3Uniform("Material.Ambient", Ambient));
+   Shader->SetUniform(Vector3Uniform("Material.Diffuse", Diffuse));
+   Shader->SetUniform(Vector3Uniform("Material.Specular", Specular));
+   Shader->SetUniform(FloatUniform("Material.Shininess", Shininess));
+   Shader->SetUniform(Vector4Uniform("Material.Color", Color));
 }
 
 void Material::Use() {
    SetProperties();
-   GetShader().Use();
+   Shader->Use();
 
    for (Texture *texture: Textures) {
       if (texture) {
-         GetShader().SetUniform(IntUniform(texture->Name, texture->GetUnit()));
+         Shader->SetUniform(IntUniform(texture->Name, texture->GetUnit()));
          texture->Bind();
       }
    }
-}
-
-void Material::AssignShader(struct Shader &shader) { Shader = &shader; }
-
-Shader &Material::GetShader() {
-   return LoggerService::Require(Shader, "Material Has No Shader Assigned");
 }
 
 void Material::AssignTexture(Texture &texture) {

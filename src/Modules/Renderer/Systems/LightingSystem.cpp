@@ -36,14 +36,14 @@ void LightingSystem::Render() {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
 
 
-         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("ViewPosition",
+         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
             camera.GetComponent<TransformComponent>().Position));
 
-         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Color", lightColor));
-         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Position", lightPos));
-         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Ambient", ambient));
-         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Diffuse", diffuse));
-         materialComponent.GetMaterial().GetShader().SetUniform(Vector3Uniform("Light.Specular", specular));
+         materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Color", lightColor));
+         materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Position", lightPos));
+         materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Ambient", ambient));
+         materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Diffuse", diffuse));
+         materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Specular", specular));
       }
    }
 }
