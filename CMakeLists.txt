@@ -20,6 +20,8 @@ add_executable(Engine
 
 find_package(glfw3 REQUIRED)
 
+add_subdirectory(src/Tests)
+
 add_subdirectory(src/Core)
 add_subdirectory(src/Utilities)
 add_subdirectory(src/Modules)
