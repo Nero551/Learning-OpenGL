@@ -6,8 +6,8 @@ template<typename T> struct SafePtr {
 
    SafePtr() = default;
 
-   SafePtr(const std::string_view &nullPtrMessage) {
-      nullMessage = nullPtrMessage;
+   SafePtr(const std::string_view &nullMessage) {
+      this->nullMessage = nullMessage;
    }
 
    SafePtr &operator=(T *objectPtr) {

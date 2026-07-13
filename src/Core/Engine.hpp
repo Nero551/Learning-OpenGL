@@ -7,7 +7,7 @@
 template<typename T>concept ModuleType = std::derived_from<T, Module>;
 
 struct Engine {
-   static Engine *Ins;
+   static SafePtr<Engine> Ins;
 
    bool Running;
    double Time = 0;
