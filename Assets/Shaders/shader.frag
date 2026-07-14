@@ -11,6 +11,8 @@ uniform vec3 ViewPosition;
 uniform float Time;
 
 struct light {
+    int Type;
+    vec3 Direction;
     vec3 Color;
     vec3 Position;
     vec3 Ambient;
@@ -45,16 +47,20 @@ vec3 ApplyLighting(){
     //Ambient Lighting
     vec3 ambient = Light.Color * diffuseMap * Light.Ambient * Material.Ambient;
 
-    //Diffuse Lighting
-    vec3 lightDir = normalize(Light.Position - vPosition.xyz);
-    float diff = max(dot(vNormal, lightDir), 0.0);
-    vec3 diffuse = diff * Light.Color * diffuseMap * Light.Diffuse * Material.Diffuse;
+    vec3 diffuse;
+    vec3 specular;
 
-    //Specular Lighting
-    vec3 viewDir = normalize(ViewPosition - vec3(vPosition.xyz));
-    vec3 reflectDir = reflect(-lightDir, vNormal);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
-    vec3 specular = spec * Light.Color * specularMap * Material.Specular * Light.Specular;
+    if (Light.Type == 0){
+        //Directional
+        vec3 lightDir = normalize(-Light.Direction);
+        float diff = max(dot(vNormal, lightDir), 0.0);
+        diffuse = diff * Light.Color * diffuseMap * Light.Diffuse * Material.Diffuse;
+
+        vec3 viewDir = normalize(ViewPosition - vec3(vPosition.xyz));
+        vec3 reflectDir = reflect(-lightDir, vNormal);
+        float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
+        specular = spec * Light.Color * specularMap * Material.Specular * Light.Specular;
+    }
 
     //Emission
     vec3 emission = emissionMap * Material.Emission;

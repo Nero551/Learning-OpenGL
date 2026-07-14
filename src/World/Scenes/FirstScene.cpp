@@ -39,6 +39,7 @@ void FirstScene::Initialize() {
 
       auto &lightMaterial = resourceManager.Load<Material>("lightMaterial");
       lightMaterial.Shader = &lightShader;
+      lightMaterial.Diffuse = {5};
 
       Light &light = CreateEntity<Light>();
       light.GetComponent<MaterialComponent>().Material = &lightMaterial;
@@ -57,22 +58,22 @@ void FirstScene::Update(double dt) {
    auto &input = Engine::Ins->GetModule<Input>();
 
    if (input.IsKeyHeld(Key::Up)) {
-      transformComponent.Position.z += 2 * dt;
+      transformComponent.EulerRotation.y += 2 * dt;
    }
    if (input.IsKeyHeld(Key::Down)) {
-      transformComponent.Position.z -= 2 * dt;
+      transformComponent.EulerRotation.y -= 2 * dt;
    }
    if (input.IsKeyHeld(Key::Left)) {
-      transformComponent.Position.x -= 2 * dt;
+      transformComponent.EulerRotation.x -= 2 * dt;
    }
    if (input.IsKeyHeld(Key::Right)) {
-      transformComponent.Position.x += 2 * dt;
+      transformComponent.EulerRotation.x += 2 * dt;
    }
-
-   if (input.IsKeyHeld(Key::I)) {
-      transformComponent.Position.y += 2 * dt;
-   }
-   if (input.IsKeyHeld(Key::O)) {
-      transformComponent.Position.y -= 2 * dt;
-   }
+   //
+   // if (input.IsKeyHeld(Key::I)) {
+   //    transformComponent.EulerRotation.y += 2 * dt;
+   // }
+   // if (input.IsKeyHeld(Key::O)) {
+   //    transformComponent.EulerRotation.y -= 2 * dt;
+   // }
 }

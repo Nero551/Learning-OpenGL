@@ -164,7 +164,6 @@ TEST_CASE("Matrix4 methods") {
       Vector4 result = view * eyePos;
       REQUIRE(result.NearlyEquals(Vector4(0, 0, 0, 1)));
 
-      LoggerService::Print(view);
       Vector4 forwardWorld(0, 0, -1, 0);
       Vector4 viewForward = view * forwardWorld;
       REQUIRE(viewForward.NearlyEquals(Vector4(0, 0, -1, 0)));
