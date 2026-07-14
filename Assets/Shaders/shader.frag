@@ -45,6 +45,27 @@ struct material {
 uniform material Material;
 uniform light Light;
 
+void CalculateDirectionalLight(out vec3 lightDir, out float directionalIntensity){
+    lightDir = normalize(-Light.Direction);
+    directionalIntensity = Light.Intensity;
+}
+
+void CalculatePointLight(out float attenuation){
+    float dist = length(Light.Position - vPosition.xyz);
+    attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+}
+
+void CalculateSpotLight(vec3 lightDir, out float cutOff, out float attenuation){
+    float dist = length(Light.Position - vPosition.xyz);
+    attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+
+    vec3 spotDir = normalize(-Light.Direction);
+    float cosTheta = dot(lightDir, spotDir);
+    float epsilon = Light.InnerCutOff - Light.OuterCutOff;
+    cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 4) * Light.Intensity;
+}
+
+
 vec3 ApplyLighting(){
     vec3 diffuseMap = vec3(texture(Material.DiffuseMap, vUV));
     vec3 specularMap = vec3(texture(Material.SpecularMap, vUV));
@@ -56,24 +77,13 @@ vec3 ApplyLighting(){
     float directionalIntensity = 1;
 
     if (Light.Type == 0){
-        //Directional
-        lightDir = normalize(-Light.Direction);
-        directionalIntensity = Light.Intensity;
+        CalculateDirectionalLight(lightDir, directionalIntensity);
 
     } else if (Light.Type == 1){
-        //Point
-        float dist = length(Light.Position - vPosition.xyz);
-        attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+        CalculatePointLight(attenuation);
 
     } else if (Light.Type == 2){
-        //Spot
-        float dist = length(Light.Position - vPosition.xyz);
-        attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
-
-        vec3 spotDir = normalize(-Light.Direction);
-        float cosTheta = dot(lightDir, spotDir);
-        float epsilon = Light.InnerCutOff - Light.OuterCutOff;
-        cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 4) * Light.Intensity;
+        CalculateSpotLight(lightDir, cutOff, attenuation);
     }
 
     //Ambient

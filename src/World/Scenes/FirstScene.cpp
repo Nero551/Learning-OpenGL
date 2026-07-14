@@ -78,17 +78,13 @@ void FirstScene::Initialize()
    auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
    lightMaterial.Shader = &lightShader;
 
-
    auto& light = CreateEntity<Light>();
    light.GetComponent<MaterialComponent>().Material = &lightMaterial;
    light.GetComponent<MeshComponent>().Mesh = &mesh;
 
-   light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
    light.GetComponent<TransformComponent>().Scale = {0.2};
 
-   light.GetComponent<LightComponent>().Ambient = {0.3};
-   light.GetComponent<TransformComponent>().EulerRotation = {Math::Radians(90), 0, 0};
-   light.GetComponent<LightComponent>().Type = LightType::Spot;
+   light.GetComponent<LightComponent>().Type = LightType::Directional;
 
    lightId = light.Id; //Temporary
 }
