@@ -55,5 +55,6 @@
 - Emission
 - Diffuse , Specular & Emission maps
 - Unit Tests
+- Directional Lights , Point Lights & Spot Lights
 
 ![Cube](Docs/Screenshots/MaybeACube.png)
