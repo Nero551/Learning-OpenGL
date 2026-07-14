@@ -1,12 +1,10 @@
 #pragma once
-#include <unordered_map>
 
 #include "Entity.hpp"
-#include "Modules/Input/Keys.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 #include "Utilities/SafePtr.hpp"
-#include "Utilities/Services/LoggerService.hpp"
-#include <vector>
+#include <unordered_map>
+#include <format>
 
 template<typename T>concept EntityType = std::derived_from<T, Entity>;
 
@@ -42,8 +40,7 @@ struct Scene {
 
       T &ref = *entity;
 
-      Entities.insert({currentEntityId, std::move(entity)});
-
+      Entities.emplace(currentEntityId, std::move(entity));
       currentEntityId++;
 
       return ref;

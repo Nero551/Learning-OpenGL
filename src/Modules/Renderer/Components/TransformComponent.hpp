@@ -20,7 +20,7 @@ struct TransformComponent : Component {
    }
 
    Matrix3 GetNormalMatrix() const {
-      Matrix3 normalMatrix = GetModelMatrix().ToMatrix3().Inverse().Transpose();;
+      Matrix3 normalMatrix = GetModelMatrix().ToMatrix3().Inverse().Transpose();
       return normalMatrix;
    }
 

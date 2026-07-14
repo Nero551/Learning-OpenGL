@@ -3,10 +3,16 @@
 #include <sstream>
 #include <string>
 
-std::string FileSystem::ReadFile(const std::string &path){
-    std::ifstream file(path);
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-    
-    return buffer.str();
+#include "Utilities/Services/LoggerService.hpp"
+
+std::string FileSystem::ReadFile(const std::string &path) {
+   std::ifstream file(path);
+   std::stringstream buffer;
+   buffer << file.rdbuf();
+
+   if (buffer.str() == "") {
+      LoggerService::Error("File Doesn't Exist: " + path);
+   }
+
+   return buffer.str();
 }

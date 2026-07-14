@@ -203,9 +203,9 @@ Matrix4 Matrix4::RotateZ(float radian) const {
 
 Matrix4 Matrix4::Rotate(const Vector3 &eulerRotation) const {
    Matrix4 rotationMatrix = Identity;
-   rotationMatrix = rotationMatrix.RotateZ(eulerRotation.z);
-   rotationMatrix = rotationMatrix.RotateY(eulerRotation.y);
    rotationMatrix = rotationMatrix.RotateX(eulerRotation.x);
+   rotationMatrix = rotationMatrix.RotateY(eulerRotation.y);
+   rotationMatrix = rotationMatrix.RotateZ(eulerRotation.z);
 
    return *this * rotationMatrix;
 }

@@ -49,15 +49,15 @@ struct Entity {
       return component != Components.end();
    }
 
-   template<ComponentType T> T &CopyComponent(const T &otherComponent) {
-      auto component = std::make_unique<T>(otherComponent);
-
-      T *ptr = component.get();
-
-      Components.insert_or_assign(typeid(T), std::move(component));
-
-      return *ptr;
-   }
+   // template<ComponentType T> T &CopyComponent(const T &otherComponent) {
+   //    auto component = std::make_unique<T>(otherComponent);
+   //
+   //    T *ptr = component.get();
+   //
+   //    Components.insert_or_assign(typeid(T), std::move(component));
+   //
+   //    return *ptr;
+   // }
 
 private:
    std::unordered_map<std::type_index, std::unique_ptr<Component> > Components;

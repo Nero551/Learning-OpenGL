@@ -9,11 +9,8 @@
 #include "Primitives/Primitives.hpp"
 #include "Systems/LightingSystem.hpp"
 #include "Uniforms/FloatUniform.hpp"
-#include "Uniforms/IntUniform.hpp"
 #include "Uniforms/Matrix3Uniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
-#include "Uniforms/Vector3Uniform.hpp"
-#include "Utilities/Math/Color.hpp"
 
 void Renderer::AddSystems() {
    AddSystem<CameraSystem>();
@@ -35,6 +32,8 @@ void Renderer::OnRender() {
 
       if (entity->HasComponent<MaterialComponent>()) {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();
+         materialComponent.Material->Use();
+
 
          materialComponent.Material->Shader->SetUniform(FloatUniform("Time", Engine::Ins->Time));
 
@@ -46,7 +45,6 @@ void Renderer::OnRender() {
 
          materialComponent.Material->Shader->SetUniform(Matrix3Uniform("NormalMatrix", transformComponent.GetNormalMatrix()));
 
-         materialComponent.Material->Use();
       }
 
       if (entity->HasComponent<MeshComponent>()) {
