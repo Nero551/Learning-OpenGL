@@ -32,7 +32,7 @@ void FirstScene::Initialize() {
       objectMaterial.SpecularMap = &specularMap;
       objectMaterial.EmissionMap = &emissionMap;
 
-      //TODO- math tests had a bunch of errors. fix that
+      //Todo - math tests had a bunch of errors. fix that
 
       // objectMaterial.Diffuse = {0.5};
       // objectMaterial.Ambient = {0.3};
