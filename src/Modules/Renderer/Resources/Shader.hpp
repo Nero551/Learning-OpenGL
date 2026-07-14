@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Uniform.hpp"
+#include "../Enums/Uniform.hpp"
 #include <memory>
 #include <string>
 #include <unordered_map>

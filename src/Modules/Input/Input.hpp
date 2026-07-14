@@ -1,11 +1,12 @@
 #pragma once
 
-#include "Keys.hpp"
+#include "Enums/Keys.hpp"
 #include "Core/Module.hpp"
 #include "Utilities/Math/Vector/Vector2.hpp"
-#include "Mouse.hpp"
+#include "Enums/Mouse.hpp"
 
-struct Input : Module {
+struct Input : Module
+{
    bool IsKeyHeld(Key key);
 
    bool IsKeyPressed(Key key);
@@ -18,15 +19,15 @@ struct Input : Module {
 
    bool IsMouseButtonReleased(MouseButton button);
 
-   Vector2 GetMousePosition();
+   Vector2 GetMousePosition() const;
 
-   Vector2 GetMouseDelta();
+   Vector2 GetMouseDelta() const;
 
-   Vector2 GetScrollDelta();
+   Vector2 GetScrollDelta() const;
 
-   bool IsScrolling();
+   bool IsScrolling() const;
 
-   enum MouseMode GetMouseMode();
+   MouseMode GetMouseMode() const;
 
    void SetMouseMode(enum MouseMode mode);
 
@@ -41,11 +42,13 @@ private:
    static constexpr unsigned int MouseButtonCount = GLFW_MOUSE_BUTTON_LAST + 1;
    static constexpr unsigned int KeyCount = GLFW_KEY_LAST + 1;
 
-   constexpr unsigned int ToIndex(Key key) {
+   constexpr unsigned int ToIndex(Key key)
+   {
       return static_cast<unsigned int>(key);
    }
 
-   constexpr unsigned int ToIndex(MouseButton button) {
+   constexpr unsigned int ToIndex(MouseButton button)
+   {
       return static_cast<unsigned int>(button);
    }
 

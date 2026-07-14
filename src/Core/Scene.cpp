@@ -1,5 +1,7 @@
 #include "Scene.hpp"
 
+#include <ranges>
+
 void Scene::AddChild(Scene& childScene)
 {
     if (Children.contains(childScene.Name))

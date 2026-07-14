@@ -2,7 +2,7 @@
 
 #include <complex>
 
-#include "../LightType.hpp"
+#include "../Enums/LightType.hpp"
 #include "Core/Component.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"
 

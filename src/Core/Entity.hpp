@@ -4,7 +4,6 @@
 #include <concepts>
 #include <memory>
 #include <format>
-#include <ranges>
 #include <typeindex>
 #include <unordered_map>
 
@@ -30,7 +29,7 @@ struct Entity
 
    virtual void Initialize() {}
 
-   template <ComponentType T> T& AddComponent() const
+   template <ComponentType T> T& AddComponent()
    {
       if (Components.contains(typeid(T)))
       {
@@ -41,7 +40,6 @@ struct Entity
       auto component = std::make_unique<T>();
 
       T& ref = *component;
-
       Components.emplace(typeid(T), std::move(component));
       return ref;
    }
@@ -72,7 +70,7 @@ struct Entity
 
       return ref;
    }
-   
+
 private:
    std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;
 };

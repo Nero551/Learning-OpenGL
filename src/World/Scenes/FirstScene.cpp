@@ -2,13 +2,11 @@
 
 #include "CoordinateAxesScene.hpp"
 #include "Modules/Input/Input.hpp"
-#include "Modules/Input/Keys.hpp"
+#include "Modules/Input/Enums/Keys.hpp"
 #include "Modules/Renderer/Entities/Cube.hpp"
 #include "Modules/Renderer/Entities/Light.hpp"
 #include "../../Modules/Renderer/Primitives/Primitives.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
-#include "Utilities/Math/Color.hpp"
-#include "World/Entities/Axis.hpp"
 
 unsigned int lightId;
 

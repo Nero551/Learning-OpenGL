@@ -61,19 +61,19 @@ bool Input::IsMouseButtonReleased(MouseButton button) {
    return !CurrentMouseButtons[ToIndex(button)] && PreviousMouseButtons[ToIndex(button)];
 }
 
-void Input::SetMouseMode(enum MouseMode mode) {
+void Input::SetMouseMode(MouseMode mode) {
    mouseMode = mode;
    glfwSetInputMode(Engine::Ins->Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
 }
 
-Vector2 Input::GetMousePosition() { return mousePosition; }
+Vector2 Input::GetMousePosition() const { return mousePosition; }
 
-Vector2 Input::GetMouseDelta() { return (GetMousePosition() - previousMousePosition); }
+Vector2 Input::GetMouseDelta() const { return (GetMousePosition() - previousMousePosition); }
 
-enum MouseMode Input::GetMouseMode() { return mouseMode; }
+MouseMode Input::GetMouseMode() const { return mouseMode; }
 
-Vector2 Input::GetScrollDelta() { return scrollOffset; }
+Vector2 Input::GetScrollDelta() const { return scrollOffset; }
 
-bool Input::IsScrolling() {
+bool Input::IsScrolling() const {
    return scrollOffset != Vector2::Zero;
 }

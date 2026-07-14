@@ -1,5 +1,5 @@
 #pragma once
-#include "../Uniform.hpp"
+#include "../Enums/Uniform.hpp"
 #include "Core/Engine.hpp"
 
 struct Vector3Uniform : Uniform {

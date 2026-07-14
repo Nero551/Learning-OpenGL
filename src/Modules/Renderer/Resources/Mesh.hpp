@@ -4,7 +4,7 @@
 
 #include <vector>
 
-#include "../Topology.hpp"
+#include "../Enums/Topology.hpp"
 
 struct Mesh : Resource {
    bool Wireframe = false;
