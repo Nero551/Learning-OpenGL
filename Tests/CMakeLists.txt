@@ -32,7 +32,7 @@ file(GLOB_RECURSE ENGINE_SOURCES
 )
 
 file(GLOB_RECURSE TEST_SOURCES
-        Math/*.cpp
+        MathTests/*.cpp
 )
 
 add_executable(UnitTests

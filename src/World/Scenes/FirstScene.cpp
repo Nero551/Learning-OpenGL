@@ -27,7 +27,7 @@ void FirstScene::Initialize() {
       objectMaterial.Shader = &objectShader;
       objectMaterial.DiffuseMap = &diffuseMap;
       objectMaterial.SpecularMap = &specularMap;
-      
+
       Cube &cube = CreateEntity<Cube>();
       cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
       cube.GetComponent<MeshComponent>().Mesh = &mesh;
@@ -75,8 +75,4 @@ void FirstScene::Update(double dt) {
    if (input.IsKeyHeld(Key::O)) {
       transformComponent.Position.y -= 2 * dt;
    }
-
-   auto &materialComponent = GetEntity<Cube>(cubeId).GetComponent<MaterialComponent>();
-
-   materialComponent.Material->Shader->SetUniform(Vector3Uniform("LightPosition", transformComponent.Position));
 }

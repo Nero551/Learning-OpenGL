@@ -1,5 +1,15 @@
 # My Learning OpenGL journey
 
+## Building & Running Engine
+
+- ./build.sh
+- ./run.sh
+
+## Building & Running Tests
+
+- ./Tests/build-tests.sh
+- ./Tests/run-tests.sh
+
 ## Progress
 
 ### Week 1
@@ -44,5 +54,6 @@
 - Material properties
 - Emission
 - Diffuse , Specular & Emission maps
+- Unit Tests
 
 ![Cube](Docs/Screenshots/MaybeACube.png)
