@@ -46,25 +46,30 @@ uniform material Material;
 uniform light Light;
 
 void CalculateDirectionalLight(out vec3 lightDir, out float directionalIntensity){
-    lightDir = normalize(-Light.Direction);
-    directionalIntensity = Light.Intensity;
+    if (Light.Type == 0){
+        lightDir = normalize(-Light.Direction);
+        directionalIntensity = Light.Intensity;
+    }
 }
 
 void CalculatePointLight(out float attenuation){
-    float dist = length(Light.Position - vPosition.xyz);
-    attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+    if (Light.Type == 1){
+        float dist = length(Light.Position - vPosition.xyz);
+        attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+    }
 }
 
 void CalculateSpotLight(vec3 lightDir, out float cutOff, out float attenuation){
-    float dist = length(Light.Position - vPosition.xyz);
-    attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+    if (Light.Type == 2){
+        float dist = length(Light.Position - vPosition.xyz);
+        attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
 
-    vec3 spotDir = normalize(-Light.Direction);
-    float cosTheta = dot(lightDir, spotDir);
-    float epsilon = Light.InnerCutOff - Light.OuterCutOff;
-    cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 4) * Light.Intensity;
+        vec3 spotDir = normalize(-Light.Direction);
+        float cosTheta = dot(lightDir, spotDir);
+        float epsilon = Light.InnerCutOff - Light.OuterCutOff;
+        cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 4) * Light.Intensity;
+    }
 }
-
 
 vec3 ApplyLighting(){
     vec3 diffuseMap = vec3(texture(Material.DiffuseMap, vUV));
@@ -76,15 +81,9 @@ vec3 ApplyLighting(){
     float attenuation = 1;
     float directionalIntensity = 1;
 
-    if (Light.Type == 0){
-        CalculateDirectionalLight(lightDir, directionalIntensity);
-
-    } else if (Light.Type == 1){
-        CalculatePointLight(attenuation);
-
-    } else if (Light.Type == 2){
-        CalculateSpotLight(lightDir, cutOff, attenuation);
-    }
+    CalculateDirectionalLight(lightDir, directionalIntensity);
+    CalculatePointLight(attenuation);
+    CalculateSpotLight(lightDir, cutOff, attenuation);
 
     //Ambient
     vec3 ambient = Light.Color * diffuseMap * Light.Ambient * Material.Ambient * directionalIntensity;
@@ -105,8 +104,6 @@ vec3 ApplyLighting(){
     vec3 result = ambient + diffuse + specular + emission;
     return result;
 }
-
-
 
 void main()
 {

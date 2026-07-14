@@ -12,43 +12,50 @@
 #include "Uniforms/Matrix3Uniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
 
-void Renderer::AddSystems() {
+void Renderer::AddSystems()
+{
    AddSystem<CameraSystem>();
    AddSystem<LightingSystem>();
 }
 
-void Renderer::OnRender() {
-   auto &scene = Engine::Ins->World.ActiveScene;
-   auto &camera = scene->ActiveCamera;
+void Renderer::OnRender()
+{
+   auto& scene = Engine::Ins->World.ActiveScene;
+   auto& camera = scene->ActiveCamera;
 
    Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
    Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
-   for (auto &entity: scene->Entities | std::views::values) {
-      if (!entity->HasComponent<TransformComponent>()) {
+   for (auto& entity : scene->GetEntities())
+   {
+      if (!entity->HasComponent<TransformComponent>())
+      {
          continue;
       }
-      auto &transformComponent = entity->GetComponent<TransformComponent>();
+      auto& transformComponent = entity->GetComponent<TransformComponent>();
 
-      if (entity->HasComponent<MaterialComponent>()) {
-         auto &materialComponent = entity->GetComponent<MaterialComponent>();
+      if (entity->HasComponent<MaterialComponent>())
+      {
+         auto& materialComponent = entity->GetComponent<MaterialComponent>();
          materialComponent.Material->Use();
 
 
          materialComponent.Material->Shader->SetUniform(FloatUniform("Time", Engine::Ins->Time));
 
-         materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ModelMatrix", transformComponent.GetModelMatrix()));
+         materialComponent.Material->Shader->SetUniform(
+            Matrix4Uniform("ModelMatrix", transformComponent.GetModelMatrix()));
 
          materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ViewMatrix", view));
 
          materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
 
-         materialComponent.Material->Shader->SetUniform(Matrix3Uniform("NormalMatrix", transformComponent.GetNormalMatrix()));
-
+         materialComponent.Material->Shader->SetUniform(
+            Matrix3Uniform("NormalMatrix", transformComponent.GetNormalMatrix()));
       }
 
-      if (entity->HasComponent<MeshComponent>()) {
-         auto &meshComponent = entity->GetComponent<MeshComponent>();
+      if (entity->HasComponent<MeshComponent>())
+      {
+         auto& meshComponent = entity->GetComponent<MeshComponent>();
 
          meshComponent.Mesh->Draw();
       }
