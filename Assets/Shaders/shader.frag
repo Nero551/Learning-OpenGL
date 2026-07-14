@@ -52,7 +52,7 @@ void CalculateDirectionalLight(out vec3 lightDir, out float directionalIntensity
 
 void CalculatePointLight(out float attenuation){
     float dist = length(Light.Position - vPosition.xyz);
-    attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+    attenuation = (1.0 / (Light.Quadratic * (dist * dist) + Light.Linear * dist + Light.Constant)) * Light.Intensity;
 }
 
 void CalculateSpotLight(vec3 lightDir, out float cutOff, out float attenuation){
@@ -62,7 +62,7 @@ void CalculateSpotLight(vec3 lightDir, out float cutOff, out float attenuation){
     vec3 spotDir = normalize(-Light.Direction);
     float cosTheta = dot(lightDir, spotDir);
     float epsilon = Light.InnerCutOff - Light.OuterCutOff;
-    cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 4) * Light.Intensity;
+    cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 1) * Light.Intensity;
 }
 
 
