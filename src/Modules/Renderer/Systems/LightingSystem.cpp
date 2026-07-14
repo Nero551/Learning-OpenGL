@@ -18,6 +18,8 @@ float lightLinear;
 float lightQuadratic;
 float lightConstant;
 float lightIntensity;
+float lightInnerCutOff;
+float lightOuterCutOff;
 
 void LightingSystem::Render() {
    auto &scene = Engine::Ins->World.ActiveScene;
@@ -44,6 +46,8 @@ void LightingSystem::Render() {
          lightQuadratic = lightComponent.Quadratic;
          lightConstant = lightComponent.Constant;
          lightIntensity = lightComponent.Intensity;
+         lightInnerCutOff = lightComponent.InnerCutOff;
+         lightOuterCutOff = lightComponent.OuterCutOff;
       }
 
       if (entity->HasComponent<MaterialComponent>()) {
@@ -55,15 +59,22 @@ void LightingSystem::Render() {
 
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Color", lightColor));
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Position", lightPos));
+
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Ambient", ambient));
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Diffuse", diffuse));
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Specular", specular));
+
          materialComponent.Material->Shader->SetUniform(IntUniform("Light.Type", static_cast<int>(lightType)));
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Direction", lightDir));
+
          materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Constant", lightConstant));
          materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Linear", lightLinear));
          materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Quadratic", lightQuadratic));
          materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Intensity", lightIntensity));
+
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Light.InnerCutOff", std::cos(lightInnerCutOff)));
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Light.OuterCutOff", std::cos(lightOuterCutOff)));
+
       }
    }
 }

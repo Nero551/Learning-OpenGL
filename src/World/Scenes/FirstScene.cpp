@@ -39,7 +39,6 @@ void FirstScene::Initialize() {
 
       auto &lightMaterial = resourceManager.Load<Material>("lightMaterial");
       lightMaterial.Shader = &lightShader;
-      lightMaterial.Diffuse = {5};
 
 
       Light &light = CreateEntity<Light>();
@@ -49,7 +48,8 @@ void FirstScene::Initialize() {
       light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
       light.GetComponent<TransformComponent>().Scale = {0.2};
 
-      light.GetComponent<LightComponent>().Intensity = 10;
+      light.GetComponent<LightComponent>().Ambient = {0.3};
+      light.GetComponent<LightComponent>().Intensity = 4;
 
       lightId = light.Id; //Temporary
    }
@@ -78,5 +78,18 @@ void FirstScene::Update(double dt) {
    }
    if (input.IsKeyHeld(Key::O)) {
       transformComponent.Position.y -= 2 * dt;
+   }
+
+   if (input.IsKeyHeld(Key::Z)) {
+      transformComponent.EulerRotation.x += 2 * dt;
+   }
+
+   if (input.IsKeyHeld(Key::X)) {
+      transformComponent.EulerRotation.y += 2 * dt;
+   }
+
+   if (input.IsKeyHeld(Key::C)) {
+      transformComponent.EulerRotation.z += 2 * dt;
+
    }
 }

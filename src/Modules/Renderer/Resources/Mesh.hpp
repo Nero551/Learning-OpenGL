@@ -4,8 +4,11 @@
 
 #include <vector>
 
+#include "../Topology.hpp"
+
 struct Mesh : Resource {
    bool Wireframe = false;
+   Topology Topology = Topology::Triangles;
 
    Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
 

@@ -6,12 +6,14 @@
 
 #include <ranges>
 
+#include "Primitives/Primitives.hpp"
 #include "Systems/LightingSystem.hpp"
 #include "Uniforms/FloatUniform.hpp"
 #include "Uniforms/IntUniform.hpp"
 #include "Uniforms/Matrix3Uniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
 #include "Uniforms/Vector3Uniform.hpp"
+#include "Utilities/Math/Color.hpp"
 
 void Renderer::AddSystems() {
    AddSystem<CameraSystem>();
@@ -30,7 +32,6 @@ void Renderer::OnRender() {
          continue;
       }
       auto &transformComponent = entity->GetComponent<TransformComponent>();
-
 
       if (entity->HasComponent<MaterialComponent>()) {
          auto &materialComponent = entity->GetComponent<MaterialComponent>();

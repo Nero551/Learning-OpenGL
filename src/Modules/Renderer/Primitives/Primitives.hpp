@@ -9,6 +9,8 @@ namespace Primitives {
 
    Mesh &CreateQuad(const std::string &name);
 
+   Mesh &CreateLine(const std::string &name);
+
    Texture &CreateWhiteTexture();
 
    Texture &CreateBlackTexture();

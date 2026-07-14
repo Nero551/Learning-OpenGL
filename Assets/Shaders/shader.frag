@@ -23,6 +23,9 @@ struct light {
     float Constant;
     float Linear;
     float Quadratic;
+
+    float InnerCutOff;
+    float OuterCutOff;
 };
 
 struct material {
@@ -42,38 +45,46 @@ struct material {
 uniform material Material;
 uniform light Light;
 
-uniform sampler2D rubyTexture;
-
 vec3 ApplyLighting(){
     vec3 diffuseMap = vec3(texture(Material.DiffuseMap, vUV));
     vec3 specularMap = vec3(texture(Material.SpecularMap, vUV));
     vec3 emissionMap = vec3(texture(Material.EmissionMap, vUV));
 
     vec3 lightDir = normalize(Light.Position - vPosition.xyz);
+    float cutOff = 1;
     float attenuation = 1;
+    float directionalIntensity = 1;
 
     if (Light.Type == 0){
         //Directional
         lightDir = normalize(-Light.Direction);
+        directionalIntensity = Light.Intensity;
 
     } else if (Light.Type == 1){
         //Point
         float dist = length(Light.Position - vPosition.xyz);
         attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+
+    } else if (Light.Type == 2){
+        //Spot
+        vec3 spotDir = normalize(-Light.Direction);
+        float cosTheta = dot(lightDir, spotDir);
+        float epsilon = Light.InnerCutOff - Light.OuterCutOff;
+        cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 1.0) * Light.Intensity;
     }
 
     //Ambient
-    vec3 ambient = Light.Color * diffuseMap * Light.Ambient * Material.Ambient * attenuation;
+    vec3 ambient = Light.Color * diffuseMap * Light.Ambient * Material.Ambient * directionalIntensity;
 
     //Diffuse
     float diff = max(dot(vNormal, lightDir), 0.0);
-    vec3 diffuse = diff * Light.Color * diffuseMap * Light.Diffuse * Material.Diffuse * attenuation;
+    vec3 diffuse = diff * Light.Color * diffuseMap * Light.Diffuse * Material.Diffuse * attenuation * cutOff * directionalIntensity;
 
     //Specular
     vec3 viewDir = normalize(ViewPosition - vec3(vPosition.xyz));
     vec3 reflectDir = reflect(-lightDir, vNormal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
-    vec3 specular = spec * Light.Color * specularMap * Material.Specular * Light.Specular * attenuation;
+    vec3 specular = spec * Light.Color * specularMap * Material.Specular * Light.Specular * attenuation * cutOff * directionalIntensity;
 
     //Emission
     vec3 emission = emissionMap * Material.Emission;
@@ -87,5 +98,5 @@ vec3 ApplyLighting(){
 void main()
 {
     vec3 Lighting = ApplyLighting();
-    FragColor = vec4(Lighting, 1) * Material.Color + texture(rubyTexture, vUV);
+    FragColor = vec4(Lighting, 1) * Material.Color;
 }

@@ -18,7 +18,7 @@ void Mesh::Draw() {
    }
 
    glBindVertexArray(Id);
-   glDrawElements(GL_TRIANGLES, Indices.size(), GL_UNSIGNED_INT, nullptr);
+   glDrawElements(static_cast<int>(Topology), Indices.size(), GL_UNSIGNED_INT, nullptr);
 }
 
 unsigned int Mesh::CreateVAO() {
