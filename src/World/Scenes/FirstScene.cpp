@@ -23,22 +23,11 @@ void FirstScene::Initialize() {
 
       auto &diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
       auto &specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
-      auto &emissionMap = resourceManager.Load<Texture>("emissionMap", "Assets/Images/emissionMap.jpg");
-      auto &rubyTexture = resourceManager.Load<Texture>("rubyTexture", "Assets/Images/ruby.png");
       auto &objectMaterial = resourceManager.Load<Material>("material");
-      objectMaterial.AssignTexture(rubyTexture, 0);
       objectMaterial.Shader = &objectShader;
       objectMaterial.DiffuseMap = &diffuseMap;
       objectMaterial.SpecularMap = &specularMap;
-      objectMaterial.EmissionMap = &emissionMap;
-
-      //Todo - math tests had a bunch of errors. fix that
-
-      // objectMaterial.Diffuse = {0.5};
-      // objectMaterial.Ambient = {0.3};
-      // objectMaterial.Specular = {0.3};
-      objectMaterial.Emission = {3};
-
+      
       Cube &cube = CreateEntity<Cube>();
       cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
       cube.GetComponent<MeshComponent>().Mesh = &mesh;
