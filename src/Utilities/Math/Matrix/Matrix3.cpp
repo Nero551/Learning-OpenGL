@@ -247,10 +247,10 @@ Matrix2 Matrix3::Minor(int row, int col) const {
    return minor;
 }
 
-bool Matrix3::NearlyEquals(const Matrix3 &mat3) const {
+bool Matrix3::NearlyEquals(const Matrix3 &mat3, float epsilon) const {
    for (int row = 0; row < 3; row++) {
       for (int col = 0; col < 3; col++) {
-         if (!Math::NearlyEquals(m[row][col], mat3.m[row][col])) {
+         if (!Math::NearlyEquals(m[row][col], mat3.m[row][col], epsilon)) {
             return false;
          }
       }

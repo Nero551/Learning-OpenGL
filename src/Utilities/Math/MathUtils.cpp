@@ -12,6 +12,6 @@ float Math::Degrees(float rad) {
    return rad * 180 / std::numbers::pi;
 }
 
-bool Math::NearlyEquals(float a, float b) {
-   return std::abs(a - b) < EPSILONF;
+bool Math::NearlyEquals(float a, float b, float epsilon) {
+   return std::abs(a - b) < epsilon;
 }

@@ -79,8 +79,8 @@ Vector3 Vector3::Cross(const Vector3 &vec3) const {
 
 float Vector3::Distance(const Vector3 &vec3) const { return (*this - vec3).Length(); }
 
-bool Vector3::NearlyEquals(const Vector3 &vec3) const {
-   return Math::NearlyEquals(x, vec3.x) && Math::NearlyEquals(y, vec3.y) && Math::NearlyEquals(z, vec3.z);
+bool Vector3::NearlyEquals(const Vector3 &vec3, float epsilon) const {
+   return Math::NearlyEquals(x, vec3.x, epsilon) && Math::NearlyEquals(y, vec3.y, epsilon) && Math::NearlyEquals(z, vec3.z, epsilon);
 }
 
 Vector3 Vector3::Normalized() const {

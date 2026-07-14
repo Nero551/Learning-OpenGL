@@ -121,10 +121,10 @@ Matrix2 Matrix2::Transpose() const {
    return result;
 }
 
-bool Matrix2::NearlyEquals(const Matrix2 &mat2) const {
+bool Matrix2::NearlyEquals(const Matrix2 &mat2, float epsilon) const {
    for (int row = 0; row < 2; row++) {
       for (int col = 0; col < 2; col++) {
-         if (!Math::NearlyEquals(m[row][col], mat2.m[row][col])) {
+         if (!Math::NearlyEquals(m[row][col], mat2.m[row][col], epsilon)) {
             return false;
          }
       }

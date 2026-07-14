@@ -3,7 +3,7 @@
 #include <iostream>
 
 struct LoggerService {
-   template<typename T> static void Print(const T &message) { std::cout << Blue << message << "\n"; }
+   template<typename T> static void Print(const T &message) { std::cout << message << "\n"; }
 
    template<typename T> static void Info(const T &message) {
       std::cout << Green << "[INFO] " << Reset << message << "\n";

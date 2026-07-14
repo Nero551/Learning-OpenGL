@@ -1,6 +1,8 @@
 #pragma once
 #include <iosfwd>
 
+#include "../MathUtils.hpp"
+
 struct Vector3 {
    float x;
    float y;
@@ -24,7 +26,7 @@ struct Vector3 {
 
    float Distance(const Vector3 &vec3) const;
 
-   bool NearlyEquals(const Vector3 &vec3) const;
+   bool NearlyEquals(const Vector3 &vec3, float epsilon = Math::EPSILONF) const;
 
    bool IsParallelTo(const Vector3 &vec3) const;
 

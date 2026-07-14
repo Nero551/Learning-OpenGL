@@ -338,10 +338,10 @@ Matrix3 Matrix4::Minor(int row, int col) const {
    return minor;
 }
 
-bool Matrix4::NearlyEquals(const Matrix4 &mat4) const {
+bool Matrix4::NearlyEquals(const Matrix4 &mat4, float epsilon) const {
    for (int row = 0; row < 4; row++) {
       for (int col = 0; col < 4; col++) {
-         if (!Math::NearlyEquals(m[row][col], mat4.m[row][col])) {
+         if (!Math::NearlyEquals(m[row][col], mat4.m[row][col], epsilon)) {
             return false;
          }
       }

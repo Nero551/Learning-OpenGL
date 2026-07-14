@@ -1,6 +1,8 @@
 #pragma once
 #include <iosfwd>
 
+#include "../MathUtils.hpp"
+
 struct Vector4 {
    float x;
    float y;
@@ -23,7 +25,7 @@ struct Vector4 {
 
    float Distance(const Vector4 &vec4) const;
 
-   bool NearlyEquals(const Vector4 &vec4) const;
+   bool NearlyEquals(const Vector4 &vec4, float epsilon = Math::EPSILONF) const;
 
    Vector4 operator+(const Vector4 &vec4) const;
 

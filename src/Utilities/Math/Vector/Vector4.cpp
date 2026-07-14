@@ -91,9 +91,9 @@ float Vector4::Dot(const Vector4 &vec4) const {
 
 float Vector4::Distance(const Vector4 &vec4) const { return (*this - vec4).Length(); }
 
-bool Vector4::NearlyEquals(const Vector4 &vec4) const {
-   return Math::NearlyEquals(x, vec4.x) && Math::NearlyEquals(y, vec4.y) && Math::NearlyEquals(z, vec4.z) && Math::NearlyEquals(w,
-      vec4.w);
+bool Vector4::NearlyEquals(const Vector4 &vec4, float epsilon) const {
+   return Math::NearlyEquals(x, vec4.x, epsilon) && Math::NearlyEquals(y, vec4.y, epsilon) && Math::NearlyEquals(z, vec4.z, epsilon) &&
+         Math::NearlyEquals(w, vec4.w, epsilon);
 }
 
 Vector4 Vector4::Normalized() const {

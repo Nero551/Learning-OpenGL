@@ -1,6 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 #include "Utilities/Math/Matrix/Matrix2.hpp"
+#include "Utilities/Services/LoggerService.hpp"
 
 using Catch::Matchers::WithinRel;
 
@@ -107,7 +108,7 @@ TEST_CASE("Matrix2 methods") {
    SECTION("rotation") {
       float angle = 3.14159f / 2;
       Matrix2 R = I.Rotate(angle);
-      // REQUIRE(R.NearlyEquals(Matrix2(0, -1, 1, 0)));
+      REQUIRE(R.NearlyEquals(Matrix2(0, -1, 1, 0)));
       Vector2 v(1, 0);
       Vector2 result = R * v;
       REQUIRE(result.NearlyEquals(Vector2(0, 1)));
