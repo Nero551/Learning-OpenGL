@@ -21,20 +21,24 @@ float lightIntensity;
 float lightInnerCutOff;
 float lightOuterCutOff;
 
-void LightingSystem::Render() {
-   auto &scene = Engine::Ins->World.ActiveScene;
-   auto &camera = scene->ActiveCamera;
+void LightingSystem::Render()
+{
+   auto& scene = Engine::Ins->World.ActiveScene;
+   auto& camera = scene->ActiveCamera;
 
-   for (auto &entity: scene->Entities | std::views::values) {
-      if (!entity->HasComponent<TransformComponent>()) {
+   for (auto& entity : scene->GetEntities())
+   {
+      if (!entity->HasComponent<TransformComponent>())
+      {
          continue;
       }
-      auto &transformComponent = entity->GetComponent<TransformComponent>();
+      auto& transformComponent = entity->GetComponent<TransformComponent>();
 
       //TODO- rn this can only work with 1 light, fix that. it breaks with multiple lights.
 
-      if (entity->HasComponent<LightComponent>()) {
-         auto &lightComponent = entity->GetComponent<LightComponent>();
+      if (entity->HasComponent<LightComponent>())
+      {
+         auto& lightComponent = entity->GetComponent<LightComponent>();
          lightColor = lightComponent.Color;
          lightPos = transformComponent.Position;
          lightDir = transformComponent.GetForward();
@@ -50,12 +54,14 @@ void LightingSystem::Render() {
          lightOuterCutOff = lightComponent.OuterCutOff;
       }
 
-      if (entity->HasComponent<MaterialComponent>()) {
-         auto &materialComponent = entity->GetComponent<MaterialComponent>();
+      if (entity->HasComponent<MaterialComponent>())
+      {
+         auto& materialComponent = entity->GetComponent<MaterialComponent>();
 
 
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
-            camera->GetComponent<TransformComponent>().Position));
+                                                                       camera->GetComponent<TransformComponent>().
+                                                                               Position));
 
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Color", lightColor));
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Position", lightPos));
@@ -74,7 +80,6 @@ void LightingSystem::Render() {
 
          materialComponent.Material->Shader->SetUniform(FloatUniform("Light.InnerCutOff", std::cos(lightInnerCutOff)));
          materialComponent.Material->Shader->SetUniform(FloatUniform("Light.OuterCutOff", std::cos(lightOuterCutOff)));
-
       }
    }
 }

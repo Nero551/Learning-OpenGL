@@ -14,7 +14,6 @@ struct Scene
 {
    std::string Name;
    SafePtr<Camera> ActiveCamera{"Scene Has No Active Camera Assigned"};
-   std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
 
    Scene() = default ;
 
@@ -73,7 +72,9 @@ struct Scene
 
 private:
    unsigned int currentEntityId = 0;
+   std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
    SafePtr<Scene> Parent{"Scene Has No Parent"};
    std::unordered_map<std::string, SafePtr<Scene>> Children;
+
    void RecursiveEntities(std::vector<SafePtr<Entity>>& entities);
 };
