@@ -49,7 +49,8 @@ void FirstScene::Initialize() {
       light.GetComponent<TransformComponent>().Scale = {0.2};
 
       light.GetComponent<LightComponent>().Ambient = {0.3};
-      light.GetComponent<LightComponent>().Intensity = 4;
+      light.GetComponent<TransformComponent>().EulerRotation = {Math::Radians(90), 0, 0};
+      light.GetComponent<LightComponent>().Type = LightType::Spot;
 
       lightId = light.Id; //Temporary
    }

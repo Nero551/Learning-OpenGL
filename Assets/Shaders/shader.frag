@@ -67,10 +67,13 @@ vec3 ApplyLighting(){
 
     } else if (Light.Type == 2){
         //Spot
+        float dist = length(Light.Position - vPosition.xyz);
+        attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
+
         vec3 spotDir = normalize(-Light.Direction);
         float cosTheta = dot(lightDir, spotDir);
         float epsilon = Light.InnerCutOff - Light.OuterCutOff;
-        cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 1.0) * Light.Intensity;
+        cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 4) * Light.Intensity;
     }
 
     //Ambient

@@ -7,7 +7,7 @@
 #include "Utilities/Math/Vector/Vector3.hpp"
 
 struct LightComponent : Component {
-   LightType Type = LightType::Spot;
+   LightType Type = LightType::Point;
    Vector3 Color = {1};
    Vector3 Ambient = {1};
    Vector3 Diffuse = {1};
