@@ -54,6 +54,7 @@ void FirstScene::Initialize()
 
    light.GetComponent<TransformComponent>().Scale = {0.2};
 
+   // light.GetComponent<LightComponent>().Intensity = 3;
    light.GetComponent<LightComponent>().Type = LightType::Directional;
 
    lightId = light.Id; //Temporary

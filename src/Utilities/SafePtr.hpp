@@ -2,43 +2,51 @@
 #include <string>
 #include "Utilities/Services/LoggerService.hpp"
 
-template<typename T> struct SafePtr {
-
+template <typename T> struct SafePtr
+{
    SafePtr() = default;
 
-   SafePtr(const std::string_view &nullMessage) {
-      this->nullMessage = nullMessage;
+   SafePtr(const std::string_view& nullMessage)
+   {
+      this->nullMessage += nullMessage;
    }
 
-   SafePtr &operator=(T *objectPtr) {
+   SafePtr& operator=(T* objectPtr)
+   {
       ptr = objectPtr;
       return *this;
    }
 
-   T *operator->() const {
-      if (!ptr) {
+   T* operator->() const
+   {
+      if (!ptr)
+      {
          LoggerService::Fatal(nullMessage);
       }
       return ptr;
    }
 
-   T &operator*() {
+   T& operator*()
+   {
       return LoggerService::Require(ptr, nullMessage);
    }
 
-   operator bool() const {
+   operator bool() const
+   {
       return ptr != nullptr;
    }
 
-   void Reset() {
+   void Reset()
+   {
       ptr = nullptr;
    }
 
-   T *Get() const {
+   T* Get() const
+   {
       return ptr;
    }
 
 private:
-   T *ptr = nullptr;
-   std::string nullMessage;
+   T* ptr = nullptr;
+   std::string nullMessage = "[NULL PTR] ";
 };
