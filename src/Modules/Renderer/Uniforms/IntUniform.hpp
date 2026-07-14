@@ -1,14 +1,16 @@
 #pragma once
-#include "../Enums/Uniform.hpp"
+#include "../Uniform.hpp"
 #include "OpenGL.hpp"
 
 
-struct IntUniform : Uniform {
+struct IntUniform : Uniform
+{
    int Value;
 
-   IntUniform(const std::string &name, int value) : Uniform(name), Value(value) {}
+   IntUniform(const std::string& name, int value) : Uniform(name), Value(value) {}
 
-   void Upload(int location) override {
+   void Upload(int location) override
+   {
       glUniform1i(location, Value);
    }
 };

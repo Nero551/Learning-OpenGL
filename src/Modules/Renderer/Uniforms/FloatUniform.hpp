@@ -1,13 +1,15 @@
 #pragma once
-#include "../Enums/Uniform.hpp"
+#include "../Uniform.hpp"
 #include "Core/Engine.hpp"
 
-struct FloatUniform : Uniform {
-   float Value;
+struct FloatUniform : Uniform
+{
+    float Value;
 
-   FloatUniform(const std::string &name, float value) : Uniform(name), Value(value) {}
+    FloatUniform(const std::string& name, float value) : Uniform(name), Value(value) {}
 
-   void Upload(int location) override {
-      glUniform1f(location, Value);
-   }
+    void Upload(int location) override
+    {
+        glUniform1f(location, Value);
+    }
 };
