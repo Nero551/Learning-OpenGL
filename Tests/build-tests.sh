@@ -1,4 +1,11 @@
 #!/bin/sh
+set -e
 
-cmake -B build-tests -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-ninja -C build-tests
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+cmake -S "$SCRIPT_DIR" \
+      -B "$SCRIPT_DIR/build-tests" \
+      -G Ninja \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+cmake --build "$SCRIPT_DIR/build-tests"
