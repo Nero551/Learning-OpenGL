@@ -8,7 +8,6 @@
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
 
 unsigned int lightId;
-unsigned int cubeId;
 
 void FirstScene::Initialize() {
    {
@@ -28,11 +27,12 @@ void FirstScene::Initialize() {
       objectMaterial.DiffuseMap = &diffuseMap;
       objectMaterial.SpecularMap = &specularMap;
 
-      Cube &cube = CreateEntity<Cube>();
-      cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-      cube.GetComponent<MeshComponent>().Mesh = &mesh;
-
-      cubeId = cube.Id; //Temporary
+      for (float i = 0; i < 6; i += 0.5) {
+         Cube &cube = CreateEntity<Cube>();
+         cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
+         cube.GetComponent<MeshComponent>().Mesh = &mesh;
+         cube.GetComponent<TransformComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
+      }
 
       auto &lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
          "Assets/Shaders/lightShader.vert");
@@ -41,12 +41,15 @@ void FirstScene::Initialize() {
       lightMaterial.Shader = &lightShader;
       lightMaterial.Diffuse = {5};
 
+
       Light &light = CreateEntity<Light>();
       light.GetComponent<MaterialComponent>().Material = &lightMaterial;
       light.GetComponent<MeshComponent>().Mesh = &mesh;
 
       light.GetComponent<TransformComponent>().Position = {1.2, 1, 2};
       light.GetComponent<TransformComponent>().Scale = {0.2};
+
+      light.GetComponent<LightComponent>().Intensity = 10;
 
       lightId = light.Id; //Temporary
    }
@@ -58,22 +61,22 @@ void FirstScene::Update(double dt) {
    auto &input = Engine::Ins->GetModule<Input>();
 
    if (input.IsKeyHeld(Key::Up)) {
-      transformComponent.EulerRotation.y += 2 * dt;
+      transformComponent.Position.z += 2 * dt;
    }
    if (input.IsKeyHeld(Key::Down)) {
-      transformComponent.EulerRotation.y -= 2 * dt;
+      transformComponent.Position.z -= 2 * dt;
    }
    if (input.IsKeyHeld(Key::Left)) {
-      transformComponent.EulerRotation.x -= 2 * dt;
+      transformComponent.Position.x -= 2 * dt;
    }
    if (input.IsKeyHeld(Key::Right)) {
-      transformComponent.EulerRotation.x += 2 * dt;
+      transformComponent.Position.x += 2 * dt;
    }
-   //
-   // if (input.IsKeyHeld(Key::I)) {
-   //    transformComponent.EulerRotation.y += 2 * dt;
-   // }
-   // if (input.IsKeyHeld(Key::O)) {
-   //    transformComponent.EulerRotation.y -= 2 * dt;
-   // }
+
+   if (input.IsKeyHeld(Key::I)) {
+      transformComponent.Position.y += 2 * dt;
+   }
+   if (input.IsKeyHeld(Key::O)) {
+      transformComponent.Position.y -= 2 * dt;
+   }
 }

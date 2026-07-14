@@ -25,10 +25,10 @@ FetchContent_MakeAvailable(Catch2)
 find_package(glfw3 REQUIRED)
 
 file(GLOB_RECURSE ENGINE_SOURCES
-        ../src/Core/*.cpp
+        #        ../src/Core/*.cpp
         ../src/Utilities/*.cpp
-        ../src/Modules/*.cpp
-        ../src/World/*.cpp
+        #        ../src/Modules/*.cpp
+        #        ../src/World/*.cpp
 )
 
 file(GLOB_RECURSE TEST_SOURCES

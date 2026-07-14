@@ -18,6 +18,11 @@ struct light {
     vec3 Ambient;
     vec3 Diffuse;
     vec3 Specular;
+
+    float Intensity;
+    float Constant;
+    float Linear;
+    float Quadratic;
 };
 
 struct material {
@@ -44,23 +49,31 @@ vec3 ApplyLighting(){
     vec3 specularMap = vec3(texture(Material.SpecularMap, vUV));
     vec3 emissionMap = vec3(texture(Material.EmissionMap, vUV));
 
-    //Ambient Lighting
-    vec3 ambient = Light.Color * diffuseMap * Light.Ambient * Material.Ambient;
-
-    vec3 diffuse;
-    vec3 specular;
+    vec3 lightDir = normalize(Light.Position - vPosition.xyz);
+    float attenuation = 1;
 
     if (Light.Type == 0){
         //Directional
-        vec3 lightDir = normalize(-Light.Direction);
-        float diff = max(dot(vNormal, lightDir), 0.0);
-        diffuse = diff * Light.Color * diffuseMap * Light.Diffuse * Material.Diffuse;
+        lightDir = normalize(-Light.Direction);
 
-        vec3 viewDir = normalize(ViewPosition - vec3(vPosition.xyz));
-        vec3 reflectDir = reflect(-lightDir, vNormal);
-        float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
-        specular = spec * Light.Color * specularMap * Material.Specular * Light.Specular;
+    } else if (Light.Type == 1){
+        //Point
+        float dist = length(Light.Position - vPosition.xyz);
+        attenuation = (1.0 / (Light.Constant + Light.Linear * dist + Light.Quadratic * (dist * dist))) * Light.Intensity;
     }
+
+    //Ambient
+    vec3 ambient = Light.Color * diffuseMap * Light.Ambient * Material.Ambient * attenuation;
+
+    //Diffuse
+    float diff = max(dot(vNormal, lightDir), 0.0);
+    vec3 diffuse = diff * Light.Color * diffuseMap * Light.Diffuse * Material.Diffuse * attenuation;
+
+    //Specular
+    vec3 viewDir = normalize(ViewPosition - vec3(vPosition.xyz));
+    vec3 reflectDir = reflect(-lightDir, vNormal);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
+    vec3 specular = spec * Light.Color * specularMap * Material.Specular * Light.Specular * attenuation;
 
     //Emission
     vec3 emission = emissionMap * Material.Emission;
@@ -68,6 +81,8 @@ vec3 ApplyLighting(){
     vec3 result = ambient + diffuse + specular + emission;
     return result;
 }
+
+
 
 void main()
 {

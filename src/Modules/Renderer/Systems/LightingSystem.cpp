@@ -3,8 +3,21 @@
 #include "../Components/LightComponent.hpp"
 #include "../Components/MaterialComponent.hpp"
 #include "../Components/TransformComponent.hpp"
+#include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
+
+Vector3 lightColor;
+Vector3 ambient;
+Vector3 diffuse;
+Vector3 specular;
+Vector3 lightPos;
+Vector3 lightDir;
+LightType lightType;
+float lightLinear;
+float lightQuadratic;
+float lightConstant;
+float lightIntensity;
 
 void LightingSystem::Render() {
    auto &scene = Engine::Ins->World.ActiveScene;
@@ -15,14 +28,6 @@ void LightingSystem::Render() {
          continue;
       }
       auto &transformComponent = entity->GetComponent<TransformComponent>();
-
-      Vector3 lightColor;
-      Vector3 ambient;
-      Vector3 diffuse;
-      Vector3 specular;
-      Vector3 lightPos;
-      Vector3 lightDir;
-      LightType lightType = LightType::Directional;
 
       //TODO- rn this can only work with 1 light, fix that. it breaks with multiple lights.
 
@@ -35,6 +40,10 @@ void LightingSystem::Render() {
          diffuse = lightComponent.Diffuse;
          specular = lightComponent.Specular;
          lightType = lightComponent.Type;
+         lightLinear = lightComponent.Linear;
+         lightQuadratic = lightComponent.Quadratic;
+         lightConstant = lightComponent.Constant;
+         lightIntensity = lightComponent.Intensity;
       }
 
       if (entity->HasComponent<MaterialComponent>()) {
@@ -51,6 +60,10 @@ void LightingSystem::Render() {
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Specular", specular));
          materialComponent.Material->Shader->SetUniform(IntUniform("Light.Type", static_cast<int>(lightType)));
          materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Direction", lightDir));
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Constant", lightConstant));
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Linear", lightLinear));
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Quadratic", lightQuadratic));
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Intensity", lightIntensity));
       }
    }
 }

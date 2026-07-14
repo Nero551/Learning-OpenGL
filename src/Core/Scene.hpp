@@ -2,9 +2,11 @@
 #include <unordered_map>
 
 #include "Entity.hpp"
+#include "Modules/Input/Keys.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 #include "Utilities/SafePtr.hpp"
 #include "Utilities/Services/LoggerService.hpp"
+#include <vector>
 
 template<typename T>concept EntityType = std::derived_from<T, Entity>;
 
