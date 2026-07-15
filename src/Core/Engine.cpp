@@ -4,7 +4,6 @@
 #include <ranges>
 
 #include "../Modules/Renderer/Renderer.hpp"
-#include "Core/World.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Profiling/Profiling.hpp"
 

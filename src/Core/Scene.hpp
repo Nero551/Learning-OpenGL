@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "Modules/Renderer/Components/LightComponent.hpp"
+#include "World/Events/EntityCreated.hpp"
 
 template <typename T>concept EntityType = std::derived_from<T, Entity>;
 
@@ -25,7 +26,6 @@ struct Scene {
 
     Scene(Scene&&) = default;
 
-    Scene& operator=(Scene&&) = default;
 
     virtual void Initialize() {}
 
@@ -51,6 +51,8 @@ struct Scene {
         }
 
         Entities.emplace(id, std::move(entity));
+
+        Engine::Ins->EventBus.Fire<EntityCreated>(entity);
 
         return GetEntity<T>(id);
     }

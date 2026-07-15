@@ -8,13 +8,17 @@
 #include "../Uniforms/Vector3Uniform.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 
-void LightingSystem::Render()
-{
+void onEntityCreated(const EntityCreated& entity) { LoggerService::Info(entity.entity.Id); }
+
+
+void LightingSystem::Start() { Engine::Ins->EventBus.Sub<EntityCreated>(onEntityCreated); }
+
+
+void LightingSystem::Render() {
     auto& scene = Engine::Ins->World.ActiveScene;
     auto& camera = scene->GetActiveCamera<Camera>();
 
-    for (auto& entity : scene->GetEntities())
-    {
+    for (auto& entity : scene->GetEntities()) {
         if (!entity->HasComponent<TransformComponent>()) { continue; }
 
         if (!entity->HasComponent<MaterialComponent>()) { continue; }
@@ -24,8 +28,7 @@ void LightingSystem::Render()
         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
             camera.GetComponent<TransformComponent>().Position));
 
-        for (int i = 0; i < scene->Lights.size(); i++)
-        {
+        for (int i = 0; i < scene->Lights.size(); i++) {
             auto& light = scene->Lights[i];
             auto& lightComponent = light->GetComponent<LightComponent>();
 

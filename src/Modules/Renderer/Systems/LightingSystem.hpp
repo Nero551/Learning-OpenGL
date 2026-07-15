@@ -2,5 +2,6 @@
 #include "Core/System.hpp"
 
 struct LightingSystem : System {
-   void Render() override;
+    void Start() override;
+    void Render() override;
 };

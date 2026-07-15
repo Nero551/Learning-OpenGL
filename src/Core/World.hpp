@@ -3,7 +3,6 @@
 #include <vector>
 
 #include "Scene.hpp"
-#include "Core/Scene.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
 template <typename T>concept SceneType = std::derived_from<T, Scene>;

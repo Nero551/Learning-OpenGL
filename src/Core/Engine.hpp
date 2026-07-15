@@ -1,8 +1,10 @@
 #pragma once
+#include "EventBus.hpp"
 #include "Module.hpp"
 #include "ResourceManager.hpp"
 #include "Window.hpp"
-#include "Core/World.hpp"
+#include "World.hpp"
+#include "Utilities/SafePtr.hpp"
 
 template <typename T>concept ModuleType = std::derived_from<T, Module>;
 
@@ -16,6 +18,7 @@ struct Engine {
     Window Window;
     World World;
     ResourceManager ResourceManager;
+    EventBus EventBus;
 
     Engine();
 
