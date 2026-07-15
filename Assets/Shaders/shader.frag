@@ -42,6 +42,10 @@ struct material {
     sampler2D EmissionMap;
 };
 
+
+uniform int MaxLights;
+uniform light Lights[NR_LIGHTS];
+
 uniform material Material;
 uniform light Light;
 
@@ -65,11 +69,9 @@ void CalculateSpotLight(vec3 lightDir, out float cutOff, out float attenuation){
     cutOff = clamp((cosTheta - Light.OuterCutOff) / epsilon, 0.0, 1) * Light.Intensity;
 }
 
-
-vec3 ApplyLighting(){
+vec3 CalculateLight(light Light){
     vec3 diffuseMap = vec3(texture(Material.DiffuseMap, vUV));
     vec3 specularMap = vec3(texture(Material.SpecularMap, vUV));
-    vec3 emissionMap = vec3(texture(Material.EmissionMap, vUV));
 
     vec3 lightDir = normalize(Light.Position - vPosition.xyz);
     float cutOff = 1;
@@ -99,14 +101,22 @@ vec3 ApplyLighting(){
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), Material.Shininess);
     vec3 specular = spec * Light.Color * specularMap * Material.Specular * Light.Specular * attenuation * cutOff * directionalIntensity;
 
-    //Emission
-    vec3 emission = emissionMap * Material.Emission;
-
-    vec3 result = ambient + diffuse + specular + emission;
-    return result;
+    return ambient + diffuse + specular;
 }
 
+vec3 ApplyLighting(){
+    vec3 result;
 
+    for (int i = 0; i < MaxLights; i++){
+        result += CalculateLight(Light);
+    }
+
+    //Emission
+    vec3 emissionMap = vec3(texture(Material.EmissionMap, vUV));
+    vec3 emission = emissionMap * Material.Emission;
+    result += emission;
+    return result;
+}
 
 void main()
 {
