@@ -33,3 +33,5 @@ std::vector<SafePtr<Entity>> Entity::GetChildren() {
 
     return children;
 }
+
+void Entity::RemoveChild(unsigned int id) { if (Children.contains(id)) { Children.erase(id); } }

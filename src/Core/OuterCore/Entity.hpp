@@ -52,13 +52,14 @@ struct Entity {
 
         T& ref = *component;
 
-        Components.insert_or_assign(typeid(T), std::move(component));
+        Components[typeid(T)] = std::move(component);
 
         return ref;
     }
 
     void AddChild(Entity& child);
     void AddChild(Scene& sceneChild);
+    void RemoveChild(unsigned int id);
     std::vector<SafePtr<Entity>> GetChildren();
 
 private:

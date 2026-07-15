@@ -17,21 +17,13 @@ void Scene::RemoveEntity(unsigned int id) {
         ServiceStore::Ins->Get<EventBus>().Fire<EntityDestroyed>(GetEntity(id));
         Entities.erase(id);
     }
+    Root->RemoveChild(id);
+    for (auto& child : Root->GetChildren()) { child->RemoveChild(id); }
 }
 
 void Scene::SetActiveCamera(Entity& entity) {
     if (entity.HasComponent<CameraComponent>() && entity.HasComponent<TransformComponent>()) { ActiveCamera = &entity; }
 }
-
-
-// void Scene::RemoveChild(const std::string& childName) {
-//     if (Children.contains(childName)) {
-//         Children.at(childName)->Parent.Reset();
-//         Children.erase(childName);
-//     }
-//     else { Logger::Error("Scene Doesn't Have Child Named: " + childName); }
-// }
-
 
 std::vector<SafePtr<Entity>> Scene::GetEntities() {
     std::vector<SafePtr<Entity>> entities;
