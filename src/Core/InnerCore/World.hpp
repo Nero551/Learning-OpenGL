@@ -1,9 +1,8 @@
 #pragma once
 #include <memory>
-#include <vector>
 
 #include "../OuterCore/Scene.hpp"
-#include "Utilities/Services/LoggerService.hpp"
+#include "Utilities/Logger.hpp"
 
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
@@ -20,7 +19,7 @@ struct World {
 
     template <SceneType T> T& GetScene(const std::string& name) {
         auto scene = Scenes.find(name);
-        if (scene == Scenes.end()) { LoggerService::Fatal("No Corresponding Scene."); }
+        if (scene == Scenes.end()) { Logger::Fatal("No Corresponding Scene."); }
         return static_cast<T&>(*scene->second);
     }
 

@@ -1,5 +1,5 @@
 #include <string>
-#include "Utilities/Services/LoggerService.hpp"
+#include "Utilities/Logger.hpp"
 #include <OpenGL.hpp>
 #include "Utilities/FileSystem/FileSystem.hpp"
 #include "Shader.hpp"
@@ -9,8 +9,7 @@
 #include "../Uniforms/FloatUniform.hpp"
 
 Shader::Shader(const std::string& name, const std::string& fragFilepath,
-               const std::string& vertFilepath) : Resource(name)
-{
+    const std::string& vertFilepath) : Resource(name) {
     std::string fragCode = FileSystem::ReadFile(fragFilepath);
     std::string vertCode = FileSystem::ReadFile(vertFilepath);
     const char* fragSource = fragCode.c_str();
@@ -26,32 +25,27 @@ Shader::Shader(const std::string& name, const std::string& fragFilepath,
     glDeleteShader(fragShader);
 }
 
-Shader::~Shader()
-{
+Shader::~Shader() {
     glDeleteProgram(Id);
 }
 
 unsigned int Shader::GetId() const { return Id; }
 
-void Shader::Use()
-{
+void Shader::Use() {
     glUseProgram(Id);
     UploadUniforms();
 }
 
 void Shader::UploadUniforms() { for (auto& [location, uniform] : PendingUniforms) { uniform->Upload(location); } }
 
-int Shader::GetUniformLocation(const std::string& name)
-{
+int Shader::GetUniformLocation(const std::string& name) {
     int location;
 
     if (UniformLocations.contains(name)) { location = UniformLocations[name]; }
-    else
-    {
+    else {
         location = glGetUniformLocation(Id, name.c_str());
 
-        if (location == -1)
-        {
+        if (location == -1) {
             // LoggerService::Warning("Uniform Not Found: " + name);
         }
 
@@ -61,8 +55,7 @@ int Shader::GetUniformLocation(const std::string& name)
 }
 
 
-unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int vertShader)
-{
+unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int vertShader) {
     unsigned int id = glCreateProgram();
     glAttachShader(id, vertShader);
     glAttachShader(id, fragShader);
@@ -71,17 +64,15 @@ unsigned int Shader::CreateShaderProgram(unsigned int fragShader, unsigned int v
     int success;
     char infoLog[512];
     glGetProgramiv(id, GL_LINK_STATUS, &success);
-    if (!success)
-    {
+    if (!success) {
         glGetProgramInfoLog(id, 512, nullptr, infoLog);
-        LoggerService::Error(std::string("Shader program linking failed: ") + infoLog);
+        Logger::Error(std::string("Shader program linking failed: ") + infoLog);
     }
 
     return id;
 }
 
-unsigned int Shader::CreateFragShader(const char* fragSource)
-{
+unsigned int Shader::CreateFragShader(const char* fragSource) {
     unsigned int fragShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragShader, 1, &fragSource, nullptr);
     glCompileShader(fragShader);
@@ -89,17 +80,15 @@ unsigned int Shader::CreateFragShader(const char* fragSource)
     int success;
     char infoLog[512];
     glGetShaderiv(fragShader, GL_COMPILE_STATUS, &success);
-    if (!success)
-    {
+    if (!success) {
         glGetShaderInfoLog(fragShader, 512, nullptr, infoLog);
-        LoggerService::Error(std::string("Fragment Shader: ") + infoLog);
+        Logger::Error(std::string("Fragment Shader: ") + infoLog);
     }
 
     return fragShader;
 }
 
-unsigned int Shader::CreateVertShader(const char* vertSource)
-{
+unsigned int Shader::CreateVertShader(const char* vertSource) {
     unsigned int vertShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertShader, 1, &vertSource, nullptr);
     glCompileShader(vertShader);
@@ -107,10 +96,9 @@ unsigned int Shader::CreateVertShader(const char* vertSource)
     int success;
     char infoLog[512];
     glGetShaderiv(vertShader, GL_COMPILE_STATUS, &success);
-    if (!success)
-    {
+    if (!success) {
         glGetShaderInfoLog(vertShader, 512, nullptr, infoLog);
-        LoggerService::Error(std::string("Vertex Shader: ") + infoLog);
+        Logger::Error(std::string("Vertex Shader: ") + infoLog);
     }
 
     return vertShader;

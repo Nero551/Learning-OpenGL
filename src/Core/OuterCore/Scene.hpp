@@ -13,8 +13,6 @@
 template <typename T>concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
-    //TODO- make services a normal struct ith a static Ins inside. and all the services normal not static.
-    //TODO- then engine just creates services and applies the ins
 
     std::string Name;
     const int MaxLights = 10;
@@ -65,7 +63,7 @@ struct Scene {
 
     template <EntityType T> T& GetEntity(unsigned int id) {
         auto entity = Entities.find(id);
-        if (entity == Entities.end()) { LoggerService::Fatal(std::format("Entity Not Found: {}", typeid(T).name())); }
+        if (entity == Entities.end()) { Logger::Fatal(std::format("Entity Not Found: {}", typeid(T).name())); }
         return static_cast<T&>((*entity->second));
     }
 

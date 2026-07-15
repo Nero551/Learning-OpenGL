@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-struct LoggerService {
+struct Logger {
    template<typename T> static void Print(const T &message) { std::cout << message << "\n"; }
 
    template<typename T> static void Info(const T &message) {
@@ -25,7 +25,7 @@ struct LoggerService {
 
    template<typename T> static T &Require(T *rawPtr, const std::string &message) {
       if (!rawPtr) {
-         LoggerService::Fatal(message);
+         Logger::Fatal(message);
       }
       return *rawPtr;
    }

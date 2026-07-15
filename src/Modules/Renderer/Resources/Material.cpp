@@ -5,18 +5,16 @@
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
 #include "../Uniforms/Vector4Uniform.hpp"
-#include "Utilities/Services/LoggerService.hpp"
+#include "Utilities/Logger.hpp"
 
 Material::Material(const std::string& name) :
-    Resource(name)
-{
+    Resource(name) {
     DiffuseMap = &Primitives::CreateWhiteTexture();
     SpecularMap = &Primitives::CreateWhiteTexture();
     EmissionMap = &Primitives::CreateWhiteTexture();
 }
 
-void Material::SetProperties()
-{
+void Material::SetProperties() {
     Shader->SetUniform(Vector3Uniform("Material.Ambient", Ambient));
     Shader->SetUniform(Vector3Uniform("Material.Diffuse", Diffuse));
     Shader->SetUniform(Vector3Uniform("Material.Specular", Specular));
@@ -34,26 +32,21 @@ void Material::SetProperties()
     EmissionMap->Bind(14);
 }
 
-void Material::Use()
-{
+void Material::Use() {
     Shader->Use();
     SetProperties();
 
-    for (int slot = 0; slot < MaxTextures; slot++)
-    {
-        if (CustomTextures[slot])
-        {
+    for (int slot = 0; slot < MaxTextures; slot++) {
+        if (CustomTextures[slot]) {
             Shader->SetUniform(IntUniform(CustomTextures[slot]->Name, slot));
             CustomTextures[slot]->Bind(slot);
         }
     }
 }
 
-void Material::AssignTexture(Texture& texture, unsigned int slot)
-{
-    if (slot >= MaxTextures)
-    {
-        LoggerService::Error("Texture slot out of bounds: " + texture.Name);
+void Material::AssignTexture(Texture& texture, unsigned int slot) {
+    if (slot >= MaxTextures) {
+        Logger::Error("Texture slot out of bounds: " + texture.Name);
         return;
     }
     CustomTextures[slot] = &texture;

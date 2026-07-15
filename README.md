@@ -57,5 +57,7 @@
 - Unit Tests
 - Directional Lights , Point Lights & Spot Lights
 - Scene hierarchy (Scenes can have child scenes)
+- Multiple Lights
+- Event Bus
 
 ![Cube](Docs/Screenshots/MaybeACube.png)

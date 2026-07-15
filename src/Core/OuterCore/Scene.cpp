@@ -19,17 +19,17 @@ void Scene::SetActiveCamera(Entity& entity) {
 
 void Scene::AddChild(Scene& childScene) {
     if (Children.contains(childScene.Name)) {
-        LoggerService::Error("Child scene already exists: " + childScene.Name);
+        Logger::Error("Child scene already exists: " + childScene.Name);
         return;
     }
 
     if (&childScene == this) {
-        LoggerService::Error("A scene cannot be its own child.");
+        Logger::Error("A scene cannot be its own child.");
         return;
     }
 
     if (Parent.Get() == &childScene) {
-        LoggerService::Error("A scene cannot have its parent as a child.");
+        Logger::Error("A scene cannot have its parent as a child.");
         return;
     }
 
@@ -45,7 +45,7 @@ void Scene::RemoveChild(const std::string& childName) {
         Children.at(childName)->Parent.Reset();
         Children.erase(childName);
     }
-    else { LoggerService::Error("Scene Doesn't Have Child Named: " + childName); }
+    else { Logger::Error("Scene Doesn't Have Child Named: " + childName); }
 }
 
 std::vector<SafePtr<Entity>> Scene::GetEntities() {

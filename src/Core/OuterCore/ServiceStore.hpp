@@ -10,7 +10,7 @@ struct ServiceStore {
 
     template <ServiceType T> T& Add() {
         if (Services.contains(typeid(T))) {
-            LoggerService::Error(std::format("ServiceStore already contains Service {}", typeid(T).name()));
+            Logger::Error(std::format("ServiceStore already contains Service {}", typeid(T).name()));
             return static_cast<T&>((*Services.at(typeid(T))));
         }
 
@@ -22,7 +22,7 @@ struct ServiceStore {
 
     template <ServiceType T> T& Get() {
         auto service = Services.find(typeid(T));
-        if (service == Services.end()) { LoggerService::Fatal(std::format("Service Not Found: {}", typeid(T).name())); }
+        if (service == Services.end()) { Logger::Fatal(std::format("Service Not Found: {}", typeid(T).name())); }
         return static_cast<T&>((*service->second));
     }
 

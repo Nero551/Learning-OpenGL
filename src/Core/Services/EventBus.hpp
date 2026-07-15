@@ -7,7 +7,7 @@
 
 #include "../OuterCore/Event.hpp"
 #include "Core/OuterCore/Service.hpp"
-#include "Utilities/Services/LoggerService.hpp"
+#include "Utilities/Logger.hpp"
 
 template <typename T> concept EventType = std::derived_from<T, Event> ;
 

@@ -3,11 +3,10 @@
 #include <iostream>
 #include <string>
 #include "Utilities/Image/Image.hpp"
-#include "Utilities/Services/LoggerService.hpp"
+#include "Utilities/Logger.hpp"
 
 Texture::Texture(const std::string& name, int width, int height, unsigned char pixels[]) :
-    Resource(name)
-{
+    Resource(name) {
     glGenTextures(1, &Id);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, Id);
@@ -22,8 +21,7 @@ Texture::Texture(const std::string& name, int width, int height, unsigned char p
 }
 
 Texture::Texture(const std::string& name, const std::string& imagePath) :
-    Resource(name)
-{
+    Resource(name) {
     glGenTextures(1, &Id);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, Id);
@@ -34,40 +32,36 @@ Texture::Texture(const std::string& name, const std::string& imagePath) :
 
     GLenum format = GL_RED;
 
-    switch (image.NrChannels)
-    {
+    switch (image.NrChannels) {
     case 1: format = GL_RED;
         break;
     case 3: format = GL_RGB;
         break;
     case 4: format = GL_RGBA;
         break;
-    default: LoggerService::Error("Unsupported Texture Channel Count");
+    default: Logger::Error("Unsupported Texture Channel Count");
     }
 
     glTexImage2D(GL_TEXTURE_2D, 0, static_cast<GLint>(format), image.Width, image.Height, 0, format, GL_UNSIGNED_BYTE,
-                 image.Data);
+        image.Data);
     glGenerateMipmap(GL_TEXTURE_2D);
 
     glActiveTexture(0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-Texture::~Texture()
-{
+Texture::~Texture() {
     glDeleteTextures(1, &Id);
 }
 
 unsigned int Texture::GetId() const { return Id; }
 
-void Texture::Bind(unsigned int unit) const
-{
+void Texture::Bind(unsigned int unit) const {
     glActiveTexture(GL_TEXTURE0 + unit);
     glBindTexture(GL_TEXTURE_2D, Id);
 }
 
-void Texture::SetParameters() const
-{
+void Texture::SetParameters() const {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);

@@ -48,8 +48,6 @@ void FirstScene::Initialize() {
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
         "Assets/Shaders/lightShader.vert");
 
-    //TODO- make events system/bus
-
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
 

@@ -1,7 +1,7 @@
 #include "Window.hpp"
 
 #include "Engine.hpp"
-#include "Utilities/Services/LoggerService.hpp"
+#include "Utilities/Logger.hpp"
 
 Window::Window(int width, int height, const std::string& name) {
     Width = width;
@@ -11,11 +11,11 @@ Window::Window(int width, int height, const std::string& name) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
-    if (!window) { LoggerService::Error("Failed To Create Window"); }
+    if (!window) { Logger::Error("Failed To Create Window"); }
     glfwMakeContextCurrent(window);
 
     if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
-        LoggerService::Error("Failed To Initialize GLAD");
+        Logger::Error("Failed To Initialize GLAD");
     }
 
     glViewport(0, 0, width, height);

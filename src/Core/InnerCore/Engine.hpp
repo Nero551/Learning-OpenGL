@@ -34,7 +34,7 @@ struct Engine {
 
     template <ModuleType T> T& GetModule() {
         auto module = Modules.find(typeid(T));
-        if (module == Modules.end()) { LoggerService::Fatal(std::format("Module {} not found", typeid(T).name())); }
+        if (module == Modules.end()) { Logger::Fatal(std::format("Module {} not found", typeid(T).name())); }
         return static_cast<T&>((*module->second));
     }
 
