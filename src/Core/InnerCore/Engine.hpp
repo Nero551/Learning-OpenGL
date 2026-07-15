@@ -1,7 +1,7 @@
 #pragma once
-#include "EventBus.hpp"
+#include "../Services/EventBus.hpp"
 #include "Module.hpp"
-#include "ResourceManager.hpp"
+#include "../Services/ResourceManager.hpp"
 #include "Window.hpp"
 #include "World.hpp"
 #include "Utilities/SafePtr.hpp"
@@ -17,8 +17,6 @@ struct Engine {
 
     Window Window;
     World World;
-    ResourceManager ResourceManager;
-    EventBus EventBus;
 
     Engine();
 
@@ -50,6 +48,8 @@ private:
         Modules.emplace(typeid(T), std::move(module));
         return static_cast<T&>(*Modules.find(typeid(T))->second);
     }
+
+    void AddServices();
 
     double LastFrame = 0;
 };

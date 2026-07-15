@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/System.hpp"
+#include "Core/OuterCore/System.hpp"
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
 struct CameraSystem : System {

@@ -5,12 +5,13 @@
 #include <typeindex>
 #include <unordered_map>
 
-#include "Event.hpp"
+#include "../OuterCore/Event.hpp"
+#include "Core/OuterCore/Service.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
 template <typename T> concept EventType = std::derived_from<T, Event> ;
 
-struct EventBus {
+struct EventBus  : Service{
     template <EventType T, typename... Args> void Fire(Args&&... args) {
         T event{std::forward<Args>(args)...};
 

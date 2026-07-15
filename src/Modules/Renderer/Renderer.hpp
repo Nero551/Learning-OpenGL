@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Module.hpp"
+#include "Core/InnerCore/Module.hpp"
 
 struct Renderer : Module {
 protected:

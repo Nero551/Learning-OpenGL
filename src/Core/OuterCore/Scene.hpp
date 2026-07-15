@@ -6,7 +6,7 @@
 #include <format>
 #include <vector>
 
-#include "Services.hpp"
+#include "ServiceStore.hpp"
 #include "Modules/Renderer/Components/LightComponent.hpp"
 #include "World/Events/EntityCreated.hpp"
 
@@ -54,13 +54,14 @@ struct Scene {
             Lights.emplace_back(lightPtr);
         }
 
-        Services::Ins->EventBus.Fire<EntityCreated>(*entity);
+        ServiceStore::Ins->GetService<EventBus>().Fire<EntityCreated>(*entity);
 
         Entities.emplace(id, std::move(entity));
 
 
         return GetEntity<T>(id);
     }
+
 
     template <EntityType T> T& GetEntity(unsigned int id) {
         auto entity = Entities.find(id);
@@ -70,6 +71,7 @@ struct Scene {
 
     template <EntityType T> T& GetActiveCamera() { return static_cast<T&>(*ActiveCamera); }
 
+    void RemoveEntity(const unsigned int id);
     void SetActiveCamera(Entity& entity);
     void AddChild(Scene& childScene);
     void RemoveChild(const std::string& childName);

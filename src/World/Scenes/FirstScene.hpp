@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Scene.hpp"
+#include "Core/OuterCore/Scene.hpp"
 
 struct FirstScene : Scene {
    void Initialize() override;

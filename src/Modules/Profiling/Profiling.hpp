@@ -3,7 +3,7 @@
 #include <deque>
 #include <vector>
 
-#include "Core/Module.hpp"
+#include "Core/InnerCore/Module.hpp"
 
 struct Profiling : Module {
    double FrameMs;

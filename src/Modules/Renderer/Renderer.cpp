@@ -1,7 +1,7 @@
 #include "Renderer.hpp"
 #include "Components/MaterialComponent.hpp"
 #include "Components/MeshComponent.hpp"
-#include "Core/Engine.hpp"
+#include "Core/InnerCore/Engine.hpp"
 #include "Entities/Camera.hpp"
 #include "Systems/CameraSystem.hpp"
 

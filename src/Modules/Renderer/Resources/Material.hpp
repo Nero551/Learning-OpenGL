@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Resource.hpp"
+#include "Core/OuterCore/Resource.hpp"
 #include "Shader.hpp"
 #include "Texture.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"

@@ -1,6 +1,6 @@
 #include "CameraSystem.hpp"
 #include "Utilities/Math/MathUtils.hpp"
-#include "Core/Engine.hpp"
+#include "Core/InnerCore/Engine.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 

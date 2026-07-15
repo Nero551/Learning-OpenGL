@@ -1,18 +1,18 @@
 #include "CoordinateAxesScene.hpp"
 
-#include "Core/Engine.hpp"
+#include "Core/InnerCore/Engine.hpp"
 #include "Modules/Renderer/Components/MaterialComponent.hpp"
 #include "Modules/Renderer/Components/MeshComponent.hpp"
 #include "Modules/Renderer/Primitives/Primitives.hpp"
 #include "Utilities/Math/Color.hpp"
 #include "World/Entities/Axis.hpp"
 
-void CoordinateAxesScene::Initialize()
-{
-    auto& resourceManager = Engine::Ins->ResourceManager;
+void CoordinateAxesScene::Initialize() {
+    auto& resourceManager = ServiceStore::Ins->GetService<ResourceManager>();
 
-    auto& shader = Engine::Ins->ResourceManager.Load<Shader>("AxisShader", "Assets/Shaders/axisShader.frag",
-                                                             "Assets/Shaders/axisShader.vert");
+    auto& shader = ServiceStore::Ins->GetService<ResourceManager>().Load<Shader>("AxisShader",
+        "Assets/Shaders/axisShader.frag",
+        "Assets/Shaders/axisShader.vert");
     auto& line = Primitives::CreateLine("Line");
 
     auto& xAxis = CreateEntity<Axis>();

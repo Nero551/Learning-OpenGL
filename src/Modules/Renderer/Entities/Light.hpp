@@ -3,7 +3,7 @@
 #include "../Components/MaterialComponent.hpp"
 #include "../Components/MeshComponent.hpp"
 #include "../Components/TransformComponent.hpp"
-#include "Core/Entity.hpp"
+#include "Core/OuterCore/Entity.hpp"
 
 struct Light : Entity
 {

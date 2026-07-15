@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Entity.hpp"
+#include "Core/OuterCore/Entity.hpp"
 #include "Modules/Renderer/Components/MaterialComponent.hpp"
 #include "Modules/Renderer/Components/MeshComponent.hpp"
 #include "Modules/Renderer/Components/TransformComponent.hpp"

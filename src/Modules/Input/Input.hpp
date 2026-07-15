@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Enums/Keys.hpp"
-#include "Core/Module.hpp"
+#include "Core/InnerCore/Module.hpp"
 #include "Utilities/Math/Vector/Vector2.hpp"
 #include "Enums/Mouse.hpp"
 

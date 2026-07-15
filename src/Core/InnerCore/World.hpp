@@ -2,7 +2,7 @@
 #include <memory>
 #include <vector>
 
-#include "Scene.hpp"
+#include "../OuterCore/Scene.hpp"
 #include "Utilities/Services/LoggerService.hpp"
 
 template <typename T>concept SceneType = std::derived_from<T, Scene>;

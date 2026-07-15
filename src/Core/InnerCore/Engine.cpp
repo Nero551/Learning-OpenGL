@@ -3,8 +3,8 @@
 #include <OpenGL.hpp>
 #include <ranges>
 
-#include "Services.hpp"
-#include "../Modules/Renderer/Renderer.hpp"
+#include "../OuterCore/ServiceStore.hpp"
+#include "../../Modules/Renderer/Renderer.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Profiling/Profiling.hpp"
 
@@ -31,9 +31,16 @@ void Engine::AddModules() {
 }
 
 
+void Engine::AddServices() {
+    ServiceStore::Ins->AddService<ResourceManager>();
+    ServiceStore::Ins->AddService<EventBus>();
+}
+
+
 void Engine::Start() {
-    Services services;
-    Services::Ins = &services;
+    ServiceStore services;
+    ServiceStore::Ins = &services;
+    AddServices();
 
     // glfwSwapInterval(0);
     AddModules();
@@ -67,7 +74,6 @@ void Engine::Update() {
 
 void Engine::Stop() {
     World.Stop();
-
     for (auto& module : Modules | std::views::values) { module->Stop(); }
 
     glfwTerminate();
@@ -81,7 +87,6 @@ void Engine::BeginFrame() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     World.BeginFrame(DeltaTime);
-
     for (auto& module : Modules | std::views::values) { module->BeginFrame(DeltaTime); }
 }
 
@@ -92,6 +97,5 @@ void Engine::EndFrame() {
     Window.SwapBuffers();
 
     World.EndFrame(DeltaTime);
-
     for (auto& module : Modules | std::views::values) { module->EndFrame(DeltaTime); }
 }

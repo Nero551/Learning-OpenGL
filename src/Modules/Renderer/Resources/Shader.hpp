@@ -4,7 +4,7 @@
 #include <memory>
 #include <string>
 #include <unordered_map>
-#include "Core/Resource.hpp"
+#include "Core/OuterCore/Resource.hpp"
 
 template <typename T>concept UniformType = std::derived_from<T, Uniform>;
 

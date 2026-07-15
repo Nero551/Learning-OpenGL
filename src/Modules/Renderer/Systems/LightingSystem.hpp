@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/System.hpp"
+#include "Core/OuterCore/System.hpp"
 
 struct LightingSystem : System {
     void Start() override;

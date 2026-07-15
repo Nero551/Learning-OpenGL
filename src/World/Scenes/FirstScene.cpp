@@ -12,7 +12,7 @@
 unsigned int lightId;
 
 void FirstScene::Initialize() {
-    auto& resourceManager = Engine::Ins->ResourceManager;
+    auto& resourceManager = ServiceStore::Ins->GetService<ResourceManager>();
     auto& camera = CreateEntity<Camera>();
     camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
     SetActiveCamera(camera);

@@ -8,7 +8,6 @@
 #include "../Uniforms/Vector3Uniform.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 
-void onEntityCreated(const EntityCreated& entity) { LoggerService::Info(entity.entity.Id); }
 
 void LightingSystem::Start() {}
 

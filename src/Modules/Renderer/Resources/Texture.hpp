@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Core/Resource.hpp"
+#include "Core/OuterCore/Resource.hpp"
 #include "OpenGL.hpp"
 
 struct Texture : Resource

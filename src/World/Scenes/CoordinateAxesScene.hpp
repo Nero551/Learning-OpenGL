@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Scene.hpp"
+#include "Core/OuterCore/Scene.hpp"
 
 struct CoordinateAxesScene : Scene
 {

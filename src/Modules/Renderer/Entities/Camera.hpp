@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Entity.hpp"
+#include "Core/OuterCore/Entity.hpp"
 #include "Modules/Renderer/Components/CameraComponent.hpp"
 #include "Modules/Renderer/Components/TransformComponent.hpp"
 

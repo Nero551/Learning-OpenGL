@@ -1,6 +1,6 @@
 #pragma once
 #include "../Uniform.hpp"
-#include "Core/Engine.hpp"
+#include "Core/InnerCore/Engine.hpp"
 
 struct Vector3Uniform : Uniform
 {

@@ -1,6 +1,6 @@
 #include "Profiling.hpp"
 
-#include "Core/Engine.hpp"
+#include "Core/InnerCore/Engine.hpp"
 
 void Profiling::AddSystems() {}
 
