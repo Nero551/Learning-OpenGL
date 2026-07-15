@@ -11,27 +11,23 @@
 #include "Uniforms/Matrix3Uniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
 
-void Renderer::AddSystems()
-{
+void Renderer::AddSystems() {
     AddSystem<CameraSystem>();
     AddSystem<LightingSystem>();
 }
 
-void Renderer::OnRender()
-{
+void Renderer::OnRender() {
     auto& scene = Engine::Ins->World.ActiveScene;
-    auto& camera = scene->GetActiveCamera<Camera>();
+    auto& camera = scene->GetActiveCamera();
 
     Matrix4 projection = camera.GetComponent<CameraComponent>().GetProjectionMatrix();
     Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
-    for (auto& entity : scene->GetEntities())
-    {
+    for (auto& entity : scene->GetEntities()) {
         if (!entity->HasComponent<TransformComponent>()) { continue; }
         auto& transformComponent = entity->GetComponent<TransformComponent>();
 
-        if (entity->HasComponent<MaterialComponent>())
-        {
+        if (entity->HasComponent<MaterialComponent>()) {
             auto& materialComponent = entity->GetComponent<MaterialComponent>();
             materialComponent.Material->Use();
 
@@ -49,8 +45,7 @@ void Renderer::OnRender()
                 Matrix3Uniform("NormalMatrix", transformComponent.GetNormalMatrix()));
         }
 
-        if (entity->HasComponent<MeshComponent>())
-        {
+        if (entity->HasComponent<MeshComponent>()) {
             auto& meshComponent = entity->GetComponent<MeshComponent>();
 
             meshComponent.Mesh->Draw();

@@ -43,29 +43,17 @@ struct Scene {
         entity->Id = id;
         entity->Initialize();
 
-        if (entity->template HasComponent<LightComponent>() && Lights.size() < MaxLights) {
-            SafePtr<Entity> lightPtr = entity.get();
-            Lights.emplace_back(lightPtr);
-        }
-
         ServiceStore::Ins->Get<EventBus>().Fire<EntityCreated>(*entity);
 
         Entities.emplace(id, std::move(entity));
 
-
-        return GetEntity<T>(id);
+        return static_cast<T&>(*Entities.find(id)->second);
     }
 
 
-    template <EntityType T> T& GetEntity(unsigned int id) {
-        auto entity = Entities.find(id);
-        if (entity == Entities.end()) { Logger::Fatal(std::format("Entity Not Found: {}", typeid(T).name())); }
-        return static_cast<T&>((*entity->second));
-    }
-
-    template <EntityType T> T& GetActiveCamera() { return static_cast<T&>(*ActiveCamera); }
-
+    Entity& GetEntity(unsigned int id);
     void RemoveEntity(unsigned int id);
+    Entity& GetActiveCamera();
     void SetActiveCamera(Entity& entity);
     void AddChild(Scene& childScene);
     void RemoveChild(const std::string& childName);

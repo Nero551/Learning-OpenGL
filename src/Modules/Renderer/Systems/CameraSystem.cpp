@@ -4,16 +4,14 @@
 #include "Modules/Input/Input.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
 
-void CameraSystem::Update(double dt)
-{
+void CameraSystem::Update(double dt) {
     {
         auto& inputModule = Engine::Ins->GetModule<Input>();
-        auto& camera = Engine::Ins->World.ActiveScene->GetActiveCamera<Camera>();
+        auto& camera = Engine::Ins->World.ActiveScene->GetActiveCamera();
         auto& transform = camera.GetComponent<TransformComponent>();
         auto& cameraComponent = camera.GetComponent<CameraComponent>();
 
-        if (inputModule.GetMouseMode() == MouseMode::Disabled)
-        {
+        if (inputModule.GetMouseMode() == MouseMode::Disabled) {
             cameraComponent.Speed += inputModule.GetScrollDelta().y / 3;
             cameraComponent.Speed = std::clamp(cameraComponent.Speed, 5.0f, 50.0f);
 
@@ -32,13 +30,11 @@ void CameraSystem::Update(double dt)
             transform.EulerRotation.x = std::clamp(transform.EulerRotation.x, -maxPitch, maxPitch);
         }
 
-        if (inputModule.IsKeyHeld(Key::W))
-        {
+        if (inputModule.IsKeyHeld(Key::W)) {
             transform.Position += cameraComponent.Speed * dt * transform.GetForward();
         }
 
-        if (inputModule.IsKeyHeld(Key::S))
-        {
+        if (inputModule.IsKeyHeld(Key::S)) {
             transform.Position -= cameraComponent.Speed * dt * transform.GetForward();
         }
 
@@ -48,16 +44,14 @@ void CameraSystem::Update(double dt)
 
         if (inputModule.IsKeyHeld(Key::Space)) { transform.Position += cameraComponent.Speed * dt * Vector3(0, 1, 0); }
 
-        if (inputModule.IsKeyHeld(Key::LeftShift))
-        {
+        if (inputModule.IsKeyHeld(Key::LeftShift)) {
             transform.Position -= cameraComponent.Speed * dt * Vector3(0, 1, 0);
         }
     }
 }
 
-Matrix4 CameraSystem::GetViewMatrix()
-{
-    auto& camera = Engine::Ins->World.ActiveScene->GetActiveCamera<Camera>();
+Matrix4 CameraSystem::GetViewMatrix() {
+    auto& camera = Engine::Ins->World.ActiveScene->GetActiveCamera();
     auto& transformComponent = camera.GetComponent<TransformComponent>();
 
     Vector3 pos = transformComponent.Position;

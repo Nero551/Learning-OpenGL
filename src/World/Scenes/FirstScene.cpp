@@ -73,7 +73,7 @@ void FirstScene::Initialize() {
 }
 
 void FirstScene::Update(double dt) {
-    auto& light = GetEntity<Light>(lightId);
+    auto& light = GetEntity(lightId);
     auto& transformComponent = light.GetComponent<TransformComponent>();
     auto& input = Engine::Ins->GetModule<Input>();
 

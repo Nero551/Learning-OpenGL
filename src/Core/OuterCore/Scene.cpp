@@ -5,9 +5,17 @@
 #include "Modules/Renderer/Components/TransformComponent.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 
+Entity& Scene::GetEntity(unsigned int id) {
+    auto entity = Entities.find(id);
+    if (entity == Entities.end()) { Logger::Fatal(std::format("Entity Not Found: {}", id)); }
+    return (*entity->second);
+}
+
+Entity& Scene::GetActiveCamera() { return *ActiveCamera; }
+
 void Scene::RemoveEntity(unsigned int id) {
     if (Entities.contains(id)) {
-        ServiceStore::Ins->Get<EventBus>().Fire<EntityDestroyed>(GetEntity<Entity>(id));
+        ServiceStore::Ins->Get<EventBus>().Fire<EntityDestroyed>(GetEntity(id));
         Entities.erase(id);
     }
 }
