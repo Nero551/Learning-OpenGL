@@ -26,16 +26,15 @@ void Engine::AddServices() {
 
 
 void Engine::Start() {
-    ServiceStore services;
-    ServiceStore::Ins = &services;
     AddServices();
 
     // glfwSwapInterval(0);
     AddModules();
 
+    World.Start();
+
     for (auto& module : Modules | std::views::values) { module->Start(); }
 
-    World.Start();
 
     GetModule<Input>().SetMouseMode(MouseMode::Disabled);
 }
@@ -43,6 +42,9 @@ void Engine::Start() {
 
 void Engine::Update() {
     Time = glfwGetTime();
+
+    ServiceStore::Ins->Get<EventBus>().EmptyFireQueue();
+
     World.Update(DeltaTime);
 
     if (GetModule<Input>().IsKeyHeld(Key::Escape)) {

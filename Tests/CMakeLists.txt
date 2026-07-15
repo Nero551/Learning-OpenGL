@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 4.1.2)
 
 set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 set(CMAKE_C_COMPILER /usr/bin/clang)
+set(CMAKE_C_COMPILER_LAUNCHER ccache)
+set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 
 project(UnitTests)
 
@@ -22,13 +24,8 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Catch2)
 
-find_package(glfw3 REQUIRED)
-
 file(GLOB_RECURSE ENGINE_SOURCES
-        #        ../src/Core/*.cpp
         ../src/Utilities/*.cpp
-        #        ../src/Modules/*.cpp
-        #        ../src/World/*.cpp
 )
 
 file(GLOB_RECURSE TEST_SOURCES
@@ -40,6 +37,10 @@ add_executable(UnitTests
         ${ENGINE_SOURCES}
         ${TEST_SOURCES}
 )
+
+
+find_package(glfw3 REQUIRED)
+set_target_properties(UnitTests PROPERTIES UNITY_BUILD ON)
 
 target_include_directories(UnitTests PRIVATE
         ../External/include

@@ -6,6 +6,8 @@ int main() {
     glfwInit();
     Engine engine;
     Engine::Ins = &engine;
+    ServiceStore services;
+    ServiceStore::Ins = &services;
     engine.Start();
 
     while (engine.Running) {

@@ -1,3 +1,5 @@
 #pragma once
 
-struct Event {};
+struct Event {
+    virtual ~Event() = default;
+};

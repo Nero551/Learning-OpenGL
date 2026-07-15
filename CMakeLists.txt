@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 4.1.2)
 
 set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 set(CMAKE_C_COMPILER /usr/bin/clang)
+set(CMAKE_C_COMPILER_LAUNCHER ccache)
+set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
+
+project(Engine)
 
 set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -11,7 +15,6 @@ if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 endif ()
 
-project(Engine)
 
 add_executable(Engine
         External/lib/glad.c
@@ -19,8 +22,11 @@ add_executable(Engine
 )
 
 find_package(glfw3 REQUIRED)
+set_target_properties(Engine PROPERTIES UNITY_BUILD ON)
 
-
+target_precompile_headers(Engine PRIVATE
+        "$<$<COMPILE_LANGUAGE:CXX>:${CMAKE_CURRENT_SOURCE_DIR}/src/pch.hpp>"
+)
 add_subdirectory(src/Core)
 add_subdirectory(src/Utilities)
 add_subdirectory(src/Modules)
