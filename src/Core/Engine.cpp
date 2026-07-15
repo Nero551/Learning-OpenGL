@@ -3,6 +3,7 @@
 #include <OpenGL.hpp>
 #include <ranges>
 
+#include "Services.hpp"
 #include "../Modules/Renderer/Renderer.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Profiling/Profiling.hpp"
@@ -29,13 +30,17 @@ void Engine::AddModules() {
     AddModule<Profiling>();
 }
 
-void Engine::Start() {
-    // glfwSwapInterval(0);
 
+void Engine::Start() {
+    Services services;
+    Services::Ins = &services;
+
+    // glfwSwapInterval(0);
     AddModules();
-    World.Start();
 
     for (auto& module : Modules | std::views::values) { module->Start(); }
+
+    World.Start();
 
     GetModule<Input>().SetMouseMode(MouseMode::Disabled);
 }

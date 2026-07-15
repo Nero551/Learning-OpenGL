@@ -10,9 +10,7 @@
 
 void onEntityCreated(const EntityCreated& entity) { LoggerService::Info(entity.entity.Id); }
 
-
-void LightingSystem::Start() { Engine::Ins->EventBus.Sub<EntityCreated>(onEntityCreated); }
-
+void LightingSystem::Start() {}
 
 void LightingSystem::Render() {
     auto& scene = Engine::Ins->World.ActiveScene;

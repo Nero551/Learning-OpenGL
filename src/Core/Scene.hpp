@@ -6,12 +6,16 @@
 #include <format>
 #include <vector>
 
+#include "Services.hpp"
 #include "Modules/Renderer/Components/LightComponent.hpp"
 #include "World/Events/EntityCreated.hpp"
 
 template <typename T>concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
+    //TODO- make services a normal struct ith a static Ins inside. and all the services normal not static.
+    //TODO- then engine just creates services and applies the ins
+
     std::string Name;
     const int MaxLights = 10;
     std::vector<SafePtr<Entity>> Lights;
@@ -50,9 +54,10 @@ struct Scene {
             Lights.emplace_back(lightPtr);
         }
 
+        Services::Ins->EventBus.Fire<EntityCreated>(*entity);
+
         Entities.emplace(id, std::move(entity));
 
-        Engine::Ins->EventBus.Fire<EntityCreated>(entity);
 
         return GetEntity<T>(id);
     }
