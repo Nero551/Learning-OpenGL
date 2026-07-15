@@ -6,11 +6,12 @@
 #include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
+#include "Modules/Renderer/Entities/Camera.hpp"
 
 void LightingSystem::Render()
 {
     auto& scene = Engine::Ins->World.ActiveScene;
-    auto& camera = scene->ActiveCamera;
+    auto& camera = scene->GetActiveCamera<Camera>();
 
     for (auto& entity : scene->GetEntities())
     {
@@ -21,7 +22,7 @@ void LightingSystem::Render()
 
         materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", scene->MaxLights));
         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
-            camera->GetComponent<TransformComponent>().Position));
+            camera.GetComponent<TransformComponent>().Position));
 
         for (int i = 0; i < scene->Lights.size(); i++)
         {

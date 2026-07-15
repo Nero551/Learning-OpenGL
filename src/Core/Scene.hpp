@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Entity.hpp"
-#include "Modules/Renderer/Entities/Camera.hpp"
 #include "Utilities/SafePtr.hpp"
 #include <unordered_map>
 #include <format>
@@ -9,13 +8,11 @@
 
 #include "Modules/Renderer/Components/LightComponent.hpp"
 
-
 template <typename T>concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene
 {
     std::string Name;
-    SafePtr<Camera> ActiveCamera{"Scene Has No Active Camera Assigned"};
     const int MaxLights = 10;
     std::vector<SafePtr<Entity>> Lights;
 
@@ -53,8 +50,7 @@ struct Scene
 
         if (entity->template HasComponent<LightComponent>() && Lights.size() < MaxLights)
         {
-            SafePtr<Entity> lightPtr;
-            lightPtr = entity.get();
+            SafePtr<Entity> lightPtr = entity.get();
             Lights.emplace_back(lightPtr);
         }
 
@@ -74,16 +70,20 @@ struct Scene
         return static_cast<T&>((*entity->second));
     }
 
+    template <EntityType T> T& GetActiveCamera() { return static_cast<T&>(*ActiveCamera); }
+
+    void SetActiveCamera(Entity& entity);
     void AddChild(Scene& childScene);
     void RemoveChild(const std::string& childName);
     std::vector<SafePtr<Entity>> GetEntities();
     std::vector<SafePtr<Scene>> GetChildren();
 
 private:
-    unsigned int currentEntityId = 0;
+    SafePtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
     std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
     SafePtr<Scene> Parent{"Scene Has No Parent"};
     std::unordered_map<std::string, SafePtr<Scene>> Children;
+    unsigned int currentEntityId = 0;
 
     void RecursiveEntities(std::vector<SafePtr<Entity>>& entities);
 };

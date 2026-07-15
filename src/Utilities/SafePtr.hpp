@@ -8,7 +8,15 @@ template <typename T> struct SafePtr
 
     ~SafePtr() { Reset(); }
 
+    SafePtr(T* objectPtr) { ptr = objectPtr; }
+
     SafePtr(const std::string_view& nullMessage) { this->nullMessage += nullMessage; }
+
+    SafePtr(T* objectPtr, const std::string_view& nullMessage)
+    {
+        ptr = objectPtr;
+        this->nullMessage += nullMessage;
+    }
 
     SafePtr& operator=(T* objectPtr)
     {

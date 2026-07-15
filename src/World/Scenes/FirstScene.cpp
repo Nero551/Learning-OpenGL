@@ -6,6 +6,7 @@
 #include "Modules/Renderer/Entities/Cube.hpp"
 #include "Modules/Renderer/Entities/Light.hpp"
 #include "../../Modules/Renderer/Primitives/Primitives.hpp"
+#include "Modules/Renderer/Entities/Camera.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
 
 unsigned int lightId;
@@ -15,7 +16,7 @@ void FirstScene::Initialize()
     auto& resourceManager = Engine::Ins->ResourceManager;
     auto& camera = CreateEntity<Camera>();
     camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
-    ActiveCamera = &camera;
+    SetActiveCamera(camera);
 
     auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
     AddChild(coordinateAxesScene);
@@ -48,6 +49,8 @@ void FirstScene::Initialize()
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
         "Assets/Shaders/lightShader.vert");
 
+    //TODO- make events system/bus
+
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
 
@@ -67,7 +70,7 @@ void FirstScene::Initialize()
 
     light2.GetComponent<TransformComponent>().Scale = {0.2};
 
-    light2.GetComponent<LightComponent>().Type = LightType::Spot;
+    light2.GetComponent<LightComponent>().Type = LightType::Directional;
 }
 
 void FirstScene::Update(double dt)

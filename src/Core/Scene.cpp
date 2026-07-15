@@ -2,6 +2,14 @@
 
 #include <ranges>
 
+#include "Modules/Renderer/Components/CameraComponent.hpp"
+#include "Modules/Renderer/Components/TransformComponent.hpp"
+
+void Scene::SetActiveCamera(Entity& entity)
+{
+    if (entity.HasComponent<CameraComponent>() && entity.HasComponent<TransformComponent>()) { ActiveCamera = &entity; }
+}
+
 void Scene::AddChild(Scene& childScene)
 {
     if (Children.contains(childScene.Name))
@@ -38,10 +46,7 @@ void Scene::RemoveChild(const std::string& childName)
         Children.at(childName)->Parent.Reset();
         Children.erase(childName);
     }
-    else
-    {
-        LoggerService::Error("Scene Doesn't Have Child Named: " + childName);
-    }
+    else { LoggerService::Error("Scene Doesn't Have Child Named: " + childName); }
 }
 
 std::vector<SafePtr<Entity>> Scene::GetEntities()
@@ -78,8 +83,5 @@ void Scene::RecursiveEntities(std::vector<SafePtr<Entity>>& entities)
         entities.push_back(entityPtr);
     }
 
-    for (auto& child : Children | std::views::values)
-    {
-        child->RecursiveEntities(entities);
-    }
+    for (auto& child : Children | std::views::values) { child->RecursiveEntities(entities); }
 }
