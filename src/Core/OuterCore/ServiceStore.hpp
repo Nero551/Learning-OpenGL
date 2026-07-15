@@ -8,7 +8,7 @@ template <typename T> concept ServiceType = std::derived_from<T, Service>;
 struct ServiceStore {
     static SafePtr<ServiceStore> Ins;
 
-    template <ServiceType T> T& AddService() {
+    template <ServiceType T> T& Add() {
         if (Services.contains(typeid(T))) {
             LoggerService::Error(std::format("ServiceStore already contains Service {}", typeid(T).name()));
             return static_cast<T&>((*Services.at(typeid(T))));
@@ -17,10 +17,10 @@ struct ServiceStore {
         auto service = std::make_unique<T>();
         Services.emplace(std::type_index(typeid(T)), std::move(service));
 
-        return GetService<T>();
+        return Get<T>();
     }
 
-    template <ServiceType T> T& GetService() {
+    template <ServiceType T> T& Get() {
         auto service = Services.find(typeid(T));
         if (service == Services.end()) { LoggerService::Fatal(std::format("Service Not Found: {}", typeid(T).name())); }
         return static_cast<T&>((*service->second));

@@ -32,8 +32,8 @@ void Engine::AddModules() {
 
 
 void Engine::AddServices() {
-    ServiceStore::Ins->AddService<ResourceManager>();
-    ServiceStore::Ins->AddService<EventBus>();
+    ServiceStore::Ins->Add<ResourceManager>();
+    ServiceStore::Ins->Add<EventBus>();
 }
 
 

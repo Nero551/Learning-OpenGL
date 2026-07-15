@@ -8,9 +8,9 @@
 #include "World/Entities/Axis.hpp"
 
 void CoordinateAxesScene::Initialize() {
-    auto& resourceManager = ServiceStore::Ins->GetService<ResourceManager>();
+    auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
 
-    auto& shader = ServiceStore::Ins->GetService<ResourceManager>().Load<Shader>("AxisShader",
+    auto& shader = ServiceStore::Ins->Get<ResourceManager>().Load<Shader>("AxisShader",
         "Assets/Shaders/axisShader.frag",
         "Assets/Shaders/axisShader.vert");
     auto& line = Primitives::CreateLine("Line");

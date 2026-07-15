@@ -50,6 +50,6 @@ Mesh& Primitives::CreateUVSphere(const std::string& name, float radius, int sect
         }
     }
 
-    auto& mesh = ServiceStore::Ins->GetService<ResourceManager>().Load<Mesh>(name, vertices, indices);
+    auto& mesh = ServiceStore::Ins->Get<ResourceManager>().Load<Mesh>(name, vertices, indices);
     return mesh;
 }

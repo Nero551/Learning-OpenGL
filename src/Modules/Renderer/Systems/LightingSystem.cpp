@@ -7,9 +7,28 @@
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
 #include "Modules/Renderer/Entities/Camera.hpp"
+#include "World/Events/EntityDestroyed.hpp"
 
 
-void LightingSystem::Start() {}
+constexpr int MaxLights = 12;
+std::vector<unsigned int> Lights;
+
+
+//TODO- this wont work with multiple scenes
+void OnEntityCreated(const EntityCreated& event) {
+    if (event.entity.HasComponent<LightComponent>()) { Lights.emplace_back(event.entity.Id); }
+}
+
+void OnEntityDestroyed(const EntityDestroyed& event) {
+    for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
+        if (event.entity.Id == Lights[i]) { Lights.erase(Lights.begin() + i); }
+    }
+}
+
+void LightingSystem::Start() {
+    ServiceStore::Ins->Get<EventBus>().Sub<EntityCreated>(OnEntityCreated);
+    ServiceStore::Ins->Get<EventBus>().Sub<EntityDestroyed>(OnEntityDestroyed);
+}
 
 void LightingSystem::Render() {
     auto& scene = Engine::Ins->World.ActiveScene;
@@ -21,20 +40,20 @@ void LightingSystem::Render() {
         if (!entity->HasComponent<MaterialComponent>()) { continue; }
         auto& materialComponent = entity->GetComponent<MaterialComponent>();
 
-        materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", scene->MaxLights));
+        materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", MaxLights));
         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
             camera.GetComponent<TransformComponent>().Position));
 
-        for (int i = 0; i < scene->Lights.size(); i++) {
-            auto& light = scene->Lights[i];
-            auto& lightComponent = light->GetComponent<LightComponent>();
+        for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
+            auto& light = scene->GetEntity<Entity>(Lights[i]);
+            auto& lightComponent = light.GetComponent<LightComponent>();
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Color", i), lightComponent.Color));
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Position", i),
-                    light->GetComponent<TransformComponent>().Position));
+                    light.GetComponent<TransformComponent>().Position));
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Ambient", i), lightComponent.Ambient));
@@ -51,7 +70,7 @@ void LightingSystem::Render() {
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Direction", i),
-                    light->GetComponent<TransformComponent>().GetForward()));
+                    light.GetComponent<TransformComponent>().GetForward()));
 
             materialComponent.Material->Shader->SetUniform(
                 FloatUniform(std::format("Lights[{}].Constant", i), lightComponent.Constant));

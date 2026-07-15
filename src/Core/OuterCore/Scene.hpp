@@ -54,7 +54,7 @@ struct Scene {
             Lights.emplace_back(lightPtr);
         }
 
-        ServiceStore::Ins->GetService<EventBus>().Fire<EntityCreated>(*entity);
+        ServiceStore::Ins->Get<EventBus>().Fire<EntityCreated>(*entity);
 
         Entities.emplace(id, std::move(entity));
 

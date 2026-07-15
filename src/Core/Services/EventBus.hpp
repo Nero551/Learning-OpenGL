@@ -11,7 +11,7 @@
 
 template <typename T> concept EventType = std::derived_from<T, Event> ;
 
-struct EventBus  : Service{
+struct EventBus : Service {
     template <EventType T, typename... Args> void Fire(Args&&... args) {
         T event{std::forward<Args>(args)...};
 
@@ -32,7 +32,10 @@ struct EventBus  : Service{
         }
     }
 
-    template <EventType T> void UnSub() {}
+    template <EventType T> void UnSub(const std::function<void(T&)>& callback) {
+        auto method = [callback](Event& e) { callback(static_cast<T&>(e)); };
+        if (Listeners.contains(typeid(T))) { Listeners.erase(typeid(T)); }
+    }
 
 private:
     std::unordered_map<std::type_index, std::vector<std::function<void(Event&)>>> Listeners;

@@ -4,8 +4,14 @@
 
 #include "Modules/Renderer/Components/CameraComponent.hpp"
 #include "Modules/Renderer/Components/TransformComponent.hpp"
+#include "World/Events/EntityDestroyed.hpp"
 
-void Scene::RemoveEntity(const unsigned int id) { Entities.erase(id); }
+void Scene::RemoveEntity(const unsigned int id) {
+    if (Entities.contains(id)) {
+        ServiceStore::Ins->Get<EventBus>().Fire<EntityDestroyed>(GetEntity<Entity>(id));
+        Entities.erase(id);
+    }
+}
 
 void Scene::SetActiveCamera(Entity& entity) {
     if (entity.HasComponent<CameraComponent>() && entity.HasComponent<TransformComponent>()) { ActiveCamera = &entity; }
