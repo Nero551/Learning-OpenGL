@@ -6,11 +6,7 @@ template <typename T> struct SafePtr
 {
     SafePtr() = default;
 
-    ~SafePtr()
-    {
-        Reset();
-        delete ptr;
-    }
+    ~SafePtr() { Reset(); }
 
     SafePtr(const std::string_view& nullMessage) { this->nullMessage += nullMessage; }
 
