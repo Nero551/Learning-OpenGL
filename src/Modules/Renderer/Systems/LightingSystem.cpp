@@ -7,20 +7,6 @@
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
 
-Vector3 lightColor;
-Vector3 ambient;
-Vector3 diffuse;
-Vector3 specular;
-Vector3 lightPos;
-Vector3 lightDir;
-LightType lightType;
-float lightLinear;
-float lightQuadratic;
-float lightConstant;
-float lightIntensity;
-float lightInnerCutOff;
-float lightOuterCutOff;
-
 void LightingSystem::Render()
 {
     auto& scene = Engine::Ins->World.ActiveScene;
@@ -29,57 +15,62 @@ void LightingSystem::Render()
     for (auto& entity : scene->GetEntities())
     {
         if (!entity->HasComponent<TransformComponent>()) { continue; }
-        auto& transformComponent = entity->GetComponent<TransformComponent>();
 
-        //TODO- rn this can only work with 1 light, fix that. it breaks with multiple lights.
+        if (!entity->HasComponent<MaterialComponent>()) { continue; }
+        auto& materialComponent = entity->GetComponent<MaterialComponent>();
 
-        if (entity->HasComponent<LightComponent>())
+        materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", scene->MaxLights));
+        materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
+            camera->GetComponent<TransformComponent>().Position));
+
+        for (int i = 0; i < scene->Lights.size(); i++)
         {
-            auto& lightComponent = entity->GetComponent<LightComponent>();
-            lightColor = lightComponent.Color;
-            lightPos = transformComponent.Position;
-            lightDir = transformComponent.GetForward();
-            ambient = lightComponent.Ambient;
-            diffuse = lightComponent.Diffuse;
-            specular = lightComponent.Specular;
-            lightType = lightComponent.Type;
-            lightLinear = lightComponent.Linear;
-            lightQuadratic = lightComponent.Quadratic;
-            lightConstant = lightComponent.Constant;
-            lightIntensity = lightComponent.Intensity;
-            lightInnerCutOff = lightComponent.InnerCutOff;
-            lightOuterCutOff = lightComponent.OuterCutOff;
-        }
-
-        if (entity->HasComponent<MaterialComponent>())
-        {
-            auto& materialComponent = entity->GetComponent<MaterialComponent>();
-
-
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
-                                                                          camera->GetComponent<TransformComponent>().
-                                                                          Position));
-
-            materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", 10));
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Color", lightColor));
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Position", lightPos));
-
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Ambient", ambient));
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Diffuse", diffuse));
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Specular", specular));
-
-            materialComponent.Material->Shader->SetUniform(IntUniform("Light.Type", static_cast<int>(lightType)));
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("Light.Direction", lightDir));
-
-            materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Constant", lightConstant));
-            materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Linear", lightLinear));
-            materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Quadratic", lightQuadratic));
-            materialComponent.Material->Shader->SetUniform(FloatUniform("Light.Intensity", lightIntensity));
+            auto& light = scene->Lights[i];
+            auto& lightComponent = light->GetComponent<LightComponent>();
 
             materialComponent.Material->Shader->SetUniform(
-                FloatUniform("Light.InnerCutOff", std::cos(lightInnerCutOff)));
+                Vector3Uniform(std::format("Lights[{}].Color", i), lightComponent.Color));
+
             materialComponent.Material->Shader->SetUniform(
-                FloatUniform("Light.OuterCutOff", std::cos(lightOuterCutOff)));
+                Vector3Uniform(std::format("Lights[{}].Position", i),
+                    light->GetComponent<TransformComponent>().Position));
+
+            materialComponent.Material->Shader->SetUniform(
+                Vector3Uniform(std::format("Lights[{}].Ambient", i), lightComponent.Ambient));
+
+            materialComponent.Material->Shader->SetUniform(
+                Vector3Uniform(std::format("Lights[{}].Diffuse", i), lightComponent.Diffuse));
+
+            materialComponent.Material->Shader->SetUniform(
+                Vector3Uniform(std::format("Lights[{}].Specular", i), lightComponent.Specular));
+
+            materialComponent.Material->Shader->SetUniform(
+                IntUniform(std::format("Lights[{}].Type", i),
+                    static_cast<int>(lightComponent.Type)));
+
+            materialComponent.Material->Shader->SetUniform(
+                Vector3Uniform(std::format("Lights[{}].Direction", i),
+                    light->GetComponent<TransformComponent>().GetForward()));
+
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("Lights[{}].Constant", i), lightComponent.Constant));
+
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("Lights[{}].Linear", i), lightComponent.Linear));
+
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("Lights[{}].Quadratic", i), lightComponent.Quadratic));
+
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("Lights[{}].Intensity", i), lightComponent.Intensity));
+
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("Lights[{}].InnerCutOff", i),
+                    std::cos(lightComponent.InnerCutOff)));
+
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("Lights[{}].OuterCutOff", i),
+                    std::cos(lightComponent.OuterCutOff)));
         }
     }
 }

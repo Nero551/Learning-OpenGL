@@ -23,7 +23,7 @@ void FirstScene::Initialize()
     auto& mesh = Primitives::CreateCube("mesh");
 
     auto& objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
-                                                      "Assets/Shaders/shader.vert");
+        "Assets/Shaders/shader.vert");
 
     auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
     auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
@@ -32,16 +32,21 @@ void FirstScene::Initialize()
     objectMaterial.DiffuseMap = &diffuseMap;
     objectMaterial.SpecularMap = &specularMap;
 
-    for (float i = 0; i < 6; i += 0.5)
-    {
-        Cube& cube = CreateEntity<Cube>();
-        cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-        cube.GetComponent<MeshComponent>().Mesh = &mesh;
-        cube.GetComponent<TransformComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
-    }
+    // for (float i = 0; i < 6; i += 0.5)
+    // {
+    //     Cube& cube = CreateEntity<Cube>();
+    //     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
+    //     cube.GetComponent<MeshComponent>().Mesh = &mesh;
+    //     cube.GetComponent<TransformComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
+    // }
+
+    Cube& cube = CreateEntity<Cube>();
+    cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
+    cube.GetComponent<MeshComponent>().Mesh = &mesh;
+    cube.GetComponent<TransformComponent>().Position = {0, 0, 1};
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
-                                                     "Assets/Shaders/lightShader.vert");
+        "Assets/Shaders/lightShader.vert");
 
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
@@ -52,9 +57,17 @@ void FirstScene::Initialize()
 
     light.GetComponent<TransformComponent>().Scale = {0.2};
 
-    light.GetComponent<LightComponent>().Type = LightType::Directional;
+    light.GetComponent<LightComponent>().Type = LightType::Spot;
 
     lightId = light.Id; //Temporary
+
+    auto& light2 = CreateEntity<Light>();
+    light2.GetComponent<MaterialComponent>().Material = &lightMaterial;
+    light2.GetComponent<MeshComponent>().Mesh = &mesh;
+
+    light2.GetComponent<TransformComponent>().Scale = {0.2};
+
+    light2.GetComponent<LightComponent>().Type = LightType::Spot;
 }
 
 void FirstScene::Update(double dt)
