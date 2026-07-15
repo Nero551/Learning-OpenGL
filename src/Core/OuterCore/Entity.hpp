@@ -1,11 +1,6 @@
 #pragma once
 
 #include "Component.hpp"
-#include <concepts>
-#include <memory>
-#include <format>
-#include <typeindex>
-#include <unordered_map>
 
 #include "Utilities/Logger.hpp"
 

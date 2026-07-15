@@ -1,6 +1,5 @@
 #pragma once
 
-#include <cmath>
 
 #include "Core/OuterCore/Component.hpp"
 #include "Utilities/Math/Matrix/Matrix4.hpp"

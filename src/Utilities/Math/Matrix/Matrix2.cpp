@@ -1,7 +1,6 @@
 #include "Matrix2.hpp"
 #include "Utilities/Math/MathUtils.hpp"
 #include "Utilities/Logger.hpp"
-#include <cmath>
 
 Matrix2::Matrix2(float mAll) {
     for (int row = 0; row < 2; row++) { for (int col = 0; col < 2; col++) { m[row][col] = mAll; } }

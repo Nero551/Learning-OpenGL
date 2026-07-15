@@ -2,9 +2,6 @@
 
 #include "Entity.hpp"
 #include "Utilities/SafePtr.hpp"
-#include <unordered_map>
-#include <format>
-#include <vector>
 
 #include "ServiceStore.hpp"
 #include "Modules/Renderer/Components/LightComponent.hpp"
@@ -13,7 +10,6 @@
 template <typename T>concept EntityType = std::derived_from<T, Entity>;
 
 struct Scene {
-
     std::string Name;
     const int MaxLights = 10;
     std::vector<SafePtr<Entity>> Lights;

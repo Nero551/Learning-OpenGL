@@ -1,15 +1,11 @@
 #pragma once
 
 #include "../Uniform.hpp"
-#include <memory>
-#include <string>
-#include <unordered_map>
 #include "Core/OuterCore/Resource.hpp"
 
 template <typename T>concept UniformType = std::derived_from<T, Uniform>;
 
-struct Shader : Resource
-{
+struct Shader : Resource {
     Shader(const std::string& name, const std::string& fragFilepath, const std::string& vertFilepath);
 
     ~Shader() override;
@@ -18,8 +14,7 @@ struct Shader : Resource
 
     void Use();
 
-    template <UniformType T> void SetUniform(const T& uniform)
-    {
+    template <UniformType T> void SetUniform(const T& uniform) {
         PendingUniforms[GetUniformLocation(uniform.Name)] = std::make_unique<T>(uniform);
     }
 

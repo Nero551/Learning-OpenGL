@@ -1,9 +1,4 @@
 #pragma once
-#include <functional>
-#include <memory>
-#include <ranges>
-#include <typeindex>
-#include <unordered_map>
 
 #include "../OuterCore/Event.hpp"
 #include "Core/OuterCore/Service.hpp"
@@ -37,6 +32,8 @@ struct EventBus : Service {
     template <EventType T> void UnSub(const std::function<void(T&)>& callback) {}
 
 private:
-    std::unordered_map<std::type_index, std::vector<std::function<void(Event&)>>> Listeners;
+    std::unordered_map<std::type_index, std::vector < std::function<void(Event &)>>
+    >
+    Listeners;
     std::vector<std::unique_ptr<Event>> FireQueue;
 };

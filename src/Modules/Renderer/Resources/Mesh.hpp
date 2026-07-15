@@ -2,12 +2,10 @@
 #include "../Vertex.hpp"
 #include "Core/OuterCore/Resource.hpp"
 
-#include <vector>
 
 #include "../Enums/Topology.hpp"
 
-struct Mesh : Resource
-{
+struct Mesh : Resource {
     bool Wireframe = false;
     Topology Topology = Topology::Triangles;
 

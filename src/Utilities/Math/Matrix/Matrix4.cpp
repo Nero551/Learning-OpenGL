@@ -1,6 +1,5 @@
 #include "Matrix4.hpp"
 
-#include <cmath>
 
 #include "Utilities/Math/Basis.hpp"
 #include "Utilities/Math/MathUtils.hpp"

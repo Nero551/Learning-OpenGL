@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "Utilities/Logger.hpp"
 
 template <typename T> struct SafePtr {

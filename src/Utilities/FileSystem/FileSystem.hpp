@@ -1,8 +1,4 @@
 #pragma once
-#include <string>
-namespace FileSystem{
-
+namespace FileSystem {
     std::string ReadFile(const std::string& path);
-
-    
 }

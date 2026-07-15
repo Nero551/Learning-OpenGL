@@ -1,5 +1,4 @@
 #pragma once
-#include <memory>
 
 #include "../OuterCore/Scene.hpp"
 #include "Utilities/Logger.hpp"

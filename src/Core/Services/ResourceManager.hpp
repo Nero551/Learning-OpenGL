@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Core/OuterCore/Resource.hpp"
-#include <memory>
-#include <unordered_map>
+#include "Core/OuterCore/Service.hpp"
 
 template <typename T>concept ResourceType = std::derived_from<T, Resource>;
 
@@ -16,7 +15,7 @@ struct ResourceManager : Service {
         return static_cast<T&>(*Resources.at(name));
     }
 
-    void Destroy(const std::string& name) { if (Resources.contains(name)) { Resources.erase(name); } }
+    void Destroy(const std::string& name);
 
     ResourceManager() = default;
 

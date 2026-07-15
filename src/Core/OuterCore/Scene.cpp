@@ -1,6 +1,5 @@
 #include "Scene.hpp"
 
-#include <ranges>
 
 #include "Modules/Renderer/Components/CameraComponent.hpp"
 #include "Modules/Renderer/Components/TransformComponent.hpp"

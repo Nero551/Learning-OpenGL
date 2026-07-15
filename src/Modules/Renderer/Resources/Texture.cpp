@@ -1,7 +1,6 @@
 #include <OpenGL.hpp>
 #include "Texture.hpp"
 #include <iostream>
-#include <string>
 #include "Utilities/Image/Image.hpp"
 #include "Utilities/Logger.hpp"
 
@@ -50,9 +49,7 @@ Texture::Texture(const std::string& name, const std::string& imagePath) :
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-Texture::~Texture() {
-    glDeleteTextures(1, &Id);
-}
+Texture::~Texture() { glDeleteTextures(1, &Id); }
 
 unsigned int Texture::GetId() const { return Id; }
 

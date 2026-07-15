@@ -1,4 +1,3 @@
-#include <cmath>
 
 #include "Core/InnerCore/Engine.hpp"
 #include "../Primitives.hpp"

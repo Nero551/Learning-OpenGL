@@ -1,10 +1,8 @@
-#include <string>
 #include "Utilities/Logger.hpp"
 #include <OpenGL.hpp>
 #include "Utilities/FileSystem/FileSystem.hpp"
 #include "Shader.hpp"
 
-#include <ranges>
 
 #include "../Uniforms/FloatUniform.hpp"
 
@@ -25,9 +23,7 @@ Shader::Shader(const std::string& name, const std::string& fragFilepath,
     glDeleteShader(fragShader);
 }
 
-Shader::~Shader() {
-    glDeleteProgram(Id);
-}
+Shader::~Shader() { glDeleteProgram(Id); }
 
 unsigned int Shader::GetId() const { return Id; }
 

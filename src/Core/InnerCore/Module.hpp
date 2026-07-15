@@ -1,10 +1,4 @@
 #pragma once
-#include <concepts>
-#include <format>
-#include <memory>
-#include <ranges>
-#include <typeindex>
-#include <unordered_map>
 
 #include "../OuterCore/System.hpp"
 #include "Utilities/Logger.hpp"

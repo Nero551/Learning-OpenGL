@@ -3,7 +3,6 @@
 
 #include "Utilities/Math/MathUtils.hpp"
 
-#include <cmath>
 
 #include "../Basis.hpp"
 #include "Utilities/Logger.hpp"

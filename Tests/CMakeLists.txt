@@ -41,6 +41,9 @@ add_executable(UnitTests
 
 find_package(glfw3 REQUIRED)
 set_target_properties(UnitTests PROPERTIES UNITY_BUILD ON)
+target_precompile_headers(UnitTests PRIVATE
+        "$<$<COMPILE_LANGUAGE:CXX>:../src/pch.hpp>"
+)
 
 target_include_directories(UnitTests PRIVATE
         ../External/include

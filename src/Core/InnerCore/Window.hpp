@@ -1,31 +1,30 @@
 #pragma once
 #include <OpenGL.hpp>
-#include <string>
 
 struct Window {
-   float Width;
-   float Height;
+    float Width;
+    float Height;
 
-   Window(int width, int height, const std::string &name);
+    Window(int width, int height, const std::string& name);
 
-   ~Window();
+    ~Window();
 
-   bool ShouldClose();
+    bool ShouldClose();
 
-   void SwapBuffers();
+    void SwapBuffers();
 
-   void PollEvents();
+    void PollEvents();
 
-   void SetTitle(const std::string &name);
+    void SetTitle(const std::string& name);
 
-   void Close();
+    void Close();
 
-   GLFWwindow *GetGlfwWindow();
+    GLFWwindow* GetGlfwWindow();
 
-   Window(const Window &) = delete;
+    Window(const Window&) = delete;
 
-   Window &operator=(const Window &) = delete;
+    Window& operator=(const Window&) = delete;
 
 private:
-   GLFWwindow *GlfwWindow;
+    GLFWwindow* GlfwWindow;
 };
