@@ -10,6 +10,8 @@
 void CoordinateAxesScene::Initialize() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
 
+    Root = &CreateEntity<Entity>();
+
     auto& shader = ServiceStore::Ins->Get<ResourceManager>().Load<Shader>("AxisShader",
         "Assets/Shaders/axisShader.frag",
         "Assets/Shaders/axisShader.vert");
@@ -25,6 +27,8 @@ void CoordinateAxesScene::Initialize() {
     xAxis.GetComponent<TransformComponent>().Scale = {1, 1, 200};
     xAxis.GetComponent<MaterialComponent>().Material->Color = Color::Red;
 
+    Root->AddChild(xAxis);
+
     auto& yAxis = CreateEntity<Axis>();
     yAxis.GetComponent<MeshComponent>().Mesh = &line;
     yAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Y-Axis Material");;
@@ -35,6 +39,8 @@ void CoordinateAxesScene::Initialize() {
     yAxis.GetComponent<TransformComponent>().Scale = {1, 1, 200};
     yAxis.GetComponent<MaterialComponent>().Material->Color = Color::Green;
 
+    Root->AddChild(yAxis);
+
     auto& zAxis = CreateEntity<Axis>();
     zAxis.GetComponent<MeshComponent>().Mesh = &line;
     zAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Z-Axis Material");
@@ -44,6 +50,8 @@ void CoordinateAxesScene::Initialize() {
     zAxis.GetComponent<TransformComponent>().Position = {0, 0, -50};
     zAxis.GetComponent<TransformComponent>().Scale = {1, 1, 200};
     zAxis.GetComponent<MaterialComponent>().Material->Color = Color::Blue;
+
+    Root->AddChild(zAxis);
 }
 
 void CoordinateAxesScene::Update(double dt) {}

@@ -6,7 +6,7 @@
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
 struct World {
-    SafePtr<Scene> ActiveScene;
+    SafePtr<Scene> ActiveScene{"World Has No Active Scene"};
 
     template <SceneType T> T& CreateScene(const std::string& name) {
         auto scene = std::make_unique<T>();

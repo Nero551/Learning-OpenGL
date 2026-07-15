@@ -3,7 +3,9 @@
 #include "Component.hpp"
 
 #include "Utilities/Logger.hpp"
+#include "Utilities/SafePtr.hpp"
 
+struct Scene;
 template <typename T>concept ComponentType = std::derived_from<T, Component>;
 
 struct Entity {
@@ -55,6 +57,12 @@ struct Entity {
         return ref;
     }
 
+    void AddChild(Entity& child);
+    void AddChild(Scene& sceneChild);
+    std::vector<SafePtr<Entity>> GetChildren();
+
 private:
     std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;
+    std::unordered_map<unsigned int, SafePtr<Entity>> Children;
+    SafePtr<Entity> Parent{"Scene Has No Parent"};
 };

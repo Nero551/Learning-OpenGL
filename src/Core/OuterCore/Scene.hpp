@@ -13,6 +13,7 @@ struct Scene {
     std::string Name;
     const int MaxLights = 10;
     std::vector<SafePtr<Entity>> Lights;
+    SafePtr<Entity> Root{"Scene Has No Root"};
 
     Scene() = default ;
 
@@ -55,17 +56,12 @@ struct Scene {
     void RemoveEntity(unsigned int id);
     Entity& GetActiveCamera();
     void SetActiveCamera(Entity& entity);
-    void AddChild(Scene& childScene);
-    void RemoveChild(const std::string& childName);
     std::vector<SafePtr<Entity>> GetEntities();
-    std::vector<SafePtr<Scene>> GetChildren();
 
 private:
     SafePtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
     std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
-    SafePtr<Scene> Parent{"Scene Has No Parent"};
-    std::unordered_map<std::string, SafePtr<Scene>> Children;
     unsigned int currentEntityId = 0;
 
-    void RecursiveEntities(std::vector<SafePtr<Entity>>& entities);
+    void RecursiveEntities(std::vector<SafePtr<Entity>>& entities, Entity& entity);
 };

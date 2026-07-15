@@ -1,6 +1,5 @@
 #include "Scene.hpp"
 
-
 #include "Modules/Renderer/Components/CameraComponent.hpp"
 #include "Modules/Renderer/Components/TransformComponent.hpp"
 #include "World/Events/EntityDestroyed.hpp"
@@ -24,65 +23,28 @@ void Scene::SetActiveCamera(Entity& entity) {
     if (entity.HasComponent<CameraComponent>() && entity.HasComponent<TransformComponent>()) { ActiveCamera = &entity; }
 }
 
-void Scene::AddChild(Scene& childScene) {
-    if (Children.contains(childScene.Name)) {
-        Logger::Error("Child scene already exists: " + childScene.Name);
-        return;
-    }
 
-    if (&childScene == this) {
-        Logger::Error("A scene cannot be its own child.");
-        return;
-    }
+// void Scene::RemoveChild(const std::string& childName) {
+//     if (Children.contains(childName)) {
+//         Children.at(childName)->Parent.Reset();
+//         Children.erase(childName);
+//     }
+//     else { Logger::Error("Scene Doesn't Have Child Named: " + childName); }
+// }
 
-    if (Parent.Get() == &childScene) {
-        Logger::Error("A scene cannot have its parent as a child.");
-        return;
-    }
-
-    SafePtr<Scene> childPtr = &childScene;
-    Children.emplace(childScene.Name, std::move(childPtr));
-
-    SafePtr<Scene> parentPtr = this;
-    childScene.Parent = parentPtr;
-}
-
-void Scene::RemoveChild(const std::string& childName) {
-    if (Children.contains(childName)) {
-        Children.at(childName)->Parent.Reset();
-        Children.erase(childName);
-    }
-    else { Logger::Error("Scene Doesn't Have Child Named: " + childName); }
-}
 
 std::vector<SafePtr<Entity>> Scene::GetEntities() {
     std::vector<SafePtr<Entity>> entities;
-    entities.reserve(Entities.size());
-
-    RecursiveEntities(entities);
-
+    RecursiveEntities(entities, *Root);
     return entities;
 }
 
-std::vector<SafePtr<Scene>> Scene::GetChildren() {
-    std::vector<SafePtr<Scene>> children;
-    children.reserve(Children.size());
 
-    for (auto& child : Children | std::views::values) {
-        SafePtr<Scene> childPtr;
-        childPtr = &*child;
-        children.push_back(childPtr);
-    }
-
-    return children;
-}
-
-void Scene::RecursiveEntities(std::vector<SafePtr<Entity>>& entities) {
-    for (auto& entity : Entities | std::views::values) {
+void Scene::RecursiveEntities(std::vector<SafePtr<Entity>>& entities, Entity& entity) {
+    for (auto& child : entity.GetChildren()) {
         SafePtr<Entity> entityPtr;
-        entityPtr = &*entity;
+        entityPtr = &*child;
         entities.push_back(entityPtr);
+        RecursiveEntities(entities, *entityPtr);
     }
-
-    for (auto& child : Children | std::views::values) { child->RecursiveEntities(entities); }
 }

@@ -17,8 +17,10 @@ void FirstScene::Initialize() {
     camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
     SetActiveCamera(camera);
 
+    Root = &CreateEntity<Entity>();
+
     auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
-    AddChild(coordinateAxesScene);
+    Root->AddChild(coordinateAxesScene);
 
     auto& mesh = Primitives::CreateCube("mesh");
 
@@ -32,7 +34,11 @@ void FirstScene::Initialize() {
     objectMaterial.DiffuseMap = &diffuseMap;
     objectMaterial.SpecularMap = &specularMap;
 
-    //TODO- add some events for component added, scene added , destroyed , active scene changed , active camera changed , etc
+    //TODO- add some events for component added, scene added , destroyed , active scene changed , active camera changed, child added , etc
+    //TODO- rework scene hierarchy
+    //? its supposed to be , the scene has a root entity , entities can add entity children or add scene children
+    //? (make the root of that scene a child of another root). look at the Assimp structure in the book for reference
+    //TODO- make the Nova hierarchy
 
     // for (float i = 0; i < 6; i += 0.5)
     // {
@@ -46,6 +52,7 @@ void FirstScene::Initialize() {
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<TransformComponent>().Position = {0, 0, 1};
+    Root->AddChild(cube);
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
         "Assets/Shaders/lightShader.vert");
@@ -61,6 +68,8 @@ void FirstScene::Initialize() {
 
     light.GetComponent<LightComponent>().Type = LightType::Spot;
 
+    Root->AddChild(light);
+
     lightId = light.Id; //Temporary
 
     auto& light2 = CreateEntity<Light>();
@@ -70,6 +79,7 @@ void FirstScene::Initialize() {
     light2.GetComponent<TransformComponent>().Scale = {0.2};
 
     light2.GetComponent<LightComponent>().Type = LightType::Directional;
+    Root->AddChild(light2);
 }
 
 void FirstScene::Update(double dt) {
