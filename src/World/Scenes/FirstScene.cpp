@@ -11,8 +11,7 @@
 
 unsigned int lightId;
 
-void FirstScene::Initialize()
-{
+void FirstScene::Initialize() {
     auto& resourceManager = Engine::Ins->ResourceManager;
     auto& camera = CreateEntity<Camera>();
     camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
@@ -73,8 +72,7 @@ void FirstScene::Initialize()
     light2.GetComponent<LightComponent>().Type = LightType::Directional;
 }
 
-void FirstScene::Update(double dt)
-{
+void FirstScene::Update(double dt) {
     auto& light = GetEntity<Light>(lightId);
     auto& transformComponent = light.GetComponent<TransformComponent>();
     auto& input = Engine::Ins->GetModule<Input>();

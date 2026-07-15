@@ -10,8 +10,7 @@
 
 template <typename T>concept EntityType = std::derived_from<T, Entity>;
 
-struct Scene
-{
+struct Scene {
     std::string Name;
     const int MaxLights = 10;
     std::vector<SafePtr<Entity>> Lights;
@@ -40,16 +39,13 @@ struct Scene
 
     virtual void Stop() {}
 
-    template <EntityType T>
-    T& CreateEntity()
-    {
+    template <EntityType T> T& CreateEntity() {
         const unsigned int id = ++currentEntityId;
         auto entity = std::make_unique<T>();
         entity->Id = id;
         entity->Initialize();
 
-        if (entity->template HasComponent<LightComponent>() && Lights.size() < MaxLights)
-        {
+        if (entity->template HasComponent<LightComponent>() && Lights.size() < MaxLights) {
             SafePtr<Entity> lightPtr = entity.get();
             Lights.emplace_back(lightPtr);
         }
@@ -59,14 +55,9 @@ struct Scene
         return GetEntity<T>(id);
     }
 
-    template <EntityType T>
-    T& GetEntity(unsigned int id)
-    {
+    template <EntityType T> T& GetEntity(unsigned int id) {
         auto entity = Entities.find(id);
-        if (entity == Entities.end())
-        {
-            throw std::runtime_error(std::format("Entity Not Found: {}", typeid(T).name()));
-        }
+        if (entity == Entities.end()) { LoggerService::Fatal(std::format("Entity Not Found: {}", typeid(T).name())); }
         return static_cast<T&>((*entity->second));
     }
 

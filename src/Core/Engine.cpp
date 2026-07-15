@@ -24,15 +24,13 @@ Engine::Engine() : Window(1000, 800, "Plus Ultra") { Running = true; }
 
 SafePtr<Engine> Engine::Ins;
 
-void Engine::AddModules()
-{
+void Engine::AddModules() {
     AddModule<Renderer>();
     AddModule<Input>();
     AddModule<Profiling>();
 }
 
-void Engine::Start()
-{
+void Engine::Start() {
     // glfwSwapInterval(0);
 
     AddModules();
@@ -44,21 +42,17 @@ void Engine::Start()
 }
 
 
-void Engine::Update()
-{
+void Engine::Update() {
     Time = glfwGetTime();
     World.Update(DeltaTime);
 
-    if (GetModule<Input>().IsKeyHeld(Key::Escape))
-    {
+    if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
         Running = false;
         Window.Close();
     }
 
-    if (GetModule<Input>().IsKeyReleased(Key::Q))
-    {
-        if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled)
-        {
+    if (GetModule<Input>().IsKeyReleased(Key::Q)) {
+        if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
             GetModule<Input>().SetMouseMode(MouseMode::Normal);
         }
         else { GetModule<Input>().SetMouseMode(MouseMode::Disabled); }
@@ -67,8 +61,7 @@ void Engine::Update()
     for (auto& module : Modules | std::views::values) { module->Update(DeltaTime); }
 }
 
-void Engine::Stop()
-{
+void Engine::Stop() {
     World.Stop();
 
     for (auto& module : Modules | std::views::values) { module->Stop(); }
@@ -78,8 +71,7 @@ void Engine::Stop()
 
 void Engine::Render() { for (auto& module : Modules | std::views::values) { module->Render(); } }
 
-void Engine::BeginFrame()
-{
+void Engine::BeginFrame() {
     Window.PollEvents();
     glClearColor(0.025, 0.0125, 0.025, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -89,8 +81,7 @@ void Engine::BeginFrame()
     for (auto& module : Modules | std::views::values) { module->BeginFrame(DeltaTime); }
 }
 
-void Engine::EndFrame()
-{
+void Engine::EndFrame() {
     const float currentFrame = Time;
     DeltaTime = currentFrame - LastFrame;
     LastFrame = currentFrame;
