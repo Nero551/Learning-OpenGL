@@ -47,11 +47,9 @@ struct Scene
       entity->Id = id;
       entity->Initialize();
 
-      T& ref = *entity;
-
       Entities.emplace(id, std::move(entity));
 
-      return ref;
+      return GetEntity<T>(id);
    }
 
    template <EntityType T>

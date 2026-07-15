@@ -18,9 +18,8 @@ struct World
       auto scene = std::make_unique<T>();
       scene->Name = name;
       scene->Initialize();
-      T& ref = *scene;
       Scenes.emplace(name, std::move(scene));
-      return ref;
+      return GetScene<T>(name);
    }
 
    template <SceneType T>

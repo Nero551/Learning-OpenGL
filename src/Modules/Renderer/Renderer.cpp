@@ -4,8 +4,6 @@
 #include "Core/Engine.hpp"
 #include "Systems/CameraSystem.hpp"
 
-#include <ranges>
-
 #include "Primitives/Primitives.hpp"
 #include "Systems/LightingSystem.hpp"
 #include "Uniforms/FloatUniform.hpp"
@@ -40,7 +38,7 @@ void Renderer::OnRender()
          materialComponent.Material->Use();
 
 
-         materialComponent.Material->Shader->SetUniform(FloatUniform("Time", Engine::Ins->Time));
+         materialComponent.Material->Shader->SetUniform(FloatUniform("Time", static_cast<float>(Engine::Ins->Time)));
 
          materialComponent.Material->Shader->SetUniform(
             Matrix4Uniform("ModelMatrix", transformComponent.GetModelMatrix()));

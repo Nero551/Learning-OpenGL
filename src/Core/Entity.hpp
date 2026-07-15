@@ -38,10 +38,8 @@ struct Entity
       }
 
       auto component = std::make_unique<T>();
-
-      T& ref = *component;
       Components.emplace(typeid(T), std::move(component));
-      return ref;
+      return GetComponent<T>();
    }
 
    template <ComponentType T> T& GetComponent() const
