@@ -6,7 +6,7 @@
 #include "Modules/Renderer/Components/TransformComponent.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 
-void Scene::RemoveEntity(const unsigned int id) {
+void Scene::RemoveEntity(unsigned int id) {
     if (Entities.contains(id)) {
         ServiceStore::Ins->Get<EventBus>().Fire<EntityDestroyed>(GetEntity<Entity>(id));
         Entities.erase(id);

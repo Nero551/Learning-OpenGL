@@ -32,6 +32,8 @@ void FirstScene::Initialize() {
     objectMaterial.DiffuseMap = &diffuseMap;
     objectMaterial.SpecularMap = &specularMap;
 
+    //TODO- add some events for component added, scene added , destroyed , active scene changed , active camera changed , etc
+
     // for (float i = 0; i < 6; i += 0.5)
     // {
     //     Cube& cube = CreateEntity<Cube>();

@@ -69,7 +69,7 @@ struct Scene {
 
     template <EntityType T> T& GetActiveCamera() { return static_cast<T&>(*ActiveCamera); }
 
-    void RemoveEntity(const unsigned int id);
+    void RemoveEntity(unsigned int id);
     void SetActiveCamera(Entity& entity);
     void AddChild(Scene& childScene);
     void RemoveChild(const std::string& childName);

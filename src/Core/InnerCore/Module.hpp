@@ -12,36 +12,17 @@
 template <typename T>concept SystemType = std::derived_from<T, System>;
 
 struct Module {
-    void Start() {
-        AddSystems();
-        OnStart();
-        for (auto& system : Systems | std::views::values) { system->Start(); }
-    }
+    void Start();
 
-    void Update(double dt) {
-        OnUpdate(dt);
-        for (auto& system : Systems | std::views::values) { system->Update(dt); }
-    }
+    void Update(double dt);
 
-    void Stop() {
-        OnStop();
-        for (auto& system : Systems | std::views::values) { system->Stop(); }
-    }
+    void Stop();
 
-    void Render() {
-        OnRender();
-        for (auto& system : Systems | std::views::values) { system->Render(); }
-    }
+    void Render();
 
-    void BeginFrame(double dt) {
-        OnBeginFrame(dt);
-        for (auto& system : Systems | std::views::values) { system->BeginFrame(dt); }
-    }
+    void BeginFrame(double dt);
 
-    void EndFrame(double dt) {
-        OnEndFrame(dt);
-        for (auto& system : Systems | std::views::values) { system->EndFrame(dt); }
-    }
+    void EndFrame(double dt);
 
     virtual ~Module() = default;
 
