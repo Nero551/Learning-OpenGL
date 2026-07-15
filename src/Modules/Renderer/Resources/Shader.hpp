@@ -12,7 +12,9 @@ struct Shader : Resource
 {
     Shader(const std::string& name, const std::string& fragFilepath, const std::string& vertFilepath);
 
-    unsigned int GetId() const { return Id; };
+    ~Shader() override;
+
+    unsigned int GetId() const;
 
     void Use();
 
@@ -20,8 +22,6 @@ struct Shader : Resource
     {
         PendingUniforms[GetUniformLocation(uniform.Name)] = std::make_unique<T>(uniform);
     }
-
-    int GetUniformLocation(const std::string& name);
 
 private:
     unsigned int Id;
@@ -33,6 +33,8 @@ private:
     unsigned int CreateVertShader(const char* vertSource);
 
     unsigned int CreateFragShader(const char* fragSource);
+
+    int GetUniformLocation(const std::string& name);
 
     void UploadUniforms();
 };

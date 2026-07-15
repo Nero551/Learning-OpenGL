@@ -7,30 +7,31 @@
 #include "Utilities/Math/Vector/Vector4.hpp"
 #include "Utilities/SafePtr.hpp"
 
-struct Material : Resource {
-   static constexpr int MaxTextures = 8;
-   SafePtr<Shader> Shader{"Material Has No Shader Assigned"};
+struct Material : Resource
+{
+    static constexpr int MaxTextures = 8;
+    SafePtr<Shader> Shader{"Material Has No Shader Assigned"};
 
-   Vector4 Color = {1};
-   Vector3 Ambient = {1};
-   Vector3 Diffuse = {1};
-   Vector3 Specular = {1};
-   Vector3 Emission = {0};
-   float Shininess = 32;
+    Vector4 Color = {1};
+    Vector3 Ambient = {1};
+    Vector3 Diffuse = {1};
+    Vector3 Specular = {1};
+    Vector3 Emission = {0};
+    float Shininess = 32;
 
-   SafePtr<Texture> DiffuseMap;
-   SafePtr<Texture> SpecularMap;
-   SafePtr<Texture> EmissionMap;
+    SafePtr<Texture> DiffuseMap;
+    SafePtr<Texture> SpecularMap;
+    SafePtr<Texture> EmissionMap;
 
 
-   Material(const std::string &name);
+    Material(const std::string& name);
 
-   void AssignTexture(Texture &texture, unsigned int slot);
+    void AssignTexture(Texture& texture, unsigned int slot);
 
-   void Use();
+    void Use();
 
 protected:
-   std::array<Texture *, MaxTextures> CustomTextures{};
+    std::array<SafePtr<Texture>, MaxTextures> CustomTextures{};
 
-   void SetProperties();
+    void SetProperties();
 };

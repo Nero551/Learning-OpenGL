@@ -4,49 +4,37 @@
 
 template <typename T> struct SafePtr
 {
-   SafePtr() = default;
+    SafePtr() = default;
 
-   SafePtr(const std::string_view& nullMessage)
-   {
-      this->nullMessage += nullMessage;
-   }
+    ~SafePtr()
+    {
+        Reset();
+        delete ptr;
+    }
 
-   SafePtr& operator=(T* objectPtr)
-   {
-      ptr = objectPtr;
-      return *this;
-   }
+    SafePtr(const std::string_view& nullMessage) { this->nullMessage += nullMessage; }
 
-   T* operator->() const
-   {
-      if (!ptr)
-      {
-         LoggerService::Fatal(nullMessage);
-      }
-      return ptr;
-   }
+    SafePtr& operator=(T* objectPtr)
+    {
+        ptr = objectPtr;
+        return *this;
+    }
 
-   T& operator*()
-   {
-      return LoggerService::Require(ptr, nullMessage);
-   }
+    T* operator->() const
+    {
+        if (!ptr) { LoggerService::Fatal(nullMessage); }
+        return ptr;
+    }
 
-   operator bool() const
-   {
-      return ptr != nullptr;
-   }
+    T& operator*() { return LoggerService::Require(ptr, nullMessage); }
 
-   void Reset()
-   {
-      ptr = nullptr;
-   }
+    operator bool() const { return ptr != nullptr; }
 
-   T* Get() const
-   {
-      return ptr;
-   }
+    void Reset() { ptr = nullptr; }
+
+    T* Get() const { return ptr; }
 
 private:
-   T* ptr = nullptr;
-   std::string nullMessage = "[NULL PTR] ";
+    T* ptr = nullptr;
+    std::string nullMessage = "[NULL PTR] ";
 };

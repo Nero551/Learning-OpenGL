@@ -2,19 +2,22 @@
 
 #include <string>
 #include "Core/Resource.hpp"
+#include "OpenGL.hpp"
 
-struct Texture : Resource {
+struct Texture : Resource
+{
+    Texture(const std::string& name, int width, int height, unsigned char pixels[]);
 
-   Texture(const std::string &name, int width, int height, unsigned char pixels[]);
+    Texture(const std::string& name, const std::string& imagePath);
+    
+    ~Texture() override;
 
-   Texture(const std::string &name, const std::string &imagePath);
+    unsigned int GetId() const;
 
-   unsigned int GetId() const { return Id; }
-
-   void Bind(unsigned int unit);
+    void Bind(unsigned int unit) const;
 
 private:
-   void SetParameters();
+    void SetParameters() const;
 
-   unsigned int Id;
+    unsigned int Id = 0;
 };

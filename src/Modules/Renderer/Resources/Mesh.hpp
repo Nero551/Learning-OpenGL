@@ -6,30 +6,33 @@
 
 #include "../Enums/Topology.hpp"
 
-struct Mesh : Resource {
-   bool Wireframe = false;
-   Topology Topology = Topology::Triangles;
+struct Mesh : Resource
+{
+    bool Wireframe = false;
+    Topology Topology = Topology::Triangles;
 
-   Mesh(const std::string &name, const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices);
+    Mesh(const std::string& name, const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices);
 
-   unsigned int GetId() const { return Id; };
+    ~Mesh() override;
 
-   void Draw();
+    unsigned int GetId() const;
+
+    void Draw();
 
 private:
-   unsigned int VBO;
-   unsigned int EBO;
+    unsigned int VBO;
+    unsigned int EBO;
 
-   unsigned int CreateVAO();
+    unsigned int CreateVAO();
 
-   unsigned int CreateVBO();
+    unsigned int CreateVBO();
 
-   unsigned int CreateEBO();
+    unsigned int CreateEBO();
 
-   void SetupVertAttrPointers();
+    void SetupVertAttrPointers();
 
 protected:
-   unsigned int Id;
-   std::vector<Vertex> Vertices;
-   std::vector<unsigned int> Indices;
+    unsigned int Id;
+    std::vector<Vertex> Vertices;
+    std::vector<unsigned int> Indices;
 };
