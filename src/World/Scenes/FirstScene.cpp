@@ -12,97 +12,70 @@ unsigned int lightId;
 
 void FirstScene::Initialize()
 {
-   auto& resourceManager = Engine::Ins->ResourceManager;
-   auto& camera = CreateEntity<Camera>();
-   camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
-   ActiveCamera = &camera;
+    auto& resourceManager = Engine::Ins->ResourceManager;
+    auto& camera = CreateEntity<Camera>();
+    camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
+    ActiveCamera = &camera;
 
-   auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
-   AddChild(coordinateAxesScene);
+    auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
+    AddChild(coordinateAxesScene);
 
-   auto& mesh = Primitives::CreateCube("mesh");
+    auto& mesh = Primitives::CreateCube("mesh");
 
-   auto& objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
-                                                     "Assets/Shaders/shader.vert");
+    auto& objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
+                                                      "Assets/Shaders/shader.vert");
 
-   auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
-   auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
-   auto& objectMaterial = resourceManager.Load<Material>("material");
-   objectMaterial.Shader = &objectShader;
-   objectMaterial.DiffuseMap = &diffuseMap;
-   objectMaterial.SpecularMap = &specularMap;
+    auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
+    auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
+    auto& objectMaterial = resourceManager.Load<Material>("material");
+    objectMaterial.Shader = &objectShader;
+    objectMaterial.DiffuseMap = &diffuseMap;
+    objectMaterial.SpecularMap = &specularMap;
 
-   for (float i = 0; i < 6; i += 0.5)
-   {
-      Cube& cube = CreateEntity<Cube>();
-      cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-      cube.GetComponent<MeshComponent>().Mesh = &mesh;
-      cube.GetComponent<TransformComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
-   }
+    for (float i = 0; i < 6; i += 0.5)
+    {
+        Cube& cube = CreateEntity<Cube>();
+        cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
+        cube.GetComponent<MeshComponent>().Mesh = &mesh;
+        cube.GetComponent<TransformComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
+    }
 
-   auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
-                                                    "Assets/Shaders/lightShader.vert");
+    auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
+                                                     "Assets/Shaders/lightShader.vert");
 
-   auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
-   lightMaterial.Shader = &lightShader;
+    auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
+    lightMaterial.Shader = &lightShader;
 
-   auto& light = CreateEntity<Light>();
-   light.GetComponent<MaterialComponent>().Material = &lightMaterial;
-   light.GetComponent<MeshComponent>().Mesh = &mesh;
+    auto& light = CreateEntity<Light>();
+    light.GetComponent<MaterialComponent>().Material = &lightMaterial;
+    light.GetComponent<MeshComponent>().Mesh = &mesh;
 
-   light.GetComponent<TransformComponent>().Scale = {0.2};
+    light.GetComponent<TransformComponent>().Scale = {0.2};
 
-   light.GetComponent<LightComponent>().Type = LightType::Directional;
+    light.GetComponent<LightComponent>().Type = LightType::Directional;
 
-   lightId = light.Id; //Temporary
+    lightId = light.Id; //Temporary
 }
 
 void FirstScene::Update(double dt)
 {
-   auto& light = GetEntity<Light>(lightId);
-   auto& transformComponent = light.GetComponent<TransformComponent>();
-   auto& input = Engine::Ins->GetModule<Input>();
+    auto& light = GetEntity<Light>(lightId);
+    auto& transformComponent = light.GetComponent<TransformComponent>();
+    auto& input = Engine::Ins->GetModule<Input>();
 
-   auto dtf = static_cast<float>(dt);
+    auto dtf = static_cast<float>(dt);
 
-   if (input.IsKeyHeld(Key::Up))
-   {
-      transformComponent.Position.z += 2.0f * dtf;
-   }
-   if (input.IsKeyHeld(Key::Down))
-   {
-      transformComponent.Position.z -= 2.0f * dtf;
-   }
-   if (input.IsKeyHeld(Key::Left))
-   {
-      transformComponent.Position.x -= 2.0f * dtf;
-   }
-   if (input.IsKeyHeld(Key::Right))
-   {
-      transformComponent.Position.x += 2.0f * dtf;
-   }
+    if (input.IsKeyHeld(Key::Up)) { transformComponent.Position.z += 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::Down)) { transformComponent.Position.z -= 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::Left)) { transformComponent.Position.x -= 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::Right)) { transformComponent.Position.x += 2.0f * dtf; }
 
-   if (input.IsKeyHeld(Key::I))
-   {
-      transformComponent.Position.y += 2.0f * dtf;
-   }
-   if (input.IsKeyHeld(Key::O))
-   {
-      transformComponent.Position.y -= 2.0f * dtf;
-   }
+    if (input.IsKeyHeld(Key::I)) { transformComponent.Position.y += 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::O)) { transformComponent.Position.y -= 2.0f * dtf; }
 
-   if (input.IsKeyHeld(Key::Z))
-   {
-      transformComponent.EulerRotation.x += 2.0f * dtf;
-   }
+    if (input.IsKeyHeld(Key::Z)) { transformComponent.EulerRotation.x += 2.0f * dtf; }
 
-   if (input.IsKeyHeld(Key::X))
-   {
-      transformComponent.EulerRotation.y += 2.0f * dtf;
-   }
+    if (input.IsKeyHeld(Key::X)) { transformComponent.EulerRotation.y += 2.0f * dtf; }
 
-   if (input.IsKeyHeld(Key::C))
-   {
-      transformComponent.EulerRotation.z += 2.0f * dtf;
-   }
+    if (input.IsKeyHeld(Key::C)) { transformComponent.EulerRotation.z += 2.0f * dtf; }
 }

@@ -13,11 +13,9 @@ struct ResourceManager
         if (Resources.contains(name)) { return static_cast<T&>(*Resources.at(name)); }
 
         auto resource = std::make_unique<T>(name, std::forward<Args>(args)...);
-        T& ref = *resource;
-
         Resources.emplace(name, std::move(resource));
 
-        return ref;
+        return static_cast<T&>(*Resources.at(name));
     }
 
     void Destroy(const std::string& name) { if (Resources.contains(name)) { Resources.erase(name); } }
