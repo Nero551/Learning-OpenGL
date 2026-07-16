@@ -3,11 +3,11 @@
 #include "CoordinateAxesScene.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Input/Enums/Keys.hpp"
-#include "Modules/Renderer/Entities/Cube.hpp"
-#include "Modules/Renderer/Entities/Light.hpp"
 #include "../../Modules/Renderer/Primitives/Primitives.hpp"
-#include "Modules/Renderer/Entities/Camera.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
+#include "World/Novas/Camera.hpp"
+#include "World/Novas/Light.hpp"
+#include "World/Novas/MeshInstance3D.hpp"
 
 unsigned int lightId;
 
@@ -34,24 +34,20 @@ void FirstScene::Initialize() {
     objectMaterial.DiffuseMap = &diffuseMap;
     objectMaterial.SpecularMap = &specularMap;
 
-    //TODO- add some events for component added, scene added , destroyed , active scene changed , active camera changed, child added , etc
-    //TODO- rework scene hierarchy
-    //? its supposed to be , the scene has a root entity , entities can add entity children or add scene children
-    //? (make the root of that scene a child of another root). look at the Assimp structure in the book for reference
     //TODO- make the Nova hierarchy
 
-    // for (float i = 0; i < 6; i += 0.5)
-    // {
-    //     Cube& cube = CreateEntity<Cube>();
-    //     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-    //     cube.GetComponent<MeshComponent>().Mesh = &mesh;
-    //     cube.GetComponent<TransformComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
-    // }
+    for (float i = 0; i < 6; i += 0.5) {
+        auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
+        cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
+        cube.GetComponent<MeshComponent>().Mesh = &mesh;
+        cube.GetComponent<Transform3DComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
+        GetRoot().AddChild(cube);
+    }
 
-    Cube& cube = Engine::Ins->World.CreateEntity<Cube>();
+    auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
-    cube.GetComponent<TransformComponent>().Position = {0, 0, 1};
+    cube.GetComponent<Transform3DComponent>().Position = {0, 0, 1};
     GetRoot().AddChild(cube);
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
@@ -64,7 +60,7 @@ void FirstScene::Initialize() {
     light.GetComponent<MaterialComponent>().Material = &lightMaterial;
     light.GetComponent<MeshComponent>().Mesh = &mesh;
 
-    light.GetComponent<TransformComponent>().Scale = {0.2};
+    light.GetComponent<Transform3DComponent>().Scale = {0.2};
 
     light.GetComponent<LightComponent>().Type = LightType::Spot;
 
@@ -76,7 +72,7 @@ void FirstScene::Initialize() {
     light2.GetComponent<MaterialComponent>().Material = &lightMaterial;
     light2.GetComponent<MeshComponent>().Mesh = &mesh;
 
-    light2.GetComponent<TransformComponent>().Scale = {0.2};
+    light2.GetComponent<Transform3DComponent>().Scale = {0.2};
 
     light2.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AddChild(light2);
@@ -84,7 +80,7 @@ void FirstScene::Initialize() {
 
 void FirstScene::Update(double dt) {
     auto& light = Engine::Ins->World.FindEntity(lightId);
-    auto& transformComponent = light.GetComponent<TransformComponent>();
+    auto& transformComponent = light.GetComponent<Transform3DComponent>();
     auto& input = Engine::Ins->GetModule<Input>();
 
     auto dtf = static_cast<float>(dt);

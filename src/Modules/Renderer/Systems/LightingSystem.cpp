@@ -2,11 +2,10 @@
 
 #include "../Components/LightComponent.hpp"
 #include "../Components/MaterialComponent.hpp"
-#include "../Components/TransformComponent.hpp"
+#include "../Components/Transform3DComponent.hpp"
 #include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
-#include "Modules/Renderer/Entities/Camera.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 
 
@@ -39,7 +38,7 @@ void LightingSystem::Render() {
     auto& camera = scene->GetActiveCamera();
 
     for (auto& entity : scene->GetRoot().GetDescendants()) {
-        if (!entity->HasComponent<TransformComponent>()) {
+        if (!entity->HasComponent<Transform3DComponent>()) {
             continue;
         }
 
@@ -50,7 +49,7 @@ void LightingSystem::Render() {
 
         materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", MaxLights));
         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
-            camera.GetComponent<TransformComponent>().Position));
+            camera.GetComponent<Transform3DComponent>().Position));
 
         for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
             auto& light = Engine::Ins->World.FindEntity(Lights[i]);
@@ -61,7 +60,7 @@ void LightingSystem::Render() {
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Position", i),
-                    light.GetComponent<TransformComponent>().Position));
+                    light.GetComponent<Transform3DComponent>().Position));
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Ambient", i), lightComponent.Ambient));
@@ -78,7 +77,7 @@ void LightingSystem::Render() {
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Direction", i),
-                    light.GetComponent<TransformComponent>().GetForward()));
+                    light.GetComponent<Transform3DComponent>().GetForward()));
 
             materialComponent.Material->Shader->SetUniform(
                 FloatUniform(std::format("Lights[{}].Constant", i), lightComponent.Constant));

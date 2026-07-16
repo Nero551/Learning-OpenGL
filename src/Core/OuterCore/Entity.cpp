@@ -61,6 +61,7 @@ void Entity::DestroyChild(unsigned int id) {
 
 std::vector<SafePtr<Entity>> Entity::GetDescendants() {
     std::vector<SafePtr<Entity>> descendants;
+    descendants.reserve(Children.size());
 
     RecursiveChildren(descendants, *this);
 

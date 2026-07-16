@@ -2,13 +2,14 @@
 #include "Utilities/Math/MathUtils.hpp"
 #include "Core/InnerCore/Engine.hpp"
 #include "Modules/Input/Input.hpp"
-#include "Modules/Renderer/Entities/Camera.hpp"
+#include "Modules/Renderer/Components/CameraComponent.hpp"
+#include "Modules/Renderer/Components/Transform3DComponent.hpp"
 
 void CameraSystem::Update(double dt) {
     {
         auto& inputModule = Engine::Ins->GetModule<Input>();
         auto& camera = Engine::Ins->World.ActiveScene->GetActiveCamera();
-        auto& transform = camera.GetComponent<TransformComponent>();
+        auto& transform = camera.GetComponent<Transform3DComponent>();
         auto& cameraComponent = camera.GetComponent<CameraComponent>();
 
         if (inputModule.GetMouseMode() == MouseMode::Disabled) {
@@ -38,11 +39,17 @@ void CameraSystem::Update(double dt) {
             transform.Position -= cameraComponent.Speed * dt * transform.GetForward();
         }
 
-        if (inputModule.IsKeyHeld(Key::A)) { transform.Position -= cameraComponent.Speed * dt * transform.GetRight(); }
+        if (inputModule.IsKeyHeld(Key::A)) {
+            transform.Position -= cameraComponent.Speed * dt * transform.GetRight();
+        }
 
-        if (inputModule.IsKeyHeld(Key::D)) { transform.Position += cameraComponent.Speed * dt * transform.GetRight(); }
+        if (inputModule.IsKeyHeld(Key::D)) {
+            transform.Position += cameraComponent.Speed * dt * transform.GetRight();
+        }
 
-        if (inputModule.IsKeyHeld(Key::Space)) { transform.Position += cameraComponent.Speed * dt * Vector3(0, 1, 0); }
+        if (inputModule.IsKeyHeld(Key::Space)) {
+            transform.Position += cameraComponent.Speed * dt * Vector3(0, 1, 0);
+        }
 
         if (inputModule.IsKeyHeld(Key::LeftShift)) {
             transform.Position -= cameraComponent.Speed * dt * Vector3(0, 1, 0);
@@ -52,7 +59,7 @@ void CameraSystem::Update(double dt) {
 
 Matrix4 CameraSystem::GetViewMatrix() {
     auto& camera = Engine::Ins->World.ActiveScene->GetActiveCamera();
-    auto& transformComponent = camera.GetComponent<TransformComponent>();
+    auto& transformComponent = camera.GetComponent<Transform3DComponent>();
 
     Vector3 pos = transformComponent.Position;
     Vector3 forward = transformComponent.GetForward();

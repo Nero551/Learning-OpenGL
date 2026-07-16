@@ -1,8 +1,10 @@
 #include "Renderer.hpp"
+
+#include "Components/CameraComponent.hpp"
 #include "Components/MaterialComponent.hpp"
 #include "Components/MeshComponent.hpp"
+#include "Components/Transform3DComponent.hpp"
 #include "Core/InnerCore/Engine.hpp"
-#include "Entities/Camera.hpp"
 #include "Systems/CameraSystem.hpp"
 
 #include "Primitives/Primitives.hpp"
@@ -24,10 +26,10 @@ void Renderer::OnRender() {
     Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
     for (auto& entity : scene->GetRoot().GetDescendants()) {
-        if (!entity->HasComponent<TransformComponent>()) {
+        if (!entity->HasComponent<Transform3DComponent>()) {
             continue;
         }
-        auto& transformComponent = entity->GetComponent<TransformComponent>();
+        auto& transformComponent = entity->GetComponent<Transform3DComponent>();
 
         if (entity->HasComponent<MaterialComponent>()) {
             auto& materialComponent = entity->GetComponent<MaterialComponent>();

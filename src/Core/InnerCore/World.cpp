@@ -1,6 +1,5 @@
 #include "World.hpp"
 
-#include "Modules/Renderer/Entities/Light.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 #include "World/Scenes/FirstScene.hpp"
 

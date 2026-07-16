@@ -1,10 +1,9 @@
 #pragma once
 
-
 #include "Core/OuterCore/Component.hpp"
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
-struct TransformComponent : Component {
+struct Transform3DComponent : Component {
     Vector3 Position = Vector3::Zero;
     Vector3 EulerRotation = Vector3::Zero; // Radians
     Vector3 Scale = Vector3::One;
