@@ -60,10 +60,9 @@ struct Entity {
     }
 
     void AddChild(Entity& child);
-    void AddChild(Scene& sceneChild);
     void DestroyChild(unsigned int id);
     void DetachChild(unsigned int id);
-    SafePtr<Entity> GetChild(unsigned int id);
+    Entity& GetChild(unsigned int id);
     bool HasChild(unsigned int id) const;
     std::vector<SafePtr<Entity>> GetChildren();
     size_t ChildCount() const;
@@ -71,10 +70,10 @@ struct Entity {
     std::vector<SafePtr<Entity>> GetDescendants();
     bool IsDescendantOf(const Entity& entity);
 
-    SafePtr<Entity> GetParent();
+    Entity& GetParent();
     std::vector<SafePtr<Entity>> GetAncestors();
     bool IsAncestorOf(const Entity& entity);
-    SafePtr<Entity> GetRoot();
+    Entity& GetRoot();
 
 private:
     std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;

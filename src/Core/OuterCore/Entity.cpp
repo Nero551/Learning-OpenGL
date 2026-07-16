@@ -33,10 +33,6 @@ void Entity::AddChild(Entity& child) {
     child.Parent = this;
 }
 
-void Entity::AddChild(Scene& childScene) {
-    AddChild(*childScene.Root);
-}
-
 std::vector<SafePtr<Entity>> Entity::GetChildren() {
     std::vector<SafePtr<Entity>> children;
     children.reserve(Children.size());
@@ -89,8 +85,8 @@ void Entity::RecursiveChildren(std::vector<SafePtr<Entity>>& entities, Entity& e
     }
 }
 
-SafePtr<Entity> Entity::GetParent() {
-    return Parent;
+Entity& Entity::GetParent() {
+    return *Parent;
 }
 
 std::vector<SafePtr<Entity>> Entity::GetAncestors() {
@@ -124,24 +120,24 @@ bool Entity::IsAncestorOf(const Entity& entity) {
     return false;
 }
 
-SafePtr<Entity> Entity::GetRoot() {
+Entity& Entity::GetRoot() {
     SafePtr<Entity> current = this;
 
     while (current->Parent)
         current = current->Parent.Get();
 
-    return current;
+    return *current;
 }
 
 bool Entity::HasChild(unsigned int id) const {
     return Children.contains(id);
 }
 
-SafePtr<Entity> Entity::GetChild(unsigned int id) {
+Entity& Entity::GetChild(unsigned int id) {
     auto child = Children.find(id);
 
     if (child != Children.end()) {
-        return child->second;
+        return *child->second;
     }
 
     Logger::Fatal(std::format("Entity {} has no child {}", Id, id));

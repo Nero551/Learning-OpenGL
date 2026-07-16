@@ -16,12 +16,16 @@ std::vector<unsigned int> Lights;
 
 //TODO- this wont work with multiple scenes
 void OnEntityCreated(const EntityCreated& event) {
-    if (event.entity.HasComponent<LightComponent>()) { Lights.emplace_back(event.entity.Id); }
+    if (event.entity.HasComponent<LightComponent>()) {
+        Lights.emplace_back(event.entity.Id);
+    }
 }
 
 void OnEntityDestroyed(const EntityDestroyed& event) {
     for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
-        if (event.entity.Id == Lights[i]) { Lights.erase(Lights.begin() + i); }
+        if (event.entity.Id == Lights[i]) {
+            Lights.erase(Lights.begin() + i);
+        }
     }
 }
 
@@ -34,10 +38,14 @@ void LightingSystem::Render() {
     auto& scene = Engine::Ins->World.ActiveScene;
     auto& camera = scene->GetActiveCamera();
 
-    for (auto& entity : scene->Root->GetDescendants()) {
-        if (!entity->HasComponent<TransformComponent>()) { continue; }
+    for (auto& entity : scene->GetRoot().GetDescendants()) {
+        if (!entity->HasComponent<TransformComponent>()) {
+            continue;
+        }
 
-        if (!entity->HasComponent<MaterialComponent>()) { continue; }
+        if (!entity->HasComponent<MaterialComponent>()) {
+            continue;
+        }
         auto& materialComponent = entity->GetComponent<MaterialComponent>();
 
         materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", MaxLights));

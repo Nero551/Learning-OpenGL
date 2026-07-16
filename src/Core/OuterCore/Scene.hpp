@@ -10,7 +10,6 @@ template <typename T>concept EntityType = std::derived_from<T, Entity>;
 struct Scene {
     std::string Name;
     const int MaxLights = 10;
-    SafePtr<Entity> Root{"Scene Has No Root"};
 
     Scene() = default ;
 
@@ -37,7 +36,10 @@ struct Scene {
 
     Entity& GetActiveCamera();
     void SetActiveCamera(Entity& entity);
+    void SetRoot(Entity&);
+    Entity& GetRoot();
 
 private:
     SafePtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
+    SafePtr<Entity> Root{"Scene Has No Root"};
 };

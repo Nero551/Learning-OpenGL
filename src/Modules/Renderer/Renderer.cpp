@@ -23,8 +23,10 @@ void Renderer::OnRender() {
     Matrix4 projection = camera.GetComponent<CameraComponent>().GetProjectionMatrix();
     Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
-    for (auto& entity : scene->Root->GetDescendants()) {
-        if (!entity->HasComponent<TransformComponent>()) { continue; }
+    for (auto& entity : scene->GetRoot().GetDescendants()) {
+        if (!entity->HasComponent<TransformComponent>()) {
+            continue;
+        }
         auto& transformComponent = entity->GetComponent<TransformComponent>();
 
         if (entity->HasComponent<MaterialComponent>()) {

@@ -17,10 +17,10 @@ void FirstScene::Initialize() {
     camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
     SetActiveCamera(camera);
 
-    Root = &Engine::Ins->World.CreateEntity<Entity>();
+    SetRoot(Engine::Ins->World.CreateEntity<Entity>());
 
     auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
-    Root->AddChild(coordinateAxesScene);
+    GetRoot().AddChild(coordinateAxesScene.GetRoot());
 
     auto& mesh = Primitives::CreateCube("mesh");
 
@@ -52,7 +52,7 @@ void FirstScene::Initialize() {
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<TransformComponent>().Position = {0, 0, 1};
-    Root->AddChild(cube);
+    GetRoot().AddChild(cube);
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
         "Assets/Shaders/lightShader.vert");
@@ -68,7 +68,7 @@ void FirstScene::Initialize() {
 
     light.GetComponent<LightComponent>().Type = LightType::Spot;
 
-    Root->AddChild(light);
+    GetRoot().AddChild(light);
 
     lightId = light.Id; //Temporary
 
@@ -79,7 +79,7 @@ void FirstScene::Initialize() {
     light2.GetComponent<TransformComponent>().Scale = {0.2};
 
     light2.GetComponent<LightComponent>().Type = LightType::Directional;
-    Root->AddChild(light2);
+    GetRoot().AddChild(light2);
 }
 
 void FirstScene::Update(double dt) {
@@ -89,17 +89,35 @@ void FirstScene::Update(double dt) {
 
     auto dtf = static_cast<float>(dt);
 
-    if (input.IsKeyHeld(Key::Up)) { transformComponent.Position.z += 2.0f * dtf; }
-    if (input.IsKeyHeld(Key::Down)) { transformComponent.Position.z -= 2.0f * dtf; }
-    if (input.IsKeyHeld(Key::Left)) { transformComponent.Position.x -= 2.0f * dtf; }
-    if (input.IsKeyHeld(Key::Right)) { transformComponent.Position.x += 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::Up)) {
+        transformComponent.Position.z += 2.0f * dtf;
+    }
+    if (input.IsKeyHeld(Key::Down)) {
+        transformComponent.Position.z -= 2.0f * dtf;
+    }
+    if (input.IsKeyHeld(Key::Left)) {
+        transformComponent.Position.x -= 2.0f * dtf;
+    }
+    if (input.IsKeyHeld(Key::Right)) {
+        transformComponent.Position.x += 2.0f * dtf;
+    }
 
-    if (input.IsKeyHeld(Key::I)) { transformComponent.Position.y += 2.0f * dtf; }
-    if (input.IsKeyHeld(Key::O)) { transformComponent.Position.y -= 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::I)) {
+        transformComponent.Position.y += 2.0f * dtf;
+    }
+    if (input.IsKeyHeld(Key::O)) {
+        transformComponent.Position.y -= 2.0f * dtf;
+    }
 
-    if (input.IsKeyHeld(Key::Z)) { transformComponent.EulerRotation.x += 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::Z)) {
+        transformComponent.EulerRotation.x += 2.0f * dtf;
+    }
 
-    if (input.IsKeyHeld(Key::X)) { transformComponent.EulerRotation.y += 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::X)) {
+        transformComponent.EulerRotation.y += 2.0f * dtf;
+    }
 
-    if (input.IsKeyHeld(Key::C)) { transformComponent.EulerRotation.z += 2.0f * dtf; }
+    if (input.IsKeyHeld(Key::C)) {
+        transformComponent.EulerRotation.z += 2.0f * dtf;
+    }
 }

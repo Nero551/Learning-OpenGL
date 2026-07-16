@@ -10,7 +10,7 @@
 void CoordinateAxesScene::Initialize() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
 
-    Root = &Engine::Ins->World.CreateEntity<Entity>();
+    SetRoot(Engine::Ins->World.CreateEntity<Entity>());
 
     auto& shader = ServiceStore::Ins->Get<ResourceManager>().Load<Shader>("AxisShader",
         "Assets/Shaders/axisShader.frag",
@@ -27,7 +27,7 @@ void CoordinateAxesScene::Initialize() {
     xAxis.GetComponent<TransformComponent>().Scale = {1, 1, 200};
     xAxis.GetComponent<MaterialComponent>().Material->Color = Color::Red;
 
-    Root->AddChild(xAxis);
+    GetRoot().AddChild(xAxis);
 
     auto& yAxis = Engine::Ins->World.CreateEntity<Axis>();
     yAxis.GetComponent<MeshComponent>().Mesh = &line;
@@ -39,7 +39,7 @@ void CoordinateAxesScene::Initialize() {
     yAxis.GetComponent<TransformComponent>().Scale = {1, 1, 200};
     yAxis.GetComponent<MaterialComponent>().Material->Color = Color::Green;
 
-    Root->AddChild(yAxis);
+    GetRoot().AddChild(yAxis);
 
     auto& zAxis = Engine::Ins->World.CreateEntity<Axis>();
     zAxis.GetComponent<MeshComponent>().Mesh = &line;
@@ -51,7 +51,7 @@ void CoordinateAxesScene::Initialize() {
     zAxis.GetComponent<TransformComponent>().Scale = {1, 1, 200};
     zAxis.GetComponent<MaterialComponent>().Material->Color = Color::Blue;
 
-    Root->AddChild(zAxis);
+    GetRoot().AddChild(zAxis);
 }
 
 void CoordinateAxesScene::Update(double dt) {}
