@@ -32,7 +32,7 @@ void World::EndFrame(double dt) {
     ActiveScene->EndFrame(dt);
 }
 
-void World::RemoveEntity(unsigned int id) {
+void World::InternalRemoveEntity(unsigned int id) {
     if (Entities.contains(id)) {
         for (auto& scene : Scenes | std::views::values) {
             if (scene->IsRoot(id)) {
@@ -42,7 +42,7 @@ void World::RemoveEntity(unsigned int id) {
         }
 
         ServiceStore::Ins->Get<EventBus>().Fire<EntityDestroyed>(FindEntity(id));
-        Entities.at(id).release();
+        Entities[id].release();
         Entities.erase(id);
     }
 }

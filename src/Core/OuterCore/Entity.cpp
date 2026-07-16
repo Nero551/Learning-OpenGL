@@ -2,6 +2,7 @@
 #include "Scene.hpp"
 #include "Core/InnerCore/Engine.hpp"
 
+
 void Entity::AttachChild(Entity& child) {
     if (HasChild(child.Id)) {
         Logger::Error("Child Entity already exists: " + std::to_string(child.Id));
@@ -46,17 +47,15 @@ void Entity::Destroy() {
         ClearParent();
     }
 
-    Engine::Ins->World.RemoveEntity(Id);
+    Engine::Ins->World.InternalRemoveEntity(Id);
 
     for (auto& descendant : descendants) {
-        Engine::Ins->World.RemoveEntity(descendant->Id);
+        Engine::Ins->World.InternalRemoveEntity(descendant->Id);
     }
 }
 
 void Entity::DestroyChildren() {
-    auto children = GetChildren();
-
-    for (auto& child : children) {
+    for (auto& child : GetChildren()) {
         child->Destroy();
     }
 }
