@@ -66,6 +66,7 @@ struct Entity {
     SafePtr<Entity> GetChild(unsigned int id);
     bool HasChild(unsigned int id) const;
     std::vector<SafePtr<Entity>> GetChildren();
+    size_t ChildCount() const;
 
     std::vector<SafePtr<Entity>> GetDescendants();
     bool IsDescendantOf(const Entity& entity);

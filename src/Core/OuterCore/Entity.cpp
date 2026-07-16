@@ -146,3 +146,7 @@ SafePtr<Entity> Entity::GetChild(unsigned int id) {
 
     Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
 }
+
+size_t Entity::ChildCount() const {
+    return Children.size();
+}
