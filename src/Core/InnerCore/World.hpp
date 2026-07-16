@@ -12,6 +12,20 @@ template <typename T>concept SceneType = std::derived_from<T, Scene>;
 struct World {
     CheckedPtr<Scene> ActiveScene{"World Has No Active Scene"};
 
+    void Start();
+
+    void Update(double dt);
+
+    void FixedUpdate(double fdt);
+
+    void Stop();
+
+    void BeginFrame(double dt);
+
+    void EndFrame(double dt);
+
+    void Render();
+
     template <SceneType T> T& CreateScene(const std::string& name) {
         if (Scenes.contains(name)) {
             Logger::Error("Scene: ", name, " already exists.");
@@ -38,20 +52,6 @@ struct World {
     }
 
     std::vector<CheckedPtr<Scene>> GetScenes();
-
-    void Start();
-
-    void Update(double dt);
-
-    void FixedUpdate(double fdt);
-
-    void Stop();
-
-    void BeginFrame(double dt);
-
-    void EndFrame(double dt);
-
-    void Render();
 
     template <EntityType T> T& CreateEntity() {
         const unsigned int id = ++currentEntityId;

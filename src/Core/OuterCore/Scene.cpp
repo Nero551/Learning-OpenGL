@@ -18,6 +18,10 @@ void Scene::SetRoot(Entity& entity) {
     Root = &entity;
 }
 
+bool Scene::IsRoot(unsigned int id) {
+    return !Root.IsNull() && Root->Id == id;
+}
+
 Entity& Scene::GetRoot() {
     return *Root;
 }

@@ -5,7 +5,6 @@
 #include "Utilities/Logger.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
-struct Scene;
 template <typename T>concept ComponentType = std::derived_from<T, Component>;
 
 struct Entity {

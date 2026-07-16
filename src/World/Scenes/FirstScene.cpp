@@ -22,6 +22,7 @@ void FirstScene::Initialize() {
 
     auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
     GetRoot().AttachChild(coordinateAxesScene.GetRoot());
+    GetRoot().DestroyChild(coordinateAxesScene.GetRoot().Id);
 
     auto& mesh = Primitives::CreateCube("mesh");
 
@@ -34,8 +35,6 @@ void FirstScene::Initialize() {
     objectMaterial.Shader = &objectShader;
     objectMaterial.DiffuseMap = &diffuseMap;
     objectMaterial.SpecularMap = &specularMap;
-
-    //TODO- make the Nova hierarchy
 
     for (float i = 0; i < 6; i += 0.5) {
         auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();

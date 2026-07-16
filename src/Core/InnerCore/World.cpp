@@ -36,6 +36,13 @@ void World::RemoveEntity(unsigned int id) {
     if (Entities.contains(id)) {
         ServiceStore::Ins->Get<EventBus>().Fire<EntityDestroyed>(FindEntity(id));
         Entities.erase(id);
+
+        for (auto& scene : Scenes | std::views::values) {
+            if (scene->IsRoot(id)) {
+                Scenes.erase(scene->Name);
+                break;
+            }
+        }
     }
 }
 
