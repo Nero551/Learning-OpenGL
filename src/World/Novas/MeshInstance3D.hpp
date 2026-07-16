@@ -6,7 +6,6 @@
 struct MeshInstance3D : Nova3D {
     void Initialize() override {
         Nova3D::Initialize();
-        AddComponent<MeshComponent>();
-        AddComponent<MaterialComponent>();
+        AddComponents<MeshComponent, MaterialComponent>();
     }
 };

@@ -36,6 +36,10 @@ struct Entity {
         return GetComponent<T>();
     }
 
+    template <ComponentType... Args> void AddComponents() {
+        (..., AddComponent<Args>());
+    }
+
     template <ComponentType T> T& GetComponent() const {
         auto component = Components.find(typeid(T));
         if (component == Components.end()) {
