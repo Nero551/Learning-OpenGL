@@ -156,6 +156,14 @@ Entity& Entity::GetChild(unsigned int id) {
     Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
 }
 
+CheckedPtr<Entity> Entity::TryGetChild(unsigned int id) {
+    auto child = Children.find(id);
+    if (child != Children.end()) {
+        return child->second;
+    }
+    return {};
+}
+
 size_t Entity::ChildCount() const {
     return Children.size();
 }

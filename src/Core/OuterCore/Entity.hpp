@@ -66,6 +66,7 @@ struct Entity {
     void DestroyChild(unsigned int id);
     void DetachChild(unsigned int id);
     Entity& GetChild(unsigned int id);
+    CheckedPtr<Entity> TryGetChild(unsigned int id);
     bool HasChild(unsigned int id) const;
     std::vector<CheckedPtr<Entity>> GetChildren();
     size_t ChildCount() const;
