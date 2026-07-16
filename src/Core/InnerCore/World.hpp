@@ -27,6 +27,8 @@ struct World {
         return static_cast<T&>(*scene->second);
     }
 
+    std::vector<SafePtr<Scene>> GetScenes();
+
     void Start();
 
     void Update(double dt);

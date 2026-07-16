@@ -46,3 +46,13 @@ Entity& World::FindEntity(unsigned int id) {
     }
     return (*entity->second);
 }
+
+std::vector<SafePtr<Scene>> World::GetScenes() {
+    std::vector<SafePtr<Scene>> scenes;
+    scenes.reserve(Scenes.size());
+    for (auto& scene : Scenes | std::views::values) {
+        scenes.emplace_back(&*scene);
+    }
+    return scenes;
+}
+
