@@ -56,7 +56,7 @@
 - Diffuse , Specular & Emission maps
 - Unit Tests
 - Directional Lights , Point Lights & Spot Lights
-- Scene hierarchy (Scenes can have child scenes)
+- Entity hierarchy (Entities can have child entities)
 - Multiple Lights
 - Event Bus
 

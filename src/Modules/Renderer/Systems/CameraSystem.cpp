@@ -26,33 +26,33 @@ void CameraSystem::Update(double dt) {
 
             const float maxPitch = Math::Radians(89.0f);
 
-            transform.EulerRotation.y += xOffset;
-            transform.EulerRotation.x += yOffset;
-            transform.EulerRotation.x = std::clamp(transform.EulerRotation.x, -maxPitch, maxPitch);
+            transform.LocalEulerRotation.y += xOffset;
+            transform.LocalEulerRotation.x += yOffset;
+            transform.LocalEulerRotation.x = std::clamp(transform.LocalEulerRotation.x, -maxPitch, maxPitch);
         }
 
         if (inputModule.IsKeyHeld(Key::W)) {
-            transform.Position += cameraComponent.Speed * dt * transform.GetForward();
+            transform.LocalPosition += cameraComponent.Speed * dt * transform.GetForward();
         }
 
         if (inputModule.IsKeyHeld(Key::S)) {
-            transform.Position -= cameraComponent.Speed * dt * transform.GetForward();
+            transform.LocalPosition -= cameraComponent.Speed * dt * transform.GetForward();
         }
 
         if (inputModule.IsKeyHeld(Key::A)) {
-            transform.Position -= cameraComponent.Speed * dt * transform.GetRight();
+            transform.LocalPosition -= cameraComponent.Speed * dt * transform.GetRight();
         }
 
         if (inputModule.IsKeyHeld(Key::D)) {
-            transform.Position += cameraComponent.Speed * dt * transform.GetRight();
+            transform.LocalPosition += cameraComponent.Speed * dt * transform.GetRight();
         }
 
         if (inputModule.IsKeyHeld(Key::Space)) {
-            transform.Position += cameraComponent.Speed * dt * Vector3(0, 1, 0);
+            transform.LocalPosition += cameraComponent.Speed * dt * Vector3(0, 1, 0);
         }
 
         if (inputModule.IsKeyHeld(Key::LeftShift)) {
-            transform.Position -= cameraComponent.Speed * dt * Vector3(0, 1, 0);
+            transform.LocalPosition -= cameraComponent.Speed * dt * Vector3(0, 1, 0);
         }
     }
 }
@@ -61,7 +61,7 @@ Matrix4 CameraSystem::GetViewMatrix() {
     auto& camera = Engine::Ins->World.ActiveScene->GetActiveCamera();
     auto& transformComponent = camera.GetComponent<Transform3DComponent>();
 
-    Vector3 pos = transformComponent.Position;
+    Vector3 pos = transformComponent.LocalPosition;
     Vector3 forward = transformComponent.GetForward();
     Vector3 up = transformComponent.GetUp();
 

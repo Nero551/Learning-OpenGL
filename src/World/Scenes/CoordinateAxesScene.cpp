@@ -22,9 +22,9 @@ void CoordinateAxesScene::Initialize() {
     xAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("X-Axis Material");
     xAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    xAxis.GetComponent<Transform3DComponent>().EulerRotation = {0, Math::Radians(90), 0};
-    xAxis.GetComponent<Transform3DComponent>().Position = {-50, 0, 0};
-    xAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
+    xAxis.GetComponent<Transform3DComponent>().LocalEulerRotation = {0, Math::Radians(90), 0};
+    xAxis.GetComponent<Transform3DComponent>().LocalPosition = {-50, 0, 0};
+    xAxis.GetComponent<Transform3DComponent>().LocalScale = {1, 1, 200};
     xAxis.GetComponent<MaterialComponent>().Material->Color = Color::Red;
 
     GetRoot().AddChild(xAxis);
@@ -34,9 +34,9 @@ void CoordinateAxesScene::Initialize() {
     yAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Y-Axis Material");;
     yAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    yAxis.GetComponent<Transform3DComponent>().EulerRotation = {Math::Radians(-90), 0, 0};
-    yAxis.GetComponent<Transform3DComponent>().Position = {0, -50, 0};
-    yAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
+    yAxis.GetComponent<Transform3DComponent>().LocalEulerRotation = {Math::Radians(-90), 0, 0};
+    yAxis.GetComponent<Transform3DComponent>().LocalPosition = {0, -50, 0};
+    yAxis.GetComponent<Transform3DComponent>().LocalScale = {1, 1, 200};
     yAxis.GetComponent<MaterialComponent>().Material->Color = Color::Green;
 
     GetRoot().AddChild(yAxis);
@@ -46,9 +46,9 @@ void CoordinateAxesScene::Initialize() {
     zAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Z-Axis Material");
     zAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    zAxis.GetComponent<Transform3DComponent>().EulerRotation = {0, 0, 0};
-    zAxis.GetComponent<Transform3DComponent>().Position = {0, 0, -50};
-    zAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
+    zAxis.GetComponent<Transform3DComponent>().LocalEulerRotation = {0, 0, 0};
+    zAxis.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, -50};
+    zAxis.GetComponent<Transform3DComponent>().LocalScale = {1, 1, 200};
     zAxis.GetComponent<MaterialComponent>().Material->Color = Color::Blue;
 
     GetRoot().AddChild(zAxis);

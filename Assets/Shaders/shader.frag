@@ -48,17 +48,17 @@ uniform Light Lights[NR_LIGHTS];
 
 uniform material Material;
 
-void CalculateDirectionalLight(Light light, out vec3 lightDir, out float directionalIntensity){
+void CalculateDirectionalLight(Light light, out vec3 lightDir, out float directionalIntensity) {
     lightDir = normalize(-light.Direction);
     directionalIntensity = light.Intensity;
 }
 
-void CalculatePointLight(Light light, out float attenuation){
+void CalculatePointLight(Light light, out float attenuation) {
     float dist = length(light.Position - vPosition.xyz);
     attenuation = (1.0 / (light.Quadratic * (dist * dist) + light.Linear * dist + light.Constant)) * light.Intensity;
 }
 
-void CalculateSpotLight(Light light, vec3 lightDir, out float cutOff, out float attenuation){
+void CalculateSpotLight(Light light, vec3 lightDir, out float cutOff, out float attenuation) {
     float dist = length(light.Position - vPosition.xyz);
     attenuation = (1.0 / (light.Constant + light.Linear * dist + light.Quadratic * (dist * dist))) * light.Intensity;
 
@@ -68,7 +68,7 @@ void CalculateSpotLight(Light light, vec3 lightDir, out float cutOff, out float 
     cutOff = clamp((cosTheta - light.OuterCutOff) / epsilon, 0.0, 1) * light.Intensity;
 }
 
-vec3 CalculateLight(Light light){
+vec3 CalculateLight(Light light) {
     vec3 diffuseMap = vec3(texture(Material.DiffuseMap, vUV));
     vec3 specularMap = vec3(texture(Material.SpecularMap, vUV));
 
@@ -77,13 +77,13 @@ vec3 CalculateLight(Light light){
     float attenuation = 1;
     float directionalIntensity = 1;
 
-    if (light.Type == 0){
+    if (light.Type == 0) {
         CalculateDirectionalLight(light, lightDir, directionalIntensity);
 
-    } else if (light.Type == 1){
+    } else if (light.Type == 1) {
         CalculatePointLight(light, attenuation);
 
-    } else if (light.Type == 2){
+    } else if (light.Type == 2) {
         CalculateSpotLight(light, lightDir, cutOff, attenuation);
     }
 
@@ -103,10 +103,9 @@ vec3 CalculateLight(Light light){
     return ambient + diffuse + specular;
 }
 
-vec3 ApplyLighting(){
+vec3 ApplyLighting() {
     vec3 result;
-
-    for (int i = 0; i < MaxLights; i++){
+    for (int i = 0; i < MaxLights; i++) {
         result += CalculateLight(Lights[i]);
     }
 

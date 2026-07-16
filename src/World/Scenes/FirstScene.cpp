@@ -40,14 +40,14 @@ void FirstScene::Initialize() {
         auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
         cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
         cube.GetComponent<MeshComponent>().Mesh = &mesh;
-        cube.GetComponent<Transform3DComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
+        cube.GetComponent<Transform3DComponent>().LocalPosition = {std::cos(i) * 5, 0, std::sin(i) * 5};
         GetRoot().AddChild(cube);
     }
 
     auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
-    cube.GetComponent<Transform3DComponent>().Position = {0, 0, 1};
+    cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 1};
     GetRoot().AddChild(cube);
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
@@ -60,7 +60,7 @@ void FirstScene::Initialize() {
     light.GetComponent<MaterialComponent>().Material = &lightMaterial;
     light.GetComponent<MeshComponent>().Mesh = &mesh;
 
-    light.GetComponent<Transform3DComponent>().Scale = {0.2};
+    light.GetComponent<Transform3DComponent>().LocalScale = {0.2};
 
     light.GetComponent<LightComponent>().Type = LightType::Spot;
 
@@ -72,8 +72,9 @@ void FirstScene::Initialize() {
     light2.GetComponent<MaterialComponent>().Material = &lightMaterial;
     light2.GetComponent<MeshComponent>().Mesh = &mesh;
 
-    light2.GetComponent<Transform3DComponent>().Scale = {0.2};
+    light2.GetComponent<Transform3DComponent>().LocalScale = {0.2};
 
+    light2.GetComponent<LightComponent>().Ambient = {0.2};
     light2.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AddChild(light2);
 }
@@ -86,34 +87,34 @@ void FirstScene::Update(double dt) {
     auto dtf = static_cast<float>(dt);
 
     if (input.IsKeyHeld(Key::Up)) {
-        transformComponent.Position.z += 2.0f * dtf;
+        transformComponent.LocalPosition.z += 2.0f * dtf;
     }
     if (input.IsKeyHeld(Key::Down)) {
-        transformComponent.Position.z -= 2.0f * dtf;
+        transformComponent.LocalPosition.z -= 2.0f * dtf;
     }
     if (input.IsKeyHeld(Key::Left)) {
-        transformComponent.Position.x -= 2.0f * dtf;
+        transformComponent.LocalPosition.x -= 2.0f * dtf;
     }
     if (input.IsKeyHeld(Key::Right)) {
-        transformComponent.Position.x += 2.0f * dtf;
+        transformComponent.LocalPosition.x += 2.0f * dtf;
     }
 
     if (input.IsKeyHeld(Key::I)) {
-        transformComponent.Position.y += 2.0f * dtf;
+        transformComponent.LocalPosition.y += 2.0f * dtf;
     }
     if (input.IsKeyHeld(Key::O)) {
-        transformComponent.Position.y -= 2.0f * dtf;
+        transformComponent.LocalPosition.y -= 2.0f * dtf;
     }
 
     if (input.IsKeyHeld(Key::Z)) {
-        transformComponent.EulerRotation.x += 2.0f * dtf;
+        transformComponent.LocalEulerRotation.x += 2.0f * dtf;
     }
 
     if (input.IsKeyHeld(Key::X)) {
-        transformComponent.EulerRotation.y += 2.0f * dtf;
+        transformComponent.LocalEulerRotation.y += 2.0f * dtf;
     }
 
     if (input.IsKeyHeld(Key::C)) {
-        transformComponent.EulerRotation.z += 2.0f * dtf;
+        transformComponent.LocalEulerRotation.z += 2.0f * dtf;
     }
 }

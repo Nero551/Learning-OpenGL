@@ -49,7 +49,7 @@ void LightingSystem::Render() {
 
         materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", MaxLights));
         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
-            camera.GetComponent<Transform3DComponent>().Position));
+            camera.GetComponent<Transform3DComponent>().LocalPosition));
 
         for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
             auto& light = Engine::Ins->World.FindEntity(Lights[i]);
@@ -60,7 +60,7 @@ void LightingSystem::Render() {
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Position", i),
-                    light.GetComponent<Transform3DComponent>().Position));
+                    light.GetComponent<Transform3DComponent>().LocalPosition));
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("Lights[{}].Ambient", i), lightComponent.Ambient));

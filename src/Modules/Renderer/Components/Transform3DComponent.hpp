@@ -4,15 +4,15 @@
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
 struct Transform3DComponent : Component {
-    Vector3 Position = Vector3::Zero;
-    Vector3 EulerRotation = Vector3::Zero; // Radians
-    Vector3 Scale = Vector3::One;
+    Vector3 LocalPosition = Vector3::Zero;
+    Vector3 LocalEulerRotation = Vector3::Zero; // Radians
+    Vector3 LocalScale = Vector3::One;
 
     Matrix4 GetModelMatrix() const {
         Matrix4 modelMatrix = Matrix4::Identity;
-        modelMatrix = modelMatrix.Translate(Position);
-        modelMatrix = modelMatrix.Rotate(EulerRotation);
-        modelMatrix = modelMatrix.Scale(Scale);
+        modelMatrix = modelMatrix.Translate(LocalPosition);
+        modelMatrix = modelMatrix.Rotate(LocalEulerRotation);
+        modelMatrix = modelMatrix.Scale(LocalScale);
 
         return modelMatrix;
     }
@@ -22,14 +22,19 @@ struct Transform3DComponent : Component {
         return normalMatrix;
     }
 
-    Vector3 GetRight() const { return Vector3::Up.Cross(GetForward()).Normalized(); }
-    Vector3 GetUp() const { return GetForward().Cross(GetRight()).Normalized(); }
+    Vector3 GetRight() const {
+        return Vector3::Up.Cross(GetForward()).Normalized();
+    }
+
+    Vector3 GetUp() const {
+        return GetForward().Cross(GetRight()).Normalized();
+    }
 
     Vector3 GetForward() const {
         Vector3 direction;
-        direction.x = std::sin(EulerRotation.y) * std::cos(EulerRotation.x);
-        direction.y = std::sin(EulerRotation.x);
-        direction.z = std::cos(EulerRotation.y) * std::cos(EulerRotation.x);
+        direction.x = std::sin(LocalEulerRotation.y) * std::cos(LocalEulerRotation.x);
+        direction.y = std::sin(LocalEulerRotation.x);
+        direction.z = std::cos(LocalEulerRotation.y) * std::cos(LocalEulerRotation.x);
 
         return direction.Normalized();
     }
