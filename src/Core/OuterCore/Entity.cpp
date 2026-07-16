@@ -18,10 +18,14 @@ void Entity::AddChild(Entity& child) {
         return;
     }
 
-    if (child.Parent) {
-        child.Parent->RemoveChild(child.Id);
+    if (child.IsAncestorOf(*this)) {
+        Logger::Error("An entity cannot have its ancestor as a child.");
+        return;
     }
 
+    if (child.Parent) {
+        child.Parent->DetachChild(child.Id);
+    }
 
     SafePtr<Entity> childPtr = &child;
     Children.emplace(child.Id, std::move(childPtr));
@@ -44,22 +48,19 @@ std::vector<SafePtr<Entity>> Entity::GetChildren() {
     return children;
 }
 
-void Entity::RemoveChild(unsigned int id) {
+void Entity::DestroyChild(unsigned int id) {
     auto child = Children.find(id);
     if (child == Children.end()) {
         return;
     }
 
-    std::vector<SafePtr<Entity>> toDelete;
-    RecursiveChildren(toDelete, *child->second);
-
-    toDelete.emplace_back(child->second);
-
-    Children.erase(child);
-
-    for (auto& entity : toDelete) {
-        Engine::Ins->World.RemoveEntity(entity->Id);
+    for (auto& descendant : child->second->GetDescendants()) {
+        Engine::Ins->World.RemoveEntity(descendant->Id);
     }
+
+
+    DetachChild(id);
+    Engine::Ins->World.RemoveEntity(id);
 }
 
 std::vector<SafePtr<Entity>> Entity::GetDescendants() {
@@ -70,6 +71,15 @@ std::vector<SafePtr<Entity>> Entity::GetDescendants() {
     return descendants;
 }
 
+void Entity::DetachChild(unsigned int id) {
+    auto child = Children.find(id);
+
+    if (child != Children.end()) {
+        child->second->Parent.Reset();
+        Children.erase(child);
+    }
+}
+
 void Entity::RecursiveChildren(std::vector<SafePtr<Entity>>& entities, Entity& entity) {
     for (auto& child : entity.Children | std::views::values) {
         SafePtr<Entity> entityPtr;
@@ -77,4 +87,62 @@ void Entity::RecursiveChildren(std::vector<SafePtr<Entity>>& entities, Entity& e
         entities.push_back(entityPtr);
         RecursiveChildren(entities, *entityPtr);
     }
+}
+
+SafePtr<Entity> Entity::GetParent() {
+    return Parent;
+}
+
+std::vector<SafePtr<Entity>> Entity::GetAncestors() {
+    std::vector<SafePtr<Entity>> ancestors;
+
+    auto current = Parent;
+
+    while (current) {
+        ancestors.push_back(current);
+        current = current->Parent;
+    }
+
+    return ancestors;
+}
+
+bool Entity::IsDescendantOf(const Entity& entity) {
+    for (auto& descendant : GetDescendants()) {
+        if (descendant->Id == entity.Id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Entity::IsAncestorOf(const Entity& entity) {
+    for (auto& ancestor : GetAncestors()) {
+        if (ancestor->Id == entity.Id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+SafePtr<Entity> Entity::GetRoot() {
+    SafePtr<Entity> current = this;
+
+    while (current->Parent)
+        current = current->Parent.Get();
+
+    return current;
+}
+
+bool Entity::HasChild(unsigned int id) const {
+    return Children.contains(id);
+}
+
+SafePtr<Entity> Entity::GetChild(unsigned int id) {
+    auto child = Children.find(id);
+
+    if (child != Children.end()) {
+        return child->second;
+    }
+
+    Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
 }

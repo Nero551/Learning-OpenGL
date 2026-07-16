@@ -38,7 +38,9 @@ struct Entity {
 
     template <ComponentType T> T& GetComponent() const {
         auto component = Components.find(typeid(T));
-        if (component == Components.end()) { Logger::Fatal(std::format("Component Not Found: {}", typeid(T).name())); }
+        if (component == Components.end()) {
+            Logger::Fatal(std::format("Component Not Found: {}", typeid(T).name()));
+        }
         return static_cast<T&>((*component->second));
     }
 
@@ -59,9 +61,19 @@ struct Entity {
 
     void AddChild(Entity& child);
     void AddChild(Scene& sceneChild);
-    void RemoveChild(unsigned int id);
+    void DestroyChild(unsigned int id);
+    void DetachChild(unsigned int id);
+    SafePtr<Entity> GetChild(unsigned int id);
+    bool HasChild(unsigned int id) const;
     std::vector<SafePtr<Entity>> GetChildren();
+
     std::vector<SafePtr<Entity>> GetDescendants();
+    bool IsDescendantOf(const Entity& entity);
+
+    SafePtr<Entity> GetParent();
+    std::vector<SafePtr<Entity>> GetAncestors();
+    bool IsAncestorOf(const Entity& entity);
+    SafePtr<Entity> GetRoot();
 
 private:
     std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;
