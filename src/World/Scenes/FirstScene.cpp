@@ -13,11 +13,11 @@ unsigned int lightId;
 
 void FirstScene::Initialize() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
-    auto& camera = CreateEntity<Camera>();
+    auto& camera = Engine::Ins->World.CreateEntity<Camera>();
     camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
     SetActiveCamera(camera);
 
-    Root = &CreateEntity<Entity>();
+    Root = &Engine::Ins->World.CreateEntity<Entity>();
 
     auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
     Root->AddChild(coordinateAxesScene);
@@ -48,7 +48,7 @@ void FirstScene::Initialize() {
     //     cube.GetComponent<TransformComponent>().Position = {std::cos(i) * 5, 0, std::sin(i) * 5};
     // }
 
-    Cube& cube = CreateEntity<Cube>();
+    Cube& cube = Engine::Ins->World.CreateEntity<Cube>();
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<TransformComponent>().Position = {0, 0, 1};
@@ -60,7 +60,7 @@ void FirstScene::Initialize() {
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
 
-    auto& light = CreateEntity<Light>();
+    auto& light = Engine::Ins->World.CreateEntity<Light>();
     light.GetComponent<MaterialComponent>().Material = &lightMaterial;
     light.GetComponent<MeshComponent>().Mesh = &mesh;
 
@@ -72,7 +72,7 @@ void FirstScene::Initialize() {
 
     lightId = light.Id; //Temporary
 
-    auto& light2 = CreateEntity<Light>();
+    auto& light2 = Engine::Ins->World.CreateEntity<Light>();
     light2.GetComponent<MaterialComponent>().Material = &lightMaterial;
     light2.GetComponent<MeshComponent>().Mesh = &mesh;
 
@@ -83,7 +83,7 @@ void FirstScene::Initialize() {
 }
 
 void FirstScene::Update(double dt) {
-    auto& light = GetEntity(lightId);
+    auto& light = Engine::Ins->World.FindEntity(lightId);
     auto& transformComponent = light.GetComponent<TransformComponent>();
     auto& input = Engine::Ins->GetModule<Input>();
 

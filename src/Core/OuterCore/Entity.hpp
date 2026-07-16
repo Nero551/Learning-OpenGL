@@ -61,9 +61,12 @@ struct Entity {
     void AddChild(Scene& sceneChild);
     void RemoveChild(unsigned int id);
     std::vector<SafePtr<Entity>> GetChildren();
+    std::vector<SafePtr<Entity>> GetDescendants();
 
 private:
     std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;
     std::unordered_map<unsigned int, SafePtr<Entity>> Children;
     SafePtr<Entity> Parent{"Scene Has No Parent"};
+
+    void RecursiveChildren(std::vector<SafePtr<Entity>>& entities, Entity& entity);
 };

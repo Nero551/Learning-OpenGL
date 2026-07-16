@@ -1,7 +1,10 @@
 #pragma once
 
 #include "../OuterCore/Scene.hpp"
+#include "Core/OuterCore/ServiceStore.hpp"
+#include "Core/Services/EventBus.hpp"
 #include "Utilities/Logger.hpp"
+#include "World/Events/EntityCreated.hpp"
 
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
@@ -34,6 +37,24 @@ struct World {
 
     void Render();
 
+    template <EntityType T> T& CreateEntity() {
+        const unsigned int id = ++currentEntityId;
+        auto entity = std::make_unique<T>();
+        entity->Id = id;
+        entity->Initialize();
+
+        ServiceStore::Ins->Get<EventBus>().Fire<EntityCreated>(*entity);
+
+        Entities.emplace(id, std::move(entity));
+
+        return static_cast<T&>(*Entities.find(id)->second);
+    }
+
+    Entity& FindEntity(unsigned int id);
+    void RemoveEntity(unsigned int id);
+
 private:
     std::unordered_map<std::string, std::unique_ptr<Scene>> Scenes;
+    std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
+    unsigned int currentEntityId = 0;
 };

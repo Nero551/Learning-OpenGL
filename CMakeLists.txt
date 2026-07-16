@@ -44,6 +44,6 @@ target_link_libraries(Engine
 
 target_compile_options(Engine PRIVATE
         -Wall
-        -Wextra
-        -Wpedantic
+        #        -Wextra
+        #        -Wpedantic
 )
