@@ -4,10 +4,13 @@
 
 #include "../OuterCore/ServiceStore.hpp"
 #include "../../Modules/Renderer/Renderer.hpp"
+#include "Core/Services/ResourceManager.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Profiling/Profiling.hpp"
 
-Engine::Engine() : Window(1000, 800, "Plus Ultra") { Running = true; }
+Engine::Engine() : Window(1000, 800, "Plus Ultra") {
+    Running = true;
+}
 
 SafePtr<Engine> Engine::Ins;
 
@@ -32,7 +35,9 @@ void Engine::Start() {
 
     World.Start();
 
-    for (auto& module : Modules | std::views::values) { module->Start(); }
+    for (auto& module : Modules | std::views::values) {
+        module->Start();
+    }
 
 
     GetModule<Input>().SetMouseMode(MouseMode::Disabled);
@@ -55,20 +60,38 @@ void Engine::Update() {
         if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
             GetModule<Input>().SetMouseMode(MouseMode::Normal);
         }
-        else { GetModule<Input>().SetMouseMode(MouseMode::Disabled); }
+        else {
+            GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+        }
     }
 
-    for (auto& module : Modules | std::views::values) { module->Update(DeltaTime); }
+    for (auto& module : Modules | std::views::values) {
+        module->Update(DeltaTime);
+    }
+}
+
+void Engine::FixedUpdate() {
+    World.FixedUpdate(FixedDeltaTime);
+    Logger::Info("Fixed Update");
+    for (auto& module : Modules | std::views::values) {
+        module->FixedUpdate(FixedDeltaTime);
+    }
 }
 
 void Engine::Stop() {
     World.Stop();
-    for (auto& module : Modules | std::views::values) { module->Stop(); }
+    for (auto& module : Modules | std::views::values) {
+        module->Stop();
+    }
 
     glfwTerminate();
 }
 
-void Engine::Render() { for (auto& module : Modules | std::views::values) { module->Render(); } }
+void Engine::Render() {
+    for (auto& module : Modules | std::views::values) {
+        module->Render();
+    }
+}
 
 void Engine::BeginFrame() {
     Window.PollEvents();
@@ -76,7 +99,9 @@ void Engine::BeginFrame() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     World.BeginFrame(DeltaTime);
-    for (auto& module : Modules | std::views::values) { module->BeginFrame(DeltaTime); }
+    for (auto& module : Modules | std::views::values) {
+        module->BeginFrame(DeltaTime);
+    }
 }
 
 void Engine::EndFrame() {
@@ -86,5 +111,7 @@ void Engine::EndFrame() {
     Window.SwapBuffers();
 
     World.EndFrame(DeltaTime);
-    for (auto& module : Modules | std::views::values) { module->EndFrame(DeltaTime); }
+    for (auto& module : Modules | std::views::values) {
+        module->EndFrame(DeltaTime);
+    }
 }

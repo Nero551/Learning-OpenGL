@@ -12,6 +12,10 @@ void World::Update(double dt) {
     ActiveScene->Update(dt);
 }
 
+void World::FixedUpdate(double fdt) {
+    ActiveScene->FixedUpdate(fdt);
+}
+
 void World::Render() {
     ActiveScene->Render();
 }

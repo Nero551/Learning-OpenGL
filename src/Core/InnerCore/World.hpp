@@ -21,13 +21,17 @@ struct World {
 
     template <SceneType T> T& GetScene(const std::string& name) {
         auto scene = Scenes.find(name);
-        if (scene == Scenes.end()) { Logger::Fatal("No Corresponding Scene."); }
+        if (scene == Scenes.end()) {
+            Logger::Fatal("No Corresponding Scene.");
+        }
         return static_cast<T&>(*scene->second);
     }
 
     void Start();
 
     void Update(double dt);
+
+    void FixedUpdate(double fdt);
 
     void Stop();
 

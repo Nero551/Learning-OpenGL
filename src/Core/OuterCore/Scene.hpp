@@ -26,6 +26,8 @@ struct Scene {
 
     virtual void Update(double dt) {}
 
+    virtual void FixedUpdate(double fdt) {}
+
     virtual void Render() {}
 
     virtual void BeginFrame(double dt) {}

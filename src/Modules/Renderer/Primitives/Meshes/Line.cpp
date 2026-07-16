@@ -1,5 +1,6 @@
 #include "../Primitives.hpp"
 #include "Core/InnerCore/Engine.hpp"
+#include "Core/Services/ResourceManager.hpp"
 #include "Utilities/Math/Color.hpp"
 
 

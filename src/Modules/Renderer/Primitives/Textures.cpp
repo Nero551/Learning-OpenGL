@@ -1,6 +1,7 @@
 #include "../Resources/Texture.hpp"
 #include "Core/InnerCore/Engine.hpp"
 #include "Primitives.hpp"
+#include "Core/Services/ResourceManager.hpp"
 
 
 Texture& Primitives::CreateWhiteTexture() {

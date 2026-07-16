@@ -1,6 +1,7 @@
 
 #include "Core/InnerCore/Engine.hpp"
 #include "../Primitives.hpp"
+#include "Core/Services/ResourceManager.hpp"
 
 
 Mesh& Primitives::CreateUVSphere(const std::string& name, float radius, int sectors, int stacks) {

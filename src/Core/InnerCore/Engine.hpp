@@ -1,7 +1,5 @@
 #pragma once
-#include "../Services/EventBus.hpp"
 #include "Module.hpp"
-#include "../Services/ResourceManager.hpp"
 #include "Window.hpp"
 #include "World.hpp"
 #include "Utilities/SafePtr.hpp"
@@ -14,6 +12,7 @@ struct Engine {
     bool Running;
     double Time = 0;
     double DeltaTime = 0;
+    double FixedDeltaTime = 1.0 / 60.0;
 
     Window Window;
     World World;
@@ -30,11 +29,15 @@ struct Engine {
 
     void Update();
 
+    void FixedUpdate();
+
     void Render();
 
     template <ModuleType T> T& GetModule() {
         auto module = Modules.find(typeid(T));
-        if (module == Modules.end()) { Logger::Fatal(std::format("Module {} not found", typeid(T).name())); }
+        if (module == Modules.end()) {
+            Logger::Fatal(std::format("Module {} not found", typeid(T).name()));
+        }
         return static_cast<T&>((*module->second));
     }
 

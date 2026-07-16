@@ -1,5 +1,6 @@
 #include "Core/InnerCore/Engine.hpp"
 #include "../Primitives.hpp"
+#include "Core/Services/ResourceManager.hpp"
 
 
 Mesh& Primitives::CreateQuad(const std::string& name) {

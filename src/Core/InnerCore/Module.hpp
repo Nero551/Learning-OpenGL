@@ -10,6 +10,8 @@ struct Module {
 
     void Update(double dt);
 
+    void FixedUpdate(double fdt);
+
     void Stop();
 
     void Render();
@@ -43,6 +45,7 @@ private:
 protected:
     virtual void OnStart() {}
     virtual void OnUpdate(double dt) {}
+    virtual void OnFixedUpdate(double fdt) {}
     virtual void OnEndFrame(double dt) {}
     virtual void OnRender() {}
     virtual void OnBeginFrame(double dt) {}

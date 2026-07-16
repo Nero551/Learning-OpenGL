@@ -1,17 +1,19 @@
 #pragma once
 
 struct System {
-   virtual ~System() {}
+    virtual ~System() {}
 
-   virtual void Start() {}
+    virtual void Start() {}
 
-   virtual void Update(double dt) {}
+    virtual void Update(double dt) {}
 
-   virtual void Stop() {}
+    virtual void FixedUpdate(double fdt) {}
 
-   virtual void BeginFrame(double dt) {}
+    virtual void Stop() {}
 
-   virtual void Render() {}
+    virtual void BeginFrame(double dt) {}
 
-   virtual void EndFrame(double dt) {}
+    virtual void Render() {}
+
+    virtual void EndFrame(double dt) {}
 };

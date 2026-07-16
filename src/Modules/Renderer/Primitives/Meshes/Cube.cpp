@@ -1,6 +1,7 @@
 #include "../Primitives.hpp"
 
 #include "Core/InnerCore/Engine.hpp"
+#include "Core/Services/ResourceManager.hpp"
 
 Mesh& Primitives::CreateCube(const std::string& name) {
     std::vector vertices = {

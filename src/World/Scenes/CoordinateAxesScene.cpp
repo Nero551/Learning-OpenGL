@@ -1,6 +1,7 @@
 #include "CoordinateAxesScene.hpp"
 
 #include "Core/InnerCore/Engine.hpp"
+#include "Core/Services/ResourceManager.hpp"
 #include "Modules/Renderer/Components/MaterialComponent.hpp"
 #include "Modules/Renderer/Components/MeshComponent.hpp"
 #include "Modules/Renderer/Primitives/Primitives.hpp"
