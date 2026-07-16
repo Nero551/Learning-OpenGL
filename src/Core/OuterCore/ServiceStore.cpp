@@ -1,3 +1,3 @@
 #include "ServiceStore.hpp"
 
-SafePtr<ServiceStore> ServiceStore::Ins;
+CheckedPtr<ServiceStore> ServiceStore::Ins;

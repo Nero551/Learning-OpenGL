@@ -2,12 +2,12 @@
 #include "Module.hpp"
 #include "Window.hpp"
 #include "World.hpp"
-#include "Utilities/SafePtr.hpp"
+#include "Utilities/CheckedPtr.hpp"
 
 template <typename T>concept ModuleType = std::derived_from<T, Module>;
 
 struct Engine {
-    static SafePtr<Engine> Ins;
+    static CheckedPtr<Engine> Ins;
 
     bool Running;
     double Time = 0;

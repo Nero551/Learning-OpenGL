@@ -28,7 +28,7 @@ void CoordinateAxesScene::Initialize() {
     xAxis.GetComponent<Transform3DComponent>().LocalScale = {1, 1, 200};
     xAxis.GetComponent<MaterialComponent>().Material->Color = Color::Red;
 
-    GetRoot().AddChild(xAxis);
+    GetRoot().AttachChild(xAxis);
 
     auto& yAxis = Engine::Ins->World.CreateEntity<Axis>();
     yAxis.GetComponent<MeshComponent>().Mesh = &line;
@@ -40,7 +40,7 @@ void CoordinateAxesScene::Initialize() {
     yAxis.GetComponent<Transform3DComponent>().LocalScale = {1, 1, 200};
     yAxis.GetComponent<MaterialComponent>().Material->Color = Color::Green;
 
-    GetRoot().AddChild(yAxis);
+    GetRoot().AttachChild(yAxis);
 
     auto& zAxis = Engine::Ins->World.CreateEntity<Axis>();
     zAxis.GetComponent<MeshComponent>().Mesh = &line;
@@ -52,7 +52,7 @@ void CoordinateAxesScene::Initialize() {
     zAxis.GetComponent<Transform3DComponent>().LocalScale = {1, 1, 200};
     zAxis.GetComponent<MaterialComponent>().Material->Color = Color::Blue;
 
-    GetRoot().AddChild(zAxis);
+    GetRoot().AttachChild(zAxis);
 }
 
 void CoordinateAxesScene::Update(double dt) {}

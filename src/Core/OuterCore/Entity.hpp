@@ -3,7 +3,7 @@
 #include "Component.hpp"
 
 #include "Utilities/Logger.hpp"
-#include "Utilities/SafePtr.hpp"
+#include "Utilities/CheckedPtr.hpp"
 
 struct Scene;
 template <typename T>concept ComponentType = std::derived_from<T, Component>;
@@ -62,26 +62,29 @@ struct Entity {
         return ref;
     }
 
-    void AddChild(Entity& child);
+    void AttachChild(Entity& child);
     void DestroyChild(unsigned int id);
     void DetachChild(unsigned int id);
     Entity& GetChild(unsigned int id);
     bool HasChild(unsigned int id) const;
-    std::vector<SafePtr<Entity>> GetChildren();
+    std::vector<CheckedPtr<Entity>> GetChildren();
     size_t ChildCount() const;
 
-    std::vector<SafePtr<Entity>> GetDescendants();
+    std::vector<CheckedPtr<Entity>> GetDescendants();
     bool IsDescendantOf(const Entity& entity);
 
     Entity& GetParent();
-    std::vector<SafePtr<Entity>> GetAncestors();
+    void SetParent(Entity& parent);
+    void ClearParent();
+    bool HasParent() const;
+    std::vector<CheckedPtr<Entity>> GetAncestors();
     bool IsAncestorOf(const Entity& entity);
     Entity& GetRoot();
 
 private:
     std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;
-    std::unordered_map<unsigned int, SafePtr<Entity>> Children;
-    SafePtr<Entity> Parent{"Scene Has No Parent"};
+    std::unordered_map<unsigned int, CheckedPtr<Entity>> Children;
+    CheckedPtr<Entity> Parent{"Scene Has No Parent"};
 
-    void RecursiveChildren(std::vector<SafePtr<Entity>>& entities, Entity& entity);
+    void RecursiveChildren(std::vector<CheckedPtr<Entity>>& entities, Entity& entity);
 };

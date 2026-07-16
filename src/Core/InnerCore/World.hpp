@@ -10,14 +10,23 @@ template <typename T>concept EntityType = std::derived_from<T, Entity>;
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
 struct World {
-    SafePtr<Scene> ActiveScene{"World Has No Active Scene"};
+    CheckedPtr<Scene> ActiveScene{"World Has No Active Scene"};
 
     template <SceneType T> T& CreateScene(const std::string& name) {
+        if (Scenes.contains(name)) {
+            Logger::Error("Scene: ", name, " already exists.");
+            return static_cast<T&>(*Scenes.at(name));
+        }
+
         auto scene = std::make_unique<T>();
         scene->Name = name;
         scene->Initialize();
+
+        T& ref = *scene;
+
         Scenes.emplace(name, std::move(scene));
-        return GetScene<T>(name);
+
+        return ref;
     }
 
     template <SceneType T> T& GetScene(const std::string& name) {
@@ -28,7 +37,7 @@ struct World {
         return static_cast<T&>(*scene->second);
     }
 
-    std::vector<SafePtr<Scene>> GetScenes();
+    std::vector<CheckedPtr<Scene>> GetScenes();
 
     void Start();
 

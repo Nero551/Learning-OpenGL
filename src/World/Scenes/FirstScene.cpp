@@ -21,7 +21,7 @@ void FirstScene::Initialize() {
     SetRoot(Engine::Ins->World.CreateEntity<Entity>());
 
     auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
-    GetRoot().AddChild(coordinateAxesScene.GetRoot());
+    GetRoot().AttachChild(coordinateAxesScene.GetRoot());
 
     auto& mesh = Primitives::CreateCube("mesh");
 
@@ -42,14 +42,14 @@ void FirstScene::Initialize() {
         cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
         cube.GetComponent<MeshComponent>().Mesh = &mesh;
         cube.GetComponent<Transform3DComponent>().LocalPosition = {std::cos(i) * 5, 0, std::sin(i) * 5};
-        GetRoot().AddChild(cube);
+        GetRoot().AttachChild(cube);
     }
 
     auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 1};
-    GetRoot().AddChild(cube);
+    GetRoot().AttachChild(cube);
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
         "Assets/Shaders/lightShader.vert");
@@ -65,7 +65,7 @@ void FirstScene::Initialize() {
 
     light.GetComponent<LightComponent>().Type = LightType::Spot;
 
-    GetRoot().AddChild(light);
+    GetRoot().AttachChild(light);
 
     lightId = light.Id; //Temporary
 
@@ -77,7 +77,7 @@ void FirstScene::Initialize() {
 
     light2.GetComponent<LightComponent>().Ambient = {0.2};
     light2.GetComponent<LightComponent>().Type = LightType::Directional;
-    GetRoot().AddChild(light2);
+    GetRoot().AttachChild(light2);
 }
 
 void FirstScene::Update(double dt) {

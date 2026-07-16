@@ -5,12 +5,11 @@
 #include "Texture.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"
 #include "Utilities/Math/Vector/Vector4.hpp"
-#include "Utilities/SafePtr.hpp"
+#include "Utilities/CheckedPtr.hpp"
 
-struct Material : Resource
-{
+struct Material : Resource {
     static constexpr int MaxTextures = 8;
-    SafePtr<Shader> Shader{"Material Has No Shader Assigned"};
+    CheckedPtr<Shader> Shader{"Material Has No Shader Assigned"};
 
     Vector4 Color = {1};
     Vector3 Ambient = {1};
@@ -19,9 +18,9 @@ struct Material : Resource
     Vector3 Emission = {0};
     float Shininess = 32;
 
-    SafePtr<Texture> DiffuseMap;
-    SafePtr<Texture> SpecularMap;
-    SafePtr<Texture> EmissionMap;
+    CheckedPtr<Texture> DiffuseMap;
+    CheckedPtr<Texture> SpecularMap;
+    CheckedPtr<Texture> EmissionMap;
 
 
     Material(const std::string& name);
@@ -31,7 +30,7 @@ struct Material : Resource
     void Use();
 
 protected:
-    std::array<SafePtr<Texture>, MaxTextures> CustomTextures{};
+    std::array<CheckedPtr<Texture>, MaxTextures> CustomTextures{};
 
     void SetProperties();
 };

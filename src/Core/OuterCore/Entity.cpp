@@ -2,19 +2,14 @@
 #include "Scene.hpp"
 #include "Core/InnerCore/Engine.hpp"
 
-void Entity::AddChild(Entity& child) {
-    if (Children.contains(child.Id)) {
+void Entity::AttachChild(Entity& child) {
+    if (HasChild(child.Id)) {
         Logger::Error("Child Entity already exists: " + std::to_string(child.Id));
         return;
     }
 
     if (&child == this) {
         Logger::Error("An entity cannot be its own child.");
-        return;
-    }
-
-    if (Parent.Get() == &child) {
-        Logger::Error("An entity cannot have its parent as a child.");
         return;
     }
 
@@ -27,14 +22,14 @@ void Entity::AddChild(Entity& child) {
         child.Parent->DetachChild(child.Id);
     }
 
-    SafePtr<Entity> childPtr = &child;
+    CheckedPtr<Entity> childPtr = &child;
     Children.emplace(child.Id, std::move(childPtr));
 
     child.Parent = this;
 }
 
-std::vector<SafePtr<Entity>> Entity::GetChildren() {
-    std::vector<SafePtr<Entity>> children;
+std::vector<CheckedPtr<Entity>> Entity::GetChildren() {
+    std::vector<CheckedPtr<Entity>> children;
     children.reserve(Children.size());
 
     for (auto& child : Children | std::views::values) {
@@ -50,17 +45,18 @@ void Entity::DestroyChild(unsigned int id) {
         return;
     }
 
-    for (auto& descendant : child->second->GetDescendants()) {
-        Engine::Ins->World.RemoveEntity(descendant->Id);
-    }
 
-
+    auto descendants = child->second->GetDescendants();
     DetachChild(id);
     Engine::Ins->World.RemoveEntity(id);
+
+    for (auto& descendant : descendants) {
+        Engine::Ins->World.RemoveEntity(descendant->Id);
+    }
 }
 
-std::vector<SafePtr<Entity>> Entity::GetDescendants() {
-    std::vector<SafePtr<Entity>> descendants;
+std::vector<CheckedPtr<Entity>> Entity::GetDescendants() {
+    std::vector<CheckedPtr<Entity>> descendants;
     descendants.reserve(Children.size());
 
     RecursiveChildren(descendants, *this);
@@ -77,9 +73,9 @@ void Entity::DetachChild(unsigned int id) {
     }
 }
 
-void Entity::RecursiveChildren(std::vector<SafePtr<Entity>>& entities, Entity& entity) {
+void Entity::RecursiveChildren(std::vector<CheckedPtr<Entity>>& entities, Entity& entity) {
     for (auto& child : entity.Children | std::views::values) {
-        SafePtr<Entity> entityPtr;
+        CheckedPtr<Entity> entityPtr;
         entityPtr = &*child;
         entities.push_back(entityPtr);
         RecursiveChildren(entities, *entityPtr);
@@ -90,8 +86,22 @@ Entity& Entity::GetParent() {
     return *Parent;
 }
 
-std::vector<SafePtr<Entity>> Entity::GetAncestors() {
-    std::vector<SafePtr<Entity>> ancestors;
+void Entity::SetParent(Entity& parent) {
+    parent.AttachChild(*this);
+}
+
+void Entity::ClearParent() {
+    if (HasParent()) {
+        Parent->DetachChild(Id);
+    }
+}
+
+bool Entity::HasParent() const {
+    return !Parent.IsNull();
+}
+
+std::vector<CheckedPtr<Entity>> Entity::GetAncestors() {
+    std::vector<CheckedPtr<Entity>> ancestors;
 
     auto current = Parent;
 
@@ -104,28 +114,22 @@ std::vector<SafePtr<Entity>> Entity::GetAncestors() {
 }
 
 bool Entity::IsDescendantOf(const Entity& entity) {
-    for (auto& descendant : GetDescendants()) {
-        if (descendant->Id == entity.Id) {
-            return true;
-        }
-    }
-    return false;
+    return std::ranges::any_of(GetDescendants(), [&entity](const auto& descendant) {
+        return descendant->Id == entity.Id;
+    });
 }
 
 bool Entity::IsAncestorOf(const Entity& entity) {
-    for (auto& ancestor : GetAncestors()) {
-        if (ancestor->Id == entity.Id) {
-            return true;
-        }
-    }
-    return false;
+    return std::ranges::any_of(GetAncestors(), [&entity](const auto& ancestor) {
+        return ancestor->Id == entity.Id;
+    });
 }
 
 Entity& Entity::GetRoot() {
-    SafePtr<Entity> current = this;
+    CheckedPtr<Entity> current = this;
 
-    while (current->Parent)
-        current = current->Parent.Get();
+    while (current->HasParent())
+        current = current->Parent;
 
     return *current;
 }

@@ -12,7 +12,7 @@ Engine::Engine() : Window(1000, 800, "Plus Ultra") {
     Running = true;
 }
 
-SafePtr<Engine> Engine::Ins;
+CheckedPtr<Engine> Engine::Ins;
 
 void Engine::AddModules() {
     AddModule<Renderer>();

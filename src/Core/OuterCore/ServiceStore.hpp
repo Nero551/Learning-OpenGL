@@ -1,12 +1,12 @@
 #pragma once
 #include "Service.hpp"
 #include "../Services/EventBus.hpp"
-#include "Utilities/SafePtr.hpp"
+#include "Utilities/CheckedPtr.hpp"
 
 template <typename T> concept ServiceType = std::derived_from<T, Service>;
 
 struct ServiceStore {
-    static SafePtr<ServiceStore> Ins;
+    static CheckedPtr<ServiceStore> Ins;
 
     template <ServiceType T> T& Add() {
         if (Services.contains(typeid(T))) {

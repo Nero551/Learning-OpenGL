@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Entity.hpp"
-#include "Utilities/SafePtr.hpp"
+#include "Utilities/CheckedPtr.hpp"
 
 #include "Modules/Renderer/Components/LightComponent.hpp"
 
@@ -40,6 +40,6 @@ struct Scene {
     Entity& GetRoot();
 
 private:
-    SafePtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
-    SafePtr<Entity> Root{"Scene Has No Root"};
+    CheckedPtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
+    CheckedPtr<Entity> Root{"Scene Has No Root"};
 };
