@@ -68,10 +68,12 @@ struct World {
 
     Entity& FindEntity(unsigned int id);
     CheckedPtr<Entity> TryFindEntity(unsigned int id);
-    void RemoveEntity(unsigned int id);
 
 private:
     std::unordered_map<std::string, std::unique_ptr<Scene>> Scenes;
     std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
     unsigned int currentEntityId = 0;
+    void RemoveEntity(unsigned int id);
+
+    friend struct Entity;
 };

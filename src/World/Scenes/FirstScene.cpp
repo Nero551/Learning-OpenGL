@@ -22,7 +22,7 @@ void FirstScene::Initialize() {
 
     auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
     GetRoot().AttachChild(coordinateAxesScene.GetRoot());
-    // GetRoot().DestroyChild(coordinateAxesScene.GetRoot().Id);
+    GetRoot().DestroyChild(coordinateAxesScene.GetRoot().Id);
 
     auto& mesh = Primitives::CreateCube("mesh");
 
@@ -36,13 +36,13 @@ void FirstScene::Initialize() {
     objectMaterial.DiffuseMap = &diffuseMap;
     objectMaterial.SpecularMap = &specularMap;
 
-    for (float i = 0; i < 6; i += 0.5) {
-        auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
-        cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-        cube.GetComponent<MeshComponent>().Mesh = &mesh;
-        cube.GetComponent<Transform3DComponent>().LocalPosition = {std::cos(i) * 5, 0, std::sin(i) * 5};
-        GetRoot().AttachChild(cube);
-    }
+    // for (float i = 0; i < 6; i += 0.5) {
+    //     auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
+    //     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
+    //     cube.GetComponent<MeshComponent>().Mesh = &mesh;
+    //     cube.GetComponent<Transform3DComponent>().LocalPosition = {std::cos(i) * 5, 0, std::sin(i) * 5};
+    //     GetRoot().AttachChild(cube);
+    // }
 
     auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;

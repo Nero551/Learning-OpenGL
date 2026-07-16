@@ -39,19 +39,35 @@ std::vector<CheckedPtr<Entity>> Entity::GetChildren() {
     return children;
 }
 
+void Entity::Destroy() {
+    auto descendants = GetDescendants();
+
+    if (HasParent()) {
+        ClearParent();
+    }
+
+    Engine::Ins->World.RemoveEntity(Id);
+
+    for (auto& descendant : descendants) {
+        Engine::Ins->World.RemoveEntity(descendant->Id);
+    }
+}
+
+void Entity::DestroyChildren() {
+    auto children = GetChildren();
+
+    for (auto& child : children) {
+        child->Destroy();
+    }
+}
+
 void Entity::DestroyChild(unsigned int id) {
     auto child = Children.find(id);
     if (child == Children.end()) {
         return;
     }
 
-    auto descendants = child->second->GetDescendants();
-    DetachChild(id);
-    Engine::Ins->World.RemoveEntity(id);
-
-    // for (auto& descendant : descendants) {
-    //     Engine::Ins->World.RemoveEntity(descendant->Id);
-    // }
+    child->second->Destroy();
 }
 
 std::vector<CheckedPtr<Entity>> Entity::GetDescendants() {

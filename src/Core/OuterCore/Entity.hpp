@@ -61,6 +61,7 @@ struct Entity {
         return ref;
     }
 
+    void Destroy();
     void AttachChild(Entity& child);
     void DestroyChild(unsigned int id);
     void DetachChild(unsigned int id);
@@ -69,6 +70,7 @@ struct Entity {
     bool HasChild(unsigned int id) const;
     std::vector<CheckedPtr<Entity>> GetChildren();
     size_t ChildCount() const;
+    void DestroyChildren();
 
     std::vector<CheckedPtr<Entity>> GetDescendants();
     bool HasDescendant(unsigned int id) const;
