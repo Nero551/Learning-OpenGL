@@ -28,9 +28,8 @@ void Engine::AddServices() {
 
 
 void Engine::Start() {
-    AddServices();
-
     // glfwSwapInterval(0);
+    AddServices();
     AddModules();
 
     World.Start();
@@ -38,7 +37,6 @@ void Engine::Start() {
     for (auto& module : Modules | std::views::values) {
         module->Start();
     }
-
 
     GetModule<Input>().SetMouseMode(MouseMode::Disabled);
 }
@@ -104,7 +102,7 @@ void Engine::BeginFrame() {
 }
 
 void Engine::EndFrame() {
-    const float currentFrame = Time;
+    const double currentFrame = Time;
     DeltaTime = currentFrame - LastFrame;
     LastFrame = currentFrame;
     Window.SwapBuffers();

@@ -7,6 +7,7 @@ struct Transform3DComponent : Component {
     Vector3 LocalPosition = Vector3::Zero;
     Vector3 LocalEulerRotation = Vector3::Zero; // Radians
     Vector3 LocalScale = Vector3::One;
+    bool InheritTransform = true;
 
     Matrix4 GetModelMatrix() const {
         Matrix4 modelMatrix = Matrix4::Identity;

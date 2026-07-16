@@ -8,7 +8,7 @@
 #include "Utilities/Math/Color.hpp"
 #include "World/Entities/Axis.hpp"
 
-void CoordinateAxesScene::Initialize() {
+CoordinateAxesScene::CoordinateAxesScene() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
 
     SetRoot(Engine::Ins->World.CreateEntity<Entity>());

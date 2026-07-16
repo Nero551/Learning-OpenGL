@@ -1,5 +1,6 @@
 #include "FirstScene.hpp"
 
+#include "AssimpScene.hpp"
 #include "CoordinateAxesScene.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Input/Enums/Keys.hpp"
@@ -10,9 +11,7 @@
 #include "World/Novas/Light.hpp"
 #include "World/Novas/MeshInstance3D.hpp"
 
-unsigned int lightId;
-
-void FirstScene::Initialize() {
+FirstScene::FirstScene() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
     auto& camera = Engine::Ins->World.CreateEntity<Camera>();
     camera.GetComponent<CameraComponent>().AspectRatio = Engine::Ins->Window.Width / Engine::Ins->Window.Height;
@@ -25,47 +24,11 @@ void FirstScene::Initialize() {
 
     auto& mesh = Primitives::CreateCube("mesh");
 
-    auto& objectShader = resourceManager.Load<Shader>("shader", "Assets/Shaders/shader.frag",
-        "Assets/Shaders/shader.vert");
-
-    auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
-    auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
-    auto& objectMaterial = resourceManager.Load<Material>("material");
-    objectMaterial.Shader = &objectShader;
-    objectMaterial.DiffuseMap = &diffuseMap;
-    objectMaterial.SpecularMap = &specularMap;
-
-    // for (float i = 0; i < 6; i += 0.5) {
-    //     auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
-    //     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-    //     cube.GetComponent<MeshComponent>().Mesh = &mesh;
-    //     cube.GetComponent<Transform3DComponent>().LocalPosition = {std::cos(i) * 5, 0, std::sin(i) * 5};
-    //     GetRoot().AttachChild(cube);
-    // }
-
-    auto& cube = Engine::Ins->World.CreateEntity<MeshInstance3D>();
-    cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-    cube.GetComponent<MeshComponent>().Mesh = &mesh;
-    cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 1};
-    GetRoot().AttachChild(cube);
-
     auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
         "Assets/Shaders/lightShader.vert");
 
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
-
-    auto& light = Engine::Ins->World.CreateEntity<Light>();
-    light.GetComponent<MaterialComponent>().Material = &lightMaterial;
-    light.GetComponent<MeshComponent>().Mesh = &mesh;
-
-    light.GetComponent<Transform3DComponent>().LocalScale = {0.2};
-
-    light.GetComponent<LightComponent>().Type = LightType::Spot;
-
-    GetRoot().AttachChild(light);
-
-    lightId = light.Id; //Temporary
 
     auto& light2 = Engine::Ins->World.CreateEntity<Light>();
     light2.GetComponent<MaterialComponent>().Material = &lightMaterial;
@@ -76,44 +39,8 @@ void FirstScene::Initialize() {
     light2.GetComponent<LightComponent>().Ambient = {0.2};
     light2.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light2);
+
+    // Engine::Ins->World.CreateScene<AssimpScene>("Assets");
 }
 
-void FirstScene::Update(double dt) {
-    auto& light = Engine::Ins->World.FindEntity(lightId);
-    auto& transformComponent = light.GetComponent<Transform3DComponent>();
-    auto& input = Engine::Ins->GetModule<Input>();
-
-    auto dtf = static_cast<float>(dt);
-
-    if (input.IsKeyHeld(Key::Up)) {
-        transformComponent.LocalPosition.z += 2.0f * dtf;
-    }
-    if (input.IsKeyHeld(Key::Down)) {
-        transformComponent.LocalPosition.z -= 2.0f * dtf;
-    }
-    if (input.IsKeyHeld(Key::Left)) {
-        transformComponent.LocalPosition.x -= 2.0f * dtf;
-    }
-    if (input.IsKeyHeld(Key::Right)) {
-        transformComponent.LocalPosition.x += 2.0f * dtf;
-    }
-
-    if (input.IsKeyHeld(Key::I)) {
-        transformComponent.LocalPosition.y += 2.0f * dtf;
-    }
-    if (input.IsKeyHeld(Key::O)) {
-        transformComponent.LocalPosition.y -= 2.0f * dtf;
-    }
-
-    if (input.IsKeyHeld(Key::Z)) {
-        transformComponent.LocalEulerRotation.x += 2.0f * dtf;
-    }
-
-    if (input.IsKeyHeld(Key::X)) {
-        transformComponent.LocalEulerRotation.y += 2.0f * dtf;
-    }
-
-    if (input.IsKeyHeld(Key::C)) {
-        transformComponent.LocalEulerRotation.z += 2.0f * dtf;
-    }
-}
+void FirstScene::Update(double dt) {}

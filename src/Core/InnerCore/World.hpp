@@ -5,7 +5,6 @@
 #include "Core/Services/EventBus.hpp"
 #include "Utilities/Logger.hpp"
 #include "World/Events/EntityCreated.hpp"
-
 template <typename T>concept EntityType = std::derived_from<T, Entity>;
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
@@ -26,15 +25,14 @@ struct World {
 
     void Render();
 
-    template <SceneType T> T& CreateScene(const std::string& name) {
+    template <SceneType T, typename... Args> T& CreateScene(const std::string& name, Args... args) {
         if (Scenes.contains(name)) {
             Logger::Error("Scene: ", name, " already exists.");
             return static_cast<T&>(*Scenes.at(name));
         }
 
-        auto scene = std::make_unique<T>();
+        auto scene = std::make_unique<T>(std::forward<Args>(args)...);
         scene->Name = name;
-        scene->Initialize();
 
         T& ref = *scene;
 

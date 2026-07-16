@@ -27,7 +27,7 @@ struct Entity {
     template <ComponentType T> T& AddComponent() {
         if (Components.contains(typeid(T))) {
             Logger::Error(std::format("Entity {} already contains component {}", Id, typeid(T).name()));
-            return static_cast<T&>((*Components.at(typeid(T))));
+            return static_cast<T&>(*Components.at(typeid(T)));
         }
 
         auto component = std::make_unique<T>();
@@ -44,7 +44,7 @@ struct Entity {
         if (component == Components.end()) {
             Logger::Fatal(std::format("Component Not Found: {}", typeid(T).name()));
         }
-        return static_cast<T&>((*component->second));
+        return static_cast<T&>(*component->second);
     }
 
     template <ComponentType... Args> bool HasComponent() const {

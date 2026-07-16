@@ -19,9 +19,6 @@ struct Scene {
 
     Scene(Scene&&) = default;
 
-
-    virtual void Initialize() {}
-
     virtual void Update(double dt) {}
 
     virtual void FixedUpdate(double fdt) {}

@@ -22,6 +22,7 @@ add_executable(Engine
 )
 
 find_package(glfw3 REQUIRED)
+find_package(assimp CONFIG REQUIRED)
 set_target_properties(Engine PROPERTIES UNITY_BUILD ON)
 
 target_precompile_headers(Engine PRIVATE
@@ -40,6 +41,7 @@ target_include_directories(Engine PRIVATE
 target_link_libraries(Engine
         glfw
         GL
+        assimp::assimp
 )
 
 target_compile_options(Engine PRIVATE
