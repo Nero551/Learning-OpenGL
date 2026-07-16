@@ -38,13 +38,10 @@ void LightingSystem::Render() {
     auto& camera = scene->GetActiveCamera();
 
     for (auto& entity : scene->GetRoot().GetDescendants()) {
-        if (!entity->HasComponent<Transform3DComponent>()) {
+        if (!entity->HasComponent<Transform3DComponent, MaterialComponent>()) {
             continue;
         }
 
-        if (!entity->HasComponent<MaterialComponent>()) {
-            continue;
-        }
         auto& materialComponent = entity->GetComponent<MaterialComponent>();
 
         materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", MaxLights));

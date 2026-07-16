@@ -2,28 +2,40 @@
 
 
 struct Logger {
-    template <typename T> static void Print(const T& message) { std::cout << message << "\n"; }
-
-    template <typename T> static void Info(const T& message) {
-        std::cout << Green << "[INFO] " << Reset << message << "\n";
+    template <typename T> static void Print(const T& message) {
+        std::cout << message << "\n";
     }
 
-    template <typename T> static void Warning(const T& message) {
-        std::cout << Yellow << "[WARNING] " << Reset << message << "\n";
+    template <typename... Args> static void Info(const Args&... args) {
+        std::cout << Green << "[INFO] " << Reset;
+        (..., (std::cout << args));
+        std::cout << '\n';
     }
 
-    template <typename T> static void Error(const T& message) {
-        std::cerr << Red << "[ERROR] " << Reset << message << "\n";
+    template <typename... Args> static void Warning(const Args&... args) {
+        std::cout << Yellow << "[WARNING] " << Reset;
+        (..., (std::cout << args));
+        std::cout << "\n";
+    }
+
+    template <typename... Args> static void Error(const Args&... args) {
+        std::cerr << Red << "[ERROR] " << Reset;
+        (..., (std::cout << args));
+        std::cout << '\n';
     }
 
 
-    template <typename T> [[noreturn]] static void Fatal(const T& message) {
-        std::cerr << Red << "[FATAL] " << Reset << message << '\n';
+    template <typename... Args> [[noreturn]] static void Fatal(const Args&... args) {
+        std::cerr << Red << "[ERROR] " << Reset;
+        (..., (std::cout << args));
+        std::cout << '\n';
         throw std::runtime_error("");
     }
 
     template <typename T> static T& Require(T* rawPtr, const std::string& message) {
-        if (!rawPtr) { Logger::Fatal(message); }
+        if (!rawPtr) {
+            Fatal(message);
+        }
         return *rawPtr;
     }
 

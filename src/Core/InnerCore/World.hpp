@@ -6,6 +6,7 @@
 #include "Utilities/Logger.hpp"
 #include "World/Events/EntityCreated.hpp"
 
+template <typename T>concept EntityType = std::derived_from<T, Entity>;
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
 struct World {

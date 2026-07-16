@@ -44,9 +44,8 @@ struct Entity {
         return static_cast<T&>((*component->second));
     }
 
-    template <ComponentType T> bool HasComponent() const {
-        auto component = Components.find(typeid(T));
-        return component != Components.end();
+    template <ComponentType... Args> bool HasComponent() const {
+        return (... && Components.contains(typeid(Args)));
     }
 
     template <ComponentType T> T& CopyComponent(T& otherComponent) {

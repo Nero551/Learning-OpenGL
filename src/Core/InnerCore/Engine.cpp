@@ -72,7 +72,6 @@ void Engine::Update() {
 
 void Engine::FixedUpdate() {
     World.FixedUpdate(FixedDeltaTime);
-    Logger::Info("Fixed Update");
     for (auto& module : Modules | std::views::values) {
         module->FixedUpdate(FixedDeltaTime);
     }

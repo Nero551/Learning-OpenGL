@@ -20,10 +20,6 @@ struct material {
     sampler2D EmissionMap;
 };
 
-struct Test {
-    float l;
-};
-
 uniform material Material;
 
 void main() {

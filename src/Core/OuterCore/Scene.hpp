@@ -5,11 +5,9 @@
 
 #include "Modules/Renderer/Components/LightComponent.hpp"
 
-template <typename T>concept EntityType = std::derived_from<T, Entity>;
-
 struct Scene {
     std::string Name;
-    const int MaxLights = 10;
+    int MaxLights = 10;
 
     Scene() = default ;
 
