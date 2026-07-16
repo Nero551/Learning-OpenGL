@@ -45,14 +45,13 @@ void Entity::DestroyChild(unsigned int id) {
         return;
     }
 
-
     auto descendants = child->second->GetDescendants();
     DetachChild(id);
     Engine::Ins->World.RemoveEntity(id);
 
-    for (auto& descendant : descendants) {
-        Engine::Ins->World.RemoveEntity(descendant->Id);
-    }
+    // for (auto& descendant : descendants) {
+    //     Engine::Ins->World.RemoveEntity(descendant->Id);
+    // }
 }
 
 std::vector<CheckedPtr<Entity>> Entity::GetDescendants() {
@@ -122,14 +121,14 @@ std::vector<CheckedPtr<Entity>> Entity::GetAncestors() {
 }
 
 bool Entity::IsDescendantOf(const Entity& entity) {
-    return std::ranges::any_of(GetDescendants(), [&entity](const auto& descendant) {
-        return descendant->Id == entity.Id;
+    return std::ranges::any_of(GetAncestors(), [&entity](const auto& ancestor) {
+        return ancestor->Id == entity.Id;
     });
 }
 
 bool Entity::IsAncestorOf(const Entity& entity) {
-    return std::ranges::any_of(GetAncestors(), [&entity](const auto& ancestor) {
-        return ancestor->Id == entity.Id;
+    return std::ranges::any_of(GetDescendants(), [&entity](const auto& descendant) {
+        return descendant->Id == entity.Id;
     });
 }
 

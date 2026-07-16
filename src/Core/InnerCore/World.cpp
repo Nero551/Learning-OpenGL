@@ -37,12 +37,12 @@ void World::RemoveEntity(unsigned int id) {
         ServiceStore::Ins->Get<EventBus>().Fire<EntityDestroyed>(FindEntity(id));
         Entities.erase(id);
 
-        for (auto& scene : Scenes | std::views::values) {
-            if (scene->IsRoot(id)) {
-                Scenes.erase(scene->Name);
-                break;
-            }
-        }
+        // for (auto& scene : Scenes | std::views::values) {
+        //     if (scene->IsRoot(id)) {
+        //         Scenes.erase(scene->Name);
+        //         break;
+        //     }
+        // }
     }
 }
 

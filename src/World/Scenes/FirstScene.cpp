@@ -22,7 +22,7 @@ void FirstScene::Initialize() {
 
     auto& coordinateAxesScene = Engine::Ins->World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
     GetRoot().AttachChild(coordinateAxesScene.GetRoot());
-    GetRoot().DestroyChild(coordinateAxesScene.GetRoot().Id);
+    // GetRoot().DestroyChild(coordinateAxesScene.GetRoot().Id);
 
     auto& mesh = Primitives::CreateCube("mesh");
 
