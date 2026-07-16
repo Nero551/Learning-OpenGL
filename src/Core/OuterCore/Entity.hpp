@@ -71,6 +71,7 @@ struct Entity {
     size_t ChildCount() const;
 
     std::vector<CheckedPtr<Entity>> GetDescendants();
+    bool HasDescendant(unsigned int id) const;
     bool IsDescendantOf(const Entity& entity);
 
     Entity& GetParent();
@@ -79,6 +80,7 @@ struct Entity {
     bool HasParent() const;
     std::vector<CheckedPtr<Entity>> GetAncestors();
     bool IsAncestorOf(const Entity& entity);
+    bool HasAncestor(unsigned int id) const;
     Entity& GetRoot();
 
 private:

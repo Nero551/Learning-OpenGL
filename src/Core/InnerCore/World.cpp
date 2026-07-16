@@ -47,6 +47,16 @@ Entity& World::FindEntity(unsigned int id) {
     return (*entity->second);
 }
 
+CheckedPtr<Entity> World::TryFindEntity(unsigned int id) {
+    auto entity = Entities.find(id);
+
+    if (entity == Entities.end()) {
+        return {};
+    }
+
+    return entity->second.get();
+}
+
 std::vector<CheckedPtr<Scene>> World::GetScenes() {
     std::vector<CheckedPtr<Scene>> scenes;
     scenes.reserve(Scenes.size());

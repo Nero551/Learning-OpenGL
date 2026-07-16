@@ -67,6 +67,7 @@ struct World {
     }
 
     Entity& FindEntity(unsigned int id);
+    CheckedPtr<Entity> TryFindEntity(unsigned int id);
     void RemoveEntity(unsigned int id);
 
 private:

@@ -64,6 +64,16 @@ std::vector<CheckedPtr<Entity>> Entity::GetDescendants() {
     return descendants;
 }
 
+bool Entity::HasDescendant(unsigned int id) const {
+    CheckedPtr<Entity> descendant = Engine::Ins->World.TryFindEntity(id);
+    return descendant && descendant->IsDescendantOf(*this);
+}
+
+bool Entity::HasAncestor(unsigned int id) const {
+    CheckedPtr<Entity> ancestor = Engine::Ins->World.TryFindEntity(id);
+    return ancestor && ancestor->IsAncestorOf(*this);
+}
+
 void Entity::DetachChild(unsigned int id) {
     auto child = Children.find(id);
 
@@ -75,10 +85,8 @@ void Entity::DetachChild(unsigned int id) {
 
 void Entity::RecursiveChildren(std::vector<CheckedPtr<Entity>>& entities, Entity& entity) {
     for (auto& child : entity.Children | std::views::values) {
-        CheckedPtr<Entity> entityPtr;
-        entityPtr = &*child;
-        entities.push_back(entityPtr);
-        RecursiveChildren(entities, *entityPtr);
+        entities.emplace_back(&*child);
+        RecursiveChildren(entities, *child);
     }
 }
 

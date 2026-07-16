@@ -1,12 +1,10 @@
 #pragma once
 #include "Utilities/Logger.hpp"
 
+/// Non-owning pointer that checks for null dereferences.
+/// Does NOT track object lifetime or prevent dangling pointers.
 template <typename T> struct CheckedPtr {
     CheckedPtr() = default;
-
-    ~CheckedPtr() {
-        Reset();
-    }
 
     CheckedPtr(T* objectPtr) {
         ptr = objectPtr;
@@ -33,11 +31,11 @@ template <typename T> struct CheckedPtr {
         return ptr;
     }
 
-    T& operator*() {
+    T& operator*() const {
         return Logger::Require(ptr, nullMessage);
     }
 
-    operator bool() const {
+    explicit operator bool() const {
         return ptr != nullptr;
     }
 
