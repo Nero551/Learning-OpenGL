@@ -34,27 +34,27 @@ void CameraSystem::Update(double dt) {
         }
 
         if (inputModule.IsKeyHeld(Key::W)) {
-            transform.LocalPosition += cameraComponent.Speed * dt * transform.GetForward();
+            transform.LocalPosition += cameraComponent.Speed * static_cast<float>(dt) * transform.GetForward();
         }
 
         if (inputModule.IsKeyHeld(Key::S)) {
-            transform.LocalPosition -= cameraComponent.Speed * dt * transform.GetForward();
+            transform.LocalPosition -= cameraComponent.Speed * static_cast<float>(dt) * transform.GetForward();
         }
 
         if (inputModule.IsKeyHeld(Key::A)) {
-            transform.LocalPosition -= cameraComponent.Speed * dt * transform.GetRight();
+            transform.LocalPosition -= cameraComponent.Speed * static_cast<float>(dt) * transform.GetRight();
         }
 
         if (inputModule.IsKeyHeld(Key::D)) {
-            transform.LocalPosition += cameraComponent.Speed * dt * transform.GetRight();
+            transform.LocalPosition += cameraComponent.Speed * static_cast<float>(dt) * transform.GetRight();
         }
 
         if (inputModule.IsKeyHeld(Key::Space)) {
-            transform.LocalPosition += cameraComponent.Speed * dt * Vector3(0, 1, 0);
+            transform.LocalPosition += cameraComponent.Speed * static_cast<float>(dt) * Vector3(0, 1, 0);
         }
 
         if (inputModule.IsKeyHeld(Key::LeftShift)) {
-            transform.LocalPosition -= cameraComponent.Speed * dt * Vector3(0, 1, 0);
+            transform.LocalPosition -= cameraComponent.Speed * static_cast<float>(dt) * Vector3(0, 1, 0);
         }
     }
 }

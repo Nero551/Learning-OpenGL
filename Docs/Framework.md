@@ -4,7 +4,7 @@
 
 The engine is organized into a simple hierarchy:
 
-```text
+```
 Main
 └── Engine
     ├── Modules
@@ -12,7 +12,7 @@ Main
     │   └── ...
     └── World
         └── Scenes
-            └── Entities
+        └── Entities
                 └── Components
 ```
 
@@ -81,9 +81,9 @@ It is responsible for creating, storing, and switching between scenes.
 
 A scene represents a collection of entities.
 
-Each scene owns:
+Each scene Has:
 
-* Entities
+* Root Entity
 * Scene-specific state (such as the active camera)
 
 A scene can also contain logic. such as setting up and spawning
