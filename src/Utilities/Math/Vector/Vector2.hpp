@@ -5,70 +5,70 @@
 #include "../MathUtils.hpp"
 
 struct Vector2 {
-   float x;
-   float y;
+    float x;
+    float y;
 
-   Vector2() = default;
+    Vector2();
 
-   Vector2(float all);
+    Vector2(float all);
 
-   Vector2(float x, float y);
+    Vector2(float x, float y);
 
-   float LengthSquared() const;
+    [[nodiscard]] float LengthSquared() const;
 
-   float Length() const;
+    [[nodiscard]] float Length() const;
 
-   Vector2 Normalized() const;
+    [[nodiscard]] Vector2 Normalized() const;
 
-   float Dot(const Vector2 &vec2) const;
+    [[nodiscard]] float Dot(const Vector2& vec2) const;
 
-   float Distance(const Vector2 &vec2) const;
+    [[nodiscard]] float Distance(const Vector2& vec2) const;
 
-   bool NearlyEquals(const Vector2 &vec2, float epsilon = Math::EPSILONF) const;
+    [[nodiscard]] bool NearlyEquals(const Vector2& vec2, float epsilon = Math::EPSILONF) const;
 
-   Vector2 operator+(const Vector2 &vec2) const;
+    Vector2 operator+(const Vector2& vec2) const;
 
-   Vector2 operator-(const Vector2 &vec2) const;
+    Vector2 operator-(const Vector2& vec2) const;
 
-   Vector2 operator*(const Vector2 &vec2) const;
+    Vector2 operator*(const Vector2& vec2) const;
 
-   Vector2 &operator+=(const Vector2 &vec2);
+    Vector2& operator+=(const Vector2& vec2);
 
-   Vector2 &operator-=(const Vector2 &vec2);
+    Vector2& operator-=(const Vector2& vec2);
 
-   Vector2 &operator*=(const Vector2 &vec2);
+    Vector2& operator*=(const Vector2& vec2);
 
-   Vector2 operator+(float scalar) const;
+    Vector2 operator+(float scalar) const;
 
-   Vector2 operator-(float scalar) const;
+    Vector2 operator-(float scalar) const;
 
-   Vector2 operator*(float scalar) const;
+    Vector2 operator*(float scalar) const;
 
-   Vector2 operator/(float scalar) const;
+    Vector2 operator/(float scalar) const;
 
-   Vector2 &operator+=(float scalar);
+    Vector2& operator+=(float scalar);
 
-   Vector2 &operator-=(float scalar);
+    Vector2& operator-=(float scalar);
 
-   Vector2 &operator*=(float scalar);
+    Vector2& operator*=(float scalar);
 
-   Vector2 &operator/=(float scalar);
+    Vector2& operator/=(float scalar);
 
-   Vector2 operator-() const;
+    Vector2 operator-() const;
 
-   bool operator==(const Vector2 &vec2) const;
+    bool operator==(const Vector2& vec2) const;
 
-   bool operator!=(const Vector2 &vec2) const;
+    bool operator!=(const Vector2& vec2) const;
 
-   static const Vector2 Zero;
+    static const Vector2 Zero;
 };
 
-Vector2 operator+(float scalar, const Vector2 &vec2);
+Vector2 operator+(float scalar, const Vector2& vec2);
 
-Vector2 operator-(float scalar, const Vector2 &vec2);
+Vector2 operator-(float scalar, const Vector2& vec2);
 
-Vector2 operator*(float scalar, const Vector2 &vec2);
+Vector2 operator*(float scalar, const Vector2& vec2);
 
-Vector2 operator/(float scalar, const Vector2 &vec2);
+Vector2 operator/(float scalar, const Vector2& vec2);
 
-std::ostream &operator<<(std::ostream &os, const Vector2 &vec2);
+std::ostream& operator<<(std::ostream& os, const Vector2& vec2);

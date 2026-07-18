@@ -8,7 +8,7 @@ struct Vector3 {
    float y;
    float z;
 
-   Vector3() = default;
+   Vector3();
 
    Vector3(float all);
 

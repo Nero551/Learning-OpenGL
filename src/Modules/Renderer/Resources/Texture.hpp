@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Core/OuterCore/Resource.hpp"
-#include "OpenGL.hpp"
 
 struct Texture : Resource {
     Texture(const std::string& name, int width, int height, unsigned char pixels[]);

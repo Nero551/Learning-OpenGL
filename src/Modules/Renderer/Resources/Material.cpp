@@ -36,7 +36,7 @@ void Material::Use() {
     Shader->Use();
     SetProperties();
 
-    for (int slot = 0; slot < MaxTextures; slot++) {
+    for (int slot = 0; slot < MaxCustomTextures; slot++) {
         if (CustomTextures[slot]) {
             Shader->SetUniform(IntUniform(CustomTextures[slot]->Name, slot));
             CustomTextures[slot]->Bind(slot);
@@ -45,7 +45,7 @@ void Material::Use() {
 }
 
 void Material::AssignTexture(Texture& texture, unsigned int slot) {
-    if (slot >= MaxTextures) {
+    if (slot >= MaxCustomTextures) {
         Logger::Error("Texture slot out of bounds: " + texture.Name);
         return;
     }

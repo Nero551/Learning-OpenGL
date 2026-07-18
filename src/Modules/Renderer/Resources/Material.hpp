@@ -8,7 +8,7 @@
 #include "Utilities/CheckedPtr.hpp"
 
 struct Material : Resource {
-    static constexpr int MaxTextures = 8;
+    static constexpr int MaxCustomTextures = 8;
     CheckedPtr<Shader> Shader{"Material Has No Shader Assigned"};
 
     Vector4 Color = {1};
@@ -30,7 +30,7 @@ struct Material : Resource {
     void Use();
 
 protected:
-    std::array<CheckedPtr<Texture>, MaxTextures> CustomTextures{};
+    std::array<CheckedPtr<Texture>, MaxCustomTextures> CustomTextures = {};
 
     void SetProperties();
 };

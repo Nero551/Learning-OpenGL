@@ -7,7 +7,11 @@
 
 
 Matrix4::Matrix4(float mAll) {
-    for (int row = 0; row < 4; row++) { for (int col = 0; col < 4; col++) { m[row][col] = mAll; } }
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
+            m[row][col] = mAll;
+        }
+    }
 }
 
 Matrix4::Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20,
@@ -62,22 +66,30 @@ Matrix4 Matrix4::operator-(const Matrix4& mat4) const {
 }
 
 Matrix4 Matrix4::operator*(const Matrix4& mat4) const {
-    Matrix4 result(0);
+    Matrix4 result = Zero;
 
     for (int row = 0; row < 4; row++) {
         for (int col = 0; col < 4; col++) {
-            for (int k = 0; k < 4; k++) { result.m[row][col] += m[row][k] * mat4.m[k][col]; }
+            for (int k = 0; k < 4; k++) {
+                result.m[row][col] += m[row][k] * mat4.m[k][col];
+            }
         }
     }
 
     return result;
 }
 
-Matrix4& Matrix4::operator+=(const Matrix4& mat4) { return *this = *this + mat4; }
+Matrix4& Matrix4::operator+=(const Matrix4& mat4) {
+    return *this = *this + mat4;
+}
 
-Matrix4& Matrix4::operator-=(const Matrix4& mat4) { return *this = *this - mat4; }
+Matrix4& Matrix4::operator-=(const Matrix4& mat4) {
+    return *this = *this - mat4;
+}
 
-Matrix4& Matrix4::operator*=(const Matrix4& mat4) { return *this = *this * mat4; }
+Matrix4& Matrix4::operator*=(const Matrix4& mat4) {
+    return *this = *this * mat4;
+}
 
 //* Vectors
 Vector4 Matrix4::operator*(const Vector4& vec4) const {
@@ -110,25 +122,37 @@ Matrix4 Matrix4::operator/(float scalar) const {
     };
 }
 
-Matrix4& Matrix4::operator*=(float scalar) { return *this = *this * scalar; }
+Matrix4& Matrix4::operator*=(float scalar) {
+    return *this = *this * scalar;
+}
 
-Matrix4& Matrix4::operator/=(float scalar) { return *this = *this / scalar; }
+Matrix4& Matrix4::operator/=(float scalar) {
+    return *this = *this / scalar;
+}
 
-Matrix4 Matrix4::operator-() const { return *this * -1; }
+Matrix4 Matrix4::operator-() const {
+    return *this * -1;
+}
 
 //* Equality
 bool Matrix4::operator==(const Matrix4& mat4) const {
     for (int row = 0; row < 4; row++) {
-        for (int col = 0; col < 4; col++) { if (m[row][col] != mat4.m[row][col]) return false; }
+        for (int col = 0; col < 4; col++) {
+            if (m[row][col] != mat4.m[row][col]) return false;
+        }
     }
 
     return true;
 }
 
-bool Matrix4::operator!=(const Matrix4& mat4) const { return !(*this == mat4); }
+bool Matrix4::operator!=(const Matrix4& mat4) const {
+    return !(*this == mat4);
+}
 
 //* Others
-Matrix4 operator*(float scalar, const Matrix4& mat4) { return mat4 * scalar; }
+Matrix4 operator*(float scalar, const Matrix4& mat4) {
+    return mat4 * scalar;
+}
 
 std::ostream& operator<<(std::ostream& os, const Matrix4& mat4) {
     os << "[ " << mat4.m[0][0] << "  " << mat4.m[0][1] << "  " << mat4.m[0][2] << "  " << mat4.m[0][3] << " ]\n";
@@ -269,7 +293,11 @@ float Matrix4::Determinant() const {
 Matrix4 Matrix4::Transpose() const {
     Matrix4 result;
 
-    for (int row = 0; row < 4; row++) { for (int col = 0; col < 4; col++) { result.m[row][col] = m[col][row]; } }
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
+            result.m[row][col] = m[col][row];
+        }
+    }
     return result;
 }
 
@@ -282,7 +310,9 @@ Matrix4 Matrix4::Inverse() const {
 
             float det = minor.Determinant();
 
-            if ((row + col) % 2 == 1) { det = -det; }
+            if ((row + col) % 2 == 1) {
+                det = -det;
+            }
 
             cofactorMatrix.m[row][col] = det;
         }
@@ -322,7 +352,9 @@ Matrix3 Matrix4::Minor(int row, int col) const {
 bool Matrix4::NearlyEquals(const Matrix4& mat4, float epsilon) const {
     for (int row = 0; row < 4; row++) {
         for (int col = 0; col < 4; col++) {
-            if (!Math::NearlyEquals(m[row][col], mat4.m[row][col], epsilon)) { return false; }
+            if (!Math::NearlyEquals(m[row][col], mat4.m[row][col], epsilon)) {
+                return false;
+            }
         }
     }
     return true;

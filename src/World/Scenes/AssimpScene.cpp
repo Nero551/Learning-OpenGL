@@ -33,8 +33,6 @@ void AssimpScene::ProcessNode(aiNode* node, const aiScene* scene) {
 AssimpScene::AssimpScene(const std::string& filepath) {
     SetRoot(Engine::Get().World.CreateEntity<Entity>());
 
-    //TODO- cuz of hyprland , the aspect ratio is incorrect cuz it uses windoww tiling manager , FIX
-
     const aiScene* scene = importer.ReadFile(filepath, aiProcess_Triangulate | aiProcess_FlipUVs);
 
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {

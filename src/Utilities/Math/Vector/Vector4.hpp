@@ -9,7 +9,7 @@ struct Vector4 {
    float z;
    float w;
 
-   Vector4() = default;
+   Vector4();
 
    Vector4(float all);
 

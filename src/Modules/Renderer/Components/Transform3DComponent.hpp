@@ -9,7 +9,7 @@ struct Transform3DComponent : Component {
     Vector3 LocalScale = Vector3::One;
     bool InheritTransform = true;
 
-    Matrix4 GetModelMatrix() const {
+    [[nodiscard]] Matrix4 GetModelMatrix() const {
         Matrix4 modelMatrix = Matrix4::Identity;
         modelMatrix = modelMatrix.Translate(LocalPosition);
         modelMatrix = modelMatrix.Rotate(LocalEulerRotation);
@@ -18,20 +18,19 @@ struct Transform3DComponent : Component {
         return modelMatrix;
     }
 
-    Matrix3 GetNormalMatrix() const {
-        Matrix3 normalMatrix = GetModelMatrix().ToMatrix3().Inverse().Transpose();
-        return normalMatrix;
+    [[nodiscard]] Matrix3 GetNormalMatrix() const {
+        return GetModelMatrix().ToMatrix3().Inverse().Transpose();
     }
 
-    Vector3 GetRight() const {
+    [[nodiscard]] Vector3 GetRight() const {
         return Vector3::Up.Cross(GetForward()).Normalized();
     }
 
-    Vector3 GetUp() const {
+    [[nodiscard]] Vector3 GetUp() const {
         return GetForward().Cross(GetRight()).Normalized();
     }
 
-    Vector3 GetForward() const {
+    [[nodiscard]] Vector3 GetForward() const {
         Vector3 direction;
         direction.x = std::sin(LocalEulerRotation.y) * std::cos(LocalEulerRotation.x);
         direction.y = std::sin(LocalEulerRotation.x);

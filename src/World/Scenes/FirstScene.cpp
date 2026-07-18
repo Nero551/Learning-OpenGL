@@ -28,15 +28,15 @@ FirstScene::FirstScene() {
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
 
-    auto& light2 = Engine::Get().World.CreateEntity<Light>();
-    light2.GetComponent<MaterialComponent>().Material = &lightMaterial;
-    light2.GetComponent<MeshComponent>().Mesh = &mesh;
+    auto& light = Engine::Get().World.CreateEntity<Light>();
+    light.GetComponent<MaterialComponent>().Material = &lightMaterial;
+    light.GetComponent<MeshComponent>().Mesh = &mesh;
 
     // light2.GetComponent<Transform3DComponent>().LocalScale = {0.2};
 
-    light2.GetComponent<LightComponent>().Ambient = {0.2};
-    light2.GetComponent<LightComponent>().Type = LightType::Directional;
-    GetRoot().AttachChild(light2);
+    light.GetComponent<LightComponent>().Ambient = {0.2};
+    light.GetComponent<LightComponent>().Type = LightType::Directional;
+    GetRoot().AttachChild(light);
 
     // Engine::Get().World.CreateScene<AssimpScene>("Assets");
 }
