@@ -3,7 +3,7 @@
 #include "Components/CameraComponent.hpp"
 #include "Components/MaterialComponent.hpp"
 #include "Components/MeshComponent.hpp"
-#include "Components/Transform3DComponent.hpp"
+#include "../../World/Components/Transform3DComponent.hpp"
 #include "Core/InnerCore/Engine.hpp"
 #include "Systems/CameraSystem.hpp"
 

@@ -61,3 +61,9 @@
 - Event Bus
 
 ![Cube](Docs/Screenshots/MaybeACube.png)
+
+### Week 5
+
+- Assimp model loading
+
+![Backpack](Docs/Screenshots/Backpack.png)

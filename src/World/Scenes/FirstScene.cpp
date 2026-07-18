@@ -46,6 +46,9 @@ FirstScene::FirstScene() {
     //TODO- quaternions
 
 
+    // auto& backpack = Engine::Get().World.CreateScene<AssimpScene>("backpack", "Assets/backpack/backpack.obj");
+    // GetRoot().AttachChild(backpack.GetRoot());
+
     auto& objectShader = resourceManager.Load<Shader>("objectShader", "Assets/Shaders/shader.frag",
         "Assets/Shaders/shader.vert");
     auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");

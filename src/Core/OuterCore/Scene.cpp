@@ -1,7 +1,7 @@
 #include "Scene.hpp"
 
 #include "Modules/Renderer/Components/CameraComponent.hpp"
-#include "Modules/Renderer/Components/Transform3DComponent.hpp"
+#include "World/Components/Transform3DComponent.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 
 Entity& Scene::GetActiveCamera() {

@@ -2,7 +2,7 @@
 #include "Core/OuterCore/Entity.hpp"
 #include "Modules/Renderer/Components/MaterialComponent.hpp"
 #include "Modules/Renderer/Components/MeshComponent.hpp"
-#include "Modules/Renderer/Components/Transform3DComponent.hpp"
+#include "World/Components/Transform3DComponent.hpp"
 
 struct Axis : Entity {
    void Initialize() override {

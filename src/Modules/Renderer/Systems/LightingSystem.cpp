@@ -2,7 +2,7 @@
 
 #include "../Components/LightComponent.hpp"
 #include "../Components/MaterialComponent.hpp"
-#include "../Components/Transform3DComponent.hpp"
+#include "../../../World/Components/Transform3DComponent.hpp"
 #include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"

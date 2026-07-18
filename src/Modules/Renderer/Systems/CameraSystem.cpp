@@ -3,7 +3,7 @@
 #include "Core/InnerCore/Engine.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Renderer/Components/CameraComponent.hpp"
-#include "Modules/Renderer/Components/Transform3DComponent.hpp"
+#include "World/Components/Transform3DComponent.hpp"
 
 void CameraSystem::Update(double dt) {
     {
