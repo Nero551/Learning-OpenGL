@@ -6,21 +6,25 @@ in vec2 vUV;
 in vec4 vPosition;
 in vec4 vColor;
 in vec3 vNormal;
-
 uniform float Time;
 
-struct light {
-    vec3 Color;
-    vec3 Position;
+struct material {
+    vec4 Color;
     vec3 Ambient;
     vec3 Diffuse;
     vec3 Specular;
+    vec3 Emission;
+
+    float Shininess;
+
+    sampler2D DiffuseMap;
+    sampler2D SpecularMap;
+    sampler2D EmissionMap;
 };
 
-uniform light Light;
-
+uniform material Material;
 
 void main()
 {
-    FragColor = vec4(Light.Color, 1);
+    FragColor = Material.Color;
 }

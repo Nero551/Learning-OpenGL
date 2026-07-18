@@ -30,11 +30,11 @@ FirstScene::FirstScene() {
     light.GetComponent<MaterialComponent>().Material = &lightMaterial;
     light.GetComponent<MeshComponent>().Mesh = &mesh;
 
-    // light2.GetComponent<Transform3DComponent>().LocalScale = {0.2};
-
+    light.GetComponent<Transform3DComponent>().LocalScale = {0.2};
     light.GetComponent<LightComponent>().Ambient = {0.2};
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light);
+
 
     // Engine::Get().World.CreateScene<AssimpScene>("Assets");
 }

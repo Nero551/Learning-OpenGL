@@ -10,3 +10,5 @@ struct Light : Nova3D {
         AddComponents<MeshComponent, MaterialComponent, LightComponent>();
     }
 };
+
+
