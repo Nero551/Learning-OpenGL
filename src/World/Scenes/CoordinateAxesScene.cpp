@@ -7,11 +7,12 @@
 #include "Modules/Renderer/Primitives/Primitives.hpp"
 #include "Utilities/Math/Color.hpp"
 #include "World/Entities/Axis.hpp"
+#include "World/Novas/Nova3D.hpp"
 
 CoordinateAxesScene::CoordinateAxesScene() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
 
-    SetRoot(Engine::Get().World.CreateEntity<Entity>());
+    SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
 
     auto& shader = ServiceStore::Ins->Get<ResourceManager>().Load<Shader>("AxisShader",
         "Assets/Shaders/axisShader.frag",
