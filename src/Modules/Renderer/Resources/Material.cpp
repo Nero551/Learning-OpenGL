@@ -14,7 +14,7 @@ Material::Material(const std::string& name) :
     EmissionMap = &Primitives::CreateWhiteTexture();
 }
 
-void Material::SetProperties() {
+void Material::SetProperties() const {
     Shader->SetUniform(Vector3Uniform("Material.Ambient", Ambient));
     Shader->SetUniform(Vector3Uniform("Material.Diffuse", Diffuse));
     Shader->SetUniform(Vector3Uniform("Material.Specular", Specular));

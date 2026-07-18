@@ -34,7 +34,7 @@ struct Scene {
     Entity& GetActiveCamera();
     void SetActiveCamera(Entity& entity);
     void SetRoot(Entity&);
-    bool IsRoot(unsigned int Id);
+    bool IsRoot(unsigned int id);
     Entity& GetRoot();
 
 private:

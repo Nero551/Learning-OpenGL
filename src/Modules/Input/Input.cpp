@@ -72,7 +72,7 @@ Vector2 Input::GetMousePosition() const {
 }
 
 Vector2 Input::GetMouseDelta() const {
-    return (GetMousePosition() - previousMousePosition);
+    return GetMousePosition() - previousMousePosition;
 }
 
 MouseMode Input::GetMouseMode() const {

@@ -15,7 +15,7 @@ struct Window {
 
     void PollEvents();
 
-    void SetTitle(const std::string& name);
+    void SetTitle(const std::string& title);
 
     void Close();
 

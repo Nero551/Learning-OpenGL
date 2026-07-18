@@ -140,7 +140,7 @@ Vector3 Vector3::Normalized() const {
 }
 
 bool Vector3::IsParallelTo(const Vector3& vec3) const {
-    if (*this == Vector3::Zero || vec3 == Vector3::Zero) {
+    if (*this == Zero || vec3 == Zero) {
         return false;
     }
 
@@ -148,7 +148,7 @@ bool Vector3::IsParallelTo(const Vector3& vec3) const {
 }
 
 bool Vector3::IsPerpendicularTo(const Vector3& vec3) const {
-    if (*this == Vector3::Zero || vec3 == Vector3::Zero) {
+    if (*this == Zero || vec3 == Zero) {
         return false;
     }
 

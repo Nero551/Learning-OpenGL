@@ -101,7 +101,7 @@ Matrix2 Matrix2::Rotate(float radian) const {
 }
 
 Matrix2 Matrix2::Transpose() const {
-    Matrix2 result;
+    Matrix2 result = Zero;
 
     for (int row = 0; row < 2; row++) { for (int col = 0; col < 2; col++) { result.m[row][col] = m[col][row]; } }
 

@@ -52,7 +52,7 @@ Entity& World::FindEntity(unsigned int id) {
     if (entity == Entities.end()) {
         Logger::Fatal(std::format("Entity Not Found: {}", id));
     }
-    return (*entity->second);
+    return *entity->second;
 }
 
 CheckedPtr<Entity> World::TryFindEntity(unsigned int id) {

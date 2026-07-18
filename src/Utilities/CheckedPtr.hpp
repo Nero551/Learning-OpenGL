@@ -43,11 +43,11 @@ template <typename T> struct CheckedPtr {
         ptr = nullptr;
     }
 
-    T* Get() const {
+    [[nodiscard]] T* Get() const {
         return ptr;
     }
 
-    bool IsNull() const {
+    [[nodiscard]] bool IsNull() const {
         return ptr == nullptr;
     }
 

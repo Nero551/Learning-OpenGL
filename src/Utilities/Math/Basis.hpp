@@ -7,6 +7,6 @@ struct Basis {
   Vector3 Up = Vector3::Up;
   Vector3 Forward = Vector3::Forward;
 
-  Matrix4 GetMatrix() const;
-  Matrix4 GetInverseMatrix() const;
+  [[nodiscard]] Matrix4 GetMatrix() const;
+  [[nodiscard]] Matrix4 GetInverseMatrix() const;
 };

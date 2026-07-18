@@ -32,5 +32,5 @@ struct Material : Resource {
 protected:
     std::array<CheckedPtr<Texture>, MaxCustomTextures> CustomTextures = {};
 
-    void SetProperties();
+    void SetProperties() const;
 };

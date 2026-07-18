@@ -85,7 +85,7 @@ TEST_CASE("Matrix2 methods") {
 
     SECTION("inverse") {
         Matrix2 inv = A.Inverse();
-        Matrix2 expected = Matrix2(4, -2, -3, 1) / (-2);
+        Matrix2 expected = Matrix2(4, -2, -3, 1) / -2;
         REQUIRE(inv == expected);
         REQUIRE(A * inv == Matrix2::Identity);
         REQUIRE(inv * A == Matrix2::Identity);

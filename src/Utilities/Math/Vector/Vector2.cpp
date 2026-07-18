@@ -1,5 +1,4 @@
 #include "Vector2.hpp"
-#include <iostream>
 #include <ostream>
 
 #include "../MathUtils.hpp"

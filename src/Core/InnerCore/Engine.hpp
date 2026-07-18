@@ -40,7 +40,7 @@ struct Engine {
         if (module == Modules.end()) {
             Logger::Fatal(std::format("Module {} not found", typeid(T).name()));
         }
-        return static_cast<T&>((*module->second));
+        return static_cast<T&>(*module->second);
     }
 
 private:

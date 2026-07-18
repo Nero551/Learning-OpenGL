@@ -1,7 +1,5 @@
 #pragma once
 
-#include <complex>
-
 #include "../Enums/LightType.hpp"
 #include "Core/OuterCore/Component.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"

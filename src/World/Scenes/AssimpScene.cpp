@@ -23,7 +23,7 @@ void AssimpScene::ProcessNode(aiNode* node, const aiScene* scene) {
         std::vector<Vertex> vertices;
         std::vector<unsigned int> indices;
 
-        for (unsigned int v = 0; i < mesh->mNumVertices; i++) {}
+        for (unsigned int v = 0; v < mesh->mNumVertices; v++) {}
     }
     for (unsigned int i = 0; i < node->mNumChildren; i++) {
         ProcessNode(node->mChildren[i], scene);

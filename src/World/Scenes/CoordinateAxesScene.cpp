@@ -32,7 +32,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
 
     auto& yAxis = Engine::Get().World.CreateEntity<Axis>();
     yAxis.GetComponent<MeshComponent>().Mesh = &line;
-    yAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Y-Axis Material");;
+    yAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Y-Axis Material");
     yAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
     yAxis.GetComponent<Transform3DComponent>().LocalEulerRotation = {Math::Radians(-90), 0, 0};

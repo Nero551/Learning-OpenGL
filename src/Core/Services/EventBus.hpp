@@ -26,7 +26,7 @@ struct EventBus : Service {
     void EmptyFireQueue();
 
 
-    template <EventType T> void Sub(const std::function<void(T&)>& callback) {
+    template <EventType T, typename F> void Sub(F&& callback) {
         auto method = [callback](Event& e) {
             callback(static_cast<T&>(e));
         };
@@ -37,8 +37,6 @@ struct EventBus : Service {
     template <EventType T> void UnSub(const std::function<void(T&)>& callback) {}
 
 private:
-    std::unordered_map<std::type_index, std::vector<std::function<void(Event&)>>
-    >
-    Listeners;
+    std::unordered_map<std::type_index, std::vector<std::function<void(Event&)>>> Listeners;
     std::vector<std::unique_ptr<Event>> FireQueue;
 };

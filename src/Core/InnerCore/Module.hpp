@@ -25,7 +25,7 @@ struct Module {
     template <SystemType T> T& GetSystem() {
         auto system = Systems.find(typeid(T));
         if (system == Systems.end()) { Logger::Fatal(std::format("System Not Found: {}", typeid(T).name())); }
-        return static_cast<T&>((*system->second));
+        return static_cast<T&>(*system->second);
     }
 
     Module() = default;

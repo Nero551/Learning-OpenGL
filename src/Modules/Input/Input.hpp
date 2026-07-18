@@ -28,7 +28,7 @@ struct Input : Module {
 
     MouseMode GetMouseMode() const;
 
-    void SetMouseMode(enum MouseMode mode);
+    void SetMouseMode(MouseMode mode);
 
 private:
     MouseMode mouseMode = MouseMode::Normal;

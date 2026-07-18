@@ -23,7 +23,7 @@ void Entity::AttachChild(Entity& child) {
         child.Parent->DetachChild(child.Id);
     }
 
-    CheckedPtr<Entity> childPtr = &child;
+    CheckedPtr childPtr = &child;
     Children.emplace(child.Id, std::move(childPtr));
 
     child.Parent = this;
@@ -89,9 +89,7 @@ bool Entity::HasAncestor(unsigned int id) const {
 }
 
 void Entity::DetachChild(unsigned int id) {
-    auto child = Children.find(id);
-
-    if (child != Children.end()) {
+    if (auto child = Children.find(id); child != Children.end()) {
         child->second->Parent.Reset();
         Children.erase(child);
     }
@@ -148,7 +146,7 @@ bool Entity::IsAncestorOf(const Entity& entity) {
 }
 
 Entity& Entity::GetRoot() {
-    CheckedPtr<Entity> current = this;
+    CheckedPtr current = this;
 
     while (current->HasParent())
         current = current->Parent;
@@ -161,9 +159,7 @@ bool Entity::HasChild(unsigned int id) const {
 }
 
 Entity& Entity::GetChild(unsigned int id) {
-    auto child = Children.find(id);
-
-    if (child != Children.end()) {
+    if (auto child = Children.find(id); child != Children.end()) {
         return *child->second;
     }
 
@@ -171,8 +167,7 @@ Entity& Entity::GetChild(unsigned int id) {
 }
 
 CheckedPtr<Entity> Entity::TryGetChild(unsigned int id) {
-    auto child = Children.find(id);
-    if (child != Children.end()) {
+    if (auto child = Children.find(id); child != Children.end()) {
         return child->second;
     }
     return {};

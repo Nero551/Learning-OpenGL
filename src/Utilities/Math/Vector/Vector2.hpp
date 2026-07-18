@@ -1,7 +1,5 @@
 #pragma once
 
-#include <ostream>
-
 #include "../MathUtils.hpp"
 
 struct Vector2 {

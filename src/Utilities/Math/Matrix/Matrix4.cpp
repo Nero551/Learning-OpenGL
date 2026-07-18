@@ -7,9 +7,9 @@
 
 
 Matrix4::Matrix4(float mAll) {
-    for (int row = 0; row < 4; row++) {
+    for (auto& row : m) {
         for (int col = 0; col < 4; col++) {
-            m[row][col] = mAll;
+            row[col] = mAll;
         }
     }
 }
@@ -164,7 +164,7 @@ std::ostream& operator<<(std::ostream& os, const Matrix4& mat4) {
 
 //? Methods
 Matrix4 Matrix4::Scale(const Vector3& scale) const {
-    Matrix4 scaleMatrix = Matrix4::Identity;
+    Matrix4 scaleMatrix = Identity;
     scaleMatrix.m[0][0] = scale.x;
     scaleMatrix.m[1][1] = scale.y;
     scaleMatrix.m[2][2] = scale.z;
@@ -173,7 +173,7 @@ Matrix4 Matrix4::Scale(const Vector3& scale) const {
 }
 
 Matrix4 Matrix4::Translate(const Vector3& translation) const {
-    Matrix4 transMatrix = Matrix4::Identity;
+    Matrix4 transMatrix = Identity;
     transMatrix.m[0][3] = translation.x;
     transMatrix.m[1][3] = translation.y;
     transMatrix.m[2][3] = translation.z;
@@ -272,8 +272,8 @@ Matrix4 Matrix4::Perspective(float fovRad, float aspectRatio, float near, float 
     return m;
 }
 
-Matrix4 Matrix4::LookAt(const Vector3 pos, const Vector3 target, const Vector3 up) {
-    Matrix4 trans = Matrix4::Identity;
+Matrix4 Matrix4::LookAt(const Vector3& pos, const Vector3& target, const Vector3& up) {
+    Matrix4 trans = Identity;
     trans = trans.Translate(-pos);
 
     Vector3 forward = (target - pos).Normalized();
@@ -322,7 +322,7 @@ Matrix4 Matrix4::Inverse() const {
 
     if (std::abs(det) < Math::EPSILONF) {
         Logger::Error("Matrix is not invertible");
-        return Matrix4::Identity;
+        return Identity;
     }
 
     return cofactorMatrix.Transpose() / det;

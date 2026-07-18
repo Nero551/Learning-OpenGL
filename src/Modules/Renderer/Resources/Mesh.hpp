@@ -13,7 +13,7 @@ struct Mesh : Resource {
 
     ~Mesh() override;
 
-    unsigned int GetId() const;
+    [[nodiscard]] unsigned int GetId() const;
 
     void Draw();
 

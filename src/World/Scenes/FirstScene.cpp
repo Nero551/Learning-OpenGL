@@ -2,8 +2,6 @@
 
 #include "AssimpScene.hpp"
 #include "CoordinateAxesScene.hpp"
-#include "Modules/Input/Input.hpp"
-#include "Modules/Input/Enums/Keys.hpp"
 #include "../../Modules/Renderer/Primitives/Primitives.hpp"
 #include "Core/Services/ResourceManager.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"

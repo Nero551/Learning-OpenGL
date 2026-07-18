@@ -5,7 +5,7 @@
 
 
 Mesh& Primitives::CreateLine(const std::string& name) {
-    std::vector<Vertex> vertices = {
+    std::vector vertices = {
         Vertex({0, 0, 0, 1}, {1}, {0}, {0, 0, 1}), Vertex({0, 0, 1, 1}, {1}, {0}, {0, 0, 1})
     };
     std::vector<unsigned int> indices = {0, 1};

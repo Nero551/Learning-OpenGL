@@ -9,7 +9,7 @@ struct Texture : Resource {
 
     ~Texture() override;
 
-    unsigned int GetId() const;
+    [[nodiscard]] unsigned int GetId() const;
 
     void Bind(unsigned int unit) const;
 
