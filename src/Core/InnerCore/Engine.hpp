@@ -7,8 +7,6 @@
 template <typename T>concept ModuleType = std::derived_from<T, Module>;
 
 struct Engine {
-    static CheckedPtr<Engine> Ins;
-
     bool Running;
     double Time = 0;
     double DeltaTime = 0;
@@ -33,6 +31,10 @@ struct Engine {
 
     void Render();
 
+    static Engine& Get() {
+        return *Ins;
+    }
+
     template <ModuleType T> T& GetModule() {
         auto module = Modules.find(typeid(T));
         if (module == Modules.end()) {
@@ -42,6 +44,9 @@ struct Engine {
     }
 
 private:
+    inline static CheckedPtr<Engine> Ins = nullptr;
+
+    friend int main();
     void AddModules();
 
     std::unordered_map<std::type_index, std::unique_ptr<Module>> Modules;

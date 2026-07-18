@@ -8,11 +8,10 @@
 #include "Modules/Input/Input.hpp"
 #include "Modules/Profiling/Profiling.hpp"
 
-Engine::Engine() : Window(1000, 800, "Plus Ultra") {
+Engine::Engine() : Window(800, 600, "Plus Ultra") {
     Running = true;
+    Ins = this;
 }
-
-CheckedPtr<Engine> Engine::Ins;
 
 void Engine::AddModules() {
     AddModule<Renderer>();

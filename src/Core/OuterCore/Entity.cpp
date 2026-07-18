@@ -47,10 +47,10 @@ void Entity::Destroy() {
         ClearParent();
     }
 
-    Engine::Ins->World.InternalRemoveEntity(Id);
+    Engine::Get().World.InternalRemoveEntity(Id);
 
     for (auto& descendant : descendants) {
-        Engine::Ins->World.InternalRemoveEntity(descendant->Id);
+        Engine::Get().World.InternalRemoveEntity(descendant->Id);
     }
 }
 
@@ -79,12 +79,12 @@ std::vector<CheckedPtr<Entity>> Entity::GetDescendants() {
 }
 
 bool Entity::HasDescendant(unsigned int id) const {
-    CheckedPtr<Entity> descendant = Engine::Ins->World.TryFindEntity(id);
+    CheckedPtr<Entity> descendant = Engine::Get().World.TryFindEntity(id);
     return descendant && descendant->IsDescendantOf(*this);
 }
 
 bool Entity::HasAncestor(unsigned int id) const {
-    CheckedPtr<Entity> ancestor = Engine::Ins->World.TryFindEntity(id);
+    CheckedPtr<Entity> ancestor = Engine::Get().World.TryFindEntity(id);
     return ancestor && ancestor->IsAncestorOf(*this);
 }
 

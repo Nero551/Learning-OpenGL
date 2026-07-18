@@ -34,7 +34,7 @@ void LightingSystem::Start() {
 }
 
 void LightingSystem::Render() {
-    auto& scene = Engine::Ins->World.ActiveScene;
+    auto& scene = Engine::Get().World.ActiveScene;
     auto& camera = scene->GetActiveCamera();
 
     for (auto& entity : scene->GetRoot().GetDescendants()) {
@@ -49,7 +49,7 @@ void LightingSystem::Render() {
             camera.GetComponent<Transform3DComponent>().LocalPosition));
 
         for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
-            auto& light = Engine::Ins->World.FindEntity(Lights[i]);
+            auto& light = Engine::Get().World.FindEntity(Lights[i]);
             auto& lightComponent = light.GetComponent<LightComponent>();
 
             materialComponent.Material->Shader->SetUniform(

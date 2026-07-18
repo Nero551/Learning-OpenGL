@@ -11,14 +11,14 @@
 CoordinateAxesScene::CoordinateAxesScene() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
 
-    SetRoot(Engine::Ins->World.CreateEntity<Entity>());
+    SetRoot(Engine::Get().World.CreateEntity<Entity>());
 
     auto& shader = ServiceStore::Ins->Get<ResourceManager>().Load<Shader>("AxisShader",
         "Assets/Shaders/axisShader.frag",
         "Assets/Shaders/axisShader.vert");
     auto& line = Primitives::CreateLine("Line");
 
-    auto& xAxis = Engine::Ins->World.CreateEntity<Axis>();
+    auto& xAxis = Engine::Get().World.CreateEntity<Axis>();
     xAxis.GetComponent<MeshComponent>().Mesh = &line;
     xAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("X-Axis Material");
     xAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
@@ -30,7 +30,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
 
     GetRoot().AttachChild(xAxis);
 
-    auto& yAxis = Engine::Ins->World.CreateEntity<Axis>();
+    auto& yAxis = Engine::Get().World.CreateEntity<Axis>();
     yAxis.GetComponent<MeshComponent>().Mesh = &line;
     yAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Y-Axis Material");;
     yAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
@@ -42,7 +42,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
 
     GetRoot().AttachChild(yAxis);
 
-    auto& zAxis = Engine::Ins->World.CreateEntity<Axis>();
+    auto& zAxis = Engine::Get().World.CreateEntity<Axis>();
     zAxis.GetComponent<MeshComponent>().Mesh = &line;
     zAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Z-Axis Material");
     zAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
