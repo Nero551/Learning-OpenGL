@@ -1,4 +1,5 @@
 #include "AssimpScene.hpp"
+
 #include<assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
@@ -9,24 +10,73 @@
 
 Assimp::Importer importer;
 
-void AssimpScene::ProcessNode(aiNode* node, const aiScene* scene) {
+void AssimpScene::ProcessNode(aiNode* node, const aiScene* scene, const std::string& directory) {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
     //PROCESSING...
     //TODO- continue Assimp
-    auto& entity = Engine::Get().World.CreateEntity<Entity>();
-    entity.AddComponent<Transform3DComponent>();
-    GetRoot().AttachChild(entity);
+    auto& entity = Engine::Get().World.CreateEntity<Nova3D>();
 
-    for (unsigned int i = 0; i < node->mNumMeshes; i++) {
-        aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
+    //Mesh
+    for (unsigned int m = 0; m < node->mNumMeshes; m++) {
         auto& meshComponent = entity.AddComponent<MeshComponent>();
         std::vector<Vertex> vertices;
         std::vector<unsigned int> indices;
+        aiMesh* mesh = scene->mMeshes[node->mMeshes[m]];
+        //Vertices
+        for (unsigned int v = 0; v < mesh->mNumVertices; v++) {
+            Vector4 pos = {mesh->mVertices[v].x, mesh->mVertices[v].y, mesh->mVertices[v].z, 1};
+            Vector3 normal = {mesh->mNormals[v].x, mesh->mNormals[v].y, mesh->mNormals[v].z};
+            Vector2 uv;
+            if (mesh->mTextureCoords[0]) {
+                uv = {mesh->mTextureCoords[0][v].x, mesh->mTextureCoords[0][v].y};
+            }
+            else {
+                uv = {0.0f, 0.0f};
+            }
+            vertices.emplace_back(pos, Vector4(1), uv, normal);
+        }
 
-        for (unsigned int v = 0; v < mesh->mNumVertices; v++) {}
+        //Faces
+        for (unsigned int f = 0; f < mesh->mNumFaces; f++) {
+            aiFace face = mesh->mFaces[f];
+            for (unsigned int i = 0; i < face.mNumIndices; i++) {
+                indices.push_back(face.mIndices[i]);
+            }
+        }
+
+        meshComponent.Mesh = &resourceManager.Load<Mesh>("mesh_" + std::to_string(node->mMeshes[m]), vertices, indices);
+
+        //Material
+        auto& materialComponent = entity.AddComponent<MaterialComponent>();
+        auto& material = resourceManager.Load<Material>("material_" + std::to_string(mesh->mMaterialIndex));
+        material.Shader = &resourceManager.Load<Shader>("s", "Assets/Shaders/shader.frag",
+            "Assets/Shaders/shader.vert");
+        aiMaterial* aiMat = scene->mMaterials[mesh->mMaterialIndex];
+
+        //Diffuse maps
+        for (unsigned int t = 0; t < aiMat->GetTextureCount(aiTextureType_DIFFUSE); t++) {
+            aiString str;
+            aiMat->GetTexture(aiTextureType_DIFFUSE, t, &str);
+            auto& diffuseMap = resourceManager.Load<Texture>("diffuse" + std::to_string(t),
+                std::filesystem::path(directory) / str.C_Str());
+            material.DiffuseMap = &diffuseMap;
+        }
+
+        //Specular maps
+        for (unsigned int t = 0; t < aiMat->GetTextureCount(aiTextureType_SPECULAR); t++) {
+            aiString str;
+            aiMat->GetTexture(aiTextureType_SPECULAR, t, &str);
+            auto& specularMap = resourceManager.Load<Texture>("specular" + std::to_string(t),
+                std::filesystem::path(directory) / str.C_Str());
+            material.SpecularMap = &specularMap;
+        }
+        materialComponent.Material = &material;
     }
+
+    GetRoot().AttachChild(entity);
+
     for (unsigned int i = 0; i < node->mNumChildren; i++) {
-        ProcessNode(node->mChildren[i], scene);
+        ProcessNode(node->mChildren[i], scene, directory);
     }
 }
 
@@ -36,12 +86,12 @@ AssimpScene::AssimpScene(const std::string& filepath) {
     const aiScene* scene = importer.ReadFile(filepath, aiProcess_Triangulate | aiProcess_FlipUVs);
 
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
-        Logger::Error("ASSIMP FAILED TO LOAD SCENE: ", importer.GetErrorString());
+        Logger::Error("[ASSIMP] Failed To Load Scene: ", importer.GetErrorString());
         return;
     }
 
     std::string directory = filepath.substr(0, filepath.find_last_of('/'));
-    ProcessNode(scene->mRootNode, scene);
+    ProcessNode(scene->mRootNode, scene, directory);
 }
 
 void AssimpScene::Update(double dt) {}

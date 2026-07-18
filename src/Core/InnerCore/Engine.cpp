@@ -91,7 +91,7 @@ void Engine::Render() {
 
 void Engine::BeginFrame() {
     Window.PollEvents();
-    glClearColor(0.025, 0.0125, 0.025, 1);
+    glClearColor(0.05, 0.025, 0.05, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     World.BeginFrame(DeltaTime);

@@ -1,5 +1,6 @@
 #include "World.hpp"
 
+#include "Core/Services/ResourceManager.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 #include "World/Scenes/FirstScene.hpp"
 

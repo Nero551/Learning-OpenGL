@@ -32,11 +32,27 @@ FirstScene::FirstScene() {
 
     light.GetComponent<Transform3DComponent>().LocalScale = {0.2};
     light.GetComponent<LightComponent>().Ambient = {0.2};
+    light.GetComponent<Transform3DComponent>().LocalPosition = {5, 0, 5};
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light);
 
+    // auto& modelScene = Engine::Get().World.CreateScene<AssimpScene>("barrel", "Assets/Barrel/barrel.obj");
+    // GetRoot().AttachChild(modelScene.GetRoot());
+    auto& objectShader = resourceManager.Load<Shader>("objectShader", "Assets/Shaders/shader.frag",
+        "Assets/Shaders/shader.vert");
+    auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
+    auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
 
-    // Engine::Get().World.CreateScene<AssimpScene>("Assets");
+    auto& objectMaterial = resourceManager.Load<Material>("material");
+    objectMaterial.Shader = &objectShader;
+    objectMaterial.DiffuseMap = &diffuseMap;
+    objectMaterial.SpecularMap = &specularMap;
+
+    auto& cube = Engine::Get().World.CreateEntity<MeshInstance3D>();
+    cube.GetComponent<MeshComponent>().Mesh = &mesh;
+    cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
+
+    GetRoot().AttachChild(cube);
 }
 
 void FirstScene::Update(double dt) {}

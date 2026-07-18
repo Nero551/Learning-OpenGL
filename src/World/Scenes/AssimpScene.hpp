@@ -11,6 +11,5 @@ struct AssimpScene : Scene {
     void Update(double dt) override;
 
 private:
-    void ProcessNode(aiNode* node, const aiScene* scene);
-    Mesh& ProcessMesh(aiMesh* mesh, const aiScene* scene);
+    void ProcessNode(aiNode* node, const aiScene* scene, const std::string& directory);
 };

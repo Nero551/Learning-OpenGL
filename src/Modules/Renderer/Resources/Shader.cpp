@@ -10,6 +10,9 @@ Shader::Shader(const std::string& name, const std::string& fragFilepath,
     const std::string& vertFilepath) : Resource(name) {
     std::string fragCode = FileSystem::ReadFile(fragFilepath);
     std::string vertCode = FileSystem::ReadFile(vertFilepath);
+
+    //TODO- add shader preprocessing right here, for custom #include so i don't repeat shader code
+
     const char* fragSource = fragCode.c_str();
     const char* vertSource = vertCode.c_str();
 
@@ -23,21 +26,31 @@ Shader::Shader(const std::string& name, const std::string& fragFilepath,
     glDeleteShader(fragShader);
 }
 
-Shader::~Shader() { glDeleteProgram(Id); }
+Shader::~Shader() {
+    glDeleteProgram(Id);
+}
 
-unsigned int Shader::GetId() const { return Id; }
+unsigned int Shader::GetId() const {
+    return Id;
+}
 
 void Shader::Use() {
     glUseProgram(Id);
     UploadUniforms();
 }
 
-void Shader::UploadUniforms() { for (auto& [location, uniform] : PendingUniforms) { uniform->Upload(location); } }
+void Shader::UploadUniforms() {
+    for (auto& [location, uniform] : PendingUniforms) {
+        uniform->Upload(location);
+    }
+}
 
 int Shader::GetUniformLocation(const std::string& name) {
     int location;
 
-    if (UniformLocations.contains(name)) { location = UniformLocations[name]; }
+    if (UniformLocations.contains(name)) {
+        location = UniformLocations[name];
+    }
     else {
         location = glGetUniformLocation(Id, name.c_str());
 
