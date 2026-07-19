@@ -12,21 +12,25 @@ void TransformSystem::FixedUpdate(double fdt) {
         }
 
         auto& transform = entity->GetComponent<Transform3DComponent>();
-
-        if (entity->HasParent() && transform.InheritTransform == true) {
-            auto& parent = entity->GetParent();
-            if (parent.HasComponent<Transform3DComponent>()) {
-                auto& parentTransform = parent.GetComponent<Transform3DComponent>();
-
-                transform.GlobalPosition = parentTransform.GlobalPosition + transform.LocalPosition;
-                transform.GlobalEulerRotation = parentTransform.GlobalEulerRotation + transform.LocalEulerRotation;
-                transform.GlobalScale = parentTransform.GlobalScale * transform.LocalScale;
-            }
-        }
-        else {
-            transform.GlobalPosition = transform.LocalPosition;
-            transform.GlobalEulerRotation = transform.LocalPosition;
-            transform.GlobalScale = transform.LocalScale;
-        }
+        //
+        // if (transform.LocalPosition.IsDirty()) {
+        //     Logger::Info(transform.LocalPosition);
+        // }
+        //
+        // if (entity->HasParent() && transform.InheritTransform == true) {
+        //     auto& parent = entity->GetParent();
+        //     if (parent.HasComponent<Transform3DComponent>()) {
+        //         auto& parentTransform = parent.GetComponent<Transform3DComponent>();
+        //
+        //         transform.GlobalPosition = parentTransform.GlobalPosition + transform.LocalPosition;
+        //         transform.GlobalEulerRotation = parentTransform.GlobalEulerRotation + transform.LocalEulerRotation;
+        //         transform.GlobalScale = parentTransform.GlobalScale * transform.LocalScale;
+        //     }
+        // }
+        // else {
+        //     transform.GlobalPosition = transform.LocalPosition;
+        //     transform.GlobalEulerRotation = transform.LocalEulerRotation;
+        //     transform.GlobalScale = transform.LocalScale;
+        // }
     }
 }

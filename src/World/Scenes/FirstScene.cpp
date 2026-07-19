@@ -76,23 +76,23 @@ void FirstScene::FixedUpdate(double fdt) {
 
     const auto fdtf = static_cast<float>(fdt);
     if (input.IsKeyHeld(Key::Up)) {
-        transformComponent.LocalPosition.z += 2.0f * fdtf;
+        transformComponent.LocalPosition->z += 2.0f * fdtf;
     }
     if (input.IsKeyHeld(Key::Down)) {
-        transformComponent.LocalPosition.z -= 2.0f * fdtf;
+        transformComponent.LocalPosition->z -= 2.0f * fdtf;
     }
     if (input.IsKeyHeld(Key::Left)) {
-        transformComponent.LocalPosition.x -= 2.0f * fdtf;
+        transformComponent.LocalPosition->x -= 2.0f * fdtf;
     }
     if (input.IsKeyHeld(Key::Right)) {
-        transformComponent.LocalPosition.x += 2.0f * fdtf;
+        transformComponent.LocalPosition->x += 2.0f * fdtf;
     }
 
     if (input.IsKeyHeld(Key::I)) {
-        transformComponent.LocalPosition.y += 2.0f * fdtf;
+        transformComponent.LocalPosition->y += 2.0f * fdtf;
     }
     if (input.IsKeyHeld(Key::O)) {
-        transformComponent.LocalPosition.y -= 2.0f * fdtf;
+        transformComponent.LocalPosition->y -= 2.0f * fdtf;
     }
 
     if (input.IsKeyHeld(Key::Z)) {

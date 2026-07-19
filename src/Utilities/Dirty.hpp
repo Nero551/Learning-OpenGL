@@ -1,7 +1,8 @@
 #pragma once
+#include "IDirty.hpp"
 
-template <typename T> struct Dirty {
-    Dirty(T& value) : Value(value) {}
+template <typename T> struct Dirty : IDirty {
+    Dirty(T value) : Value(value) {}
 
     void Set(const T& value) {
         if (Value != value) {
@@ -10,20 +11,26 @@ template <typename T> struct Dirty {
         }
     }
 
-    T& Get() {
-        return Value;
+    T* operator->() {
+        return &Get();
     }
+
 
     bool IsDirty() {
         return DirtyFlag;
     }
 
-    void ClearDirty() {
+    void ClearDirty() override {
         DirtyFlag = false;
     }
 
-    explicit operator T&() {
+    operator const T&() const {
         return Value;
+    }
+
+    Dirty& operator=(const Dirty& dirty) {
+        Set(dirty.Value);
+        return *this;
     }
 
     Dirty& operator=(const T& value) {
@@ -31,7 +38,56 @@ template <typename T> struct Dirty {
         return *this;
     }
 
+    Dirty operator+(const Dirty& dirty) {
+        Set(Value + dirty.Value);
+        return *this;
+    }
+
+    Dirty operator-(const Dirty& dirty) {
+        Set(Value - dirty.Value);
+        return *this;
+    }
+
+    Dirty operator*(const Dirty& dirty) {
+        Set(Value * dirty.Value);
+        return *this;
+    }
+
+    Dirty operator/(const Dirty& dirty) {
+        Set(Value / dirty.Value);
+        return *this;
+    }
+
+    Dirty& operator+=(const Dirty& dirty) {
+        Value = Value + dirty.Value;
+        return *this;
+    }
+
+    Dirty& operator-=(const Dirty& dirty) {
+        Value = Value - dirty.Value;
+        return *this;
+    }
+
+    Dirty& operator*=(const Dirty& dirty) {
+        Value = Value * dirty.Value;
+        return *this;
+    }
+
+    Dirty& operator/=(const Dirty& dirty) {
+        Value = Value / dirty.Value;
+        return *this;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Dirty& dirty) {
+        return os << dirty.Value;
+    }
+
 private:
     T Value = {};
     bool DirtyFlag = false;
+
+    T& Get() {
+        DirtyFlag = true;
+        return Value;
+    }
 };

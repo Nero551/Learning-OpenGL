@@ -4,6 +4,7 @@
 
 #include "../OuterCore/ServiceStore.hpp"
 #include "../../Modules/Renderer/Renderer.hpp"
+#include "Core/Services/DirtyStore.hpp"
 #include "Core/Services/ResourceManager.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Profiling/Profiling.hpp"
@@ -23,6 +24,7 @@ void Engine::AddModules() {
 void Engine::AddServices() {
     ServiceStore::Ins->Add<ResourceManager>();
     ServiceStore::Ins->Add<EventBus>();
+    ServiceStore::Ins->Add<DirtyStore>();
 }
 
 
@@ -43,8 +45,6 @@ void Engine::Start() {
 
 void Engine::Update() {
     Time = glfwGetTime();
-
-    ServiceStore::Ins->Get<EventBus>().EmptyFireQueue();
 
     World.Update(DeltaTime);
 
@@ -110,4 +110,7 @@ void Engine::EndFrame() {
     for (auto& module : Modules | std::views::values) {
         module->EndFrame(DeltaTime);
     }
+
+    ServiceStore::Ins->Get<EventBus>().EmptyFireQueue();
+    ServiceStore::Ins->Get<DirtyStore>().ClearDirtyObjects();
 }
