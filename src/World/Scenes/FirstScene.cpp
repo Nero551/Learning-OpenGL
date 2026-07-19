@@ -40,6 +40,7 @@ FirstScene::FirstScene() {
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light);
 
+    //TODO- change detection system ( dirty flags)
     //TODO- parent child transform relations
     //TODO- shader preprocessing for custom includes
     //TODO- quaternions
@@ -72,8 +73,8 @@ void FirstScene::FixedUpdate(double fdt) {
     auto& transformComponent = cube.GetComponent<Transform3DComponent>();
     auto& input = Engine::Get().GetModule<Input>();
 
-    auto fdtf = static_cast<float>(fdt);
 
+    const auto fdtf = static_cast<float>(fdt);
     if (input.IsKeyHeld(Key::Up)) {
         transformComponent.LocalPosition.z += 2.0f * fdtf;
     }
