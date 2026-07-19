@@ -3,7 +3,7 @@
 #include "Utilities/Math/Vector/Vector3.hpp"
 
 struct Matrix3 {
-    float m[3][3];
+    float m[3][3] = {};
 
     Matrix3() = default;
 

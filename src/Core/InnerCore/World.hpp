@@ -1,5 +1,6 @@
 #pragma once
 
+#include "SystemOwner.hpp"
 #include "../OuterCore/Scene.hpp"
 #include "Core/OuterCore/ServiceStore.hpp"
 #include "Core/Services/EventBus.hpp"
@@ -8,7 +9,7 @@
 template <typename T>concept EntityType = std::derived_from<T, Entity>;
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
-struct World {
+struct World : SystemOwner {
     CheckedPtr<Scene> ActiveScene{"World Has No Active Scene"};
 
     void Start();
@@ -74,4 +75,7 @@ private:
     void InternalRemoveEntity(unsigned int id);
 
     friend struct Entity;
+
+protected:
+    void AddSystems() override;
 };

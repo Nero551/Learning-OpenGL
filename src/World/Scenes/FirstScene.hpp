@@ -4,5 +4,5 @@
 struct FirstScene : Scene {
     FirstScene();
 
-    void Update(double dt) override;
+    void FixedUpdate(double fdt) override;
 };

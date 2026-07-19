@@ -3,34 +3,67 @@
 #include "Core/Services/ResourceManager.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 #include "World/Scenes/FirstScene.hpp"
+#include "World/Systems/TransformSystem.hpp"
+
+void World::AddSystems() {
+    AddSystem<TransformSystem>();
+}
 
 void World::Start() {
     auto& scene = CreateScene<FirstScene>("First Scene");
     ActiveScene = &scene;
+
+    AddSystems();
+    for (auto& system : Systems | std::views::values) {
+        system->Start();
+    }
 }
 
 void World::Update(double dt) {
     ActiveScene->Update(dt);
+
+    for (auto& system : Systems | std::views::values) {
+        system->Update(dt);
+    }
 }
 
 void World::FixedUpdate(double fdt) {
     ActiveScene->FixedUpdate(fdt);
+
+    for (auto& system : Systems | std::views::values) {
+        system->FixedUpdate(fdt);
+    }
 }
 
 void World::Render() {
     ActiveScene->Render();
+
+    for (auto& system : Systems | std::views::values) {
+        system->Render();
+    }
 }
 
 void World::Stop() {
     ActiveScene->Stop();
+
+    for (auto& system : Systems | std::views::values) {
+        system->Stop();
+    }
 }
 
 void World::BeginFrame(double dt) {
     ActiveScene->BeginFrame(dt);
+
+    for (auto& system : Systems | std::views::values) {
+        system->BeginFrame(dt);
+    }
 }
 
 void World::EndFrame(double dt) {
     ActiveScene->EndFrame(dt);
+    for (auto& system : Systems | std::views::values) {
+        system->EndFrame(dt);
+    }
 }
 
 void World::InternalRemoveEntity(unsigned int id) {

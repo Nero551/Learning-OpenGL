@@ -40,14 +40,9 @@ FirstScene::FirstScene() {
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light);
 
-    //TODO- extract an abstract class SystemStore/Container, both module and world will inherit/Have
-    //TODO- shader preprocessing for custom includes
     //TODO- parent child transform relations
+    //TODO- shader preprocessing for custom includes
     //TODO- quaternions
-
-
-    // auto& backpack = Engine::Get().World.CreateScene<AssimpScene>("backpack", "Assets/backpack/backpack.obj");
-    // GetRoot().AttachChild(backpack.GetRoot());
 
     auto& objectShader = resourceManager.Load<Shader>("objectShader", "Assets/Shaders/shader.frag",
         "Assets/Shaders/shader.vert");
@@ -72,42 +67,42 @@ FirstScene::FirstScene() {
     cube.AttachChild(cube2);
 }
 
-void FirstScene::Update(double dt) {
+void FirstScene::FixedUpdate(double fdt) {
     auto& cube = Engine::Get().World.FindEntity(cubeId);
     auto& transformComponent = cube.GetComponent<Transform3DComponent>();
     auto& input = Engine::Get().GetModule<Input>();
 
-    auto dtf = static_cast<float>(dt);
+    auto fdtf = static_cast<float>(fdt);
 
     if (input.IsKeyHeld(Key::Up)) {
-        transformComponent.LocalPosition.z += 2.0f * dtf;
+        transformComponent.LocalPosition.z += 2.0f * fdtf;
     }
     if (input.IsKeyHeld(Key::Down)) {
-        transformComponent.LocalPosition.z -= 2.0f * dtf;
+        transformComponent.LocalPosition.z -= 2.0f * fdtf;
     }
     if (input.IsKeyHeld(Key::Left)) {
-        transformComponent.LocalPosition.x -= 2.0f * dtf;
+        transformComponent.LocalPosition.x -= 2.0f * fdtf;
     }
     if (input.IsKeyHeld(Key::Right)) {
-        transformComponent.LocalPosition.x += 2.0f * dtf;
+        transformComponent.LocalPosition.x += 2.0f * fdtf;
     }
 
     if (input.IsKeyHeld(Key::I)) {
-        transformComponent.LocalPosition.y += 2.0f * dtf;
+        transformComponent.LocalPosition.y += 2.0f * fdtf;
     }
     if (input.IsKeyHeld(Key::O)) {
-        transformComponent.LocalPosition.y -= 2.0f * dtf;
+        transformComponent.LocalPosition.y -= 2.0f * fdtf;
     }
 
     if (input.IsKeyHeld(Key::Z)) {
-        transformComponent.LocalEulerRotation.x += 2.0f * dtf;
+        transformComponent.LocalEulerRotation.x += 2.0f * fdtf;
     }
 
     if (input.IsKeyHeld(Key::X)) {
-        transformComponent.LocalEulerRotation.y += 2.0f * dtf;
+        transformComponent.LocalEulerRotation.y += 2.0f * fdtf;
     }
 
     if (input.IsKeyHeld(Key::C)) {
-        transformComponent.LocalEulerRotation.z += 2.0f * dtf;
+        transformComponent.LocalEulerRotation.z += 2.0f * fdtf;
     }
 }
