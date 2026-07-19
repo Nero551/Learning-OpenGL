@@ -9,7 +9,7 @@ struct Transform3DComponent : Component {
     Vector3 LocalEulerRotation = Vector3::Zero; // Radians
     Vector3 LocalScale = Vector3::One;
 
-    Dirty<Vector3> GlobalPosition = Vector3::Zero;
+    Vector3 GlobalPosition = Vector3::Zero;
     Vector3 GlobalEulerRotation = Vector3::Zero;
     Vector3 GlobalScale = Vector3::One;
 
@@ -17,9 +17,9 @@ struct Transform3DComponent : Component {
 
     [[nodiscard]] Matrix4 GetModelMatrix() {
         Matrix4 modelMatrix = Matrix4::Identity;
-        modelMatrix = modelMatrix.Translate(LocalPosition);
-        modelMatrix = modelMatrix.Rotate(LocalEulerRotation);
-        modelMatrix = modelMatrix.Scale(LocalScale);
+        modelMatrix = modelMatrix.Translate(GlobalPosition);
+        modelMatrix = modelMatrix.Rotate(GlobalEulerRotation);
+        modelMatrix = modelMatrix.Scale(GlobalScale);
 
         return modelMatrix;
     }
