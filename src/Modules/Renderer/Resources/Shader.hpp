@@ -1,5 +1,7 @@
 #pragma once
 
+#include <unordered_set>
+
 #include "../Uniform.hpp"
 #include "Core/OuterCore/Resource.hpp"
 
@@ -22,6 +24,8 @@ private:
     unsigned int Id;
     std::unordered_map<std::string, unsigned int> UniformLocations;
     std::unordered_map<int, std::unique_ptr<Uniform>> PendingUniforms;
+    std::unordered_set<std::string> IncludesProcessing;
+    std::unordered_set<std::string> IncludesProcessed;
 
     unsigned int CreateShaderProgram(unsigned int fragShader, unsigned int vertShader);
 

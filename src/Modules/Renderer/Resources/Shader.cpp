@@ -18,10 +18,16 @@ void Shader::Preprocess(const std::string& path, std::string& code) {
         const auto includePath = path.substr(0, path.find_last_of('/')) + "/" + directory;
 
         if (includePath != "") {
+            if (!IncludesProcessing.insert(includePath).second) {
+                Logger::Fatal("Circular Include: " + includePath + " | In Shader: " + path);
+            }
+
             std::string includeCode = FileSystem::ReadFile(includePath);
+            IncludesProcessing.insert(includePath);
             Preprocess(includePath, includeCode);
 
             code.replace(pos, end - pos + 1, includeCode);
+            IncludesProcessing.erase(includePath);
         }
 
         pos = code.find(include);
@@ -37,6 +43,8 @@ Shader::Shader(const std::string& name, const std::string& fragFilepath,
 
     Preprocess(fragFilepath, fragCode);
     Preprocess(vertFilepath, vertCode);
+
+    FileSystem::WriteFile("Assets/shaderCode.txt", fragCode);
 
     const char* fragSource = fragCode.c_str();
     const char* vertSource = vertCode.c_str();
