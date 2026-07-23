@@ -24,7 +24,7 @@ void Shader::PreprocessIncludes(const std::string& path, std::string& code,
         const auto directory = code.substr(start, end - start);
         const auto includePath = path.substr(0, path.find_last_of('/')) + "/" + directory;
 
-        if (!includePath.empty()) {
+        if (code.find("//", start == std::string::npos) && !includePath.empty()) {
             if (Includes.contains(includePath)) {
                 code.replace(pos, end - pos + 1, "");
             }
