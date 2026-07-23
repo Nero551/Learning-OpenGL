@@ -24,8 +24,13 @@ FirstScene::FirstScene() {
     GetRoot().AttachChild(coordinateAxesScene.GetRoot());
 
     auto& mesh = Primitives::CreateCube("mesh");
-    auto& lightShader = resourceManager.Load<Shader>("lightShader", "Assets/Shaders/lightShader.frag",
-        "Assets/Shaders/lightShader.vert");
+
+    auto& vertSource = resourceManager.Load<ShaderSource>("frag", "Assets/Shaders/shader.vert", ShaderStage::Vertex);
+
+    auto& lightShader = resourceManager.Load<Shader>("lightShader");
+    lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/lightShader.frag",
+        ShaderStage::Fragment));
+    lightShader.AssignSource(vertSource);
 
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
@@ -45,8 +50,11 @@ FirstScene::FirstScene() {
     //TODO- shader preprocessing for custom includes
     //TODO- quaternions
 
-    auto& objectShader = resourceManager.Load<Shader>("objectShader", "Assets/Shaders/shader.frag",
-        "Assets/Shaders/shader.vert");
+    auto& objectShader = resourceManager.Load<Shader>("objectShader");
+    objectShader.AssignSource(
+        resourceManager.Load<ShaderSource>("objectFrag", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
+    objectShader.AssignSource(vertSource);
+
     auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
     auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
 

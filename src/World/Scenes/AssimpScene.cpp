@@ -38,8 +38,12 @@ Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::s
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
     //Material
     auto& material = resourceManager.Load<Material>("material_" + std::to_string(mesh->mMaterialIndex));
-    material.Shader = &resourceManager.Load<Shader>("s", "Assets/Shaders/shader.frag",
-        "Assets/Shaders/shader.vert");
+    material.Shader = &resourceManager.Load<Shader>("s");
+    material.Shader->AssignSource(
+        resourceManager.Load<ShaderSource>("s", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
+    material.Shader->AssignSource(
+        resourceManager.Load<ShaderSource>("s", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
+
     aiMaterial* aiMat = scene->mMaterials[mesh->mMaterialIndex];
 
     //Diffuse maps

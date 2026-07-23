@@ -1,7 +1,7 @@
 #version 330 core
 
 #include "LightingShader.frag"
-//#include "Material.frag"
+#include "Material.frag"
 
 void main()
 {

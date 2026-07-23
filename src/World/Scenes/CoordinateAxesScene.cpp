@@ -14,9 +14,12 @@ CoordinateAxesScene::CoordinateAxesScene() {
 
     SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
 
-    auto& shader = ServiceStore::Ins->Get<ResourceManager>().Load<Shader>("AxisShader",
-        "Assets/Shaders/axisShader.frag",
-        "Assets/Shaders/axisShader.vert");
+    auto& shader = ServiceStore::Ins->Get<ResourceManager>().Load<Shader>("AxisShader");
+    shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag",
+        ShaderStage::Fragment));
+    shader.AssignSource(
+        resourceManager.Load<ShaderSource>("axisVert", "Assets/Shaders/axisShader.vert", ShaderStage::Vertex));
+
     auto& line = Primitives::CreateLine("Line");
 
     auto& xAxis = Engine::Get().World.CreateEntity<Axis>();
