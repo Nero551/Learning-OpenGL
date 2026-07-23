@@ -18,7 +18,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
     shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag",
         ShaderStage::Fragment));
     shader.AssignSource(
-        resourceManager.Load<ShaderSource>("axisVert", "Assets/Shaders/axisShader.vert", ShaderStage::Vertex));
+        resourceManager.Load<ShaderSource>("axisVert", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
 
     auto& line = Primitives::CreateLine("Line");
 

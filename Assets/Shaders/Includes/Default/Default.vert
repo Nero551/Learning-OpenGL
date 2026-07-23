@@ -5,6 +5,7 @@ layout (location = 2) in vec2 aUV;
 layout (location = 3) in vec3 aNormal;
 
 out vec4 vPosition;
+out vec4 vWorldPosition;
 out vec4 vColor;
 out vec2 vUV;
 out vec3 vNormal;
@@ -16,11 +17,11 @@ uniform mat3 NormalMatrix;
 
 uniform float Time;
 
-void main()
+void DefaultVertex()
 {
     vNormal = normalize(NormalMatrix * aNormal);
     vColor = aColor;
-    vPosition = ModelMatrix * aPosition;
+    vPosition = ProjectionMatrix * ViewMatrix * ModelMatrix * aPosition;
+    vWorldPosition = ModelMatrix * aPosition;
     vUV = aUV;
-    gl_Position = ProjectionMatrix * ViewMatrix * ModelMatrix * aPosition;
 }

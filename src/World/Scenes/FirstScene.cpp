@@ -25,12 +25,12 @@ FirstScene::FirstScene() {
 
     auto& mesh = Primitives::CreateCube("mesh");
 
-    auto& vertSource = resourceManager.Load<ShaderSource>("frag", "Assets/Shaders/shader.vert", ShaderStage::Vertex);
+    auto& vertexShader = resourceManager.Load<ShaderSource>("frag", "Assets/Shaders/shader.vert", ShaderStage::Vertex);
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
     lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/lightShader.frag",
         ShaderStage::Fragment));
-    lightShader.AssignSource(vertSource);
+    lightShader.AssignSource(vertexShader);
 
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
@@ -53,7 +53,7 @@ FirstScene::FirstScene() {
     auto& objectShader = resourceManager.Load<Shader>("objectShader");
     objectShader.AssignSource(
         resourceManager.Load<ShaderSource>("objectFrag", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
-    objectShader.AssignSource(vertSource);
+    objectShader.AssignSource(vertexShader);
 
     auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
     auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");

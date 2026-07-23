@@ -12,6 +12,8 @@ void ShaderSource::Preprocess() {
     PreprocessIncludes(Path, Code, includesProcessing);
 }
 
+
+//TODO- replace with line by line parsing
 void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code,
     std::unordered_set<std::string>& includesProcessing) {
     const std::string include = "#include \"";
@@ -24,14 +26,17 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
         auto includePath = std::filesystem::path(path).parent_path() / directory;
 
         if (!includePath.empty()) {
+            //Check If Is Already Included
             if (Includes.contains(includePath)) {
                 code.replace(pos, end - pos + 1, "");
             }
             else {
+                //Check Circular Include
                 if (!includesProcessing.insert(includePath).second) {
                     Logger::Fatal("Circular Include: " + includePath.string() + " | In Shader: " + path);
                 }
 
+                //Recursively Include
                 std::string includeCode = FileSystem::ReadFile(includePath);
                 PreprocessIncludes(includePath, includeCode, includesProcessing);
 
@@ -54,7 +59,7 @@ ShaderSource::ShaderSource(const std::string& name, const std::string& path, con
         return;
     }
     Preprocess();
-    FileSystem::WriteFile("Assets/shaderCode.txt", Code);
+    // FileSystem::WriteFile("Assets/" + name + ".txt", Code);
 
     const char* string = Code.c_str();
 

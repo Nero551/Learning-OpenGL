@@ -7,11 +7,12 @@
 #include "../Uniforms/Vector4Uniform.hpp"
 #include "Utilities/Logger.hpp"
 
-Material::Material(const std::string& name) :
-    Resource(name) {
-    DiffuseMap = &Primitives::CreateWhiteTexture();
-    SpecularMap = &Primitives::CreateWhiteTexture();
-    EmissionMap = &Primitives::CreateWhiteTexture();
+Material::Material(const std::string& name) : Resource(name) {
+    auto& whiteTexture = Primitives::CreateWhiteTexture();
+
+    DiffuseMap = &whiteTexture;
+    SpecularMap = &whiteTexture;
+    EmissionMap = &whiteTexture;
 }
 
 void Material::SetProperties() const {

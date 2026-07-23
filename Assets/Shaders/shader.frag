@@ -1,10 +1,7 @@
-#version 330 core
-
-#include "LightingShader.frag"
-#include "Material.frag"
+#include "Includes/Lighting.frag"
 
 void main()
 {
-    vec3 Lighting = ApplyLighting();
+    vec3 Lighting = Lighting();
     FragColor = vec4(Lighting, 1) * Material.Color;
 }

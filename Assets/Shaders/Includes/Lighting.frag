@@ -1,7 +1,4 @@
-#include "Common.frag"
-#include "Material.frag"
-
-uniform vec3 ViewPosition;
+#include "Default/Default.frag"
 
 struct Light {
     int Type;
@@ -25,8 +22,6 @@ struct Light {
 const int NR_LIGHTS = 24;
 uniform int MaxLights;
 uniform Light Lights[NR_LIGHTS];
-
-uniform material Material;
 
 void CalculateDirectionalLight(Light light, out vec3 lightDir, out float directionalIntensity) {
     lightDir = normalize(-light.Direction);
@@ -83,7 +78,7 @@ vec3 CalculateLight(Light light) {
     return ambient + diffuse + specular;
 }
 
-vec3 ApplyLighting() {
+vec3 Lighting() {
     vec3 result;
     for (int i = 0; i < MaxLights; i++) {
         result += CalculateLight(Lights[i]);
