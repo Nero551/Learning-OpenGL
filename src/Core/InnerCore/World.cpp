@@ -10,10 +10,11 @@ void World::AddSystems() {
 }
 
 void World::Start() {
+    AddSystems();
+
     auto& scene = CreateScene<FirstScene>("First Scene");
     ActiveScene = &scene;
 
-    AddSystems();
     for (auto& system : Systems | std::views::values) {
         system->Start();
     }
@@ -107,4 +108,3 @@ std::vector<CheckedPtr<Scene>> World::GetScenes() {
     }
     return scenes;
 }
-

@@ -2,7 +2,7 @@
 #include <vector>
 
 #include "Core/OuterCore/Service.hpp"
-#include "Utilities/Dirty.hpp"
+#include "Utilities/IDirty.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
 
@@ -11,6 +11,10 @@ struct DirtyStore : Service {
         for (auto& dirty : DirtyObjects) {
             dirty->ClearDirty();
         }
+    }
+
+    void RegisterDirty(IDirty* dirty) {
+        DirtyObjects.emplace_back(dirty);
     }
 
 private:

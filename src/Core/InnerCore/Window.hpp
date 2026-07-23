@@ -5,7 +5,7 @@ struct Window {
     float Width;
     float Height;
 
-    Window(int width, int height, const std::string& name);
+    Window(float width, float height, const std::string& name);
 
     ~Window();
 

@@ -5,7 +5,7 @@
 template <typename T> concept ServiceType = std::derived_from<T, Service>;
 
 struct ServiceStore {
-    static CheckedPtr<ServiceStore> Ins;
+    inline static CheckedPtr<ServiceStore> Ins = nullptr;
 
     ServiceStore() {
         Ins = this;
@@ -29,6 +29,15 @@ struct ServiceStore {
             Logger::Fatal(std::format("Service Not Found: {}", typeid(T).name()));
         }
         return static_cast<T&>(*service->second);
+    }
+
+    std::vector<CheckedPtr<Service>> GetAll() {
+        std::vector<CheckedPtr<Service>> services;
+
+        for (auto& service : Services | std::views::values) {
+            services.emplace_back(&*service);
+        }
+        return services;
     }
 
 private:

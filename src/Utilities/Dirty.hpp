@@ -1,18 +1,22 @@
 #pragma once
 
-#include <ostream>
 #include <utility>
 
 #include "IDirty.hpp"
+#include "Core/OuterCore/ServiceStore.hpp"
+#include "Core/Services/DirtyStore.hpp"
 
 template <typename T> struct Dirty : IDirty {
-    Dirty() = default;
+    Dirty() {
+        ServiceStore::Ins->Get<DirtyStore>().RegisterDirty(this);
+        DirtyFlag = true;
+    }
 
-    Dirty(const T& value)
-        : Value(value) {}
+    Dirty(const T& value) : Value(value) {
+        ServiceStore::Ins->Get<DirtyStore>().RegisterDirty(this);
+        DirtyFlag = true;
+    }
 
-    Dirty(T&& value)
-        : Value(std::move(value)) {}
 
     void Set(const T& value) {
         if (Value != value) {
@@ -28,7 +32,7 @@ template <typename T> struct Dirty : IDirty {
         }
     }
 
-    bool IsDirty() const {
+    [[nodiscard]] bool IsDirty() const {
         return DirtyFlag;
     }
 
@@ -37,6 +41,15 @@ template <typename T> struct Dirty : IDirty {
     }
 
     operator const T&() const {
+        return Value;
+    }
+
+    const T& Get() const {
+        return Value;
+    }
+
+    T& Get() {
+        DirtyFlag = true;
         return Value;
     }
 

@@ -3,7 +3,7 @@
 #include "Engine.hpp"
 #include "Utilities/Logger.hpp"
 
-Window::Window(int width, int height, const std::string& name) {
+Window::Window(float width, float height, const std::string& name) {
     Width = width;
     Height = height;
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

@@ -11,7 +11,7 @@
 #include "World/Novas/Light.hpp"
 #include "World/Novas/MeshInstance3D.hpp"
 
-unsigned int cubeId = 0;
+static unsigned int cubeId = 0;
 
 FirstScene::FirstScene() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
