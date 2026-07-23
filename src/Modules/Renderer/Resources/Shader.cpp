@@ -6,12 +6,33 @@
 
 #include "../Uniforms/FloatUniform.hpp"
 
+void Shader::Preprocess(const std::string& path, std::string& code) {
+    const std::string include = "#include \"";
+    auto pos = code.find(include);
+    if (pos == std::string::npos) {
+        return;
+    }
+    auto start = pos + include.length();
+    auto end = code.find("\"", start);
+    auto directory = code.substr(start, end - start);
+    auto includePath = path.substr(0, path.find_last_of('/')) + "/" + directory;
+
+    if (includePath != "") {
+        std::string includeCode = FileSystem::ReadFile(includePath);
+
+        code.replace(pos, end - pos + 1, includeCode);
+    }
+}
+
 Shader::Shader(const std::string& name, const std::string& fragFilepath,
     const std::string& vertFilepath) : Resource(name) {
     std::string fragCode = FileSystem::ReadFile(fragFilepath);
     std::string vertCode = FileSystem::ReadFile(vertFilepath);
 
     //TODO- add shader preprocessing right here, for custom #include so i don't repeat shader code
+
+    Preprocess(fragFilepath, fragCode);
+    Preprocess(vertFilepath, vertCode);
 
     const char* fragSource = fragCode.c_str();
     const char* vertSource = vertCode.c_str();

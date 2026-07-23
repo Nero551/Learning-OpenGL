@@ -59,14 +59,15 @@ FirstScene::FirstScene() {
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 3};
     GetRoot().AttachChild(cube);
+    cubeId = cube.Id;
 
     auto& cube2 = Engine::Get().World.CreateEntity<MeshInstance3D>();
     cube2.GetComponent<MeshComponent>().Mesh = &mesh;
     cube2.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube2.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 2};
     cube.AttachChild(cube2);
-    cubeId = cube2.Id;
 }
+
 
 void FirstScene::FixedUpdate(double fdt) {
     auto& cube = Engine::Get().World.FindEntity(cubeId);
@@ -106,6 +107,4 @@ void FirstScene::FixedUpdate(double fdt) {
     if (input.IsKeyHeld(Key::C)) {
         transformComponent.LocalEulerRotation->z += 2.0f * fdtf;
     }
-
-    Logger::Info(transformComponent.GlobalPosition);
 }

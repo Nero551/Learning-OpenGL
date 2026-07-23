@@ -6,15 +6,30 @@
 #include "Core/OuterCore/ServiceStore.hpp"
 #include "Core/Services/DirtyStore.hpp"
 
+// Tracks whether this value has been modified since the last ClearDirty().
 template <typename T> struct Dirty : IDirty {
     Dirty() {
         ServiceStore::Ins->Get<DirtyStore>().RegisterDirty(this);
         DirtyFlag = true;
     }
 
+    Dirty(const Dirty& other)
+        : Value(other.Value), DirtyFlag(true) {
+        ServiceStore::Ins->Get<DirtyStore>().RegisterDirty(this);
+    }
+
+    Dirty(Dirty&& other) noexcept
+        : Value(std::move(other.Value)), DirtyFlag(true) {
+        ServiceStore::Ins->Get<DirtyStore>().RegisterDirty(this);
+    }
+
     Dirty(const T& value) : Value(value) {
         ServiceStore::Ins->Get<DirtyStore>().RegisterDirty(this);
         DirtyFlag = true;
+    }
+
+    ~Dirty() override {
+        ServiceStore::Ins->Get<DirtyStore>().UnRegisterDirty(this);
     }
 
 

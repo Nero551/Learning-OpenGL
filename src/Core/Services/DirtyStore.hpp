@@ -1,6 +1,4 @@
 #pragma once
-#include <vector>
-
 #include "Core/OuterCore/Service.hpp"
 #include "Core/OuterCore/DirtySystem/IDirty.hpp"
 #include "Utilities/CheckedPtr.hpp"
@@ -17,6 +15,10 @@ struct DirtyStore : Service {
         DirtyObjects.emplace_back(dirty);
     }
 
+    void UnRegisterDirty(IDirty* dirty) {
+        std::erase(DirtyObjects, dirty);
+    }
+
 private:
-    std::vector<CheckedPtr<IDirty>> DirtyObjects = {};
+    std::vector<IDirty*> DirtyObjects = {};
 };

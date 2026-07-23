@@ -34,7 +34,7 @@ void ProcessFaces(std::vector<unsigned int>& indices, const aiMesh* mesh) {
     }
 }
 
-Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::string& directory, Entity& entity) {
+Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::string& directory) {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
     //Material
     auto& material = resourceManager.Load<Material>("material_" + std::to_string(mesh->mMaterialIndex));
@@ -74,7 +74,7 @@ void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& di
 
         ProcessVertices(vertices, mesh);
         ProcessFaces(indices, mesh);
-        auto& material = ProcessMaterial(scene, mesh, directory, entity);
+        auto& material = ProcessMaterial(scene, mesh, directory);
 
         entity.AddComponent<MeshComponent>().Mesh = &resourceManager.Load<Mesh>(
             "mesh_" + std::to_string(node->mMeshes[m]), vertices, indices);

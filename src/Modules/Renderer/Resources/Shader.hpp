@@ -32,4 +32,6 @@ private:
     int GetUniformLocation(const std::string& name);
 
     void UploadUniforms();
+
+    void Preprocess(const std::string& path, std::string& code);
 };
