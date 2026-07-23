@@ -21,6 +21,8 @@ struct Shader : Resource {
     }
 
     void AssignSource(ShaderSource& source);
+    void Reload();
+    std::vector<CheckedPtr<ShaderSource>>& GetSources();
 
 private:
     unsigned int Id = 0;

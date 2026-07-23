@@ -29,7 +29,7 @@ void Engine::AddServices() {
 
 
 void Engine::Start() {
-    // glfwSwapInterval(0);
+    glfwSwapInterval(0);
     AddServices();
     AddModules();
 

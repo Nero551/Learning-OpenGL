@@ -16,6 +16,7 @@ struct ShaderSource : Resource {
     ~ShaderSource() override;
     unsigned int GetId() const;
     ShaderStage GetStage();
+    void Reload();
 
 private:
     unsigned int Id = 0;

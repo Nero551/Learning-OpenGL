@@ -25,12 +25,11 @@ FirstScene::FirstScene() {
 
     auto& mesh = Primitives::CreateCube("mesh");
 
-    auto& vertexShader = resourceManager.Load<ShaderSource>("frag", "Assets/Shaders/shader.vert", ShaderStage::Vertex);
-
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
-    lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/lightShader.frag",
+    lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
         ShaderStage::Fragment));
-    lightShader.AssignSource(vertexShader);
+    lightShader.AssignSource(
+        resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
 
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
@@ -45,15 +44,13 @@ FirstScene::FirstScene() {
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light);
 
-    //TODO- change detection system ( dirty flags)
-    //TODO- parent child transform relations
-    //TODO- shader preprocessing for custom includes
     //TODO- quaternions
 
     auto& objectShader = resourceManager.Load<Shader>("objectShader");
     objectShader.AssignSource(
         resourceManager.Load<ShaderSource>("objectFrag", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
-    objectShader.AssignSource(vertexShader);
+    objectShader.AssignSource(
+        resourceManager.Load<ShaderSource>("objectVert", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
 
     auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
     auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
@@ -62,18 +59,13 @@ FirstScene::FirstScene() {
     objectMaterial.Shader = &objectShader;
     objectMaterial.DiffuseMap = &diffuseMap;
     objectMaterial.SpecularMap = &specularMap;
+
     auto& cube = Engine::Get().World.CreateEntity<MeshInstance3D>();
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 3};
     GetRoot().AttachChild(cube);
     cubeId = cube.Id;
-
-    auto& cube2 = Engine::Get().World.CreateEntity<MeshInstance3D>();
-    cube2.GetComponent<MeshComponent>().Mesh = &mesh;
-    cube2.GetComponent<MaterialComponent>().Material = &objectMaterial;
-    cube2.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 2};
-    cube.AttachChild(cube2);
 }
 
 
@@ -82,6 +74,8 @@ void FirstScene::FixedUpdate(double fdt) {
     auto& transformComponent = cube.GetComponent<Transform3DComponent>();
     auto& input = Engine::Get().GetModule<Input>();
 
+
+    cube.GetComponent<MaterialComponent>().Material->Shader->Reload();
 
     const auto fdtf = static_cast<float>(fdt);
     if (input.IsKeyHeld(Key::Up)) {

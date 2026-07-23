@@ -60,7 +60,6 @@ ShaderSource::ShaderSource(const std::string& name, const std::string& path, Sha
         return;
     }
     Preprocess();
-    // FileSystem::WriteFile("Assets/" + name + ".txt", Code);
 
     const char* string = Code.c_str();
 
@@ -73,7 +72,7 @@ ShaderSource::ShaderSource(const std::string& name, const std::string& path, Sha
     glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(Id, 512, nullptr, infoLog);
-        Logger::Error(std::string("Shader: ") + infoLog);
+        Logger::Error(std::string("Shader:" + Name) + infoLog);
     }
 }
 
@@ -87,4 +86,26 @@ unsigned int ShaderSource::GetId() const {
 
 ShaderStage ShaderSource::GetStage() {
     return Stage;
+}
+
+void ShaderSource::Reload() {
+    Code = FileSystem::ReadFile(Path);
+
+    if (Code.empty()) {
+        return;
+    }
+    Preprocess();
+
+    const char* string = Code.c_str();
+
+    glShaderSource(Id, 1, &string, nullptr);
+    glCompileShader(Id);
+
+    int success;
+    char infoLog[512];
+    glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        glGetShaderInfoLog(Id, 512, nullptr, infoLog);
+        Logger::Error(std::string("Shader:" + Name) + infoLog);
+    }
 }

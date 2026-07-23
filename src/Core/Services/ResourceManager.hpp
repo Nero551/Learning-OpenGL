@@ -13,10 +13,16 @@ struct ResourceManager : Service {
             return static_cast<T&>(*Resources.at(name));
         }
 
-        auto resource = std::make_unique<T>(name, std::forward<Args>(args)...);
-        Resources.emplace(name, std::move(resource));
+        if constexpr (!std::constructible_from<T, const std::string&, Args...>) {
+            Logger::Fatal(
+                "Resource: " + name + " ,Of Type: " + typeid(T).name() + " Can't Be Constructed From Arguments.");
+        }
+        else {
+            auto resource = std::make_unique<T>(name, std::forward<Args>(args)...);
+            Resources.emplace(name, std::move(resource));
 
-        return static_cast<T&>(*Resources.at(name));
+            return static_cast<T&>(*Resources.at(name));
+        }
     }
 
     void Destroy(const std::string& name);

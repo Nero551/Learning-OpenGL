@@ -18,19 +18,18 @@ struct Mesh : Resource {
     void Draw();
 
 private:
-    unsigned int VBO;
-    unsigned int EBO;
+    unsigned int Id = 0;
+    unsigned int VBO = 0;
+    unsigned int EBO = 0;
 
-    unsigned int CreateVAO();
-
-    unsigned int CreateVBO();
-
-    unsigned int CreateEBO();
-
-    void SetupVertAttrPointers();
-
-protected:
-    unsigned int Id;
     std::vector<Vertex> Vertices;
     std::vector<unsigned int> Indices;
+
+    void CreateVAO();
+
+    void CreateVBO();
+
+    void CreateEBO();
+
+    void SetupVertAttrPointers();
 };
