@@ -1,8 +1,19 @@
 #include <OpenGL.hpp>
 
 #include "Core/InnerCore/Engine.hpp"
+#include "Utilities/Math/Quaternion.hpp"
+
+void Testing() {
+    Quaternion q1 = {1, 1, 1, 1};
+    Quaternion q2 = {1, 0, 0, 1};
+
+    Logger::Info(q2);
+}
 
 int main() {
+    Testing();
+    return 0;
+
     glfwInit();
     Engine engine;
     ServiceStore services;

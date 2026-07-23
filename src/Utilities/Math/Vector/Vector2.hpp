@@ -58,15 +58,14 @@ struct Vector2 {
 
     bool operator!=(const Vector2& vec2) const;
 
+    friend Vector2 operator+(float scalar, const Vector2& vec2);
+    friend Vector2 operator-(float scalar, const Vector2& vec2);
+
+    friend Vector2 operator*(float scalar, const Vector2& vec2);
+
+    friend Vector2 operator/(float scalar, const Vector2& vec2);
+
+    friend std::ostream& operator<<(std::ostream& os, const Vector2& vec2);
+
     static const Vector2 Zero;
 };
-
-Vector2 operator+(float scalar, const Vector2& vec2);
-
-Vector2 operator-(float scalar, const Vector2& vec2);
-
-Vector2 operator*(float scalar, const Vector2& vec2);
-
-Vector2 operator/(float scalar, const Vector2& vec2);
-
-std::ostream& operator<<(std::ostream& os, const Vector2& vec2);

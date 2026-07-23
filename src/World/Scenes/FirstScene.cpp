@@ -23,7 +23,7 @@ FirstScene::FirstScene() {
     auto& coordinateAxesScene = Engine::Get().World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
     GetRoot().AttachChild(coordinateAxesScene.GetRoot());
 
-    auto& mesh = Primitives::CreateCube("mesh");
+    auto& mesh = Primitives::CreateUVSphere("mesh");
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
     lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
@@ -35,11 +35,12 @@ FirstScene::FirstScene() {
     lightMaterial.Shader = &lightShader;
 
     auto& light = Engine::Get().World.CreateEntity<Light>();
-    light.GetComponent<MaterialComponent>().Material = &lightMaterial;
-    light.GetComponent<MeshComponent>().Mesh = &mesh;
+    // light.GetComponent<MaterialComponent>().Material = &lightMaterial;
+    // light.GetComponent<MeshComponent>().Mesh = &mesh;
 
     light.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
     light.GetComponent<LightComponent>().Ambient = {0.2};
+    light.GetComponent<LightComponent>().Diffuse = {0.2};
     light.GetComponent<Transform3DComponent>().LocalPosition = {3, 0, 3};
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light);
@@ -52,20 +53,15 @@ FirstScene::FirstScene() {
     objectShader.AssignSource(
         resourceManager.Load<ShaderSource>("objectVert", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
 
-    auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
-    auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
-
     objectShader.HotReload = true;
 
     auto& objectMaterial = resourceManager.Load<Material>("material");
     objectMaterial.Shader = &objectShader;
-    objectMaterial.DiffuseMap = &diffuseMap;
-    objectMaterial.SpecularMap = &specularMap;
 
     auto& cube = Engine::Get().World.CreateEntity<MeshInstance3D>();
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-    cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 3};
+    cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 0};
     GetRoot().AttachChild(cube);
     cubeId = cube.Id;
 }

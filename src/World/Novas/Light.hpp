@@ -7,8 +7,6 @@
 struct Light : Nova3D {
     void Initialize() override {
         Nova3D::Initialize();
-        AddComponents<MeshComponent, MaterialComponent, LightComponent>();
+        AddComponents<LightComponent>();
     }
 };
-
-

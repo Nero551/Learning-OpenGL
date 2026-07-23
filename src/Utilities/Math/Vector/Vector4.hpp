@@ -1,5 +1,4 @@
 #pragma once
-#include <iosfwd>
 
 #include "../MathUtils.hpp"
 
@@ -61,15 +60,15 @@ struct Vector4 {
 
     bool operator!=(const Vector4& vec4) const;
 
+    friend Vector4 operator+(float scalar, const Vector4& vec4);
+
+    friend Vector4 operator-(float scalar, const Vector4& vec4);
+
+    friend Vector4 operator*(float scalar, const Vector4& vec4);
+
+    friend Vector4 operator/(float scalar, const Vector4& vec4);
+
+    friend std::ostream& operator<<(std::ostream& os, const Vector4& vec4);
+
     static const Vector4 Zero;
 };
-
-Vector4 operator+(float scalar, const Vector4& vec4);
-
-Vector4 operator-(float scalar, const Vector4& vec4);
-
-Vector4 operator*(float scalar, const Vector4& vec4);
-
-Vector4 operator/(float scalar, const Vector4& vec4);
-
-std::ostream& operator<<(std::ostream& os, const Vector4& vec4);
