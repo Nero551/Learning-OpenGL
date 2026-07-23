@@ -8,6 +8,7 @@
 template <typename T>concept UniformType = std::derived_from<T, Uniform>;
 
 struct Shader : Resource {
+    bool HotReload = false;
     Shader(const std::string& name);
 
     ~Shader() override;

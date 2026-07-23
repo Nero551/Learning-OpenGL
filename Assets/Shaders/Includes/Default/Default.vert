@@ -14,6 +14,7 @@ uniform mat4 ViewMatrix;
 uniform mat4 ProjectionMatrix;
 uniform mat3 NormalMatrix;
 
+uniform vec3 ViewPosition;
 uniform float Time;
 
 void DefaultVertex()

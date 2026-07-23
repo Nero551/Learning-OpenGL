@@ -29,7 +29,7 @@ FirstScene::FirstScene() {
     lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
         ShaderStage::Fragment));
     lightShader.AssignSource(
-        resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
+        resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/lightShader.vert", ShaderStage::Vertex));
 
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
@@ -55,6 +55,8 @@ FirstScene::FirstScene() {
     auto& diffuseMap = resourceManager.Load<Texture>("diffuseMap", "Assets/Images/diffuseMap.png");
     auto& specularMap = resourceManager.Load<Texture>("specularMap", "Assets/Images/specularMap.png");
 
+    objectShader.HotReload = true;
+
     auto& objectMaterial = resourceManager.Load<Material>("material");
     objectMaterial.Shader = &objectShader;
     objectMaterial.DiffuseMap = &diffuseMap;
@@ -73,9 +75,6 @@ void FirstScene::FixedUpdate(double fdt) {
     auto& cube = Engine::Get().World.FindEntity(cubeId);
     auto& transformComponent = cube.GetComponent<Transform3DComponent>();
     auto& input = Engine::Get().GetModule<Input>();
-
-
-    cube.GetComponent<MaterialComponent>().Material->Shader->Reload();
 
     const auto fdtf = static_cast<float>(fdt);
     if (input.IsKeyHeld(Key::Up)) {
