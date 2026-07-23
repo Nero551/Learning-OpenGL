@@ -8,20 +8,23 @@
 
 void Shader::Preprocess(const std::string& path, std::string& code) {
     const std::string include = "#include \"";
-    const auto pos = code.find(include);
-    if (pos == std::string::npos) {
-        return;
-    }
-    const auto start = pos + include.length();
-    const auto end = code.find('\"', start);
-    const auto directory = code.substr(start, end - start);
-    const auto includePath = path.substr(0, path.find_last_of('/')) + "/" + directory;
 
-    if (includePath != "") {
-        std::string includeCode = FileSystem::ReadFile(includePath);
-        Preprocess(includePath, includeCode);
+    auto pos = code.find(include);
 
-        code.replace(pos, end - pos + 1, includeCode);
+    while (pos != std::string::npos) {
+        const auto start = pos + include.length();
+        const auto end = code.find('\"', start);
+        const auto directory = code.substr(start, end - start);
+        const auto includePath = path.substr(0, path.find_last_of('/')) + "/" + directory;
+
+        if (includePath != "") {
+            std::string includeCode = FileSystem::ReadFile(includePath);
+            Preprocess(includePath, includeCode);
+
+            code.replace(pos, end - pos + 1, includeCode);
+        }
+
+        pos = code.find(include);
     }
 }
 

@@ -1,14 +1,7 @@
+#include "Common.frag"
 #include "Material.frag"
 
-out vec4 FragColor;
-
-in vec2 vUV;
-in vec4 vPosition;
-in vec4 vColor;
-in vec3 vNormal;
-
 uniform vec3 ViewPosition;
-uniform float Time;
 
 struct Light {
     int Type;
