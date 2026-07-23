@@ -38,11 +38,15 @@ struct Vector3 {
 
     Vector3 operator*(const Vector3& vec3) const;
 
+    Vector3 operator/(const Vector3& vec3) const;
+
     Vector3& operator+=(const Vector3& vec3);
 
     Vector3& operator-=(const Vector3& vec3);
 
     Vector3& operator*=(const Vector3& vec3);
+
+    Vector3& operator/=(const Vector3& vec3);
 
     Vector3 operator+(float scalar) const;
 

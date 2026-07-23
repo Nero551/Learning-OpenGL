@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/OuterCore/System.hpp"
+#include "Core/OuterCore/ECS/System.hpp"
 #include "Utilities/Logger.hpp"
 
 template <typename T>concept SystemType = std::derived_from<T, System>;

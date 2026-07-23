@@ -28,9 +28,9 @@ void CameraSystem::Update(double dt) {
 
             const float maxPitch = Math::Radians(89.0f);
 
-            transform.LocalEulerRotation.y += xOffset;
-            transform.LocalEulerRotation.x += yOffset;
-            transform.LocalEulerRotation.x = std::clamp(transform.LocalEulerRotation.x, -maxPitch, maxPitch);
+            transform.LocalEulerRotation->y += xOffset;
+            transform.LocalEulerRotation->x += yOffset;
+            transform.LocalEulerRotation->x = std::clamp(transform.LocalEulerRotation->x, -maxPitch, maxPitch);
         }
 
         if (inputModule.IsKeyHeld(Key::W)) {

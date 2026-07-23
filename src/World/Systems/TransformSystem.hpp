@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Core/OuterCore/System.hpp"
+#include "Core/OuterCore/ECS/System.hpp"
 
 struct TransformSystem : System {
     void Start() override;
 
-    void FixedUpdate(double fdt) override;
+    void Update(double dt) override;
 };

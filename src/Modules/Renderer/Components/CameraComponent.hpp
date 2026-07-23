@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/OuterCore/Component.hpp"
+#include "Core/OuterCore/ECS/Component.hpp"
 #include "Utilities/Math/MathUtils.hpp"
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 

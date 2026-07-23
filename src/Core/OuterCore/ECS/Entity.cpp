@@ -1,5 +1,5 @@
 #include "Entity.hpp"
-#include "Scene.hpp"
+#include "../Scene.hpp"
 #include "Core/InnerCore/Engine.hpp"
 
 

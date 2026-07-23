@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/OuterCore/Component.hpp"
+#include "Core/OuterCore/ECS/Component.hpp"
 #include "Modules/Renderer/Resources/Mesh.hpp"
 #include "Utilities/CheckedPtr.hpp"
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/OuterCore/Entity.hpp"
+#include "Core/OuterCore/ECS/Entity.hpp"
 #include "Core/OuterCore/Event.hpp"
 
 

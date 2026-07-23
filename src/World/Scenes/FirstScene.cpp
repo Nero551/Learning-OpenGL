@@ -34,7 +34,7 @@ FirstScene::FirstScene() {
     light.GetComponent<MaterialComponent>().Material = &lightMaterial;
     light.GetComponent<MeshComponent>().Mesh = &mesh;
 
-    light.GetComponent<Transform3DComponent>().LocalScale = {0.2};
+    light.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
     light.GetComponent<LightComponent>().Ambient = {0.2};
     light.GetComponent<Transform3DComponent>().LocalPosition = {3, 0, 3};
     light.GetComponent<LightComponent>().Type = LightType::Directional;
@@ -55,10 +55,9 @@ FirstScene::FirstScene() {
     objectMaterial.DiffuseMap = &diffuseMap;
     objectMaterial.SpecularMap = &specularMap;
     auto& cube = Engine::Get().World.CreateEntity<MeshInstance3D>();
-    cubeId = cube.Id;
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-    cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 0};
+    cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 3};
     GetRoot().AttachChild(cube);
 
     auto& cube2 = Engine::Get().World.CreateEntity<MeshInstance3D>();
@@ -66,6 +65,7 @@ FirstScene::FirstScene() {
     cube2.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube2.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 2};
     cube.AttachChild(cube2);
+    cubeId = cube2.Id;
 }
 
 void FirstScene::FixedUpdate(double fdt) {
@@ -96,14 +96,16 @@ void FirstScene::FixedUpdate(double fdt) {
     }
 
     if (input.IsKeyHeld(Key::Z)) {
-        transformComponent.LocalEulerRotation.x += 2.0f * fdtf;
+        transformComponent.LocalEulerRotation->x += 2.0f * fdtf;
     }
 
     if (input.IsKeyHeld(Key::X)) {
-        transformComponent.LocalEulerRotation.y += 2.0f * fdtf;
+        transformComponent.LocalEulerRotation->y += 2.0f * fdtf;
     }
 
     if (input.IsKeyHeld(Key::C)) {
-        transformComponent.LocalEulerRotation.z += 2.0f * fdtf;
+        transformComponent.LocalEulerRotation->z += 2.0f * fdtf;
     }
+
+    Logger::Info(transformComponent.GlobalPosition);
 }

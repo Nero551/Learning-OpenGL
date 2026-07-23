@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Enums/LightType.hpp"
-#include "Core/OuterCore/Component.hpp"
+#include "Core/OuterCore/ECS/Component.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"
 
 struct LightComponent : Component {

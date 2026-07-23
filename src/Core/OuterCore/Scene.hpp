@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.hpp"
+#include "ECS/Entity.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
 #include "Modules/Renderer/Components/LightComponent.hpp"
