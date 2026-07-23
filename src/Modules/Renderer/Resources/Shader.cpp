@@ -6,9 +6,16 @@
 
 #include "../Uniforms/FloatUniform.hpp"
 
-void Shader::Preprocess(const std::string& path, std::string& code) {
-    const std::string include = "#include \"";
+void Shader::Preprocess(std::string& fragCode, std::string& vertCode) {
+    std::unordered_set<std::string> includesProcessing;
 
+    PreprocessIncludes(FragmentPath, fragCode, includesProcessing);
+    PreprocessIncludes(VertexPath, vertCode, includesProcessing);
+}
+
+void Shader::PreprocessIncludes(const std::string& path, std::string& code,
+    std::unordered_set<std::string>& includesProcessing) {
+    const std::string include = "#include \"";
     auto pos = code.find(include);
 
     while (pos != std::string::npos) {
@@ -17,33 +24,35 @@ void Shader::Preprocess(const std::string& path, std::string& code) {
         const auto directory = code.substr(start, end - start);
         const auto includePath = path.substr(0, path.find_last_of('/')) + "/" + directory;
 
-        if (includePath != "") {
-            if (!IncludesProcessing.insert(includePath).second) {
-                Logger::Fatal("Circular Include: " + includePath + " | In Shader: " + path);
+        if (!includePath.empty()) {
+            if (Includes.contains(includePath)) {
+                code.replace(pos, end - pos + 1, "");
             }
+            else {
+                if (!includesProcessing.insert(includePath).second) {
+                    Logger::Fatal("Circular Include: " + includePath + " | In Shader: " + path);
+                }
 
-            std::string includeCode = FileSystem::ReadFile(includePath);
-            IncludesProcessing.insert(includePath);
-            Preprocess(includePath, includeCode);
+                std::string includeCode = FileSystem::ReadFile(includePath);
+                PreprocessIncludes(includePath, includeCode, includesProcessing);
 
-            code.replace(pos, end - pos + 1, includeCode);
-            IncludesProcessing.erase(includePath);
+                code.replace(pos, end - pos + 1, includeCode);
+                Includes.insert(includePath);
+
+                includesProcessing.erase(includePath);
+            }
         }
-
-        pos = code.find(include);
+        pos = code.find(include, pos + end - start);
     }
 }
 
 Shader::Shader(const std::string& name, const std::string& fragFilepath,
-    const std::string& vertFilepath) : Resource(name) {
+
+    const std::string& vertFilepath) : Resource(name), FragmentPath(fragFilepath), VertexPath(vertFilepath) {
     std::string fragCode = FileSystem::ReadFile(fragFilepath);
     std::string vertCode = FileSystem::ReadFile(vertFilepath);
 
-    //TODO- add shader preprocessing right here, for custom #include so i don't repeat shader code
-
-    Preprocess(fragFilepath, fragCode);
-    Preprocess(vertFilepath, vertCode);
-
+    Preprocess(fragCode, vertCode);
     FileSystem::WriteFile("Assets/shaderCode.txt", fragCode);
 
     const char* fragSource = fragCode.c_str();

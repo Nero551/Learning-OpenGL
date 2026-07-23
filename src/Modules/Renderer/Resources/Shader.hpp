@@ -24,8 +24,9 @@ private:
     unsigned int Id;
     std::unordered_map<std::string, unsigned int> UniformLocations;
     std::unordered_map<int, std::unique_ptr<Uniform>> PendingUniforms;
-    std::unordered_set<std::string> IncludesProcessing;
-    std::unordered_set<std::string> IncludesProcessed;
+    std::string FragmentPath;
+    std::string VertexPath;
+    std::unordered_set<std::string> Includes;
 
     unsigned int CreateShaderProgram(unsigned int fragShader, unsigned int vertShader);
 
@@ -37,5 +38,7 @@ private:
 
     void UploadUniforms();
 
-    void Preprocess(const std::string& path, std::string& code);
+    void Preprocess(std::string& fragCode, std::string& vertCode);
+    void PreprocessIncludes(const std::string& path, std::string& code,
+        std::unordered_set<std::string>& includesProcessing);
 };
