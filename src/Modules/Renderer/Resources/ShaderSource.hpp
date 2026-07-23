@@ -8,11 +8,13 @@
 
 struct ShaderSource : Resource {
     std::string Path;
-    std::string Code = "";
+    std::string Code;
+    std::string Version = "version 330 core";
 
-    ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage);
+    ShaderSource(const std::string& name, const std::string& path, ShaderStage stage,
+        const std::string& version = "version 330 core");
     ~ShaderSource() override;
-    unsigned int GetId();
+    unsigned int GetId() const;
     ShaderStage GetStage();
 
 private:

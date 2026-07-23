@@ -7,6 +7,8 @@
 #include "Utilities/FileSystem/FileSystem.hpp"
 
 void ShaderSource::Preprocess() {
+    Code.insert(0, "#" + Version + "\n");
+
     Includes.clear();
     std::unordered_set<std::string> includesProcessing;
     PreprocessIncludes(Path, Code, includesProcessing);
@@ -50,9 +52,8 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
     }
 }
 
-ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage) :
-    Resource(name),
-    Path(path), Stage(stage) {
+ShaderSource::ShaderSource(const std::string& name, const std::string& path, ShaderStage stage,
+    const std::string& version) : Resource(name), Path(path), Version(version), Stage(stage) {
     Code = FileSystem::ReadFile(path);
 
     if (Code.empty()) {
@@ -80,7 +81,7 @@ ShaderSource::~ShaderSource() {
     glDeleteShader(Id);
 }
 
-unsigned int ShaderSource::GetId() {
+unsigned int ShaderSource::GetId() const {
     return Id;
 }
 
