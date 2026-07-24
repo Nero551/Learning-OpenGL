@@ -1,6 +1,8 @@
 #include "World.hpp"
 
 #include "World/Events/EntityDestroyed.hpp"
+#include "World/Scenes/CalculusTesting.hpp"
+#include "World/Scenes/CoordinateAxesScene.hpp"
 #include "World/Scenes/FirstScene.hpp"
 #include "World/Systems/TransformSystem.hpp"
 
@@ -11,8 +13,11 @@ void World::AddSystems() {
 void World::Start() {
     AddSystems();
 
-    auto& scene = CreateScene<FirstScene>("First Scene");
+    auto& scene = CreateScene<CoordinateAxesScene>("Coordinate Axes");
     ActiveScene = &scene;
+
+    auto& calculusTesting = CreateScene<CalculusTesting>("Calculus Testing");
+    scene.GetRoot().AttachChild(calculusTesting.GetRoot());
 
     for (auto& system : Systems | std::views::values) {
         system->Start();
@@ -20,7 +25,9 @@ void World::Start() {
 }
 
 void World::Update(double dt) {
-    ActiveScene->Update(dt);
+    for (auto& scene : Scenes | std::views::values) {
+        scene->Update(dt);
+    }
 
     for (auto& system : Systems | std::views::values) {
         system->Update(dt);
@@ -28,39 +35,45 @@ void World::Update(double dt) {
 }
 
 void World::FixedUpdate(double fdt) {
-    ActiveScene->FixedUpdate(fdt);
-
+    for (auto& scene : Scenes | std::views::values) {
+        scene->FixedUpdate(fdt);
+    }
     for (auto& system : Systems | std::views::values) {
         system->FixedUpdate(fdt);
     }
 }
 
 void World::Render() {
-    ActiveScene->Render();
-
+    for (auto& scene : Scenes | std::views::values) {
+        scene->Render();
+    }
     for (auto& system : Systems | std::views::values) {
         system->Render();
     }
 }
 
 void World::Stop() {
-    ActiveScene->Stop();
-
+    for (auto& scene : Scenes | std::views::values) {
+        scene->Stop();
+    }
     for (auto& system : Systems | std::views::values) {
         system->Stop();
     }
 }
 
 void World::BeginFrame(double dt) {
-    ActiveScene->BeginFrame(dt);
-
+    for (auto& scene : Scenes | std::views::values) {
+        scene->BeginFrame(dt);
+    }
     for (auto& system : Systems | std::views::values) {
         system->BeginFrame(dt);
     }
 }
 
 void World::EndFrame(double dt) {
-    ActiveScene->EndFrame(dt);
+    for (auto& scene : Scenes | std::views::values) {
+        scene->EndFrame(dt);
+    }
     for (auto& system : Systems | std::views::values) {
         system->EndFrame(dt);
     }

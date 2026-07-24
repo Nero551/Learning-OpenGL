@@ -35,8 +35,6 @@ FirstScene::FirstScene() {
     lightMaterial.Shader = &lightShader;
 
     auto& light = Engine::Get().World.CreateEntity<Light>();
-    // light.GetComponent<MaterialComponent>().Material = &lightMaterial;
-    // light.GetComponent<MeshComponent>().Mesh = &mesh;
 
     light.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
     light.GetComponent<LightComponent>().Ambient = {0.2};

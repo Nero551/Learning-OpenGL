@@ -11,8 +11,8 @@ void Testing() {
 }
 
 int main() {
-    Testing();
-    return 0;
+    // Testing();
+    // return 0;
 
     glfwInit();
     Engine engine;

@@ -4,8 +4,11 @@ struct Quaternion {
     float w, x, y, z;
 
     Quaternion();
-    Quaternion(const float all);
-    Quaternion(const float x, const float y, const float z, const float w);
+    Quaternion(float all);
+    Quaternion(float w, float x, float y, float z);
+
+    void Conjugate();
+
 
     friend std::ostream& operator<<(std::ostream& os, const Quaternion& q);
 };

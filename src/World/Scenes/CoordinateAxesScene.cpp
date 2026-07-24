@@ -7,12 +7,31 @@
 #include "Modules/Renderer/Primitives/Primitives.hpp"
 #include "Utilities/Math/Color.hpp"
 #include "World/Entities/Axis.hpp"
+#include "World/Novas/Camera.hpp"
+#include "World/Novas/Light.hpp"
 #include "World/Novas/Nova3D.hpp"
 
 CoordinateAxesScene::CoordinateAxesScene() {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
 
     SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
+
+    auto& camera = Engine::Get().World.CreateEntity<Camera>();
+    SetActiveCamera(camera);
+    GetRoot().AttachChild(camera);
+
+
+    auto& lightShader = resourceManager.Load<Shader>("lightShader");
+    lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
+        ShaderStage::Fragment));
+    lightShader.AssignSource(
+        resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/lightShader.vert", ShaderStage::Vertex));
+
+    auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
+    lightMaterial.Shader = &lightShader;
+
+    auto& light = Engine::Get().World.CreateEntity<Light>();
+    GetRoot().AttachChild(light);
 
     auto& shader = ServiceStore::Ins->Get<ResourceManager>().Load<Shader>("AxisShader");
     shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag",

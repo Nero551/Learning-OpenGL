@@ -6,7 +6,7 @@ void Profiling::AddSystems() {}
 
 void Profiling::OnStart() {}
 
-double elapsed;
+static double elapsed = 0;
 
 void Profiling::OnUpdate(double dt) {
     elapsed += dt;
@@ -31,6 +31,10 @@ void Profiling::OnUpdate(double dt) {
         Engine::Get().Window.SetTitle(
             "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | " +
             std::to_string(FrameMs) + " ms");
+
+        // Logger::Info(
+        //     "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | " +
+        //     std::to_string(FrameMs) + " ms");
         FrameCount = 0;
     }
 }

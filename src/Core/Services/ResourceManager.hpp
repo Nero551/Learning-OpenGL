@@ -9,7 +9,7 @@ template <typename T>concept ResourceType = std::derived_from<T, Resource>;
 struct ResourceManager : Service {
     template <ResourceType T, typename... Args> T& Load(const std::string& name, Args&&... args) {
         if (Resources.contains(name)) {
-            Logger::Warning("Resource: " + name + " Already Loaded.");
+            // Logger::Warning("Resource: " + name + " Already Loaded.");
             return static_cast<T&>(*Resources.at(name));
         }
 
