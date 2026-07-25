@@ -19,3 +19,4 @@
 #include <vector>
 #include <iostream>
 #include <iosfwd>
+#include <functional>

@@ -1,5 +1,6 @@
 #include "CalculusTesting.hpp"
 
+#include <cassert>
 #include <cmath>
 
 #include "Core/InnerCore/Engine.hpp"
@@ -17,7 +18,7 @@ static float min = -100;
 MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
     auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
     auto& mesh = Primitives::CreateCube("point");
-    auto& material = resourceManager.Load<Material>(std::format("material{}", col.x, col.y, col.z, col.w));
+    auto& material = resourceManager.Load<Material>(std::format("m{}{}{}", col.z, col.x, col.y));
     material.Color = col;
     auto& shader = resourceManager.Load<Shader>("shader");
 
@@ -26,6 +27,7 @@ MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
     shader.AssignSource(
         resourceManager.Load<ShaderSource>("pointFrag", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
     material.Shader = &shader;
+
 
     auto& point = Engine::Get().World.CreateEntity<MeshInstance3D>();
     point.GetComponent<MeshComponent>().Mesh = &mesh;
@@ -61,20 +63,28 @@ void CalculusTesting::FixedUpdate(double fdt) {
     }
     x += step;
 
-    Function g = [](float x) {
-        float y = pow(x, 2);
+    Function g = [](const float x) {
+        float y = pow(x, 3);
         return y;
     };
 
-    Function s = [](float x) {
+    Function s = [](const float x) {
         float y = sin(x);
         return y;
     };
 
-    Function f = s + g;
+    // float y = (f(x + dx) - f(x)) / dx;
 
-    Plot({x, f(x), 0}, {1, 0, 0, 1});
-    Plot({x, s(x) + g(x), 1});
+    Function f = s.Compose(g);
+
+    Function d = s.Compose(g);
+    Plot({x, g.Derivative(x), 1}, {0, 1, 0, 1});
+    Plot({x, g.Differentiate(0.1).Derivative(x, 0.1), 0}, {1, 0, 0, 1});
+    // Plot({x, s(x), 2}, {0, 0, 1, 1});
+    // Plot({x, f(x), 0}, {1, 0, 0, 1});
+    // Plot({x, d.Derivative(x), 0}, {0, 1, 1, 1});
+    // Plot({x, f.Derivative(x), 1}, {0, 0, 1, 1});
+    // Plot({x, f.Derivative(x), 1}, {0, 0, 1, 1});
     // Plot({x, f.Derivative(x), 0}, {0, 1, 0, 1});
     // Plot({x, d(g, x) * d(s, x), 0}, {0, 0, 1, 1});
     // Plot({x, d(f, x), 0});
