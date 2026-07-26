@@ -24,7 +24,7 @@ struct Vector4 {
 
     [[nodiscard]] float Distance(const Vector4& vec4) const;
 
-    [[nodiscard]] bool NearlyEquals(const Vector4& vec4, float epsilon = Math::EPSILONF) const;
+    [[nodiscard]] bool NearlyEquals(const Vector4& vec4, float epsilon = Math::EPSILON) const;
 
     Vector4 operator+(const Vector4& vec4) const;
 

@@ -15,6 +15,6 @@ struct LightComponent : Component {
     float Constant = 1.0f;
     float Linear = 0.009f;
     float Quadratic = 0.032f;
-    float InnerCutOff = Math::Radians(12.5);
-    float OuterCutOff = Math::Radians(17.5);
+    float InnerCutOff = Math::Rad(12.5);
+    float OuterCutOff = Math::Rad(17.5);
 };

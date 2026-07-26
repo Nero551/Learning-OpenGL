@@ -25,7 +25,7 @@ struct Vector3 {
 
     [[nodiscard]] float Distance(const Vector3& vec3) const;
 
-    [[nodiscard]] bool NearlyEquals(const Vector3& vec3, float epsilon = Math::EPSILONF) const;
+    [[nodiscard]] bool NearlyEquals(const Vector3& vec3, float epsilon = Math::EPSILON) const;
 
     [[nodiscard]] bool IsParallelTo(const Vector3& vec3) const;
 

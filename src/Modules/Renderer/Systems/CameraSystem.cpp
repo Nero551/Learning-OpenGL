@@ -21,12 +21,12 @@ void CameraSystem::Update(double dt) {
             float xOffset = inputModule.GetMouseDelta().x;
             float yOffset = -inputModule.GetMouseDelta().y;
 
-            xOffset = Math::Radians(xOffset);
-            yOffset = Math::Radians(yOffset);
+            xOffset = Math::Rad(xOffset);
+            yOffset = Math::Rad(yOffset);
             xOffset *= cameraComponent.Sensitivity;
             yOffset *= cameraComponent.Sensitivity;
 
-            const float maxPitch = Math::Radians(89.0f);
+            const float maxPitch = Math::Rad(89.0f);
 
             transform.LocalEulerRotation->y += xOffset;
             transform.LocalEulerRotation->x += yOffset;

@@ -33,7 +33,7 @@ struct Matrix3 {
 
     [[nodiscard]] Matrix2 Minor(int row, int col) const;
 
-    [[nodiscard]] bool NearlyEquals(const Matrix3& mat3, float epsilon = Math::EPSILONF) const;
+    [[nodiscard]] bool NearlyEquals(const Matrix3& mat3, float epsilon = Math::EPSILON) const;
 
     Matrix3 operator+(const Matrix3& mat3) const;
 

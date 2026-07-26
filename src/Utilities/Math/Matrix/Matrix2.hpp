@@ -22,7 +22,7 @@ struct Matrix2 {
 
     [[nodiscard]] Matrix2 Transpose() const;
 
-    [[nodiscard]] bool NearlyEquals(const Matrix2& mat2, float epsilon = Math::EPSILONF) const;
+    [[nodiscard]] bool NearlyEquals(const Matrix2& mat2, float epsilon = Math::EPSILON) const;
 
     Matrix2 operator+(const Matrix2& mat2) const;
 

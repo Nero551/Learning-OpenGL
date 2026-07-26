@@ -121,7 +121,7 @@ float Matrix2::Determinant() const { return m[0][0] * m[1][1] - m[0][1] * m[1][0
 
 Matrix2 Matrix2::Inverse() const {
     float det = Determinant();
-    if (std::abs(det) < Math::EPSILONF) {
+    if (std::abs(det) < Math::EPSILON) {
         Logger::Error("Matrix is not invertible");
         return Identity;
     }

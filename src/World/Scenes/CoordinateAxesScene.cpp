@@ -46,7 +46,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
     xAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("X-Axis Material");
     xAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    xAxis.GetComponent<Transform3DComponent>().LocalEulerRotation = {0, Math::Radians(90), 0};
+    xAxis.GetComponent<Transform3DComponent>().LocalEulerRotation = {0, Math::Rad(90), 0};
     xAxis.GetComponent<Transform3DComponent>().LocalPosition = {-50, 0, 0};
     xAxis.GetComponent<Transform3DComponent>().LocalScale = {1, 1, 200};
     xAxis.GetComponent<MaterialComponent>().Material->Color = Color::Red;
@@ -58,7 +58,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
     yAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Y-Axis Material");
     yAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    yAxis.GetComponent<Transform3DComponent>().LocalEulerRotation = {Math::Radians(-90), 0, 0};
+    yAxis.GetComponent<Transform3DComponent>().LocalEulerRotation = {Math::Rad(-90), 0, 0};
     yAxis.GetComponent<Transform3DComponent>().LocalPosition = {0, -50, 0};
     yAxis.GetComponent<Transform3DComponent>().LocalScale = {1, 1, 200};
     yAxis.GetComponent<MaterialComponent>().Material->Color = Color::Green;

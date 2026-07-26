@@ -9,15 +9,15 @@ using Catch::Approx;
 
 TEST_CASE("MathUtils Radians and Degrees") {
    float deg = 180.0f;
-   float rad = Math::Radians(deg);
+   float rad = Math::Rad(deg);
    REQUIRE(rad == Approx(3.14159265f));
-   float back = Math::Degrees(rad);
+   float back = Math::Deg(rad);
    REQUIRE(back == Approx(deg));
 
    deg = 90.0f;
-   rad = Math::Radians(deg);
+   rad = Math::Rad(deg);
    REQUIRE(rad == Approx(3.14159265f / 2.0f));
-   back = Math::Degrees(rad);
+   back = Math::Deg(rad);
    REQUIRE(back == Approx(deg));
 }
 

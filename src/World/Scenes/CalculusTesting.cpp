@@ -63,23 +63,20 @@ void CalculusTesting::FixedUpdate(double fdt) {
     }
     x += step;
 
+
+    Function f = [](const float x) {
+        float y = std::pow(2, x);
+
+        return y;
+    };
+
     Function g = [](const float x) {
-        float y = pow(x, 3);
+        float y = std::exp(x);
         return y;
     };
 
-    Function s = [](const float x) {
-        float y = sin(x);
-        return y;
-    };
-
-    // float y = (f(x + dx) - f(x)) / dx;
-
-    Function f = s.Compose(g);
-
-    Function d = s.Compose(g);
     Plot({x, g.Derivative(x), 1}, {0, 1, 0, 1});
-    Plot({x, g.Differentiate(0.1).Derivative(x, 0.1), 0}, {1, 0, 0, 1});
+    Plot({x, g(x), 0}, {1, 0, 0, 1});
     // Plot({x, s(x), 2}, {0, 0, 1, 1});
     // Plot({x, f(x), 0}, {1, 0, 0, 1});
     // Plot({x, d.Derivative(x), 0}, {0, 1, 1, 1});

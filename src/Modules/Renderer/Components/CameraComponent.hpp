@@ -13,6 +13,6 @@ struct CameraComponent : Component {
     float Speed = 5.0f;
 
     Matrix4 GetProjectionMatrix() const {
-        return Matrix4::Perspective(Math::Radians(FOV), AspectRatio, Near, Far);
+        return Matrix4::Perspective(Math::Rad(FOV), AspectRatio, Near, Far);
     }
 };
