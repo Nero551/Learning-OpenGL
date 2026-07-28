@@ -9,5 +9,15 @@ namespace Math {
     float Rad(float deg);
     float Deg(float rad);
 
+    float DSin(float deg);
+    float DCos(float deg);
+    float DTan(float deg);
+
+    float Pow(float x, float power);
+    float Sqrt(float x);
+
+    float Ln(float x);
+    float Log(float base, float x);
+
     bool NearlyEquals(float a, float b, float epsilon = EPSILON);
 } // namespace Math

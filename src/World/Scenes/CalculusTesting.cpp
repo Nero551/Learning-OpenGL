@@ -1,7 +1,6 @@
 #include "CalculusTesting.hpp"
 
-#include <cassert>
-#include <cmath>
+#include <complex>
 
 #include "Core/InnerCore/Engine.hpp"
 #include "Core/OuterCore/ServiceStore.hpp"
@@ -50,6 +49,18 @@ void CalculusTesting::Plot(Vector3 vec3, Vector4 col) {
 
 CalculusTesting::CalculusTesting() {
     SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
+
+    // float r = 5;
+    // for (int i = 0; i <= 360; i += 1) {
+    //     Plot({Math::DCos(i) * r, Math::DSin(i) * r, 0});
+    // }
+
+    Function f = [](const float x) {
+        return Math::Sqrt(15 - 2 * x);
+    };
+
+    Logger::Info(f(3));
+    Logger::Info(f(7));
 }
 
 static constexpr float step = 0.025;
@@ -63,26 +74,16 @@ void CalculusTesting::FixedUpdate(double fdt) {
     }
     x += step;
 
-
     Function f = [](const float x) {
-        float y = std::pow(2, x);
-
-        return y;
+        return std::sin(Math::PI * x) / (x * x - 1);
     };
 
-    Function g = [](const float x) {
-        float y = std::exp(x);
-        return y;
-    };
-
-    Plot({x, g.Derivative(x), 1}, {0, 1, 0, 1});
-    Plot({x, g(x), 0}, {1, 0, 0, 1});
-    // Plot({x, s(x), 2}, {0, 0, 1, 1});
-    // Plot({x, f(x), 0}, {1, 0, 0, 1});
-    // Plot({x, d.Derivative(x), 0}, {0, 1, 1, 1});
-    // Plot({x, f.Derivative(x), 1}, {0, 0, 1, 1});
-    // Plot({x, f.Derivative(x), 1}, {0, 0, 1, 1});
-    // Plot({x, f.Derivative(x), 0}, {0, 1, 0, 1});
-    // Plot({x, d(g, x) * d(s, x), 0}, {0, 0, 1, 1});
-    // Plot({x, d(f, x), 0});
+    Plot({x, f(x), 0}, {0, 0, 1, 1});
+    // Plot({x, f.Derivative(x), 1}, {0, 1, 0, 1});
+    // Plot({x, f.Derivative(x), -1}, {1, 0, 0, 1});
+    // Logger::Info(f.Derivative(x) / f(x));
+    // Plot({x, f(x) * sine.Derivative(x) + sine(x) * f.Derivative(x), -3});
+    // Plot({x, (sine * f).Derivative(x), -2}, {1, 1, 0, 1});
+    // Plot({x, sine(x), 1}, {1, 0, 0, 1});
+    // Plot({x, (f * sine)(x), -1}, {0, 1, 0, 1});
 }
