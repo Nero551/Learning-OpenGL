@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$(git rev-parse --show-toplevel)"
 
-cmake -S "$SCRIPT_DIR" \
-      -B "$SCRIPT_DIR/build" \
+cmake -S "$ROOT" \
+      -B "$ROOT/build" \
       -G Ninja \
       -DCMAKE_TOOLCHAIN_FILE=$HOME/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake
 
-cmake --build "$SCRIPT_DIR/build"
+cmake --build "$ROOT/build"

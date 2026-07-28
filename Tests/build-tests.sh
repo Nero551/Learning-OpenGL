@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$(git rev-parse --show-toplevel)"
 
-cmake -S "$SCRIPT_DIR" \
-      -B "$SCRIPT_DIR/build-tests" \
+cmake -S "$ROOT/Tests" \
+      -B "$ROOT/Tests/build-tests" \
       -G Ninja \
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
-cmake --build "$SCRIPT_DIR/build-tests"
+cmake --build "$ROOT/Tests/build-tests"
