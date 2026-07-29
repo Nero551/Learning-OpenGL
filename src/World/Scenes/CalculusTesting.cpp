@@ -56,11 +56,11 @@ CalculusTesting::CalculusTesting() {
     // }
 
     Function f = [](const float x) {
-        return Math::Sqrt(15 - 2 * x);
+        return Math::Pow(x, 1.0f / 4.0f);
     };
 
-    Logger::Info(f(3));
-    Logger::Info(f(7));
+    Logger::Info(f(16));
+    Logger::Info(f.Derivative(16));
 }
 
 static constexpr float step = 0.025;
@@ -75,11 +75,11 @@ void CalculusTesting::FixedUpdate(double fdt) {
     x += step;
 
     Function f = [](const float x) {
-        return std::sin(Math::PI * x) / (x * x - 1);
+        return Math::Pow(x, 3 / 2);
     };
 
     Plot({x, f(x), 0}, {0, 0, 1, 1});
-    // Plot({x, f.Derivative(x), 1}, {0, 1, 0, 1});
+    Plot({x, f.Derivative(x), 1}, {0, 1, 0, 1});
     // Plot({x, f.Derivative(x), -1}, {1, 0, 0, 1});
     // Logger::Info(f.Derivative(x) / f(x));
     // Plot({x, f(x) * sine.Derivative(x) + sine(x) * f.Derivative(x), -3});
