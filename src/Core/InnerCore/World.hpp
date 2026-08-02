@@ -2,80 +2,84 @@
 
 #include "SystemOwner.hpp"
 #include "../OuterCore/Scene.hpp"
-#include "Core/OuterCore/ServiceStore.hpp"
+#include "Core/OuterCore/Service.hpp"
 #include "Core/Services/EventBus.hpp"
 #include "Utilities/Logger.hpp"
 #include "World/Events/EntityCreated.hpp"
-template <typename T>concept EntityType = std::derived_from<T, Entity>;
+template <typename T>concept EntityType = std::derived_from<T, E::Entity>;
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
-struct World : SystemOwner {
-    CheckedPtr<Scene> ActiveScene{"World Has No Active Scene"};
+namespace E {
+    struct World : SystemOwner {
+        CheckedPtr<Scene> ActiveScene{"World Has No Active Scene"};
 
-    void Start();
+        static World& Get();
 
-    void Update(double dt);
+        void Start();
 
-    void FixedUpdate(double fdt);
+        void Update(double dt);
 
-    void Stop();
+        void FixedUpdate(double fdt);
 
-    void BeginFrame(double dt);
+        void Stop();
 
-    void EndFrame(double dt);
+        void BeginFrame(double dt);
 
-    void Render();
+        void EndFrame(double dt);
 
-    template <SceneType T, typename... Args> T& CreateScene(const std::string& name, Args... args) {
-        if (Scenes.contains(name)) {
-            Logger::Error("Scene: ", name, " already exists.");
-            return static_cast<T&>(*Scenes.at(name));
+        void Render();
+
+        template <SceneType T, typename... Args> T& CreateScene(const std::string& name, Args... args) {
+            if (Scenes.contains(name)) {
+                Logger::Error("Scene: ", name, " already exists.");
+                return static_cast<T&>(*Scenes.at(name));
+            }
+
+            auto scene = std::make_unique<T>(std::forward<Args>(args)...);
+            scene->Name = name;
+
+            T& ref = *scene;
+
+            Scenes.emplace(name, std::move(scene));
+
+            return ref;
         }
 
-        auto scene = std::make_unique<T>(std::forward<Args>(args)...);
-        scene->Name = name;
-
-        T& ref = *scene;
-
-        Scenes.emplace(name, std::move(scene));
-
-        return ref;
-    }
-
-    template <SceneType T> T& GetScene(const std::string& name) {
-        auto scene = Scenes.find(name);
-        if (scene == Scenes.end()) {
-            Logger::Fatal("No Corresponding Scene.");
+        template <SceneType T> T& GetScene(const std::string& name) {
+            auto scene = Scenes.find(name);
+            if (scene == Scenes.end()) {
+                Logger::Fatal("No Corresponding Scene.");
+            }
+            return static_cast<T&>(*scene->second);
         }
-        return static_cast<T&>(*scene->second);
-    }
 
-    std::vector<CheckedPtr<Scene>> GetScenes();
+        std::vector<CheckedPtr<Scene>> GetScenes();
 
-    template <EntityType T> T& CreateEntity() {
-        const unsigned int id = ++currentEntityId;
-        auto entity = std::make_unique<T>();
-        entity->Id = id;
-        entity->Initialize();
+        template <EntityType T> T& CreateEntity() {
+            const unsigned int id = ++currentEntityId;
+            auto entity = std::make_unique<T>();
+            entity->Id = id;
+            entity->Initialize();
 
-        ServiceStore::Ins->Get<EventBus>().Fire<EntityCreated>(*entity);
+            Service::Get<EventBus>().Fire<EntityCreated>(*entity);
 
-        Entities.emplace(id, std::move(entity));
+            Entities.emplace(id, std::move(entity));
 
-        return static_cast<T&>(*Entities.find(id)->second);
-    }
+            return static_cast<T&>(*Entities.find(id)->second);
+        }
 
-    Entity& FindEntity(unsigned int id);
-    CheckedPtr<Entity> TryFindEntity(unsigned int id);
+        Entity& FindEntity(unsigned int id);
+        CheckedPtr<Entity> TryFindEntity(unsigned int id);
 
-private:
-    std::unordered_map<std::string, std::unique_ptr<Scene>> Scenes;
-    std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
-    unsigned int currentEntityId = 0;
+    private:
+        std::unordered_map<std::string, std::unique_ptr<Scene>> Scenes;
+        std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
+        unsigned int currentEntityId = 0;
 
-    void InternalRemoveEntity(unsigned int id);
-    friend struct Entity;
+        void InternalRemoveEntity(unsigned int id);
+        friend struct Entity;
 
-protected:
-    void AddSystems() override;
-};
+    protected:
+        void AddSystems() override;
+    };
+}

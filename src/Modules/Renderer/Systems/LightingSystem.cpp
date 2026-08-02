@@ -29,12 +29,12 @@ void OnEntityDestroyed(const EntityDestroyed& event) {
 }
 
 void LightingSystem::Start() {
-    ServiceStore::Ins->Get<EventBus>().Sub<EntityCreated>(OnEntityCreated);
-    ServiceStore::Ins->Get<EventBus>().Sub<EntityDestroyed>(OnEntityDestroyed);
+    Service::Get<EventBus>().Sub<EntityCreated>(OnEntityCreated);
+    Service::Get<EventBus>().Sub<EntityDestroyed>(OnEntityDestroyed);
 }
 
 void LightingSystem::Render() {
-    auto& scene = Engine::Get().World.ActiveScene;
+    auto& scene = E::World::Get().ActiveScene;
     auto& camera = scene->GetActiveCamera();
 
     for (auto& entity : scene->GetRoot().GetDescendants()) {
@@ -49,7 +49,7 @@ void LightingSystem::Render() {
             camera.GetComponent<Transform3DComponent>().LocalPosition));
 
         for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
-            auto& light = Engine::Get().World.FindEntity(Lights[i]);
+            auto& light = E::World::Get().FindEntity(Lights[i]);
             auto& lightComponent = light.GetComponent<LightComponent>();
 
             materialComponent.Material->Shader->SetUniform(

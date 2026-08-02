@@ -11,8 +11,8 @@ int Math::Random(int min, int max) {
     return distribution(rng);
 }
 
-float Math::RandomGaussian(float mean, float stddev) {
-    std::normal_distribution<float> distribution(mean, stddev);
+float Math::RandomGaussian(float mean, float standardDeviation) {
+    std::normal_distribution<float> distribution(mean, standardDeviation);
     return distribution(rng);
 }
 

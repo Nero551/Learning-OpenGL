@@ -31,13 +31,13 @@ struct Scene {
 
     virtual void Stop() {}
 
-    Entity& GetActiveCamera();
-    void SetActiveCamera(Entity& entity);
-    void SetRoot(Entity&);
+    E::Entity& GetActiveCamera();
+    void SetActiveCamera(E::Entity& entity);
+    void SetRoot(E::Entity&);
     bool IsRoot(unsigned int id);
-    Entity& GetRoot();
+    E::Entity& GetRoot();
 
 private:
-    CheckedPtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
-    CheckedPtr<Entity> Root{"Scene Has No Root"};
+    CheckedPtr<E::Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
+    CheckedPtr<E::Entity> Root{"Scene Has No Root"};
 };

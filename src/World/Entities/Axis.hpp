@@ -4,7 +4,7 @@
 #include "Modules/Renderer/Components/MeshComponent.hpp"
 #include "World/Components/Transform3DComponent.hpp"
 
-struct Axis : Entity {
+struct Axis : E::Entity {
     void Initialize() override {
         AddComponent<MeshComponent>();
         AddComponent<MaterialComponent>();

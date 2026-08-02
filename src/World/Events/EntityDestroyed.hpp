@@ -4,7 +4,7 @@
 
 
 struct EntityDestroyed : Event {
-    Entity& entity;
+    E::Entity& entity;
 
-    EntityDestroyed(Entity& entity) : entity(entity) {}
+    EntityDestroyed(E::Entity& entity) : entity(entity) {}
 };

@@ -14,13 +14,13 @@
 static unsigned int cubeId = 0;
 
 FirstScene::FirstScene() {
-    auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
-    auto& camera = Engine::Get().World.CreateEntity<Camera>();
+    auto& resourceManager = Service::Get<ResourceManager>();
+    auto& camera = E::World::Get().CreateEntity<Camera>();
     SetActiveCamera(camera);
 
-    SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
+    SetRoot(E::World::Get().CreateEntity<Nova3D>());
 
-    auto& coordinateAxesScene = Engine::Get().World.CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
+    auto& coordinateAxesScene = E::World::Get().CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
     GetRoot().AttachChild(coordinateAxesScene.GetRoot());
 
     auto& mesh = Primitives::CreateUVSphere("mesh");
@@ -34,7 +34,7 @@ FirstScene::FirstScene() {
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
 
-    auto& light = Engine::Get().World.CreateEntity<Light>();
+    auto& light = E::World::Get().CreateEntity<Light>();
 
     light.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
     light.GetComponent<LightComponent>().Ambient = {0.2};
@@ -56,7 +56,7 @@ FirstScene::FirstScene() {
     auto& objectMaterial = resourceManager.Load<Material>("material");
     objectMaterial.Shader = &objectShader;
 
-    auto& cube = Engine::Get().World.CreateEntity<MeshInstance3D>();
+    auto& cube = E::World::Get().CreateEntity<MeshInstance3D>();
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 0};
@@ -66,9 +66,9 @@ FirstScene::FirstScene() {
 
 
 void FirstScene::FixedUpdate(double fdt) {
-    auto& cube = Engine::Get().World.FindEntity(cubeId);
+    auto& cube = E::World::Get().FindEntity(cubeId);
     auto& transformComponent = cube.GetComponent<Transform3DComponent>();
-    auto& input = Engine::Get().GetModule<Input>();
+    auto& input = E::Engine::Get().GetModule<Input>();
 
     const auto fdtf = static_cast<float>(fdt);
     if (input.IsKeyHeld(Key::Up)) {

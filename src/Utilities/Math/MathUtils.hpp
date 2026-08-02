@@ -9,7 +9,7 @@ namespace Math {
 
     float Random(float min = 0.0f, float max = 1.0f);
     int Random(int min, int max);
-    float RandomGaussian(float mean, float stddev);
+    float RandomGaussian(float mean, float standardDeviation);
 
     float Rad(float deg);
     float Deg(float rad);

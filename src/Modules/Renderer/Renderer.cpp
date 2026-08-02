@@ -19,7 +19,7 @@ void Renderer::AddSystems() {
 }
 
 void Renderer::OnRender() {
-    auto& scene = Engine::Get().World.ActiveScene;
+    auto& scene = E::World::Get().ActiveScene;
     auto& camera = scene->GetActiveCamera();
 
     Matrix4 projection = camera.GetComponent<CameraComponent>().GetProjectionMatrix();
@@ -40,7 +40,7 @@ void Renderer::OnRender() {
             }
 
             materialComponent.Material->Shader->SetUniform(
-                FloatUniform("Time", static_cast<float>(Engine::Get().Time)));
+                FloatUniform("Time", static_cast<float>(E::Engine::Get().Time)));
 
             materialComponent.Material->Shader->SetUniform(
                 Matrix4Uniform("ModelMatrix", transformComponent.GetModelMatrix()));

@@ -35,7 +35,7 @@ void ProcessFaces(std::vector<unsigned int>& indices, const aiMesh* mesh) {
 }
 
 Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::string& directory) {
-    auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
+    auto& resourceManager = Service::Get<ResourceManager>();
     //Material
     auto& material = resourceManager.Load<Material>("material_" + std::to_string(mesh->mMaterialIndex));
     material.Shader = &resourceManager.Load<Shader>("s");
@@ -66,9 +66,9 @@ Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::s
     return material;
 }
 
-void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& directory, Entity& parent) {
-    auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
-    auto& entity = Engine::Get().World.CreateEntity<Nova3D>();
+void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& directory, E::Entity& parent) {
+    auto& resourceManager = Service::Get<ResourceManager>();
+    auto& entity = E::World::Get().CreateEntity<Nova3D>();
 
     //Mesh
     for (unsigned int m = 0; m < node->mNumMeshes; m++) {
@@ -94,7 +94,7 @@ void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& di
 }
 
 AssimpScene::AssimpScene(const std::string& filepath) {
-    SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
+    SetRoot(E::World::Get().CreateEntity<Nova3D>());
 
     const aiScene* scene = importer.ReadFile(filepath, aiProcess_Triangulate | aiProcess_FlipUVs);
 

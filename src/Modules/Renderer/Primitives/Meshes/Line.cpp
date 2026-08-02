@@ -10,7 +10,7 @@ Mesh& Primitives::CreateLine(const std::string& name) {
     };
     std::vector<unsigned int> indices = {0, 1};
 
-    Mesh& mesh = ServiceStore::Ins->Get<ResourceManager>().Load<Mesh>(name, vertices, indices);
+    Mesh& mesh = Service::Get<ResourceManager>().Load<Mesh>(name, vertices, indices);
     mesh.Topology = Topology::Lines;
     return mesh;
 }

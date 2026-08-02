@@ -15,8 +15,7 @@ int main() {
     // return 0;
 
     glfwInit();
-    Engine engine;
-    ServiceStore services;
+    E::Engine engine;
 
     engine.Start();
 

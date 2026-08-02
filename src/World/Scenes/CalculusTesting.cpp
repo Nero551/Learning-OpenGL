@@ -3,7 +3,7 @@
 #include <complex>
 
 #include "Core/InnerCore/Engine.hpp"
-#include "Core/OuterCore/ServiceStore.hpp"
+#include "Core/OuterCore/Service.hpp"
 #include "Core/Services/ResourceManager.hpp"
 #include "Modules/Renderer/Primitives/Primitives.hpp"
 #include "Modules/Renderer/Resources/Material.hpp"
@@ -15,7 +15,7 @@ static float max = 100;
 static float min = -100;
 
 MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
-    auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
+    auto& resourceManager = Service::Get<ResourceManager>();
     auto& mesh = Primitives::CreateCube("point");
     auto& material = resourceManager.Load<Material>(std::format("m{}{}{}", col.z, col.x, col.y));
     material.Color = col;
@@ -28,7 +28,7 @@ MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
     material.Shader = &shader;
 
 
-    auto& point = Engine::Get().World.CreateEntity<MeshInstance3D>();
+    auto& point = E::Engine::Get().World.CreateEntity<MeshInstance3D>();
     point.GetComponent<MeshComponent>().Mesh = &mesh;
     point.GetComponent<MaterialComponent>().Material = &material;
     point.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
@@ -48,7 +48,7 @@ void CalculusTesting::Plot(Vector3 vec3, Vector4 col) {
 }
 
 CalculusTesting::CalculusTesting() {
-    SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
+    SetRoot(E::Engine::Get().World.CreateEntity<Nova3D>());
 
     // float r = 5;
     // for (int i = 0; i <= 360; i += 1) {
@@ -69,7 +69,7 @@ static constexpr float xRange = 5;
 static float x = -5;
 
 void CalculusTesting::FixedUpdate(double fdt) {
-    auto& resourceManager = ServiceStore::Ins->Get<ResourceManager>();
+    auto& resourceManager = Service::Get<ResourceManager>();
     if (x > xRange) {
         return;
     }

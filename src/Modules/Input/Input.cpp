@@ -4,13 +4,13 @@
 #include "magic_enum/magic_enum.hpp"
 
 void Input::OnStart() {
-    Window& window = Engine::Get().Window;
+    E::Window& window = E::Engine::Get().Window;
     glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xPos, double yPos) {
-        Engine::Get().GetModule<Input>().mousePosition = Vector2(static_cast<float>(xPos), static_cast<float>(yPos));
+        E::Engine::Get().GetModule<Input>().mousePosition = Vector2(static_cast<float>(xPos), static_cast<float>(yPos));
     });
 
     glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xOffset, double yOffset) {
-        Engine::Get().GetModule<Input>().scrollOffset =
+        E::Engine::Get().GetModule<Input>().scrollOffset =
             Vector2(static_cast<float>(xOffset), static_cast<float>(yOffset));
     });
 }
@@ -21,7 +21,7 @@ void Input::OnBeginFrame(double dt) {
         firstMouse = false;
     }
 
-    GLFWwindow* window = Engine::Get().Window.GetGlfwWindow();
+    GLFWwindow* window = E::Engine::Get().Window.GetGlfwWindow();
     for (unsigned int i = 0; i < CurrentKeys.size(); i++) {
         CurrentKeys[i] = glfwGetKey(window, static_cast<int>(i)) == GLFW_PRESS;
     }
@@ -64,7 +64,7 @@ bool Input::IsMouseButtonReleased(MouseButton button) {
 
 void Input::SetMouseMode(MouseMode mode) {
     mouseMode = mode;
-    glfwSetInputMode(Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
+    glfwSetInputMode(E::Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
 }
 
 Vector2 Input::GetMousePosition() const {
@@ -95,5 +95,3 @@ constexpr unsigned int Input::ToIndex(Key key) {
 constexpr unsigned int Input::ToIndex(MouseButton button) {
     return static_cast<unsigned int>(button);
 }
-
-

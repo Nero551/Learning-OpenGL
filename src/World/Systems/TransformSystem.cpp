@@ -6,7 +6,7 @@
 void TransformSystem::Start() {}
 
 void TransformSystem::Update(double dt) {
-    for (auto& entity : Engine::Get().World.ActiveScene->GetRoot().GetDescendants()) {
+    for (auto& entity : E::World::Get().ActiveScene->GetRoot().GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent>()) {
             continue;
         }

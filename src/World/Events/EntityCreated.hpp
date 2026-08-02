@@ -4,7 +4,7 @@
 
 
 struct EntityCreated : Event {
-    Entity& entity;
+    E::Entity& entity;
 
-    EntityCreated(Entity& entity) : entity(entity) {}
+    EntityCreated(E::Entity& entity) : entity(entity) {}
 };
