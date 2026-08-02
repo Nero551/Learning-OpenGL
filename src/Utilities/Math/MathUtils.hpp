@@ -5,6 +5,11 @@ namespace Math {
     inline constexpr float E = std::numbers::e_v<float>;
     inline constexpr float PI = std::numbers::pi_v<float>;
     inline constexpr float TAU = PI * 2.0f;
+    inline std::mt19937 rng(std::random_device{}());
+
+    float Random(float min = 0.0f, float max = 1.0f);
+    int Random(int min, int max);
+    float RandomGaussian(float mean, float stddev);
 
     float Rad(float deg);
     float Deg(float rad);

@@ -1,6 +1,21 @@
 #include "MathUtils.hpp"
 
 
+float Math::Random(float min, float max) {
+    std::uniform_real_distribution<float> distribution(min, max);
+    return distribution(rng);
+}
+
+int Math::Random(int min, int max) {
+    std::uniform_int_distribution<int> distribution(min, max);
+    return distribution(rng);
+}
+
+float Math::RandomGaussian(float mean, float stddev) {
+    std::normal_distribution<float> distribution(mean, stddev);
+    return distribution(rng);
+}
+
 float Math::Rad(const float deg) {
     return deg * PI / 180;
 }

@@ -62,9 +62,6 @@ CalculusTesting::CalculusTesting() {
         float dgx = -3;
         return gx * dfx + fx * dgx;
     };
-
-    Logger::Info(f(4));
-    Logger::Info(f.Derivative(4));
 }
 
 static constexpr float step = 0.025;
@@ -90,4 +87,5 @@ void CalculusTesting::FixedUpdate(double fdt) {
     // Plot({x, (sine * f).Derivative(x), -2}, {1, 1, 0, 1});
     // Plot({x, sine(x), 1}, {1, 0, 0, 1});
     // Plot({x, (f * sine)(x), -1}, {0, 1, 0, 1});
+    Logger::Info(Math::Random(0, 100));
 }
