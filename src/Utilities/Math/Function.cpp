@@ -1,5 +1,7 @@
 #include "Function.hpp"
 
+#include "MathUtils.hpp"
+
 float Function::Evaluate(const float x) const {
     return Func(x);
 }
@@ -23,8 +25,32 @@ Function Function::Compose(const Function& g) const {
     };
 }
 
+float Function::InverseEvaluate(float y, float domainMin, float domainMax) const {
+    float x = (domainMin + domainMax) / 2.0f;
+    float value = Evaluate(x);
+
+    while (!Math::NearlyEquals(domainMax, domainMin) && !Math::NearlyEquals(value, y)) {
+        x = (domainMin + domainMax) / 2.0f;
+
+        value = Evaluate(x);
+
+        if (value < y) {
+            domainMin = x;
+        }
+        else {
+            domainMax = x;
+        }
+    }
+
+    return (domainMin + domainMax) / 2.0f;
+}
+
 float Function::operator()(float x) const {
     return Evaluate(x);
+}
+
+Function Function::operator()(const Function& g) const {
+    return Compose(g);
 }
 
 Function Function::operator+(const Function& g) const {

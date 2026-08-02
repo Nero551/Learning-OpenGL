@@ -56,11 +56,15 @@ CalculusTesting::CalculusTesting() {
     // }
 
     Function f = [](const float x) {
-        return Math::Pow(x, 1.0f / 4.0f);
+        float fx = Math::Sqrt(x);
+        float gx = 8;
+        float dfx = 1 / (2 * Math::Sqrt(x));
+        float dgx = -3;
+        return gx * dfx + fx * dgx;
     };
 
-    Logger::Info(f(16));
-    Logger::Info(f.Derivative(16));
+    Logger::Info(f(4));
+    Logger::Info(f.Derivative(4));
 }
 
 static constexpr float step = 0.025;
@@ -75,7 +79,7 @@ void CalculusTesting::FixedUpdate(double fdt) {
     x += step;
 
     Function f = [](const float x) {
-        return Math::Pow(x, 3 / 2);
+        return Math::Pow(x, 3.0f / 2.0f);
     };
 
     Plot({x, f(x), 0}, {0, 0, 1, 1});

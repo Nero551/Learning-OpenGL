@@ -70,3 +70,7 @@
 - Parent Child transform relations
 
 ![Backpack](Docs/Screenshots/Backpack.png)
+
+### Week 6
+
+- Basic calc 1 derivatives
