@@ -205,10 +205,10 @@ Matrix3 Matrix3::RotateAroundAxis(const Vector3& axis, float radian) const {
     Vector3 right = helper.Cross(forward);
     Vector3 up = forward.Cross(right);
 
-    Basis basis{right, up, forward};
-    Matrix3 basisMatrix = basis.GetMatrix().ToMatrix3();
+    const Basis basis(right, up, forward);
+    const Matrix3 basisMatrix = basis.GetMatrix().ToMatrix3();
 
-    Matrix3 finalMatrix = basisMatrix * rotationMatrix * basisMatrix.Inverse();
+    const Matrix3 finalMatrix = basisMatrix * rotationMatrix * basisMatrix.Inverse();
 
     return *this * finalMatrix;
 }

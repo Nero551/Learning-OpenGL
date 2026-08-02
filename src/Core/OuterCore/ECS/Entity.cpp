@@ -47,10 +47,10 @@ namespace E {
             ClearParent();
         }
 
-        E::World::Get().InternalRemoveEntity(Id);
+        World::Get().InternalRemoveEntity(Id);
 
         for (auto& descendant : descendants) {
-            E::World::Get().InternalRemoveEntity(descendant->Id);
+            World::Get().InternalRemoveEntity(descendant->Id);
         }
     }
 
@@ -79,12 +79,12 @@ namespace E {
     }
 
     bool Entity::HasDescendant(unsigned int id) const {
-        CheckedPtr<Entity> descendant = E::World::Get().TryFindEntity(id);
+        CheckedPtr<Entity> descendant = World::Get().TryFindEntity(id);
         return descendant && descendant->IsDescendantOf(*this);
     }
 
     bool Entity::HasAncestor(unsigned int id) const {
-        CheckedPtr<Entity> ancestor = E::World::Get().TryFindEntity(id);
+        CheckedPtr<Entity> ancestor = World::Get().TryFindEntity(id);
         return ancestor && ancestor->IsAncestorOf(*this);
     }
 

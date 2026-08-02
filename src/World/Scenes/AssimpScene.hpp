@@ -1,12 +1,11 @@
 #pragma once
 
-#include <assimp/scene.h>
-
 #include "Core/OuterCore/Scene.hpp"
-#include "Modules/Renderer/Resources/Mesh.hpp"
 
+namespace E {
 struct AssimpScene : Scene {
     AssimpScene(const std::string& filepath);
 
     void Update(double dt) override;
 };
+}

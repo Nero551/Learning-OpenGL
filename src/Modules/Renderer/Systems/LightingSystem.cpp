@@ -9,18 +9,17 @@
 #include "World/Events/EntityDestroyed.hpp"
 
 
-constexpr int MaxLights = 12;
-std::vector<unsigned int> Lights;
-
+namespace E {
+static std::vector<unsigned int> Lights;
 
 //TODO- this wont work with multiple scenes
-void OnEntityCreated(const EntityCreated& event) {
+static void OnEntityCreated(const EntityCreated& event) {
     if (event.entity.HasComponent<LightComponent>()) {
         Lights.emplace_back(event.entity.Id);
     }
 }
 
-void OnEntityDestroyed(const EntityDestroyed& event) {
+static void OnEntityDestroyed(const EntityDestroyed& event) {
     for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
         if (event.entity.Id == Lights[i]) {
             Lights.erase(Lights.begin() + i);
@@ -34,7 +33,7 @@ void LightingSystem::Start() {
 }
 
 void LightingSystem::Render() {
-    auto& scene = E::World::Get().ActiveScene;
+    auto& scene = World::Get().ActiveScene;
     auto& camera = scene->GetActiveCamera();
 
     for (auto& entity : scene->GetRoot().GetDescendants()) {
@@ -44,12 +43,12 @@ void LightingSystem::Render() {
 
         auto& materialComponent = entity->GetComponent<MaterialComponent>();
 
-        materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", MaxLights));
+        materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", scene->MaxLights));
         materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
             camera.GetComponent<Transform3DComponent>().LocalPosition));
 
         for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
-            auto& light = E::World::Get().FindEntity(Lights[i]);
+            auto& light = World::Get().FindEntity(Lights[i]);
             auto& lightComponent = light.GetComponent<LightComponent>();
 
             materialComponent.Material->Shader->SetUniform(
@@ -97,4 +96,5 @@ void LightingSystem::Render() {
                     std::cos(lightComponent.OuterCutOff)));
         }
     }
+}
 }

@@ -7,6 +7,7 @@
 #include "../Uniforms/Vector4Uniform.hpp"
 #include "Utilities/Logger.hpp"
 
+namespace E {
 Material::Material(const std::string& name) : Resource(name) {
     auto& whiteTexture = Primitives::CreateWhiteTexture();
 
@@ -51,4 +52,5 @@ void Material::AssignTexture(Texture& texture, unsigned int slot) {
         return;
     }
     CustomTextures[slot] = &texture;
+}
 }

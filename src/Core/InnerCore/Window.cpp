@@ -27,8 +27,8 @@ namespace E {
         glViewport(0, 0, width, height);
         glfwSetFramebufferSizeCallback(window, [](GLFWwindow*, int width, int height) {
             glViewport(0, 0, width, height);
-            E::Engine::Get().Window.Width = width;
-            E::Engine::Get().Window.Height = height;
+            Engine::Get().Window.Width = width;
+            Engine::Get().Window.Height = height;
         });
         GlfwWindow = window;
         glEnable(GL_DEPTH_TEST);

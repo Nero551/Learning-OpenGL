@@ -229,8 +229,8 @@ Matrix4 Matrix4::RotateAroundAxis(const Vector3& axis, float radian) const {
     Vector3 right = helper.Cross(forward);
     Vector3 up = forward.Cross(right);
 
-    Basis basis{right, up, forward};
-    Matrix4 basisMatrix = basis.GetMatrix();
+    const Basis basis(right, up, forward);
+    const Matrix4 basisMatrix = basis.GetMatrix();
 
     Matrix4 finalMatrix = basisMatrix * rotationMatrix * basisMatrix.Inverse();
 

@@ -11,6 +11,7 @@
 #include "World/Novas/Light.hpp"
 #include "World/Novas/MeshInstance3D.hpp"
 
+namespace E {
 static float max = 100;
 static float min = -100;
 
@@ -28,7 +29,7 @@ MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
     material.Shader = &shader;
 
 
-    auto& point = E::Engine::Get().World.CreateEntity<MeshInstance3D>();
+    auto& point = Engine::Get().World.CreateEntity<MeshInstance3D>();
     point.GetComponent<MeshComponent>().Mesh = &mesh;
     point.GetComponent<MaterialComponent>().Material = &material;
     point.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
@@ -48,7 +49,7 @@ void CalculusTesting::Plot(Vector3 vec3, Vector4 col) {
 }
 
 CalculusTesting::CalculusTesting() {
-    SetRoot(E::Engine::Get().World.CreateEntity<Nova3D>());
+    SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
 
     // float r = 5;
     // for (int i = 0; i <= 360; i += 1) {
@@ -88,4 +89,5 @@ void CalculusTesting::FixedUpdate(double fdt) {
     // Plot({x, sine(x), 1}, {1, 0, 0, 1});
     // Plot({x, (f * sine)(x), -1}, {0, 1, 0, 1});
     Logger::Info(Math::Random(0, 100));
+}
 }

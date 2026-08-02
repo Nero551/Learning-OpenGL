@@ -1,4 +1,4 @@
-#include <OpenGL.hpp>
+#include "OpenGL.hpp"
 #include "Texture.hpp"
 #include "Utilities/Image/Image.hpp"
 #include "Utilities/Logger.hpp"

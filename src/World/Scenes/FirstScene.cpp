@@ -11,16 +11,17 @@
 #include "World/Novas/Light.hpp"
 #include "World/Novas/MeshInstance3D.hpp"
 
+namespace E {
 static unsigned int cubeId = 0;
 
 FirstScene::FirstScene() {
     auto& resourceManager = Service::Get<ResourceManager>();
-    auto& camera = E::World::Get().CreateEntity<Camera>();
+    auto& camera = World::Get().CreateEntity<Camera>();
     SetActiveCamera(camera);
 
-    SetRoot(E::World::Get().CreateEntity<Nova3D>());
+    SetRoot(World::Get().CreateEntity<Nova3D>());
 
-    auto& coordinateAxesScene = E::World::Get().CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
+    auto& coordinateAxesScene = World::Get().CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
     GetRoot().AttachChild(coordinateAxesScene.GetRoot());
 
     auto& mesh = Primitives::CreateUVSphere("mesh");
@@ -34,7 +35,7 @@ FirstScene::FirstScene() {
     auto& lightMaterial = resourceManager.Load<Material>("lightMaterial");
     lightMaterial.Shader = &lightShader;
 
-    auto& light = E::World::Get().CreateEntity<Light>();
+    auto& light = World::Get().CreateEntity<Light>();
 
     light.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
     light.GetComponent<LightComponent>().Ambient = {0.2};
@@ -56,7 +57,7 @@ FirstScene::FirstScene() {
     auto& objectMaterial = resourceManager.Load<Material>("material");
     objectMaterial.Shader = &objectShader;
 
-    auto& cube = E::World::Get().CreateEntity<MeshInstance3D>();
+    auto& cube = World::Get().CreateEntity<MeshInstance3D>();
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 0};
@@ -66,9 +67,9 @@ FirstScene::FirstScene() {
 
 
 void FirstScene::FixedUpdate(double fdt) {
-    auto& cube = E::World::Get().FindEntity(cubeId);
+    auto& cube = World::Get().FindEntity(cubeId);
     auto& transformComponent = cube.GetComponent<Transform3DComponent>();
-    auto& input = E::Engine::Get().GetModule<Input>();
+    auto& input = Engine::Get().GetModule<Input>();
 
     const auto fdtf = static_cast<float>(fdt);
     if (input.IsKeyHeld(Key::Up)) {
@@ -102,4 +103,5 @@ void FirstScene::FixedUpdate(double fdt) {
     if (input.IsKeyHeld(Key::C)) {
         transformComponent.LocalEulerRotation->z += 2.0f * fdtf;
     }
+}
 }

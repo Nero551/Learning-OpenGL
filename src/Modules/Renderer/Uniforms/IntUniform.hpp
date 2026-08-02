@@ -2,15 +2,14 @@
 #include "../Uniform.hpp"
 #include "OpenGL.hpp"
 
+namespace E {
+struct IntUniform : Uniform {
+    int Value;
 
-struct IntUniform : Uniform
-{
-   int Value;
+    IntUniform(const std::string& name, int value) : Uniform(name), Value(value) {}
 
-   IntUniform(const std::string& name, int value) : Uniform(name), Value(value) {}
-
-   void Upload(int location) override
-   {
-      glUniform1i(location, Value);
-   }
-};
+    void Upload(int location) override {
+            glUniform1i(location, Value);
+        }
+    };
+}

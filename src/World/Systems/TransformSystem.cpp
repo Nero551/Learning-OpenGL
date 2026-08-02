@@ -3,10 +3,11 @@
 #include "Core/InnerCore/Engine.hpp"
 #include "World/Components/Transform3DComponent.hpp"
 
+namespace E {
 void TransformSystem::Start() {}
 
 void TransformSystem::Update(double dt) {
-    for (auto& entity : E::World::Get().ActiveScene->GetRoot().GetDescendants()) {
+    for (auto& entity : World::Get().ActiveScene->GetRoot().GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent>()) {
             continue;
         }
@@ -61,7 +62,7 @@ void TransformSystem::Update(double dt) {
             }
 
             // Rotation
-            if (transform.LocalEulerRotation.IsDirty()) {
+                if (transform.LocalEulerRotation.IsDirty()) {
                 transform.GlobalEulerRotation = transform.LocalEulerRotation;
             }
 
@@ -76,6 +77,7 @@ void TransformSystem::Update(double dt) {
 
             if (transform.GlobalScale.IsDirty()) {
                 transform.LocalScale = transform.GlobalScale;
+                }
             }
         }
     }

@@ -3,6 +3,8 @@
 #include "Modules/Renderer/Resources/Mesh.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
+namespace E {
 struct MeshComponent : Component {
     CheckedPtr<Mesh> Mesh{"Mesh Component Has No Mesh Assigned"};
 };
+}

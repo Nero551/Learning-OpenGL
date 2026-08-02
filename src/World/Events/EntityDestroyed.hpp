@@ -4,8 +4,8 @@
 
 namespace E {
     struct EntityDestroyed : Event {
-        E::Entity& entity;
+        Entity& entity;
 
-        EntityDestroyed(E::Entity& entity) : entity(entity) {}
+        EntityDestroyed(Entity& entity) : entity(entity) {}
     };
 }

@@ -29,7 +29,7 @@ namespace E {
 
             double averageFrameMs = sum / FrameTimes.size();
 
-            E::Engine::Get().Window.SetTitle(
+            Engine::Get().Window.SetTitle(
                 "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | "
                 +
                 std::to_string(FrameMs) + " ms");

@@ -5,14 +5,14 @@
 
 namespace E {
     void Input::OnStart() {
-        E::Window& window = E::Engine::Get().Window;
+        Window& window = Engine::Get().Window;
         glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xPos, double yPos) {
-            E::Engine::Get().GetModule<Input>().mousePosition = Vector2(static_cast<float>(xPos),
+            Engine::Get().GetModule<Input>().mousePosition = Vector2(static_cast<float>(xPos),
                 static_cast<float>(yPos));
         });
 
         glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xOffset, double yOffset) {
-            E::Engine::Get().GetModule<Input>().scrollOffset =
+            Engine::Get().GetModule<Input>().scrollOffset =
                 Vector2(static_cast<float>(xOffset), static_cast<float>(yOffset));
         });
     }
@@ -23,7 +23,7 @@ namespace E {
             firstMouse = false;
         }
 
-        GLFWwindow* window = E::Engine::Get().Window.GetGlfwWindow();
+        GLFWwindow* window = Engine::Get().Window.GetGlfwWindow();
         for (unsigned int i = 0; i < CurrentKeys.size(); i++) {
             CurrentKeys[i] = glfwGetKey(window, static_cast<int>(i)) == GLFW_PRESS;
         }
@@ -66,7 +66,7 @@ namespace E {
 
     void Input::SetMouseMode(MouseMode mode) {
         mouseMode = mode;
-        glfwSetInputMode(E::Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
+        glfwSetInputMode(Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
     }
 
     Vector2 Input::GetMousePosition() const {
