@@ -9,7 +9,7 @@ struct Function {
     Function(T&& f) : Func(std::forward<T>(f)) {}
 
     [[nodiscard]] float Evaluate(float x) const;
-    [[nodiscard]] float InverseEvaluate(float x, float domainMin = 0, float domainMax = 10) const;
+    [[nodiscard]] float InverseEvaluate(float y, float domainMin = 0, float domainMax = 10) const;
     [[nodiscard]] Function Inverse(float min, float max) const;
     [[nodiscard]] float Derivative(float x, float dx = 0.001f) const;
     [[nodiscard]] Function Differentiate(float dx = 0.001f) const;
@@ -30,8 +30,8 @@ struct Function {
 
     friend Function operator+(float scalar, const Function& f);
     friend Function operator-(float scalar, const Function& f);
-    friend Function operator*(float scalar, const Function& g);
-    friend Function operator/(float scalar, const Function& g);
+    friend Function operator*(float scalar, const Function& f);
+    friend Function operator/(float scalar, const Function& f);
 
 private:
     std::function<float(float)> Func;

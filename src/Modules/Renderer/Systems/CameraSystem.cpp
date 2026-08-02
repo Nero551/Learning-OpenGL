@@ -8,12 +8,12 @@
 namespace E {
     void CameraSystem::Update(double dt) {
         {
-            auto& inputModule = E::Engine::Get().GetModule<Input>();
-            auto& camera = E::World::Get().ActiveScene->GetActiveCamera();
+            auto& inputModule = Engine::Get().GetModule<Input>();
+            auto& camera = World::Get().ActiveScene->GetActiveCamera();
             auto& transform = camera.GetComponent<Transform3DComponent>();
             auto& cameraComponent = camera.GetComponent<CameraComponent>();
 
-            cameraComponent.AspectRatio = E::Engine::Get().Window.Width / E::Engine::Get().Window.Height;
+            cameraComponent.AspectRatio = Engine::Get().Window.Width / Engine::Get().Window.Height;
 
             if (inputModule.GetMouseMode() == MouseMode::Disabled) {
                 cameraComponent.Speed += inputModule.GetScrollDelta().y / 3;
@@ -61,7 +61,7 @@ namespace E {
     }
 
     Matrix4 CameraSystem::GetViewMatrix() {
-        auto& camera = E::World::Get().ActiveScene->GetActiveCamera();
+        auto& camera = World::Get().ActiveScene->GetActiveCamera();
         auto& transformComponent = camera.GetComponent<Transform3DComponent>();
 
         Vector3 pos = transformComponent.LocalPosition;

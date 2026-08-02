@@ -4,8 +4,8 @@
 
 namespace E {
     struct EntityCreated : Event {
-        E::Entity& entity;
+        Entity& entity;
 
-        EntityCreated(E::Entity& entity) : entity(entity) {}
+        EntityCreated(Entity& entity) : entity(entity) {}
     };
 }

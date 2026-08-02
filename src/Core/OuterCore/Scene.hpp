@@ -3,8 +3,6 @@
 #include "ECS/Entity.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
-#include "Modules/Renderer/Components/LightComponent.hpp"
-
 namespace E {
     struct Scene {
         std::string Name;
@@ -32,14 +30,14 @@ namespace E {
 
         virtual void Stop() {}
 
-        E::Entity& GetActiveCamera();
-        void SetActiveCamera(E::Entity& entity);
-        void SetRoot(E::Entity&);
+        Entity& GetActiveCamera();
+        void SetActiveCamera(Entity& entity);
+        void SetRoot(Entity&);
         bool IsRoot(unsigned int id);
-        E::Entity& GetRoot();
+        Entity& GetRoot();
 
     private:
-        CheckedPtr<E::Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
-        CheckedPtr<E::Entity> Root{"Scene Has No Root"};
+        CheckedPtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
+        CheckedPtr<Entity> Root{"Scene Has No Root"};
     };
 }

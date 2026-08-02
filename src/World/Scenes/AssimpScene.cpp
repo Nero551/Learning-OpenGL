@@ -8,9 +8,10 @@
 #include "Core/Services/ResourceManager.hpp"
 #include "World/Novas/MeshInstance3D.hpp"
 
-Assimp::Importer importer;
+namespace E {
+static Assimp::Importer importer;
 
-void ProcessVertices(std::vector<Vertex>& vertices, const aiMesh* mesh) {
+static void ProcessVertices(std::vector<Vertex>& vertices, const aiMesh* mesh) {
     for (unsigned int v = 0; v < mesh->mNumVertices; v++) {
         Vector4 pos = {mesh->mVertices[v].x, mesh->mVertices[v].y, mesh->mVertices[v].z, 1};
         Vector3 normal = {mesh->mNormals[v].x, mesh->mNormals[v].y, mesh->mNormals[v].z};
@@ -25,7 +26,7 @@ void ProcessVertices(std::vector<Vertex>& vertices, const aiMesh* mesh) {
     }
 }
 
-void ProcessFaces(std::vector<unsigned int>& indices, const aiMesh* mesh) {
+static void ProcessFaces(std::vector<unsigned int>& indices, const aiMesh* mesh) {
     for (unsigned int f = 0; f < mesh->mNumFaces; f++) {
         aiFace face = mesh->mFaces[f];
         for (unsigned int i = 0; i < face.mNumIndices; i++) {
@@ -34,7 +35,7 @@ void ProcessFaces(std::vector<unsigned int>& indices, const aiMesh* mesh) {
     }
 }
 
-Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::string& directory) {
+static Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::string& directory) {
     auto& resourceManager = Service::Get<ResourceManager>();
     //Material
     auto& material = resourceManager.Load<Material>("material_" + std::to_string(mesh->mMaterialIndex));
@@ -66,9 +67,9 @@ Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::s
     return material;
 }
 
-void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& directory, E::Entity& parent) {
+void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& directory, Entity& parent) {
     auto& resourceManager = Service::Get<ResourceManager>();
-    auto& entity = E::World::Get().CreateEntity<Nova3D>();
+    auto& entity = World::Get().CreateEntity<Nova3D>();
 
     //Mesh
     for (unsigned int m = 0; m < node->mNumMeshes; m++) {
@@ -94,7 +95,7 @@ void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& di
 }
 
 AssimpScene::AssimpScene(const std::string& filepath) {
-    SetRoot(E::World::Get().CreateEntity<Nova3D>());
+    SetRoot(World::Get().CreateEntity<Nova3D>());
 
     const aiScene* scene = importer.ReadFile(filepath, aiProcess_Triangulate | aiProcess_FlipUVs);
 
@@ -108,3 +109,4 @@ AssimpScene::AssimpScene(const std::string& filepath) {
 }
 
 void AssimpScene::Update(double dt) {}
+}

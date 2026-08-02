@@ -1,10 +1,12 @@
 #pragma once
 #include "OpenGL.hpp"
 
+namespace E {
 enum class Topology {
-   Points = GL_POINTS,
-   Lines = GL_LINES,
-   Triangles = GL_TRIANGLES,
-   TriangleStrip = GL_TRIANGLE_STRIP,
-   LineStrip = GL_LINE_STRIP,
+    Points = GL_POINTS,
+    Lines = GL_LINES,
+    Triangles = GL_TRIANGLES,
+    TriangleStrip = GL_TRIANGLE_STRIP,
+    LineStrip = GL_LINE_STRIP,
 };
+}

@@ -3,6 +3,8 @@
 #include "Modules/Renderer/Resources/Material.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
+namespace E {
 struct MaterialComponent : Component {
     CheckedPtr<Material> Material{"Material Component Has No Material Assigned"};
 };
+}

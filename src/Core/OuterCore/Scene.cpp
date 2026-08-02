@@ -5,17 +5,17 @@
 #include "World/Events/EntityDestroyed.hpp"
 
 namespace E {
-    E::Entity& Scene::GetActiveCamera() {
+    Entity& Scene::GetActiveCamera() {
         return *ActiveCamera;
     }
 
-    void Scene::SetActiveCamera(E::Entity& entity) {
+    void Scene::SetActiveCamera(Entity& entity) {
         if (entity.HasComponent<CameraComponent>() && entity.HasComponent<Transform3DComponent>()) {
             ActiveCamera = &entity;
         }
     }
 
-    void Scene::SetRoot(E::Entity& entity) {
+    void Scene::SetRoot(Entity& entity) {
         Root = &entity;
     }
 
@@ -23,7 +23,7 @@ namespace E {
         return !Root.IsNull() && Root->Id == id;
     }
 
-    E::Entity& Scene::GetRoot() {
+    Entity& Scene::GetRoot() {
         return *Root;
     }
 }

@@ -3,7 +3,7 @@
 #include "Core/InnerCore/Engine.hpp"
 #include "Utilities/Math/Quaternion.hpp"
 
-void Testing() {
+static void Testing() {
     Quaternion q1 = {1, 1, 1, 1};
     Quaternion q2 = {1, 0, 0, 1};
 

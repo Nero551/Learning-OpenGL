@@ -2,17 +2,17 @@
 
 
 float Math::Random(float min, float max) {
-    std::uniform_real_distribution<float> distribution(min, max);
+    std::uniform_real_distribution distribution(min, max);
     return distribution(rng);
 }
 
 int Math::Random(int min, int max) {
-    std::uniform_int_distribution<int> distribution(min, max);
+    std::uniform_int_distribution distribution(min, max);
     return distribution(rng);
 }
 
 float Math::RandomGaussian(float mean, float standardDeviation) {
-    std::normal_distribution<float> distribution(mean, standardDeviation);
+    std::normal_distribution distribution(mean, standardDeviation);
     return distribution(rng);
 }
 

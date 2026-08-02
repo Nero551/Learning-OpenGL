@@ -1,5 +1,6 @@
 #pragma once
 
+namespace E {
 enum class MouseMode {
     Normal = GLFW_CURSOR_NORMAL,
     Hidden = GLFW_CURSOR_HIDDEN,
@@ -17,3 +18,4 @@ enum class MouseButton {
     Button7 = GLFW_MOUSE_BUTTON_7,
     Button8 = GLFW_MOUSE_BUTTON_8,
 };
+}
