@@ -62,7 +62,7 @@ void TransformSystem::Update(double dt) {
             }
 
             // Rotation
-            if (transform.LocalEulerRotation.IsDirty()) {
+                if (transform.LocalEulerRotation.IsDirty()) {
                 transform.GlobalEulerRotation = transform.LocalEulerRotation;
             }
 
@@ -77,6 +77,7 @@ void TransformSystem::Update(double dt) {
 
             if (transform.GlobalScale.IsDirty()) {
                 transform.LocalScale = transform.GlobalScale;
+                }
             }
         }
     }
