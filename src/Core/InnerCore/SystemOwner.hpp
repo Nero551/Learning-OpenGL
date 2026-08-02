@@ -2,31 +2,34 @@
 #include "Core/OuterCore/ECS/System.hpp"
 #include "Utilities/Logger.hpp"
 
-template <typename T>concept SystemType = std::derived_from<T, System>;
 
-struct SystemOwner {
-    virtual ~SystemOwner() = default;
+namespace E {
+    template <typename T>concept SystemType = std::derived_from<T, System>;
 
-    template <SystemType T> T& GetSystem() {
-        auto system = Systems.find(typeid(T));
-        if (system == Systems.end()) {
-            Logger::Fatal(std::format("System Not Found: {}", typeid(T).name()));
-        }
-        return static_cast<T&>(*system->second);
-    }
+    struct SystemOwner {
+        virtual ~SystemOwner() = default;
 
-protected:
-    std::unordered_map<std::type_index, std::unique_ptr<System>> Systems;
-    virtual void AddSystems() {}
-
-    template <SystemType T> T& AddSystem() {
-        if (Systems.contains(std::type_index(typeid(T)))) {
-            Logger::Fatal("System Already Exists");
+        template <SystemType T> T& GetSystem() {
+            auto system = Systems.find(typeid(T));
+            if (system == Systems.end()) {
+                Logger::Fatal(std::format("System Not Found: {}", typeid(T).name()));
+            }
+            return static_cast<T&>(*system->second);
         }
 
-        auto system = std::make_unique<T>();
-        T& ref = *system;
-        Systems.emplace(typeid(T), std::move(system));
-        return ref;
-    }
-};
+    protected:
+        std::unordered_map<std::type_index, std::unique_ptr<System>> Systems;
+        virtual void AddSystems() {}
+
+        template <SystemType T> T& AddSystem() {
+            if (Systems.contains(std::type_index(typeid(T)))) {
+                Logger::Fatal("System Already Exists");
+            }
+
+            auto system = std::make_unique<T>();
+            T& ref = *system;
+            Systems.emplace(typeid(T), std::move(system));
+            return ref;
+        }
+    };
+}

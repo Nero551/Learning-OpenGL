@@ -1,3 +1,5 @@
 #pragma once
 
-struct Component {};
+namespace E {
+    struct Component {};
+}

@@ -5,35 +5,37 @@
 #include "Core/OuterCore/Resource.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
-template <typename T>concept UniformType = std::derived_from<T, Uniform>;
+namespace E {
+    template <typename T>concept UniformType = std::derived_from<T, Uniform>;
 
-struct Shader : Resource {
-    bool HotReload = false;
-    Shader(const std::string& name);
+    struct Shader : Resource {
+        bool HotReload = false;
+        Shader(const std::string& name);
 
-    ~Shader() override;
+        ~Shader() override;
 
-    unsigned int GetId() const;
+        unsigned int GetId() const;
 
-    void Use();
+        void Use();
 
-    template <UniformType T> void SetUniform(const T& uniform) {
-        PendingUniforms[GetUniformLocation(uniform.Name)] = std::make_unique<T>(uniform);
-    }
+        template <UniformType T> void SetUniform(const T& uniform) {
+            PendingUniforms[GetUniformLocation(uniform.Name)] = std::make_unique<T>(uniform);
+        }
 
-    void AssignSource(ShaderSource& source);
-    void Reload();
-    std::vector<CheckedPtr<ShaderSource>>& GetSources();
+        void AssignSource(ShaderSource& source);
+        void Reload();
+        std::vector<CheckedPtr<ShaderSource>>& GetSources();
 
-private:
-    unsigned int Id = 0;
-    std::unordered_map<std::string, unsigned int> UniformLocations;
-    std::unordered_map<int, std::unique_ptr<Uniform>> PendingUniforms;
-    std::vector<CheckedPtr<ShaderSource>> Sources;
+    private:
+        unsigned int Id = 0;
+        std::unordered_map<std::string, unsigned int> UniformLocations;
+        std::unordered_map<int, std::unique_ptr<Uniform>> PendingUniforms;
+        std::vector<CheckedPtr<ShaderSource>> Sources;
 
-    void CreateProgram();
+        void CreateProgram();
 
-    int GetUniformLocation(const std::string& name);
+        int GetUniformLocation(const std::string& name);
 
-    void UploadUniforms();
-};
+        void UploadUniforms();
+    };
+}

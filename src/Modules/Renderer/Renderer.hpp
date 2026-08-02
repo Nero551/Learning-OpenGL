@@ -2,10 +2,12 @@
 
 #include "Core/InnerCore/Module.hpp"
 
-struct Renderer : Module {
-protected:
-   void OnRender() override;
+namespace E {
+    struct Renderer : Module {
+    protected:
+        void OnRender() override;
 
-private:
-   void AddSystems() override;
-};
+    private:
+        void AddSystems() override;
+    };
+}

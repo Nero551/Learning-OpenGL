@@ -4,9 +4,10 @@
 #include "World.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
-template <typename T>concept ModuleType = std::derived_from<T, Module>;
 
 namespace E {
+    template <typename T>concept ModuleType = std::derived_from<T, Module>;
+
     struct Engine {
         bool Running;
         double Time = 0;
@@ -45,18 +46,17 @@ namespace E {
         }
 
     private:
-        inline static CheckedPtr<Engine> Ins = nullptr;
-
-        friend int main();
-        void AddModules();
-
-        std::unordered_map<std::type_index, std::unique_ptr<Module>> Modules;
-
         template <ModuleType T> T& AddModule() {
             auto module = std::make_unique<T>();
             Modules.emplace(typeid(T), std::move(module));
             return static_cast<T&>(*Modules.find(typeid(T))->second);
         }
+
+        std::unordered_map<std::type_index, std::unique_ptr<Module>> Modules;
+        inline static CheckedPtr<Engine> Ins = nullptr;
+
+        friend int main();
+        void AddModules();
 
         void AddServices();
 

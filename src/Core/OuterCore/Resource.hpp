@@ -1,17 +1,19 @@
 #pragma once
 
-struct Resource {
-    std::string Name;
+namespace E {
+    struct Resource {
+        std::string Name;
 
-    Resource(const std::string& name) : Name(name) {};
+        Resource(const std::string& name) : Name(name) {};
 
-    Resource(const Resource&) = delete;
+        Resource(const Resource&) = delete;
 
-    Resource& operator=(const Resource&) = delete;
+        Resource& operator=(const Resource&) = delete;
 
-    Resource(Resource&&) = default;
+        Resource(Resource&&) = default;
 
-    Resource& operator=(Resource&&) = default;
+        Resource& operator=(Resource&&) = default;
 
-    virtual ~Resource() = default;
-};
+        virtual ~Resource() = default;
+    };
+}

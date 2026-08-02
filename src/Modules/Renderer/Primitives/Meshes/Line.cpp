@@ -4,13 +4,15 @@
 #include "Utilities/Math/Color.hpp"
 
 
-Mesh& Primitives::CreateLine(const std::string& name) {
-    std::vector vertices = {
-        Vertex({0, 0, 0, 1}, {1}, {0}, {0, 0, 1}), Vertex({0, 0, 1, 1}, {1}, {0}, {0, 0, 1})
-    };
-    std::vector<unsigned int> indices = {0, 1};
+namespace E {
+    Mesh& Primitives::CreateLine(const std::string& name) {
+        std::vector vertices = {
+            Vertex({0, 0, 0, 1}, {1}, {0}, {0, 0, 1}), Vertex({0, 0, 1, 1}, {1}, {0}, {0, 0, 1})
+        };
+        std::vector<unsigned int> indices = {0, 1};
 
-    Mesh& mesh = Service::Get<ResourceManager>().Load<Mesh>(name, vertices, indices);
-    mesh.Topology = Topology::Lines;
-    return mesh;
+        Mesh& mesh = Service::Get<ResourceManager>().Load<Mesh>(name, vertices, indices);
+        mesh.Topology = Topology::Lines;
+        return mesh;
+    }
 }

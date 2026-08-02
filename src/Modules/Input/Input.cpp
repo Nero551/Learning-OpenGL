@@ -3,95 +3,98 @@
 #include <OpenGL.hpp>
 #include "magic_enum/magic_enum.hpp"
 
-void Input::OnStart() {
-    E::Window& window = E::Engine::Get().Window;
-    glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xPos, double yPos) {
-        E::Engine::Get().GetModule<Input>().mousePosition = Vector2(static_cast<float>(xPos), static_cast<float>(yPos));
-    });
+namespace E {
+    void Input::OnStart() {
+        E::Window& window = E::Engine::Get().Window;
+        glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xPos, double yPos) {
+            E::Engine::Get().GetModule<Input>().mousePosition = Vector2(static_cast<float>(xPos),
+                static_cast<float>(yPos));
+        });
 
-    glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xOffset, double yOffset) {
-        E::Engine::Get().GetModule<Input>().scrollOffset =
-            Vector2(static_cast<float>(xOffset), static_cast<float>(yOffset));
-    });
-}
-
-void Input::OnBeginFrame(double dt) {
-    if (firstMouse) {
-        previousMousePosition = GetMousePosition();
-        firstMouse = false;
+        glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xOffset, double yOffset) {
+            E::Engine::Get().GetModule<Input>().scrollOffset =
+                Vector2(static_cast<float>(xOffset), static_cast<float>(yOffset));
+        });
     }
 
-    GLFWwindow* window = E::Engine::Get().Window.GetGlfwWindow();
-    for (unsigned int i = 0; i < CurrentKeys.size(); i++) {
-        CurrentKeys[i] = glfwGetKey(window, static_cast<int>(i)) == GLFW_PRESS;
+    void Input::OnBeginFrame(double dt) {
+        if (firstMouse) {
+            previousMousePosition = GetMousePosition();
+            firstMouse = false;
+        }
+
+        GLFWwindow* window = E::Engine::Get().Window.GetGlfwWindow();
+        for (unsigned int i = 0; i < CurrentKeys.size(); i++) {
+            CurrentKeys[i] = glfwGetKey(window, static_cast<int>(i)) == GLFW_PRESS;
+        }
+
+        for (unsigned int i = 0; i < CurrentMouseButtons.size(); i++) {
+            CurrentMouseButtons[i] = glfwGetMouseButton(window, static_cast<int>(i));
+        }
     }
 
-    for (unsigned int i = 0; i < CurrentMouseButtons.size(); i++) {
-        CurrentMouseButtons[i] = glfwGetMouseButton(window, static_cast<int>(i));
+    void Input::OnEndFrame(double dt) {
+        scrollOffset = {0, 0};
+        previousMousePosition = mousePosition;
+        PreviousKeys = CurrentKeys;
+        PreviousMouseButtons = CurrentMouseButtons;
     }
-}
 
-void Input::OnEndFrame(double dt) {
-    scrollOffset = {0, 0};
-    previousMousePosition = mousePosition;
-    PreviousKeys = CurrentKeys;
-    PreviousMouseButtons = CurrentMouseButtons;
-}
+    bool Input::IsKeyHeld(Key key) {
+        return CurrentKeys[ToIndex(key)];
+    }
 
-bool Input::IsKeyHeld(Key key) {
-    return CurrentKeys[ToIndex(key)];
-}
+    bool Input::IsKeyPressed(Key key) {
+        return CurrentKeys[ToIndex(key)] && !PreviousKeys[ToIndex(key)];
+    }
 
-bool Input::IsKeyPressed(Key key) {
-    return CurrentKeys[ToIndex(key)] && !PreviousKeys[ToIndex(key)];
-}
+    bool Input::IsKeyReleased(Key key) {
+        return !CurrentKeys[ToIndex(key)] && PreviousKeys[ToIndex(key)];
+    }
 
-bool Input::IsKeyReleased(Key key) {
-    return !CurrentKeys[ToIndex(key)] && PreviousKeys[ToIndex(key)];
-}
+    bool Input::IsMouseButtonHeld(MouseButton button) {
+        return CurrentMouseButtons[ToIndex(button)];
+    }
 
-bool Input::IsMouseButtonHeld(MouseButton button) {
-    return CurrentMouseButtons[ToIndex(button)];
-}
+    bool Input::IsMouseButtonPressed(MouseButton button) {
+        return CurrentMouseButtons[ToIndex(button)] && !PreviousMouseButtons[ToIndex(button)];
+    }
 
-bool Input::IsMouseButtonPressed(MouseButton button) {
-    return CurrentMouseButtons[ToIndex(button)] && !PreviousMouseButtons[ToIndex(button)];
-}
+    bool Input::IsMouseButtonReleased(MouseButton button) {
+        return !CurrentMouseButtons[ToIndex(button)] && PreviousMouseButtons[ToIndex(button)];
+    }
 
-bool Input::IsMouseButtonReleased(MouseButton button) {
-    return !CurrentMouseButtons[ToIndex(button)] && PreviousMouseButtons[ToIndex(button)];
-}
+    void Input::SetMouseMode(MouseMode mode) {
+        mouseMode = mode;
+        glfwSetInputMode(E::Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
+    }
 
-void Input::SetMouseMode(MouseMode mode) {
-    mouseMode = mode;
-    glfwSetInputMode(E::Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
-}
+    Vector2 Input::GetMousePosition() const {
+        return mousePosition;
+    }
 
-Vector2 Input::GetMousePosition() const {
-    return mousePosition;
-}
+    Vector2 Input::GetMouseDelta() const {
+        return GetMousePosition() - previousMousePosition;
+    }
 
-Vector2 Input::GetMouseDelta() const {
-    return GetMousePosition() - previousMousePosition;
-}
+    MouseMode Input::GetMouseMode() const {
+        return mouseMode;
+    }
 
-MouseMode Input::GetMouseMode() const {
-    return mouseMode;
-}
+    Vector2 Input::GetScrollDelta() const {
+        return scrollOffset;
+    }
 
-Vector2 Input::GetScrollDelta() const {
-    return scrollOffset;
-}
-
-bool Input::IsScrolling() const {
-    return scrollOffset != Vector2::Zero;
-}
+    bool Input::IsScrolling() const {
+        return scrollOffset != Vector2::Zero;
+    }
 
 
-constexpr unsigned int Input::ToIndex(Key key) {
-    return static_cast<unsigned int>(key);
-}
+    constexpr unsigned int Input::ToIndex(Key key) {
+        return static_cast<unsigned int>(key);
+    }
 
-constexpr unsigned int Input::ToIndex(MouseButton button) {
-    return static_cast<unsigned int>(button);
+    constexpr unsigned int Input::ToIndex(MouseButton button) {
+        return static_cast<unsigned int>(button);
+    }
 }

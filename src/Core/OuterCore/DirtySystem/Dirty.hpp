@@ -4,168 +4,170 @@
 
 #include "IDirty.hpp"
 #include "Core/OuterCore/Service.hpp"
-#include "Core/Services/DirtyStore.hpp"
+#include "Core/Services/DirtyManager.hpp"
 
-// Tracks whether this value has been modified since the last ClearDirty().
-template <typename T> struct Dirty : IDirty {
-    Dirty() {
-        Service::Get<DirtyStore>().RegisterDirty(this);
-        DirtyFlag = true;
-    }
-
-    Dirty(const Dirty& other)
-        : Value(other.Value), DirtyFlag(true) {
-        Service::Get<DirtyStore>().RegisterDirty(this);
-    }
-
-    Dirty(Dirty&& other) noexcept
-        : Value(std::move(other.Value)), DirtyFlag(true) {
-        Service::Get<DirtyStore>().RegisterDirty(this);
-    }
-
-    Dirty(const T& value) : Value(value) {
-        Service::Get<DirtyStore>().RegisterDirty(this);
-        DirtyFlag = true;
-    }
-
-    ~Dirty() override {
-        Service::Get<DirtyStore>().UnRegisterDirty(this);
-    }
-
-
-    void Set(const T& value) {
-        if (Value != value) {
-            Value = value;
+namespace E {
+    // Tracks whether this value has been modified since the last ClearDirty().
+    template <typename T> struct Dirty : IDirty {
+        Dirty() {
+            Service::Get<DirtyManager>().RegisterDirty(this);
             DirtyFlag = true;
         }
-    }
 
-    void Set(T&& value) {
-        if (Value != value) {
-            Value = std::move(value);
+        Dirty(const Dirty& other)
+            : Value(other.Value), DirtyFlag(true) {
+            Service::Get<DirtyManager>().RegisterDirty(this);
+        }
+
+        Dirty(Dirty&& other) noexcept
+            : Value(std::move(other.Value)), DirtyFlag(true) {
+            Service::Get<DirtyManager>().RegisterDirty(this);
+        }
+
+        Dirty(const T& value) : Value(value) {
+            Service::Get<DirtyManager>().RegisterDirty(this);
             DirtyFlag = true;
         }
-    }
 
-    [[nodiscard]] bool IsDirty() const {
-        return DirtyFlag;
-    }
+        ~Dirty() override {
+            Service::Get<DirtyManager>().UnRegisterDirty(this);
+        }
 
-    void ClearDirty() override {
-        DirtyFlag = false;
-    }
 
-    operator const T&() const {
-        return Value;
-    }
+        void Set(const T& value) {
+            if (Value != value) {
+                Value = value;
+                DirtyFlag = true;
+            }
+        }
 
-    const T& Get() const {
-        return Value;
-    }
+        void Set(T&& value) {
+            if (Value != value) {
+                Value = std::move(value);
+                DirtyFlag = true;
+            }
+        }
 
-    T& Get() {
-        DirtyFlag = true;
-        return Value;
-    }
+        [[nodiscard]] bool IsDirty() const {
+            return DirtyFlag;
+        }
 
-    T* operator->() {
-        DirtyFlag = true;
-        return &Value;
-    }
+        void ClearDirty() override {
+            DirtyFlag = false;
+        }
 
-    const T* operator->() const {
-        return &Value;
-    }
+        operator const T&() const {
+            return Value;
+        }
 
-    Dirty& operator=(const Dirty& rhs) {
-        Set(rhs.Value);
-        return *this;
-    }
+        const T& Get() const {
+            return Value;
+        }
 
-    Dirty& operator=(Dirty&& rhs) {
-        Set(std::move(rhs.Value));
-        return *this;
-    }
+        T& Get() {
+            DirtyFlag = true;
+            return Value;
+        }
 
-    Dirty& operator=(const T& value) {
-        Set(value);
-        return *this;
-    }
+        T* operator->() {
+            DirtyFlag = true;
+            return &Value;
+        }
 
-    Dirty& operator=(T&& value) {
-        Set(std::move(value));
-        return *this;
-    }
+        const T* operator->() const {
+            return &Value;
+        }
 
-    Dirty& operator+=(const Dirty& rhs) {
-        Set(Value + rhs.Value);
-        return *this;
-    }
+        Dirty& operator=(const Dirty& rhs) {
+            Set(rhs.Value);
+            return *this;
+        }
 
-    Dirty& operator-=(const Dirty& rhs) {
-        Set(Value - rhs.Value);
-        return *this;
-    }
+        Dirty& operator=(Dirty&& rhs) {
+            Set(std::move(rhs.Value));
+            return *this;
+        }
 
-    Dirty& operator*=(const Dirty& rhs) {
-        Set(Value * rhs.Value);
-        return *this;
-    }
+        Dirty& operator=(const T& value) {
+            Set(value);
+            return *this;
+        }
 
-    Dirty& operator/=(const Dirty& rhs) {
-        Set(Value / rhs.Value);
-        return *this;
-    }
+        Dirty& operator=(T&& value) {
+            Set(std::move(value));
+            return *this;
+        }
 
-    Dirty& operator+=(const T& rhs) {
-        Set(Value + rhs);
-        return *this;
-    }
+        Dirty& operator+=(const Dirty& rhs) {
+            Set(Value + rhs.Value);
+            return *this;
+        }
 
-    Dirty& operator-=(const T& rhs) {
-        Set(Value - rhs);
-        return *this;
-    }
+        Dirty& operator-=(const Dirty& rhs) {
+            Set(Value - rhs.Value);
+            return *this;
+        }
 
-    Dirty& operator*=(const T& rhs) {
-        Set(Value * rhs);
-        return *this;
-    }
+        Dirty& operator*=(const Dirty& rhs) {
+            Set(Value * rhs.Value);
+            return *this;
+        }
 
-    Dirty& operator/=(const T& rhs) {
-        Set(Value / rhs);
-        return *this;
-    }
+        Dirty& operator/=(const Dirty& rhs) {
+            Set(Value / rhs.Value);
+            return *this;
+        }
 
-    bool operator==(const Dirty& rhs) const {
-        return Value == rhs.Value;
-    }
+        Dirty& operator+=(const T& rhs) {
+            Set(Value + rhs);
+            return *this;
+        }
 
-    bool operator!=(const Dirty& rhs) const {
-        return Value != rhs.Value;
-    }
+        Dirty& operator-=(const T& rhs) {
+            Set(Value - rhs);
+            return *this;
+        }
 
-    bool operator<(const Dirty& rhs) const {
-        return Value < rhs.Value;
-    }
+        Dirty& operator*=(const T& rhs) {
+            Set(Value * rhs);
+            return *this;
+        }
 
-    bool operator<=(const Dirty& rhs) const {
-        return Value <= rhs.Value;
-    }
+        Dirty& operator/=(const T& rhs) {
+            Set(Value / rhs);
+            return *this;
+        }
 
-    bool operator>(const Dirty& rhs) const {
-        return Value > rhs.Value;
-    }
+        bool operator==(const Dirty& rhs) const {
+            return Value == rhs.Value;
+        }
 
-    bool operator>=(const Dirty& rhs) const {
-        return Value >= rhs.Value;
-    }
+        bool operator!=(const Dirty& rhs) const {
+            return Value != rhs.Value;
+        }
 
-    friend std::ostream& operator<<(std::ostream& os, const Dirty& dirty) {
-        return os << dirty.Value;
-    }
+        bool operator<(const Dirty& rhs) const {
+            return Value < rhs.Value;
+        }
 
-private:
-    T Value{};
-    bool DirtyFlag = false;
-};
+        bool operator<=(const Dirty& rhs) const {
+            return Value <= rhs.Value;
+        }
+
+        bool operator>(const Dirty& rhs) const {
+            return Value > rhs.Value;
+        }
+
+        bool operator>=(const Dirty& rhs) const {
+            return Value >= rhs.Value;
+        }
+
+        friend std::ostream& operator<<(std::ostream& os, const Dirty& dirty) {
+            return os << dirty.Value;
+        }
+
+    private:
+        T Value{};
+        bool DirtyFlag = false;
+    };
+}

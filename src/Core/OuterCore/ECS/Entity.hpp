@@ -5,9 +5,10 @@
 #include "Utilities/Logger.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
-template <typename T>concept ComponentType = std::derived_from<T, Component>;
 
 namespace E {
+    template <typename T>concept ComponentType = std::derived_from<T, Component>;
+
     struct Entity {
         unsigned int Id = 0;
 

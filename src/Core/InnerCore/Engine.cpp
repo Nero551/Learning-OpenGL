@@ -2,9 +2,9 @@
 
 #include <OpenGL.hpp>
 
-#include "../OuterCore/Service.hpp"
 #include "../../Modules/Renderer/Renderer.hpp"
-#include "Core/Services/DirtyStore.hpp"
+#include "../OuterCore/Service.hpp"
+#include "Core/Services/DirtyManager.hpp"
 #include "Core/Services/ResourceManager.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Profiling/Profiling.hpp"
@@ -21,13 +21,11 @@ namespace E {
         AddModule<Profiling>();
     }
 
-
     void Engine::AddServices() {
         Service::Add<ResourceManager>();
         Service::Add<EventBus>();
-        Service::Add<DirtyStore>();
+        Service::Add<DirtyManager>();
     }
-
 
     void Engine::Start() {
         glfwSwapInterval(0);
@@ -113,6 +111,6 @@ namespace E {
         }
 
         Service::Get<EventBus>().EmptyFireQueue();
-        Service::Get<DirtyStore>().ClearDirtyObjects();
+        Service::Get<DirtyManager>().ClearDirtyObjects();
     }
 }

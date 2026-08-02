@@ -4,24 +4,26 @@
 #include "World/Components/Transform3DComponent.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 
-E::Entity& Scene::GetActiveCamera() {
-    return *ActiveCamera;
-}
-
-void Scene::SetActiveCamera(E::Entity& entity) {
-    if (entity.HasComponent<CameraComponent>() && entity.HasComponent<Transform3DComponent>()) {
-        ActiveCamera = &entity;
+namespace E {
+    E::Entity& Scene::GetActiveCamera() {
+        return *ActiveCamera;
     }
-}
 
-void Scene::SetRoot(E::Entity& entity) {
-    Root = &entity;
-}
+    void Scene::SetActiveCamera(E::Entity& entity) {
+        if (entity.HasComponent<CameraComponent>() && entity.HasComponent<Transform3DComponent>()) {
+            ActiveCamera = &entity;
+        }
+    }
 
-bool Scene::IsRoot(unsigned int id) {
-    return !Root.IsNull() && Root->Id == id;
-}
+    void Scene::SetRoot(E::Entity& entity) {
+        Root = &entity;
+    }
 
-E::Entity& Scene::GetRoot() {
-    return *Root;
+    bool Scene::IsRoot(unsigned int id) {
+        return !Root.IsNull() && Root->Id == id;
+    }
+
+    E::Entity& Scene::GetRoot() {
+        return *Root;
+    }
 }

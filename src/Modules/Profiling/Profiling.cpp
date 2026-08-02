@@ -2,39 +2,42 @@
 
 #include "Core/InnerCore/Engine.hpp"
 
-void Profiling::AddSystems() {}
+namespace E {
+    void Profiling::AddSystems() {}
 
-void Profiling::OnStart() {}
+    void Profiling::OnStart() {}
 
-static double elapsed = 0;
+    static double elapsed = 0;
 
-void Profiling::OnUpdate(double dt) {
-    elapsed += dt;
+    void Profiling::OnUpdate(double dt) {
+        elapsed += dt;
 
-    FrameMs = dt * 1000.0;
-    FrameCount++;
+        FrameMs = dt * 1000.0;
+        FrameCount++;
 
-    if (FrameTimes.size() > 60) {
-        FrameTimes.pop_front();
-    }
-    FrameTimes.push_back(dt * 1000.0);
+        if (FrameTimes.size() > 60) {
+            FrameTimes.pop_front();
+        }
+        FrameTimes.push_back(dt * 1000.0);
 
-    if (elapsed >= 1.0) {
-        elapsed = 0.0;
+        if (elapsed >= 1.0) {
+            elapsed = 0.0;
 
-        double sum = 0.0;
+            double sum = 0.0;
 
-        for (double frame : FrameTimes) sum += frame;
+            for (double frame : FrameTimes) sum += frame;
 
-        double averageFrameMs = sum / FrameTimes.size();
+            double averageFrameMs = sum / FrameTimes.size();
 
-        E::Engine::Get().Window.SetTitle(
-            "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | " +
-            std::to_string(FrameMs) + " ms");
+            E::Engine::Get().Window.SetTitle(
+                "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | "
+                +
+                std::to_string(FrameMs) + " ms");
 
-        // Logger::Info(
-        //     "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | " +
-        //     std::to_string(FrameMs) + " ms");
-        FrameCount = 0;
+            // Logger::Info(
+            //     "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | " +
+            //     std::to_string(FrameMs) + " ms");
+            FrameCount = 0;
+        }
     }
 }
