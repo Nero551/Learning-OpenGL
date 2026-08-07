@@ -12,7 +12,6 @@
 namespace E {
 static std::vector<unsigned int> Lights;
 
-//TODO- this wont work with multiple scenes
 static void OnEntityCreated(const EntityCreated& event) {
     if (event.entity.HasComponent<LightComponent>()) {
         Lights.emplace_back(event.entity.Id);

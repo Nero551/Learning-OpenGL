@@ -1,6 +1,7 @@
 #include "Function.hpp"
 
 #include "MathUtils.hpp"
+#include "Utilities/Logger.hpp"
 
 float Function::Evaluate(const float x) const {
     return Func(x);
@@ -8,8 +9,8 @@ float Function::Evaluate(const float x) const {
 
 Function Function::Differentiate(const float dx) const {
     auto derivative = [f = *this, dx](const float x) -> float {
-        const float dy = f(x + dx) - f(x);
-        return dy / dx;
+        float h = dx * std::max(1.0f, std::abs(x));
+        return (f(x + h) - f(x - h)) / (2.0f * h);
     };
 
     return derivative;
@@ -26,32 +27,21 @@ Function Function::Compose(const Function& g) const {
 }
 
 float Function::InverseEvaluate(float y, float domainMin, float domainMax) const {
-    bool increasing = Evaluate(domainMax) > Evaluate(domainMin);
-
+    float x = 0;
     while (!Math::NearlyEquals(domainMax, domainMin)) {
-        float x = (domainMin + domainMax) / 2.0f;
+        x = (domainMin + domainMax) / 2.0f;
 
         float value = Evaluate(x);
 
-        if (increasing) {
-            if (value < y) {
-                domainMin = x;
-            }
-            else {
-                domainMax = x;
-            }
+        if (value < y) {
+            domainMin = x;
         }
         else {
-            if (value < y) {
-                domainMax = x;
-            }
-            else {
-                domainMin = x;
-            }
+            domainMax = x;
         }
     }
 
-    return (domainMin + domainMax) / 2.0f;
+    return x;
 }
 
 Function Function::Inverse(float min, float max) const {

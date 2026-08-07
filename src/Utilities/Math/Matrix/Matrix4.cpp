@@ -320,7 +320,7 @@ Matrix4 Matrix4::Inverse() const {
 
     float det = Determinant();
 
-    if (std::abs(det) < Math::EPSILON) {
+    if (Math::NearlyEquals(std::abs(det), 0.0)) {
         Logger::Error("Matrix is not invertible");
         return Identity;
     }

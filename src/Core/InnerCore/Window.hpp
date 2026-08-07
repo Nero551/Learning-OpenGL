@@ -10,6 +10,8 @@ namespace E {
 
         ~Window();
 
+        float GetAspectRatio();
+
         bool ShouldClose();
 
         void SwapBuffers();

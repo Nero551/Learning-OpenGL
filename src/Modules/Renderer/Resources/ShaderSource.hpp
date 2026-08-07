@@ -14,6 +14,7 @@ namespace E {
 
         ShaderSource(const std::string& name, const std::string& path, ShaderStage stage,
             const std::string& version = "version 330 core");
+
         ~ShaderSource() override;
         unsigned int GetId() const;
         ShaderStage GetStage();

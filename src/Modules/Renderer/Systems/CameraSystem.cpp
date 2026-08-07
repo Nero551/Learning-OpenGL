@@ -6,70 +6,67 @@
 #include "World/Components/Transform3DComponent.hpp"
 
 namespace E {
-    void CameraSystem::Update(double dt) {
-        {
-            auto& inputModule = Engine::Get().GetModule<Input>();
-            auto& camera = World::Get().ActiveScene->GetActiveCamera();
-            auto& transform = camera.GetComponent<Transform3DComponent>();
-            auto& cameraComponent = camera.GetComponent<CameraComponent>();
+void CameraSystem::Update(double dt) {
+    {
+        auto& input = Engine::Get().GetModule<Input>();
+        auto& camera = World::Get().ActiveScene->GetActiveCamera();
+        auto& transform = camera.GetComponent<Transform3DComponent>();
+        auto& cameraComponent = camera.GetComponent<CameraComponent>();
 
-            cameraComponent.AspectRatio = Engine::Get().Window.Width / Engine::Get().Window.Height;
+        cameraComponent.AspectRatio = Engine::Get().Window.GetAspectRatio();
 
-            if (inputModule.GetMouseMode() == MouseMode::Disabled) {
-                cameraComponent.Speed += inputModule.GetScrollDelta().y / 3;
-                cameraComponent.Speed = std::clamp(cameraComponent.Speed, 5.0f, 50.0f);
+        if (input.GetMouseMode() == MouseMode::Disabled) {
+            cameraComponent.Speed += input.GetScrollDelta().y / 3;
+            cameraComponent.Speed = std::clamp(cameraComponent.Speed, 5.0f, 50.0f);
 
-                float xOffset = inputModule.GetMouseDelta().x;
-                float yOffset = -inputModule.GetMouseDelta().y;
+            const float xOffset = Math::Rad(input.GetMouseDelta().x * cameraComponent.Sensitivity);
+            const float yOffset = Math::Rad(-input.GetMouseDelta().y * cameraComponent.Sensitivity);
 
-                xOffset = Math::Rad(xOffset);
-                yOffset = Math::Rad(yOffset);
-                xOffset *= cameraComponent.Sensitivity;
-                yOffset *= cameraComponent.Sensitivity;
+            const float maxPitch = Math::Rad(89.0f);
 
-                const float maxPitch = Math::Rad(89.0f);
+            transform.LocalEulerRotation->y += xOffset;
+            transform.LocalEulerRotation->x += yOffset;
+            transform.LocalEulerRotation->x = std::clamp(transform.LocalEulerRotation->x, -maxPitch, maxPitch);
+        }
 
-                transform.LocalEulerRotation->y += xOffset;
-                transform.LocalEulerRotation->x += yOffset;
-                transform.LocalEulerRotation->x = std::clamp(transform.LocalEulerRotation->x, -maxPitch, maxPitch);
-            }
+        const float speed = cameraComponent.Speed * static_cast<float>(dt);
 
-            if (inputModule.IsKeyHeld(Key::W)) {
-                transform.LocalPosition += cameraComponent.Speed * static_cast<float>(dt) * transform.GetForward();
-            }
+        if (input.IsKeyHeld(Key::W)) {
+            transform.LocalPosition += speed * transform.GetForward();
+        }
 
-            if (inputModule.IsKeyHeld(Key::S)) {
-                transform.LocalPosition -= cameraComponent.Speed * static_cast<float>(dt) * transform.GetForward();
-            }
+        if (input.IsKeyHeld(Key::S)) {
+            transform.LocalPosition -= speed * transform.GetForward();
+        }
 
-            if (inputModule.IsKeyHeld(Key::A)) {
-                transform.LocalPosition -= cameraComponent.Speed * static_cast<float>(dt) * transform.GetRight();
-            }
+        if (input.IsKeyHeld(Key::A)) {
+            transform.LocalPosition -= speed * transform.GetRight();
+        }
 
-            if (inputModule.IsKeyHeld(Key::D)) {
-                transform.LocalPosition += cameraComponent.Speed * static_cast<float>(dt) * transform.GetRight();
-            }
+        if (input.IsKeyHeld(Key::D)) {
+            transform.LocalPosition += speed * transform.GetRight();
+        }
 
-            if (inputModule.IsKeyHeld(Key::Space)) {
-                transform.LocalPosition += cameraComponent.Speed * static_cast<float>(dt) * Vector3(0, 1, 0);
-            }
+        if (input.IsKeyHeld(Key::Space)) {
+            transform.LocalPosition += speed * Vector3(0, 1, 0);
+        }
 
-            if (inputModule.IsKeyHeld(Key::LeftShift)) {
-                transform.LocalPosition -= cameraComponent.Speed * static_cast<float>(dt) * Vector3(0, 1, 0);
-            }
+        if (input.IsKeyHeld(Key::LeftShift)) {
+            transform.LocalPosition -= speed * Vector3(0, 1, 0);
         }
     }
+}
 
-    Matrix4 CameraSystem::GetViewMatrix() {
-        auto& camera = World::Get().ActiveScene->GetActiveCamera();
-        auto& transformComponent = camera.GetComponent<Transform3DComponent>();
+Matrix4 CameraSystem::GetViewMatrix() {
+    auto& camera = World::Get().ActiveScene->GetActiveCamera();
+    auto& transformComponent = camera.GetComponent<Transform3DComponent>();
 
-        Vector3 pos = transformComponent.LocalPosition;
-        Vector3 forward = transformComponent.GetForward();
-        Vector3 up = transformComponent.GetUp();
+    Vector3 pos = transformComponent.LocalPosition;
+    Vector3 forward = transformComponent.GetForward();
+    Vector3 up = transformComponent.GetUp();
 
-        Matrix4 view = Matrix4::LookAt(pos, pos + forward, up);
+    Matrix4 view = Matrix4::LookAt(pos, pos + forward, up);
 
-        return view;
-    }
+    return view;
+}
 }

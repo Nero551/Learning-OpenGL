@@ -1,8 +1,10 @@
 #pragma once
 #include "Core/OuterCore/ECS/Entity.hpp"
 
-struct Nova : E::Entity {
+namespace E {
+struct Nova : Entity {
     void Initialize() override {
         Entity::Initialize();
     }
 };
+}

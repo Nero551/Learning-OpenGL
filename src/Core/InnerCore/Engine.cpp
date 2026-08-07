@@ -7,110 +7,112 @@
 #include "Core/Services/DirtyManager.hpp"
 #include "Core/Services/ResourceManager.hpp"
 #include "Modules/Input/Input.hpp"
+#include "Modules/Physics/Physics.hpp"
 #include "Modules/Profiling/Profiling.hpp"
 
 namespace E {
-    Engine::Engine() : Window(800, 600, "Plus Ultra") {
-        Running = true;
-        Ins = this;
+Engine::Engine() : Window(800, 600, "Plus Ultra") {
+    Running = true;
+    Ins = this;
+}
+
+void Engine::AddModules() {
+    AddModule<Renderer>();
+    AddModule<Input>();
+    AddModule<Profiling>();
+    AddModule<Physics>();
+}
+
+void Engine::AddServices() {
+    Service::Add<ResourceManager>();
+    Service::Add<EventBus>();
+    Service::Add<DirtyManager>();
+}
+
+void Engine::Start() {
+    glfwSwapInterval(0);
+    AddServices();
+    AddModules();
+
+    World.Start();
+
+    for (auto& module : Modules | std::views::values) {
+        module->Start();
     }
 
-    void Engine::AddModules() {
-        AddModule<Renderer>();
-        AddModule<Input>();
-        AddModule<Profiling>();
+    GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+}
+
+
+void Engine::Update() {
+    Time = glfwGetTime();
+
+    World.Update(DeltaTime);
+
+    if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
+        Running = false;
+        Window.Close();
     }
 
-    void Engine::AddServices() {
-        Service::Add<ResourceManager>();
-        Service::Add<EventBus>();
-        Service::Add<DirtyManager>();
-    }
-
-    void Engine::Start() {
-        glfwSwapInterval(0);
-        AddServices();
-        AddModules();
-
-        World.Start();
-
-        for (auto& module : Modules | std::views::values) {
-            module->Start();
+    if (GetModule<Input>().IsKeyReleased(Key::Q)) {
+        if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
+            GetModule<Input>().SetMouseMode(MouseMode::Normal);
         }
-
-        GetModule<Input>().SetMouseMode(MouseMode::Disabled);
-    }
-
-
-    void Engine::Update() {
-        Time = glfwGetTime();
-
-        World.Update(DeltaTime);
-
-        if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
-            Running = false;
-            Window.Close();
-        }
-
-        if (GetModule<Input>().IsKeyReleased(Key::Q)) {
-            if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
-                GetModule<Input>().SetMouseMode(MouseMode::Normal);
-            }
-            else {
-                GetModule<Input>().SetMouseMode(MouseMode::Disabled);
-            }
-        }
-
-        for (auto& module : Modules | std::views::values) {
-            module->Update(DeltaTime);
+        else {
+            GetModule<Input>().SetMouseMode(MouseMode::Disabled);
         }
     }
 
-    void Engine::FixedUpdate() {
-        World.FixedUpdate(FixedDeltaTime);
-        for (auto& module : Modules | std::views::values) {
-            module->FixedUpdate(FixedDeltaTime);
-        }
+    for (auto& module : Modules | std::views::values) {
+        module->Update(DeltaTime);
+    }
+}
+
+void Engine::FixedUpdate() {
+    World.FixedUpdate(FixedDeltaTime);
+    for (auto& module : Modules | std::views::values) {
+        module->FixedUpdate(FixedDeltaTime);
+    }
+}
+
+void Engine::Stop() {
+    World.Stop();
+    for (auto& module : Modules | std::views::values) {
+        module->Stop();
     }
 
-    void Engine::Stop() {
-        World.Stop();
-        for (auto& module : Modules | std::views::values) {
-            module->Stop();
-        }
+    glfwTerminate();
+}
 
-        glfwTerminate();
+void Engine::Render() {
+    for (auto& module : Modules | std::views::values) {
+        module->Render();
+    }
+}
+
+void Engine::BeginFrame() {
+    Window.PollEvents();
+    glClearColor(0.05, 0.025, 0.05, 1);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    World.BeginFrame(DeltaTime);
+    for (auto& module : Modules | std::views::values) {
+        module->BeginFrame(DeltaTime);
+    }
+}
+
+void Engine::EndFrame() {
+    const double currentFrame = Time;
+    DeltaTime = currentFrame - LastFrame;
+    LastFrame = currentFrame;
+    Window.SwapBuffers();
+
+    World.EndFrame(DeltaTime);
+    for (auto& module : Modules | std::views::values) {
+        module->EndFrame(DeltaTime);
     }
 
-    void Engine::Render() {
-        for (auto& module : Modules | std::views::values) {
-            module->Render();
-        }
-    }
-
-    void Engine::BeginFrame() {
-        Window.PollEvents();
-        glClearColor(0.05, 0.025, 0.05, 1);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        World.BeginFrame(DeltaTime);
-        for (auto& module : Modules | std::views::values) {
-            module->BeginFrame(DeltaTime);
-        }
-    }
-
-    void Engine::EndFrame() {
-        const double currentFrame = Time;
-        DeltaTime = currentFrame - LastFrame;
-        LastFrame = currentFrame;
-        Window.SwapBuffers();
-
-        World.EndFrame(DeltaTime);
-        for (auto& module : Modules | std::views::values) {
-            module->EndFrame(DeltaTime);
-        }
-
-        Service::Get<EventBus>().EmptyFireQueue();
-        Service::Get<DirtyManager>().ClearDirtyObjects();
-    }
+    Service::Get<EventBus>().EmptyFireQueue();
+    Service::Get<DirtyManager>().ClearDirtyObjects();
+}
 }

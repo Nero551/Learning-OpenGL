@@ -17,11 +17,6 @@ CoordinateAxesScene::CoordinateAxesScene() {
 
     SetRoot(World::Get().CreateEntity<Nova3D>());
 
-    auto& camera = World::Get().CreateEntity<Camera>();
-    SetActiveCamera(camera);
-    GetRoot().AttachChild(camera);
-
-
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
     lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
         ShaderStage::Fragment));

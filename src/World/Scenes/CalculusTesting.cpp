@@ -29,7 +29,7 @@ MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
     material.Shader = &shader;
 
 
-    auto& point = Engine::Get().World.CreateEntity<MeshInstance3D>();
+    auto& point = World::Get().CreateEntity<MeshInstance3D>();
     point.GetComponent<MeshComponent>().Mesh = &mesh;
     point.GetComponent<MaterialComponent>().Material = &material;
     point.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
@@ -49,20 +49,10 @@ void CalculusTesting::Plot(Vector3 vec3, Vector4 col) {
 }
 
 CalculusTesting::CalculusTesting() {
-    SetRoot(Engine::Get().World.CreateEntity<Nova3D>());
+    Engine::Get().World.CreateEntity<Entity>();
+    World::Get().CreateEntity<Nova3D>();
 
-    // float r = 5;
-    // for (int i = 0; i <= 360; i += 1) {
-    //     Plot({Math::DCos(i) * r, Math::DSin(i) * r, 0});
-    // }
-
-    Function f = [](const float x) {
-        float fx = Math::Sqrt(x);
-        float gx = 8;
-        float dfx = 1 / (2 * Math::Sqrt(x));
-        float dgx = -3;
-        return gx * dfx + fx * dgx;
-    };
+    SetRoot(World::Get().CreateEntity<Nova3D>());
 }
 
 static constexpr float step = 0.025;
@@ -76,18 +66,21 @@ void CalculusTesting::FixedUpdate(double fdt) {
     }
     x += step;
 
-    Function f = [](const float x) {
-        return Math::Pow(x, 3.0f / 2.0f);
+    Function piecewise = [](const float x) {
+        float y = 0;
+
+        if (x < 0) {
+            y = std::cos(x);
+        }
+        else {
+            y = std::sin(x);
+        }
+
+        return y;
     };
 
-    Plot({x, f(x), 0}, {0, 0, 1, 1});
-    Plot({x, f.Derivative(x), 1}, {0, 1, 0, 1});
-    // Plot({x, f.Derivative(x), -1}, {1, 0, 0, 1});
-    // Logger::Info(f.Derivative(x) / f(x));
-    // Plot({x, f(x) * sine.Derivative(x) + sine(x) * f.Derivative(x), -3});
-    // Plot({x, (sine * f).Derivative(x), -2}, {1, 1, 0, 1});
-    // Plot({x, sine(x), 1}, {1, 0, 0, 1});
-    // Plot({x, (f * sine)(x), -1}, {0, 1, 0, 1});
-    Logger::Info(Math::Random(0, 100));
+    Plot({x, piecewise(x), 0}, {1, 0, 0, 1});
+    // Plot({x, f.Derivative(x), 1}, {0, 1, 0, 1});
+    // Plot({x, f.Differentiate().Derivative(x), 2}, {0, 0, 1, 1});
 }
 }

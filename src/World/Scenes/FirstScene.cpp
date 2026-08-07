@@ -16,15 +16,9 @@ static unsigned int cubeId = 0;
 
 FirstScene::FirstScene() {
     auto& resourceManager = Service::Get<ResourceManager>();
-    auto& camera = World::Get().CreateEntity<Camera>();
-    SetActiveCamera(camera);
-
     SetRoot(World::Get().CreateEntity<Nova3D>());
 
-    auto& coordinateAxesScene = World::Get().CreateScene<CoordinateAxesScene>("Coordinate Axes Scene");
-    GetRoot().AttachChild(coordinateAxesScene.GetRoot());
-
-    auto& mesh = Primitives::CreateUVSphere("mesh");
+    auto& mesh = Primitives::CreateCube("mesh");
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
     lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
@@ -40,7 +34,7 @@ FirstScene::FirstScene() {
     light.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
     light.GetComponent<LightComponent>().Ambient = {0.2};
     light.GetComponent<LightComponent>().Diffuse = {0.2};
-    light.GetComponent<Transform3DComponent>().LocalPosition = {3, 0, 3};
+    light.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 0};
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light);
 

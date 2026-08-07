@@ -9,7 +9,10 @@ struct Function {
     Function(T&& f) : Func(std::forward<T>(f)) {}
 
     [[nodiscard]] float Evaluate(float x) const;
+
+    //its hella buggy but kinda works
     [[nodiscard]] float InverseEvaluate(float y, float domainMin = 0, float domainMax = 10) const;
+    //its hella buggy but kinda works
     [[nodiscard]] Function Inverse(float min, float max) const;
     [[nodiscard]] float Derivative(float x, float dx = 0.001f) const;
     [[nodiscard]] Function Differentiate(float dx = 0.001f) const;

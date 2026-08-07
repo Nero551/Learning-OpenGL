@@ -53,7 +53,7 @@ namespace E {
         }
     }
 
-    ShaderSource::ShaderSource(const std::string& name, const std::string& path, ShaderStage stage,
+    ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage,
         const std::string& version) : Resource(name), Path(path), Version(version), Stage(stage) {
         Code = FileSystem::ReadFile(path);
 

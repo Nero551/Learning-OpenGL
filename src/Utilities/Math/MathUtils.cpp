@@ -1,6 +1,8 @@
 #include "MathUtils.hpp"
 
 
+static std::mt19937 rng(std::random_device{}());
+
 float Math::Random(float min, float max) {
     std::uniform_real_distribution distribution(min, max);
     return distribution(rng);
