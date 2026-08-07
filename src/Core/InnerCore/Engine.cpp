@@ -16,14 +16,12 @@ Engine::Engine() : Window(800, 600, "Plus Ultra") {
     Ins = this;
 }
 
-void Engine::AddModules() {
+void Engine::Configure() {
     AddModule<Renderer>();
     AddModule<Input>();
     AddModule<Profiling>();
     AddModule<Physics>();
-}
 
-void Engine::AddServices() {
     Service::Add<ResourceManager>();
     Service::Add<EventBus>();
     Service::Add<DirtyManager>();
@@ -31,13 +29,16 @@ void Engine::AddServices() {
 
 void Engine::Start() {
     glfwSwapInterval(0);
-    AddServices();
-    AddModules();
+    Configure();
 
     World.Start();
 
     for (auto& module : Modules | std::views::values) {
         module->Start();
+    }
+
+    for (auto& service : Service::GetAll()) {
+        service->Start();
     }
 
     GetModule<Input>().SetMouseMode(MouseMode::Disabled);
@@ -66,12 +67,20 @@ void Engine::Update() {
     for (auto& module : Modules | std::views::values) {
         module->Update(DeltaTime);
     }
+
+    for (auto& service : Service::GetAll()) {
+        service->Update(DeltaTime);
+    }
 }
 
 void Engine::FixedUpdate() {
     World.FixedUpdate(FixedDeltaTime);
     for (auto& module : Modules | std::views::values) {
         module->FixedUpdate(FixedDeltaTime);
+    }
+
+    for (auto& service : Service::GetAll()) {
+        service->FixedUpdate(FixedDeltaTime);
     }
 }
 
@@ -81,12 +90,20 @@ void Engine::Stop() {
         module->Stop();
     }
 
+    for (auto& service : Service::GetAll()) {
+        service->Stop();
+    }
+
     glfwTerminate();
 }
 
 void Engine::Render() {
     for (auto& module : Modules | std::views::values) {
         module->Render();
+    }
+
+    for (auto& service : Service::GetAll()) {
+        service->Render();
     }
 }
 
@@ -98,6 +115,10 @@ void Engine::BeginFrame() {
     World.BeginFrame(DeltaTime);
     for (auto& module : Modules | std::views::values) {
         module->BeginFrame(DeltaTime);
+    }
+
+    for (auto& service : Service::GetAll()) {
+        service->BeginFrame(DeltaTime);
     }
 }
 
@@ -112,7 +133,8 @@ void Engine::EndFrame() {
         module->EndFrame(DeltaTime);
     }
 
-    Service::Get<EventBus>().EmptyFireQueue();
-    Service::Get<DirtyManager>().ClearDirtyObjects();
+    for (auto& service : Service::GetAll()) {
+        service->EndFrame();
+    }
 }
 }

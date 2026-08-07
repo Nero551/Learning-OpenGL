@@ -4,62 +4,58 @@
 #include "World.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
-
 namespace E {
-    template <typename T>concept ModuleType = std::derived_from<T, Module>;
+template <typename T>concept ModuleType = std::derived_from<T, Module>;
 
-    struct Engine {
-        bool Running;
-        double Time = 0;
-        double DeltaTime = 0;
-        double FixedDeltaTime = 1.0 / 60.0;
+struct Engine {
+    bool Running;
+    double Time = 0;
+    double DeltaTime = 0;
+    double FixedDeltaTime = 1.0 / 60.0;
 
-        Window Window;
-        World World;
+    Window Window;
+    World World;
 
-        Engine();
+    Engine();
 
-        void Start();
+    void Start();
 
-        void Stop();
+    void Stop();
 
-        void BeginFrame();
+    void BeginFrame();
 
-        void EndFrame();
+    void EndFrame();
 
-        void Update();
+    void Update();
 
-        void FixedUpdate();
+    void FixedUpdate();
 
-        void Render();
+    void Render();
 
-        static Engine& Get() {
-            return *Ins;
+    static Engine& Get() {
+        return *Ins;
+    }
+
+    template <ModuleType T> T& GetModule() {
+        auto module = Modules.find(typeid(T));
+        if (module == Modules.end()) {
+            Logger::Fatal(std::format("Module {} not found", typeid(T).name()));
         }
+        return static_cast<T&>(*module->second);
+    }
 
-        template <ModuleType T> T& GetModule() {
-            auto module = Modules.find(typeid(T));
-            if (module == Modules.end()) {
-                Logger::Fatal(std::format("Module {} not found", typeid(T).name()));
-            }
-            return static_cast<T&>(*module->second);
-        }
+private:
+    inline static CheckedPtr<Engine> Ins = nullptr;
+    void Configure();
 
-    private:
-        template <ModuleType T> T& AddModule() {
-            auto module = std::make_unique<T>();
-            Modules.emplace(typeid(T), std::move(module));
-            return static_cast<T&>(*Modules.find(typeid(T))->second);
-        }
+    template <ModuleType T> T& AddModule() {
+        auto module = std::make_unique<T>();
+        Modules.emplace(typeid(T), std::move(module));
+        return static_cast<T&>(*Modules.find(typeid(T))->second);
+    }
 
-        std::unordered_map<std::type_index, std::unique_ptr<Module>> Modules;
-        inline static CheckedPtr<Engine> Ins = nullptr;
+    std::unordered_map<std::type_index, std::unique_ptr<Module>> Modules;
 
-        friend int main();
-        void AddModules();
-
-        void AddServices();
-
-        double LastFrame = 0;
-    };
+    double LastFrame = 0;
+};
 }

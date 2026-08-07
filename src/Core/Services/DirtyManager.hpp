@@ -4,22 +4,25 @@
 
 
 namespace E {
-    struct DirtyManager : Service {
-        void ClearDirtyObjects() {
-            for (auto& dirty : DirtyObjects) {
-                dirty->ClearDirty();
-            }
+struct DirtyManager : Service {
+    void ClearDirtyObjects() {
+        for (auto& dirty : DirtyObjects) {
+            dirty->ClearDirty();
         }
+    }
 
-        void RegisterDirty(IDirty* dirty) {
-            DirtyObjects.emplace_back(dirty);
-        }
+    void RegisterDirty(IDirty* dirty) {
+        DirtyObjects.emplace_back(dirty);
+    }
 
-        void UnRegisterDirty(IDirty* dirty) {
-            std::erase(DirtyObjects, dirty);
-        }
+    void UnRegisterDirty(IDirty* dirty) {
+        std::erase(DirtyObjects, dirty);
+    }
 
-    private:
-        std::vector<IDirty*> DirtyObjects = {};
-    };
+private:
+    std::vector<IDirty*> DirtyObjects = {};
+
+protected:
+    void EndFrame() override;
+};
 }

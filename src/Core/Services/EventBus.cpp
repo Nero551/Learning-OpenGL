@@ -14,4 +14,8 @@ namespace E {
         }
         FireQueue.clear();
     }
+
+    void EventBus::EndFrame() {
+        EmptyFireQueue();
+    }
 }

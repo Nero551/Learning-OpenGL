@@ -49,34 +49,37 @@ struct Entity {
         return static_cast<T&>(*component->second);
     }
 
-    std::vector<CheckedPtr<Component>> GetComponents();
+    std::vector<CheckedPtr<Component>> GetAllComponents();
 
     template <ComponentType... Args> bool HasComponent() const {
         return (... && Components.contains(typeid(Args)));
     }
 
-    void Destroy();
-    void AttachChild(Entity& child);
     void DestroyChild(unsigned int id);
+    void AttachChild(Entity& child);
     void DetachChild(unsigned int id);
     Entity& GetChild(unsigned int id);
     CheckedPtr<Entity> TryGetChild(unsigned int id);
     bool HasChild(unsigned int id) const;
-    std::vector<CheckedPtr<Entity>> GetChildren();
+
     size_t ChildCount() const;
+    std::vector<CheckedPtr<Entity>> GetChildren();
     void DestroyChildren();
 
     std::vector<CheckedPtr<Entity>> GetDescendants();
     bool HasDescendant(unsigned int id) const;
     bool IsDescendantOf(const Entity& entity);
 
+    std::vector<CheckedPtr<Entity>> GetAncestors();
+    bool IsAncestorOf(const Entity& entity);
+    bool HasAncestor(unsigned int id) const;
+
     Entity& GetParent();
     void SetParent(Entity& parent);
     void ClearParent();
     bool HasParent() const;
-    std::vector<CheckedPtr<Entity>> GetAncestors();
-    bool IsAncestorOf(const Entity& entity);
-    bool HasAncestor(unsigned int id) const;
+
+    void Destroy();
     Entity& GetRoot();
 
 private:

@@ -3,40 +3,53 @@
 #include "Utilities/Logger.hpp"
 
 namespace E {
-    struct Service;
-    template <typename T> concept ServiceType = std::derived_from<T, Service>;
+struct Service;
+template <typename T> concept ServiceType = std::derived_from<T, Service>;
 
-    struct Service {
-        template <ServiceType T> static T& Add() {
-            if (Services.contains(typeid(T))) {
-                Logger::Error(std::format("Service already contains Service {}", typeid(T).name()));
-                return static_cast<T&>(*Services.at(typeid(T)));
-            }
+struct Service {
+    virtual ~Service() = default;
 
-            auto service = std::make_unique<T>();
-            Services.emplace(std::type_index(typeid(T)), std::move(service));
+    template <ServiceType T> static T& Get() {
+        auto service = Services.find(typeid(T));
+        if (service == Services.end()) {
+            Logger::Fatal(std::format("Service Not Found: {}", typeid(T).name()));
+        }
+        return static_cast<T&>(*service->second);
+    }
 
-            return Get<T>();
+    static std::vector<CheckedPtr<Service>> GetAll() {
+        std::vector<CheckedPtr<Service>> services;
+
+        for (auto& service : Services | std::views::values) {
+            services.emplace_back(&*service);
+        }
+        return services;
+    }
+
+protected:
+    friend struct EngineConfig;
+    friend struct Engine;
+    virtual void Start() {}
+    virtual void Update(double dt) {}
+    virtual void FixedUpdate(double fdt) {}
+    virtual void Render() {}
+    virtual void BeginFrame(double dt) {}
+    virtual void EndFrame() {}
+    virtual void Stop() {}
+
+    template <ServiceType T> static T& Add() {
+        if (Services.contains(typeid(T))) {
+            Logger::Error(std::format(" Service {} Already Added", typeid(T).name()));
+            return static_cast<T&>(*Services.at(typeid(T)));
         }
 
-        template <ServiceType T> static T& Get() {
-            auto service = Services.find(typeid(T));
-            if (service == Services.end()) {
-                Logger::Fatal(std::format("Service Not Found: {}", typeid(T).name()));
-            }
-            return static_cast<T&>(*service->second);
-        }
+        auto service = std::make_unique<T>();
+        Services.emplace(std::type_index(typeid(T)), std::move(service));
 
-        static std::vector<CheckedPtr<Service>> GetAll() {
-            std::vector<CheckedPtr<Service>> services;
+        return Get<T>();
+    }
 
-            for (auto& service : Services | std::views::values) {
-                services.emplace_back(&*service);
-            }
-            return services;
-        }
-
-    private:
-        inline static std::unordered_map<std::type_index, std::unique_ptr<Service>> Services;
-    };
+private:
+    inline static std::unordered_map<std::type_index, std::unique_ptr<Service>> Services;
+};
 }

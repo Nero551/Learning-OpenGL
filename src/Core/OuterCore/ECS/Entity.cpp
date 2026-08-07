@@ -40,7 +40,7 @@ std::vector<CheckedPtr<Entity>> Entity::GetChildren() {
     return children;
 }
 
-std::vector<CheckedPtr<Component>> Entity::GetComponents() {
+std::vector<CheckedPtr<Component>> Entity::GetAllComponents() {
     std::vector<CheckedPtr<Component>> components;
     for (auto& component : Components | std::views::values) {
         components.emplace_back(&*component);
@@ -64,8 +64,8 @@ void Entity::Destroy() {
 }
 
 void Entity::DestroyChildren() {
-    for (auto& child : GetChildren()) {
-        child->Destroy();
+    for (auto& childId : Children | std::views::keys) {
+        DestroyChild(childId);
     }
 }
 
@@ -101,13 +101,6 @@ void Entity::DetachChild(unsigned int id) {
     if (auto child = Children.find(id); child != Children.end()) {
         child->second->Parent.Reset();
         Children.erase(child);
-    }
-}
-
-void Entity::RecursiveChildren(std::vector<CheckedPtr<Entity>>& entities, Entity& entity) {
-    for (auto& child : entity.Children | std::views::values) {
-        entities.emplace_back(&*child);
-        RecursiveChildren(entities, *child);
     }
 }
 
@@ -179,10 +172,17 @@ CheckedPtr<Entity> Entity::TryGetChild(unsigned int id) {
     if (auto child = Children.find(id); child != Children.end()) {
         return child->second;
     }
-    return {};
+    return nullptr;
 }
 
 size_t Entity::ChildCount() const {
     return Children.size();
+}
+
+void Entity::RecursiveChildren(std::vector<CheckedPtr<Entity>>& entities, Entity& entity) {
+    for (auto& child : entity.Children | std::views::values) {
+        entities.emplace_back(&*child);
+        RecursiveChildren(entities, *child);
+    }
 }
 }
