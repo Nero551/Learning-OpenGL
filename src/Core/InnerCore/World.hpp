@@ -46,15 +46,16 @@ struct World : SystemOwner {
         return ref;
     }
 
-    template <SceneType T> T& GetScene(const std::string& name) {
-        auto scene = Scenes.find(name);
-        if (scene == Scenes.end()) {
-            Logger::Fatal("No Corresponding Scene.");
-        }
-        return static_cast<T&>(*scene->second);
-    }
+    //! this is unneeded, but i left it here as a backup
+    // template <SceneType T> T& GetScene(const std::string& name) {
+    //     auto scene = Scenes.find(name);
+    //     if (scene == Scenes.end()) {
+    //         Logger::Fatal("No Corresponding Scene.");
+    //     }
+    //     return static_cast<T&>(*scene->second);
+    // }
 
-    std::vector<CheckedPtr<Scene>> GetScenes();
+    // std::vector<CheckedPtr<Scene>> GetScenes();
 
     template <EntityType T> T& CreateEntity() {
         const unsigned int id = ++currentEntityId;

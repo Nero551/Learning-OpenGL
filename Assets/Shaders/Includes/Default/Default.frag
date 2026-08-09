@@ -7,7 +7,6 @@ in vec3 vNormal;
 in vec4 vWorldPosition;
 
 uniform vec3 ViewPosition;
-
 uniform float Time;
 
 struct material {

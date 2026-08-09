@@ -12,53 +12,57 @@
 #include "Uniforms/FloatUniform.hpp"
 #include "Uniforms/Matrix3Uniform.hpp"
 #include "Uniforms/Matrix4Uniform.hpp"
+#include "Uniforms/Vector3Uniform.hpp"
 
 namespace E {
-    void Renderer::AddSystems() {
-        AddSystem<CameraSystem>();
-        AddSystem<LightingSystem>();
-    }
+void Renderer::AddSystems() {
+    AddSystem<CameraSystem>();
+    AddSystem<LightingSystem>();
+}
 
-    void Renderer::OnRender() {
-        auto& scene = World::Get().ActiveScene;
-        auto& camera = scene->GetActiveCamera();
+void Renderer::OnRender() {
+    auto& scene = World::Get().ActiveScene;
+    auto& camera = scene->GetActiveCamera();
 
-        Matrix4 projection = camera.GetComponent<CameraComponent>().GetProjectionMatrix();
-        Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
+    Matrix4 projection = camera.GetComponent<CameraComponent>().GetProjectionMatrix();
+    Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
-        for (auto& entity : scene->GetRoot().GetDescendants()) {
-            if (!entity->HasComponent<Transform3DComponent>()) {
-                continue;
-            }
-            auto& transformComponent = entity->GetComponent<Transform3DComponent>();
+    for (auto& entity : scene->GetRoot().GetDescendants()) {
+        if (!entity->HasComponent<Transform3DComponent>()) {
+            continue;
+        }
+        auto& transformComponent = entity->GetComponent<Transform3DComponent>();
 
-            if (entity->HasComponent<MaterialComponent>()) {
-                auto& materialComponent = entity->GetComponent<MaterialComponent>();
-                materialComponent.Material->Use();
+        if (entity->HasComponent<MaterialComponent>()) {
+            auto& materialComponent = entity->GetComponent<MaterialComponent>();
+            materialComponent.Material->Use();
 
-                if (materialComponent.Material->Shader->HotReload == true) {
-                    materialComponent.Material->Shader->Reload();
-                }
-
-                materialComponent.Material->Shader->SetUniform(
-                    FloatUniform("Time", static_cast<float>(Engine::Get().Time)));
-
-                materialComponent.Material->Shader->SetUniform(
-                    Matrix4Uniform("ModelMatrix", transformComponent.GetModelMatrix()));
-
-                materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ViewMatrix", view));
-
-                materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
-
-                materialComponent.Material->Shader->SetUniform(
-                    Matrix3Uniform("NormalMatrix", transformComponent.GetNormalMatrix()));
+            if (materialComponent.Material->Shader->HotReload == true) {
+                materialComponent.Material->Shader->Reload();
             }
 
-            if (entity->HasComponent<MeshComponent>()) {
-                auto& meshComponent = entity->GetComponent<MeshComponent>();
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform("Time", static_cast<float>(Engine::Get().Time)));
 
-                meshComponent.Mesh->Draw();
-            }
+            materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
+                camera.GetComponent<Transform3DComponent>().LocalPosition));
+
+            materialComponent.Material->Shader->SetUniform(
+                Matrix4Uniform("ModelMatrix", transformComponent.GetModelMatrix()));
+
+            materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ViewMatrix", view));
+
+            materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
+
+            materialComponent.Material->Shader->SetUniform(
+                Matrix3Uniform("NormalMatrix", transformComponent.GetNormalMatrix()));
+        }
+
+        if (entity->HasComponent<MeshComponent>()) {
+            auto& meshComponent = entity->GetComponent<MeshComponent>();
+
+            meshComponent.Mesh->Draw();
         }
     }
+}
 }

@@ -124,18 +124,19 @@ CheckedPtr<Entity> World::TryFindEntity(unsigned int id) {
     auto entity = Entities.find(id);
 
     if (entity == Entities.end()) {
-        return {};
+        return nullptr;
     }
 
     return entity->second.get();
 }
 
-std::vector<CheckedPtr<Scene>> World::GetScenes() {
-    std::vector<CheckedPtr<Scene>> scenes;
-    scenes.reserve(Scenes.size());
-    for (auto& scene : Scenes | std::views::values) {
-        scenes.emplace_back(&*scene);
-    }
-    return scenes;
-}
+//
+// std::vector<CheckedPtr<Scene>> World::GetScenes() {
+//     std::vector<CheckedPtr<Scene>> scenes;
+//     scenes.reserve(Scenes.size());
+//     for (auto& scene : Scenes | std::views::values) {
+//         scenes.emplace_back(&*scene);
+//     }
+//     return scenes;
+// }
 }

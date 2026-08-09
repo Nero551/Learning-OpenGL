@@ -43,8 +43,6 @@ void LightingSystem::Render() {
         auto& materialComponent = entity->GetComponent<MaterialComponent>();
 
         materialComponent.Material->Shader->SetUniform(IntUniform("MaxLights", scene->MaxLights));
-        materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
-            camera.GetComponent<Transform3DComponent>().LocalPosition));
 
         for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
             auto& light = World::Get().FindEntity(Lights[i]);

@@ -9,6 +9,9 @@
 namespace E {
 template <typename T>concept ComponentType = std::derived_from<T, Component>;
 
+/**
+ * @brief An entity is just a component container and id, entity can have children as well
+ */
 struct Entity {
     unsigned int Id = 0;
 
