@@ -14,12 +14,12 @@ Window::Window(const int width, const int height, const std::string& title) {
 
     GLFWwindow* glfwWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     if (!glfwWindow) {
-        Logger::Error("Failed To Create Window");
+        Logger::Fatal("Failed To Create Window");
     }
     glfwMakeContextCurrent(glfwWindow);
 
     if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
-        Logger::Error("Failed To Initialize GLAD");
+        Logger::Fatal("Failed To Initialize GLAD");
     }
 
     glViewport(0, 0, width, height);
@@ -27,8 +27,6 @@ Window::Window(const int width, const int height, const std::string& title) {
         glViewport(0, 0, w, h);
     });
     GlfwWindow = glfwWindow;
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
 }
 
 Window::~Window() {

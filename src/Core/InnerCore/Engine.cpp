@@ -17,6 +17,10 @@ Engine::Engine() : Window(800, 600, "Plus Ultra") {
 }
 
 void Engine::Configure() {
+    Window.SetIcon({"Assets/icon.png"});
+    // Window.SetSize(1980, 1200);
+    glfwSwapInterval(0);
+
     AddModule<Renderer>();
     AddModule<Input>();
     AddModule<Profiling>();
@@ -28,9 +32,6 @@ void Engine::Configure() {
 }
 
 void Engine::Start() {
-    Window.SetIcon({"Docs/Screenshots/Backpack.png"});
-
-    glfwSwapInterval(0);
     Configure();
 
     World.Start();
@@ -52,6 +53,14 @@ void Engine::Update() {
 
     World.Update(DeltaTime);
 
+    for (auto& module : Modules | std::views::values) {
+        module->Update(DeltaTime);
+    }
+
+    for (auto& service : Service::GetAll()) {
+        service->Update(DeltaTime);
+    }
+
     if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
         Running = false;
         Window.Close();
@@ -64,14 +73,6 @@ void Engine::Update() {
         else {
             GetModule<Input>().SetMouseMode(MouseMode::Disabled);
         }
-    }
-
-    for (auto& module : Modules | std::views::values) {
-        module->Update(DeltaTime);
-    }
-
-    for (auto& service : Service::GetAll()) {
-        service->Update(DeltaTime);
     }
 }
 
@@ -111,8 +112,6 @@ void Engine::Render() {
 
 void Engine::BeginFrame() {
     Window.PollEvents();
-    glClearColor(0.05, 0.025, 0.05, 1);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     World.BeginFrame(DeltaTime);
     for (auto& module : Modules | std::views::values) {

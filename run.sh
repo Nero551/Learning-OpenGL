@@ -9,5 +9,5 @@ echo "🔨 Building..."
 echo "✅ Built."
 
 echo "🧪 Running..."
-"$ROOT/build/Engine"
+"$ROOT/build/Nova"
 

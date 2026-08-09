@@ -5,7 +5,7 @@ set(CMAKE_C_COMPILER /usr/bin/clang)
 set(CMAKE_C_COMPILER_LAUNCHER ccache)
 set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 
-project(Engine)
+project(Nova)
 
 set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,16 +16,16 @@ if (NOT CMAKE_BUILD_TYPE)
 endif ()
 
 
-add_executable(Engine
+add_executable(Nova
         External/lib/glad.c
         src/Main.cpp
 )
 
 find_package(glfw3 REQUIRED)
 find_package(assimp CONFIG REQUIRED)
-set_target_properties(Engine PROPERTIES UNITY_BUILD ON)
+set_target_properties(Nova PROPERTIES UNITY_BUILD ON)
 
-target_precompile_headers(Engine PRIVATE
+target_precompile_headers(Nova PRIVATE
         "$<$<COMPILE_LANGUAGE:CXX>:${CMAKE_CURRENT_SOURCE_DIR}/src/pch.hpp>"
 )
 add_subdirectory(src/Core)
@@ -33,18 +33,18 @@ add_subdirectory(src/Utilities)
 add_subdirectory(src/Modules)
 add_subdirectory(src/World)
 
-target_include_directories(Engine PRIVATE
+target_include_directories(Nova PRIVATE
         External/include
         src
 )
 
-target_link_libraries(Engine
+target_link_libraries(Nova
         glfw
         GL
         assimp::assimp
 )
 
-target_compile_options(Engine PRIVATE
+target_compile_options(Nova PRIVATE
         -Wall
         #        -Wextra
         #        -Wpedantic

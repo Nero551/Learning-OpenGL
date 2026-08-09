@@ -1,5 +1,5 @@
 file(GLOB_RECURSE UTILITIES_SOURCES CONFIGURE_DEPENDS *.cpp)
 
-target_sources(Engine PRIVATE
+target_sources(Nova PRIVATE
         ${UTILITIES_SOURCES}
 )

@@ -16,7 +16,6 @@ int main() {
 
     glfwInit();
     E::Engine engine;
-    engine.Window.SetSize(1980, 1200);
 
     engine.Start();
 

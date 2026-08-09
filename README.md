@@ -1,4 +1,4 @@
-# My Learning OpenGL journey
+# Learning-OpenGL
 
 ## Building & Running Engine
 
