@@ -28,6 +28,8 @@ void Engine::Configure() {
 }
 
 void Engine::Start() {
+    Window.SetIcon({"Docs/Screenshots/Backpack.png"});
+
     glfwSwapInterval(0);
     Configure();
 

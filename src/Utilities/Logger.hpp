@@ -19,14 +19,14 @@ struct Logger {
     }
 
     template <typename... Args> static void Error(const Args&... args) {
-        std::cerr << Red << "[ERROR] " << Reset;
+        std::cout << Red << "[ERROR] " << Reset;
         (..., (std::cout << args));
         std::cout << '\n';
     }
 
 
     template <typename... Args> [[noreturn]] static void Fatal(const Args&... args) {
-        std::cerr << Red << "[ERROR] " << Reset;
+        std::cout << Red << "[FATAL] " << Reset;
         (..., (std::cout << args));
         std::cout << '\n';
         throw std::runtime_error("");

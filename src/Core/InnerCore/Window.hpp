@@ -1,34 +1,71 @@
 #pragma once
 #include <OpenGL.hpp>
 
+#include "Utilities/Image/Image.hpp"
+
 namespace E {
-    struct Window {
-        float Width;
-        float Height;
+/**
+ * @brief Wrapper around a GLFW window.
+ * Owns the underlying GLFW window and provides basic window
+ * management and event handling.
+ */
+struct Window {
+    /**
+     * @brief Creates a window.
+     * @param width Window width in pixels.
+     * @param height Window height in pixels.
+     * @param title Initial window title.
+     */
+    Window(int width, int height, const std::string& title);
 
-        Window(float width, float height, const std::string& name);
+    /** @brief Destroys the underlying GLFW window. */
+    ~Window();
 
-        ~Window();
+    /**
+     * @brief Returns the window's width-to-height ratio.
+     */
+    [[nodiscard]] float GetAspectRatio() const;
 
-        float GetAspectRatio();
+    /**
+     * @brief Checks whether the window has been requested to close.
+     * @return True if the window should close.
+     */
+    bool ShouldClose();
 
-        bool ShouldClose();
+    /** Swaps the front and back buffers. */
+    void SwapBuffers();
 
-        void SwapBuffers();
+    /** Processes pending GLFW events. */
+    void PollEvents();
 
-        void PollEvents();
+    void SetTitle(const std::string& title);
 
-        void SetTitle(const std::string& title);
+    void SetIcon(const Image& icon);
 
-        void Close();
+    /** @param height New height in pixels */
+    void SetHeight(int height);
 
-        GLFWwindow* GetGlfwWindow();
+    /** @param width New width in pixels */
+    void SetWidth(int width);
 
-        Window(const Window&) = delete;
+    /**
+    * @brief Changes the window dimensions.
+    * @param width New width in pixels.
+    * @param height New height in pixels.
+    */
+    void SetSize(int width, int height);
 
-        Window& operator=(const Window&) = delete;
+    /** @brief Returns height in pixels */
+    int GetHeight() const;
 
-    private:
-        GLFWwindow* GlfwWindow;
-    };
+    /** @brief Returns width in pixels */
+    int GetWidth() const;
+
+    void Close();
+
+    GLFWwindow* GetGlfwWindow();
+
+private:
+    GLFWwindow* GlfwWindow;
+};
 }

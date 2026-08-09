@@ -43,7 +43,7 @@ namespace E {
 
         glTexImage2D(GL_TEXTURE_2D, 0, static_cast<GLint>(format), image.Width, image.Height, 0, format,
             GL_UNSIGNED_BYTE,
-            image.Data);
+            image.Pixels);
         glGenerateMipmap(GL_TEXTURE_2D);
 
         glActiveTexture(0);
