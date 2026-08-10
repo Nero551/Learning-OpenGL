@@ -11,7 +11,7 @@ concept UniformType = std::derived_from<T, Uniform>;
 
 /**
  * @brief Represents an OpenGL shader program.
- * `Shader` manages the lifetime and use of an OpenGL shader program,
+ * manages the lifetime and use of an OpenGL shader program,
  * including its source files and pending uniform values.
  */
 struct Shader : Resource {

@@ -4,40 +4,40 @@
 #include "Utilities/CheckedPtr.hpp"
 
 namespace E {
-    struct Scene {
-        std::string Name;
-        int MaxLights = 10;
+struct Scene {
+    std::string Name;
+    int MaxLights = 10;
 
-        Scene() = default ;
+    Scene() = default ;
 
-        virtual ~Scene() = default;
+    virtual ~Scene() = default;
 
-        Scene(const Scene&) = delete;
+    Scene(const Scene&) = delete;
 
-        Scene& operator=(const Scene&) = delete;
+    Scene& operator=(const Scene&) = delete;
 
-        Scene(Scene&&) = default;
+    Scene(Scene&&) = default;
 
-        virtual void Update(double dt) {}
+    virtual void Update(double dt) {}
 
-        virtual void FixedUpdate(double fdt) {}
+    virtual void FixedUpdate(double fdt) {}
 
-        virtual void Render() {}
+    virtual void Render() {}
 
-        virtual void BeginFrame(double dt) {}
+    virtual void BeginFrame(double dt) {}
 
-        virtual void EndFrame(double dt) {}
+    virtual void EndFrame(double dt) {}
 
-        virtual void Stop() {}
+    virtual void Stop() {}
 
-        Entity& GetActiveCamera();
-        void SetActiveCamera(Entity& entity);
-        void SetRoot(Entity&);
-        bool IsRoot(unsigned int id);
-        Entity& GetRoot();
+    Entity& GetActiveCamera();
+    void SetActiveCamera(Entity& entity);
+    void SetRoot(Entity&);
+    bool IsRoot(unsigned int id);
+    Entity& GetRoot();
 
-    private:
-        CheckedPtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
-        CheckedPtr<Entity> Root{"Scene Has No Root"};
-    };
+private:
+    CheckedPtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
+    CheckedPtr<Entity> Root{"Scene Has No Root"};
+};
 }

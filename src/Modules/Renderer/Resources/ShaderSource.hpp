@@ -7,25 +7,32 @@
 #include "Modules/Renderer/Enums/ShaderStage.hpp"
 
 namespace E {
-    struct ShaderSource : Resource {
-        std::string Path;
-        std::string Code;
-        std::string Version = "version 330 core";
+/**
+ * @brief Represents a shader source file and its OpenGL shader object.
+ * Handles loading, preprocessing, and reloading of a shader source.
+ */
+struct ShaderSource : Resource {
+    std::string Path;
+    std::string Code;
+    std::string Version = "version 330 core";
 
-        ShaderSource(const std::string& name, const std::string& path, ShaderStage stage,
-            const std::string& version = "version 330 core");
+    ShaderSource(const std::string& name, const std::string& path, ShaderStage stage,
+        const std::string& version = "version 330 core");
 
-        ~ShaderSource() override;
-        unsigned int GetId() const;
-        ShaderStage GetStage();
-        void Reload();
+    ~ShaderSource() override;
+    unsigned int GetId() const;
+    ShaderStage GetStage();
 
-    private:
-        unsigned int Id = 0;
-        ShaderStage Stage;
-        void Preprocess();
-        void PreprocessIncludes(const std::string& path, std::string& code,
-            std::unordered_set<std::string>& includesProcessing);
-        std::unordered_set<std::string> Includes;
-    };
+    /** @brief Reloads and preprocesses the shader source. */
+    void Reload();
+
+private:
+    unsigned int Id = 0;
+    ShaderStage Stage;
+    void Preprocess();
+    void PreprocessIncludes(const std::string& path, std::string& code, std::unordered_set<std::string>& includesProcessing);
+
+    /** @brief Paths of shader files included by this source. */
+    std::unordered_set<std::string> Includes;
+};
 }

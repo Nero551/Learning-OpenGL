@@ -1,19 +1,27 @@
 #pragma once
 
+
 namespace E {
-    struct Resource {
-        std::string Name;
+/**
+ * @brief Base class for resources managed by ResourceManager.
+ *
+ * Provides a name shared by all resource types and establishes
+ * polymorphic destruction through a virtual destructor.
+ * Resources are non-copyable but movable.
+ */
+struct Resource {
+    std::string Name;
 
-        Resource(const std::string& name) : Name(name) {};
+    virtual ~Resource() = default;
 
-        Resource(const Resource&) = delete;
+    Resource(std::string name) : Name(std::move(name)) {};
 
-        Resource& operator=(const Resource&) = delete;
+    Resource(const Resource&) = delete;
 
-        Resource(Resource&&) = default;
+    Resource& operator=(const Resource&) = delete;
 
-        Resource& operator=(Resource&&) = default;
+    Resource(Resource&&) = default;
 
-        virtual ~Resource() = default;
-    };
+    Resource& operator=(Resource&&) = default;
+};
 }
