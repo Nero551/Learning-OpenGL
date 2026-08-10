@@ -6,9 +6,20 @@ namespace E {
 struct Service;
 template <typename T> concept ServiceType = std::derived_from<T, Service>;
 
+/**
+ * @brief Base class for globally accessible services.
+ */
 struct Service {
+    Service() = default;
     virtual ~Service() = default;
+    Service(const Service&) = delete;
+    Service& operator=(const Service&) = delete;
 
+    /**
+    * @brief Retrieves a registered service by type.
+    * @tparam T Type of the service to retrieve.
+    * @return Reference to the registered service.
+    */
     template <ServiceType T> static T& Get() {
         auto service = Services.find(typeid(T));
         if (service == Services.end()) {
@@ -17,6 +28,10 @@ struct Service {
         return static_cast<T&>(*service->second);
     }
 
+    /**
+    * @brief Returns all currently registered services.
+    * @return A vector of pointers to the registered services.
+    */
     static std::vector<CheckedPtr<Service>> GetAll() {
         std::vector<CheckedPtr<Service>> services;
 
@@ -27,7 +42,6 @@ struct Service {
     }
 
 protected:
-    friend struct EngineConfig;
     friend struct Engine;
     virtual void Start() {}
     virtual void Update(double dt) {}
@@ -37,6 +51,13 @@ protected:
     virtual void EndFrame() {}
     virtual void Stop() {}
 
+    /**
+    * @brief Registers a new service of the specified type.
+    * If a service of the same type is already registered, the existing
+    * service is returned instead.
+    * @tparam T Type of the service to register.
+    * @return Reference to the registered service.
+    */
     template <ServiceType T> static T& Add() {
         if (Services.contains(typeid(T))) {
             Logger::Error(std::format(" Service {} Already Added", typeid(T).name()));

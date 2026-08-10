@@ -5,36 +5,48 @@
 #include "Utilities/Logger.hpp"
 
 namespace E {
-    template <typename T>concept ResourceType = std::derived_from<T, Resource>;
+template <typename T>concept ResourceType = std::derived_from<T, Resource>;
 
-    struct ResourceManager : Service {
-        template <ResourceType T, typename... Args> T& Load(const std::string& name, Args&&... args) {
-            if (Resources.contains(name)) {
-                // Logger::Warning("Resource: " + name + " Already Loaded.");
-                return static_cast<T&>(*Resources.at(name));
-            }
-
-            if constexpr (!std::constructible_from<T, const std::string&, Args...>) {
-                Logger::Fatal(
-                    "Resource: " + name + " ,Of Type: " + typeid(T).name() + " Can't Be Constructed From Arguments.");
-            }
-            else {
-                auto resource = std::make_unique<T>(name, std::forward<Args>(args)...);
-                Resources.emplace(name, std::move(resource));
-
-                return static_cast<T&>(*Resources.at(name));
-            }
+/**
+ * @brief Manages the lifetime and retrieval of resources.
+ */
+struct ResourceManager : Service {
+    /**
+     * @brief Loads a resource or returns the already loaded instance.
+     * If a resource with the given name already exists, its existing instance
+     * is returned. Otherwise, a new instance is constructed and stored.
+     * @tparam T Resource type to load.
+     * @param name Unique name used to identify the resource.
+     * @param args Arguments passed to T's constructor after the resource name.
+     * @return Reference to the loaded resource.
+     */
+    template <ResourceType T, typename... Args> T& Load(const std::string& name, Args&&... args) {
+        if (Resources.contains(name)) {
+            // Logger::Warning("Resource: " + name + " Already Loaded.");
+            return static_cast<T&>(*Resources.at(name));
         }
 
-        void Destroy(const std::string& name);
+        if constexpr (!std::constructible_from<T, const std::string&, Args...>) {
+            Logger::Fatal(
+                "Resource: " + name + " ,Of Type: " + typeid(T).name() +
+                " Can't Be Constructed From the Given Arguments.");
+        }
+        else {
+            auto resource = std::make_unique<T>(name, std::forward<Args>(args)...);
+            Resources.emplace(name, std::move(resource));
 
-        ResourceManager() = default;
+            return static_cast<T&>(*Resources.at(name));
+        }
+    }
 
-        ResourceManager(const ResourceManager&) = delete;
+    /**
+     * @brief Unloads a resource by name.
+     *
+     * @param name Name of the resource to unload.
+     */
+    void Unload(const std::string& name);
 
-        ResourceManager& operator=(const ResourceManager&) = delete;
-
-    private:
-        std::unordered_map<std::string, std::unique_ptr<Resource>> Resources;
-    };
+private:
+    std::unordered_map<std::string, std::unique_ptr<Resource>> Resources;
+};
 }

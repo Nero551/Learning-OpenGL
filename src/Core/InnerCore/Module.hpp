@@ -3,38 +3,40 @@
 #include "SystemOwner.hpp"
 
 namespace E {
-    struct Module : SystemOwner {
-        void Start();
+struct Module : SystemOwner {
+    Module() = default;
 
-        void Update(double dt);
+    Module(const Module&) = delete;
 
-        void FixedUpdate(double fdt);
+    Module& operator=(const Module&) = delete;
 
-        void Stop();
+    Module(Module&&) = default;
 
-        void Render();
+    Module& operator=(Module&&) = default;
 
-        void BeginFrame(double dt);
+protected:
+    virtual void OnStart() {}
+    virtual void OnUpdate(double dt) {}
+    virtual void OnFixedUpdate(double fdt) {}
+    virtual void OnEndFrame(double dt) {}
+    virtual void OnRender() {}
+    virtual void OnBeginFrame(double dt) {}
+    virtual void OnStop() {}
 
-        void EndFrame(double dt);
+private:
+    friend struct Engine;
+    void Start();
 
-        Module() = default;
+    void Update(double dt);
 
-        Module(const Module&) = delete;
+    void FixedUpdate(double fdt);
 
-        Module& operator=(const Module&) = delete;
+    void Stop();
 
-        Module(Module&&) = default;
+    void Render();
 
-        Module& operator=(Module&&) = default;
+    void BeginFrame(double dt);
 
-    protected:
-        virtual void OnStart() {}
-        virtual void OnUpdate(double dt) {}
-        virtual void OnFixedUpdate(double fdt) {}
-        virtual void OnEndFrame(double dt) {}
-        virtual void OnRender() {}
-        virtual void OnBeginFrame(double dt) {}
-        virtual void OnStop() {}
-    };
+    void EndFrame(double dt);
+};
 }
