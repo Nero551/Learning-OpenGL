@@ -30,13 +30,13 @@ struct World : SystemOwner {
 
     void Render();
 
-    template <SceneType T, typename... Args> T& CreateScene(const std::string& name, Args... args) {
+    template <SceneType T> T& CreateScene(const std::string& name) {
         if (Scenes.contains(name)) {
             Logger::Error("Scene: ", name, " already exists.");
             return static_cast<T&>(*Scenes.at(name));
         }
 
-        auto scene = std::make_unique<T>(std::forward<Args>(args)...);
+        auto scene = std::make_unique<T>();
         scene->Name = name;
 
         T& ref = *scene;

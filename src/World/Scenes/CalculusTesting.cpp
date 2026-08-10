@@ -53,7 +53,7 @@ CalculusTesting::CalculusTesting() {
 
     SetRoot(World::Get().CreateEntity<Nova3D>());
 
-    float max = 8;
+    float max = 5;
 
     for (float x = 0; x < max; x += 1) {
         for (float y = 0; y < max; y += 1) {

@@ -3,6 +3,7 @@
 #include "SystemOwner.hpp"
 
 namespace E {
+/** @brief Base class for all modules */
 struct Module : SystemOwner {
     Module() = default;
 

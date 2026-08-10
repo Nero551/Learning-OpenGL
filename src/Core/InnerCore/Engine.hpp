@@ -8,9 +8,9 @@ namespace E {
 template <typename T>concept ModuleType = std::derived_from<T, Module>;
 
 /**
- * @brief Represents the program's main loop, there is only 1 engine per program (singleton)
+ * @brief Represents the program's main loop, there is only 1 engine per program (singleton).
  * manages scheduling (FixedUpdate, Update,Render) and
- * stores modules and world
+ * stores modules, world & window
  */
 struct Engine {
     bool Running;

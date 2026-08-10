@@ -6,6 +6,8 @@
 namespace E {
 void TransformSystem::Start() {}
 
+
+//TODO- global positions dont work. fix pls
 void TransformSystem::Update(double dt) {
     for (auto& entity : World::Get().ActiveScene->GetRoot().GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent>()) {

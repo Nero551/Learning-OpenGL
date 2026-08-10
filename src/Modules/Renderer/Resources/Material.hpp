@@ -12,10 +12,10 @@ struct Material : Resource {
     static constexpr int MaxCustomTextures = 8;
     CheckedPtr<Shader> Shader{"Material Has No Shader Assigned"};
 
-    Vector4 Color = {1};
+    Vector4 Color = {0.5};
     Vector3 Ambient = {1};
-    Vector3 Diffuse = {1};
-    Vector3 Specular = {1};
+    Vector3 Diffuse = {0.7};
+    Vector3 Specular = {0.7};
     Vector3 Emission = {0};
     float Shininess = 32;
 

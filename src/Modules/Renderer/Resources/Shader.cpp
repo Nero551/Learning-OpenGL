@@ -6,95 +6,95 @@
 #include "../Uniforms/FloatUniform.hpp"
 
 namespace E {
-    void Shader::AssignSource(ShaderSource& source) {
-        for (auto& existing : Sources) {
-            if (existing->GetStage() == source.GetStage()) {
-                // Logger::Error("Shader: " + Name + " Duplicate Shader Stage.");
-                return;
-            }
+void Shader::AssignSource(ShaderSource& source) {
+    for (auto& existing : Sources) {
+        if (existing->GetStage() == source.GetStage()) {
+            // Logger::Error("Shader: " + Name + " Duplicate Shader Stage.");
+            return;
         }
-
-        Sources.emplace_back(&source);
     }
 
-    std::vector<CheckedPtr<ShaderSource>>& Shader::GetSources() {
-        return Sources;
+    Sources.emplace_back(&source);
+}
+
+std::vector<CheckedPtr<ShaderSource>>& Shader::GetSources() {
+    return Sources;
+}
+
+Shader::Shader(const std::string& name) : Resource(name) {}
+
+Shader::~Shader() {
+    glDeleteProgram(Id);
+}
+
+void Shader::Reload() {
+    for (auto& source : Sources) {
+        source->Reload();
     }
 
-    Shader::Shader(const std::string& name) : Resource(name) {}
+    UniformLocations.clear();
+    glDeleteProgram(Id);
 
-    Shader::~Shader() {
-        glDeleteProgram(Id);
-    }
+    CreateProgram();
+}
 
-    void Shader::Reload() {
-        for (auto& source : Sources) {
-            source->Reload();
-        }
+unsigned int Shader::GetId() const {
+    return Id;
+}
 
-        UniformLocations.clear();
-        glDeleteProgram(Id);
-
+void Shader::Use() {
+    if (Id == 0) {
         CreateProgram();
     }
 
-    unsigned int Shader::GetId() const {
-        return Id;
+    glUseProgram(Id);
+    UploadUniforms();
+}
+
+void Shader::UploadUniforms() {
+    for (auto& [location, uniform] : PendingUniforms) {
+        uniform->Upload(location);
+    }
+}
+
+int Shader::GetUniformLocation(const std::string& name) {
+    int location;
+
+    if (UniformLocations.contains(name)) {
+        location = static_cast<int>(UniformLocations[name]);
+    }
+    else {
+        location = glGetUniformLocation(Id, name.c_str());
+
+        if (location == -1) {
+            // Logger::Warning("Shader: " + Name + " Uniform Not Found: " + name);
+        }
+
+        UniformLocations[name] = location;
+    }
+    return location;
+}
+
+
+void Shader::CreateProgram() {
+    if (Sources.empty()) {
+        Logger::Warning("Shader Program:" + Name + " Has No Sources");
+        return;
     }
 
-    void Shader::Use() {
-        if (Id == 0) {
-            CreateProgram();
-        }
+    Id = glCreateProgram();
 
-        glUseProgram(Id);
-        UploadUniforms();
+    for (const auto& source : Sources) {
+        glAttachShader(Id, source->GetId());
     }
+    glLinkProgram(Id);
 
-    void Shader::UploadUniforms() {
-        for (auto& [location, uniform] : PendingUniforms) {
-            uniform->Upload(location);
-        }
+    int success;
+    char infoLog[512];
+    glGetProgramiv(Id, GL_LINK_STATUS, &success);
+    if (!success) {
+        glGetProgramInfoLog(Id, 512, nullptr, infoLog);
+        Logger::Error(std::string("Shader Program: " + Name + " Linking Failed: ") + infoLog);
     }
-
-    int Shader::GetUniformLocation(const std::string& name) {
-        int location;
-
-        if (UniformLocations.contains(name)) {
-            location = UniformLocations[name];
-        }
-        else {
-            location = glGetUniformLocation(Id, name.c_str());
-
-            if (location == -1) {
-                // Logger::Warning("Shader: " + Name + " Uniform Not Found: " + name);
-            }
-
-            UniformLocations[name] = location;
-        }
-        return location;
-    }
-
-
-    void Shader::CreateProgram() {
-        if (Sources.empty()) {
-            Logger::Warning("Shader Program:" + Name + " Has No Sources");
-            return;
-        }
-
-        Id = glCreateProgram();
-
-        for (const auto& source : Sources) {
-            glAttachShader(Id, source->GetId());
-        }
-        glLinkProgram(Id);
-
-        int success;
-        char infoLog[512];
-        glGetProgramiv(Id, GL_LINK_STATUS, &success);
-        if (!success) {
-            glGetProgramInfoLog(Id, 512, nullptr, infoLog);
-            Logger::Error(std::string("Shader Program: " + Name + " Linking Failed: ") + infoLog);
-        }
-    }
+}
 }

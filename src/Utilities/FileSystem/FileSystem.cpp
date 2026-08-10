@@ -9,7 +9,7 @@ std::string FileSystem::ReadFile(const std::string& path) {
     std::stringstream buffer;
     buffer << file.rdbuf();
 
-    if (buffer.str() == "") {
+    if (buffer.str().empty()) {
         Logger::Error("File Doesn't Exist: " + path);
     }
 
