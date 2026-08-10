@@ -53,14 +53,14 @@ CalculusTesting::CalculusTesting() {
 
     SetRoot(World::Get().CreateEntity<Nova3D>());
 
-    float max = 4;
+    float max = 8;
 
     for (float x = 0; x < max; x += 1) {
         for (float y = 0; y < max; y += 1) {
             for (float z = 0; z < max; z += 1) {
                 Plot(
                     {x, y, z},
-                    {x / 20.0f, y / 20.0f, z / 20.0f, 1}
+                    {x / 10.0f, y / 10.0f, z / 10.0f, 1}
                 );
             }
         }

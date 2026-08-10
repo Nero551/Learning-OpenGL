@@ -10,6 +10,10 @@
 - ./Tests/build-tests.sh
 - ./Tests/run-tests.sh
 
+## Loading Docs
+
+- ./docs.sh
+
 ## Progress
 
 ### Week 1

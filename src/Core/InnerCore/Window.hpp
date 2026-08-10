@@ -14,16 +14,14 @@ struct Window {
      * @brief Creates a window.
      * @param width Window width in pixels.
      * @param height Window height in pixels.
-     * @param title Initial window title.
+     * @param title Window title.
      */
     Window(int width, int height, const std::string& title);
 
     /** @brief Destroys the underlying GLFW window. */
     ~Window();
 
-    /**
-     * @brief Returns the window's width-to-height ratio.
-     */
+    /** @brief Returns the window's width-to-height ratio. */
     [[nodiscard]] float GetAspectRatio() const;
 
     /**

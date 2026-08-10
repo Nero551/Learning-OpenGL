@@ -2,6 +2,7 @@
 set -e
 
 ROOT="$(git rev-parse --show-toplevel)"
+echo "🔨 Building Tests..."
 
 cmake -S "$ROOT/Tests" \
       -B "$ROOT/Tests/build-tests" \
@@ -9,3 +10,4 @@ cmake -S "$ROOT/Tests" \
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
 cmake --build "$ROOT/Tests/build-tests"
+echo "✅ Built Tests."

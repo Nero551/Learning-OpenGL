@@ -1,4 +1,6 @@
-# Framework Overview
+@mainpage Nova
+
+# Framework (ECS-hybrid)
 
 ## Architecture
 
@@ -20,7 +22,7 @@ Main
 
 The application's entry point.
 
-Its only responsibility is to create and run the `Engine`.
+Its only responsibility is to create and run the **Engine**.
 
 ---
 
@@ -49,8 +51,7 @@ Examples include:
 * Audio
 * Networking
 
-Each module owns one or more **Systems**.
-The module handles the lifecycle of all related **Systems**.
+Each module owns one or more **Systems**. The module handles the lifecycle of all related **Systems**.
 
 It can also contain **Resources**, premade **Entities** & **Components**
 
@@ -65,13 +66,13 @@ They perform work every frame, either independently or by operating on entities 
 Examples include:
 
 * Camera System
-* Animation System
+* Transform System
 
 ---
 
 ## World
 
-The world owns every scene in the application.
+The world owns every scene & entity in the application.
 
 It is responsible for creating, storing, and switching between scenes.
 
@@ -86,8 +87,7 @@ Each scene Has:
 * Root Entity
 * Scene-specific state (such as the active camera)
 
-A scene can also contain logic. such as setting up and spawning
-its entities, etc.
+A scene can also contain logic. such as setting up and spawning its entities, etc.
 
 ---
 
@@ -99,6 +99,7 @@ An entity is simply:
 
 * A unique ID
 * A collection of components
+* pointers to children and parent
 
 Entities contain no game logic.
 
@@ -124,7 +125,7 @@ Systems read and modify component data to produce behavior.
 
 ## Design Philosophy
 
-The framework follows a data-oriented, component-based architecture:
+The framework follows a component-based architecture:
 
 * **Modules** organize major engine features.
 * **Systems** implement behavior.
