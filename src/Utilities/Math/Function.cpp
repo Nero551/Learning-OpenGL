@@ -16,6 +16,7 @@ Function Function::Differentiate(const float dx) const {
     return derivative;
 }
 
+
 float Function::Derivative(const float x, const float dx) const {
     return Differentiate(dx).Evaluate(x);
 }
@@ -24,6 +25,21 @@ Function Function::Compose(const Function& g) const {
     return [f = *this, g](const float x) -> float {
         return f(g(x));
     };
+}
+
+Function Function::Integrate(float a, float dx) const {
+    return [f = *this, a,dx](float b) {
+        float result = 0.0f;
+        for (float x = a; x <= b; x += dx) {
+            result += f(x) * dx;
+        }
+        return result;
+    };
+}
+
+
+float Function::Integral(float a, float b, float dx) const {
+    return Integrate(a, dx).Evaluate(b);
 }
 
 float Function::InverseEvaluate(float y, float domainMin, float domainMax) const {

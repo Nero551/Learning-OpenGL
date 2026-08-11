@@ -55,21 +55,21 @@ CalculusTesting::CalculusTesting() {
 
     float max = 5;
 
-    for (float x = 0; x < max; x += 1) {
-        for (float y = 0; y < max; y += 1) {
-            for (float z = 0; z < max; z += 1) {
-                Plot(
-                    {x, y, z},
-                    {x / 10.0f, y / 10.0f, z / 10.0f, 1}
-                );
-            }
-        }
-    }
+    // for (float x = 0; x < max; x += 1) {
+    //     for (float y = 0; y < max; y += 1) {
+    //         for (float z = 0; z < max; z += 1) {
+    //             Plot(
+    //                 {x, y, z},
+    //                 {x / 10.0f, y / 10.0f, z / 10.0f, 1}
+    //             );
+    //         }
+    //     }
+    // }
 }
 
 static constexpr float step = 0.025;
-static constexpr float xRange = 5;
-static float x = -5;
+static constexpr float xRange = 10;
+static float x = 0;
 
 void CalculusTesting::FixedUpdate(double fdt) {
     // auto& resourceManager = Service::Get<ResourceManager>();
@@ -77,22 +77,13 @@ void CalculusTesting::FixedUpdate(double fdt) {
         return;
     }
     x += step;
-    //
-    // Function piecewise = [](const float x) {
-    //     float y = 0;
-    //
-    //     if (x < 0) {
-    //         y = std::cos(x);
-    //     }
-    //     else {
-    //         y = std::sin(x);
-    //     }
-    //
-    //     return y;
-    // };
-    //
-    // Plot({x, piecewise(x), 0}, {1, 0, 0, 1});
-    // // Plot({x, f.Derivative(x), 1}, {0, 1, 0, 1});
-    // // Plot({x, f.Differentiate().Derivative(x), 2}, {0, 0, 1, 1});
+
+    Function f = [](const float x) {
+        return x;
+    };
+
+    Plot({x, f(x), 0}, {1, 0, 0, 1});
+    Plot({x, f.Derivative(x), 1}, {0, 1, 0, 1});
+    Plot({x, f.Integral(0, x), 2}, {0, 0, 1, 1});
 }
 }

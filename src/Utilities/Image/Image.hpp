@@ -1,5 +1,5 @@
 /**
-* @brief Represents an image.
+* @brief Represents a raster image .
  *
  * Stores the raw pixel data along with the image dimensions
  * and number of color channels.

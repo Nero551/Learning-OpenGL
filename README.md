@@ -1,4 +1,4 @@
-# Learning-OpenGL
+# Learning-OpenGL (2026-06-26)
 
 ## Building & Running Engine
 
@@ -16,7 +16,7 @@
 
 ## Progress
 
-### Week 1
+### Week 1 — June 26–July 2
 
 - Vectors
 - Shaders
@@ -26,7 +26,7 @@
 
 ![Colored Quad](Docs/Screenshots/Colored%20Quad.png)
 
-### Week 2
+### Week 2 — July 3–9
 
 - Shader class
 - Textures & texture class
@@ -39,7 +39,7 @@
 
 ![Textured Quad](Docs/Screenshots/Textured%20Quad.png)
 
-### Week 3
+### Week 3 — July 10–16
 
 - Complete Architecture redesign
 - ECS-style framework
@@ -50,7 +50,7 @@
 
 ![3D Cube](Docs/Screenshots/3D%20Cube.png)
 
-### Week 4
+### Week 4 — July 17–23
 
 - Ambient, Diffuse & Specular lighting
 - Normals & Normal Matrix
@@ -66,7 +66,7 @@
 
 ![Cube](Docs/Screenshots/MaybeACube.png)
 
-### Week 5
+### Week 5 — July 24–30
 
 - Assimp model loading
 - Shader Include preprocessing
@@ -75,6 +75,12 @@
 
 ![Backpack](Docs/Screenshots/Backpack.png)
 
-### Week 6
+### Week 6 — July 31–August 6
 
 - Basic calc 1 derivatives
+
+### Week 7 — August 7–13
+
+- Added doxygen for docs
+
+### Week 8 — August 14–20
