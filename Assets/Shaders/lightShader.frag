@@ -2,5 +2,5 @@
 
 void main()
 {
-    FragColor = Material.Color;
+    FragColor = MATERIAL.Color;
 }

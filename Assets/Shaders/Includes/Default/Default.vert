@@ -5,23 +5,24 @@ layout (location = 3) in vec3 aNormal;
 
 out vec4 vPosition;
 out vec4 vWorldPosition;
+
 out vec4 vColor;
 out vec2 vUV;
 out vec3 vNormal;
 
-uniform mat4 ModelMatrix;
-uniform mat4 ViewMatrix;
-uniform mat4 ProjectionMatrix;
-uniform mat3 NormalMatrix;
+uniform mat4 MODEL_MATRIX;
+uniform mat4 VIEW_MATRIX;
+uniform mat4 PROJECTION_MATRIX;
+uniform mat3 NORMAL_MATRIX;
 
-uniform vec3 ViewPosition;
-uniform float Time;
+uniform vec3 VIEW_POSITION;
+uniform float TIME;
 
 void DefaultVertex()
 {
-    vNormal = normalize(NormalMatrix * aNormal);
+    vNormal = normalize(NORMAL_MATRIX * aNormal);
     vColor = aColor;
-    vPosition = ProjectionMatrix * ViewMatrix * ModelMatrix * aPosition;
-    vWorldPosition = ModelMatrix * aPosition;
+    vPosition = PROJECTION_MATRIX * VIEW_MATRIX * MODEL_MATRIX * aPosition;
+    vWorldPosition = MODEL_MATRIX * aPosition;
     vUV = aUV;
 }

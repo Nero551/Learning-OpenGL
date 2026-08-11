@@ -56,6 +56,7 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
 ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage,
     const std::string& version) : Resource(name), Path(path), Version(version), Stage(stage) {
     Code = FileSystem::ReadFile(path);
+    Path = path;
 
     if (Code.empty()) {
         return;
@@ -73,7 +74,14 @@ ShaderSource::ShaderSource(const std::string& name, const std::string& path, con
     glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(Id, 512, nullptr, infoLog);
-        Logger::Error(std::string("Shader:" + Name) + infoLog);
+        Logger::Error(std::string("Shader:" + Name) + infoLog + " | " + Path);
+
+        if (Stage == ShaderStage::Fragment) {
+            FileSystem::WriteFile("Assets/ShaderCompileError.frag", Code);
+        }
+        if (Stage == ShaderStage::Vertex) {
+            FileSystem::WriteFile("Assets/ShaderCompileError.vert", Code);
+        }
     }
 }
 

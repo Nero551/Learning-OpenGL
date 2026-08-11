@@ -1,8 +1,8 @@
-#include "Includes/Lighting.frag"
+#include "Includes/Lighting/Lighting.frag"
 
 void main()
 {
 
-    FragColor = vec4(Lighting(), 1) * Material.Color;
+    FragColor = vec4(Lighting(), 1) * MATERIAL.Color;
 
 }

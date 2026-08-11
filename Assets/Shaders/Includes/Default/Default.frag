@@ -6,10 +6,10 @@ in vec4 vColor;
 in vec3 vNormal;
 in vec4 vWorldPosition;
 
-uniform vec3 ViewPosition;
-uniform float Time;
+uniform vec3 VIEW_POSITION;
+uniform float TIME;
 
-struct material {
+struct Material {
     vec4 Color;
     vec3 Ambient;
     vec3 Diffuse;
@@ -23,4 +23,4 @@ struct material {
     sampler2D EmissionMap;
 };
 
-uniform material Material;
+uniform Material MATERIAL;

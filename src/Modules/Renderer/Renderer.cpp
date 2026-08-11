@@ -52,20 +52,20 @@ void Renderer::OnRender() {
             }
 
             materialComponent.Material->Shader->SetUniform(
-                FloatUniform("Time", static_cast<float>(Engine::Get().Time)));
+                FloatUniform("TIME", static_cast<float>(Engine::Get().Time)));
 
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("ViewPosition",
+            materialComponent.Material->Shader->SetUniform(Vector3Uniform("VIEW_POSITION",
                 camera.GetComponent<Transform3DComponent>().LocalPosition));
 
             materialComponent.Material->Shader->SetUniform(
-                Matrix4Uniform("ModelMatrix", transformComponent.GetModelMatrix()));
+                Matrix4Uniform("MODEL_MATRIX", transformComponent.GetModelMatrix()));
 
-            materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ViewMatrix", view));
+            materialComponent.Material->Shader->SetUniform(Matrix4Uniform("VIEW_MATRIX", view));
 
-            materialComponent.Material->Shader->SetUniform(Matrix4Uniform("ProjectionMatrix", projection));
+            materialComponent.Material->Shader->SetUniform(Matrix4Uniform("PROJECTION_MATRIX", projection));
 
             materialComponent.Material->Shader->SetUniform(
-                Matrix3Uniform("NormalMatrix", transformComponent.GetNormalMatrix()));
+                Matrix3Uniform("NORMAL_MATRIX", transformComponent.GetNormalMatrix()));
         }
 
         if (entity->HasComponent<MeshComponent>()) {

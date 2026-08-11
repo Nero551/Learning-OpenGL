@@ -17,20 +17,20 @@ Material::Material(const std::string& name) : Resource(name) {
 }
 
 void Material::SetProperties() const {
-    Shader->SetUniform(Vector3Uniform("Material.Ambient", Ambient));
-    Shader->SetUniform(Vector3Uniform("Material.Diffuse", Diffuse));
-    Shader->SetUniform(Vector3Uniform("Material.Specular", Specular));
-    Shader->SetUniform(Vector3Uniform("Material.Emission", Emission));
-    Shader->SetUniform(FloatUniform("Material.Shininess", Shininess));
-    Shader->SetUniform(Vector4Uniform("Material.Color", Color));
+    Shader->SetUniform(Vector3Uniform("MATERIAL.Ambient", Ambient));
+    Shader->SetUniform(Vector3Uniform("MATERIAL.Diffuse", Diffuse));
+    Shader->SetUniform(Vector3Uniform("MATERIAL.Specular", Specular));
+    Shader->SetUniform(Vector3Uniform("MATERIAL.Emission", Emission));
+    Shader->SetUniform(FloatUniform("MATERIAL.Shininess", Shininess));
+    Shader->SetUniform(Vector4Uniform("MATERIAL.Color", Color));
 
-    Shader->SetUniform(IntUniform("Material.DiffuseMap", 16));
+    Shader->SetUniform(IntUniform("MATERIAL.DiffuseMap", 16));
     DiffuseMap->Bind(16);
 
-    Shader->SetUniform(IntUniform("Material.SpecularMap", 15));
+    Shader->SetUniform(IntUniform("MATERIAL.SpecularMap", 15));
     SpecularMap->Bind(15);
 
-    Shader->SetUniform(IntUniform("Material.EmissionMap", 14));
+    Shader->SetUniform(IntUniform("MATERIAL.EmissionMap", 14));
     EmissionMap->Bind(14);
 }
 
