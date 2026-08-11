@@ -53,7 +53,7 @@ void LightingSystem::Render() {
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("LIGHTS[{}].Position", i),
-                    light.GetComponent<Transform3DComponent>().LocalPosition));
+                    light.GetComponent<Transform3DComponent>().Position));
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("LIGHTS[{}].Ambient", i), lightComponent.Ambient));

@@ -31,10 +31,10 @@ FirstScene::FirstScene() {
 
     auto& light = World::Get().CreateEntity<Light>();
 
-    light.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.2);
+    light.GetComponent<Transform3DComponent>().Scale = Vector3(0.2);
     light.GetComponent<LightComponent>().Ambient = {0.2};
     light.GetComponent<LightComponent>().Diffuse = {0.2};
-    light.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 0};
+    light.GetComponent<Transform3DComponent>().Position = {0, 0, 0};
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     GetRoot().AttachChild(light);
 
@@ -54,48 +54,11 @@ FirstScene::FirstScene() {
     auto& cube = World::Get().CreateEntity<MeshInstance3D>();
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-    cube.GetComponent<Transform3DComponent>().LocalPosition = {0, 0, 0};
+    cube.GetComponent<Transform3DComponent>().Position = {0, 0, 0};
     GetRoot().AttachChild(cube);
     cubeId = cube.Id;
 }
 
 
-void FirstScene::FixedUpdate(double fdt) {
-    auto& cube = World::Get().FindEntity(cubeId);
-    auto& transformComponent = cube.GetComponent<Transform3DComponent>();
-    auto& input = Engine::Get().GetModule<Input>();
-
-    const auto fdtf = static_cast<float>(fdt);
-    if (input.IsKeyHeld(Key::Up)) {
-        transformComponent.LocalPosition.z += 2.0f * fdtf;
-    }
-    if (input.IsKeyHeld(Key::Down)) {
-        transformComponent.LocalPosition.z -= 2.0f * fdtf;
-    }
-    if (input.IsKeyHeld(Key::Left)) {
-        transformComponent.LocalPosition.x -= 2.0f * fdtf;
-    }
-    if (input.IsKeyHeld(Key::Right)) {
-        transformComponent.LocalPosition.x += 2.0f * fdtf;
-    }
-
-    if (input.IsKeyHeld(Key::I)) {
-        transformComponent.LocalPosition.y += 2.0f * fdtf;
-    }
-    if (input.IsKeyHeld(Key::O)) {
-        transformComponent.LocalPosition.y -= 2.0f * fdtf;
-    }
-
-    if (input.IsKeyHeld(Key::Z)) {
-        transformComponent.LocalEulerRotation.x += 2.0f * fdtf;
-    }
-
-    if (input.IsKeyHeld(Key::X)) {
-        transformComponent.LocalEulerRotation.y += 2.0f * fdtf;
-    }
-
-    if (input.IsKeyHeld(Key::C)) {
-        transformComponent.LocalEulerRotation.z += 2.0f * fdtf;
-    }
-}
+void FirstScene::FixedUpdate(double fdt) {}
 }

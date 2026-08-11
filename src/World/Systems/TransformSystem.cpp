@@ -20,15 +20,15 @@ void TransformSystem::Update(double dt) {
             if (parent.HasComponent<Transform3DComponent>()) {
                 auto& parentTransform = parent.GetComponent<Transform3DComponent>();
 
-                transform.GlobalPosition = parentTransform.GlobalPosition + transform.LocalPosition;
-                transform.GlobalEulerRotation = parentTransform.GlobalEulerRotation + transform.LocalEulerRotation;
-                transform.GlobalScale = parentTransform.GlobalScale * transform.LocalScale;
+                transform.GlobalPosition = parentTransform.GlobalPosition + transform.Position;
+                transform.GlobalRotation = parentTransform.GlobalRotation + transform.Rotation;
+                transform.GlobalScale = parentTransform.GlobalScale * transform.Scale;
             }
         }
         else {
-            transform.GlobalPosition = transform.LocalPosition;
-            transform.GlobalEulerRotation = transform.LocalEulerRotation;
-            transform.GlobalScale = transform.LocalScale;
+            transform.GlobalPosition = transform.Position;
+            transform.GlobalRotation = transform.Rotation;
+            transform.GlobalScale = transform.Scale;
         }
     }
 }

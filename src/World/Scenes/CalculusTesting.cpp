@@ -31,7 +31,7 @@ MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
     auto& point = World::Get().CreateEntity<MeshInstance3D>();
     point.GetComponent<MeshComponent>().Mesh = &mesh;
     point.GetComponent<MaterialComponent>().Material = &material;
-    point.GetComponent<Transform3DComponent>().LocalScale = Vector3(0.75);
+    point.GetComponent<Transform3DComponent>().Scale = Vector3(0.75);
     GetRoot().AttachChild(point);
 
     return point;
@@ -41,9 +41,9 @@ void CalculusTesting::Plot(Vector3 vec3, Vector4 col) {
     if (vec3.y < max && vec3.y > min) {
         const auto& point = CreatePoint(col);
         auto& transform = point.GetComponent<Transform3DComponent>();
-        transform.LocalPosition.x = vec3.x;
-        transform.LocalPosition.y = vec3.y;
-        transform.LocalPosition.z = vec3.z;
+        transform.Position.x = vec3.x;
+        transform.Position.y = vec3.y;
+        transform.Position.z = vec3.z;
     }
 }
 
