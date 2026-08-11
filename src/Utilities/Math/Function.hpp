@@ -1,5 +1,4 @@
 #pragma once
-#include <functional>
 
 template <typename T>
 concept F = std::invocable<T, float> && std::same_as<std::invoke_result_t<T, float>, float>;

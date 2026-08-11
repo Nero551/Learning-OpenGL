@@ -28,7 +28,7 @@ Function Function::Compose(const Function& g) const {
 }
 
 Function Function::Integrate(float a, float dx) const {
-    return [f = *this, a,dx](float b) {
+    return [f = *this, a, dx](float b) {
         float result = 0.0f;
         for (float x = a; x <= b; x += dx) {
             result += f(x) * dx;
