@@ -1,10 +1,12 @@
+#pragma once
+
+namespace E::U {
 /**
 * @brief Represents a raster image .
  *
  * Stores the raw pixel data along with the image dimensions
  * and number of color channels.
  */
-namespace E::U {
 struct Image {
     /**
      * @brief Loads an image from disk.

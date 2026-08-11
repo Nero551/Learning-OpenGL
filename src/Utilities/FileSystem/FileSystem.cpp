@@ -4,7 +4,8 @@
 
 #include "Utilities/Logger.hpp"
 
-std::string E::U::FileSystem::ReadFile(const std::string& path) {
+namespace E::U {
+std::string FileSystem::ReadFile(const std::string& path) {
     std::ifstream file(path);
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -16,7 +17,7 @@ std::string E::U::FileSystem::ReadFile(const std::string& path) {
     return buffer.str();
 }
 
-void E::U::FileSystem::WriteFile(const std::string& path, const std::string& content) {
+void FileSystem::WriteFile(const std::string& path, const std::string& content) {
     std::ofstream file(path);
 
     if (!file) {
@@ -25,4 +26,5 @@ void E::U::FileSystem::WriteFile(const std::string& path, const std::string& con
     }
 
     file << content;
+}
 }

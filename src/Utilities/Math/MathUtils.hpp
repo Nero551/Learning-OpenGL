@@ -16,10 +16,12 @@ float Deg(float rad);
 float DSin(float deg);
 float DCos(float deg);
 float DTan(float deg);
+float Sin(float rad);
 
 float Pow(float x, float power);
 float Sqrt(float x);
 
+float Exp(float x);
 float Ln(float x);
 float Log(float base, float x);
 

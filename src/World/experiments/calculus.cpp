@@ -53,6 +53,8 @@ void calculus::Start() {
     auto& resourceManager = Service::Get<ResourceManager>();
     float max = 5;
 
+    //TODO- put all entities in namespace E , components in C and systems in S . rename global namespace to N
+
     // for (float x = 0; x < max; x += 1) {
     //     for (float y = 0; y < max; y += 1) {
     //         for (float z = 0; z < max; z += 1) {
@@ -81,9 +83,8 @@ void calculus::Update(double dt) {
     M::Function f = [](const float x) {
         return x;
     };
-
     Plot({x, f(x), 0}, {1, 0, 0, 1});
-    Plot({x, f.Derivative(x), 0}, {1, 0, 0, 1});
-    Plot({x, f.Integral(0, x), 0}, {1, 0, 0, 1});
+    Plot({x, f.Derivative(x), 1}, {0, 1, 0, 1});
+    Plot({x, f.Integral(0, x), -1}, {0, 0, 1, 1});
 }
 }

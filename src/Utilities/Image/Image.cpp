@@ -6,7 +6,6 @@
 namespace E::U {
 Image::Image(const std::string& filePath, bool flip) {
     stbi_set_flip_vertically_on_load(flip);
-    // Flipped = flip;
     Pixels = stbi_load(filePath.c_str(), &Width, &Height, &NrChannels, 0);
 
     if (!Pixels) {

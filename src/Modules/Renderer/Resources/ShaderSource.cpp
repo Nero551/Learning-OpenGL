@@ -1,6 +1,7 @@
 #include "ShaderSource.hpp"
 #include <string>
 #include <unordered_set>
+#include <utility>
 
 #include "Core/OuterCore/Resource.hpp"
 #include "Utilities/Logger.hpp"
@@ -53,10 +54,10 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
     }
 }
 
-ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage,
-    const std::string& version) : Resource(name), Path(path), Version(version), Stage(stage) {
+ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage, std::string version) :
+    Resource(name), Path(path), Version(std::move(version)), Stage(stage) {
     Code = U::FileSystem::ReadFile(path);
-    Path = path;
+
 
     if (Code.empty()) {
         return;
@@ -115,7 +116,14 @@ void ShaderSource::Reload() {
     glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(Id, 512, nullptr, infoLog);
-        U::Logger::Error(std::string("Shader:" + Name) + infoLog);
+        U::Logger::Error(std::string("Shader:" + Name) + infoLog + " | " + Path);
+
+        if (Stage == ShaderStage::Fragment) {
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.frag", Code);
+        }
+        if (Stage == ShaderStage::Vertex) {
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.vert", Code);
+        }
     }
 }
 }
