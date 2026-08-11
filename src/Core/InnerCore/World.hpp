@@ -5,6 +5,7 @@
 #include "Core/OuterCore/Service.hpp"
 #include "Core/Services/EventBus.hpp"
 #include "Utilities/Logger.hpp"
+#include "Utilities/Math/MathUtils.hpp"
 #include "World/Events/EntityCreated.hpp"
 
 namespace E {
@@ -12,7 +13,9 @@ template <typename T>concept EntityType = std::derived_from<T, Entity>;
 template <typename T>concept SceneType = std::derived_from<T, Scene>;
 
 struct World : SystemOwner {
-    CheckedPtr<Scene> ActiveScene{"World Has No Active Scene"};
+    CheckedPtr<Entity> Root{"World Has No Root Entity"};
+    CheckedPtr<Entity> ActiveCamera{"World Has No Active Camera"};
+    int MaxLights = 64;
 
     static World& Get();
 
@@ -30,32 +33,9 @@ struct World : SystemOwner {
 
     void Render();
 
-    template <SceneType T> T& CreateScene(const std::string& name) {
-        if (Scenes.contains(name)) {
-            Logger::Error("Scene: ", name, " already exists.");
-            return static_cast<T&>(*Scenes.at(name));
-        }
-
-        auto scene = std::make_unique<T>();
-        scene->Name = name;
-
-        T& ref = *scene;
-
-        Scenes.emplace(name, std::move(scene));
-
-        return ref;
+    template <SceneType T> T CreateScene() {
+        return T();
     }
-
-    //! this is unneeded, but i left it here as a backup
-    // template <SceneType T> T& GetScene(const std::string& name) {
-    //     auto scene = Scenes.find(name);
-    //     if (scene == Scenes.end()) {
-    //         Logger::Fatal("No Corresponding Scene.");
-    //     }
-    //     return static_cast<T&>(*scene->second);
-    // }
-
-    // std::vector<CheckedPtr<Scene>> GetScenes();
 
     template <EntityType T> T& CreateEntity() {
         const unsigned int id = ++currentEntityId;
@@ -74,7 +54,6 @@ struct World : SystemOwner {
     CheckedPtr<Entity> TryFindEntity(unsigned int id);
 
 private:
-    std::unordered_map<std::string, std::unique_ptr<Scene>> Scenes;
     std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
     unsigned int currentEntityId = 0;
 

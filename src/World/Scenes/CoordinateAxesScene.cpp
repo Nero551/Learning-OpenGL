@@ -14,12 +14,10 @@
 #include "World/Novas/Nova3D.hpp"
 
 namespace E {
-static unsigned int lightId = 0;
-
 CoordinateAxesScene::CoordinateAxesScene() {
     auto& resourceManager = Service::Get<ResourceManager>();
 
-    SetRoot(World::Get().CreateEntity<Nova3D>());
+    Root = &World::Get().CreateEntity<Nova3D>();
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
     lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
@@ -32,8 +30,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
 
     auto& light = World::Get().CreateEntity<Light>();
     light.GetComponent<Transform3DComponent>().Rotation.x = Math::Rad(90);
-    GetRoot().AttachChild(light);
-    lightId = light.Id;
+    Root->AttachChild(light);
 
     auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
     shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag",
@@ -53,7 +50,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
     xAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
     xAxis.GetComponent<MaterialComponent>().Material->Color = Color::Red;
 
-    GetRoot().AttachChild(xAxis);
+    Root->AttachChild(xAxis);
 
     auto& yAxis = World::Get().CreateEntity<MeshInstance3D>();
     yAxis.GetComponent<MeshComponent>().Mesh = &line;
@@ -65,7 +62,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
     yAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
     yAxis.GetComponent<MaterialComponent>().Material->Color = Color::Green;
 
-    GetRoot().AttachChild(yAxis);
+    Root->AttachChild(yAxis);
 
     auto& zAxis = World::Get().CreateEntity<MeshInstance3D>();
     zAxis.GetComponent<MeshComponent>().Mesh = &line;
@@ -77,45 +74,6 @@ CoordinateAxesScene::CoordinateAxesScene() {
     zAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
     zAxis.GetComponent<MaterialComponent>().Material->Color = Color::Blue;
 
-    GetRoot().AttachChild(zAxis);
-}
-
-void CoordinateAxesScene::Update(double dt) {
-    auto& light = World::Get().FindEntity(lightId);
-    auto& transformComponent = light.GetComponent<Transform3DComponent>();
-    auto& input = Engine::Get().GetModule<Input>();
-
-    const auto dtf = static_cast<float>(dt);
-    if (input.IsKeyHeld(Key::Up)) {
-        transformComponent.Position.z += 2.0f * dtf;
-    }
-    if (input.IsKeyHeld(Key::Down)) {
-        transformComponent.Position.z -= 2.0f * dtf;
-    }
-    if (input.IsKeyHeld(Key::Left)) {
-        transformComponent.Position.x -= 2.0f * dtf;
-    }
-    if (input.IsKeyHeld(Key::Right)) {
-        transformComponent.Position.x += 2.0f * dtf;
-    }
-
-    if (input.IsKeyHeld(Key::I)) {
-        transformComponent.Position.y += 2.0f * dtf;
-    }
-    if (input.IsKeyHeld(Key::O)) {
-        transformComponent.Position.y -= 2.0f * dtf;
-    }
-
-    if (input.IsKeyHeld(Key::Z)) {
-        transformComponent.Rotation.x += 2.0f * dtf;
-    }
-
-    if (input.IsKeyHeld(Key::X)) {
-        transformComponent.Rotation.y += 2.0f * dtf;
-    }
-
-    if (input.IsKeyHeld(Key::C)) {
-        transformComponent.Rotation.z += 2.0f * dtf;
-    }
+    Root->AttachChild(zAxis);
 }
 }

@@ -9,9 +9,9 @@ namespace E {
 void CameraSystem::Update(double dt) {
     {
         auto& input = Engine::Get().GetModule<Input>();
-        auto& camera = World::Get().ActiveScene->GetActiveCamera();
-        auto& transform = camera.GetComponent<Transform3DComponent>();
-        auto& cameraComponent = camera.GetComponent<CameraComponent>();
+        auto& camera = World::Get().ActiveCamera;
+        auto& transform = camera->GetComponent<Transform3DComponent>();
+        auto& cameraComponent = camera->GetComponent<CameraComponent>();
 
         cameraComponent.AspectRatio = Engine::Get().Window.GetAspectRatio();
 
@@ -58,8 +58,8 @@ void CameraSystem::Update(double dt) {
 }
 
 Matrix4 CameraSystem::GetViewMatrix() {
-    auto& camera = World::Get().ActiveScene->GetActiveCamera();
-    auto& transformComponent = camera.GetComponent<Transform3DComponent>();
+    auto& camera = World::Get().ActiveCamera;
+    auto& transformComponent = camera->GetComponent<Transform3DComponent>();
 
     Vector3 pos = transformComponent.Position;
     Vector3 forward = transformComponent.GetForward();

@@ -32,17 +32,16 @@ void LightingSystem::Start() {
 }
 
 void LightingSystem::Render() {
-    auto& scene = World::Get().ActiveScene;
-    auto& camera = scene->GetActiveCamera();
+    auto& camera = World::Get().ActiveCamera;
 
-    for (auto& entity : scene->GetRoot().GetDescendants()) {
+    for (auto& entity : World::Get().Root->GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent, MaterialComponent>()) {
             continue;
         }
 
         auto& materialComponent = entity->GetComponent<MaterialComponent>();
 
-        materialComponent.Material->Shader->SetUniform(IntUniform("MAX_LIGHTS", scene->MaxLights));
+        materialComponent.Material->Shader->SetUniform(IntUniform("MAX_LIGHTS", World::Get().MaxLights));
 
         for (int i = 0; i < static_cast<int>(Lights.size()); i++) {
             auto& light = World::Get().FindEntity(Lights[i]);

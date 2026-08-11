@@ -5,8 +5,7 @@
 
 namespace E {
 struct Scene {
-    std::string Name;
-    int MaxLights = 10;
+    CheckedPtr<Entity> Root{"Scene Has No Root"};
 
     Scene() = default ;
 
@@ -17,27 +16,5 @@ struct Scene {
     Scene& operator=(const Scene&) = delete;
 
     Scene(Scene&&) = default;
-
-    virtual void Update(double dt) {}
-
-    virtual void FixedUpdate(double fdt) {}
-
-    virtual void Render() {}
-
-    virtual void BeginFrame(double dt) {}
-
-    virtual void EndFrame(double dt) {}
-
-    virtual void Stop() {}
-
-    Entity& GetActiveCamera();
-    void SetActiveCamera(Entity& entity);
-    void SetRoot(Entity&);
-    bool IsRoot(unsigned int id);
-    Entity& GetRoot();
-
-private:
-    CheckedPtr<Entity> ActiveCamera{"Scene Has No Active Camera Assigned"};
-    CheckedPtr<Entity> Root{"Scene Has No Root"};
 };
 }

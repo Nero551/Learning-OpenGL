@@ -5,6 +5,5 @@
 namespace E {
 struct CoordinateAxesScene : Scene {
     CoordinateAxesScene();
-    void Update(double dt) override;
 };
 }

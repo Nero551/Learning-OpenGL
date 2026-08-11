@@ -31,13 +31,12 @@ void Renderer::OnBeginFrame(double dt) {
 }
 
 void Renderer::OnRender() {
-    auto& scene = World::Get().ActiveScene;
-    auto& camera = scene->GetActiveCamera();
+    auto& camera = World::Get().ActiveCamera;
 
-    Matrix4 projection = camera.GetComponent<CameraComponent>().GetProjectionMatrix();
+    Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
     Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
-    for (auto& entity : scene->GetRoot().GetDescendants()) {
+    for (auto& entity : World::Get().Root->GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent>()) {
             continue;
         }
@@ -55,7 +54,7 @@ void Renderer::OnRender() {
                 FloatUniform("TIME", static_cast<float>(Engine::Get().Time)));
 
             materialComponent.Material->Shader->SetUniform(Vector3Uniform("VIEW_POSITION",
-                camera.GetComponent<Transform3DComponent>().Position));
+                camera->GetComponent<Transform3DComponent>().Position));
 
             materialComponent.Material->Shader->SetUniform(
                 Matrix4Uniform("MODEL_MATRIX", transformComponent.GetModelMatrix()));

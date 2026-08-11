@@ -1,22 +1,17 @@
 #include "FirstScene.hpp"
 
 #include "AssimpScene.hpp"
-#include "CoordinateAxesScene.hpp"
 #include "../../Modules/Renderer/Primitives/Primitives.hpp"
 #include "Core/Services/ResourceManager.hpp"
-#include "Modules/Input/Input.hpp"
-#include "Modules/Input/Enums/Keys.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
-#include "World/Novas/Camera.hpp"
 #include "World/Novas/Light.hpp"
 #include "World/Novas/MeshInstance3D.hpp"
 
 namespace E {
-static unsigned int cubeId = 0;
 
 FirstScene::FirstScene() {
     auto& resourceManager = Service::Get<ResourceManager>();
-    SetRoot(World::Get().CreateEntity<Nova3D>());
+    Root = &World::Get().CreateEntity<Nova3D>();
 
     auto& mesh = Primitives::CreateCube("mesh");
 
@@ -36,7 +31,7 @@ FirstScene::FirstScene() {
     light.GetComponent<LightComponent>().Diffuse = {0.2};
     light.GetComponent<Transform3DComponent>().Position = {0, 0, 0};
     light.GetComponent<LightComponent>().Type = LightType::Directional;
-    GetRoot().AttachChild(light);
+    Root->AttachChild(light);
 
     //TODO- quaternions
 
@@ -55,10 +50,6 @@ FirstScene::FirstScene() {
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
     cube.GetComponent<Transform3DComponent>().Position = {0, 0, 0};
-    GetRoot().AttachChild(cube);
-    cubeId = cube.Id;
+    Root->AttachChild(cube);
 }
-
-
-void FirstScene::FixedUpdate(double fdt) {}
 }

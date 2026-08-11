@@ -95,7 +95,7 @@ void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& di
 }
 
 AssimpScene::AssimpScene(const std::string& filepath) {
-    SetRoot(World::Get().CreateEntity<Nova3D>());
+    Root = &World::Get().CreateEntity<Nova3D>();
 
     const aiScene* scene = importer.ReadFile(filepath, aiProcess_Triangulate | aiProcess_FlipUVs);
 
@@ -105,8 +105,6 @@ AssimpScene::AssimpScene(const std::string& filepath) {
     }
 
     std::string directory = filepath.substr(0, filepath.find_last_of('/'));
-    ProcessNode(scene->mRootNode, scene, directory, GetRoot());
+    ProcessNode(scene->mRootNode, scene, directory, *Root);
 }
-
-void AssimpScene::Update(double dt) {}
 }

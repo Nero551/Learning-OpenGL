@@ -8,7 +8,7 @@ void TransformSystem::Start() {}
 
 
 void TransformSystem::Update(double dt) {
-    for (auto& entity : World::Get().ActiveScene->GetRoot().GetDescendants()) {
+    for (auto& entity : World::Get().Root->GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent>()) {
             continue;
         }
@@ -23,13 +23,12 @@ void TransformSystem::Update(double dt) {
                 transform.GlobalPosition = parentTransform.GlobalPosition + transform.Position;
                 transform.GlobalRotation = parentTransform.GlobalRotation + transform.Rotation;
                 transform.GlobalScale = parentTransform.GlobalScale * transform.Scale;
+                continue;
             }
         }
-        else {
-            transform.GlobalPosition = transform.Position;
-            transform.GlobalRotation = transform.Rotation;
-            transform.GlobalScale = transform.Scale;
-        }
+        transform.GlobalPosition = transform.Position;
+        transform.GlobalRotation = transform.Rotation;
+        transform.GlobalScale = transform.Scale;
     }
 }
 }

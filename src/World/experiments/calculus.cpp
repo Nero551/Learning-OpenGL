@@ -1,21 +1,14 @@
-#include "CalculusTesting.hpp"
+#include "calculus.hpp"
 
-#include <complex>
-
-#include "Core/InnerCore/Engine.hpp"
-#include "Core/OuterCore/Service.hpp"
+#include "Core/InnerCore/World.hpp"
 #include "Core/Services/ResourceManager.hpp"
 #include "Modules/Renderer/Primitives/Primitives.hpp"
-#include "Modules/Renderer/Resources/Material.hpp"
 #include "Utilities/Math/Function.hpp"
-#include "World/Novas/Light.hpp"
+#include "Utilities/Math/Vector/Vector4.hpp"
 #include "World/Novas/MeshInstance3D.hpp"
 
 namespace E {
-static float max = 100;
-static float min = -100;
-
-MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
+static MeshInstance3D& CreatePoint(Vector4 col) {
     auto& resourceManager = Service::Get<ResourceManager>();
     auto& mesh = Primitives::CreateCube("point");
     auto& material = resourceManager.Load<Material>(std::format("m{}{}{}", col.z, col.x, col.y));
@@ -32,12 +25,15 @@ MeshInstance3D& CalculusTesting::CreatePoint(Vector4 col) {
     point.GetComponent<MeshComponent>().Mesh = &mesh;
     point.GetComponent<MaterialComponent>().Material = &material;
     point.GetComponent<Transform3DComponent>().Scale = Vector3(0.75);
-    GetRoot().AttachChild(point);
+    World::Get().Root->AttachChild(point);
 
     return point;
 }
 
-void CalculusTesting::Plot(Vector3 vec3, Vector4 col) {
+static float max = 100;
+static float min = -100;
+
+static void Plot(Vector3 vec3, Vector4 col) {
     if (vec3.y < max && vec3.y > min) {
         const auto& point = CreatePoint(col);
         auto& transform = point.GetComponent<Transform3DComponent>();
@@ -47,12 +43,7 @@ void CalculusTesting::Plot(Vector3 vec3, Vector4 col) {
     }
 }
 
-CalculusTesting::CalculusTesting() {
-    Engine::Get().World.CreateEntity<Entity>();
-    World::Get().CreateEntity<Nova3D>();
-
-    SetRoot(World::Get().CreateEntity<Nova3D>());
-
+void calculus::Start() {
     float max = 5;
 
     for (float x = 0; x < max; x += 1) {
@@ -67,11 +58,12 @@ CalculusTesting::CalculusTesting() {
     }
 }
 
+
 static constexpr float step = 0.025;
 static constexpr float xRange = 10;
 static float x = 0;
 
-void CalculusTesting::FixedUpdate(double fdt) {
+void calculus::Update(double dt) {
     // auto& resourceManager = Service::Get<ResourceManager>();
     if (x > xRange) {
         return;
