@@ -34,7 +34,6 @@ void World::Start() {
     for (auto& system : Systems | std::views::values) {
         system->Start();
     }
-    //
 }
 
 void World::Update(double dt) {
@@ -73,11 +72,29 @@ void World::EndFrame(double dt) {
     }
 }
 
-void World::InternalRemoveEntity(unsigned int id) {
-    if (Entities.contains(id)) {
-        Service::Get<EventBus>().Fire<EntityDestroyed>(FindEntity(id));
-        Entities[id].release();
-        Entities.erase(id);
+void World::RemoveEntity(unsigned int id) {
+    auto entity = TryFindEntity(id);
+    if (!entity) {
+        return;
+    }
+    const auto descendants = entity->GetDescendants();
+
+    if (entity->HasParent()) {
+        entity->ClearParent();
+    }
+
+    if (entity->Id == Root->Id) {
+        Root.Reset();
+    }
+
+    Service::Get<EventBus>().Fire<EntityDestroyed>(*entity);
+    Entities[id].release();
+    Entities.erase(id);
+
+    for (auto& descendant : descendants) {
+        Service::Get<EventBus>().Fire<EntityDestroyed>(*descendant);
+        Entities[descendant->Id].release();
+        Entities.erase(descendant->Id);
     }
 }
 

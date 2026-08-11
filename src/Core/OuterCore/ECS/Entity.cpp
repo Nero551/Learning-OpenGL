@@ -50,17 +50,7 @@ std::vector<CheckedPtr<Component>> Entity::GetAllComponents() {
 }
 
 void Entity::Destroy() {
-    auto descendants = GetDescendants();
-
-    if (HasParent()) {
-        ClearParent();
-    }
-
-    World::Get().InternalRemoveEntity(Id);
-
-    for (auto& descendant : descendants) {
-        World::Get().InternalRemoveEntity(descendant->Id);
-    }
+    World::Get().RemoveEntity(Id);
 }
 
 void Entity::DestroyChildren() {
