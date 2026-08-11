@@ -4,7 +4,6 @@
 
 #include "../../Modules/Renderer/Renderer.hpp"
 #include "../OuterCore/Service.hpp"
-#include "Core/Services/DirtyManager.hpp"
 #include "Core/Services/ResourceManager.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Physics/Physics.hpp"
@@ -28,7 +27,6 @@ void Engine::Configure() {
 
     Service::Add<ResourceManager>();
     Service::Add<EventBus>();
-    Service::Add<DirtyManager>();
 }
 
 void Engine::Start() {

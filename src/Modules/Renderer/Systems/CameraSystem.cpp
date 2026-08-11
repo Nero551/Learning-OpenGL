@@ -24,9 +24,9 @@ void CameraSystem::Update(double dt) {
 
             const float maxPitch = Math::Rad(89.0f);
 
-            transform.LocalEulerRotation->y += xOffset;
-            transform.LocalEulerRotation->x += yOffset;
-            transform.LocalEulerRotation->x = std::clamp(transform.LocalEulerRotation->x, -maxPitch, maxPitch);
+            transform.LocalEulerRotation.y += xOffset;
+            transform.LocalEulerRotation.x += yOffset;
+            transform.LocalEulerRotation.x = std::clamp(transform.LocalEulerRotation.x, -maxPitch, maxPitch);
         }
 
         const float speed = cameraComponent.Speed * static_cast<float>(dt);

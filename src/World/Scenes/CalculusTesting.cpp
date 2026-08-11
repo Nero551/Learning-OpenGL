@@ -41,9 +41,9 @@ void CalculusTesting::Plot(Vector3 vec3, Vector4 col) {
     if (vec3.y < max && vec3.y > min) {
         const auto& point = CreatePoint(col);
         auto& transform = point.GetComponent<Transform3DComponent>();
-        transform.LocalPosition->x = vec3.x;
-        transform.LocalPosition->y = vec3.y;
-        transform.LocalPosition->z = vec3.z;
+        transform.LocalPosition.x = vec3.x;
+        transform.LocalPosition.y = vec3.y;
+        transform.LocalPosition.z = vec3.z;
     }
 }
 

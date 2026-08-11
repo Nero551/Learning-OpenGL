@@ -27,6 +27,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
     lightMaterial.Shader = &lightShader;
 
     auto& light = World::Get().CreateEntity<Light>();
+    light.GetComponent<Transform3DComponent>().LocalEulerRotation.x = Math::Rad(90);
     GetRoot().AttachChild(light);
 
     auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
