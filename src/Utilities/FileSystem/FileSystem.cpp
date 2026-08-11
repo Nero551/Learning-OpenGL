@@ -4,7 +4,7 @@
 
 #include "Utilities/Logger.hpp"
 
-std::string FileSystem::ReadFile(const std::string& path) {
+std::string E::U::FileSystem::ReadFile(const std::string& path) {
     std::ifstream file(path);
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -16,7 +16,7 @@ std::string FileSystem::ReadFile(const std::string& path) {
     return buffer.str();
 }
 
-void FileSystem::WriteFile(const std::string& path, const std::string& content) {
+void E::U::FileSystem::WriteFile(const std::string& path, const std::string& content) {
     std::ofstream file(path);
 
     if (!file) {

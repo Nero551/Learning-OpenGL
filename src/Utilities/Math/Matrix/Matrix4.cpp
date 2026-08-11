@@ -6,6 +6,7 @@
 #include "Utilities/Logger.hpp"
 
 
+namespace E::M {
 Matrix4::Matrix4(float mAll) {
     for (auto& row : m) {
         for (float& col : row) {
@@ -320,8 +321,8 @@ Matrix4 Matrix4::Inverse() const {
 
     float det = Determinant();
 
-    if (Math::NearlyEquals(std::abs(det), 0.0)) {
-        Logger::Error("Matrix is not invertible");
+    if (M::NearlyEquals(std::abs(det), 0.0)) {
+        U::Logger::Error("Matrix is not invertible");
         return Identity;
     }
 
@@ -352,7 +353,7 @@ Matrix3 Matrix4::Minor(int row, int col) const {
 bool Matrix4::NearlyEquals(const Matrix4& mat4, float epsilon) const {
     for (int row = 0; row < 4; row++) {
         for (int col = 0; col < 4; col++) {
-            if (!Math::NearlyEquals(m[row][col], mat4.m[row][col], epsilon)) {
+            if (!M::NearlyEquals(m[row][col], mat4.m[row][col], epsilon)) {
                 return false;
             }
         }
@@ -363,3 +364,4 @@ bool Matrix4::NearlyEquals(const Matrix4& mat4, float epsilon) const {
 //? Statics
 Matrix4 const Matrix4::Zero = Matrix4(0);
 Matrix4 const Matrix4::Identity = Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+} // namespace E::M

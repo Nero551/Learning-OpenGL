@@ -8,6 +8,7 @@
 #include "Utilities/Logger.hpp"
 
 
+namespace E::M {
 Matrix3::Matrix3(float mAll) {
     for (auto& row : m) {
         for (int col = 0; col < 3; col++) {
@@ -249,8 +250,8 @@ Matrix3 Matrix3::Inverse() const {
 
     float det = Determinant();
 
-    if (std::abs(det) < Math::EPSILON) {
-        Logger::Error("Matrix is not invertible");
+    if (std::abs(det) < EPSILON) {
+        U::Logger::Error("Matrix is not invertible");
         return Identity;
     }
 
@@ -281,7 +282,7 @@ Matrix2 Matrix3::Minor(int row, int col) const {
 bool Matrix3::NearlyEquals(const Matrix3& mat3, float epsilon) const {
     for (int row = 0; row < 3; row++) {
         for (int col = 0; col < 3; col++) {
-            if (!Math::NearlyEquals(m[row][col], mat3.m[row][col], epsilon)) {
+            if (!M::NearlyEquals(m[row][col], mat3.m[row][col], epsilon)) {
                 return false;
             }
         }
@@ -292,3 +293,4 @@ bool Matrix3::NearlyEquals(const Matrix3& mat3, float epsilon) const {
 //? Statics
 Matrix3 const Matrix3::Zero = Matrix3(0);
 Matrix3 const Matrix3::Identity = Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+} // namespace E::M

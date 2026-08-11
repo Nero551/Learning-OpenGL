@@ -26,7 +26,7 @@ FirstScene::FirstScene() {
 
     auto& light = World::Get().CreateEntity<Light>();
 
-    light.GetComponent<Transform3DComponent>().Scale = Vector3(0.2);
+    light.GetComponent<Transform3DComponent>().Scale = M::Vector3(0.2);
     light.GetComponent<LightComponent>().Ambient = {0.2};
     light.GetComponent<LightComponent>().Diffuse = {0.2};
     light.GetComponent<Transform3DComponent>().Position = {0, 0, 0};

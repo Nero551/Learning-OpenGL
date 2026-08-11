@@ -5,12 +5,12 @@
 
 namespace E {
 struct Vertex {
-    Vector4 Position;
-    Vector4 Color;
-    Vector2 UV;
-    Vector3 Normal;
+    M::Vector4 Position;
+    M::Vector4 Color;
+    M::Vector2 UV;
+    M::Vector3 Normal;
 
-    Vertex(Vector4 pos, Vector4 col, Vector2 uv, Vector3 normal) : Position(pos), Color(col), UV(uv),
+    Vertex(M::Vector4 pos, M::Vector4 col, M::Vector2 uv, M::Vector3 normal) : Position(pos), Color(col), UV(uv),
         Normal(normal) {}
 };
 }

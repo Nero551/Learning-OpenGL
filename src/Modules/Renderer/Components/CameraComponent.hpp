@@ -13,8 +13,8 @@ namespace E {
         float AspectRatio = 1.0f;
         float Speed = 5.0f;
 
-        [[nodiscard]] Matrix4 GetProjectionMatrix() const {
-            return Matrix4::Perspective(Math::Rad(FOV), AspectRatio, Near, Far);
+        [[nodiscard]] M::Matrix4 GetProjectionMatrix() const {
+            return M::Matrix4::Perspective(M::Rad(FOV), AspectRatio, Near, Far);
         }
     };
 }

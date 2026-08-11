@@ -19,11 +19,11 @@ namespace E {
 
         bool IsMouseButtonReleased(MouseButton button);
 
-        Vector2 GetMousePosition() const;
+        M::Vector2 GetMousePosition() const;
 
-        Vector2 GetMouseDelta() const;
+        M::Vector2 GetMouseDelta() const;
 
-        Vector2 GetScrollDelta() const;
+        M::Vector2 GetScrollDelta() const;
 
         bool IsScrolling() const;
 
@@ -33,11 +33,11 @@ namespace E {
 
     private:
         MouseMode mouseMode = MouseMode::Normal;
-        Vector2 mousePosition = Vector2::Zero;
-        Vector2 previousMousePosition = Vector2::Zero;
+        M::Vector2 mousePosition = M::Vector2::Zero;
+        M::Vector2 previousMousePosition = M::Vector2::Zero;
         bool firstMouse = true;
 
-        Vector2 scrollOffset = Vector2::Zero;
+        M::Vector2 scrollOffset = M::Vector2::Zero;
 
         static constexpr unsigned int MouseButtonCount = GLFW_MOUSE_BUTTON_LAST + 1;
         static constexpr unsigned int KeyCount = GLFW_KEY_LAST + 1;

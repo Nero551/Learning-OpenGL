@@ -61,13 +61,13 @@ struct Engine {
     template <ModuleType T> T& GetModule() {
         auto module = Modules.find(typeid(T));
         if (module == Modules.end()) {
-            Logger::Fatal(std::format("Module {} not found", typeid(T).name()));
+            U::Logger::Fatal(std::format("Module {} not found", typeid(T).name()));
         }
         return static_cast<T&>(*module->second);
     }
 
 private:
-    inline static CheckedPtr<Engine> Ins = nullptr;
+    inline static U::CheckedPtr<Engine> Ins = nullptr;
     void Configure();
 
     /**

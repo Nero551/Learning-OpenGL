@@ -7,13 +7,13 @@ namespace E {
     void Input::OnStart() {
         Window& window = Engine::Get().Window;
         glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xPos, double yPos) {
-            Engine::Get().GetModule<Input>().mousePosition = Vector2(static_cast<float>(xPos),
+            Engine::Get().GetModule<Input>().mousePosition = M::Vector2(static_cast<float>(xPos),
                 static_cast<float>(yPos));
         });
 
         glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xOffset, double yOffset) {
             Engine::Get().GetModule<Input>().scrollOffset =
-                Vector2(static_cast<float>(xOffset), static_cast<float>(yOffset));
+                M::Vector2(static_cast<float>(xOffset), static_cast<float>(yOffset));
         });
     }
 
@@ -69,11 +69,11 @@ namespace E {
         glfwSetInputMode(Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
     }
 
-    Vector2 Input::GetMousePosition() const {
+    M::Vector2 Input::GetMousePosition() const {
         return mousePosition;
     }
 
-    Vector2 Input::GetMouseDelta() const {
+    M::Vector2 Input::GetMouseDelta() const {
         return GetMousePosition() - previousMousePosition;
     }
 
@@ -81,12 +81,12 @@ namespace E {
         return mouseMode;
     }
 
-    Vector2 Input::GetScrollDelta() const {
+    M::Vector2 Input::GetScrollDelta() const {
         return scrollOffset;
     }
 
     bool Input::IsScrolling() const {
-        return scrollOffset != Vector2::Zero;
+        return scrollOffset != M::Vector2::Zero;
     }
 
 

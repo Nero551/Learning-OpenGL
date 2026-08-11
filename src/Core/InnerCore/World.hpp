@@ -17,14 +17,12 @@ concept SceneType = std::derived_from<T, Scene>;
 
 /**
  * @brief Owns and manages the runtime state of the engine world.
- *
  * The World owns all entities. It is responsible for managing the lifecycle of entities, including
  * entity creation and destruction & system execution.
- * Entities form the runtime hierarchy through the World's root entity.
  */
 struct World : SystemOwner {
-    CheckedPtr<Entity> Root{"World Has No Root Entity"};
-    CheckedPtr<Entity> ActiveCamera{"World Has No Active Camera"};
+    U::CheckedPtr<Entity> Root{"World Has No Root Entity"};
+    U::CheckedPtr<Entity> ActiveCamera{"World Has No Active Camera"};
     int MaxLights = 64;
 
     /** @brief Gets the global World instance. */
@@ -98,7 +96,7 @@ struct World : SystemOwner {
      * @param id ID of the entity to find.
      * @return pointer to the entity, or null if it does not exist.
      */
-    CheckedPtr<Entity> TryFindEntity(unsigned int id);
+    U::CheckedPtr<Entity> TryFindEntity(unsigned int id);
 
 private:
     std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;

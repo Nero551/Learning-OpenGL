@@ -5,17 +5,17 @@
 namespace E {
 void Entity::AttachChild(Entity& child) {
     if (HasChild(child.Id)) {
-        Logger::Error("Child Entity already exists: " + std::to_string(child.Id));
+        U::Logger::Error("Child Entity already exists: " + std::to_string(child.Id));
         return;
     }
 
     if (&child == this) {
-        Logger::Error("An entity cannot be its own child.");
+        U::Logger::Error("An entity cannot be its own child.");
         return;
     }
 
     if (child.IsAncestorOf(*this)) {
-        Logger::Error("An entity cannot have its ancestor as a child.");
+        U::Logger::Error("An entity cannot have its ancestor as a child.");
         return;
     }
 
@@ -23,14 +23,14 @@ void Entity::AttachChild(Entity& child) {
         child.Parent->DetachChild(child.Id);
     }
 
-    CheckedPtr childPtr = &child;
+    U::CheckedPtr childPtr = &child;
     Children.emplace(child.Id, std::move(childPtr));
 
     child.Parent = this;
 }
 
-std::vector<CheckedPtr<Entity>> Entity::GetChildren() {
-    std::vector<CheckedPtr<Entity>> children;
+std::vector<U::CheckedPtr<Entity>> Entity::GetChildren() {
+    std::vector<U::CheckedPtr<Entity>> children;
     children.reserve(Children.size());
 
     for (auto& child : Children | std::views::values) {
@@ -40,8 +40,8 @@ std::vector<CheckedPtr<Entity>> Entity::GetChildren() {
     return children;
 }
 
-std::vector<CheckedPtr<Component>> Entity::GetAllComponents() {
-    std::vector<CheckedPtr<Component>> components;
+std::vector<U::CheckedPtr<Component>> Entity::GetAllComponents() {
+    std::vector<U::CheckedPtr<Component>> components;
     for (auto& component : Components | std::views::values) {
         components.emplace_back(&*component);
     }
@@ -68,8 +68,8 @@ void Entity::DestroyChild(unsigned int id) {
     child->second->Destroy();
 }
 
-std::vector<CheckedPtr<Entity>> Entity::GetDescendants() {
-    std::vector<CheckedPtr<Entity>> descendants;
+std::vector<U::CheckedPtr<Entity>> Entity::GetDescendants() {
+    std::vector<U::CheckedPtr<Entity>> descendants;
     descendants.reserve(Children.size());
 
     RecursiveChildren(descendants, *this);
@@ -78,12 +78,12 @@ std::vector<CheckedPtr<Entity>> Entity::GetDescendants() {
 }
 
 bool Entity::HasDescendant(unsigned int id) const {
-    CheckedPtr<Entity> descendant = World::Get().TryFindEntity(id);
+    U::CheckedPtr<Entity> descendant = World::Get().TryFindEntity(id);
     return descendant && descendant->IsDescendantOf(*this);
 }
 
 bool Entity::HasAncestor(unsigned int id) const {
-    CheckedPtr<Entity> ancestor = World::Get().TryFindEntity(id);
+    U::CheckedPtr<Entity> ancestor = World::Get().TryFindEntity(id);
     return ancestor && ancestor->IsAncestorOf(*this);
 }
 
@@ -112,8 +112,8 @@ bool Entity::HasParent() const {
     return !Parent.IsNull();
 }
 
-std::vector<CheckedPtr<Entity>> Entity::GetAncestors() {
-    std::vector<CheckedPtr<Entity>> ancestors;
+std::vector<U::CheckedPtr<Entity>> Entity::GetAncestors() {
+    std::vector<U::CheckedPtr<Entity>> ancestors;
 
     auto current = Parent;
 
@@ -138,7 +138,7 @@ bool Entity::IsAncestorOf(const Entity& entity) {
 }
 
 Entity& Entity::GetRoot() {
-    CheckedPtr current = this;
+    U::CheckedPtr current = this;
 
     while (current->HasParent())
         current = current->Parent;
@@ -155,10 +155,10 @@ Entity& Entity::GetChild(unsigned int id) {
         return *child->second;
     }
 
-    Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
+    U::Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
 }
 
-CheckedPtr<Entity> Entity::TryGetChild(unsigned int id) {
+U::CheckedPtr<Entity> Entity::TryGetChild(unsigned int id) {
     if (auto child = Children.find(id); child != Children.end()) {
         return child->second;
     }
@@ -169,7 +169,7 @@ size_t Entity::ChildCount() const {
     return Children.size();
 }
 
-void Entity::RecursiveChildren(std::vector<CheckedPtr<Entity>>& entities, Entity& entity) {
+void Entity::RecursiveChildren(std::vector<U::CheckedPtr<Entity>>& entities, Entity& entity) {
     for (auto& child : entity.Children | std::views::values) {
         entities.emplace_back(&*child);
         RecursiveChildren(entities, *child);

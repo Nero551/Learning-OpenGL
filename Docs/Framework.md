@@ -13,7 +13,6 @@ Main
     │   ├── Systems
     │   └── ...
     └── World
-        └── Scenes
         └── Entities
                 └── Components
 ```
@@ -78,19 +77,6 @@ It is responsible for creating, storing, and switching between scenes.
 
 ---
 
-## Scenes
-
-A scene represents a collection of entities.
-
-Each scene Has:
-
-* Root Entity
-* Scene-specific state (such as the active camera)
-
-A scene can also contain logic. such as setting up and spawning its entities, etc.
-
----
-
 ## Entities
 
 Entities are lightweight objects.
@@ -129,8 +115,7 @@ The framework follows a component-based architecture:
 
 * **Modules** organize major engine features.
 * **Systems** implement behavior.
-* **Worlds** manage scenes.
-* **Scenes** manage entities.
+* **Worlds** manage entities.
 * **Entities** group components.
 * **Components** store data only.
 

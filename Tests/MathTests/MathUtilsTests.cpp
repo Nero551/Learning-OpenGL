@@ -12,31 +12,31 @@ using Catch::Matchers::WithinAbs;
 TEST_CASE (
 
 
-"Math::Rad"
+"E::M::Rad"
 )
  {
-    REQUIRE(Math::Rad(0.f) == Approx(0.f));
-    REQUIRE(Math::Rad(90.f) == Approx(Math::PI / 2.f));
-    REQUIRE(Math::Rad(180.f) == Approx(Math::PI));
-    REQUIRE(Math::Rad(360.f) == Approx(Math::TAU));
+    REQUIRE(E::M::Rad(0.f) == Approx(0.f));
+    REQUIRE(E::M::Rad(90.f) == Approx(E::M::PI / 2.f));
+    REQUIRE(E::M::Rad(180.f) == Approx(E::M::PI));
+    REQUIRE(E::M::Rad(360.f) == Approx(E::M::TAU));
 
-    REQUIRE(Math::Rad(-90.f) == Approx(-Math::PI / 2.f));
-    REQUIRE(Math::Rad(-180.f) == Approx(-Math::PI));
+    REQUIRE(E::M::Rad(-90.f) == Approx(-E::M::PI / 2.f));
+    REQUIRE(E::M::Rad(-180.f) == Approx(-E::M::PI));
 }
 
 TEST_CASE (
 
 
-"Math::Deg"
+"E::M::Deg"
 )
  {
-    REQUIRE(Math::Deg(0.f) == Approx(0.f));
-    REQUIRE(Math::Deg(Math::PI / 2.f) == Approx(90.f));
-    REQUIRE(Math::Deg(Math::PI) == Approx(180.f));
-    REQUIRE(Math::Deg(Math::TAU) == Approx(360.f));
+    REQUIRE(E::M::Deg(0.f) == Approx(0.f));
+    REQUIRE(E::M::Deg(E::M::PI / 2.f) == Approx(90.f));
+    REQUIRE(E::M::Deg(E::M::PI) == Approx(180.f));
+    REQUIRE(E::M::Deg(E::M::TAU) == Approx(360.f));
 
-    REQUIRE(Math::Deg(-Math::PI / 2.f) == Approx(-90.f));
-    REQUIRE(Math::Deg(-Math::PI) == Approx(-180.f));
+    REQUIRE(E::M::Deg(-E::M::PI / 2.f) == Approx(-90.f));
+    REQUIRE(E::M::Deg(-E::M::PI) == Approx(-180.f));
 }
 
 TEST_CASE (
@@ -46,10 +46,10 @@ TEST_CASE (
 )
  {
     for (float deg = -720.f; deg <= 720.f; deg += 15.f)
-        REQUIRE(Math::Deg(Math::Rad(deg)) == Approx(deg));
+        REQUIRE(E::M::Deg(E::M::Rad(deg)) == Approx(deg));
 
     for (float rad = -10.f; rad <= 10.f; rad += 0.25f)
-        REQUIRE(Math::Rad(Math::Deg(rad)) == Approx(rad));
+        REQUIRE(E::M::Rad(E::M::Deg(rad)) == Approx(rad));
 }
 
 TEST_CASE (
@@ -58,15 +58,15 @@ TEST_CASE (
 "DSin matches std::sin"
 )
  {
-    REQUIRE(Math::DSin(90.f) == Approx(1.f));
-    REQUIRE(Math::DSin(270.f) == Approx(-1.f));
+    REQUIRE(E::M::DSin(90.f) == Approx(1.f));
+    REQUIRE(E::M::DSin(270.f) == Approx(-1.f));
 
-    REQUIRE_THAT(Math::DSin(0.f), WithinAbs(0.f, 1e-6f));
-    REQUIRE_THAT(Math::DSin(180.f), WithinAbs(0.f, 1e-6f));
-    REQUIRE_THAT(Math::DSin(360.f), WithinAbs(0.f, 1e-6f));
+    REQUIRE_THAT(E::M::DSin(0.f), WithinAbs(0.f, 1e-6f));
+    REQUIRE_THAT(E::M::DSin(180.f), WithinAbs(0.f, 1e-6f));
+    REQUIRE_THAT(E::M::DSin(360.f), WithinAbs(0.f, 1e-6f));
 
     for (float deg = -360.f; deg <= 360.f; deg += 1.f)
-        REQUIRE(Math::DSin(deg) == Approx(std::sin(Math::Rad(deg))).margin(1e-6f));
+        REQUIRE(E::M::DSin(deg) == Approx(std::sin(E::M::Rad(deg))).margin(1e-6f));
 }
 
 TEST_CASE (
@@ -75,15 +75,15 @@ TEST_CASE (
 "DCos matches std::cos"
 )
  {
-    REQUIRE(Math::DCos(0.f) == Approx(1.f));
-    REQUIRE(Math::DCos(180.f) == Approx(-1.f));
-    REQUIRE(Math::DCos(360.f) == Approx(1.f));
+    REQUIRE(E::M::DCos(0.f) == Approx(1.f));
+    REQUIRE(E::M::DCos(180.f) == Approx(-1.f));
+    REQUIRE(E::M::DCos(360.f) == Approx(1.f));
 
-    REQUIRE_THAT(Math::DCos(90.f), WithinAbs(0.f, 1e-6f));
-    REQUIRE_THAT(Math::DCos(270.f), WithinAbs(0.f, 1e-6f));
+    REQUIRE_THAT(E::M::DCos(90.f), WithinAbs(0.f, 1e-6f));
+    REQUIRE_THAT(E::M::DCos(270.f), WithinAbs(0.f, 1e-6f));
 
     for (float deg = -360.f; deg <= 360.f; deg += 1.f)
-        REQUIRE(Math::DCos(deg) == Approx(std::cos(Math::Rad(deg))).margin(1e-6f));
+        REQUIRE(E::M::DCos(deg) == Approx(std::cos(E::M::Rad(deg))).margin(1e-6f));
 }
 
 TEST_CASE (
@@ -92,17 +92,17 @@ TEST_CASE (
 "DTan matches std::tan"
 )
  {
-    REQUIRE(Math::DTan(45.f) == Approx(1.f));
-    REQUIRE(Math::DTan(-45.f) == Approx(-1.f));
+    REQUIRE(E::M::DTan(45.f) == Approx(1.f));
+    REQUIRE(E::M::DTan(-45.f) == Approx(-1.f));
 
-    REQUIRE_THAT(Math::DTan(0.f), WithinAbs(0.f, 1e-6f));
-    REQUIRE_THAT(Math::DTan(180.f), WithinAbs(0.f, 1e-6f));
+    REQUIRE_THAT(E::M::DTan(0.f), WithinAbs(0.f, 1e-6f));
+    REQUIRE_THAT(E::M::DTan(180.f), WithinAbs(0.f, 1e-6f));
 
     for (float deg = -360.f; deg <= 360.f; deg += 1.f) {
-        float c = std::cos(Math::Rad(deg));
+        float c = std::cos(E::M::Rad(deg));
 
         if (std::abs(c) > 1e-5f)
-            REQUIRE(Math::DTan(deg) == Approx(std::tan(Math::Rad(deg))).margin(1e-5f));
+            REQUIRE(E::M::DTan(deg) == Approx(std::tan(E::M::Rad(deg))).margin(1e-5f));
     }
 }
 
@@ -112,16 +112,16 @@ TEST_CASE (
 "Pow"
 )
  {
-    REQUIRE(Math::Pow(2.f, 3.f) == Approx(8.f));
-    REQUIRE(Math::Pow(4.f, 0.5f) == Approx(2.f));
-    REQUIRE(Math::Pow(10.f, 0.f) == Approx(1.f));
-    REQUIRE(Math::Pow(2.f, -1.f) == Approx(0.5f));
+    REQUIRE(E::M::Pow(2.f, 3.f) == Approx(8.f));
+    REQUIRE(E::M::Pow(4.f, 0.5f) == Approx(2.f));
+    REQUIRE(E::M::Pow(10.f, 0.f) == Approx(1.f));
+    REQUIRE(E::M::Pow(2.f, -1.f) == Approx(0.5f));
 
-    REQUIRE(Math::Pow(-2.f, 2.f) == Approx(4.f));
-    REQUIRE(Math::Pow(-2.f, 3.f) == Approx(-8.f));
+    REQUIRE(E::M::Pow(-2.f, 2.f) == Approx(4.f));
+    REQUIRE(E::M::Pow(-2.f, 3.f) == Approx(-8.f));
 
     for (float x = 0.1f; x <= 10.f; x += 0.25f)
-        REQUIRE(Math::Pow(x, 2.5f) == Approx(std::pow(x, 2.5f)));
+        REQUIRE(E::M::Pow(x, 2.5f) == Approx(std::pow(x, 2.5f)));
 }
 
 TEST_CASE (
@@ -130,14 +130,14 @@ TEST_CASE (
 "Sqrt"
 )
  {
-    REQUIRE(Math::Sqrt(0.f) == Approx(0.f));
-    REQUIRE(Math::Sqrt(1.f) == Approx(1.f));
-    REQUIRE(Math::Sqrt(4.f) == Approx(2.f));
-    REQUIRE(Math::Sqrt(0.25f) == Approx(0.5f));
-    REQUIRE(Math::Sqrt(10000.f) == Approx(100.f));
+    REQUIRE(E::M::Sqrt(0.f) == Approx(0.f));
+    REQUIRE(E::M::Sqrt(1.f) == Approx(1.f));
+    REQUIRE(E::M::Sqrt(4.f) == Approx(2.f));
+    REQUIRE(E::M::Sqrt(0.25f) == Approx(0.5f));
+    REQUIRE(E::M::Sqrt(10000.f) == Approx(100.f));
 
     for (float x = 0.01f; x <= 100.f; x += 0.5f)
-        REQUIRE(Math::Sqrt(x) == Approx(std::sqrt(x)));
+        REQUIRE(E::M::Sqrt(x) == Approx(std::sqrt(x)));
 }
 
 TEST_CASE (
@@ -146,15 +146,15 @@ TEST_CASE (
 "Ln"
 )
  {
-    REQUIRE(Math::Ln(1.f) == Approx(0.f));
-    REQUIRE(Math::Ln(Math::E) == Approx(1.f));
-    REQUIRE(Math::Ln(Math::E * Math::E) == Approx(2.f));
+    REQUIRE(E::M::Ln(1.f) == Approx(0.f));
+    REQUIRE(E::M::Ln(E::M::E) == Approx(1.f));
+    REQUIRE(E::M::Ln(E::M::E * E::M::E) == Approx(2.f));
 
-    REQUIRE(std::isinf(Math::Ln(0.f)));
-    REQUIRE(std::isnan(Math::Ln(-1.f)));
+    REQUIRE(std::isinf(E::M::Ln(0.f)));
+    REQUIRE(std::isnan(E::M::Ln(-1.f)));
 
     for (float x = 0.1f; x <= 100.f; x += 0.25f)
-        REQUIRE(Math::Ln(x) == Approx(std::log(x)));
+        REQUIRE(E::M::Ln(x) == Approx(std::log(x)));
 }
 
 TEST_CASE (
@@ -163,18 +163,18 @@ TEST_CASE (
 "Log"
 )
  {
-    REQUIRE(Math::Log(10.f, 100.f) == Approx(2.f));
-    REQUIRE(Math::Log(2.f, 8.f) == Approx(3.f));
-    REQUIRE(Math::Log(5.f, 25.f) == Approx(2.f));
-    REQUIRE(Math::Log(Math::E, 1.f) == Approx(0.f));
+    REQUIRE(E::M::Log(10.f, 100.f) == Approx(2.f));
+    REQUIRE(E::M::Log(2.f, 8.f) == Approx(3.f));
+    REQUIRE(E::M::Log(5.f, 25.f) == Approx(2.f));
+    REQUIRE(E::M::Log(E::M::E, 1.f) == Approx(0.f));
 
-    REQUIRE(std::isinf(Math::Log(1.f, 10.f)));
-    REQUIRE(std::isnan(Math::Log(-2.f, 8.f)));
-    REQUIRE(std::isnan(Math::Log(2.f, -8.f)));
+    REQUIRE(std::isinf(E::M::Log(1.f, 10.f)));
+    REQUIRE(std::isnan(E::M::Log(-2.f, 8.f)));
+    REQUIRE(std::isnan(E::M::Log(2.f, -8.f)));
 
     for (float base = 2.f; base <= 10.f; base += 1.f) {
         for (float x = 0.5f; x <= 100.f; x += 0.5f) {
-            REQUIRE(Math::Log(base, x) ==
+            REQUIRE(E::M::Log(base, x) ==
                 Approx(std::log(x) / std::log(base)));
         }
     }
@@ -186,21 +186,21 @@ TEST_CASE (
 "NearlyEquals"
 )
  {
-    constexpr float eps = Math::EPSILON;
+    constexpr float eps = E::M::EPSILON;
 
-    REQUIRE(Math::NearlyEquals(1.f, 1.f));
-    REQUIRE(Math::NearlyEquals(0.f, 0.f));
-    REQUIRE(Math::NearlyEquals(-5.f, -5.f));
+    REQUIRE(E::M::NearlyEquals(1.f, 1.f));
+    REQUIRE(E::M::NearlyEquals(0.f, 0.f));
+    REQUIRE(E::M::NearlyEquals(-5.f, -5.f));
 
-    REQUIRE(Math::NearlyEquals(1.f, 1.f + eps * 0.5f, eps));
-    REQUIRE(Math::NearlyEquals(1.f, 1.f - eps * 0.5f, eps));
+    REQUIRE(E::M::NearlyEquals(1.f, 1.f + eps * 0.5f, eps));
+    REQUIRE(E::M::NearlyEquals(1.f, 1.f - eps * 0.5f, eps));
 
-    REQUIRE_FALSE(Math::NearlyEquals(1.f, 1.f + eps * 2.f, eps));
-    REQUIRE_FALSE(Math::NearlyEquals(1.f, 1.f - eps * 2.f, eps));
+    REQUIRE_FALSE(E::M::NearlyEquals(1.f, 1.f + eps * 2.f, eps));
+    REQUIRE_FALSE(E::M::NearlyEquals(1.f, 1.f - eps * 2.f, eps));
 
-    REQUIRE(Math::NearlyEquals(1.f, 1.f, 0.f));
-    REQUIRE_FALSE(Math::NearlyEquals(1.f, 1.f + 1e-6f, 0.f));
+    REQUIRE(E::M::NearlyEquals(1.f, 1.f, 0.f));
+    REQUIRE_FALSE(E::M::NearlyEquals(1.f, 1.f + 1e-6f, 0.f));
 
-    REQUIRE(Math::NearlyEquals(0.f, 1e-6f, 1e-5f));
-    REQUIRE_FALSE(Math::NearlyEquals(0.f, 1e-4f, 1e-5f));
+    REQUIRE(E::M::NearlyEquals(0.f, 1e-6f, 1e-5f));
+    REQUIRE_FALSE(E::M::NearlyEquals(0.f, 1e-4f, 1e-5f));
 }

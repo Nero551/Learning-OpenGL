@@ -1,59 +1,61 @@
 #include "MathUtils.hpp"
 
 
+namespace E::M {
 static std::mt19937 rng(std::random_device{}());
 
-float Math::Random(float min, float max) {
+float Random(float min, float max) {
     std::uniform_real_distribution distribution(min, max);
     return distribution(rng);
 }
 
-int Math::Random(int min, int max) {
+int Random(int min, int max) {
     std::uniform_int_distribution distribution(min, max);
     return distribution(rng);
 }
 
-float Math::RandomGaussian(float mean, float standardDeviation) {
+float RandomGaussian(float mean, float standardDeviation) {
     std::normal_distribution distribution(mean, standardDeviation);
     return distribution(rng);
 }
 
-float Math::Rad(const float deg) {
+float Rad(const float deg) {
     return deg * PI / 180;
 }
 
-float Math::Deg(const float rad) {
+float Deg(const float rad) {
     return rad * 180 / PI;
 }
 
-float Math::DSin(float deg) {
+float DSin(float deg) {
     return std::sin(Rad(deg));
 }
 
-float Math::DCos(float deg) {
+float DCos(float deg) {
     return std::cos(Rad(deg));
 }
 
-float Math::DTan(float deg) {
+float DTan(float deg) {
     return std::tan(Rad(deg));
 }
 
-float Math::Pow(float x, float power) {
+float Pow(float x, float power) {
     return std::pow(x, power);
 }
 
-float Math::Sqrt(float x) {
+float Sqrt(float x) {
     return std::sqrt(x);
 }
 
-float Math::Ln(float x) {
+float Ln(float x) {
     return std::log(x);
 }
 
-float Math::Log(float base, float x) {
+float Log(float base, float x) {
     return Ln(x) / Ln(base);
 }
 
-bool Math::NearlyEquals(const float a, const float b, const float epsilon) {
+bool NearlyEquals(const float a, const float b, const float epsilon) {
     return std::abs(a - b) <= epsilon;
 }
+} // namespace E::M

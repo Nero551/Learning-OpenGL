@@ -21,7 +21,7 @@ struct EventBus : Service {
 
     template <EventType T, typename... Args> void Fire(Args&&... args) {
         if constexpr (!std::constructible_from<T, Args...>) {
-            Logger::Fatal(std::string("Event: ") + typeid(T).name() +
+            U::Logger::Fatal(std::string("Event: ") + typeid(T).name() +
                 " Can't Be Constructed From the Given Arguments.");
         }
         else {

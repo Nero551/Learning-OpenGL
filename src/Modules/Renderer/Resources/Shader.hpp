@@ -61,7 +61,7 @@ struct Shader : Resource {
      */
     void Reload();
 
-    std::vector<CheckedPtr<ShaderSource>>& GetSources();
+    std::vector<U::CheckedPtr<ShaderSource>>& GetSources();
 
 private:
     /** @brief OpenGL handle for the shader program. */
@@ -76,7 +76,7 @@ private:
      */
     std::unordered_map<unsigned int, std::unique_ptr<Uniform>> PendingUniforms;
 
-    std::vector<CheckedPtr<ShaderSource>> Sources;
+    std::vector<U::CheckedPtr<ShaderSource>> Sources;
 
     void CreateProgram();
 

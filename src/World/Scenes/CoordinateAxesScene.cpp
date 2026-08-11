@@ -29,15 +29,15 @@ CoordinateAxesScene::CoordinateAxesScene() {
     lightMaterial.Shader = &lightShader;
 
     auto& light = World::Get().CreateEntity<Light>();
-    light.GetComponent<Transform3DComponent>().Rotation.x = Math::Rad(32.5);
-    light.GetComponent<Transform3DComponent>().Rotation.y = Math::Rad(32.5);
-    light.GetComponent<Transform3DComponent>().Rotation.z = Math::Rad(32.5);
+    light.GetComponent<Transform3DComponent>().Rotation.x = M::Rad(32.5);
+    light.GetComponent<Transform3DComponent>().Rotation.y = M::Rad(32.5);
+    light.GetComponent<Transform3DComponent>().Rotation.z = M::Rad(32.5);
     Root->AttachChild(light);
 
     auto& light2 = World::Get().CreateEntity<Light>();
-    light2.GetComponent<Transform3DComponent>().Rotation.x = Math::Rad(-32.5);
-    light2.GetComponent<Transform3DComponent>().Rotation.y = Math::Rad(-32.5);
-    light2.GetComponent<Transform3DComponent>().Rotation.z = Math::Rad(-32.5);
+    light2.GetComponent<Transform3DComponent>().Rotation.x = M::Rad(-32.5);
+    light2.GetComponent<Transform3DComponent>().Rotation.y = M::Rad(-32.5);
+    light2.GetComponent<Transform3DComponent>().Rotation.z = M::Rad(-32.5);
     Root->AttachChild(light2);
 
     auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
@@ -53,10 +53,10 @@ CoordinateAxesScene::CoordinateAxesScene() {
     xAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("X-Axis Material");
     xAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    xAxis.GetComponent<Transform3DComponent>().Rotation = {0, Math::Rad(90), 0};
+    xAxis.GetComponent<Transform3DComponent>().Rotation = {0, M::Rad(90), 0};
     xAxis.GetComponent<Transform3DComponent>().Position = {-50, 0, 0};
     xAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
-    xAxis.GetComponent<MaterialComponent>().Material->Color = Color::Red;
+    xAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Red;
 
     Root->AttachChild(xAxis);
 
@@ -65,10 +65,10 @@ CoordinateAxesScene::CoordinateAxesScene() {
     yAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Y-Axis Material");
     yAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    yAxis.GetComponent<Transform3DComponent>().Rotation = {Math::Rad(-90), 0, 0};
+    yAxis.GetComponent<Transform3DComponent>().Rotation = {M::Rad(-90), 0, 0};
     yAxis.GetComponent<Transform3DComponent>().Position = {0, -50, 0};
     yAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
-    yAxis.GetComponent<MaterialComponent>().Material->Color = Color::Green;
+    yAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Green;
 
     Root->AttachChild(yAxis);
 
@@ -80,7 +80,7 @@ CoordinateAxesScene::CoordinateAxesScene() {
     zAxis.GetComponent<Transform3DComponent>().Rotation = {0, 0, 0};
     zAxis.GetComponent<Transform3DComponent>().Position = {0, 0, -50};
     zAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
-    zAxis.GetComponent<MaterialComponent>().Material->Color = Color::Blue;
+    zAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Blue;
 
     Root->AttachChild(zAxis);
 }

@@ -3,6 +3,7 @@
 
 #include "../MathUtils.hpp"
 
+namespace E::M {
 Vector2::Vector2() : x(0), y(0) {}
 
 Vector2::Vector2(float all) : x(all), y(all) {}
@@ -122,7 +123,7 @@ float Vector2::Distance(const Vector2& vec2) const {
 }
 
 bool Vector2::NearlyEquals(const Vector2& vec2, float epsilon) const {
-    return Math::NearlyEquals(x, vec2.x) && Math::NearlyEquals(y, vec2.y, epsilon);
+    return M::NearlyEquals(x, vec2.x) && M::NearlyEquals(y, vec2.y, epsilon);
 }
 
 Vector2 Vector2::Normalized() const {
@@ -135,3 +136,4 @@ Vector2 Vector2::Normalized() const {
 
 //?Statics
 Vector2 const Vector2::Zero = Vector2(0, 0);
+} // namespace E::M

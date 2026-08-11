@@ -13,16 +13,16 @@ static Assimp::Importer importer;
 
 static void ProcessVertices(std::vector<Vertex>& vertices, const aiMesh* mesh) {
     for (unsigned int v = 0; v < mesh->mNumVertices; v++) {
-        Vector4 pos = {mesh->mVertices[v].x, mesh->mVertices[v].y, mesh->mVertices[v].z, 1};
-        Vector3 normal = {mesh->mNormals[v].x, mesh->mNormals[v].y, mesh->mNormals[v].z};
-        Vector2 uv;
+        M::Vector4 pos = {mesh->mVertices[v].x, mesh->mVertices[v].y, mesh->mVertices[v].z, 1};
+        M::Vector3 normal = {mesh->mNormals[v].x, mesh->mNormals[v].y, mesh->mNormals[v].z};
+        M::Vector2 uv;
         if (mesh->mTextureCoords[0]) {
             uv = {mesh->mTextureCoords[0][v].x, mesh->mTextureCoords[0][v].y};
         }
         else {
             uv = {0.0f, 0.0f};
         }
-        vertices.emplace_back(pos, Vector4(1), uv, normal);
+        vertices.emplace_back(pos, M::Vector4(1), uv, normal);
     }
 }
 
@@ -100,7 +100,7 @@ AssimpScene::AssimpScene(const std::string& filepath) {
     const aiScene* scene = importer.ReadFile(filepath, aiProcess_Triangulate | aiProcess_FlipUVs);
 
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
-        Logger::Error("[ASSIMP] Failed To Load Scene: ", importer.GetErrorString());
+        U::Logger::Error("[ASSIMP] Failed To Load Scene: ", importer.GetErrorString());
         return;
     }
 

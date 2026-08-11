@@ -5,6 +5,6 @@
 
 namespace E {
 struct MeshComponent : Component {
-    CheckedPtr<Mesh> Mesh{"Mesh Component Has No Mesh Assigned"};
+    U::CheckedPtr<Mesh> Mesh{"Mesh Component Has No Mesh Assigned"};
 };
 }

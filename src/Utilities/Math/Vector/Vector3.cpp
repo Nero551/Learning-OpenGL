@@ -4,6 +4,7 @@
 
 #include <ostream>
 
+namespace E::M {
 Vector3::Vector3() : x(0), y(0), z(0) {}
 
 Vector3::Vector3(float all) : x(all), y(all), z(all) {}
@@ -135,7 +136,7 @@ float Vector3::Distance(const Vector3& vec3) const {
 }
 
 bool Vector3::NearlyEquals(const Vector3& vec3, float epsilon) const {
-    return Math::NearlyEquals(x, vec3.x, epsilon) && Math::NearlyEquals(y, vec3.y, epsilon) && Math::NearlyEquals(z,
+    return M::NearlyEquals(x, vec3.x, epsilon) && M::NearlyEquals(y, vec3.y, epsilon) && M::NearlyEquals(z,
         vec3.z, epsilon);
 }
 
@@ -152,7 +153,7 @@ bool Vector3::IsParallelTo(const Vector3& vec3) const {
         return false;
     }
 
-    return Cross(vec3).LengthSquared() < Math::EPSILON;
+    return Cross(vec3).LengthSquared() < EPSILON;
 }
 
 bool Vector3::IsPerpendicularTo(const Vector3& vec3) const {
@@ -160,7 +161,7 @@ bool Vector3::IsPerpendicularTo(const Vector3& vec3) const {
         return false;
     }
 
-    return std::abs(Dot(vec3)) < Math::EPSILON;
+    return std::abs(Dot(vec3)) < EPSILON;
 }
 
 //?Statics
@@ -169,3 +170,4 @@ Vector3 const Vector3::Up = Vector3(0, 1, 0);
 Vector3 const Vector3::One = Vector3(1, 1, 1);
 Vector3 const Vector3::Right = Vector3(1, 0, 0);
 Vector3 const Vector3::Forward = Vector3(0, 0, 1);
+} // namespace E::M

@@ -27,7 +27,7 @@ namespace E {
 
         SetParameters();
 
-        Image image(imagePath, true);
+        U::Image image(imagePath, true);
 
         GLenum format = GL_RED;
 
@@ -38,7 +38,7 @@ namespace E {
             break;
         case 4: format = GL_RGBA;
             break;
-        default: Logger::Error("Unsupported Texture Channel Count");
+        default: U::Logger::Error("Unsupported Texture Channel Count");
         }
 
         glTexImage2D(GL_TEXTURE_2D, 0, static_cast<GLint>(format), image.Width, image.Height, 0, format,

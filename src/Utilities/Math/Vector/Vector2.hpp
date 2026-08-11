@@ -2,6 +2,7 @@
 
 #include "../MathUtils.hpp"
 
+namespace E::M {
 struct Vector2 {
     float x;
     float y;
@@ -22,7 +23,7 @@ struct Vector2 {
 
     [[nodiscard]] float Distance(const Vector2& vec2) const;
 
-    [[nodiscard]] bool NearlyEquals(const Vector2& vec2, float epsilon = Math::EPSILON) const;
+    [[nodiscard]] bool NearlyEquals(const Vector2& vec2, float epsilon = EPSILON) const;
 
     Vector2 operator+(const Vector2& vec2) const;
 
@@ -69,3 +70,4 @@ struct Vector2 {
 
     static const Vector2 Zero;
 };
+} // namespace E::M

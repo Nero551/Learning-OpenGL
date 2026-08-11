@@ -3,6 +3,7 @@
 
 #include "Utilities/Math/Vector/Vector2.hpp"
 
+namespace E::M {
 struct Matrix2 {
     float m[2][2] = {};
 
@@ -22,7 +23,7 @@ struct Matrix2 {
 
     [[nodiscard]] Matrix2 Transpose() const;
 
-    [[nodiscard]] bool NearlyEquals(const Matrix2& mat2, float epsilon = Math::EPSILON) const;
+    [[nodiscard]] bool NearlyEquals(const Matrix2& mat2, float epsilon = EPSILON) const;
 
     Matrix2 operator+(const Matrix2& mat2) const;
 
@@ -59,3 +60,4 @@ struct Matrix2 {
 Matrix2 operator*(float scalar, const Matrix2& mat2);
 
 std::ostream& operator<<(std::ostream& os, const Matrix2& mat2);
+} // namespace E::M

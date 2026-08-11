@@ -3,6 +3,7 @@
 #include "MathUtils.hpp"
 #include "Utilities/Logger.hpp"
 
+namespace E::M {
 float Function::Evaluate(const float x) const {
     return Func(x);
 }
@@ -44,7 +45,7 @@ float Function::Integral(float a, float b, float dx) const {
 
 float Function::InverseEvaluate(float y, float domainMin, float domainMax) const {
     float x = 0;
-    while (!Math::NearlyEquals(domainMax, domainMin)) {
+    while (!NearlyEquals(domainMax, domainMin)) {
         x = (domainMin + domainMax) / 2.0f;
 
         float value = Evaluate(x);
@@ -147,3 +148,4 @@ Function operator/(float scalar, const Function& f) {
         return scalar / f(x);
     };
 }
+} // namespace E::M

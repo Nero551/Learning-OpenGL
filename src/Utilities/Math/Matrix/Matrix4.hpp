@@ -2,6 +2,7 @@
 #include "Matrix3.hpp"
 #include "Utilities/Math/Vector/Vector4.hpp"
 
+namespace E::M {
 struct Matrix4 {
     float m[4][4] = {};
 
@@ -37,7 +38,7 @@ struct Matrix4 {
 
     [[nodiscard]] Matrix3 Minor(int row, int col) const;
 
-    [[nodiscard]] bool NearlyEquals(const Matrix4& mat4, float epsilon = Math::EPSILON) const;
+    [[nodiscard]] bool NearlyEquals(const Matrix4& mat4, float epsilon = EPSILON) const;
 
     Matrix4 operator+(const Matrix4& mat4) const;
 
@@ -80,3 +81,4 @@ struct Matrix4 {
 Matrix4 operator*(float scalar, const Matrix4& mat4);
 
 std::ostream& operator<<(std::ostream& os, const Matrix4& mat4);
+} // namespace E::M

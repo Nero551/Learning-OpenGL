@@ -9,7 +9,7 @@ namespace E {
 void Shader::AssignSource(ShaderSource& source) {
     for (auto& existing : Sources) {
         if (existing->GetStage() == source.GetStage()) {
-            // Logger::Error("Shader: " + Name + " Duplicate Shader Stage.");
+            // E::U::Logger::Error("Shader: " + Name + " Duplicate Shader Stage.");
             return;
         }
     }
@@ -17,7 +17,7 @@ void Shader::AssignSource(ShaderSource& source) {
     Sources.emplace_back(&source);
 }
 
-std::vector<CheckedPtr<ShaderSource>>& Shader::GetSources() {
+std::vector<U::CheckedPtr<ShaderSource>>& Shader::GetSources() {
     return Sources;
 }
 
@@ -67,7 +67,7 @@ int Shader::GetUniformLocation(const std::string& name) {
         location = glGetUniformLocation(Id, name.c_str());
 
         if (location == -1) {
-            // Logger::Warning("Shader: " + Name + " Uniform Not Found: " + name);
+            // E::U::Logger::Warning("Shader: " + Name + " Uniform Not Found: " + name);
         }
 
         UniformLocations[name] = location;
@@ -78,7 +78,7 @@ int Shader::GetUniformLocation(const std::string& name) {
 
 void Shader::CreateProgram() {
     if (Sources.empty()) {
-        Logger::Warning("Shader Program:" + Name + " Has No Sources");
+        U::Logger::Warning("Shader Program:" + Name + " Has No Sources");
         return;
     }
 
@@ -94,7 +94,7 @@ void Shader::CreateProgram() {
     glGetProgramiv(Id, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(Id, 512, nullptr, infoLog);
-        Logger::Error(std::string("Shader Program: " + Name + " Linking Failed: ") + infoLog);
+        U::Logger::Error(std::string("Shader Program: " + Name + " Linking Failed: ") + infoLog);
     }
 }
 }

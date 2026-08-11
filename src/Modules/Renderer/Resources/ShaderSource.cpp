@@ -36,11 +36,11 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
             else {
                 //Check Circular Include
                 if (!includesProcessing.insert(includePath).second) {
-                    Logger::Fatal("Circular Include: " + includePath.string() + " | In Shader: " + path);
+                    U::Logger::Fatal("Circular Include: " + includePath.string() + " | In Shader: " + path);
                 }
 
                 //Recursively Include
-                std::string includeCode = FileSystem::ReadFile(includePath);
+                std::string includeCode = U::FileSystem::ReadFile(includePath);
                 PreprocessIncludes(includePath, includeCode, includesProcessing);
 
                 code.replace(pos, end - pos + 1, includeCode);
@@ -55,7 +55,7 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
 
 ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage,
     const std::string& version) : Resource(name), Path(path), Version(version), Stage(stage) {
-    Code = FileSystem::ReadFile(path);
+    Code = U::FileSystem::ReadFile(path);
     Path = path;
 
     if (Code.empty()) {
@@ -74,13 +74,13 @@ ShaderSource::ShaderSource(const std::string& name, const std::string& path, con
     glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(Id, 512, nullptr, infoLog);
-        Logger::Error(std::string("Shader:" + Name) + infoLog + " | " + Path);
+        U::Logger::Error(std::string("Shader:" + Name) + infoLog + " | " + Path);
 
         if (Stage == ShaderStage::Fragment) {
-            FileSystem::WriteFile("Assets/ShaderCompileError.frag", Code);
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.frag", Code);
         }
         if (Stage == ShaderStage::Vertex) {
-            FileSystem::WriteFile("Assets/ShaderCompileError.vert", Code);
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.vert", Code);
         }
     }
 }
@@ -98,7 +98,7 @@ ShaderStage ShaderSource::GetStage() {
 }
 
 void ShaderSource::Reload() {
-    Code = FileSystem::ReadFile(Path);
+    Code = U::FileSystem::ReadFile(Path);
 
     if (Code.empty()) {
         return;
@@ -115,7 +115,7 @@ void ShaderSource::Reload() {
     glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
     if (!success) {
         glGetShaderInfoLog(Id, 512, nullptr, infoLog);
-        Logger::Error(std::string("Shader:" + Name) + infoLog);
+        U::Logger::Error(std::string("Shader:" + Name) + infoLog);
     }
 }
 }

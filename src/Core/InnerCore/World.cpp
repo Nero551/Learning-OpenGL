@@ -101,12 +101,12 @@ void World::RemoveEntity(unsigned int id) {
 Entity& World::FindEntity(unsigned int id) {
     auto entity = Entities.find(id);
     if (entity == Entities.end()) {
-        Logger::Fatal(std::format("Entity Not Found: {}", id));
+        U::Logger::Fatal(std::format("Entity Not Found: {}", id));
     }
     return *entity->second;
 }
 
-CheckedPtr<Entity> World::TryFindEntity(unsigned int id) {
+U::CheckedPtr<Entity> World::TryFindEntity(unsigned int id) {
     auto entity = Entities.find(id);
 
     if (entity == Entities.end()) {

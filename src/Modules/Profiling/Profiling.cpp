@@ -34,7 +34,7 @@ namespace E {
                 +
                 std::to_string(FrameMs) + " ms");
 
-            // Logger::Info(
+            // E::U::Logger::Info(
             //     "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | " +
             //     std::to_string(FrameMs) + " ms");
             FrameCount = 0;

@@ -3,6 +3,7 @@
 #include <stb_image.h>
 #include "Utilities/Logger.hpp"
 
+namespace E::U {
 Image::Image(const std::string& filePath, bool flip) {
     stbi_set_flip_vertically_on_load(flip);
     // Flipped = flip;
@@ -16,3 +17,4 @@ Image::Image(const std::string& filePath, bool flip) {
 Image::~Image() {
     stbi_image_free(Pixels);
 }
+} // namespace E::U

@@ -14,12 +14,12 @@ Window::Window(const int width, const int height, const std::string& title) {
 
     GLFWwindow* glfwWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     if (!glfwWindow) {
-        Logger::Fatal("Failed To Create Window");
+        U::Logger::Fatal("Failed To Create Window");
     }
     glfwMakeContextCurrent(glfwWindow);
 
     if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
-        Logger::Fatal("Failed To Initialize GLAD");
+        U::Logger::Fatal("Failed To Initialize GLAD");
     }
 
     glViewport(0, 0, width, height);
@@ -75,7 +75,7 @@ void Window::Close() {
     glfwSetWindowShouldClose(GlfwWindow, true);
 }
 
-void Window::SetIcon(const Image& icon) {
+void Window::SetIcon(const U::Image& icon) {
     GLFWimage image;
     image.height = icon.Height;
     image.width = icon.Width;

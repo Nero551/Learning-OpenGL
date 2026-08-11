@@ -33,8 +33,8 @@ void Renderer::OnBeginFrame(double dt) {
 void Renderer::OnRender() {
     auto& camera = World::Get().ActiveCamera;
 
-    Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
-    Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
+    M::Matrix4 projection = camera->GetComponent<CameraComponent>().GetProjectionMatrix();
+    M::Matrix4 view = GetSystem<CameraSystem>().GetViewMatrix();
 
     for (auto& entity : World::Get().Root->GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent>()) {

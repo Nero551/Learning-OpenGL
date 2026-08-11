@@ -23,7 +23,7 @@ struct Service {
     template <ServiceType T> static T& Get() {
         auto service = Services.find(typeid(T));
         if (service == Services.end()) {
-            Logger::Fatal(std::format("Service Not Found: {}", typeid(T).name()));
+            U::Logger::Fatal(std::format("Service Not Found: {}", typeid(T).name()));
         }
         return static_cast<T&>(*service->second);
     }
@@ -32,8 +32,8 @@ struct Service {
     * @brief Returns all currently registered services.
     * @return A vector of pointers to the registered services.
     */
-    static std::vector<CheckedPtr<Service>> GetAll() {
-        std::vector<CheckedPtr<Service>> services;
+    static std::vector<U::CheckedPtr<Service>> GetAll() {
+        std::vector<U::CheckedPtr<Service>> services;
 
         for (auto& service : Services | std::views::values) {
             services.emplace_back(&*service);
@@ -60,7 +60,7 @@ protected:
     */
     template <ServiceType T> static T& Add() {
         if (Services.contains(typeid(T))) {
-            Logger::Error(std::format(" Service {} Already Added", typeid(T).name()));
+            U::Logger::Error(std::format(" Service {} Already Added", typeid(T).name()));
             return static_cast<T&>(*Services.at(typeid(T)));
         }
 

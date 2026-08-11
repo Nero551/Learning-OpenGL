@@ -12,7 +12,7 @@ namespace E {
         template <SystemType T> T& GetSystem() {
             auto system = Systems.find(typeid(T));
             if (system == Systems.end()) {
-                Logger::Fatal(std::format("System Not Found: {}", typeid(T).name()));
+                U::Logger::Fatal(std::format("System Not Found: {}", typeid(T).name()));
             }
             return static_cast<T&>(*system->second);
         }
@@ -23,7 +23,7 @@ namespace E {
 
         template <SystemType T> T& AddSystem() {
             if (Systems.contains(std::type_index(typeid(T)))) {
-                Logger::Fatal("System Already Exists");
+                U::Logger::Fatal("System Already Exists");
             }
 
             auto system = std::make_unique<T>();

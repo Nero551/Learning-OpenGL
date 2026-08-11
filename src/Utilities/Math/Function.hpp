@@ -1,5 +1,6 @@
 #pragma once
 
+namespace E::M {
 template <typename T>
 concept F = std::invocable<T, float> && std::same_as<std::invoke_result_t<T, float>, float>;
 
@@ -43,3 +44,4 @@ struct Function {
 private:
     std::function<float(float)> Func;
 };
+} // namespace E::M

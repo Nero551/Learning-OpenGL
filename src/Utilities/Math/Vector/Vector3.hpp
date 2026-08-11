@@ -2,6 +2,7 @@
 
 #include "../MathUtils.hpp"
 
+namespace E::M {
 struct Vector3 {
     float x;
     float y;
@@ -25,7 +26,7 @@ struct Vector3 {
 
     [[nodiscard]] float Distance(const Vector3& vec3) const;
 
-    [[nodiscard]] bool NearlyEquals(const Vector3& vec3, float epsilon = Math::EPSILON) const;
+    [[nodiscard]] bool NearlyEquals(const Vector3& vec3, float epsilon = EPSILON) const;
 
     [[nodiscard]] bool IsParallelTo(const Vector3& vec3) const;
 
@@ -86,3 +87,4 @@ struct Vector3 {
     static const Vector3 Right;
     static const Vector3 Forward;
 };
+} // namespace E::M

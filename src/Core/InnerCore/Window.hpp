@@ -38,7 +38,7 @@ struct Window {
 
     void SetTitle(const std::string& title);
 
-    void SetIcon(const Image& icon);
+    void SetIcon(const U::Image& icon);
 
     /** @param height New height in pixels */
     void SetHeight(int height);

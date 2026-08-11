@@ -2,8 +2,13 @@
 #include "Utilities/Math/MathUtils.hpp"
 #include "Utilities/Logger.hpp"
 
+namespace E::M {
 Matrix2::Matrix2(float mAll) {
-    for (int row = 0; row < 2; row++) { for (int col = 0; col < 2; col++) { m[row][col] = mAll; } }
+    for (int row = 0; row < 2; row++) {
+        for (int col = 0; col < 2; col++) {
+            m[row][col] = mAll;
+        }
+    }
 }
 
 Matrix2::Matrix2(float m00, float m01, float m10, float m11) {
@@ -29,16 +34,26 @@ Matrix2 Matrix2::operator*(const Matrix2& mat2) const {
 
     for (int row = 0; row < 2; row++) {
         for (int col = 0; col < 2; col++) {
-            for (int k = 0; k < 2; k++) { result.m[row][col] += m[row][k] * mat2.m[k][col]; }
+            for (int k = 0; k < 2; k++) {
+                result.m[row][col] += m[row][k] * mat2.m[k][col];
+            }
         }
     }
 
     return result;
 }
 
-Matrix2& Matrix2::operator+=(const Matrix2& mat2) { return *this = *this + mat2; }
-Matrix2& Matrix2::operator-=(const Matrix2& mat2) { return *this = *this - mat2; }
-Matrix2& Matrix2::operator*=(const Matrix2& mat2) { return *this = *this * mat2; }
+Matrix2& Matrix2::operator+=(const Matrix2& mat2) {
+    return *this = *this + mat2;
+}
+
+Matrix2& Matrix2::operator-=(const Matrix2& mat2) {
+    return *this = *this - mat2;
+}
+
+Matrix2& Matrix2::operator*=(const Matrix2& mat2) {
+    return *this = *this * mat2;
+}
 
 //* Vectors
 Vector2 Matrix2::operator*(const Vector2& vec2) const {
@@ -54,11 +69,21 @@ Matrix2 Matrix2::operator/(float scalar) const {
     return {m[0][0] / scalar, m[0][1] / scalar, m[1][0] / scalar, m[1][1] / scalar};
 }
 
-Matrix2 operator*(float scalar, const Matrix2& mat2) { return mat2 * scalar; }
+Matrix2 operator*(float scalar, const Matrix2& mat2) {
+    return mat2 * scalar;
+}
 
-Matrix2& Matrix2::operator*=(float scalar) { return *this = *this * scalar; }
-Matrix2& Matrix2::operator/=(float scalar) { return *this = *this / scalar; }
-Matrix2 Matrix2::operator-() const { return *this * -1; }
+Matrix2& Matrix2::operator*=(float scalar) {
+    return *this = *this * scalar;
+}
+
+Matrix2& Matrix2::operator/=(float scalar) {
+    return *this = *this / scalar;
+}
+
+Matrix2 Matrix2::operator-() const {
+    return *this * -1;
+}
 
 
 //* Equality
@@ -72,7 +97,9 @@ bool Matrix2::operator==(const Matrix2& mat2) const {
     return true;
 }
 
-bool Matrix2::operator!=(const Matrix2& mat2) const { return !(*this == mat2); }
+bool Matrix2::operator!=(const Matrix2& mat2) const {
+    return !(*this == mat2);
+}
 
 //* Others
 std::ostream& operator<<(std::ostream& os, const Matrix2& mat2) {
@@ -103,7 +130,11 @@ Matrix2 Matrix2::Rotate(float radian) const {
 Matrix2 Matrix2::Transpose() const {
     Matrix2 result = Zero;
 
-    for (int row = 0; row < 2; row++) { for (int col = 0; col < 2; col++) { result.m[row][col] = m[col][row]; } }
+    for (int row = 0; row < 2; row++) {
+        for (int col = 0; col < 2; col++) {
+            result.m[row][col] = m[col][row];
+        }
+    }
 
     return result;
 }
@@ -111,18 +142,22 @@ Matrix2 Matrix2::Transpose() const {
 bool Matrix2::NearlyEquals(const Matrix2& mat2, float epsilon) const {
     for (int row = 0; row < 2; row++) {
         for (int col = 0; col < 2; col++) {
-            if (!Math::NearlyEquals(m[row][col], mat2.m[row][col], epsilon)) { return false; }
+            if (!M::NearlyEquals(m[row][col], mat2.m[row][col], epsilon)) {
+                return false;
+            }
         }
     }
     return true;
 }
 
-float Matrix2::Determinant() const { return m[0][0] * m[1][1] - m[0][1] * m[1][0]; }
+float Matrix2::Determinant() const {
+    return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+}
 
 Matrix2 Matrix2::Inverse() const {
     float det = Determinant();
-    if (std::abs(det) < Math::EPSILON) {
-        Logger::Error("Matrix is not invertible");
+    if (std::abs(det) < EPSILON) {
+        U::Logger::Error("Matrix is not invertible");
         return Identity;
     }
     return Matrix2(m[1][1], -m[0][1], -m[1][0], m[0][0]) / det;
@@ -131,3 +166,4 @@ Matrix2 Matrix2::Inverse() const {
 //? Statics
 Matrix2 const Matrix2::Zero = Matrix2(0);
 Matrix2 const Matrix2::Identity = Matrix2(1, 0, 0, 1);
+} // namespace E::M

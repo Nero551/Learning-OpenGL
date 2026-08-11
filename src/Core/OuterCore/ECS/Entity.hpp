@@ -55,7 +55,7 @@ struct Entity {
       */
     template <ComponentType T> T& AddComponent() {
         if (Components.contains(typeid(T))) {
-            Logger::Error(std::format(
+            U::Logger::Error(std::format(
                 "Entity {} already contains component {}",
                 Id,
                 typeid(T).name()
@@ -94,7 +94,7 @@ struct Entity {
         auto component = Components.find(typeid(T));
 
         if (component == Components.end()) {
-            Logger::Fatal(std::format(
+            U::Logger::Fatal(std::format(
                 "Component Not Found: {}",
                 typeid(T).name()
             ));
@@ -109,7 +109,7 @@ struct Entity {
     *
     * @return A vector containing pointers to all components.
       */
-    std::vector<CheckedPtr<Component>> GetAllComponents();
+    std::vector<U::CheckedPtr<Component>> GetAllComponents();
 
     /**
 
@@ -162,7 +162,7 @@ struct Entity {
     * @param id Id of the child entity.
     * @return pointer to the child, or null if it does not exist.
       */
-    CheckedPtr<Entity> TryGetChild(unsigned int id);
+    U::CheckedPtr<Entity> TryGetChild(unsigned int id);
 
     /**
     * @brief Checks whether this entity has a direct child with the given Id.
@@ -181,7 +181,7 @@ struct Entity {
     * @brief Gets all direct children of the entity.
     * @return A vector containing pointers to the children.
     */
-    std::vector<CheckedPtr<Entity>> GetChildren();
+    std::vector<U::CheckedPtr<Entity>> GetChildren();
 
     /** @brief Destroys all direct children of the entity. */
     void DestroyChildren();
@@ -192,7 +192,7 @@ struct Entity {
     * in the hierarchy.
     * @return A vector containing pointers to all descendants.
       */
-    std::vector<CheckedPtr<Entity>> GetDescendants();
+    std::vector<U::CheckedPtr<Entity>> GetDescendants();
 
     /**
     * @brief Checks whether an entity is a descendant of this entity.
@@ -214,7 +214,7 @@ struct Entity {
     * ancestors in the hierarchy.
     * @return A vector containing pointers to all ancestors.
       */
-    std::vector<CheckedPtr<Entity>> GetAncestors();
+    std::vector<U::CheckedPtr<Entity>> GetAncestors();
 
     /**
     * @brief Checks whether an entity is an ancestor of this entity.
@@ -263,10 +263,10 @@ struct Entity {
 
 private:
     std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;
-    std::unordered_map<unsigned int, CheckedPtr<Entity>> Children;
+    std::unordered_map<unsigned int, U::CheckedPtr<Entity>> Children;
 
     /** @brief Parent entity in the hierarchy. */
-    CheckedPtr<Entity> Parent{"Scene Has No Parent"};
+    U::CheckedPtr<Entity> Parent{"Scene Has No Parent"};
 
     /**
      * @brief Recursively collects all descendants of an entity.
@@ -274,7 +274,7 @@ private:
      * @param entity Entity whose descendants should be traversed.
      */
     void RecursiveChildren(
-        std::vector<CheckedPtr<Entity>>& entities,
+        std::vector<U::CheckedPtr<Entity>>& entities,
         Entity& entity
     );
 };

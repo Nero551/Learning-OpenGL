@@ -22,12 +22,12 @@ struct ResourceManager : Service {
      */
     template <ResourceType T, typename... Args> T& Load(const std::string& name, Args&&... args) {
         if (Resources.contains(name)) {
-            // Logger::Warning("Resource: " + name + " Already Loaded.");
+            // E::U::Logger::Warning("Resource: " + name + " Already Loaded.");
             return static_cast<T&>(*Resources.at(name));
         }
 
         if constexpr (!std::constructible_from<T, const std::string&, Args...>) {
-            Logger::Fatal(
+            U::Logger::Fatal(
                 "Resource: " + name + " ,Of Type: " + typeid(T).name() +
                 " Can't Be Constructed From the Given Arguments.");
         }

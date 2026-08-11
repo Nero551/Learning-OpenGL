@@ -1,5 +1,6 @@
 #pragma once
 
+namespace E::M {
 struct Quaternion {
     float w, x, y, z;
 
@@ -12,3 +13,4 @@ struct Quaternion {
 
     friend std::ostream& operator<<(std::ostream& os, const Quaternion& q);
 };
+} // namespace E::M

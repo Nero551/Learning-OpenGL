@@ -4,6 +4,7 @@
  * Stores the raw pixel data along with the image dimensions
  * and number of color channels.
  */
+namespace E::U {
 struct Image {
     /**
      * @brief Loads an image from disk.
@@ -28,3 +29,4 @@ struct Image {
     /** Number of color channels per pixel. */
     int NrChannels = 0;
 };
+} // namespace E::U

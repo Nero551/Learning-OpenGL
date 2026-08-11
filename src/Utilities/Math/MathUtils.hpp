@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Math {
+namespace E::M {
 inline constexpr float EPSILON = 1e-5f;
 inline constexpr float E = std::numbers::e_v<float>;
 inline constexpr float PI = std::numbers::pi_v<float>;
@@ -24,4 +24,4 @@ float Ln(float x);
 float Log(float base, float x);
 
 bool NearlyEquals(float a, float b, float epsilon = EPSILON);
-} // namespace Math
+} // namespace E::M

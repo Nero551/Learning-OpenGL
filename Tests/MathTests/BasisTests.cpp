@@ -2,24 +2,24 @@
 #include "Utilities/Math/Basis.hpp"
 
 TEST_CASE("Basis GetMatrix and GetInverseMatrix") {
-   Basis basis;
-   Matrix4 m = basis.GetMatrix();
-   REQUIRE(m == Matrix4::Identity);
+   E::M::Basis basis;
+   E::M::Matrix4 m = basis.GetMatrix();
+   REQUIRE(m == E::M::Matrix4::Identity);
 
-   Matrix4 inv = basis.GetInverseMatrix();
+   E::M::Matrix4 inv = basis.GetInverseMatrix();
    REQUIRE(inv == m.Transpose());
 
-   basis.Right = Vector3::Up;
-   basis.Up = Vector3::Forward;
-   basis.Forward = Vector3::Right;
+   basis.Right = E::M::Vector3::Up;
+   basis.Up = E::M::Vector3::Forward;
+   basis.Forward = E::M::Vector3::Right;
    m = basis.GetMatrix();
-   Matrix4 expected(0, 0, 1, 0,
+   E::M::Matrix4 expected(0, 0, 1, 0,
                     1, 0, 0, 0,
                     0, 1, 0, 0,
                     0, 0, 0, 1);
    REQUIRE(m == expected);
    inv = basis.GetInverseMatrix();
    REQUIRE(inv == expected.Transpose());
-   REQUIRE(inv * m == Matrix4::Identity);
-   REQUIRE(m * inv == Matrix4::Identity);
+   REQUIRE(inv * m == E::M::Matrix4::Identity);
+   REQUIRE(m * inv == E::M::Matrix4::Identity);
 }
