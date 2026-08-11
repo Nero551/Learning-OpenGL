@@ -9,10 +9,9 @@ vec3 CalculateLight(Light light) {
     vec3 lightDir = normalize(light.Position - vWorldPosition.xyz);
     float cutOff = 1;
     float attenuation = 1;
-    float directionalIntensity = 1;
 
     if (light.Type == 0) {
-        CalculateDirectionalLight(light, lightDir, directionalIntensity);
+        CalculateDirectionalLight(light, lightDir);
 
     } else if (light.Type == 1) {
         CalculatePointLight(light, attenuation);
@@ -22,9 +21,9 @@ vec3 CalculateLight(Light light) {
     }
 
     //Phong Lighting Model
-    vec3 ambient = CalculateAmbient(light, directionalIntensity);
-    vec3 diffuse = CalculateDiffuse(light, lightDir, attenuation, cutOff, directionalIntensity);
-    vec3 specular = CalculateSpecular(light, lightDir, attenuation, cutOff, directionalIntensity);
+    vec3 ambient = CalculateAmbient(light);
+    vec3 diffuse = CalculateDiffuse(light, lightDir, attenuation, cutOff);
+    vec3 specular = CalculateSpecular(light, lightDir, attenuation, cutOff);
 
     return ambient + diffuse + specular;
 }

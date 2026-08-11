@@ -1,8 +1,7 @@
 #include "PhongModel.frag"
 
-void CalculateDirectionalLight(Light light, out vec3 lightDir, out float directionalIntensity) {
+void CalculateDirectionalLight(Light light, out vec3 lightDir) {
     lightDir = normalize(-light.Direction);
-    directionalIntensity = light.Intensity;
 }
 
 void CalculatePointLight(Light light, out float attenuation) {

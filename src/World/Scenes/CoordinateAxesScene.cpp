@@ -17,7 +17,7 @@ namespace E {
 CoordinateAxesScene::CoordinateAxesScene() {
     auto& resourceManager = Service::Get<ResourceManager>();
 
-    Root = &World::Get().CreateEntity<Nova3D>();
+    Root = &World::Get().CreateEntity<Nova>();
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
     lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
@@ -29,8 +29,16 @@ CoordinateAxesScene::CoordinateAxesScene() {
     lightMaterial.Shader = &lightShader;
 
     auto& light = World::Get().CreateEntity<Light>();
-    light.GetComponent<Transform3DComponent>().Rotation.x = Math::Rad(90);
+    light.GetComponent<Transform3DComponent>().Rotation.x = Math::Rad(32.5);
+    light.GetComponent<Transform3DComponent>().Rotation.y = Math::Rad(32.5);
+    light.GetComponent<Transform3DComponent>().Rotation.z = Math::Rad(32.5);
     Root->AttachChild(light);
+
+    auto& light2 = World::Get().CreateEntity<Light>();
+    light2.GetComponent<Transform3DComponent>().Rotation.x = Math::Rad(-32.5);
+    light2.GetComponent<Transform3DComponent>().Rotation.y = Math::Rad(-32.5);
+    light2.GetComponent<Transform3DComponent>().Rotation.z = Math::Rad(-32.5);
+    Root->AttachChild(light2);
 
     auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
     shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag",

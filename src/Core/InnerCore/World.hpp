@@ -80,8 +80,8 @@ struct World : SystemOwner {
         entity->Id = id;
         entity->Initialize();
 
-        Service::Get<EventBus>().Fire<EntityCreated>(*entity);
         Entities.emplace(id, std::move(entity));
+        Service::Get<EventBus>().Fire<EntityCreated>(static_cast<T&>(*Entities.find(id)->second));
 
         return static_cast<T&>(*Entities.find(id)->second);
     }

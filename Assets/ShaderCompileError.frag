@@ -45,25 +45,25 @@ struct Light {
     float OuterCutOff;
 };
 
-vec3 CalculateAmbient(Light light, float directionalIntensity){
+vec3 CalculateAmbient(Light light){
     vec3 diffuseMap = vec3(texture(MATERIAL.DiffuseMap, vUV));
-    vec3 ambient = light.Color * diffuseMap * light.Ambient * MATERIAL.Ambient * directionalIntensity;
+    vec3 ambient = light.Color * diffuseMap * light.Ambient * MATERIAL.Ambient * light.Intensity;
     return ambient;
 }
 
-vec3 CalculateDiffuse(Light light, vec3 lightDir, float attenuation, float cutOff, float directionalIntensity){
+vec3 CalculateDiffuse(Light light, vec3 lightDir, float attenuation, float cutOff){
     vec3 diffuseMap = vec3(texture(MATERIAL.DiffuseMap, vUV));
     float diff = max(dot(vNormal, lightDir), 0.0);
-    vec3 diffuse = diff * light.Color * diffuseMap * light.Diffuse * MATERIAL.Diffuse * attenuation * cutOff * directionalIntensity;
+    vec3 diffuse = diff * light.Color * diffuseMap * light.Diffuse * MATERIAL.Diffuse * attenuation * cutOff * light.Intensity;
     return diffuse;
 }
 
-vec3 CalculateSpecular(Light light, vec3 lightDir, float attenuation, float cutOff, float directionalIntensity){
+vec3 CalculateSpecular(Light light, vec3 lightDir, float attenuation, float cutOff){
     vec3 specularMap = vec3(texture(MATERIAL.SpecularMap, vUV));
     vec3 viewDir = normalize(VIEW_POSITION - vec3(vWorldPosition.xyz));
     vec3 reflectDir = reflect(-lightDir, vNormal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), MATERIAL.Shininess);
-    vec3 specular = spec * light.Color * specularMap * MATERIAL.Specular * light.Specular * attenuation * cutOff * directionalIntensity;
+    vec3 specular = spec * light.Color * specularMap * MATERIAL.Specular * light.Specular * attenuation * cutOff * light.Intensity;
 
     return specular;
 }
@@ -76,9 +76,9 @@ vec3 CalculateEmission(){
 
 
 
-void CalculateDirectionalLight(Light light, out vec3 lightDir, out float directionalIntensity) {
+void CalculateDirectionalLight(Light light, out vec3 lightDir) {
     lightDir = normalize(-light.Direction);
-    directionalIntensity = light.Intensity;
+    light.Color = vec4(1, 0, 0);
 }
 
 void CalculatePointLight(Light light, out float attenuation) {
@@ -96,7 +96,6 @@ void CalculateSpotLight(Light light, vec3 lightDir, out float cutOff, out float 
     cutOff = clamp((cosTheta - light.OuterCutOff) / epsilon, 0.0, 1) * light.Intensity;
 }
 
-
 const int NR_LIGHTS = 24;
 uniform int MAX_LIGHTS;
 uniform Light LIGHTS[NR_LIGHTS];
@@ -105,10 +104,9 @@ vec3 CalculateLight(Light light) {
     vec3 lightDir = normalize(light.Position - vWorldPosition.xyz);
     float cutOff = 1;
     float attenuation = 1;
-    float directionalIntensity = 1;
 
     if (light.Type == 0) {
-        CalculateDirectionalLight(light, lightDir, directionalIntensity);
+        CalculateDirectionalLight(light, lightDir);
 
     } else if (light.Type == 1) {
         CalculatePointLight(light, attenuation);
@@ -118,9 +116,9 @@ vec3 CalculateLight(Light light) {
     }
 
     //Phong Lighting Model
-    vec3 ambient = CalculateAmbient(light, directionalIntensity);
-    vec3 diffuse = CalculateDiffuse(light, lightDir, attenuation, cutOff, directionalIntensity);
-    vec3 specular = CalculateSpecular(light, lightDir, attenuation, cutOff, directionalIntensity);
+    vec3 ambient = CalculateAmbient(light);
+    vec3 diffuse = CalculateDiffuse(light, lightDir, attenuation, cutOff);
+    vec3 specular = CalculateSpecular(light, lightDir, attenuation, cutOff);
 
     return ambient + diffuse + specular;
 }
@@ -131,7 +129,8 @@ vec3 Lighting() {
         result += CalculateLight(LIGHTS[i]);
     }
 
-    //Emission
+    vec3 emission = CalculateEmission();
+
     result += emission;
     return result;
 }
