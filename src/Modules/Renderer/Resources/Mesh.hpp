@@ -4,34 +4,35 @@
 
 
 #include "../Enums/Topology.hpp"
+#include "Modules/Renderer/Enums/RenderMode.hpp"
 
 namespace E {
-    struct Mesh : Resource {
-        bool Wireframe = false;
-        Topology Topology = Topology::Triangles;
+struct Mesh : Resource {
+    RenderMode RenderMode = RenderMode::Solid;
+    Topology Topology = Topology::Triangles;
 
-        Mesh(const std::string& name, const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices);
+    Mesh(const std::string& name, const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices);
 
-        ~Mesh() override;
+    ~Mesh() override;
 
-        [[nodiscard]] unsigned int GetId() const;
+    [[nodiscard]] unsigned int GetId() const;
 
-        void Draw();
+    void Draw();
 
-    private:
-        unsigned int Id = 0;
-        unsigned int VBO = 0;
-        unsigned int EBO = 0;
+private:
+    unsigned int Id = 0;
+    unsigned int VBO = 0;
+    unsigned int EBO = 0;
 
-        std::vector<Vertex> Vertices;
-        std::vector<unsigned int> Indices;
+    std::vector<Vertex> Vertices;
+    std::vector<unsigned int> Indices;
 
-        void CreateVAO();
+    void CreateVAO();
 
-        void CreateVBO();
+    void CreateVBO();
 
-        void CreateEBO();
+    void CreateEBO();
 
-        void SetupVertAttrPointers();
-    };
+    void SetupVertAttrPointers();
+};
 }
