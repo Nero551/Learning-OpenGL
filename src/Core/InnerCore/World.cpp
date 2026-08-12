@@ -8,11 +8,11 @@
 #include "World/Novas/Camera.hpp"
 #include "World/Scenes/CoordinateAxesScene.hpp"
 #include "World/Scenes/FirstScene.hpp"
-#include "World/Systems/TransformSystem.hpp"
+#include "World/Systems/Transform3DSystem.hpp"
 
 namespace E {
 void World::AddSystems() {
-    AddSystem<TransformSystem>();
+    AddSystem<Transform3DSystem>();
     AddSystem<calculus>();
 }
 

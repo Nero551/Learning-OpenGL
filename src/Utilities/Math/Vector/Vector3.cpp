@@ -164,6 +164,10 @@ bool Vector3::IsPerpendicularTo(const Vector3& vec3) const {
     return std::abs(Dot(vec3)) < EPSILON;
 }
 
+Vector3 Vector3::Lerp(const Vector3& vec3, float t) const {
+    return {M::Lerp(x, vec3.x, t), M::Lerp(y, vec3.y, t), M::Lerp(z, vec3.z, t)};
+}
+
 //?Statics
 Vector3 const Vector3::Zero = Vector3(0, 0, 0);
 Vector3 const Vector3::Up = Vector3(0, 1, 0);

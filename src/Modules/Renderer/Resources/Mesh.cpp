@@ -39,13 +39,8 @@ void Mesh::Draw() {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glDrawElements(static_cast<int>(Topology), Indices.size(), GL_UNSIGNED_INT, nullptr);
 
-        glDepthFunc(GL_LEQUAL);
-        glDepthMask(GL_FALSE);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements(static_cast<int>(Topology), Indices.size(), GL_UNSIGNED_INT, nullptr);
-
-        glDepthFunc(GL_LESS);
-        glDepthMask(GL_TRUE);
     }
 }
 

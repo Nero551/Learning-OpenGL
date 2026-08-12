@@ -1,13 +1,13 @@
-#include "TransformSystem.hpp"
+#include "Transform3DSystem.hpp"
 
 #include "Core/InnerCore/Engine.hpp"
 #include "World/Components/Transform3DComponent.hpp"
 
 namespace E {
-void TransformSystem::Start() {}
+void Transform3DSystem::Start() {}
 
 
-void TransformSystem::Update(double dt) {
+void Transform3DSystem::Update(double dt) {
     for (auto& entity : World::Get().Root->GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent>()) {
             continue;

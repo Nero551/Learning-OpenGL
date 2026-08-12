@@ -17,7 +17,7 @@ void CameraSystem::Update(double dt) {
 
         if (input.GetMouseMode() == MouseMode::Disabled) {
             cameraComponent.Speed += input.GetScrollDelta().y / 3;
-            cameraComponent.Speed = std::clamp(cameraComponent.Speed, 5.0f, 50.0f);
+            cameraComponent.Speed = std::clamp(cameraComponent.Speed, 1.0f, 50.0f);
 
             const float xOffset = M::Rad(input.GetMouseDelta().x * cameraComponent.Sensitivity);
             const float yOffset = M::Rad(-input.GetMouseDelta().y * cameraComponent.Sensitivity);

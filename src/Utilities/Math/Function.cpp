@@ -31,13 +31,13 @@ Function Function::Compose(const Function& g) const {
 Function Function::Integrate(float a, float dx) const {
     return [f = *this, a, dx](float b) {
         float result = 0.0f;
-        for (float x = a; x <= b; x += dx) {
-            result += f(x) * dx;
+        for (float x = a; x < b; x += dx) {
+            float midpoint = x + dx / 2.0f;
+            result += f(midpoint) * dx;
         }
         return result;
     };
 }
-
 
 float Function::Integral(float a, float b, float dx) const {
     return Integrate(a, dx).Evaluate(b);

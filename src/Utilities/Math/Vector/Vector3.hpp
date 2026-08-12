@@ -31,6 +31,7 @@ struct Vector3 {
     [[nodiscard]] bool IsParallelTo(const Vector3& vec3) const;
 
     [[nodiscard]] bool IsPerpendicularTo(const Vector3& vec3) const;
+    [[nodiscard]] Vector3 Lerp(const Vector3& vec3, float t) const;
 
     Vector3 operator+(const Vector3& vec3) const;
 

@@ -25,5 +25,16 @@ float Exp(float x);
 float Ln(float x);
 float Log(float base, float x);
 
+float Clamp(float value, float min, float max);
+
+float Lerp(float a, float b, float t);
+float EaseInQuad(float t);
+float EaseOutQuad(float t);
+float EaseInOutQuad(float t);
+
+float EaseInCubic(float t);
+float EaseOutCubic(float t);
+float EaseInOutCubic(float t);
+
 bool NearlyEquals(float a, float b, float epsilon = EPSILON);
 } // namespace E::M

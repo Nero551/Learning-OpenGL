@@ -46,6 +46,6 @@ private:
     M::Vector3 GlobalPosition = M::Vector3::Zero;
     M::Vector3 GlobalRotation = M::Vector3::Zero; // Radians
     M::Vector3 GlobalScale = M::Vector3::One;
-    friend struct TransformSystem;
+    friend struct Transform3DSystem;
 };
 }
