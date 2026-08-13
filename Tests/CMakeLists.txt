@@ -23,9 +23,10 @@ target_include_directories(UnitTests PRIVATE
         ../src
 )
 
-find_package(Catch2 CONFIG REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(glad REQUIRED)
+find_package(Catch2 REQUIRED)
+
 target_link_libraries(UnitTests PRIVATE
         Catch2::Catch2WithMain
         glfw
