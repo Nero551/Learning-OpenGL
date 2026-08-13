@@ -15,7 +15,8 @@ fi
 
 echo "🔨 Building Tests..."
 
-cmake --preset default -S "$ROOT/Tests"
+cd "$ROOT/Tests"
+cmake --preset default
 cmake --build --preset default
 
 echo "✅ Built Tests."
