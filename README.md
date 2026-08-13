@@ -2,17 +2,17 @@
 
 ## Building & Running Engine
 
-- ./build.sh
-- ./run.sh
+- ./Scripts/build.sh
+- ./Scripts/run.sh
 
 ## Building & Running Tests
 
-- ./Tests/build-tests.sh
-- ./Tests/run-tests.sh
+- ./Scripts/build-tests.sh
+- ./Scripts/run-tests.sh
 
 ## Loading Docs
 
-- ./docs.sh
+- ./Scripts/docs.sh
 
 ## Progress
 

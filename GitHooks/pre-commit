@@ -3,4 +3,4 @@ set -e
 
 ROOT="$(git rev-parse --show-toplevel)"
 
-"$ROOT/Tests/run-tests.sh"
+"$ROOT/Scripts/run-tests.sh"

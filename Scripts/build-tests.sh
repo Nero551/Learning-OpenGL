@@ -4,8 +4,6 @@ set -e
 ROOT="$(git rev-parse --show-toplevel)"
 VCPKG="$ROOT/vcpkg"
 
-echo "📦 Checking vcpkg..."
-
 if [ ! -f "$VCPKG/vcpkg" ]; then
     echo "📥 Initializing vcpkg..."
 
@@ -15,14 +13,9 @@ if [ ! -f "$VCPKG/vcpkg" ]; then
     "$VCPKG/bootstrap-vcpkg.sh"
 fi
 
-echo "🔨 Building..."
+echo "🔨 Building Tests..."
 
-cmake -S "$ROOT" \
-      -B "$ROOT/build" \
-      -G Ninja \
-      -DCMAKE_TOOLCHAIN_FILE="$VCPKG/scripts/buildsystems/vcpkg.cmake"
-      -DVCPKG_MANIFEST_DIR="$ROOT"
+cmake --preset default -S "$ROOT/Tests"
+cmake --build --preset default
 
-cmake --build "$ROOT/build"
-
-echo "✅ Built."
+echo "✅ Built Tests."

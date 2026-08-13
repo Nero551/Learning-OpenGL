@@ -3,7 +3,7 @@ set -e
 
 ROOT="$(git rev-parse --show-toplevel)"
 
-"$ROOT/build.sh"
+"$ROOT/Scripts/build.sh"
 
 echo "🧪 Running..."
 "$ROOT/build/Nova"

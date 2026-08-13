@@ -1,19 +1,6 @@
 cmake_minimum_required(VERSION 4.1.2)
 
-set(CMAKE_CXX_COMPILER /usr/bin/clang++)
-set(CMAKE_C_COMPILER /usr/bin/clang)
-set(CMAKE_C_COMPILER_LAUNCHER ccache)
-set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
-
 project(Nova)
-
-set(CMAKE_CXX_STANDARD 26)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-if (NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
-endif ()
 
 
 add_executable(Nova
