@@ -17,12 +17,9 @@ endif ()
 
 
 add_executable(Nova
-        External/lib/glad.c
         src/Main.cpp
 )
 
-find_package(glfw3 REQUIRED)
-find_package(assimp CONFIG REQUIRED)
 set_target_properties(Nova PROPERTIES UNITY_BUILD ON)
 
 target_precompile_headers(Nova PRIVATE
@@ -34,16 +31,21 @@ add_subdirectory(src/Modules)
 add_subdirectory(src/World)
 
 target_include_directories(Nova PRIVATE
-        External/include
         src
 )
 
+find_package(glad REQUIRED)
+find_package(glfw3 REQUIRED)
+find_package(assimp REQUIRED)
+find_package(nlohmann_json REQUIRED)
+find_package(magic_enum REQUIRED)
 target_link_libraries(Nova
+        PRIVATE
         glfw
-        GL
         assimp::assimp
+        glad::glad
+        nlohmann_json::nlohmann_json
 )
-
 target_compile_options(Nova PRIVATE
         -Wall
         #        -Wextra

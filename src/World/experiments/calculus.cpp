@@ -75,7 +75,7 @@ void calculus::Start() {
 
 static constexpr float step = 0.025;
 static constexpr float xRange = 8;
-static float x = 3;
+static float x = -8;
 
 static float elapsed = 0;
 static float passed = 0;

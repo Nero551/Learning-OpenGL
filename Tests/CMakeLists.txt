@@ -33,7 +33,6 @@ file(GLOB_RECURSE TEST_SOURCES
 )
 
 add_executable(UnitTests
-        ../External/lib/glad.c
         ${ENGINE_SOURCES}
         ${TEST_SOURCES}
 )
