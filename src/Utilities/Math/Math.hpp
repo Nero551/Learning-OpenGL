@@ -1,6 +1,6 @@
 #pragma once
 
-// A Float-based math library for game engine. everything uses floats here
+// A Float-based math library for the Nova game engine. everything uses floats here
 
 #include "Geometry/Basis.hpp"
 #include "Color/Color.hpp"

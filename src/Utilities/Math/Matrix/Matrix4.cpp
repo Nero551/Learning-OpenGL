@@ -42,27 +42,25 @@ Matrix4::Matrix4(float m00, float m01, float m02, float m03, float m10, float m1
 
 //* Matrices
 Matrix4 Matrix4::operator+(const Matrix4& mat4) const {
-    return {
-        m[0][0] + mat4.m[0][0], m[0][1] + mat4.m[0][1], m[0][2] + mat4.m[0][2], m[0][3] + mat4.m[0][3],
-        m[1][0] + mat4.m[1][0],
-        m[1][1] + mat4.m[1][1], m[1][2] + mat4.m[1][2], m[1][3] + mat4.m[1][3], m[2][0] + mat4.m[2][0],
-        m[2][1] + mat4.m[2][1],
-        m[2][2] + mat4.m[2][2], m[2][3] + mat4.m[2][3], m[3][0] + mat4.m[3][0], m[3][1] + mat4.m[3][1],
-        m[3][2] + mat4.m[3][2],
-        m[3][3] + mat4.m[3][3]
-    };
+    Matrix4 result = Zero;
+
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
+            result.m[row][col] = m[row][col] + mat4.m[row][col];
+        }
+    }
+    return result;
 }
 
 Matrix4 Matrix4::operator-(const Matrix4& mat4) const {
-    return {
-        m[0][0] - mat4.m[0][0], m[0][1] - mat4.m[0][1], m[0][2] - mat4.m[0][2], m[0][3] - mat4.m[0][3],
-        m[1][0] - mat4.m[1][0],
-        m[1][1] - mat4.m[1][1], m[1][2] - mat4.m[1][2], m[1][3] - mat4.m[1][3], m[2][0] - mat4.m[2][0],
-        m[2][1] - mat4.m[2][1],
-        m[2][2] - mat4.m[2][2], m[2][3] - mat4.m[2][3], m[3][0] - mat4.m[3][0], m[3][1] - mat4.m[3][1],
-        m[3][2] - mat4.m[3][2],
-        m[3][3] - mat4.m[3][3]
-    };
+    Matrix4 result = Zero;
+
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
+            result.m[row][col] = m[row][col] - mat4.m[row][col];
+        }
+    }
+    return result;
 }
 
 Matrix4 Matrix4::operator*(const Matrix4& mat4) const {
@@ -103,23 +101,27 @@ Vector4 Matrix4::operator*(const Vector4& vec4) const {
 
 //* Scalars
 Matrix4 Matrix4::operator*(float scalar) const {
-    return {
-        scalar * m[0][0], scalar * m[0][1], scalar * m[0][2], scalar * m[0][3], scalar * m[1][0], scalar * m[1][1],
-        scalar * m[1][2],
-        scalar * m[1][3], scalar * m[2][0], scalar * m[2][1], scalar * m[2][2], scalar * m[2][3], scalar * m[3][0],
-        scalar * m[3][1],
-        scalar * m[3][2], scalar * m[3][3]
-    };
+    Matrix4 result = Zero;
+
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
+            result.m[row][col] = m[row][col] * scalar;
+        }
+    }
+
+    return result;
 }
 
 Matrix4 Matrix4::operator/(float scalar) const {
-    return {
-        m[0][0] / scalar, m[0][1] / scalar, m[0][2] / scalar, m[0][3] / scalar, m[1][0] / scalar, m[1][1] / scalar,
-        m[1][2] / scalar,
-        m[1][3] / scalar, m[2][0] / scalar, m[2][1] / scalar, m[2][2] / scalar, m[2][3] / scalar, m[3][0] / scalar,
-        m[3][1] / scalar,
-        m[3][2] / scalar, m[3][3] / scalar
-    };
+    Matrix4 result = Zero;
+
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
+            result.m[row][col] = m[row][col] / scalar;
+        }
+    }
+
+    return result;
 }
 
 Matrix4& Matrix4::operator*=(float scalar) {
@@ -213,9 +215,9 @@ Matrix4 Matrix4::RotateZ(float radian) const {
 
 Matrix4 Matrix4::Rotate(const Vector3& eulerRotation) const {
     Matrix4 rotationMatrix = Identity;
-    rotationMatrix = rotationMatrix.RotateX(eulerRotation.x);
-    rotationMatrix = rotationMatrix.RotateY(eulerRotation.y);
     rotationMatrix = rotationMatrix.RotateZ(eulerRotation.z);
+    rotationMatrix = rotationMatrix.RotateY(eulerRotation.y);
+    rotationMatrix = rotationMatrix.RotateX(eulerRotation.x);
 
     return *this * rotationMatrix;
 }

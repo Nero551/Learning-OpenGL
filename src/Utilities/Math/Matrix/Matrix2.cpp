@@ -22,11 +22,23 @@ Matrix2::Matrix2(float m00, float m01, float m10, float m11) {
 
 //* Matrices
 Matrix2 Matrix2::operator+(const Matrix2& mat2) const {
-    return {m[0][0] + mat2.m[0][0], m[0][1] + mat2.m[0][1], m[1][0] + mat2.m[1][0], m[1][1] + mat2.m[1][1]};
+    Matrix2 result = Zero;
+    for (int row = 0; row < 2; row++) {
+        for (int col = 0; col < 2; col++) {
+            result.m[row][col] = m[row][col] + mat2.m[row][col];
+        }
+    }
+    return result;
 }
 
 Matrix2 Matrix2::operator-(const Matrix2& mat2) const {
-    return {m[0][0] - mat2.m[0][0], m[0][1] - mat2.m[0][1], m[1][0] - mat2.m[1][0], m[1][1] - mat2.m[1][1]};
+    Matrix2 result = Zero;
+    for (int row = 0; row < 2; row++) {
+        for (int col = 0; col < 2; col++) {
+            result.m[row][col] = m[row][col] - mat2.m[row][col];
+        }
+    }
+    return result;
 }
 
 Matrix2 Matrix2::operator*(const Matrix2& mat2) const {
@@ -62,11 +74,23 @@ Vector2 Matrix2::operator*(const Vector2& vec2) const {
 
 //* Scalars
 Matrix2 Matrix2::operator*(float scalar) const {
-    return {scalar * m[0][0], scalar * m[0][1], scalar * m[1][0], scalar * m[1][1]};
+    Matrix2 result = Zero;
+    for (int row = 0; row < 2; row++) {
+        for (int col = 0; col < 2; col++) {
+            result.m[row][col] = m[row][col] * scalar;
+        }
+    }
+    return result;
 }
 
 Matrix2 Matrix2::operator/(float scalar) const {
-    return {m[0][0] / scalar, m[0][1] / scalar, m[1][0] / scalar, m[1][1] / scalar};
+    Matrix2 result = Zero;
+    for (int row = 0; row < 2; row++) {
+        for (int col = 0; col < 2; col++) {
+            result.m[row][col] = m[row][col] / scalar;
+        }
+    }
+    return result;
 }
 
 Matrix2 operator*(float scalar, const Matrix2& mat2) {
