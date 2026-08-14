@@ -2,6 +2,7 @@
 #include <ostream>
 
 #include "Utilities/Math/Common/Comparison.hpp"
+#include "Utilities/Math/Common/Interpolation.hpp"
 
 
 namespace E::M {
@@ -119,12 +120,16 @@ float Vector2::Dot(const Vector2& vec2) const {
     return x * vec2.x + y * vec2.y;
 }
 
+Vector2 Vector2::Lerp(const Vector2& vec2, const float t) const {
+    return {M::Lerp(x, vec2.x, t), M::Lerp(y, vec2.y, t)};
+}
+
 float Vector2::Distance(const Vector2& vec2) const {
     return (*this - vec2).Length();
 }
 
 bool Vector2::NearlyEquals(const Vector2& vec2, float epsilon) const {
-    return M::NearlyEquals(x, vec2.x) && M::NearlyEquals(y, vec2.y, epsilon);
+    return M::NearlyEquals(x, vec2.x, epsilon) && M::NearlyEquals(y, vec2.y, epsilon);
 }
 
 Vector2 Vector2::Normalized() const {

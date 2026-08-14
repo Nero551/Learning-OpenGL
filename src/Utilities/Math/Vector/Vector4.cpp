@@ -2,6 +2,7 @@
 #include <ostream>
 
 #include "Utilities/Math/Common/Comparison.hpp"
+#include "Utilities/Math/Common/Interpolation.hpp"
 
 namespace E::M {
 Vector4::Vector4() : x(0), y(0), z(0), w(0) {}
@@ -116,6 +117,10 @@ float Vector4::Length() const {
 
 float Vector4::Dot(const Vector4& vec4) const {
     return x * vec4.x + y * vec4.y + z * vec4.z + w * vec4.w;
+}
+
+Vector4 Vector4::Lerp(const Vector4& vec4, float t) const {
+    return {M::Lerp(x, vec4.x, t), M::Lerp(y, vec4.y, t), M::Lerp(z, vec4.z, t), M::Lerp(w, vec4.w, t)};
 }
 
 float Vector4::Distance(const Vector4& vec4) const {

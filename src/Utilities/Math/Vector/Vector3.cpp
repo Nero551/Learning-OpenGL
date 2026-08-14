@@ -154,7 +154,7 @@ bool Vector3::IsParallelTo(const Vector3& vec3) const {
         return false;
     }
 
-    return Cross(vec3).LengthSquared() < EPSILON;
+    return Cross(vec3).LengthSquared() < (EPSILON * EPSILON);
 }
 
 bool Vector3::IsPerpendicularTo(const Vector3& vec3) const {
