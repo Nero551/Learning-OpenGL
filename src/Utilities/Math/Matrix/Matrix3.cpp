@@ -1,11 +1,9 @@
-
 #include "Matrix3.hpp"
 
-#include "Utilities/Math/MathUtils.hpp"
 
-
-#include "../Basis.hpp"
+#include "../Geometry/Basis.hpp"
 #include "Utilities/Logger.hpp"
+#include "Utilities/Math/Common/Comparison.hpp"
 
 
 namespace E::M {

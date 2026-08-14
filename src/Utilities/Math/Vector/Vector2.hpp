@@ -1,6 +1,6 @@
 #pragma once
+#include "Utilities/Math/Common/Constants.hpp"
 
-#include "../MathUtils.hpp"
 
 namespace E::M {
 struct Vector2 {

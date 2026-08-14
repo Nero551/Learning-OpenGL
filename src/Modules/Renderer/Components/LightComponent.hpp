@@ -2,6 +2,7 @@
 
 #include "../Enums/LightType.hpp"
 #include "Core/OuterCore/ECS/Component.hpp"
+#include "Utilities/Math/Common/Trigonometry.hpp"
 #include "Utilities/Math/Vector/Vector3.hpp"
 
 namespace E {

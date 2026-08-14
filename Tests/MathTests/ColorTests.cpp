@@ -1,5 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
-#include "Utilities/Math/Color.hpp"
+#include "Utilities/Math/Color/Color.hpp"
 
 TEST_CASE("Color constants") {
    REQUIRE(E::M::Color::White == E::M::Vector4(1, 1, 1, 1));

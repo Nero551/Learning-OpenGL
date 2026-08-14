@@ -1,8 +1,9 @@
 #include "Vector3.hpp"
 
-#include "Utilities/Math/MathUtils.hpp"
-
 #include <ostream>
+
+#include "Utilities/Math/Common/Comparison.hpp"
+#include "Utilities/Math/Common/Interpolation.hpp"
 
 namespace E::M {
 Vector3::Vector3() : x(0), y(0), z(0) {}

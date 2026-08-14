@@ -1,7 +1,7 @@
 #include "../Primitives.hpp"
 #include "Core/InnerCore/Engine.hpp"
 #include "Core/Services/ResourceManager.hpp"
-#include "Utilities/Math/Color.hpp"
+#include "Utilities/Math/Color/Color.hpp"
 
 
 namespace E {

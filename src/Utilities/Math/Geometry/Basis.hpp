@@ -1,6 +1,6 @@
 #pragma once
-#include "Matrix/Matrix4.hpp"
-#include "Vector/Vector3.hpp"
+#include "../Matrix/Matrix4.hpp"
+#include "../Vector/Vector3.hpp"
 
 namespace E::M {
 struct Basis {

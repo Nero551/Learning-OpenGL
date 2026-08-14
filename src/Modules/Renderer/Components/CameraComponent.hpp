@@ -2,7 +2,7 @@
 
 #include "Core/OuterCore/ECS/Component.hpp"
 #include "Modules/Renderer/Enums/ProjectionMode.hpp"
-#include "Utilities/Math/MathUtils.hpp"
+#include "Utilities/Math/Common/Trigonometry.hpp"
 #include "Utilities/Math/Matrix/Matrix4.hpp"
 
 namespace E {

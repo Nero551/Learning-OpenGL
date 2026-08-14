@@ -1,5 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
-#include "Utilities/Math/Basis.hpp"
+#include "Utilities/Math/Geometry/Basis.hpp"
 
 TEST_CASE("Basis GetMatrix and GetInverseMatrix") {
    E::M::Basis basis;

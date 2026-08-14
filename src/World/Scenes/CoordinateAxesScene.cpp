@@ -7,7 +7,7 @@
 #include "Modules/Renderer/Components/MaterialComponent.hpp"
 #include "Modules/Renderer/Components/MeshComponent.hpp"
 #include "Modules/Renderer/Primitives/Primitives.hpp"
-#include "Utilities/Math/Color.hpp"
+#include "Utilities/Math/Color/Color.hpp"
 #include "World/Novas/Camera.hpp"
 #include "World/Novas/Light.hpp"
 #include "World/Novas/MeshInstance3D.hpp"

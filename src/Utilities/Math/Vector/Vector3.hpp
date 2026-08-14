@@ -1,6 +1,5 @@
 #pragma once
-
-#include "../MathUtils.hpp"
+#include "Utilities/Math/Common/Constants.hpp"
 
 namespace E::M {
 struct Vector3 {

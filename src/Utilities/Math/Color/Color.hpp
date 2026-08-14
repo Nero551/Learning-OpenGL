@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector/Vector4.hpp"
+#include "../Vector/Vector4.hpp"
 
 namespace E::M {
 struct Color {

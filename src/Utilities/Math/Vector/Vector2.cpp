@@ -1,7 +1,8 @@
 #include "Vector2.hpp"
 #include <ostream>
 
-#include "../MathUtils.hpp"
+#include "Utilities/Math/Common/Comparison.hpp"
+
 
 namespace E::M {
 Vector2::Vector2() : x(0), y(0) {}

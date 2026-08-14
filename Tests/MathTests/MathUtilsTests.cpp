@@ -4,17 +4,21 @@
 #include <cmath>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
-#include "Utilities/Math/MathUtils.hpp"
+#include "Utilities/Math/Common/Comparison.hpp"
+#include "Utilities/Math/Common/Constants.hpp"
+#include "Utilities/Math/Common/Exponentials.hpp"
+#include "Utilities/Math/Common/Logarithms.hpp"
+#include "Utilities/Math/Common/Trigonometry.hpp"
+
 
 using Catch::Approx;
 using Catch::Matchers::WithinAbs;
 
-TEST_CASE (
+TEST_CASE(
 
 
-"E::M::Rad"
-)
- {
+    "E::M::Rad"
+) {
     REQUIRE(E::M::Rad(0.f) == Approx(0.f));
     REQUIRE(E::M::Rad(90.f) == Approx(E::M::PI / 2.f));
     REQUIRE(E::M::Rad(180.f) == Approx(E::M::PI));
@@ -24,12 +28,11 @@ TEST_CASE (
     REQUIRE(E::M::Rad(-180.f) == Approx(-E::M::PI));
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"E::M::Deg"
-)
- {
+    "E::M::Deg"
+) {
     REQUIRE(E::M::Deg(0.f) == Approx(0.f));
     REQUIRE(E::M::Deg(E::M::PI / 2.f) == Approx(90.f));
     REQUIRE(E::M::Deg(E::M::PI) == Approx(180.f));
@@ -39,12 +42,11 @@ TEST_CASE (
     REQUIRE(E::M::Deg(-E::M::PI) == Approx(-180.f));
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"Degree/Radian round-trip"
-)
- {
+    "Degree/Radian round-trip"
+) {
     for (float deg = -720.f; deg <= 720.f; deg += 15.f)
         REQUIRE(E::M::Deg(E::M::Rad(deg)) == Approx(deg));
 
@@ -52,12 +54,11 @@ TEST_CASE (
         REQUIRE(E::M::Rad(E::M::Deg(rad)) == Approx(rad));
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"DSin matches std::sin"
-)
- {
+    "DSin matches std::sin"
+) {
     REQUIRE(E::M::DSin(90.f) == Approx(1.f));
     REQUIRE(E::M::DSin(270.f) == Approx(-1.f));
 
@@ -69,12 +70,11 @@ TEST_CASE (
         REQUIRE(E::M::DSin(deg) == Approx(std::sin(E::M::Rad(deg))).margin(1e-6f));
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"DCos matches std::cos"
-)
- {
+    "DCos matches std::cos"
+) {
     REQUIRE(E::M::DCos(0.f) == Approx(1.f));
     REQUIRE(E::M::DCos(180.f) == Approx(-1.f));
     REQUIRE(E::M::DCos(360.f) == Approx(1.f));
@@ -86,12 +86,11 @@ TEST_CASE (
         REQUIRE(E::M::DCos(deg) == Approx(std::cos(E::M::Rad(deg))).margin(1e-6f));
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"DTan matches std::tan"
-)
- {
+    "DTan matches std::tan"
+) {
     REQUIRE(E::M::DTan(45.f) == Approx(1.f));
     REQUIRE(E::M::DTan(-45.f) == Approx(-1.f));
 
@@ -106,12 +105,11 @@ TEST_CASE (
     }
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"Pow"
-)
- {
+    "Pow"
+) {
     REQUIRE(E::M::Pow(2.f, 3.f) == Approx(8.f));
     REQUIRE(E::M::Pow(4.f, 0.5f) == Approx(2.f));
     REQUIRE(E::M::Pow(10.f, 0.f) == Approx(1.f));
@@ -124,12 +122,11 @@ TEST_CASE (
         REQUIRE(E::M::Pow(x, 2.5f) == Approx(std::pow(x, 2.5f)));
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"Sqrt"
-)
- {
+    "Sqrt"
+) {
     REQUIRE(E::M::Sqrt(0.f) == Approx(0.f));
     REQUIRE(E::M::Sqrt(1.f) == Approx(1.f));
     REQUIRE(E::M::Sqrt(4.f) == Approx(2.f));
@@ -140,12 +137,11 @@ TEST_CASE (
         REQUIRE(E::M::Sqrt(x) == Approx(std::sqrt(x)));
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"Ln"
-)
- {
+    "Ln"
+) {
     REQUIRE(E::M::Ln(1.f) == Approx(0.f));
     REQUIRE(E::M::Ln(E::M::E) == Approx(1.f));
     REQUIRE(E::M::Ln(E::M::E * E::M::E) == Approx(2.f));
@@ -157,12 +153,11 @@ TEST_CASE (
         REQUIRE(E::M::Ln(x) == Approx(std::log(x)));
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"Log"
-)
- {
+    "Log"
+) {
     REQUIRE(E::M::Log(10.f, 100.f) == Approx(2.f));
     REQUIRE(E::M::Log(2.f, 8.f) == Approx(3.f));
     REQUIRE(E::M::Log(5.f, 25.f) == Approx(2.f));
@@ -180,12 +175,11 @@ TEST_CASE (
     }
 }
 
-TEST_CASE (
+TEST_CASE(
 
 
-"NearlyEquals"
-)
- {
+    "NearlyEquals"
+) {
     constexpr float eps = E::M::EPSILON;
 
     REQUIRE(E::M::NearlyEquals(1.f, 1.f));

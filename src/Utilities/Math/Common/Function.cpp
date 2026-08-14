@@ -1,6 +1,6 @@
 #include "Function.hpp"
 
-#include "MathUtils.hpp"
+#include "Comparison.hpp"
 #include "Utilities/Logger.hpp"
 
 namespace E::M {

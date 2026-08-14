@@ -12,7 +12,7 @@
 namespace E {
 Engine::Engine() : Window(800, 600, "Nova") {
     Running = true;
-    Ins = this;
+    Instance = this;
 }
 
 void Engine::PreInit() {
