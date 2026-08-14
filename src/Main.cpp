@@ -14,7 +14,7 @@ int main() {
     // Testing();
     // return 0;
 
-    glfwInit();
+    E::Engine::PreInit();
     E::Engine engine;
 
     engine.Start();

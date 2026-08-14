@@ -27,6 +27,11 @@ struct Engine {
     Window Window;
     World World;
 
+    /** @brief Runs before the creation of the engine.
+    * includes things such as glfwInit()
+    */
+    static void PreInit();
+
     Engine();
 
     void Start();

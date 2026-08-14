@@ -8,9 +8,8 @@ Window::Window(const int width, const int height, const std::string& title) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHintString(GLFW_WAYLAND_APP_ID, "pu_engine");
-    glfwWindowHintString(GLFW_X11_CLASS_NAME, "pu_engine");
-
+    glfwWindowHintString(GLFW_X11_CLASS_NAME, "nova_engine");
+    glfwWindowHintString(GLFW_WAYLAND_APP_ID, "nova_engine");
 
     GLFWwindow* glfwWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     if (!glfwWindow) {

@@ -10,15 +10,19 @@
 #include "Modules/Profiling/Profiling.hpp"
 
 namespace E {
-Engine::Engine() : Window(800, 600, "Plus Ultra") {
+Engine::Engine() : Window(800, 600, "Nova") {
     Running = true;
     Ins = this;
+}
+
+void Engine::PreInit() {
+    glfwInit();
 }
 
 void Engine::Configure() {
     Window.SetIcon({"Assets/icon.png"});
     // Window.SetSize(1980, 1200);
-    glfwSwapInterval(0);
+    glfwSwapInterval(1);
 
     AddModule<Renderer>();
     AddModule<Input>();
@@ -122,10 +126,11 @@ void Engine::BeginFrame() {
 }
 
 void Engine::EndFrame() {
+    Window.SwapBuffers();
+
     const double currentFrame = Time;
     DeltaTime = currentFrame - LastFrame;
     LastFrame = currentFrame;
-    Window.SwapBuffers();
 
     World.EndFrame(DeltaTime);
     for (auto& module : Modules | std::views::values) {
