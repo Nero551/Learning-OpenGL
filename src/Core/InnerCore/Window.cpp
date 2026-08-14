@@ -71,7 +71,7 @@ int Window::GetWidth() const {
 }
 
 void Window::Close() {
-    glfwSetWindowShouldClose(GlfwWindow, true);
+    glfwSetWindowShouldClose(GlfwWindow, GL_TRUE);
 }
 
 void Window::SetIcon(const U::Image& icon) {

@@ -71,6 +71,11 @@ protected:
     }
 
 private:
+    /** @brief Destroys all services */
+    static void DestroyServices() {
+        Services.clear();
+    }
+
     inline static std::unordered_map<std::type_index, std::unique_ptr<Service>> Services;
 };
 }

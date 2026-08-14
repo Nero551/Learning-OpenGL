@@ -65,7 +65,6 @@ void Engine::Update() {
 
     if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
         Running = false;
-        Window.Close();
     }
 
     if (GetModule<Input>().IsKeyReleased(Key::Q)) {
@@ -99,6 +98,7 @@ void Engine::Stop() {
         service->Stop();
     }
 
+    Service::DestroyServices();
     glfwTerminate();
 }
 
