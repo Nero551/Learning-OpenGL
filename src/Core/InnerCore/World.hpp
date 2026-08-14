@@ -5,7 +5,6 @@
 #include "Core/OuterCore/Service.hpp"
 #include "Core/Services/EventBus.hpp"
 #include "Utilities/Logger.hpp"
-#include "Utilities/Math/MathUtils.hpp"
 #include "World/Events/EntityCreated.hpp"
 
 namespace E {

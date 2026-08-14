@@ -52,7 +52,7 @@ struct Engine {
     * @brief Returns the global engine instance.
     */
     static Engine& Get() {
-        return *Ins;
+        return *Instance;
     }
 
     /**
@@ -72,7 +72,7 @@ struct Engine {
     }
 
 private:
-    inline static U::CheckedPtr<Engine> Ins = nullptr;
+    inline static U::CheckedPtr<Engine> Instance = nullptr;
     void Configure();
 
     /**

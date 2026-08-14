@@ -28,10 +28,10 @@ Function Function::Compose(const Function& g) const {
     };
 }
 
-Function Function::Integrate(float a, float dx) const {
-    return [f = *this, a, dx](float b) {
+Function Function::Integrate(float lowerBound, float dx) const {
+    return [f = *this, lowerBound, dx](float upperBound) {
         float result = 0.0f;
-        for (float x = a; x < b; x += dx) {
+        for (float x = lowerBound; x < upperBound; x += dx) {
             float midpoint = x + dx / 2.0f;
             result += f(midpoint) * dx;
         }
@@ -39,8 +39,8 @@ Function Function::Integrate(float a, float dx) const {
     };
 }
 
-float Function::Integral(float a, float b, float dx) const {
-    return Integrate(a, dx).Evaluate(b);
+float Function::Integral(float lowerBound, float upperBound, float dx) const {
+    return Integrate(lowerBound, dx).Evaluate(upperBound);
 }
 
 float Function::InverseEvaluate(float y, float domainMin, float domainMax) const {

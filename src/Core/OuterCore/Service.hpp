@@ -8,6 +8,8 @@ template <typename T> concept ServiceType = std::derived_from<T, Service>;
 
 /**
  * @brief Base class for globally accessible services.
+ * Services aren't owned by the Engine, primarily to avoid cyclic dependencies.
+ * services do get destroyed ,created & updated in the engine loop though.
  */
 struct Service {
     Service() = default;
