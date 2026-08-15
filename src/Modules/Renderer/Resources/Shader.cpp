@@ -42,12 +42,16 @@ unsigned int Shader::GetId() const {
 }
 
 void Shader::Use() {
-    if (Id == 0) {
+    if (!IsProgramCreated()) {
         CreateProgram();
     }
 
     glUseProgram(Id);
     UploadUniforms();
+}
+
+bool Shader::IsProgramCreated() {
+    return Id != 0;
 }
 
 void Shader::UploadUniforms() {
@@ -84,7 +88,7 @@ void Shader::CreateProgram() {
     Id = glCreateProgram();
 
     for (const auto& source : Sources) {
-        if (source->GetId() == 0) {
+        if (!source->IsCompiled()) {
             source->Compile();
         }
         glAttachShader(Id, source->GetId());

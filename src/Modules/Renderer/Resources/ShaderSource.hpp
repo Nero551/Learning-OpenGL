@@ -27,6 +27,7 @@ struct ShaderSource : Resource {
 
     /** @brief Preprocesses the source, generates an OpenGL id, compiles the source a */
     void Compile();
+    bool IsCompiled() const;
     /** @brief Reloads and preprocesses the shader source. */
     void Reload();
 

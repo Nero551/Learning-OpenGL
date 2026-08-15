@@ -39,6 +39,8 @@ struct Shader : Resource {
     /** @brief Activates the shader and uploads pending uniforms. */
     void Use();
 
+    bool IsProgramCreated();
+
     /**
      * @brief Queues a uniform for upload.
      *
@@ -54,11 +56,7 @@ struct Shader : Resource {
 
     void AssignSource(ShaderSource& source);
 
-    /**
-     * @brief Rebuilds the shader program from its assigned sources.
-     * Recompiles and relinks the shader program using the currently
-     * assigned shader sources.
-     */
+    /** @brief deletes the current shader program and uniform locations , which causes them to be recreated on Use() */
     void Reload();
 
     std::vector<U::CheckedPtr<ShaderSource>>& GetSources();

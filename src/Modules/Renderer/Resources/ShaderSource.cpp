@@ -33,6 +33,10 @@ void ShaderSource::Compile() {
     }
 }
 
+bool ShaderSource::IsCompiled() const {
+    return Id != 0;
+}
+
 void ShaderSource::Preprocess() {
     Code.insert(0, "#" + Version + "\n");
 
