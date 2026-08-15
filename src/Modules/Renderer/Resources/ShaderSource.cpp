@@ -9,11 +9,15 @@
 
 namespace E {
 void ShaderSource::Compile() {
+    if (IsCompiled()) {
+        return;
+    }
+
     Preprocess();
 
-    const char* string = Code.c_str();
+    const char* string = GeneratedCode.c_str();
 
-    Id = glCreateShader(static_cast<int>(Stage));
+    Id = glCreateShader(static_cast<GLenum>(Stage));
     glShaderSource(Id, 1, &string, nullptr);
     glCompileShader(Id);
 
@@ -25,11 +29,13 @@ void ShaderSource::Compile() {
         U::Logger::Error(std::string("Shader:" + Name) + infoLog + " | " + Path);
 
         if (Stage == ShaderStage::Fragment) {
-            U::FileSystem::WriteFile("Assets/ShaderCompileError.frag", Code);
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.frag", GeneratedCode);
         }
         if (Stage == ShaderStage::Vertex) {
-            U::FileSystem::WriteFile("Assets/ShaderCompileError.vert", Code);
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.vert", GeneratedCode);
         }
+        glDeleteShader(Id);
+        Id = 0;
     }
 }
 
@@ -38,11 +44,12 @@ bool ShaderSource::IsCompiled() const {
 }
 
 void ShaderSource::Preprocess() {
-    Code.insert(0, "#" + Version + "\n");
-
+    GeneratedCode = SourceCode;
     Includes.clear();
+    GeneratedCode.insert(0, "#" + Version + "\n");
+
     std::unordered_set<std::string> includesProcessing;
-    PreprocessIncludes(Path, Code, includesProcessing);
+    PreprocessIncludes(Path, GeneratedCode, includesProcessing);
 }
 
 
@@ -85,7 +92,7 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
 
 ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage, std::string version) :
     Resource(name), Path(path), Version(std::move(version)), Stage(stage) {
-    Code = U::FileSystem::ReadFile(path);
+    SourceCode = U::FileSystem::ReadFile(path);
 }
 
 ShaderSource::~ShaderSource() {
@@ -96,14 +103,13 @@ unsigned int ShaderSource::GetId() const {
     return Id;
 }
 
-ShaderStage ShaderSource::GetStage() {
+ShaderStage ShaderSource::GetStage() const {
     return Stage;
 }
 
 void ShaderSource::Reload() {
-    Code = U::FileSystem::ReadFile(Path);
+    SourceCode = U::FileSystem::ReadFile(Path);
     glDeleteShader(Id);
     Id = 0;
-    Includes.clear();
 }
 }

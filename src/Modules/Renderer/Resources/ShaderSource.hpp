@@ -13,7 +13,12 @@ namespace E {
  */
 struct ShaderSource : Resource {
     std::string Path;
-    std::string Code;
+
+    /** @brief code loaded from the source , no modifications */
+    std::string SourceCode;
+
+    /** @brief SourceCode with modifications (preprocessing) */
+    std::string GeneratedCode;
     std::string Version = "version 330 core";
 
     //TODO- it would be really cool if i could have methods for adding code dynamically , like GenerateInt("MaxLights", 20)
@@ -23,7 +28,7 @@ struct ShaderSource : Resource {
 
     ~ShaderSource() override;
     unsigned int GetId() const;
-    ShaderStage GetStage();
+    ShaderStage GetStage() const;
 
     /** @brief Preprocesses the source, generates an OpenGL Id & compiles the source */
     void Compile();
