@@ -53,6 +53,7 @@ struct Engine {
      * The loop continues until Shutdown() is called. Once the running
      * state becomes false, the main loop exits and Stop() is called to
      * perform engine cleanup.
+     * Order: Start -> BeginFrame -> FixedUpdate -> Update -> Render -> EndFrame -> Stop
      */
     void Run();
 

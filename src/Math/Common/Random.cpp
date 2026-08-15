@@ -1,4 +1,4 @@
-#pragma once
+#include "Random.hpp"
 
 namespace E::M {
 static std::mt19937 rng(std::random_device{}());
@@ -16,5 +16,9 @@ int Random(int min, int max) {
 float RandomGaussian(float mean, float standardDeviation) {
     std::normal_distribution distribution(mean, standardDeviation);
     return distribution(rng);
+}
+
+unsigned long NoDistributionRandom() {
+    return rng();
 }
 }

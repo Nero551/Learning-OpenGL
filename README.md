@@ -81,8 +81,7 @@
 
 ### Week 7 — August 7–13
 
-- Added doxygen for docs
+- Added Doxygen for docs
 - basic limits
--
 
 ### Week 8 — August 14–20

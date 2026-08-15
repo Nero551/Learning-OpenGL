@@ -11,9 +11,6 @@ static void Testing() {
 }
 
 int main() {
-    // Testing();
-    // return 0;
-
     E::Engine::Create().Run();
     return 0;
 }

@@ -27,11 +27,10 @@ Engine& Engine::Get() {
 }
 
 void Engine::Run() {
-    Running = true;
-    Start();
-
     double accumulator = 0;
+    Running = true;
 
+    Start();
     while (Running) {
         BeginFrame();
 
@@ -45,10 +44,8 @@ void Engine::Run() {
 
         Update();
         Render();
-
         EndFrame();
     }
-
     Stop();
 }
 

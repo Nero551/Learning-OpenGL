@@ -5,6 +5,7 @@
 #include "Core/Services/ResourceManager.hpp"
 #include "Math/Common/Exponentials.hpp"
 #include "Math/Common/Function.hpp"
+#include "Math/Common/Random.hpp"
 #include "Math/Vector/Vector4.hpp"
 #include "Modules/Renderer/Primitives/Primitives.hpp"
 #include "World/Novas/Light.hpp"
