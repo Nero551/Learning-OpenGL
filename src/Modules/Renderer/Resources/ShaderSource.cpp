@@ -8,6 +8,31 @@
 #include "Utilities/FileSystem/FileSystem.hpp"
 
 namespace E {
+void ShaderSource::Compile() {
+    Preprocess();
+
+    const char* string = Code.c_str();
+
+    Id = glCreateShader(static_cast<int>(Stage));
+    glShaderSource(Id, 1, &string, nullptr);
+    glCompileShader(Id);
+
+    int success;
+    char infoLog[512];
+    glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        glGetShaderInfoLog(Id, 512, nullptr, infoLog);
+        U::Logger::Error(std::string("Shader:" + Name) + infoLog + " | " + Path);
+
+        if (Stage == ShaderStage::Fragment) {
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.frag", Code);
+        }
+        if (Stage == ShaderStage::Vertex) {
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.vert", Code);
+        }
+    }
+}
+
 void ShaderSource::Preprocess() {
     Code.insert(0, "#" + Version + "\n");
 
@@ -57,33 +82,6 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
 ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage, std::string version) :
     Resource(name), Path(path), Version(std::move(version)), Stage(stage) {
     Code = U::FileSystem::ReadFile(path);
-
-
-    if (Code.empty()) {
-        return;
-    }
-    Preprocess();
-
-    const char* string = Code.c_str();
-
-    Id = glCreateShader(static_cast<int>(Stage));
-    glShaderSource(Id, 1, &string, nullptr);
-    glCompileShader(Id);
-
-    int success;
-    char infoLog[512];
-    glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        glGetShaderInfoLog(Id, 512, nullptr, infoLog);
-        U::Logger::Error(std::string("Shader:" + Name) + infoLog + " | " + Path);
-
-        if (Stage == ShaderStage::Fragment) {
-            U::FileSystem::WriteFile("Assets/ShaderCompileError.frag", Code);
-        }
-        if (Stage == ShaderStage::Vertex) {
-            U::FileSystem::WriteFile("Assets/ShaderCompileError.vert", Code);
-        }
-    }
 }
 
 ShaderSource::~ShaderSource() {
@@ -100,30 +98,8 @@ ShaderStage ShaderSource::GetStage() {
 
 void ShaderSource::Reload() {
     Code = U::FileSystem::ReadFile(Path);
-
-    if (Code.empty()) {
-        return;
-    }
-    Preprocess();
-
-    const char* string = Code.c_str();
-
-    glShaderSource(Id, 1, &string, nullptr);
-    glCompileShader(Id);
-
-    int success;
-    char infoLog[512];
-    glGetShaderiv(Id, GL_COMPILE_STATUS, &success);
-    if (!success) {
-        glGetShaderInfoLog(Id, 512, nullptr, infoLog);
-        U::Logger::Error(std::string("Shader:" + Name) + infoLog + " | " + Path);
-
-        if (Stage == ShaderStage::Fragment) {
-            U::FileSystem::WriteFile("Assets/ShaderCompileError.frag", Code);
-        }
-        if (Stage == ShaderStage::Vertex) {
-            U::FileSystem::WriteFile("Assets/ShaderCompileError.vert", Code);
-        }
-    }
+    glDeleteShader(Id);
+    Id = 0;
+    Includes.clear();
 }
 }

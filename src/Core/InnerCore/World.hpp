@@ -24,6 +24,8 @@ struct World : SystemOwner {
     U::CheckedPtr<Entity> ActiveCamera{"World Has No Active Camera"};
     int MaxLights = 64;
 
+    //TODO- try making entities own their children instead of being checked pointers. if works , might make the hierarchy alot easier
+
     /** @brief Gets the global World instance. */
     static World& Get();
 

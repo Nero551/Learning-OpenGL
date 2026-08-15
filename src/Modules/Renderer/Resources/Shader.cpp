@@ -34,8 +34,7 @@ void Shader::Reload() {
 
     UniformLocations.clear();
     glDeleteProgram(Id);
-
-    CreateProgram();
+    Id = 0;
 }
 
 unsigned int Shader::GetId() const {
@@ -85,6 +84,9 @@ void Shader::CreateProgram() {
     Id = glCreateProgram();
 
     for (const auto& source : Sources) {
+        if (source->GetId() == 0) {
+            source->Compile();
+        }
         glAttachShader(Id, source->GetId());
     }
     glLinkProgram(Id);
