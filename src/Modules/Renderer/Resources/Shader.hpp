@@ -39,7 +39,10 @@ struct Shader : Resource {
     /** @brief Activates the shader and uploads pending uniforms. */
     void Use();
 
-    bool IsProgramCreated();
+    /** @brief Checks if the shader program exists.
+     * @return  true if exists , false if not.
+     */
+    bool IsProgramCreated() const;
 
     /**
      * @brief Queues a uniform for upload.

@@ -50,7 +50,7 @@ void Shader::Use() {
     UploadUniforms();
 }
 
-bool Shader::IsProgramCreated() {
+bool Shader::IsProgramCreated() const {
     return Id != 0;
 }
 

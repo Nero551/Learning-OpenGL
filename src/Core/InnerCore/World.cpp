@@ -88,12 +88,10 @@ void World::RemoveEntity(unsigned int id) {
     }
 
     Service::Get<EventBus>().Fire<EntityDestroyed>(*entity);
-    Entities[id].release();
     Entities.erase(id);
 
     for (auto& descendant : descendants) {
         Service::Get<EventBus>().Fire<EntityDestroyed>(*descendant);
-        Entities[descendant->Id].release();
         Entities.erase(descendant->Id);
     }
 }
