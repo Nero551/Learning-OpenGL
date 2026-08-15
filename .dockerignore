@@ -1,6 +1,0 @@
-build/
-.idea/
-.vscode/
-.cache/
-Tests/build-tests/
-vcpkg/

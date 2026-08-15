@@ -7,8 +7,7 @@ namespace E {
 void Input::OnStart() {
     Window& window = Engine::Get().Window;
     glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xPos, double yPos) {
-        Engine::Get().GetModule<Input>().MousePosition = M::Vector2(static_cast<float>(xPos),
-            static_cast<float>(yPos));
+        Engine::Get().GetModule<Input>().MousePosition = {static_cast<float>(xPos), static_cast<float>(yPos)};
     });
 
     glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xOffset, double yOffset) {

@@ -58,6 +58,11 @@ double Engine::GetTime() const {
 }
 
 void Engine::PreInit() {
+    //TODO- spams invalid key for some reason
+    //
+    // glfwSetErrorCallback([](int error, const char* description) {
+    //     U::Logger::Error("[GLFW]", ": ", description);
+    // });
     glfwInit();
 }
 

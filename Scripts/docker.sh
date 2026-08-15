@@ -1,5 +1,4 @@
 #!/bin/sh
-
 set -e
 
 docker build -t nova-dev .
@@ -7,6 +6,12 @@ docker build -t nova-dev .
 echo "🥳 Built Image"
 
 docker run --rm -it \
+    --runtime=nvidia \
+    --gpus all \
+    -e GLFW_PLATFORM=wayland \
+    -v "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY" \
+    -e WAYLAND_DISPLAY="$WAYLAND_DISPLAY" \
+    -e XDG_RUNTIME_DIR=/tmp \
     -v "$PWD/CMakeLists.txt:/Nova/CMakeLists.txt" \
     -v "$PWD/CMakePresets.json:/Nova/CMakePresets.json" \
     -v "$PWD/src:/Nova/src" \
