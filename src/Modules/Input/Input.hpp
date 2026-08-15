@@ -32,12 +32,12 @@ struct Input : Module {
     void SetMouseMode(MouseMode mode);
 
 private:
-    MouseMode mouseMode = MouseMode::Normal;
-    M::Vector2 mousePosition = M::Vector2::Zero;
-    M::Vector2 previousMousePosition = M::Vector2::Zero;
-    bool firstMouse = true;
+    MouseMode MouseMode = MouseMode::Normal;
+    M::Vector2 MousePosition = M::Vector2::Zero;
+    M::Vector2 PreviousMousePosition = M::Vector2::Zero;
+    bool FirstMouse = true;
 
-    M::Vector2 scrollOffset = M::Vector2::Zero;
+    M::Vector2 ScrollOffset = M::Vector2::Zero;
 
     static constexpr unsigned int MouseButtonCount = GLFW_MOUSE_BUTTON_LAST + 1;
     static constexpr unsigned int KeyCount = GLFW_KEY_LAST + 1;
@@ -60,4 +60,3 @@ protected:
     void OnEndFrame(double dt) override;
 };
 }
-

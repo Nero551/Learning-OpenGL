@@ -52,6 +52,10 @@ void Engine::Run() {
     Stop();
 }
 
+void Engine::Shutdown() {
+    Running = false;
+}
+
 double Engine::GetTime() const {
     return Time;
 }
@@ -86,8 +90,6 @@ void Engine::Start() {
     for (auto& service : Service::GetAll()) {
         service->Start();
     }
-
-    GetModule<Input>().SetMouseMode(MouseMode::Disabled);
 }
 
 
@@ -100,19 +102,6 @@ void Engine::Update() {
 
     for (auto& service : Service::GetAll()) {
         service->Update(DeltaTime);
-    }
-
-    if (GetModule<Input>().IsKeyHeld(Key::Escape)) {
-        Running = false;
-    }
-
-    if (GetModule<Input>().IsKeyReleased(Key::Q)) {
-        if (GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
-            GetModule<Input>().SetMouseMode(MouseMode::Normal);
-        }
-        else {
-            GetModule<Input>().SetMouseMode(MouseMode::Disabled);
-        }
     }
 }
 

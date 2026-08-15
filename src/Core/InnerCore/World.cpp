@@ -22,6 +22,8 @@ World& World::Get() {
 
 void World::Start() {
     AddSystems();
+    Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+
     Root = &CreateEntity<Nova>();
 
     auto& camera = CreateEntity<Camera>();
@@ -37,6 +39,19 @@ void World::Start() {
 }
 
 void World::Update(double dt) {
+    if (Engine::Get().GetModule<Input>().IsKeyHeld(Key::Escape)) {
+        Engine::Get().Shutdown();
+    }
+
+    if (Engine::Get().GetModule<Input>().IsKeyReleased(Key::Q)) {
+        if (Engine::Get().GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
+            Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Normal);
+        }
+        else {
+            Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+        }
+    }
+
     for (auto& system : Systems | std::views::values) {
         system->Update(dt);
     }
