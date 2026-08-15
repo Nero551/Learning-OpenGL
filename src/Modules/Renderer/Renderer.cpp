@@ -51,7 +51,7 @@ void Renderer::OnRender() {
             }
 
             materialComponent.Material->Shader->SetUniform(
-                FloatUniform("TIME", static_cast<float>(Engine::Get().Time)));
+                FloatUniform("TIME", static_cast<float>(Engine::Get().GetTime())));
 
             materialComponent.Material->Shader->SetUniform(Vector3Uniform("VIEW_POSITION",
                 camera->GetComponent<Transform3DComponent>().Position));

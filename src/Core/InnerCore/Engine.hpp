@@ -17,47 +17,25 @@ template <typename T>concept ModuleType = std::derived_from<T, Module>;
  * stores modules, world & window
  */
 struct Engine {
-    bool Running;
-
-    /** Total elapsed engine time in seconds. */
-    double Time = 0;
-
-    /** Duration of the previous frame in seconds. */
-    double DeltaTime = 0;
-
-    /** Fixed timestep used by FixedUpdate, in seconds. */
-    double FixedDeltaTime = 1.0 / 60.0;
-
     Window Window;
     World World;
 
-    /** @brief Runs before the creation of the engine.
-    * includes things such as glfwInit()
-    */
-    static void PreInit();
+    Engine(const Engine&) = delete;
+    Engine& operator=(const Engine&) = delete;
 
-    Engine();
+    Engine(Engine&&) = delete;
+    Engine& operator=(Engine&&) = delete;
 
-    void Start();
-
-    void Stop();
-
-    void BeginFrame();
-
-    void EndFrame();
-
-    void Update();
-
-    void FixedUpdate();
-
-    void Render();
+    /** @brief runs PreInit() and creates an engine object */
+    static Engine Create();
 
     /**
     * @brief Returns the global engine instance.
     */
-    static Engine& Get() {
-        return *Instance;
-    }
+    static Engine& Get();
+    void Run();
+
+    double GetTime() const;
 
     /**
     * @brief Retrieves a registered module by its type.
@@ -77,6 +55,19 @@ struct Engine {
 
 private:
     inline static U::CheckedPtr<Engine> Instance = nullptr;
+    std::unordered_map<std::type_index, std::unique_ptr<Module>> Modules;
+    double LastFrame = 0;
+    bool Running = false;
+
+    /** Total elapsed engine time in seconds. */
+    double Time = 0;
+
+    /** Duration of the previous frame in seconds. */
+    double DeltaTime = 0;
+
+    /** Fixed timestep used by FixedUpdate, in seconds. */
+    double FixedDeltaTime = 1.0 / 60.0;
+
     void Configure();
 
     /**
@@ -91,8 +82,24 @@ private:
         return static_cast<T&>(*Modules.find(typeid(T))->second);
     }
 
-    std::unordered_map<std::type_index, std::unique_ptr<Module>> Modules;
+    /** @brief Runs before the creation of the engine. MUST be called before creating an engine instance
+    * includes things such as glfwInit()
+    */
+    static void PreInit();
+    Engine();
 
-    double LastFrame = 0;
+    void Start();
+
+    void Stop();
+
+    void BeginFrame();
+
+    void EndFrame();
+
+    void Update();
+
+    void FixedUpdate();
+
+    void Render();
 };
 }

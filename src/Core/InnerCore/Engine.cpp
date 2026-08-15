@@ -11,8 +11,49 @@
 
 namespace E {
 Engine::Engine() : Window(800, 600, "Nova") {
-    Running = true;
+    if (Instance) {
+        U::Logger::Fatal("Only one Engine may exist.");
+    }
     Instance = this;
+}
+
+Engine Engine::Create() {
+    PreInit();
+    return {};
+}
+
+Engine& Engine::Get() {
+    return *Instance;
+}
+
+void Engine::Run() {
+    Running = true;
+    Start();
+
+    double accumulator = 0;
+
+    while (Running) {
+        BeginFrame();
+
+        accumulator += DeltaTime;
+        accumulator = std::min(accumulator, 0.25);
+
+        while (accumulator >= FixedDeltaTime) {
+            FixedUpdate();
+            accumulator -= FixedDeltaTime;
+        }
+
+        Update();
+        Render();
+
+        EndFrame();
+    }
+
+    Stop();
+}
+
+double Engine::GetTime() const {
+    return Time;
 }
 
 void Engine::PreInit() {
@@ -51,8 +92,6 @@ void Engine::Start() {
 
 
 void Engine::Update() {
-    Time = glfwGetTime();
-
     World.Update(DeltaTime);
 
     for (auto& module : Modules | std::views::values) {
@@ -113,6 +152,7 @@ void Engine::Render() {
 }
 
 void Engine::BeginFrame() {
+    Time = glfwGetTime();
     Window.PollEvents();
 
     World.BeginFrame(DeltaTime);
