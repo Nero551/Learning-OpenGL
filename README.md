@@ -1,5 +1,9 @@
 # Learning-OpenGL (2026-06-26)
 
+## Installing System Dependancies
+
+- ./Scripts.setup.sh
+
 ## Building & Running Engine
 
 - ./Scripts/build.sh
