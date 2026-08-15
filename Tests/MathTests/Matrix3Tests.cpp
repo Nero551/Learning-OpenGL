@@ -1,10 +1,15 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
-#include "Utilities/Math/Matrix/Matrix3.hpp"
+#include "Math/Matrix/Matrix3.hpp"
 
 using Catch::Matchers::WithinRel;
 
-TEST_CASE("Matrix3 construction and constants") {
+TEST_CASE (
+
+
+"Matrix3 construction and constants"
+)
+ {
     E::M::Matrix3 m(2);
     for (int i = 0; i < 3; ++i)
         for (int j = 0; j < 3; ++j)
@@ -19,7 +24,12 @@ TEST_CASE("Matrix3 construction and constants") {
     REQUIRE(E::M::Matrix3::Identity == E::M::Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1));
 }
 
-TEST_CASE("Matrix3 arithmetic") {
+TEST_CASE (
+
+
+"Matrix3 arithmetic"
+)
+ {
     E::M::Matrix3 A(1, 2, 3, 4, 5, 6, 7, 8, 9);
     E::M::Matrix3 B(9, 8, 7, 6, 5, 4, 3, 2, 1);
     E::M::Vector3 v(1, 2, 3);
@@ -48,7 +58,12 @@ TEST_CASE("Matrix3 arithmetic") {
     REQUIRE(-A == E::M::Matrix3(-1, -2, -3, -4, -5, -6, -7, -8, -9));
 }
 
-TEST_CASE("Matrix3 methods") {
+TEST_CASE (
+
+
+"Matrix3 methods"
+)
+ {
     E::M::Matrix3 I = E::M::Matrix3::Identity;
     E::M::Matrix3 A(1, 2, 3, 4, 5, 6, 7, 8, 9);
 

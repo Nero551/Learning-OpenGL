@@ -20,3 +20,9 @@
 #include "Vector/Vector2.hpp"
 #include "Vector/Vector3.hpp"
 #include "Vector/Vector4.hpp"
+
+/**
+ * @namespace E::M
+ * @brief Mathematical types and utilities used throughout Nova.
+ */
+namespace E::M {}

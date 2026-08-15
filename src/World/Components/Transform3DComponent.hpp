@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Core/OuterCore/ECS/Component.hpp"
-#include "Utilities/Math/Matrix/Matrix4.hpp"
+#include "Math/Matrix/Matrix4.hpp"
 
 namespace E {
 struct Transform3DComponent : Component {

@@ -1,7 +1,12 @@
 #include <catch2/catch_test_macros.hpp>
-#include "Utilities/Math/Geometry/Basis.hpp"
+#include "Math/Geometry/Basis.hpp"
 
-TEST_CASE("Basis GetMatrix and GetInverseMatrix") {
+TEST_CASE (
+
+
+"Basis GetMatrix and GetInverseMatrix"
+)
+ {
    E::M::Basis basis;
    E::M::Matrix4 m = basis.GetMatrix();
    REQUIRE(m == E::M::Matrix4::Identity);

@@ -1,5 +1,5 @@
 #pragma once
-#include "Utilities/Math/Common/Constants.hpp"
+#include "Math/Common/Constants.hpp"
 
 namespace E::M {
 /**

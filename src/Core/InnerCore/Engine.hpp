@@ -4,6 +4,10 @@
 #include "World.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
+/**
+ * @namespace E
+ * @brief Root namespace containing all Nova engine functionality.
+ */
 namespace E {
 template <typename T>concept ModuleType = std::derived_from<T, Module>;
 

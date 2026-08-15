@@ -1,7 +1,7 @@
 #pragma once
-#include "Utilities/Math/Vector/Vector2.hpp"
-#include "Utilities/Math/Vector/Vector3.hpp"
-#include "Utilities/Math/Vector/Vector4.hpp"
+#include "Math/Vector/Vector2.hpp"
+#include "Math/Vector/Vector3.hpp"
+#include "Math/Vector/Vector4.hpp"
 
 namespace E {
 struct Vertex {

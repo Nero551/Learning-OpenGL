@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
-#include "Utilities/Math/Vector/Vector3.hpp"
+#include "Math/Vector/Vector3.hpp"
 #include <cmath>
 #include <catch2/catch_approx.hpp>
 
@@ -8,7 +8,12 @@ using Catch::Matchers::WithinRel;
 using Catch::Matchers::WithinAbs;
 using Catch::Approx;
 
-TEST_CASE("Vector3 construction and constants") {
+TEST_CASE (
+
+
+"Vector3 construction and constants"
+)
+ {
     E::M::Vector3 v(1.0f, 2.0f, 3.0f);
     REQUIRE(v.x == 1.0f);
     REQUIRE(v.y == 2.0f);
@@ -21,7 +26,12 @@ TEST_CASE("Vector3 construction and constants") {
     REQUIRE(E::M::Vector3::Forward == E::M::Vector3(0, 0, 1));
 }
 
-TEST_CASE("Vector3 addition") {
+TEST_CASE (
+
+
+"Vector3 addition"
+)
+ {
     E::M::Vector3 a(1, 2, 3);
     E::M::Vector3 b(4, 5, 6);
     REQUIRE(a + b == E::M::Vector3(5, 7, 9));
@@ -29,7 +39,12 @@ TEST_CASE("Vector3 addition") {
     REQUIRE(a == E::M::Vector3(5, 7, 9));
 }
 
-TEST_CASE("Vector3 component‑wise multiplication") {
+TEST_CASE (
+
+
+"Vector3 component‑wise multiplication"
+)
+ {
     E::M::Vector3 a(1, 2, 3);
     E::M::Vector3 b(4, 5, 6);
     REQUIRE(a * b == E::M::Vector3(4, 10, 18));
@@ -37,7 +52,12 @@ TEST_CASE("Vector3 component‑wise multiplication") {
     REQUIRE(a == E::M::Vector3(4, 10, 18));
 }
 
-TEST_CASE("Vector3 dot product") {
+TEST_CASE (
+
+
+"Vector3 dot product"
+)
+ {
     E::M::Vector3 a(1, 2, 3);
     E::M::Vector3 b(4, 5, 6);
     REQUIRE(a.Dot(b) == 32);
@@ -45,7 +65,12 @@ TEST_CASE("Vector3 dot product") {
     REQUIRE(E::M::Vector3::Right.Dot(E::M::Vector3::Up) == 0);
 }
 
-TEST_CASE("Vector3 cross product") {
+TEST_CASE (
+
+
+"Vector3 cross product"
+)
+ {
     E::M::Vector3 i(1, 0, 0);
     E::M::Vector3 j(0, 1, 0);
     E::M::Vector3 k(0, 0, 1);
@@ -61,7 +86,12 @@ TEST_CASE("Vector3 cross product") {
     REQUIRE(a.Cross(a) == E::M::Vector3::Zero);
 }
 
-TEST_CASE("Vector3 scalar and unary operations") {
+TEST_CASE (
+
+
+"Vector3 scalar and unary operations"
+)
+ {
     E::M::Vector3 a(1, -2, 3);
     REQUIRE(a + 2.0f == E::M::Vector3(3, 0, 5));
     REQUIRE(a * 2.0f == E::M::Vector3(2, -4, 6));
@@ -71,7 +101,12 @@ TEST_CASE("Vector3 scalar and unary operations") {
     REQUIRE(10.0f / a == E::M::Vector3(10, -5, 10.0f / 3.0f));
 }
 
-TEST_CASE("Vector3 length, normalization, distance") {
+TEST_CASE (
+
+
+"Vector3 length, normalization, distance"
+)
+ {
     E::M::Vector3 a(3, 4, 0);
     REQUIRE(a.Length() == 5.0f);
     REQUIRE(a.LengthSquared() == 25.0f);
@@ -88,7 +123,12 @@ TEST_CASE("Vector3 length, normalization, distance") {
     REQUIRE(zero.Normalized() == E::M::Vector3::Zero);
 }
 
-TEST_CASE("Vector3 parallel and perpendicular") {
+TEST_CASE (
+
+
+"Vector3 parallel and perpendicular"
+)
+ {
     E::M::Vector3 a(1, 2, 3);
     E::M::Vector3 b(2, 4, 6);
     E::M::Vector3 c(1, 0, 0);
@@ -104,7 +144,12 @@ TEST_CASE("Vector3 parallel and perpendicular") {
     REQUIRE(E::M::Vector3::Zero.IsPerpendicularTo(c) == false);
 }
 
-TEST_CASE("Vector3 nearly equals") {
+TEST_CASE (
+
+
+"Vector3 nearly equals"
+)
+ {
     E::M::Vector3 a(1.000001f, 2.000001f, 3.000001f);
     E::M::Vector3 b(1.0001f, 2.0f, 3.0f);
     REQUIRE(a.NearlyEquals(E::M::Vector3(1, 2, 3)) == true);

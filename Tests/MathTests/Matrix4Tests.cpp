@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
-#include "Utilities/Math/Matrix/Matrix4.hpp"
+#include "Math/Matrix/Matrix4.hpp"
 #include <catch2/catch_approx.hpp>
 
 
@@ -8,7 +8,12 @@ using Catch::Matchers::WithinRel;
 using Catch::Matchers::WithinAbs;
 using Catch::Approx;
 
-TEST_CASE("Matrix4 construction and constants") {
+TEST_CASE (
+
+
+"Matrix4 construction and constants"
+)
+ {
     E::M::Matrix4 m(2);
     for (int i = 0; i < 4; ++i)
         for (int j = 0; j < 4; ++j)
@@ -22,7 +27,12 @@ TEST_CASE("Matrix4 construction and constants") {
     REQUIRE(E::M::Matrix4::Identity == E::M::Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1));
 }
 
-TEST_CASE("Matrix4 arithmetic") {
+TEST_CASE (
+
+
+"Matrix4 arithmetic"
+)
+ {
     E::M::Matrix4 A = E::M::Matrix4::Identity;
     E::M::Matrix4 B(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
     E::M::Vector4 v(1, 2, 3, 4);
@@ -46,7 +56,12 @@ TEST_CASE("Matrix4 arithmetic") {
     REQUIRE(-A == E::M::Matrix4(-1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1));
 }
 
-TEST_CASE("Matrix4 methods") {
+TEST_CASE (
+
+
+"Matrix4 methods"
+)
+ {
     E::M::Matrix4 I = E::M::Matrix4::Identity;
     E::M::Matrix4 A(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
 

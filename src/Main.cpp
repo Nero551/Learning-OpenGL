@@ -1,7 +1,7 @@
 #include <OpenGL.hpp>
 
 #include "Core/InnerCore/Engine.hpp"
-#include "Utilities/Math/Common/Quaternion.hpp"
+#include "Math/Common/Quaternion.hpp"
 
 static void Testing() {
     // E::M::Quaternion q1 = {1, 1, 1, 1};

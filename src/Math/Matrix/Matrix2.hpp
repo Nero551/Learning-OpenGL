@@ -1,7 +1,7 @@
 #pragma once
 #include <iosfwd>
 
-#include "Utilities/Math/Vector/Vector2.hpp"
+#include "Math/Vector/Vector2.hpp"
 
 namespace E::M {
 /**

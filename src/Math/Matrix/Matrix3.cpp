@@ -3,7 +3,7 @@
 
 #include "../Geometry/Basis.hpp"
 #include "Utilities/Logger.hpp"
-#include "Utilities/Math/Common/Comparison.hpp"
+#include "Math/Common/Comparison.hpp"
 
 
 namespace E::M {

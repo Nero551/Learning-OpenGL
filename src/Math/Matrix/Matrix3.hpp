@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Matrix2.hpp"
-#include "Utilities/Math/Vector/Vector3.hpp"
+#include "Math/Vector/Vector3.hpp"
 
 namespace E::M {
 /**

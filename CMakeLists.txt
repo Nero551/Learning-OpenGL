@@ -16,6 +16,7 @@ add_subdirectory(src/Core)
 add_subdirectory(src/Utilities)
 add_subdirectory(src/Modules)
 add_subdirectory(src/World)
+add_subdirectory(src/Math)
 
 target_include_directories(Nova PRIVATE
         src

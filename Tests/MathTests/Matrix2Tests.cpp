@@ -1,10 +1,15 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
-#include "Utilities/Math/Matrix/Matrix2.hpp"
+#include "Math/Matrix/Matrix2.hpp"
 
 using Catch::Matchers::WithinRel;
 
-TEST_CASE("Matrix2 construction and constants") {
+TEST_CASE (
+
+
+"Matrix2 construction and constants"
+)
+ {
     E::M::Matrix2 m(2.0f);
     REQUIRE(m.m[0][0] == 2.0f);
     REQUIRE(m.m[0][1] == 2.0f);
@@ -21,7 +26,12 @@ TEST_CASE("Matrix2 construction and constants") {
     REQUIRE(E::M::Matrix2::Identity == E::M::Matrix2(1, 0, 0, 1));
 }
 
-TEST_CASE("Matrix2 arithmetic") {
+TEST_CASE (
+
+
+"Matrix2 arithmetic"
+)
+ {
     E::M::Matrix2 A(1, 2, 3, 4);
     E::M::Matrix2 B(5, 6, 7, 8);
 
@@ -67,7 +77,12 @@ TEST_CASE("Matrix2 arithmetic") {
     }
 }
 
-TEST_CASE("Matrix2 methods") {
+TEST_CASE (
+
+
+"Matrix2 methods"
+)
+ {
     E::M::Matrix2 A(1, 2, 3, 4);
     E::M::Matrix2 I = E::M::Matrix2::Identity;
 

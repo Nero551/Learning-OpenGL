@@ -2,8 +2,8 @@
 
 #include "../Enums/LightType.hpp"
 #include "Core/OuterCore/ECS/Component.hpp"
-#include "Utilities/Math/Common/Trigonometry.hpp"
-#include "Utilities/Math/Vector/Vector3.hpp"
+#include "Math/Common/Trigonometry.hpp"
+#include "Math/Vector/Vector3.hpp"
 
 namespace E {
 struct LightComponent : Component {

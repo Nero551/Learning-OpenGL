@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
-#include "Utilities/Math/Vector/Vector2.hpp"
+#include "Math/Vector/Vector2.hpp"
 #include <cmath>
 #include <catch2/catch_approx.hpp>
 
@@ -8,7 +8,12 @@ using Catch::Matchers::WithinRel;
 using Catch::Matchers::WithinAbs;
 using Catch::Approx;
 
-TEST_CASE("Vector2 construction and constants") {
+TEST_CASE (
+
+
+"Vector2 construction and constants"
+)
+ {
    E::M::Vector2 v(1.0f, 2.0f);
    REQUIRE(v.x == 1.0f);
    REQUIRE(v.y == 2.0f);
@@ -19,7 +24,12 @@ TEST_CASE("Vector2 construction and constants") {
    REQUIRE(E::M::Vector2::Zero == E::M::Vector2(0.0f, 0.0f));
 }
 
-TEST_CASE("Vector2 arithmetic") {
+TEST_CASE (
+
+
+"Vector2 arithmetic"
+)
+ {
    E::M::Vector2 a(1.0f, 2.0f);
    E::M::Vector2 b(4.0f, 6.0f);
 
@@ -62,7 +72,12 @@ TEST_CASE("Vector2 arithmetic") {
    }
 }
 
-TEST_CASE("Vector2 methods") {
+TEST_CASE (
+
+
+"Vector2 methods"
+)
+ {
    E::M::Vector2 a(3.0f, 4.0f);
    E::M::Vector2 b(1.0f, 2.0f);
 

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 4.1.2)
 project(UnitTests)
 
 file(GLOB_RECURSE ENGINE_SOURCES
-        ../src/Utilities/*.cpp
+        ../src/Math/*.cpp
 )
 
 file(GLOB_RECURSE TEST_SOURCES
@@ -23,14 +23,10 @@ target_include_directories(UnitTests PRIVATE
         ../src
 )
 
-find_package(glfw3 REQUIRED)
-find_package(glad REQUIRED)
 find_package(Catch2 REQUIRED)
 
 target_link_libraries(UnitTests PRIVATE
         Catch2::Catch2WithMain
-        glfw
-        glad::glad
 )
 
 target_compile_options(UnitTests PRIVATE
