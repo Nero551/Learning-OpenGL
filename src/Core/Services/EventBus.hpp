@@ -4,7 +4,8 @@
 #include "Core/OuterCore/Service.hpp"
 
 namespace E {
-template <typename T> concept EventType = std::derived_from<T, Event> ;
+template <typename T>
+concept EventType = std::derived_from<T, Event>;
 
 struct EventBus : Service {
     template <EventType T, typename... Args> void InstantFire(Args&&... args) {
@@ -21,8 +22,7 @@ struct EventBus : Service {
 
     template <EventType T, typename... Args> void Fire(Args&&... args) {
         if constexpr (!std::constructible_from<T, Args...>) {
-            U::Logger::Fatal(std::string("Event: ") + typeid(T).name() +
-                " Can't Be Constructed From the Given Arguments.");
+            U::Logger::Fatal(std::string("Event: ") + typeid(T).name() + " Can't Be Constructed From the Given Arguments.");
         }
         else {
             auto event = std::make_unique<T>(std::forward<Args>(args)...);
@@ -52,4 +52,4 @@ private:
 protected:
     void EndFrame() override;
 };
-}
+} // namespace E

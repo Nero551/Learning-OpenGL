@@ -89,3 +89,5 @@
 - basic limits
 
 ### Week 8 — August 14–20
+
+- vcpkg package management

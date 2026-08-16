@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Enums/Keys.hpp"
 #include "Core/InnerCore/Module.hpp"
-#include "Math/Vector/Vector2.hpp"
+#include "Enums/Keys.hpp"
 #include "Enums/Mouse.hpp"
+#include "Math/Vector/Vector2.hpp"
 
 namespace E {
 struct Input : Module {
@@ -59,4 +59,4 @@ protected:
 
     void OnEndFrame(double dt) override;
 };
-}
+} // namespace E

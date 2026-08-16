@@ -4,8 +4,8 @@
 #include <utility>
 
 #include "Core/OuterCore/Resource.hpp"
-#include "Utilities/Logger.hpp"
 #include "Utilities/FileSystem/FileSystem.hpp"
+#include "Utilities/Logger.hpp"
 
 namespace E {
 void ShaderSource::Compile() {
@@ -53,9 +53,9 @@ void ShaderSource::Preprocess() {
 }
 
 
-//TODO- replace with line by line parsing
+// TODO- replace with line by line parsing
 void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code,
-    std::unordered_set<std::string>& includesProcessing) {
+                                      std::unordered_set<std::string>& includesProcessing) {
     const std::string include = "#include \"";
     auto pos = code.find(include);
 
@@ -66,17 +66,17 @@ void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code
         auto includePath = std::filesystem::path(path).parent_path() / directory;
 
         if (!includePath.empty()) {
-            //Check If Is Already Included
+            // Check If Is Already Included
             if (Includes.contains(includePath)) {
                 code.replace(pos, end - pos + 1, "");
             }
             else {
-                //Check Circular Include
+                // Check Circular Include
                 if (!includesProcessing.insert(includePath).second) {
                     U::Logger::Fatal("Circular Include: " + includePath.string() + " | In Shader: " + path);
                 }
 
-                //Recursively Include
+                // Recursively Include
                 std::string includeCode = U::FileSystem::ReadFile(includePath);
                 PreprocessIncludes(includePath, includeCode, includesProcessing);
 
@@ -112,4 +112,4 @@ void ShaderSource::Reload() {
     glDeleteShader(Id);
     Id = 0;
 }
-}
+} // namespace E

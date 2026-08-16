@@ -47,10 +47,10 @@ struct Window {
     void SetWidth(int width);
 
     /**
-    * @brief Changes the window dimensions.
-    * @param width New width in pixels.
-    * @param height New height in pixels.
-    */
+     * @brief Changes the window dimensions.
+     * @param width New width in pixels.
+     * @param height New height in pixels.
+     */
     void SetSize(int width, int height);
 
     /** @brief Returns height in pixels */
@@ -66,4 +66,4 @@ struct Window {
 private:
     GLFWwindow* GlfwWindow;
 };
-}
+} // namespace E

@@ -3,20 +3,20 @@
 #include "Core/OuterCore/Resource.hpp"
 
 namespace E {
-    struct Texture : Resource {
-        Texture(const std::string& name, int width, int height, unsigned char pixels[]);
+struct Texture : Resource {
+    Texture(const std::string& name, int width, int height, unsigned char pixels[]);
 
-        Texture(const std::string& name, const std::string& imagePath);
+    Texture(const std::string& name, const std::string& imagePath);
 
-        ~Texture() override;
+    ~Texture() override;
 
-        [[nodiscard]] unsigned int GetId() const;
+    [[nodiscard]] unsigned int GetId() const;
 
-        void Bind(unsigned int unit) const;
+    void Bind(unsigned int unit) const;
 
-    private:
-        void SetParameters() const;
+private:
+    void SetParameters() const;
 
-        unsigned int Id = 0;
-    };
-}
+    unsigned int Id = 0;
+};
+} // namespace E

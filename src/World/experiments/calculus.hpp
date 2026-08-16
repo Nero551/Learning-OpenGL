@@ -8,4 +8,4 @@ struct calculus : System {
 
     void Update(double dt) override;
 };
-}
+} // namespace E

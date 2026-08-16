@@ -60,16 +60,16 @@ struct Vector2 {
 
 
     /**
-    * @brief Linearly interpolates between this vector and another vector.
-    *
-    * A t value of 0 returns this vector.
-    * A t value of 1 returns vec3.
-    *
-    * Values outside [0, 1] extrapolate beyond the endpoints.
-    *
-    * @param vec2 Target vector.
-    * @param t Interpolation amount.
-    */
+     * @brief Linearly interpolates between this vector and another vector.
+     *
+     * A t value of 0 returns this vector.
+     * A t value of 1 returns vec3.
+     *
+     * Values outside [0, 1] extrapolate beyond the endpoints.
+     *
+     * @param vec2 Target vector.
+     * @param t Interpolation amount.
+     */
     [[nodiscard]] Vector2 Lerp(const Vector2& vec2, float t) const;
 
     /**
@@ -83,10 +83,7 @@ struct Vector2 {
      * @param vec2 Vector to compare against.
      * @param epsilon Maximum allowed difference between corresponding components.
      */
-    [[nodiscard]] bool NearlyEquals(
-        const Vector2& vec2,
-        float epsilon = EPSILON
-    ) const;
+    [[nodiscard]] bool NearlyEquals(const Vector2& vec2, float epsilon = EPSILON) const;
 
     Vector2 operator+(const Vector2& vec2) const;
     Vector2 operator-(const Vector2& vec2) const;
@@ -143,10 +140,7 @@ struct Vector2 {
     friend Vector2 operator*(float scalar, const Vector2& vec2);
     friend Vector2 operator/(float scalar, const Vector2& vec2);
 
-    friend std::ostream& operator<<(
-        std::ostream& os,
-        const Vector2& vec2
-    );
+    friend std::ostream& operator<<(std::ostream& os, const Vector2& vec2);
 
     /**
      * @brief Zero vector (0, 0).

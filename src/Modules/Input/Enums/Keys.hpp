@@ -43,7 +43,7 @@ enum class Key {
     Num8 = GLFW_KEY_8,
     Num9 = GLFW_KEY_9,
 
-    // E::M::Function Keys
+    // Function Keys
     F1 = GLFW_KEY_F1,
     F2 = GLFW_KEY_F2,
     F3 = GLFW_KEY_F3,

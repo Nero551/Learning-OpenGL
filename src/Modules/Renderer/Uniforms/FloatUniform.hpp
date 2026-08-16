@@ -12,4 +12,4 @@ struct FloatUniform : Uniform {
         glUniform1f(location, Value);
     }
 };
-}
+} // namespace E

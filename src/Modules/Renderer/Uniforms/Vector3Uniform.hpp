@@ -12,4 +12,4 @@ struct Vector3Uniform : Uniform {
         glUniform3fv(location, 1, &Value.x);
     }
 };
-}
+} // namespace E

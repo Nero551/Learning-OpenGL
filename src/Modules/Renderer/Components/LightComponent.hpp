@@ -20,4 +20,4 @@ struct LightComponent : Component {
     float InnerCutOff = M::Rad(7.5);
     float OuterCutOff = M::Rad(17.5);
 };
-}
+} // namespace E

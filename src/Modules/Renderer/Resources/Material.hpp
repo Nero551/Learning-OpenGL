@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Core/OuterCore/Resource.hpp"
-#include "Shader.hpp"
-#include "Texture.hpp"
 #include "Math/Vector/Vector3.hpp"
 #include "Math/Vector/Vector4.hpp"
+#include "Shader.hpp"
+#include "Texture.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
 namespace E {
@@ -35,4 +35,4 @@ protected:
 
     void SetProperties() const;
 };
-}
+} // namespace E

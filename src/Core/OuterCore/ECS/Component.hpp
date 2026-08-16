@@ -1,5 +1,5 @@
 #pragma once
 
 namespace E {
-    struct Component {};
-}
+struct Component {};
+} // namespace E

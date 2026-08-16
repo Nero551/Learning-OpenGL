@@ -1,6 +1,6 @@
 #pragma once
-#include "Nova3D.hpp"
 #include "Modules/Renderer/Components/LightComponent.hpp"
+#include "Nova3D.hpp"
 
 namespace E {
 struct Light : Nova3D {
@@ -9,4 +9,4 @@ struct Light : Nova3D {
         AddComponents<LightComponent>();
     }
 };
-}
+} // namespace E

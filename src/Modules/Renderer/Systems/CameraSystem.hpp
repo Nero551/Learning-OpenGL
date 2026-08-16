@@ -7,4 +7,4 @@ struct CameraSystem : System {
     void Update(double dt) override;
     M::Matrix4 GetViewMatrix();
 };
-}
+} // namespace E

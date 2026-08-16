@@ -44,4 +44,4 @@ float Sin(float rad) {
     }
     return s;
 }
-}
+} // namespace E::M

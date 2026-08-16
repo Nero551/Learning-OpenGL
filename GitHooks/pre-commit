@@ -3,4 +3,6 @@ set -e
 
 ROOT="$(git rev-parse --show-toplevel)"
 
+python3 $ROOT/Scripts/format-code.py
+
 "$ROOT/Scripts/run-tests.sh"

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Matrix2.hpp"
 #include "Math/Vector/Vector3.hpp"
+#include "Matrix2.hpp"
 
 namespace E::M {
 /**
@@ -49,11 +49,7 @@ struct Matrix3 {
      *     [ m10 m11 m12 ]
      *     [ m20 m21 m22 ]
      */
-    Matrix3(
-        float m00, float m01, float m02,
-        float m10, float m11, float m12,
-        float m20, float m21, float m22
-    );
+    Matrix3(float m00, float m01, float m02, float m10, float m11, float m12, float m20, float m21, float m22);
 
     /**
      * @brief Applies a scale transformation.
@@ -99,10 +95,7 @@ struct Matrix3 {
      * @param axis Axis of rotation.
      * @param radian Rotation angle in radians.
      */
-    [[nodiscard]] Matrix3 RotateAroundAxis(
-        const Vector3& axis,
-        float radian
-    ) const;
+    [[nodiscard]] Matrix3 RotateAroundAxis(const Vector3& axis, float radian) const;
 
     /**
      * @brief Applies a 2D translation using homogeneous coordinates.
@@ -143,10 +136,7 @@ struct Matrix3 {
      * @param mat3 Matrix to compare against.
      * @param epsilon Maximum allowed difference between corresponding elements.
      */
-    [[nodiscard]] bool NearlyEquals(
-        const Matrix3& mat3,
-        float epsilon = EPSILON
-    ) const;
+    [[nodiscard]] bool NearlyEquals(const Matrix3& mat3, float epsilon = EPSILON) const;
 
     Matrix3 operator+(const Matrix3& mat3) const;
     Matrix3 operator-(const Matrix3& mat3) const;

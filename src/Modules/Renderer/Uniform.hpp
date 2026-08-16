@@ -10,4 +10,4 @@ struct Uniform {
 
     virtual void Upload(int location) = 0;
 };
-}
+} // namespace E

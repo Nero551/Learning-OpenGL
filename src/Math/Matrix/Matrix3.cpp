@@ -2,8 +2,8 @@
 
 
 #include "../Geometry/Basis.hpp"
-#include "Utilities/Logger.hpp"
 #include "Math/Common/Comparison.hpp"
+#include "Utilities/Logger.hpp"
 
 
 namespace E::M {
@@ -223,8 +223,7 @@ Matrix3 Matrix3::RotateAroundAxis(const Vector3& axis, float radian) const {
 }
 
 float Matrix3::Determinant() const {
-    return m[0][0] * Minor(0, 0).Determinant() - m[0][1] * Minor(0, 1).Determinant() + m[0][2] * Minor(0, 2).
-        Determinant();
+    return m[0][0] * Minor(0, 0).Determinant() - m[0][1] * Minor(0, 1).Determinant() + m[0][2] * Minor(0, 2).Determinant();
 }
 
 Matrix3 Matrix3::Transpose() const {

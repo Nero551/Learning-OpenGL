@@ -1,9 +1,9 @@
 #pragma once
 
-#include "SystemOwner.hpp"
 #include "../OuterCore/Scene.hpp"
 #include "Core/OuterCore/Service.hpp"
 #include "Core/Services/EventBus.hpp"
+#include "SystemOwner.hpp"
 #include "Utilities/Logger.hpp"
 #include "World/Events/EntityCreated.hpp"
 
@@ -24,7 +24,8 @@ struct World : SystemOwner {
     U::CheckedPtr<Entity> ActiveCamera{"World Has No Active Camera"};
     int MaxLights = 64;
 
-    //TODO- try making entities own their children instead of being checked pointers. if works , might make the hierarchy alot easier
+    // TODO- try making entities own their children instead of being checked pointers. if works , might make the hierarchy alot
+    // easier
 
     /** @brief Gets the global World instance. */
     static World& Get();
@@ -109,4 +110,4 @@ protected:
     /** @brief Registers the systems owned by the world. */
     void AddSystems() override;
 };
-}
+} // namespace E

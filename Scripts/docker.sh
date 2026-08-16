@@ -22,6 +22,7 @@ docker run --rm -it \
     -v "$PWD/icon.svg:/Nova/icon.svg" \
     -v "$PWD/README.md:/Nova/README.md" \
     -v "$PWD/.clang-format:/Nova/.clang-format" \
+    -v "$PWD/Dockerfile:/Nova/Dockerfile" \
     -v "$PWD/.clangd:/Nova/.clangd" \
     -v "$PWD/.git:/Nova/.git" \
     -v nova-vcpkg-cache:/root/.cache/vcpkg \

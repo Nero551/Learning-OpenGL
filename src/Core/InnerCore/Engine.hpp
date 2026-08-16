@@ -1,8 +1,9 @@
 #pragma once
+#include "GLFWContext.hpp"
 #include "Module.hpp"
+#include "Utilities/CheckedPtr.hpp"
 #include "Window.hpp"
 #include "World.hpp"
-#include "Utilities/CheckedPtr.hpp"
 
 /**
  * @namespace E
@@ -22,6 +23,10 @@ concept ModuleType = std::derived_from<T, Module>;
  * The Engine is neither copyable nor movable.
  */
 struct Engine {
+private :
+    GLFWContext GLFWContext{};
+
+public :
     Window Window;
     World World;
 
@@ -32,13 +37,10 @@ struct Engine {
     Engine& operator=(Engine&&) = delete;
 
     /**
-     * @brief Performs global initialization and creates the engine.
-     *
-     * Calls PreInit() before constructing the Engine instance.
-     *
-     * @return The newly created Engine instance.
-     */
-    static Engine Create();
+    * @brief Constructs the Engine instance.
+    * Registers the newly constructed object as the global Engine instance.
+    */
+    Engine();
 
     /**
      * @brief Returns the global engine instance.
@@ -132,22 +134,6 @@ private:
     }
 
     /**
-     * @brief Performs global initialization required before creating an Engine.
-     *
-     * Initializes systems that must exist before an Engine instance is
-     * constructed, such as GLFW.
-     *
-     * @note Must be called before creating an Engine instance.
-     */
-    static void PreInit();
-
-    /**
-     * @brief Constructs the Engine instance.
-     * Registers the newly constructed object as the global Engine instance.
-     */
-    Engine();
-
-    /**
      * @brief Start step
      *
      * called at the beginning of the main loop. executes services,modules & world's Start method
@@ -166,11 +152,11 @@ private:
     void Stop();
 
     /**
-    * @brief Beginning of frame step
-    *
-    * executes services,modules & world's BeginFrame method using the current
-    * frame's DeltaTime.
-    */
+     * @brief Beginning of frame step
+     *
+     * executes services,modules & world's BeginFrame method using the current
+     * frame's DeltaTime.
+     */
     void BeginFrame();
 
     /**
@@ -202,4 +188,4 @@ private:
      */
     void Render();
 };
-}
+} // namespace E

@@ -12,4 +12,4 @@ struct IntUniform : Uniform {
         glUniform1i(location, Value);
     }
 };
-}
+} // namespace E

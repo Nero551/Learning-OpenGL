@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ShaderSource.hpp"
 #include "../Uniform.hpp"
 #include "Core/OuterCore/Resource.hpp"
+#include "ShaderSource.hpp"
 #include "Utilities/CheckedPtr.hpp"
 
 namespace E {
@@ -53,8 +53,7 @@ struct Shader : Resource {
      * @note Queued uniforms are uploaded every time the shader is used.
      */
     template <UniformType T> void SetUniform(const T& uniform) {
-        PendingUniforms[GetUniformLocation(uniform.Name)] =
-            std::make_unique<T>(uniform);
+        PendingUniforms[GetUniformLocation(uniform.Name)] = std::make_unique<T>(uniform);
     }
 
     void AssignSource(ShaderSource& source);
@@ -90,4 +89,4 @@ private:
 
     void UploadUniforms();
 };
-}
+} // namespace E

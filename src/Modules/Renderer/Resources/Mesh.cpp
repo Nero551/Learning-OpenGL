@@ -1,10 +1,9 @@
-#include <OpenGL.hpp>
 #include "Mesh.hpp"
+#include <OpenGL.hpp>
 
 namespace E {
 Mesh::Mesh(const std::string& name, const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices) :
-    Resource(name),
-    Vertices(vertices), Indices(indices) {
+    Resource(name), Vertices(vertices), Indices(indices) {
     CreateVAO();
     CreateVBO();
     CreateEBO();
@@ -35,7 +34,7 @@ void Mesh::Draw() {
     }
 
     else if (RenderMode == RenderMode::SolidWireframe) {
-        //TODO- the lines and solid overlap in depth , fix this by reading depth testing chapter in the book then trying again.
+        // TODO- the lines and solid overlap in depth , fix this by reading depth testing chapter in the book then trying again.
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glDrawElements(static_cast<int>(Topology), Indices.size(), GL_UNSIGNED_INT, nullptr);
 
@@ -63,22 +62,19 @@ void Mesh::CreateEBO() {
 
 void Mesh::SetupVertAttrPointers() {
     // Position
-    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),
-        reinterpret_cast<void*>(offsetof(Vertex, Position)));
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, Position)));
     glEnableVertexAttribArray(0);
 
     // Color
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),
-        reinterpret_cast<void*>(offsetof(Vertex, Color)));
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, Color)));
     glEnableVertexAttribArray(1);
 
     // UV
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, UV)));
     glEnableVertexAttribArray(2);
 
-    //Normal
-    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),
-        reinterpret_cast<void*>(offsetof(Vertex, Normal)));
+    // Normal
+    glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, Normal)));
     glEnableVertexAttribArray(3);
 }
-}
+} // namespace E

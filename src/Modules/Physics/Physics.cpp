@@ -6,4 +6,4 @@ void Physics::AddSystems() {}
 void Physics::OnStart() {}
 
 void Physics::OnFixedUpdate(double fdt) {}
-}
+} // namespace E

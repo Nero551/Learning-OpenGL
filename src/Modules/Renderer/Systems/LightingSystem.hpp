@@ -6,4 +6,4 @@ struct LightingSystem : System {
     void Start() override;
     void Render() override;
 };
-}
+} // namespace E

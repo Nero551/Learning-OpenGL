@@ -1,6 +1,6 @@
-#include "Utilities/Logger.hpp"
-#include <OpenGL.hpp>
 #include "Shader.hpp"
+#include <OpenGL.hpp>
+#include "Utilities/Logger.hpp"
 
 
 #include "../Uniforms/FloatUniform.hpp"
@@ -103,4 +103,4 @@ void Shader::CreateProgram() {
         U::Logger::Error(std::string("Shader Program: " + Name + " Linking Failed: ") + infoLog);
     }
 }
-}
+} // namespace E

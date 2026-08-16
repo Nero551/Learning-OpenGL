@@ -1,9 +1,9 @@
 #include "Renderer.hpp"
 
+#include "../../World/Components/Transform3DComponent.hpp"
 #include "Components/CameraComponent.hpp"
 #include "Components/MaterialComponent.hpp"
 #include "Components/MeshComponent.hpp"
-#include "../../World/Components/Transform3DComponent.hpp"
 #include "Core/InnerCore/Engine.hpp"
 #include "Systems/CameraSystem.hpp"
 
@@ -50,21 +50,18 @@ void Renderer::OnRender() {
                 materialComponent.Material->Shader->Reload();
             }
 
-            materialComponent.Material->Shader->SetUniform(
-                FloatUniform("TIME", static_cast<float>(Engine::Get().GetTime())));
-
-            materialComponent.Material->Shader->SetUniform(Vector3Uniform("VIEW_POSITION",
-                camera->GetComponent<Transform3DComponent>().Position));
+            materialComponent.Material->Shader->SetUniform(FloatUniform("TIME", static_cast<float>(Engine::Get().GetTime())));
 
             materialComponent.Material->Shader->SetUniform(
-                Matrix4Uniform("MODEL_MATRIX", transformComponent.GetModelMatrix()));
+                Vector3Uniform("VIEW_POSITION", camera->GetComponent<Transform3DComponent>().Position));
+
+            materialComponent.Material->Shader->SetUniform(Matrix4Uniform("MODEL_MATRIX", transformComponent.GetModelMatrix()));
 
             materialComponent.Material->Shader->SetUniform(Matrix4Uniform("VIEW_MATRIX", view));
 
             materialComponent.Material->Shader->SetUniform(Matrix4Uniform("PROJECTION_MATRIX", projection));
 
-            materialComponent.Material->Shader->SetUniform(
-                Matrix3Uniform("NORMAL_MATRIX", transformComponent.GetNormalMatrix()));
+            materialComponent.Material->Shader->SetUniform(Matrix3Uniform("NORMAL_MATRIX", transformComponent.GetNormalMatrix()));
         }
 
         if (entity->HasComponent<MeshComponent>()) {
@@ -74,4 +71,4 @@ void Renderer::OnRender() {
         }
     }
 }
-}
+} // namespace E

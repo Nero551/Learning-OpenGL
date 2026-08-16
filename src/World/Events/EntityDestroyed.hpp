@@ -3,9 +3,9 @@
 #include "Core/OuterCore/Event.hpp"
 
 namespace E {
-    struct EntityDestroyed : Event {
-        Entity& entity;
+struct EntityDestroyed : Event {
+    Entity& entity;
 
-        EntityDestroyed(Entity& entity) : entity(entity) {}
-    };
-}
+    EntityDestroyed(Entity& entity) : entity(entity) {}
+};
+} // namespace E

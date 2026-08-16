@@ -35,4 +35,4 @@ private:
 
     void SetupVertAttrPointers();
 };
-}
+} // namespace E

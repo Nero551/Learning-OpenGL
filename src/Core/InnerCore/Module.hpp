@@ -40,4 +40,4 @@ private:
 
     void EndFrame(double dt);
 };
-}
+} // namespace E

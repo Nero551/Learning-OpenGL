@@ -94,4 +94,4 @@ void Window::SetSize(const int width, const int height) {
     SetWidth(width);
     SetHeight(height);
 }
-}
+} // namespace E

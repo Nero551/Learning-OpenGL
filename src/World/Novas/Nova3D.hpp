@@ -1,6 +1,6 @@
 #pragma once
-#include "World/Components/Transform3DComponent.hpp"
 #include "Nova.hpp"
+#include "World/Components/Transform3DComponent.hpp"
 
 namespace E {
 struct Nova3D : Nova {
@@ -9,4 +9,4 @@ struct Nova3D : Nova {
         AddComponent<Transform3DComponent>();
     }
 };
-}
+} // namespace E

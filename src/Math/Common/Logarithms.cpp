@@ -8,4 +8,4 @@ float Ln(float x) {
 float Log(float base, float x) {
     return Ln(x) / Ln(base);
 }
-}
+} // namespace E::M

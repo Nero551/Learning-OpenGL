@@ -1,9 +1,9 @@
 #pragma once
 
 #include "CheckedPtr.hpp"
-#include "Logger.hpp"
 #include "FileSystem/FileSystem.hpp"
 #include "Image/Image.hpp"
+#include "Logger.hpp"
 
 /**
  * @namespace E::U

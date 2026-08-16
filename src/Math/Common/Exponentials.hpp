@@ -5,4 +5,4 @@ float Pow(float x, float power);
 float Sqrt(float x);
 
 float Exp(float x);
-}
+} // namespace E::M

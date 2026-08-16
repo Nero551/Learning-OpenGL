@@ -85,10 +85,7 @@ struct Matrix2 {
      * @param mat2 Matrix to compare against.
      * @param epsilon Maximum allowed difference between corresponding elements.
      */
-    [[nodiscard]] bool NearlyEquals(
-        const Matrix2& mat2,
-        float epsilon = EPSILON
-    ) const;
+    [[nodiscard]] bool NearlyEquals(const Matrix2& mat2, float epsilon = EPSILON) const;
 
     Matrix2 operator+(const Matrix2& mat2) const;
     Matrix2 operator-(const Matrix2& mat2) const;

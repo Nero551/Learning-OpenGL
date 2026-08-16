@@ -32,6 +32,10 @@ template <typename T> struct CheckedPtr {
         return ptr;
     }
 
+    bool operator==(T* otherPtr) {
+        return ptr == otherPtr;
+    }
+
     T& operator*() const {
         return Logger::Require(ptr, nullMessage);
     }

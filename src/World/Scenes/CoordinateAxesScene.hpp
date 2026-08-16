@@ -6,4 +6,4 @@ namespace E {
 struct CoordinateAxesScene : Scene {
     CoordinateAxesScene();
 };
-}
+} // namespace E

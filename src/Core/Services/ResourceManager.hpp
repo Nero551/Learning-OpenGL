@@ -5,7 +5,8 @@
 #include "Utilities/Logger.hpp"
 
 namespace E {
-template <typename T>concept ResourceType = std::derived_from<T, Resource>;
+template <typename T>
+concept ResourceType = std::derived_from<T, Resource>;
 
 /**
  * @brief Manages the lifetime and retrieval of resources.
@@ -27,8 +28,7 @@ struct ResourceManager : Service {
         }
 
         if constexpr (!std::constructible_from<T, const std::string&, Args...>) {
-            U::Logger::Fatal(
-                "Resource: " + name + " ,Of Type: " + typeid(T).name() +
+            U::Logger::Fatal("Resource: " + name + " ,Of Type: " + typeid(T).name() +
                 " Can't Be Constructed From the Given Arguments.");
         }
         else {
@@ -49,4 +49,4 @@ struct ResourceManager : Service {
 private:
     std::unordered_map<std::string, std::unique_ptr<Resource>> Resources;
 };
-}
+} // namespace E

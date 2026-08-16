@@ -1,6 +1,6 @@
 #pragma once
-#include "Modules/Renderer/Components/MeshComponent.hpp"
 #include "Modules/Renderer/Components/MaterialComponent.hpp"
+#include "Modules/Renderer/Components/MeshComponent.hpp"
 #include "Nova3D.hpp"
 
 namespace E {
@@ -10,4 +10,4 @@ struct MeshInstance3D : Nova3D {
         AddComponents<MeshComponent, MaterialComponent>();
     }
 };
-}
+} // namespace E

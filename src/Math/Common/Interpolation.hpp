@@ -8,4 +8,4 @@ float EaseInOutQuad(float t);
 float EaseInCubic(float t);
 float EaseOutCubic(float t);
 float EaseInOutCubic(float t);
-}
+} // namespace E::M

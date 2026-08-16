@@ -4,7 +4,8 @@
 
 namespace E {
 struct Service;
-template <typename T> concept ServiceType = std::derived_from<T, Service>;
+template <typename T>
+concept ServiceType = std::derived_from<T, Service>;
 
 /**
  * @brief Base class for globally accessible services.
@@ -18,10 +19,10 @@ struct Service {
     Service& operator=(const Service&) = delete;
 
     /**
-    * @brief Retrieves a registered service by type.
-    * @tparam T Type of the service to retrieve.
-    * @return Reference to the registered service.
-    */
+     * @brief Retrieves a registered service by type.
+     * @tparam T Type of the service to retrieve.
+     * @return Reference to the registered service.
+     */
     template <ServiceType T> static T& Get() {
         auto service = Services.find(typeid(T));
         if (service == Services.end()) {
@@ -31,9 +32,9 @@ struct Service {
     }
 
     /**
-    * @brief Returns all currently registered services.
-    * @return A vector of pointers to the registered services.
-    */
+     * @brief Returns all currently registered services.
+     * @return A vector of pointers to the registered services.
+     */
     static std::vector<U::CheckedPtr<Service>> GetAll() {
         std::vector<U::CheckedPtr<Service>> services;
 
@@ -54,12 +55,12 @@ protected:
     virtual void Stop() {}
 
     /**
-    * @brief Registers a new service of the specified type.
-    * If a service of the same type is already registered, the existing
-    * service is returned instead.
-    * @tparam T Type of the service to register.
-    * @return Reference to the registered service.
-    */
+     * @brief Registers a new service of the specified type.
+     * If a service of the same type is already registered, the existing
+     * service is returned instead.
+     * @tparam T Type of the service to register.
+     * @return Reference to the registered service.
+     */
     template <ServiceType T> static T& Add() {
         if (Services.contains(typeid(T))) {
             U::Logger::Error(std::format(" Service {} Already Added", typeid(T).name()));
@@ -80,4 +81,4 @@ private:
 
     inline static std::unordered_map<std::type_index, std::unique_ptr<Service>> Services;
 };
-}
+} // namespace E

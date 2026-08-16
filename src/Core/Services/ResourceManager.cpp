@@ -6,4 +6,4 @@ void ResourceManager::Unload(const std::string& name) {
         Resources.erase(name);
     }
 }
-}
+} // namespace E

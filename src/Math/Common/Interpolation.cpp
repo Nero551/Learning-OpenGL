@@ -1,5 +1,5 @@
-#include "Exponentials.hpp"
 #include "Interpolation.hpp"
+#include "Exponentials.hpp"
 
 namespace E::M {
 float Lerp(float a, float b, float t) {
@@ -35,4 +35,4 @@ float EaseInOutCubic(float t) {
 
     return 0.5f + 0.5f * EaseOutCubic((t - 0.5f) * 2.0f);
 }
-}
+} // namespace E::M

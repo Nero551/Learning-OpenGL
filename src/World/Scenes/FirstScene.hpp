@@ -4,6 +4,5 @@
 namespace E {
 struct FirstScene : Scene {
     FirstScene();
-
 };
-}
+} // namespace E

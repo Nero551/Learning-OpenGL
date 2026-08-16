@@ -9,4 +9,4 @@ protected:
     void OnFixedUpdate(double fdt) override;
     void AddSystems() override;
 };
-}
+} // namespace E

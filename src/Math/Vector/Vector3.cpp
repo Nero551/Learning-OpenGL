@@ -137,8 +137,7 @@ float Vector3::Distance(const Vector3& vec3) const {
 }
 
 bool Vector3::NearlyEquals(const Vector3& vec3, float epsilon) const {
-    return M::NearlyEquals(x, vec3.x, epsilon) && M::NearlyEquals(y, vec3.y, epsilon) && M::NearlyEquals(z,
-        vec3.z, epsilon);
+    return M::NearlyEquals(x, vec3.x, epsilon) && M::NearlyEquals(y, vec3.y, epsilon) && M::NearlyEquals(z, vec3.z, epsilon);
 }
 
 Vector3 Vector3::Normalized() const {

@@ -2,12 +2,12 @@
 
 #include "Core/InnerCore/Engine.hpp"
 #include "Core/Services/ResourceManager.hpp"
-#include "Modules/Input/Input.hpp"
+#include "Math/Color/Color.hpp"
 #include "Modules/Input/Enums/Keys.hpp"
+#include "Modules/Input/Input.hpp"
 #include "Modules/Renderer/Components/MaterialComponent.hpp"
 #include "Modules/Renderer/Components/MeshComponent.hpp"
 #include "Modules/Renderer/Primitives/Primitives.hpp"
-#include "Math/Color/Color.hpp"
 #include "World/Novas/Camera.hpp"
 #include "World/Novas/Light.hpp"
 #include "World/Novas/MeshInstance3D.hpp"
@@ -20,8 +20,8 @@ CoordinateAxesScene::CoordinateAxesScene() {
     Root = &World::Get().CreateEntity<Nova>();
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
-    lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
-        ShaderStage::Fragment));
+    lightShader.AssignSource(
+        resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag", ShaderStage::Fragment));
     lightShader.AssignSource(
         resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/lightShader.vert", ShaderStage::Vertex));
 
@@ -41,10 +41,8 @@ CoordinateAxesScene::CoordinateAxesScene() {
     Root->AttachChild(light2);
 
     auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
-    shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag",
-        ShaderStage::Fragment));
-    shader.AssignSource(
-        resourceManager.Load<ShaderSource>("axisVert", "Assets/Shaders/axisShader.vert", ShaderStage::Vertex));
+    shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag", ShaderStage::Fragment));
+    shader.AssignSource(resourceManager.Load<ShaderSource>("axisVert", "Assets/Shaders/axisShader.vert", ShaderStage::Vertex));
 
     auto& line = Primitives::CreateLine("Line");
 
@@ -84,4 +82,4 @@ CoordinateAxesScene::CoordinateAxesScene() {
 
     Root->AttachChild(zAxis);
 }
-}
+} // namespace E

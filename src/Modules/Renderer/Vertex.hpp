@@ -10,7 +10,7 @@ struct Vertex {
     M::Vector2 UV;
     M::Vector3 Normal;
 
-    Vertex(M::Vector4 pos, M::Vector4 col, M::Vector2 uv, M::Vector3 normal) : Position(pos), Color(col), UV(uv),
-        Normal(normal) {}
+    Vertex(M::Vector4 pos, M::Vector4 col, M::Vector2 uv, M::Vector3 normal) : Position(pos), Color(col), UV(uv), Normal(normal) {
+    }
 };
-}
+} // namespace E

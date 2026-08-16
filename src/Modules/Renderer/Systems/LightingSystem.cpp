@@ -1,8 +1,8 @@
 #include "LightingSystem.hpp"
 
+#include "../../../World/Components/Transform3DComponent.hpp"
 #include "../Components/LightComponent.hpp"
 #include "../Components/MaterialComponent.hpp"
-#include "../../../World/Components/Transform3DComponent.hpp"
 #include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
@@ -51,8 +51,7 @@ void LightingSystem::Render() {
                 Vector3Uniform(std::format("LIGHTS[{}].Color", i), lightComponent.Color));
 
             materialComponent.Material->Shader->SetUniform(
-                Vector3Uniform(std::format("LIGHTS[{}].Position", i),
-                    light.GetComponent<Transform3DComponent>().Position));
+                Vector3Uniform(std::format("LIGHTS[{}].Position", i), light.GetComponent<Transform3DComponent>().Position));
 
             materialComponent.Material->Shader->SetUniform(
                 Vector3Uniform(std::format("LIGHTS[{}].Ambient", i), lightComponent.Ambient));
@@ -67,27 +66,26 @@ void LightingSystem::Render() {
                 IntUniform(std::format("LIGHTS[{}].Type", i), static_cast<int>(lightComponent.Type)));
 
             materialComponent.Material->Shader->SetUniform(
-                Vector3Uniform(std::format("LIGHTS[{}].Direction", i),
-                    light.GetComponent<Transform3DComponent>().GetForward()));
+                Vector3Uniform(std::format("LIGHTS[{}].Direction", i), light.GetComponent<Transform3DComponent>().GetForward()));
 
-            materialComponent.Material->Shader->SetUniform(FloatUniform(std::format("LIGHTS[{}].Constant", i),
-                lightComponent.Constant));
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("LIGHTS[{}].Constant", i), lightComponent.Constant));
 
-            materialComponent.Material->Shader->SetUniform(FloatUniform(std::format("LIGHTS[{}].Linear", i),
-                lightComponent.Linear));
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("LIGHTS[{}].Linear", i), lightComponent.Linear));
 
-            materialComponent.Material->Shader->SetUniform(FloatUniform(std::format("LIGHTS[{}].Quadratic", i),
-                lightComponent.Quadratic));
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("LIGHTS[{}].Quadratic", i), lightComponent.Quadratic));
 
-            materialComponent.Material->Shader->SetUniform(FloatUniform(std::format("LIGHTS[{}].Intensity", i),
-                lightComponent.Intensity));
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("LIGHTS[{}].Intensity", i), lightComponent.Intensity));
 
-            materialComponent.Material->Shader->SetUniform(FloatUniform(std::format("LIGHTS[{}].InnerCutOff", i),
-                std::cos(lightComponent.InnerCutOff)));
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("LIGHTS[{}].InnerCutOff", i), std::cos(lightComponent.InnerCutOff)));
 
-            materialComponent.Material->Shader->SetUniform(FloatUniform(std::format("LIGHTS[{}].OuterCutOff", i),
-                std::cos(lightComponent.OuterCutOff)));
+            materialComponent.Material->Shader->SetUniform(
+                FloatUniform(std::format("LIGHTS[{}].OuterCutOff", i), std::cos(lightComponent.OuterCutOff)));
         }
     }
 }
-}
+} // namespace E

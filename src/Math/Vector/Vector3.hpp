@@ -81,10 +81,7 @@ struct Vector3 {
      * @param vec3 Vector to compare against.
      * @param epsilon Maximum allowed difference between components.
      */
-    [[nodiscard]] bool NearlyEquals(
-        const Vector3& vec3,
-        float epsilon = EPSILON
-    ) const;
+    [[nodiscard]] bool NearlyEquals(const Vector3& vec3, float epsilon = EPSILON) const;
 
     /**
      * @brief Determines whether two non-zero vectors are parallel.
@@ -171,10 +168,7 @@ struct Vector3 {
     friend Vector3 operator*(float scalar, const Vector3& vec3);
     friend Vector3 operator/(float scalar, const Vector3& vec3);
 
-    friend std::ostream& operator<<(
-        std::ostream& os,
-        const Vector3& vec3
-    );
+    friend std::ostream& operator<<(std::ostream& os, const Vector3& vec3);
 
     /**
      * @brief Zero vector (0, 0, 0).

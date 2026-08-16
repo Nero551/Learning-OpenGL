@@ -27,4 +27,4 @@ void FileSystem::WriteFile(const std::string& path, const std::string& content) 
 
     file << content;
 }
-}
+} // namespace E::U

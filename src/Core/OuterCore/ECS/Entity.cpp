@@ -175,4 +175,4 @@ void Entity::RecursiveChildren(std::vector<U::CheckedPtr<Entity>>& entities, Ent
         RecursiveChildren(entities, *child);
     }
 }
-}
+} // namespace E

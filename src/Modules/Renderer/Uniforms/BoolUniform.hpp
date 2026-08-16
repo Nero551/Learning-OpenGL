@@ -13,4 +13,4 @@ struct BoolUniform : Uniform {
         glUniform1i(location, Value);
     }
 };
-}
+} // namespace E

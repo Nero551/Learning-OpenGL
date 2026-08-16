@@ -6,7 +6,6 @@ echo "📦 Installing Nova system dependencies..."
 sudo pacman -S --needed \
     base-devel \
     clang \
-    clang-tools \
     ccache \
     ninja \
     git \
@@ -52,6 +51,4 @@ command -v ninja
 command -v git
 command -v cmake
 
-echo
 echo "🥳 Nova development environment is ready!"
-```

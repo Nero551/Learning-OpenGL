@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Matrix3.hpp"
 #include "Math/Vector/Vector4.hpp"
+#include "Matrix3.hpp"
 
 namespace E::M {
 /**
@@ -55,12 +55,8 @@ struct Matrix4 {
      *     [ m20 m21 m22 m23 ]
      *     [ m30 m31 m32 m33 ]
      */
-    Matrix4(
-        float m00, float m01, float m02, float m03,
-        float m10, float m11, float m12, float m13,
-        float m20, float m21, float m22, float m23,
-        float m30, float m31, float m32, float m33
-    );
+    Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21,
+        float m22, float m23, float m30, float m31, float m32, float m33);
 
     /**
      * @brief Applies a 3D translation.
@@ -113,10 +109,7 @@ struct Matrix4 {
      * @param axis Axis of rotation.
      * @param radian Rotation angle in radians.
      */
-    [[nodiscard]] Matrix4 RotateAroundAxis(
-        const Vector3& axis,
-        float radian
-    ) const;
+    [[nodiscard]] Matrix4 RotateAroundAxis(const Vector3& axis, float radian) const;
 
     /**
      * @brief Extracts the upper-left 3x3 portion of the matrix.
@@ -157,10 +150,7 @@ struct Matrix4 {
      * @param mat4 Matrix to compare against.
      * @param epsilon Maximum allowed difference between corresponding elements.
      */
-    [[nodiscard]] bool NearlyEquals(
-        const Matrix4& mat4,
-        float epsilon = EPSILON
-    ) const;
+    [[nodiscard]] bool NearlyEquals(const Matrix4& mat4, float epsilon = EPSILON) const;
 
     Matrix4 operator+(const Matrix4& mat4) const;
     Matrix4 operator-(const Matrix4& mat4) const;
@@ -218,11 +208,7 @@ struct Matrix4 {
      * @param target Point the camera is looking toward.
      * @param up Approximate world-up direction.
      */
-    static Matrix4 LookAt(
-        const Vector3& pos,
-        const Vector3& target,
-        const Vector3& up
-    );
+    static Matrix4 LookAt(const Vector3& pos, const Vector3& target, const Vector3& up);
 
     /**
      * @brief Matrix containing only zeros.

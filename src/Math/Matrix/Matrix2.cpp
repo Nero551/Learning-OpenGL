@@ -1,6 +1,6 @@
 #include "Matrix2.hpp"
-#include "Utilities/Logger.hpp"
 #include "Math/Common/Comparison.hpp"
+#include "Utilities/Logger.hpp"
 
 namespace E::M {
 Matrix2::Matrix2(float mAll) {

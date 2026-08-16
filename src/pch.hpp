@@ -1,14 +1,18 @@
 #pragma once
 
-#include <filesystem>
 #include <algorithm>
 #include <array>
 #include <cmath>
 #include <concepts>
+#include <filesystem>
 #include <format>
 #include <functional>
+#include <iosfwd>
+#include <iostream>
 #include <memory>
+#include <numbers>
 #include <optional>
+#include <random>
 #include <ranges>
 #include <span>
 #include <string>
@@ -17,8 +21,3 @@
 #include <unordered_map>
 #include <utility>
 #include <vector>
-#include <iostream>
-#include <iosfwd>
-#include <functional>
-#include <numbers>
-#include <random>

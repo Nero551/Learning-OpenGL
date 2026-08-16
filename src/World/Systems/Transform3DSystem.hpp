@@ -8,4 +8,4 @@ struct Transform3DSystem : System {
 
     void Update(double dt) override;
 };
-}
+} // namespace E

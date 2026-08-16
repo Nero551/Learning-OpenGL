@@ -1,21 +1,21 @@
 #include "EventBus.hpp"
 
 namespace E {
-    void EventBus::EmptyFireQueue() {
-        for (auto& event : FireQueue) {
-            auto listeners = Listeners.find(typeid(*event));
-            if (listeners == Listeners.end()) {
-                continue;
-            }
-
-            for (auto& callback : listeners->second) {
-                callback(*event);
-            }
+void EventBus::EmptyFireQueue() {
+    for (auto& event : FireQueue) {
+        auto listeners = Listeners.find(typeid(*event));
+        if (listeners == Listeners.end()) {
+            continue;
         }
-        FireQueue.clear();
-    }
 
-    void EventBus::EndFrame() {
-        EmptyFireQueue();
+        for (auto& callback : listeners->second) {
+            callback(*event);
+        }
     }
+    FireQueue.clear();
 }
+
+void EventBus::EndFrame() {
+    EmptyFireQueue();
+}
+} // namespace E

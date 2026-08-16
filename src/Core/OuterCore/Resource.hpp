@@ -24,4 +24,4 @@ struct Resource {
 
     Resource& operator=(Resource&&) = default;
 };
-}
+} // namespace E

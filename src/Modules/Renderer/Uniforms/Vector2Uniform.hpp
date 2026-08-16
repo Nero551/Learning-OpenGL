@@ -12,4 +12,4 @@ struct Vector2Uniform : Uniform {
         glUniform2fv(location, 1, &Value.x);
     }
 };
-}
+} // namespace E

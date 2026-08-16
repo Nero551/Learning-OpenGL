@@ -12,4 +12,4 @@ protected:
 private:
     void AddSystems() override;
 };
-}
+} // namespace E

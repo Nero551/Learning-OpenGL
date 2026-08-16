@@ -1,9 +1,9 @@
 #include "Matrix4.hpp"
 
 
+#include "Math/Common/Comparison.hpp"
 #include "Math/Geometry/Basis.hpp"
 #include "Utilities/Logger.hpp"
-#include "Math/Common/Comparison.hpp"
 
 
 namespace E::M {
@@ -15,8 +15,8 @@ Matrix4::Matrix4(float mAll) {
     }
 }
 
-Matrix4::Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20,
-    float m21, float m22, float m23, float m30, float m31, float m32, float m33) {
+Matrix4::Matrix4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13, float m20, float m21,
+    float m22, float m23, float m30, float m31, float m32, float m33) {
     m[0][0] = m00;
     m[0][1] = m01;
     m[0][2] = m02;
@@ -140,7 +140,8 @@ Matrix4 Matrix4::operator-() const {
 bool Matrix4::operator==(const Matrix4& mat4) const {
     for (int row = 0; row < 4; row++) {
         for (int col = 0; col < 4; col++) {
-            if (m[row][col] != mat4.m[row][col]) return false;
+            if (m[row][col] != mat4.m[row][col])
+                return false;
         }
     }
 
@@ -287,9 +288,7 @@ Matrix4 Matrix4::LookAt(const Vector3& pos, const Vector3& target, const Vector3
 }
 
 float Matrix4::Determinant() const {
-    return m[0][0] * Minor(0, 0).Determinant() -
-        m[0][1] * Minor(0, 1).Determinant() +
-        m[0][2] * Minor(0, 2).Determinant() -
+    return m[0][0] * Minor(0, 0).Determinant() - m[0][1] * Minor(0, 1).Determinant() + m[0][2] * Minor(0, 2).Determinant() -
         m[0][3] * Minor(0, 3).Determinant();
 }
 

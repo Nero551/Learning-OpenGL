@@ -7,4 +7,4 @@ struct Nova : Entity {
         Entity::Initialize();
     }
 };
-}
+} // namespace E

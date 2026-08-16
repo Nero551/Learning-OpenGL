@@ -53,4 +53,4 @@ void Material::AssignTexture(Texture& texture, unsigned int slot) {
     }
     CustomTextures[slot] = &texture;
 }
-}
+} // namespace E

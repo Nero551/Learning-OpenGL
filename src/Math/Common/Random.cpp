@@ -18,7 +18,7 @@ float RandomGaussian(float mean, float standardDeviation) {
     return distribution(rng);
 }
 
-unsigned long NoDistributionRandom() {
+unsigned long RandomRaw() {
     return rng();
 }
-}
+} // namespace E::M

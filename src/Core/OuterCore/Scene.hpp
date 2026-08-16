@@ -19,4 +19,4 @@ struct Scene {
 
     Scene(Scene&&) = default;
 };
-}
+} // namespace E

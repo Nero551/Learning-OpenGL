@@ -1,8 +1,8 @@
 #include "AssimpScene.hpp"
 
-#include<assimp/Importer.hpp>
-#include <assimp/scene.h>
+#include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
+#include <assimp/scene.h>
 
 #include "Core/InnerCore/Engine.hpp"
 #include "Core/Services/ResourceManager.hpp"
@@ -37,31 +37,29 @@ static void ProcessFaces(std::vector<unsigned int>& indices, const aiMesh* mesh)
 
 static Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const std::string& directory) {
     auto& resourceManager = Service::Get<ResourceManager>();
-    //Material
+    // Material
     auto& material = resourceManager.Load<Material>("material_" + std::to_string(mesh->mMaterialIndex));
     material.Shader = &resourceManager.Load<Shader>("s");
-    material.Shader->AssignSource(
-        resourceManager.Load<ShaderSource>("s", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
-    material.Shader->AssignSource(
-        resourceManager.Load<ShaderSource>("s", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
+    material.Shader->AssignSource(resourceManager.Load<ShaderSource>("s", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
+    material.Shader->AssignSource(resourceManager.Load<ShaderSource>("s", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
 
     aiMaterial* aiMat = scene->mMaterials[mesh->mMaterialIndex];
 
-    //Diffuse maps
+    // Diffuse maps
     for (unsigned int t = 0; t < aiMat->GetTextureCount(aiTextureType_DIFFUSE); t++) {
         aiString str;
         aiMat->GetTexture(aiTextureType_DIFFUSE, t, &str);
-        auto& diffuseMap = resourceManager.Load<Texture>("diffuse" + std::to_string(t),
-            std::filesystem::path(directory) / str.C_Str());
+        auto& diffuseMap =
+            resourceManager.Load<Texture>("diffuse" + std::to_string(t), std::filesystem::path(directory) / str.C_Str());
         material.DiffuseMap = &diffuseMap;
     }
 
-    //Specular maps
+    // Specular maps
     for (unsigned int t = 0; t < aiMat->GetTextureCount(aiTextureType_SPECULAR); t++) {
         aiString str;
         aiMat->GetTexture(aiTextureType_SPECULAR, t, &str);
-        auto& specularMap = resourceManager.Load<Texture>("specular" + std::to_string(t),
-            std::filesystem::path(directory) / str.C_Str());
+        auto& specularMap =
+            resourceManager.Load<Texture>("specular" + std::to_string(t), std::filesystem::path(directory) / str.C_Str());
         material.SpecularMap = &specularMap;
     }
     return material;
@@ -71,7 +69,7 @@ void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& di
     auto& resourceManager = Service::Get<ResourceManager>();
     auto& entity = World::Get().CreateEntity<Nova3D>();
 
-    //Mesh
+    // Mesh
     for (unsigned int m = 0; m < node->mNumMeshes; m++) {
         std::vector<Vertex> vertices;
         std::vector<unsigned int> indices;
@@ -81,8 +79,8 @@ void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& di
         ProcessFaces(indices, mesh);
         auto& material = ProcessMaterial(scene, mesh, directory);
 
-        entity.AddComponent<MeshComponent>().Mesh = &resourceManager.Load<Mesh>(
-            "mesh_" + std::to_string(node->mMeshes[m]), vertices, indices);
+        entity.AddComponent<MeshComponent>().Mesh =
+            &resourceManager.Load<Mesh>("mesh_" + std::to_string(node->mMeshes[m]), vertices, indices);
 
         entity.AddComponent<MaterialComponent>().Material = &material;
     }
@@ -107,4 +105,4 @@ AssimpScene::AssimpScene(const std::string& filepath) {
     std::string directory = filepath.substr(0, filepath.find_last_of('/'));
     ProcessNode(scene->mRootNode, scene, directory, *Root);
 }
-}
+} // namespace E

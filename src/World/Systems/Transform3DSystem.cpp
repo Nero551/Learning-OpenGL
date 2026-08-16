@@ -31,4 +31,4 @@ void Transform3DSystem::Update(double dt) {
         transform.GlobalScale = transform.Scale;
     }
 }
-}
+} // namespace E

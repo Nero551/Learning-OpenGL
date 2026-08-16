@@ -6,4 +6,4 @@ namespace E {
 struct AssimpScene : Scene {
     AssimpScene(const std::string& filepath);
 };
-}
+} // namespace E

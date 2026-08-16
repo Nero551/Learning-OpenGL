@@ -68,4 +68,4 @@ M::Matrix4 CameraSystem::GetViewMatrix() {
 
     return view;
 }
-}
+} // namespace E

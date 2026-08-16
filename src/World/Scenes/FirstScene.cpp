@@ -1,7 +1,7 @@
 #include "FirstScene.hpp"
 
-#include "AssimpScene.hpp"
 #include "../../Modules/Renderer/Primitives/Primitives.hpp"
+#include "AssimpScene.hpp"
 #include "Core/Services/ResourceManager.hpp"
 #include "Modules/Renderer/Uniforms/Vector3Uniform.hpp"
 #include "World/Novas/Light.hpp"
@@ -16,8 +16,8 @@ FirstScene::FirstScene() {
     auto& mesh = Primitives::CreateCube("mesh");
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
-    lightShader.AssignSource(resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag",
-        ShaderStage::Fragment));
+    lightShader.AssignSource(
+        resourceManager.Load<ShaderSource>("lightFrag", "Assets/Shaders/lightShader.frag", ShaderStage::Fragment));
     lightShader.AssignSource(
         resourceManager.Load<ShaderSource>("lightVert", "Assets/Shaders/lightShader.vert", ShaderStage::Vertex));
 
@@ -33,7 +33,7 @@ FirstScene::FirstScene() {
     light.GetComponent<LightComponent>().Type = LightType::Directional;
     Root->AttachChild(light);
 
-    //TODO- quaternions
+    // TODO- quaternions
 
     auto& objectShader = resourceManager.Load<Shader>("objectShader");
     objectShader.AssignSource(
@@ -52,4 +52,4 @@ FirstScene::FirstScene() {
     cube.GetComponent<Transform3DComponent>().Position = {0, 0, 0};
     Root->AttachChild(cube);
 }
-}
+} // namespace E

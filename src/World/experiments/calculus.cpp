@@ -19,10 +19,8 @@ static MeshInstance3D& CreatePoint(M::Vector4 col) {
     material.Color = col;
     auto& shader = resourceManager.Load<Shader>("shader");
 
-    shader.AssignSource(
-        resourceManager.Load<ShaderSource>("pointVert", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
-    shader.AssignSource(
-        resourceManager.Load<ShaderSource>("pointFrag", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
+    shader.AssignSource(resourceManager.Load<ShaderSource>("pointVert", "Assets/Shaders/shader.vert", ShaderStage::Vertex));
+    shader.AssignSource(resourceManager.Load<ShaderSource>("pointFrag", "Assets/Shaders/shader.frag", ShaderStage::Fragment));
     material.Shader = &shader;
 
     mesh.RenderMode = RenderMode::SolidWireframe;
@@ -55,18 +53,18 @@ void calculus::Start() {
     auto& resourceManager = Service::Get<ResourceManager>();
     float max = 5;
 
-    //TODO- put all entities in namespace E , components in C and systems in S . rename global namespace to N
+    // TODO- put all entities in namespace E , components in C and systems in S . rename global namespace to N
     //
-    // for (float x = 0; x < max; x += 1) {
-    //     for (float y = 0; y < max; y += 1) {
-    //         for (float z = 0; z < max; z += 1) {
-    //             Plot(
-    //                 {x, y, z},
-    //                 {x / 10.0f, y / 10.0f, z / 10.0f, 1}
-    //             );
-    //         }
-    //     }
-    // }
+    //  for (float x = 0; x < max; x += 1) {
+    //      for (float y = 0; y < max; y += 1) {
+    //          for (float z = 0; z < max; z += 1) {
+    //              Plot(
+    //                  {x, y, z},
+    //                  {x / 10.0f, y / 10.0f, z / 10.0f, 1}
+    //              );
+    //          }
+    //      }
+    //  }
 
     // auto& point = CreatePoint({0.7, 0.7, 0.7, 1});
     // entityId = point.Id;
@@ -100,7 +98,7 @@ void calculus::Update(double dt) {
     Plot({x, f.Integral(3, x), -2}, {0, 0, 1, 1});
     Plot({x, g(x), 2}, {1, 0, 0, 1});
 }
-}
+} // namespace E
 
 //
 // M::Vector3 Tween(M::Vector3 start, M::Vector3 end, float duration, double dt) {

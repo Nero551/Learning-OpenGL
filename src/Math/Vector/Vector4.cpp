@@ -128,8 +128,7 @@ float Vector4::Distance(const Vector4& vec4) const {
 }
 
 bool Vector4::NearlyEquals(const Vector4& vec4, float epsilon) const {
-    return M::NearlyEquals(x, vec4.x, epsilon) && M::NearlyEquals(y, vec4.y, epsilon) && M::NearlyEquals(z,
-            vec4.z, epsilon) &&
+    return M::NearlyEquals(x, vec4.x, epsilon) && M::NearlyEquals(y, vec4.y, epsilon) && M::NearlyEquals(z, vec4.z, epsilon) &&
         M::NearlyEquals(w, vec4.w, epsilon);
 }
 

@@ -2,18 +2,18 @@
 
 // A Float-based math library for the Nova game engine. everything uses floats here
 
-#include "Geometry/Basis.hpp"
 #include "Color/Color.hpp"
-#include "Common/Function.hpp"
-#include "Common/Quaternion.hpp"
 #include "Common/Comparison.hpp"
 #include "Common/Constants.hpp"
 #include "Common/Constraints.hpp"
 #include "Common/Exponentials.hpp"
+#include "Common/Function.hpp"
 #include "Common/Interpolation.hpp"
 #include "Common/Logarithms.hpp"
+#include "Common/Quaternion.hpp"
 #include "Common/Random.hpp"
 #include "Common/Trigonometry.hpp"
+#include "Geometry/Basis.hpp"
 #include "Matrix/Matrix2.hpp"
 #include "Matrix/Matrix3.hpp"
 #include "Matrix/Matrix4.hpp"

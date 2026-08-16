@@ -12,4 +12,4 @@ float Sqrt(float x) {
 float Exp(float x) {
     return std::exp(x);
 }
-}
+} // namespace E::M

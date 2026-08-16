@@ -1,7 +1,6 @@
 #include "Input.hpp"
-#include "Core/InnerCore/Engine.hpp"
 #include <OpenGL.hpp>
-#include "magic_enum/magic_enum.hpp"
+#include "Core/InnerCore/Engine.hpp"
 
 namespace E {
 void Input::OnStart() {
@@ -22,12 +21,12 @@ void Input::OnBeginFrame(double dt) {
     }
 
     GLFWwindow* window = Engine::Get().Window.GetGlfwWindow();
-    for (unsigned int i = 0; i < CurrentKeys.size(); i++) {
-        CurrentKeys[i] = glfwGetKey(window, static_cast<int>(i)) == GLFW_PRESS;
+    for (int key = GLFW_KEY_SPACE; key <= GLFW_KEY_LAST; ++key) {
+        CurrentKeys[key] = glfwGetKey(window, key) == GLFW_PRESS;
     }
 
-    for (unsigned int i = 0; i < CurrentMouseButtons.size(); i++) {
-        CurrentMouseButtons[i] = glfwGetMouseButton(window, static_cast<int>(i));
+    for (int button = GLFW_MOUSE_BUTTON_1; button <= GLFW_MOUSE_BUTTON_LAST; ++button) {
+        CurrentMouseButtons[button] = glfwGetMouseButton(window, button);
     }
 }
 
@@ -95,4 +94,4 @@ constexpr unsigned int Input::ToIndex(Key key) {
 constexpr unsigned int Input::ToIndex(MouseButton button) {
     return static_cast<unsigned int>(button);
 }
-}
+} // namespace E
