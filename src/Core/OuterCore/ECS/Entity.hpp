@@ -253,10 +253,10 @@ struct Entity {
 
 private:
     std::unordered_map<std::type_index, std::unique_ptr<Component>> Components;
-    std::unordered_map<unsigned int, U::CheckedPtr<Entity>> Children;
+    std::vector<unsigned int> Children;
 
     /** @brief Parent entity in the hierarchy. */
-    U::CheckedPtr<Entity> Parent{"Scene Has No Parent"};
+    unsigned int Parent;
 
     /**
      * @brief Recursively collects all descendants of an entity.

@@ -103,6 +103,8 @@ struct World : SystemOwner {
      */
     U::CheckedPtr<Entity> TryFindEntity(unsigned int id);
 
+    //TODO- make entities own their children , that will fix the cyclic dependancy problems ,
+
     // template <ComponentType T> ComponentPool<T>& GetComponentPool() {
     //     const auto type = std::type_index(typeid(T));
     //     if (!ComponentPools.contains(type)) {

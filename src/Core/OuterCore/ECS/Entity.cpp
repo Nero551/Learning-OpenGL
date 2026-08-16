@@ -20,22 +20,21 @@ void Entity::AttachChild(Entity& child) {
         return;
     }
 
-    if (child.Parent) {
-        child.Parent->DetachChild(child.Id);
+    if (child.HasParent()) {
+        child.ClearParent();
     }
 
-    U::CheckedPtr childPtr = &child;
-    Children.emplace(child.Id, std::move(childPtr));
+    Children.emplace_back(child.Id);
 
-    child.Parent = this;
+    child.Parent = this->Id;
 }
 
 std::vector<U::CheckedPtr<Entity>> Entity::GetChildren() {
     std::vector<U::CheckedPtr<Entity>> children;
     children.reserve(Children.size());
 
-    for (auto& child : Children | std::views::values) {
-        children.emplace_back(child);
+    for (unsigned int id : Children) {
+        children.emplace_back(&World::Get().FindEntity(id));
     }
 
     return children;
@@ -55,18 +54,17 @@ void Entity::Destroy() {
 }
 
 void Entity::DestroyChildren() {
-    for (auto& childId : Children | std::views::keys) {
-        DestroyChild(childId);
+    while (!Children.empty()) {
+        DestroyChild(Children.back());
     }
 }
 
 void Entity::DestroyChild(unsigned int id) {
-    auto child = Children.find(id);
-    if (child == Children.end()) {
+    if (!HasChild(id)) {
         return;
     }
-
-    child->second->Destroy();
+    auto& child = World::Get().FindEntity(id);
+    child.Destroy();
 }
 
 std::vector<U::CheckedPtr<Entity>> Entity::GetDescendants() {
@@ -89,38 +87,41 @@ bool Entity::HasAncestor(unsigned int id) const {
 }
 
 void Entity::DetachChild(unsigned int id) {
-    if (auto child = Children.find(id); child != Children.end()) {
-        child->second->Parent.Reset();
-        Children.erase(child);
-    }
-}
+    auto it = std::ranges::find(Children, id);
 
-Entity& Entity::GetParent() {
-    return *Parent;
+    if (it != Children.end()) {
+        World::Get().FindEntity(id).Parent = 0;
+        Children.erase(it);
+    }
 }
 
 void Entity::SetParent(Entity& parent) {
     parent.AttachChild(*this);
 }
 
+Entity& Entity::GetParent() {
+    return World::Get().FindEntity(Parent);
+}
+
 void Entity::ClearParent() {
     if (HasParent()) {
-        Parent->DetachChild(Id);
+        World::Get().FindEntity(Parent).DetachChild(Id);
     }
 }
 
 bool Entity::HasParent() const {
-    return !Parent.IsNull();
+    return Parent != 0;
 }
 
 std::vector<U::CheckedPtr<Entity>> Entity::GetAncestors() {
     std::vector<U::CheckedPtr<Entity>> ancestors;
 
-    auto current = Parent;
+    unsigned int current = Parent;
 
-    while (current) {
-        ancestors.push_back(current);
-        current = current->Parent;
+    while (current != 0) {
+        Entity& entity = World::Get().FindEntity(current);
+        ancestors.emplace_back(&entity);
+        current = entity.Parent;
     }
 
     return ancestors;
@@ -142,27 +143,31 @@ Entity& Entity::GetRoot() {
     U::CheckedPtr current = this;
 
     while (current->HasParent())
-        current = current->Parent;
+        current = &World::Get().FindEntity(current->Parent);
 
     return *current;
 }
 
 bool Entity::HasChild(unsigned int id) const {
-    return Children.contains(id);
+    auto it = std::ranges::find(Children, id);
+    return it != Children.end();
 }
 
 Entity& Entity::GetChild(unsigned int id) {
-    if (auto child = Children.find(id); child != Children.end()) {
-        return *child->second;
+    if (HasChild(id)) {
+        return World::Get().FindEntity(id);
     }
 
-    U::Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
+    U::Logger::Fatal(
+        std::format("Entity {} has no child {}", Id, id)
+    );
 }
 
 U::CheckedPtr<Entity> Entity::TryGetChild(unsigned int id) {
-    if (auto child = Children.find(id); child != Children.end()) {
-        return child->second;
+    if (HasChild(id)) {
+        return &World::Get().FindEntity(id);
     }
+
     return nullptr;
 }
 
@@ -170,10 +175,15 @@ size_t Entity::ChildCount() const {
     return Children.size();
 }
 
-void Entity::RecursiveChildren(std::vector<U::CheckedPtr<Entity>>& entities, Entity& entity) {
-    for (auto& child : entity.Children | std::views::values) {
-        entities.emplace_back(&*child);
-        RecursiveChildren(entities, *child);
+void Entity::RecursiveChildren(
+    std::vector<U::CheckedPtr<Entity>>& entities,
+    Entity& entity
+) {
+    for (unsigned int id : entity.Children) {
+        Entity& child = World::Get().FindEntity(id);
+
+        entities.emplace_back(&child);
+        RecursiveChildren(entities, child);
     }
 }
 } // namespace E
