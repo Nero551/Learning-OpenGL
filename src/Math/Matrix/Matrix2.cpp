@@ -1,4 +1,5 @@
 #include "Matrix2.hpp"
+
 #include "Math/Common/Comparison.hpp"
 #include "Utilities/Logger.hpp"
 
@@ -108,7 +109,6 @@ Matrix2& Matrix2::operator/=(float scalar) {
 Matrix2 Matrix2::operator-() const {
     return *this * -1;
 }
-
 
 //* Equality
 bool Matrix2::operator==(const Matrix2& mat2) const {

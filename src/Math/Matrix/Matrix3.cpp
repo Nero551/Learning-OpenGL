@@ -1,10 +1,8 @@
 #include "Matrix3.hpp"
 
-
 #include "../Geometry/Basis.hpp"
 #include "Math/Common/Comparison.hpp"
 #include "Utilities/Logger.hpp"
-
 
 namespace E::M {
 Matrix3::Matrix3(float mAll) {
@@ -81,7 +79,8 @@ Matrix3& Matrix3::operator*=(const Matrix3& mat3) {
 //* Vectors
 Vector3 Matrix3::operator*(const Vector3& vec3) const {
     return {
-        m[0][0] * vec3.x + m[0][1] * vec3.y + m[0][2] * vec3.z, m[1][0] * vec3.x + m[1][1] * vec3.y + m[1][2] * vec3.z,
+        m[0][0] * vec3.x + m[0][1] * vec3.y + m[0][2] * vec3.z,
+        m[1][0] * vec3.x + m[1][1] * vec3.y + m[1][2] * vec3.z,
         m[2][0] * vec3.x + m[2][1] * vec3.y + m[2][2] * vec3.z
     };
 }

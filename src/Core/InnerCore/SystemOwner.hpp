@@ -2,7 +2,6 @@
 #include "Core/OuterCore/ECS/System.hpp"
 #include "Utilities/Logger.hpp"
 
-
 namespace E {
 template <typename T>
 concept SystemType = std::derived_from<T, System>;

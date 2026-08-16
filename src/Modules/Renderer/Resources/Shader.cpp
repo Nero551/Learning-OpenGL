@@ -1,9 +1,9 @@
 #include "Shader.hpp"
-#include <OpenGL.hpp>
-#include "Utilities/Logger.hpp"
 
+#include <OpenGL.hpp>
 
 #include "../Uniforms/FloatUniform.hpp"
+#include "Utilities/Logger.hpp"
 
 namespace E {
 void Shader::AssignSource(ShaderSource& source) {
@@ -70,14 +70,14 @@ int Shader::GetUniformLocation(const std::string& name) {
         location = glGetUniformLocation(Id, name.c_str());
 
         if (location == -1) {
-            // E::U::Logger::Warning("Shader: " + Name + " Uniform Not Found: " + name);
+            // E::U::Logger::Warning("Shader: " + Name + " Uniform Not Found: " +
+            // name);
         }
 
         UniformLocations[name] = location;
     }
     return location;
 }
-
 
 void Shader::CreateProgram() {
     if (Sources.empty()) {

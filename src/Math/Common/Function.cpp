@@ -17,7 +17,6 @@ Function Function::Differentiate(const float dx) const {
     return derivative;
 }
 
-
 float Function::Derivative(const float x, const float dx) const {
     return Differentiate(dx).Evaluate(x);
 }

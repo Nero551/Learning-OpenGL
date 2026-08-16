@@ -58,7 +58,6 @@ struct Vector2 {
      */
     [[nodiscard]] float Dot(const Vector2& vec2) const;
 
-
     /**
      * @brief Linearly interpolates between this vector and another vector.
      *

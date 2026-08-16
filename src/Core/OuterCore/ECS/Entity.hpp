@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Component.hpp"
-
 #include "Utilities/CheckedPtr.hpp"
 #include "Utilities/Logger.hpp"
 

@@ -1,9 +1,9 @@
 #include "Vector2.hpp"
+
 #include <ostream>
 
 #include "Math/Common/Comparison.hpp"
 #include "Math/Common/Interpolation.hpp"
-
 
 namespace E::M {
 Vector2::Vector2() : x(0), y(0) {}

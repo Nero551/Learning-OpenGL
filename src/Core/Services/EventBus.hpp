@@ -32,7 +32,6 @@ struct EventBus : Service {
 
     void EmptyFireQueue();
 
-
     template <EventType T, typename F> void Sub(F&& callback) {
         auto method = [callback](Event& e) {
             callback(static_cast<T&>(e));

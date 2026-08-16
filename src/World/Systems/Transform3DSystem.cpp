@@ -6,7 +6,6 @@
 namespace E {
 void Transform3DSystem::Start() {}
 
-
 void Transform3DSystem::Update(double dt) {
     for (auto& entity : World::Get().Root->GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent>()) {

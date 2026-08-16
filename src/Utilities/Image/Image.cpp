@@ -1,6 +1,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "Image.hpp"
+
 #include <stb_image.h>
+
 #include "Utilities/Logger.hpp"
 
 namespace E::U {

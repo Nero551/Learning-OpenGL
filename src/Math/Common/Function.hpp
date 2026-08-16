@@ -25,7 +25,6 @@ struct Function {
     /** @brief doesn't work if the lower bound (a) is not 0 */
     [[nodiscard]] float Integral(float lowerBound, float upperBound, float dx = 0.001f) const;
 
-
     float operator()(float x) const;
     Function operator()(const Function& g) const;
     Function operator+(const Function& g) const;

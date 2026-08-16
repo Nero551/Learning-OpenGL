@@ -53,7 +53,8 @@ void calculus::Start() {
     auto& resourceManager = Service::Get<ResourceManager>();
     float max = 5;
 
-    // TODO- put all entities in namespace E , components in C and systems in S . rename global namespace to N
+    // TODO- put all entities in namespace E , components in C and systems in S .
+    // rename global namespace to N
     //
     //  for (float x = 0; x < max; x += 1) {
     //      for (float y = 0; y < max; y += 1) {
@@ -70,14 +71,12 @@ void calculus::Start() {
     // entityId = point.Id;
 }
 
-
 static constexpr float step = 0.025;
 static constexpr float xRange = 8;
 static float x = -8;
 
 static float elapsed = 0;
 static float passed = 0;
-
 
 void calculus::Update(double dt) {
     auto& resourceManager = Service::Get<ResourceManager>();
@@ -101,7 +100,8 @@ void calculus::Update(double dt) {
 } // namespace E
 
 //
-// M::Vector3 Tween(M::Vector3 start, M::Vector3 end, float duration, double dt) {
+// M::Vector3 Tween(M::Vector3 start, M::Vector3 end, float duration, double dt)
+// {
 //     passed += dt;
 //     float t = M::Clamp(passed / duration, 0, 1);
 //     M::Vector3 current = start.Lerp(end, M::EaseOutQuad(t));

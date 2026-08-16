@@ -1,9 +1,7 @@
 #pragma once
+#include "../Enums/Topology.hpp"
 #include "../Vertex.hpp"
 #include "Core/OuterCore/Resource.hpp"
-
-
-#include "../Enums/Topology.hpp"
 #include "Modules/Renderer/Enums/RenderMode.hpp"
 
 namespace E {

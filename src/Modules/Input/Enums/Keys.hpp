@@ -148,4 +148,4 @@ enum class Key {
     F24 = GLFW_KEY_F24,
     F25 = GLFW_KEY_F25,
 };
-}
+} // namespace E

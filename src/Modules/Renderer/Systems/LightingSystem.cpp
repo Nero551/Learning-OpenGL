@@ -8,7 +8,6 @@
 #include "../Uniforms/Vector3Uniform.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 
-
 namespace E {
 static std::vector<unsigned int> Lights;
 

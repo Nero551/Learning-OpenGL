@@ -2,7 +2,6 @@
 #include "Core/Services/ResourceManager.hpp"
 #include "Primitives.hpp"
 
-
 namespace E {
 Texture& Primitives::CreateWhiteTexture() {
     unsigned char white[] = {255, 255, 255, 255};

@@ -1,4 +1,5 @@
 #include "ShaderSource.hpp"
+
 #include <string>
 #include <unordered_set>
 #include <utility>
@@ -52,10 +53,9 @@ void ShaderSource::Preprocess() {
     PreprocessIncludes(Path, GeneratedCode, includesProcessing);
 }
 
-
 // TODO- replace with line by line parsing
-void ShaderSource::PreprocessIncludes(const std::string& path, std::string& code,
-                                      std::unordered_set<std::string>& includesProcessing) {
+void ShaderSource::PreprocessIncludes(
+    const std::string& path, std::string& code, std::unordered_set<std::string>& includesProcessing) {
     const std::string include = "#include \"";
     auto pos = code.find(include);
 

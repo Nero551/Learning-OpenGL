@@ -9,4 +9,4 @@ enum class Topology {
     TriangleStrip = GL_TRIANGLE_STRIP,
     LineStrip = GL_LINE_STRIP,
 };
-}
+} // namespace E

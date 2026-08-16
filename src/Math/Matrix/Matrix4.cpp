@@ -1,10 +1,8 @@
 #include "Matrix4.hpp"
 
-
 #include "Math/Common/Comparison.hpp"
 #include "Math/Geometry/Basis.hpp"
 #include "Utilities/Logger.hpp"
-
 
 namespace E::M {
 Matrix4::Matrix4(float mAll) {

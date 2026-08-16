@@ -24,7 +24,6 @@ struct Logger {
         std::cout << '\n';
     }
 
-
     template <typename... Args> [[noreturn]] static void Fatal(const Args&... args) {
         std::cout << Red << "[FATAL] " << Reset;
         (..., (std::cout << args));

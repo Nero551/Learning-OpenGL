@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace E {
 struct Uniform {
     std::string Name;

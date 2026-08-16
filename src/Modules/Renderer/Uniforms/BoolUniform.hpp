@@ -2,7 +2,6 @@
 #include "../Uniform.hpp"
 #include "OpenGL.hpp"
 
-
 namespace E {
 struct BoolUniform : Uniform {
     bool Value;

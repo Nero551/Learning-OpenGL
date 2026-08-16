@@ -16,16 +16,16 @@ concept SceneType = std::derived_from<T, Scene>;
 
 /**
  * @brief Owns and manages the runtime state of the engine world.
- * The World owns all entities. It is responsible for managing the lifecycle of entities, including
- * entity creation and destruction & system execution.
+ * The World owns all entities. It is responsible for managing the lifecycle of
+ * entities, including entity creation and destruction & system execution.
  */
 struct World : SystemOwner {
     U::CheckedPtr<Entity> Root{"World Has No Root Entity"};
     U::CheckedPtr<Entity> ActiveCamera{"World Has No Active Camera"};
     int MaxLights = 64;
 
-    // TODO- try making entities own their children instead of being checked pointers. if works , might make the hierarchy alot
-    // easier
+    // TODO- try making entities own their children instead of being checked
+    // pointers. if works , might make the hierarchy alot easier
 
     /** @brief Gets the global World instance. */
     static World& Get();
@@ -60,7 +60,8 @@ struct World : SystemOwner {
     /**
      * @brief Removes an entity from the world.
      * @param id ID of the entity to remove.
-     * @note removes all children of the entity as well, and fires an EntityDestroyed event for each removed entity.
+     * @note removes all children of the entity as well, and fires an
+     * EntityDestroyed event for each removed entity.
      */
     void RemoveEntity(unsigned int id);
 

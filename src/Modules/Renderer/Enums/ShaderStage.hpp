@@ -7,4 +7,4 @@ enum class ShaderStage {
     Vertex = GL_VERTEX_SHADER,
     Geometry = GL_GEOMETRY_SHADER,
 };
-}
+} // namespace E

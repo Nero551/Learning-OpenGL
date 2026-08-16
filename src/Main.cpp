@@ -11,7 +11,8 @@ static void Testing() {
 }
 
 int main() {
-    //TODO- make object higher than engine to manange stuff that run before & after it (ex: glfw)
+    // TODO- make object higher than engine to manange stuff that run before &
+    // after it (ex: glfw)
     E::Engine engine;
     engine.Run();
     return 0;

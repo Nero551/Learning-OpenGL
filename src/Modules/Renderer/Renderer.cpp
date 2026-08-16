@@ -5,9 +5,8 @@
 #include "Components/MaterialComponent.hpp"
 #include "Components/MeshComponent.hpp"
 #include "Core/InnerCore/Engine.hpp"
-#include "Systems/CameraSystem.hpp"
-
 #include "Primitives/Primitives.hpp"
+#include "Systems/CameraSystem.hpp"
 #include "Systems/LightingSystem.hpp"
 #include "Uniforms/FloatUniform.hpp"
 #include "Uniforms/Matrix3Uniform.hpp"

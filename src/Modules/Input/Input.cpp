@@ -1,5 +1,7 @@
 #include "Input.hpp"
+
 #include <OpenGL.hpp>
+
 #include "Core/InnerCore/Engine.hpp"
 
 namespace E {
@@ -85,7 +87,6 @@ M::Vector2 Input::GetScrollDelta() const {
 bool Input::IsScrolling() const {
     return ScrollOffset != M::Vector2::Zero;
 }
-
 
 constexpr unsigned int Input::ToIndex(Key key) {
     return static_cast<unsigned int>(key);

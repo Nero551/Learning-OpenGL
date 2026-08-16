@@ -34,7 +34,8 @@ void Profiling::OnUpdate(double dt) {
             " ms" + " | " + std::to_string(FrameMs) + " ms");
 
         // E::U::Logger::Info(
-        //     "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " + std::to_string(averageFrameMs) + " ms" + " | " +
+        //     "FPS: " + std::to_string(FrameCount) + " | " + "AVG: " +
+        //     std::to_string(averageFrameMs) + " ms" + " | " +
         //     std::to_string(FrameMs) + " ms");
         FrameCount = 0;
     }

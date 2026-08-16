@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace E {
 /**
  * @brief Base class for resources managed by ResourceManager.

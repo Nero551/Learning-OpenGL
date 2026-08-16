@@ -7,6 +7,7 @@
 
 /**
  * @namespace E::U
- * @brief Contains utility functions, helpers, and supporting structures for Nova.
+ * @brief Contains utility functions, helpers, and supporting structures for
+ * Nova.
  */
 namespace E::U {}

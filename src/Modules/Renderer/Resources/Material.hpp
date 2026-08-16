@@ -23,7 +23,6 @@ struct Material : Resource {
     U::CheckedPtr<Texture> SpecularMap;
     U::CheckedPtr<Texture> EmissionMap;
 
-
     Material(const std::string& name);
 
     void AssignTexture(Texture& texture, unsigned int slot);

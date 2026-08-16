@@ -42,7 +42,8 @@ struct Transform3DComponent : Component {
     }
 
 private:
-    // TODO- this is temporary until i have a proper change detection system (reflection)
+    // TODO- this is temporary until i have a proper change detection system
+    // (reflection)
     M::Vector3 GlobalPosition = M::Vector3::Zero;
     M::Vector3 GlobalRotation = M::Vector3::Zero; // Radians
     M::Vector3 GlobalScale = M::Vector3::One;

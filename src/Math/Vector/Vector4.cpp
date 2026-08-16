@@ -1,4 +1,5 @@
 #include "Vector4.hpp"
+
 #include <ostream>
 
 #include "Math/Common/Comparison.hpp"

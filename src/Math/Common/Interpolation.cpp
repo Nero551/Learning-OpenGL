@@ -1,4 +1,5 @@
 #include "Interpolation.hpp"
+
 #include "Exponentials.hpp"
 
 namespace E::M {

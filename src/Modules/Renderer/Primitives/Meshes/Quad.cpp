@@ -1,7 +1,6 @@
 #include "../Primitives.hpp"
 #include "Core/Services/ResourceManager.hpp"
 
-
 namespace E {
 Mesh& Primitives::CreateQuad(const std::string& name) {
     std::vector<Vertex> vertices = {

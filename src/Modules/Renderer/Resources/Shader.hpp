@@ -58,7 +58,8 @@ struct Shader : Resource {
 
     void AssignSource(ShaderSource& source);
 
-    /** @brief deletes the current shader program and uniform locations , which causes them to be recreated on Use() */
+    /** @brief deletes the current shader program and uniform locations , which
+     * causes them to be recreated on Use() */
     void Reload();
 
     std::vector<U::CheckedPtr<ShaderSource>>& GetSources();

@@ -11,11 +11,11 @@ template <typename T> struct CheckedPtr {
         ptr = objectPtr;
     }
 
-    CheckedPtr(const std::string_view& nullMessage) {
+    CheckedPtr(const std::string& nullMessage) {
         this->nullMessage += nullMessage;
     }
 
-    CheckedPtr(T* objectPtr, const std::string_view& nullMessage) {
+    CheckedPtr(T* objectPtr, const std::string& nullMessage) {
         ptr = objectPtr;
         this->nullMessage += nullMessage;
     }
@@ -26,10 +26,7 @@ template <typename T> struct CheckedPtr {
     }
 
     T* operator->() const {
-        if (!ptr) {
-            Logger::Fatal(nullMessage);
-        }
-        return ptr;
+        return &Logger::Require(ptr, nullMessage);
     }
 
     bool operator==(T* otherPtr) {
