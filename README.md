@@ -1,6 +1,6 @@
-# Learning-OpenGL (2026-06-26)
+# Nova (2026-06-26) 3D game engine hobby project
 
-## Installing System Dependancies
+## Installing System Dependencies
 
 - ./Scripts.setup-linux.sh
 

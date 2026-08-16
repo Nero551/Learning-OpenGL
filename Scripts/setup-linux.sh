@@ -49,9 +49,8 @@ else
         --prefix=/usr/local
 
     rm /tmp/cmake.sh
-
+  echo "✅ CMake installed."
 fi
-echo "✅ CMake installed."
 
 echo "🔍 Verifying tools..."
 
@@ -61,4 +60,4 @@ command -v ninja
 command -v git
 command -v cmake
 
-echo "🥳 Nova development environment is ready!"
+echo "🥳 Nova Dependencies Installed!"
