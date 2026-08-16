@@ -1,6 +1,7 @@
 #include "CameraSystem.hpp"
 
 #include "Core/InnerCore/Engine.hpp"
+#include "Core/OuterCore/ECS/Entity.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Renderer/Components/CameraComponent.hpp"
 #include "World/Components/Transform3DComponent.hpp"

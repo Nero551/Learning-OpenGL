@@ -1,13 +1,11 @@
 #pragma once
 
 #include "Component.hpp"
+#include "ComponentPool.hpp"
 #include "Utilities/CheckedPtr.hpp"
 #include "Utilities/Logger.hpp"
 
 namespace E {
-template <typename T>
-concept ComponentType = std::derived_from<T, Component>;
-
 /**
 
 * @brief Represents an entity in the world.

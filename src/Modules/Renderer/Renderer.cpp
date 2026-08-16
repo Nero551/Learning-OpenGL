@@ -5,6 +5,7 @@
 #include "Components/MaterialComponent.hpp"
 #include "Components/MeshComponent.hpp"
 #include "Core/InnerCore/Engine.hpp"
+#include "Core/OuterCore/ECS/Entity.hpp"
 #include "Primitives/Primitives.hpp"
 #include "Systems/CameraSystem.hpp"
 #include "Systems/LightingSystem.hpp"

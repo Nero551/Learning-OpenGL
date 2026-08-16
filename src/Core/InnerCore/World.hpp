@@ -4,6 +4,8 @@
 #include "Core/OuterCore/Service.hpp"
 #include "Core/Services/EventBus.hpp"
 #include "SystemOwner.hpp"
+#include "Core/OuterCore/ECS/ComponentPool.hpp"
+#include "Core/OuterCore/ECS/IComponentPool.hpp"
 #include "Utilities/Logger.hpp"
 #include "World/Events/EntityCreated.hpp"
 
@@ -101,8 +103,18 @@ struct World : SystemOwner {
      */
     U::CheckedPtr<Entity> TryFindEntity(unsigned int id);
 
+    // template <ComponentType T> ComponentPool<T>& GetComponentPool() {
+    //     const auto type = std::type_index(typeid(T));
+    //     if (!ComponentPools.contains(type)) {
+    //         ComponentPools.emplace(type, std::make_unique<ComponentPool<T>>());
+    //     }
+    //
+    //     return static_cast<ComponentPool<T>&>(*ComponentPools.at(type));
+    // }
+
 private:
     std::unordered_map<unsigned int, std::unique_ptr<Entity>> Entities;
+    // std::unordered_map<std::type_index, std::unique_ptr<IComponentPool>> ComponentPools;
 
     /** @brief ID assigned to the most recently created entity. */
     unsigned int currentEntityId = 0;

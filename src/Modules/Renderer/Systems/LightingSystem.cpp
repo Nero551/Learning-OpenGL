@@ -6,6 +6,7 @@
 #include "../Uniforms/FloatUniform.hpp"
 #include "../Uniforms/IntUniform.hpp"
 #include "../Uniforms/Vector3Uniform.hpp"
+#include "World/Events/EntityCreated.hpp"
 #include "World/Events/EntityDestroyed.hpp"
 
 namespace E {

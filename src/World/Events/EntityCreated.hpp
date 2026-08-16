@@ -1,6 +1,6 @@
 #pragma once
-#include "Core/OuterCore/ECS/Entity.hpp"
 #include "Core/OuterCore/Event.hpp"
+#include "Core/OuterCore/ECS/Entity.hpp"
 
 namespace E {
 struct EntityCreated : Event {

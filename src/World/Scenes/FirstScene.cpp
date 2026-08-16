@@ -8,7 +8,6 @@
 #include "World/Novas/MeshInstance3D.hpp"
 
 namespace E {
-
 FirstScene::FirstScene() {
     auto& resourceManager = Service::Get<ResourceManager>();
     Root = &World::Get().CreateEntity<Nova3D>();
