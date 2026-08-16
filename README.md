@@ -2,7 +2,7 @@
 
 ## Installing System Dependancies
 
-- ./Scripts.setup.sh
+- ./Scripts.setup-linux.sh
 
 ## Building & Running Engine
 

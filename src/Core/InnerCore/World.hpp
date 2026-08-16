@@ -26,9 +26,6 @@ struct World : SystemOwner {
     U::CheckedPtr<Entity> ActiveCamera{ "World Has No Active Camera" };
     int MaxLights = 64;
 
-    // TODO- try making entities own their children instead of being checked
-    // pointers. if works , might make the hierarchy alot easier
-
     /** @brief Gets the global World instance. */
     static World& Get();
 
@@ -102,8 +99,6 @@ struct World : SystemOwner {
      * @return pointer to the entity, or null if it does not exist.
      */
     U::CheckedPtr<Entity> TryFindEntity(unsigned int id);
-
-    // TODO- make entities own their children , that will fix the cyclic dependancy problems ,
 
     // template <ComponentType T> ComponentPool<T>& GetComponentPool() {
     //     const auto type = std::type_index(typeid(T));
