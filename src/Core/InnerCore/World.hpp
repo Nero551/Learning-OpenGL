@@ -1,11 +1,11 @@
 #pragma once
 
 #include "../OuterCore/Scene.hpp"
+#include "Core/OuterCore/ECS/ComponentPool.hpp"
+#include "Core/OuterCore/ECS/IComponentPool.hpp"
 #include "Core/OuterCore/Service.hpp"
 #include "Core/Services/EventBus.hpp"
 #include "SystemOwner.hpp"
-#include "Core/OuterCore/ECS/ComponentPool.hpp"
-#include "Core/OuterCore/ECS/IComponentPool.hpp"
 #include "Utilities/Logger.hpp"
 #include "World/Events/EntityCreated.hpp"
 
@@ -22,8 +22,8 @@ concept SceneType = std::derived_from<T, Scene>;
  * entities, including entity creation and destruction & system execution.
  */
 struct World : SystemOwner {
-    U::CheckedPtr<Entity> Root{"World Has No Root Entity"};
-    U::CheckedPtr<Entity> ActiveCamera{"World Has No Active Camera"};
+    U::CheckedPtr<Entity> Root{ "World Has No Root Entity" };
+    U::CheckedPtr<Entity> ActiveCamera{ "World Has No Active Camera" };
     int MaxLights = 64;
 
     // TODO- try making entities own their children instead of being checked
@@ -103,7 +103,7 @@ struct World : SystemOwner {
      */
     U::CheckedPtr<Entity> TryFindEntity(unsigned int id);
 
-    //TODO- make entities own their children , that will fix the cyclic dependancy problems ,
+    // TODO- make entities own their children , that will fix the cyclic dependancy problems ,
 
     // template <ComponentType T> ComponentPool<T>& GetComponentPool() {
     //     const auto type = std::type_index(typeid(T));

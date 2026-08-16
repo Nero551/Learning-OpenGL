@@ -5,7 +5,8 @@
 #include "World/Components/Transform3DComponent.hpp"
 
 namespace E {
-void Transform3DSystem::Start() {}
+void Transform3DSystem::Start() {
+}
 
 void Transform3DSystem::Update(double dt) {
     for (auto& entity : World::Get().Root->GetDescendants()) {

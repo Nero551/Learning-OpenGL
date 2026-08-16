@@ -22,9 +22,7 @@ float Function::Derivative(const float x, const float dx) const {
 }
 
 Function Function::Compose(const Function& g) const {
-    return [f = *this, g](const float x) -> float {
-        return f(g(x));
-    };
+    return [f = *this, g](const float x) -> float { return f(g(x)); };
 }
 
 Function Function::Integrate(float lowerBound, float dx) const {
@@ -61,9 +59,7 @@ float Function::InverseEvaluate(float y, float domainMin, float domainMax) const
 }
 
 Function Function::Inverse(float min, float max) const {
-    return [f = *this, min, max](float y) {
-        return f.InverseEvaluate(y, min, max);
-    };
+    return [f = *this, min, max](float y) { return f.InverseEvaluate(y, min, max); };
 }
 
 float Function::operator()(float x) const {
@@ -75,57 +71,39 @@ Function Function::operator()(const Function& g) const {
 }
 
 Function Function::operator+(const Function& g) const {
-    return [f = *this, g](const float x) -> float {
-        return f(x) + g(x);
-    };
+    return [f = *this, g](const float x) -> float { return f(x) + g(x); };
 }
 
 Function Function::operator-(const Function& g) const {
-    return [f = *this, g](float x) {
-        return f(x) - g(x);
-    };
+    return [f = *this, g](float x) { return f(x) - g(x); };
 }
 
 Function Function::operator*(const Function& g) const {
-    return [f = *this, g](float x) {
-        return f(x) * g(x);
-    };
+    return [f = *this, g](float x) { return f(x) * g(x); };
 }
 
 Function Function::operator/(const Function& g) const {
-    return [f = *this, g](float x) {
-        return f(x) / g(x);
-    };
+    return [f = *this, g](float x) { return f(x) / g(x); };
 }
 
 Function Function::operator-() const {
-    return [f = *this](float x) {
-        return -f(x);
-    };
+    return [f = *this](float x) { return -f(x); };
 }
 
 Function Function::operator+(float scalar) const {
-    return [f = *this, scalar](const float x) -> float {
-        return f(x) + scalar;
-    };
+    return [f = *this, scalar](const float x) -> float { return f(x) + scalar; };
 }
 
 Function Function::operator-(float scalar) const {
-    return [f = *this, scalar](const float x) -> float {
-        return f(x) - scalar;
-    };
+    return [f = *this, scalar](const float x) -> float { return f(x) - scalar; };
 }
 
 Function Function::operator/(float scalar) const {
-    return [f = *this, scalar](const float x) -> float {
-        return f(x) / scalar;
-    };
+    return [f = *this, scalar](const float x) -> float { return f(x) / scalar; };
 }
 
 Function Function::operator*(const float scalar) const {
-    return [f = *this, scalar](float x) {
-        return f(x) * scalar;
-    };
+    return [f = *this, scalar](float x) { return f(x) * scalar; };
 }
 
 Function operator+(float scalar, const Function& f) {
@@ -133,9 +111,7 @@ Function operator+(float scalar, const Function& f) {
 }
 
 Function operator-(float scalar, const Function& f) {
-    return [f, scalar](float x) {
-        return scalar - f(x);
-    };
+    return [f, scalar](float x) { return scalar - f(x); };
 }
 
 Function operator*(float scalar, const Function& f) {
@@ -143,8 +119,6 @@ Function operator*(float scalar, const Function& f) {
 }
 
 Function operator/(float scalar, const Function& f) {
-    return [f, scalar](float x) {
-        return scalar / f(x);
-    };
+    return [f, scalar](float x) { return scalar / f(x); };
 }
 } // namespace E::M

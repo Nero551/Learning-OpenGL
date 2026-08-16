@@ -7,7 +7,8 @@ concept Func = std::invocable<T, float> && std::same_as<std::invoke_result_t<T, 
 struct Function {
     template <Func T>
         requires Func<T> && (!std::same_as<std::remove_cvref_t<T>, Function>)
-    Function(T&& f) : Func(std::forward<T>(f)) {}
+    Function(T&& f) : Func(std::forward<T>(f)) {
+    }
 
     [[nodiscard]] float Evaluate(float x) const;
     [[nodiscard]] Function Compose(const Function& g) const;

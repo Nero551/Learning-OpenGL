@@ -5,6 +5,6 @@
 
 namespace E {
 struct MaterialComponent : Component {
-    U::CheckedPtr<Material> Material{"Material Component Has No Material Assigned"};
+    U::CheckedPtr<Material> Material{ "Material Component Has No Material Assigned" };
 };
 } // namespace E

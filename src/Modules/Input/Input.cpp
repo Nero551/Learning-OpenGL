@@ -8,11 +8,11 @@ namespace E {
 void Input::OnStart() {
     Window& window = Engine::Get().Window;
     glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xPos, double yPos) {
-        Engine::Get().GetModule<Input>().MousePosition = {static_cast<float>(xPos), static_cast<float>(yPos)};
+        Engine::Get().GetModule<Input>().MousePosition = { static_cast<float>(xPos), static_cast<float>(yPos) };
     });
 
     glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xOffset, double yOffset) {
-        Engine::Get().GetModule<Input>().ScrollOffset = {static_cast<float>(xOffset), static_cast<float>(yOffset)};
+        Engine::Get().GetModule<Input>().ScrollOffset = { static_cast<float>(xOffset), static_cast<float>(yOffset) };
     });
 }
 
@@ -33,7 +33,7 @@ void Input::OnBeginFrame(double dt) {
 }
 
 void Input::OnEndFrame(double dt) {
-    ScrollOffset = {0, 0};
+    ScrollOffset = { 0, 0 };
     PreviousMousePosition = MousePosition;
     PreviousKeys = CurrentKeys;
     PreviousMouseButtons = CurrentMouseButtons;

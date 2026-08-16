@@ -128,15 +128,11 @@ std::vector<U::CheckedPtr<Entity>> Entity::GetAncestors() {
 }
 
 bool Entity::IsDescendantOf(const Entity& entity) {
-    return std::ranges::any_of(GetAncestors(), [&entity](const auto& ancestor) {
-        return ancestor->Id == entity.Id;
-    });
+    return std::ranges::any_of(GetAncestors(), [&entity](const auto& ancestor) { return ancestor->Id == entity.Id; });
 }
 
 bool Entity::IsAncestorOf(const Entity& entity) {
-    return std::ranges::any_of(GetDescendants(), [&entity](const auto& descendant) {
-        return descendant->Id == entity.Id;
-    });
+    return std::ranges::any_of(GetDescendants(), [&entity](const auto& descendant) { return descendant->Id == entity.Id; });
 }
 
 Entity& Entity::GetRoot() {
@@ -158,9 +154,7 @@ Entity& Entity::GetChild(unsigned int id) {
         return World::Get().FindEntity(id);
     }
 
-    U::Logger::Fatal(
-        std::format("Entity {} has no child {}", Id, id)
-    );
+    U::Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
 }
 
 U::CheckedPtr<Entity> Entity::TryGetChild(unsigned int id) {
@@ -175,10 +169,7 @@ size_t Entity::ChildCount() const {
     return Children.size();
 }
 
-void Entity::RecursiveChildren(
-    std::vector<U::CheckedPtr<Entity>>& entities,
-    Entity& entity
-) {
+void Entity::RecursiveChildren(std::vector<U::CheckedPtr<Entity>>& entities, Entity& entity) {
     for (unsigned int id : entity.Children) {
         Entity& child = World::Get().FindEntity(id);
 

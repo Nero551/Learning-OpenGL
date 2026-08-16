@@ -6,25 +6,28 @@
 #include "Math/Common/Interpolation.hpp"
 
 namespace E::M {
-Vector4::Vector4() : x(0), y(0), z(0), w(0) {}
+Vector4::Vector4() : x(0), y(0), z(0), w(0) {
+}
 
-Vector4::Vector4(float all) : x(all), y(all), z(all), w(all) {}
+Vector4::Vector4(float all) : x(all), y(all), z(all), w(all) {
+}
 
-Vector4::Vector4(const float x, const float y, const float z, const float w) : x(x), y(y), z(z), w(w) {}
+Vector4::Vector4(const float x, const float y, const float z, const float w) : x(x), y(y), z(z), w(w) {
+}
 
 //?Operators
 
 //*Vectors
 Vector4 Vector4::operator+(const Vector4& vec4) const {
-    return {x + vec4.x, y + vec4.y, z + vec4.z, w + vec4.w};
+    return { x + vec4.x, y + vec4.y, z + vec4.z, w + vec4.w };
 }
 
 Vector4 Vector4::operator-(const Vector4& vec4) const {
-    return {x - vec4.x, y - vec4.y, z - vec4.z, w - vec4.w};
+    return { x - vec4.x, y - vec4.y, z - vec4.z, w - vec4.w };
 }
 
 Vector4 Vector4::operator*(const Vector4& vec4) const {
-    return {x * vec4.x, y * vec4.y, z * vec4.z, w * vec4.w};
+    return { x * vec4.x, y * vec4.y, z * vec4.z, w * vec4.w };
 }
 
 Vector4& Vector4::operator+=(const Vector4& vec4) {
@@ -41,19 +44,19 @@ Vector4& Vector4::operator*=(const Vector4& vec4) {
 
 //*Scalars
 Vector4 Vector4::operator+(const float scalar) const {
-    return {x + scalar, y + scalar, z + scalar, w + scalar};
+    return { x + scalar, y + scalar, z + scalar, w + scalar };
 }
 
 Vector4 Vector4::operator-(const float scalar) const {
-    return {x - scalar, y - scalar, z - scalar, w - scalar};
+    return { x - scalar, y - scalar, z - scalar, w - scalar };
 }
 
 Vector4 Vector4::operator*(const float scalar) const {
-    return {x * scalar, y * scalar, z * scalar, w * scalar};
+    return { x * scalar, y * scalar, z * scalar, w * scalar };
 }
 
 Vector4 Vector4::operator/(const float scalar) const {
-    return {x / scalar, y / scalar, z / scalar, w / scalar};
+    return { x / scalar, y / scalar, z / scalar, w / scalar };
 }
 
 Vector4& Vector4::operator+=(const float scalar) {
@@ -77,7 +80,7 @@ Vector4 operator+(const float scalar, const Vector4& vec4) {
 }
 
 Vector4 operator-(const float scalar, const Vector4& vec4) {
-    return {scalar - vec4.x, scalar - vec4.y, scalar - vec4.z, scalar - vec4.w};
+    return { scalar - vec4.x, scalar - vec4.y, scalar - vec4.z, scalar - vec4.w };
 }
 
 Vector4 operator*(const float scalar, const Vector4& vec4) {
@@ -85,7 +88,7 @@ Vector4 operator*(const float scalar, const Vector4& vec4) {
 }
 
 Vector4 operator/(const float scalar, const Vector4& vec4) {
-    return {scalar / vec4.x, scalar / vec4.y, scalar / vec4.z, scalar / vec4.w};
+    return { scalar / vec4.x, scalar / vec4.y, scalar / vec4.z, scalar / vec4.w };
 }
 
 Vector4 Vector4::operator-() const {
@@ -121,7 +124,7 @@ float Vector4::Dot(const Vector4& vec4) const {
 }
 
 Vector4 Vector4::Lerp(const Vector4& vec4, float t) const {
-    return {M::Lerp(x, vec4.x, t), M::Lerp(y, vec4.y, t), M::Lerp(z, vec4.z, t), M::Lerp(w, vec4.w, t)};
+    return { M::Lerp(x, vec4.x, t), M::Lerp(y, vec4.y, t), M::Lerp(z, vec4.z, t), M::Lerp(w, vec4.w, t) };
 }
 
 float Vector4::Distance(const Vector4& vec4) const {
@@ -138,7 +141,7 @@ Vector4 Vector4::Normalized() const {
     if (length == 0) {
         return Zero;
     }
-    return {x / length, y / length, z / length, w / length};
+    return { x / length, y / length, z / length, w / length };
 }
 
 //?Statics

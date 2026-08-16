@@ -21,7 +21,8 @@ std::vector<U::CheckedPtr<ShaderSource>>& Shader::GetSources() {
     return Sources;
 }
 
-Shader::Shader(const std::string& name) : Resource(name) {}
+Shader::Shader(const std::string& name) : Resource(name) {
+}
 
 Shader::~Shader() {
     glDeleteProgram(Id);

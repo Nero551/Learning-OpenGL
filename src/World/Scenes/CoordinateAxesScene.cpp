@@ -17,7 +17,7 @@ namespace E {
 CoordinateAxesScene::CoordinateAxesScene() {
     auto& resourceManager = Service::Get<ResourceManager>();
 
-    Root = &World::Get().CreateEntity<Nova>();
+    SetRoot(World::Get().CreateEntity<Nova>());
 
     auto& lightShader = resourceManager.Load<Shader>("lightShader");
     lightShader.AssignSource(
@@ -32,13 +32,13 @@ CoordinateAxesScene::CoordinateAxesScene() {
     light.GetComponent<Transform3DComponent>().Rotation.x = M::Rad(32.5);
     light.GetComponent<Transform3DComponent>().Rotation.y = M::Rad(32.5);
     light.GetComponent<Transform3DComponent>().Rotation.z = M::Rad(32.5);
-    Root->AttachChild(light);
+    GetRoot().AttachChild(light);
 
     auto& light2 = World::Get().CreateEntity<Light>();
     light2.GetComponent<Transform3DComponent>().Rotation.x = M::Rad(-32.5);
     light2.GetComponent<Transform3DComponent>().Rotation.y = M::Rad(-32.5);
     light2.GetComponent<Transform3DComponent>().Rotation.z = M::Rad(-32.5);
-    Root->AttachChild(light2);
+    GetRoot().AttachChild(light2);
 
     auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
     shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag", ShaderStage::Fragment));
@@ -51,35 +51,35 @@ CoordinateAxesScene::CoordinateAxesScene() {
     xAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("X-Axis Material");
     xAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    xAxis.GetComponent<Transform3DComponent>().Rotation = {0, M::Rad(90), 0};
-    xAxis.GetComponent<Transform3DComponent>().Position = {-50, 0, 0};
-    xAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
+    xAxis.GetComponent<Transform3DComponent>().Rotation = { 0, M::Rad(90), 0 };
+    xAxis.GetComponent<Transform3DComponent>().Position = { -50, 0, 0 };
+    xAxis.GetComponent<Transform3DComponent>().Scale = { 1, 1, 200 };
     xAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Red;
 
-    Root->AttachChild(xAxis);
+    GetRoot().AttachChild(xAxis);
 
     auto& yAxis = World::Get().CreateEntity<MeshInstance3D>();
     yAxis.GetComponent<MeshComponent>().Mesh = &line;
     yAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Y-Axis Material");
     yAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    yAxis.GetComponent<Transform3DComponent>().Rotation = {M::Rad(-90), 0, 0};
-    yAxis.GetComponent<Transform3DComponent>().Position = {0, -50, 0};
-    yAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
+    yAxis.GetComponent<Transform3DComponent>().Rotation = { M::Rad(-90), 0, 0 };
+    yAxis.GetComponent<Transform3DComponent>().Position = { 0, -50, 0 };
+    yAxis.GetComponent<Transform3DComponent>().Scale = { 1, 1, 200 };
     yAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Green;
 
-    Root->AttachChild(yAxis);
+    GetRoot().AttachChild(yAxis);
 
     auto& zAxis = World::Get().CreateEntity<MeshInstance3D>();
     zAxis.GetComponent<MeshComponent>().Mesh = &line;
     zAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Z-Axis Material");
     zAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    zAxis.GetComponent<Transform3DComponent>().Rotation = {0, 0, 0};
-    zAxis.GetComponent<Transform3DComponent>().Position = {0, 0, -50};
-    zAxis.GetComponent<Transform3DComponent>().Scale = {1, 1, 200};
+    zAxis.GetComponent<Transform3DComponent>().Rotation = { 0, 0, 0 };
+    zAxis.GetComponent<Transform3DComponent>().Position = { 0, 0, -50 };
+    zAxis.GetComponent<Transform3DComponent>().Scale = { 1, 1, 200 };
     zAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Blue;
 
-    Root->AttachChild(zAxis);
+    GetRoot().AttachChild(zAxis);
 }
 } // namespace E

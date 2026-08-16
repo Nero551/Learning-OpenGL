@@ -6,7 +6,8 @@ namespace E {
 struct Vector2Uniform : Uniform {
     E::M::Vector2 Value;
 
-    Vector2Uniform(const std::string& name, const E::M::Vector2& value) : Uniform(name), Value(value) {}
+    Vector2Uniform(const std::string& name, const E::M::Vector2& value) : Uniform(name), Value(value) {
+    }
 
     void Upload(int location) override {
         glUniform2fv(location, 1, &Value.x);

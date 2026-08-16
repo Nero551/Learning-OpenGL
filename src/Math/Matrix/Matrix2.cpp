@@ -70,7 +70,7 @@ Matrix2& Matrix2::operator*=(const Matrix2& mat2) {
 
 //* Vectors
 Vector2 Matrix2::operator*(const Vector2& vec2) const {
-    return {m[0][0] * vec2.x + m[0][1] * vec2.y, m[1][0] * vec2.x + m[1][1] * vec2.y};
+    return { m[0][0] * vec2.x + m[0][1] * vec2.y, m[1][0] * vec2.x + m[1][1] * vec2.y };
 }
 
 //* Scalars

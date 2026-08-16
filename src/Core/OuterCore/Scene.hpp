@@ -9,7 +9,6 @@ namespace E {
  */
 struct Scene {
     /** @brief Root entity of the scene hierarchy. */
-    U::CheckedPtr<Entity> Root{"Scene Has No Root"};
 
     Scene() = default;
     virtual ~Scene() = default;
@@ -18,5 +17,12 @@ struct Scene {
     Scene& operator=(const Scene&) = delete;
 
     Scene(Scene&&) = default;
+
+    Entity& GetRoot();
+    void SetRoot(Entity& entity);
+    void SetRoot(unsigned int entityId);
+
+private:
+    unsigned int Root;
 };
 } // namespace E

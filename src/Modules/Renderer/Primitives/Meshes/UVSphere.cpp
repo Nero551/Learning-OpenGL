@@ -19,12 +19,10 @@ Mesh& Primitives::CreateUVSphere(const std::string& name, float radius, int sect
             float x = r * std::cos(theta);
             float z = r * std::sin(theta);
 
-            vertices.emplace_back(Vertex{
-                {radius * x, radius * y, radius * z, 1.0f},
+            vertices.emplace_back(Vertex{ { radius * x, radius * y, radius * z, 1.0f },
                 M::Color::White,
-                {sector / static_cast<float>(sectors), stack / static_cast<float>(stacks)},
-                {x, y, z}
-            });
+                { sector / static_cast<float>(sectors), stack / static_cast<float>(stacks) },
+                { x, y, z } });
         }
     }
 
@@ -35,12 +33,12 @@ Mesh& Primitives::CreateUVSphere(const std::string& name, float radius, int sect
         for (int sector = 0; sector < sectors; sector++) {
             if (stack != 0) {
                 indices.insert(
-                    indices.end(), {static_cast<unsigned>(k1), static_cast<unsigned>(k2), static_cast<unsigned>(k1 + 1)});
+                    indices.end(), { static_cast<unsigned>(k1), static_cast<unsigned>(k2), static_cast<unsigned>(k1 + 1) });
             }
 
             if (stack != stacks - 1) {
                 indices.insert(
-                    indices.end(), {static_cast<unsigned>(k1 + 1), static_cast<unsigned>(k2), static_cast<unsigned>(k2 + 1)});
+                    indices.end(), { static_cast<unsigned>(k1 + 1), static_cast<unsigned>(k2), static_cast<unsigned>(k2 + 1) });
             }
 
             k1++;

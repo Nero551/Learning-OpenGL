@@ -9,9 +9,7 @@ namespace E {
  */
 struct GLFWContext {
     GLFWContext() {
-        glfwSetErrorCallback([](int error, const char* description) {
-            U::Logger::Error("[GLFW]", error, ": ", description);
-        });
+        glfwSetErrorCallback([](int error, const char* description) { U::Logger::Error("[GLFW]", error, ": ", description); });
         glfwInit();
     }
 

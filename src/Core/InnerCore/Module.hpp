@@ -16,13 +16,20 @@ struct Module : SystemOwner {
     Module& operator=(Module&&) = default;
 
 protected:
-    virtual void OnStart() {}
-    virtual void OnUpdate(double dt) {}
-    virtual void OnFixedUpdate(double fdt) {}
-    virtual void OnEndFrame(double dt) {}
-    virtual void OnRender() {}
-    virtual void OnBeginFrame(double dt) {}
-    virtual void OnStop() {}
+    virtual void OnStart() {
+    }
+    virtual void OnUpdate(double dt) {
+    }
+    virtual void OnFixedUpdate(double fdt) {
+    }
+    virtual void OnEndFrame(double dt) {
+    }
+    virtual void OnRender() {
+    }
+    virtual void OnBeginFrame(double dt) {
+    }
+    virtual void OnStop() {
+    }
 
 private:
     friend struct Engine;

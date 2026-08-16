@@ -19,7 +19,8 @@ struct SystemOwner {
 
 protected:
     std::unordered_map<std::type_index, std::unique_ptr<System>> Systems;
-    virtual void AddSystems() {}
+    virtual void AddSystems() {
+    }
 
     template <SystemType T> T& AddSystem() {
         if (Systems.contains(std::type_index(typeid(T)))) {

@@ -1,9 +1,12 @@
 #include "Physics.hpp"
 
 namespace E {
-void Physics::AddSystems() {}
+void Physics::AddSystems() {
+}
 
-void Physics::OnStart() {}
+void Physics::OnStart() {
+}
 
-void Physics::OnFixedUpdate(double fdt) {}
+void Physics::OnFixedUpdate(double fdt) {
+}
 } // namespace E

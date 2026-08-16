@@ -10,13 +10,13 @@
 namespace E {
 struct Material : Resource {
     static constexpr int MaxCustomTextures = 8;
-    U::CheckedPtr<Shader> Shader{"Material Has No Shader Assigned"};
+    U::CheckedPtr<Shader> Shader{ "Material Has No Shader Assigned" };
 
-    M::Vector4 Color = {0.5};
-    M::Vector3 Ambient = {1};
-    M::Vector3 Diffuse = {0.7};
-    M::Vector3 Specular = {0.7};
-    M::Vector3 Emission = {0};
+    M::Vector4 Color = { 0.5 };
+    M::Vector3 Ambient = { 1 };
+    M::Vector3 Diffuse = { 0.7 };
+    M::Vector3 Specular = { 0.7 };
+    M::Vector3 Emission = { 0 };
     float Shininess = 32;
 
     U::CheckedPtr<Texture> DiffuseMap;

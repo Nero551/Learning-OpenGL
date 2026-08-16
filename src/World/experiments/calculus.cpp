@@ -28,7 +28,7 @@ static MeshInstance3D& CreatePoint(M::Vector4 col) {
     auto& point = World::Get().CreateEntity<MeshInstance3D>();
     point.GetComponent<MeshComponent>().Mesh = &mesh;
     point.GetComponent<MaterialComponent>().Material = &material;
-    point.GetComponent<Transform3DComponent>().Scale = {0.75};
+    point.GetComponent<Transform3DComponent>().Scale = { 0.75 };
     World::Get().Root->AttachChild(point);
 
     return point;
@@ -37,7 +37,7 @@ static MeshInstance3D& CreatePoint(M::Vector4 col) {
 static float max = 100;
 static float min = -100;
 
-static void Plot(M::Vector3 vec3, M::Vector4 col = {1, 1, 1, 1}) {
+static void Plot(M::Vector3 vec3, M::Vector4 col = { 1, 1, 1, 1 }) {
     if (vec3.y < max && vec3.y > min) {
         const auto& point = CreatePoint(col);
         auto& transform = point.GetComponent<Transform3DComponent>();
@@ -86,16 +86,12 @@ void calculus::Update(double dt) {
         return;
     }
 
-    M::Function f = [](const float x) {
-        return 2 * x;
-    };
+    M::Function f = [](const float x) { return 2 * x; };
 
-    M::Function g = [](const float x) {
-        return M::Pow(x, 2);
-    };
-    Plot({x, f(x), 0});
-    Plot({x, f.Integral(3, x), -2}, {0, 0, 1, 1});
-    Plot({x, g(x), 2}, {1, 0, 0, 1});
+    M::Function g = [](const float x) { return M::Pow(x, 2); };
+    Plot({ x, f(x), 0 });
+    Plot({ x, f.Integral(3, x), -2 }, { 0, 0, 1, 1 });
+    Plot({ x, g(x), 2 }, { 1, 0, 0, 1 });
 }
 } // namespace E
 

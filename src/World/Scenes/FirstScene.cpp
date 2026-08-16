@@ -10,7 +10,7 @@
 namespace E {
 FirstScene::FirstScene() {
     auto& resourceManager = Service::Get<ResourceManager>();
-    Root = &World::Get().CreateEntity<Nova3D>();
+    SetRoot(World::Get().CreateEntity<Nova3D>());
 
     auto& mesh = Primitives::CreateCube("mesh");
 
@@ -26,11 +26,11 @@ FirstScene::FirstScene() {
     auto& light = World::Get().CreateEntity<Light>();
 
     light.GetComponent<Transform3DComponent>().Scale = M::Vector3(0.2);
-    light.GetComponent<LightComponent>().Ambient = {0.2};
-    light.GetComponent<LightComponent>().Diffuse = {0.2};
-    light.GetComponent<Transform3DComponent>().Position = {0, 0, 0};
+    light.GetComponent<LightComponent>().Ambient = { 0.2 };
+    light.GetComponent<LightComponent>().Diffuse = { 0.2 };
+    light.GetComponent<Transform3DComponent>().Position = { 0, 0, 0 };
     light.GetComponent<LightComponent>().Type = LightType::Directional;
-    Root->AttachChild(light);
+    GetRoot().AttachChild(light);
 
     // TODO- quaternions
 
@@ -48,7 +48,7 @@ FirstScene::FirstScene() {
     auto& cube = World::Get().CreateEntity<MeshInstance3D>();
     cube.GetComponent<MeshComponent>().Mesh = &mesh;
     cube.GetComponent<MaterialComponent>().Material = &objectMaterial;
-    cube.GetComponent<Transform3DComponent>().Position = {0, 0, 0};
-    Root->AttachChild(cube);
+    cube.GetComponent<Transform3DComponent>().Position = { 0, 0, 0 };
+    GetRoot().AttachChild(cube);
 }
 } // namespace E

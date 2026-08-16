@@ -29,4 +29,4 @@ private:
     std::vector<unsigned int> EntityIds{};
     std::unordered_map<unsigned int, size_t> Indices{};
 };
-}
+} // namespace E

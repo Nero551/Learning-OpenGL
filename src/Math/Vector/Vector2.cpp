@@ -6,25 +6,28 @@
 #include "Math/Common/Interpolation.hpp"
 
 namespace E::M {
-Vector2::Vector2() : x(0), y(0) {}
+Vector2::Vector2() : x(0), y(0) {
+}
 
-Vector2::Vector2(float all) : x(all), y(all) {}
+Vector2::Vector2(float all) : x(all), y(all) {
+}
 
-Vector2::Vector2(float x, float y) : x(x), y(y) {}
+Vector2::Vector2(float x, float y) : x(x), y(y) {
+}
 
 //?Operators
 
 //* Vectors
 Vector2 Vector2::operator+(const Vector2& vec2) const {
-    return {x + vec2.x, y + vec2.y};
+    return { x + vec2.x, y + vec2.y };
 }
 
 Vector2 Vector2::operator-(const Vector2& vec2) const {
-    return {x - vec2.x, y - vec2.y};
+    return { x - vec2.x, y - vec2.y };
 }
 
 Vector2 Vector2::operator*(const Vector2& vec2) const {
-    return {x * vec2.x, y * vec2.y};
+    return { x * vec2.x, y * vec2.y };
 }
 
 Vector2& Vector2::operator+=(const Vector2& vec2) {
@@ -41,19 +44,19 @@ Vector2& Vector2::operator*=(const Vector2& vec2) {
 
 //* Scalars
 Vector2 Vector2::operator+(float scalar) const {
-    return {x + scalar, y + scalar};
+    return { x + scalar, y + scalar };
 }
 
 Vector2 Vector2::operator-(float scalar) const {
-    return {x - scalar, y - scalar};
+    return { x - scalar, y - scalar };
 }
 
 Vector2 Vector2::operator*(float scalar) const {
-    return {x * scalar, y * scalar};
+    return { x * scalar, y * scalar };
 }
 
 Vector2 Vector2::operator/(float scalar) const {
-    return {x / scalar, y / scalar};
+    return { x / scalar, y / scalar };
 }
 
 Vector2& Vector2::operator+=(float scalar) {
@@ -77,7 +80,7 @@ Vector2 operator+(float scalar, const Vector2& vec2) {
 }
 
 Vector2 operator-(float scalar, const Vector2& vec2) {
-    return {scalar - vec2.x, scalar - vec2.y};
+    return { scalar - vec2.x, scalar - vec2.y };
 }
 
 Vector2 operator*(float scalar, const Vector2& vec2) {
@@ -85,7 +88,7 @@ Vector2 operator*(float scalar, const Vector2& vec2) {
 }
 
 Vector2 operator/(float scalar, const Vector2& vec2) {
-    return {scalar / vec2.x, scalar / vec2.y};
+    return { scalar / vec2.x, scalar / vec2.y };
 }
 
 Vector2 Vector2::operator-() const {
@@ -121,7 +124,7 @@ float Vector2::Dot(const Vector2& vec2) const {
 }
 
 Vector2 Vector2::Lerp(const Vector2& vec2, const float t) const {
-    return {M::Lerp(x, vec2.x, t), M::Lerp(y, vec2.y, t)};
+    return { M::Lerp(x, vec2.x, t), M::Lerp(y, vec2.y, t) };
 }
 
 float Vector2::Distance(const Vector2& vec2) const {
@@ -137,7 +140,7 @@ Vector2 Vector2::Normalized() const {
     if (length == 0) {
         return Zero;
     }
-    return {x / length, y / length};
+    return { x / length, y / length };
 }
 
 //?Statics

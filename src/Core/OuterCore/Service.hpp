@@ -46,13 +46,20 @@ struct Service {
 
 protected:
     friend struct Engine;
-    virtual void Start() {}
-    virtual void Update(double dt) {}
-    virtual void FixedUpdate(double fdt) {}
-    virtual void Render() {}
-    virtual void BeginFrame(double dt) {}
-    virtual void EndFrame() {}
-    virtual void Stop() {}
+    virtual void Start() {
+    }
+    virtual void Update(double dt) {
+    }
+    virtual void FixedUpdate(double fdt) {
+    }
+    virtual void Render() {
+    }
+    virtual void BeginFrame(double dt) {
+    }
+    virtual void EndFrame() {
+    }
+    virtual void Stop() {
+    }
 
     /**
      * @brief Registers a new service of the specified type.

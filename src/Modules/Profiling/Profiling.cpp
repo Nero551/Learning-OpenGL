@@ -3,9 +3,11 @@
 #include "Core/InnerCore/Engine.hpp"
 
 namespace E {
-void Profiling::AddSystems() {}
+void Profiling::AddSystems() {
+}
 
-void Profiling::OnStart() {}
+void Profiling::OnStart() {
+}
 
 static double elapsed = 0;
 

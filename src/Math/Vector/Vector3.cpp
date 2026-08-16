@@ -6,29 +6,32 @@
 #include "Math/Common/Interpolation.hpp"
 
 namespace E::M {
-Vector3::Vector3() : x(0), y(0), z(0) {}
+Vector3::Vector3() : x(0), y(0), z(0) {
+}
 
-Vector3::Vector3(float all) : x(all), y(all), z(all) {}
+Vector3::Vector3(float all) : x(all), y(all), z(all) {
+}
 
-Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
+Vector3::Vector3(float x, float y, float z) : x(x), y(y), z(z) {
+}
 
 //?Operators
 
 //*Vectors
 Vector3 Vector3::operator+(const Vector3& vec3) const {
-    return {x + vec3.x, y + vec3.y, z + vec3.z};
+    return { x + vec3.x, y + vec3.y, z + vec3.z };
 }
 
 Vector3 Vector3::operator-(const Vector3& vec3) const {
-    return {x - vec3.x, y - vec3.y, z - vec3.z};
+    return { x - vec3.x, y - vec3.y, z - vec3.z };
 }
 
 Vector3 Vector3::operator*(const Vector3& vec3) const {
-    return {x * vec3.x, y * vec3.y, z * vec3.z};
+    return { x * vec3.x, y * vec3.y, z * vec3.z };
 }
 
 Vector3 Vector3::operator/(const Vector3& vec3) const {
-    return {x / vec3.x, y / vec3.y, z / vec3.z};
+    return { x / vec3.x, y / vec3.y, z / vec3.z };
 }
 
 Vector3& Vector3::operator+=(const Vector3& vec3) {
@@ -49,19 +52,19 @@ Vector3& Vector3::operator/=(const Vector3& vec3) {
 
 //*Scalars
 Vector3 Vector3::operator+(float scalar) const {
-    return {x + scalar, y + scalar, z + scalar};
+    return { x + scalar, y + scalar, z + scalar };
 }
 
 Vector3 Vector3::operator-(float scalar) const {
-    return {x - scalar, y - scalar, z - scalar};
+    return { x - scalar, y - scalar, z - scalar };
 }
 
 Vector3 Vector3::operator*(float scalar) const {
-    return {x * scalar, y * scalar, z * scalar};
+    return { x * scalar, y * scalar, z * scalar };
 }
 
 Vector3 Vector3::operator/(float scalar) const {
-    return {x / scalar, y / scalar, z / scalar};
+    return { x / scalar, y / scalar, z / scalar };
 }
 
 Vector3& Vector3::operator+=(float scalar) {
@@ -85,7 +88,7 @@ Vector3 operator+(float scalar, const Vector3& vec3) {
 }
 
 Vector3 operator-(float scalar, const Vector3& vec3) {
-    return {scalar - vec3.x, scalar - vec3.y, scalar - vec3.z};
+    return { scalar - vec3.x, scalar - vec3.y, scalar - vec3.z };
 }
 
 Vector3 operator*(float scalar, const Vector3& vec3) {
@@ -93,7 +96,7 @@ Vector3 operator*(float scalar, const Vector3& vec3) {
 }
 
 Vector3 operator/(float scalar, const Vector3& vec3) {
-    return {scalar / vec3.x, scalar / vec3.y, scalar / vec3.z};
+    return { scalar / vec3.x, scalar / vec3.y, scalar / vec3.z };
 }
 
 Vector3 Vector3::operator-() const {
@@ -129,7 +132,7 @@ float Vector3::Dot(const Vector3& vec3) const {
 }
 
 Vector3 Vector3::Cross(const Vector3& vec3) const {
-    return {y * vec3.z - z * vec3.y, z * vec3.x - x * vec3.z, x * vec3.y - y * vec3.x};
+    return { y * vec3.z - z * vec3.y, z * vec3.x - x * vec3.z, x * vec3.y - y * vec3.x };
 }
 
 float Vector3::Distance(const Vector3& vec3) const {
@@ -145,7 +148,7 @@ Vector3 Vector3::Normalized() const {
     if (length == 0) {
         return Zero;
     }
-    return {x / length, y / length, z / length};
+    return { x / length, y / length, z / length };
 }
 
 bool Vector3::IsParallelTo(const Vector3& vec3) const {
@@ -165,7 +168,7 @@ bool Vector3::IsPerpendicularTo(const Vector3& vec3) const {
 }
 
 Vector3 Vector3::Lerp(const Vector3& vec3, float t) const {
-    return {M::Lerp(x, vec3.x, t), M::Lerp(y, vec3.y, t), M::Lerp(z, vec3.z, t)};
+    return { M::Lerp(x, vec3.x, t), M::Lerp(y, vec3.y, t), M::Lerp(z, vec3.z, t) };
 }
 
 //?Statics

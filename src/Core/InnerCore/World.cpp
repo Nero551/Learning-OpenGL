@@ -31,7 +31,7 @@ void World::Start() {
     ActiveCamera = &camera;
 
     auto coordinateAxes = CreateScene<CoordinateAxesScene>();
-    Root->AttachChild(*coordinateAxes.Root);
+    Root->AttachChild(coordinateAxes.GetRoot());
 
     for (auto& system : Systems | std::views::values) {
         system->Start();

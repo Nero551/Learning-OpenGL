@@ -30,7 +30,7 @@ void Engine::Shutdown() {
 }
 
 void Engine::Configure() {
-    Window.SetIcon({"Assets/icon.png"});
+    Window.SetIcon({ "Assets/icon.png" });
     // Window.SetSize(1980, 1200);
     glfwSwapInterval(1);
 

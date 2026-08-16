@@ -8,10 +8,10 @@
 namespace E {
 struct LightComponent : Component {
     LightType Type = LightType::Directional;
-    M::Vector3 Color = {1};
-    M::Vector3 Ambient = {0.8};
-    M::Vector3 Diffuse = {1};
-    M::Vector3 Specular = {1};
+    M::Vector3 Color = { 1 };
+    M::Vector3 Ambient = { 0.8 };
+    M::Vector3 Diffuse = { 1 };
+    M::Vector3 Specular = { 1 };
 
     float Intensity = 1;
     float Constant = 1.0f;

@@ -89,12 +89,10 @@ Matrix4& Matrix4::operator*=(const Matrix4& mat4) {
 
 //* Vectors
 Vector4 Matrix4::operator*(const Vector4& vec4) const {
-    return {
-        m[0][0] * vec4.x + m[0][1] * vec4.y + m[0][2] * vec4.z + m[0][3] * vec4.w,
+    return { m[0][0] * vec4.x + m[0][1] * vec4.y + m[0][2] * vec4.z + m[0][3] * vec4.w,
         m[1][0] * vec4.x + m[1][1] * vec4.y + m[1][2] * vec4.z + m[1][3] * vec4.w,
         m[2][0] * vec4.x + m[2][1] * vec4.y + m[2][2] * vec4.z + m[2][3] * vec4.w,
-        m[3][0] * vec4.x + m[3][1] * vec4.y + m[3][2] * vec4.z + m[3][3] * vec4.w
-    };
+        m[3][0] * vec4.x + m[3][1] * vec4.y + m[3][2] * vec4.z + m[3][3] * vec4.w };
 }
 
 //* Scalars
@@ -240,7 +238,7 @@ Matrix4 Matrix4::RotateAroundAxis(const Vector3& axis, float radian) const {
 }
 
 Matrix3 Matrix4::ToMatrix3() const {
-    return {m[0][0], m[0][1], m[0][2], m[1][0], m[1][1], m[1][2], m[2][0], m[2][1], m[2][2]};
+    return { m[0][0], m[0][1], m[0][2], m[1][0], m[1][1], m[1][2], m[2][0], m[2][1], m[2][2] };
 }
 
 Matrix4 Matrix4::Orthographic(float left, float right, float bottom, float top, float near, float far) {
