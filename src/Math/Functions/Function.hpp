@@ -1,4 +1,6 @@
 #pragma once
+#include "DifferentiationMethod.hpp"
+#include "IntegrationMethod.hpp"
 
 namespace E::M {
 template <typename T>
@@ -18,13 +20,16 @@ struct Function {
     //! its hella buggy but kinda works
     [[nodiscard]] Function Inverse(float min, float max) const;
 
-    [[nodiscard]] float Derivative(float x, float dx = 0.001f) const;
-    [[nodiscard]] Function Differentiate(float dx = 0.001f) const;
+    [[nodiscard]] float Derivative(
+        float x, float dx = 0.001f, DifferentiationMethod method = DifferentiationMethod::Central) const;
+    [[nodiscard]] Function Differentiate(float dx = 0.001f, DifferentiationMethod method = DifferentiationMethod::Central) const;
 
     /** @brief doesn't work if the lower bound (a) is not 0 */
-    [[nodiscard]] Function Integrate(float lowerBound, float dx = 0.001f) const;
+    [[nodiscard]] Function Integrate(
+        float lowerBound, float dx = 0.001f, IntegrationMethod method = IntegrationMethod::Midpoint) const;
     /** @brief doesn't work if the lower bound (a) is not 0 */
-    [[nodiscard]] float Integral(float lowerBound, float upperBound, float dx = 0.001f) const;
+    [[nodiscard]] float Integral(
+        float lowerBound, float upperBound, float dx = 0.001f, IntegrationMethod method = IntegrationMethod::Midpoint) const;
 
     float operator()(float x) const;
     Function operator()(const Function& g) const;

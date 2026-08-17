@@ -1,6 +1,6 @@
 #include "Function.hpp"
 
-#include "Comparison.hpp"
+#include "../Common/Comparison.hpp"
 #include "Utilities/Logger.hpp"
 
 namespace E::M {
@@ -8,36 +8,64 @@ float Function::Evaluate(const float x) const {
     return Func(x);
 }
 
-Function Function::Differentiate(const float dx) const {
-    auto derivative = [f = *this, dx](const float x) -> float {
-        float h = dx * std::max(1.0f, std::abs(x));
-        return (f(x + h) - f(x - h)) / (2.0f * h);
+Function Function::Differentiate(const float dx, DifferentiationMethod method) const {
+    auto derivative = [f = *this, dx, method](const float x) -> float {
+        const float h = dx * std::max(1.0f, std::abs(x));
+        switch (method) {
+        case DifferentiationMethod::Central:
+            return (f(x + h) - f(x - h)) / (2.0f * h);
+
+        case DifferentiationMethod::Forward:
+            return (f(x + h) - f(x)) / h;
+
+        case DifferentiationMethod::Backward:
+            return (f(x) - f(x - h)) / h;
+
+        default:
+            U::Logger::Fatal("Invalid Differentiation Method");
+        }
     };
 
     return derivative;
 }
 
-float Function::Derivative(const float x, const float dx) const {
-    return Differentiate(dx).Evaluate(x);
+float Function::Derivative(const float x, const float dx, DifferentiationMethod method) const {
+    return Differentiate(dx, method).Evaluate(x);
 }
 
 Function Function::Compose(const Function& g) const {
     return [f = *this, g](const float x) -> float { return f(g(x)); };
 }
 
-Function Function::Integrate(float lowerBound, float dx) const {
-    return [f = *this, lowerBound, dx](float upperBound) {
+Function Function::Integrate(float lowerBound, float dx, IntegrationMethod method) const {
+    return [f = *this, lowerBound, dx, method](float upperBound) {
         float result = 0.0f;
         for (float x = lowerBound; x < upperBound; x += dx) {
-            float midpoint = x + dx / 2.0f;
-            result += f(midpoint) * dx;
+            const float width = std::min(dx, upperBound - x);
+            float sample = 0.0f;
+            switch (method) {
+            case IntegrationMethod::Midpoint:
+                sample = x + width / 2.0f;
+                break;
+
+            case IntegrationMethod::Right:
+                sample = x + width;
+                break;
+
+            case IntegrationMethod::Left:
+                sample = x;
+                break;
+            default:
+                U::Logger::Fatal("Invalid Integration Method");
+            }
+            result += f(sample) * width;
         }
         return result;
     };
-}
+};
 
-float Function::Integral(float lowerBound, float upperBound, float dx) const {
-    return Integrate(lowerBound, dx).Evaluate(upperBound);
+float Function::Integral(float lowerBound, float upperBound, float dx, IntegrationMethod method) const {
+    return Integrate(lowerBound, dx, method).Evaluate(upperBound);
 }
 
 float Function::InverseEvaluate(float y, float domainMin, float domainMax) const {

@@ -49,7 +49,7 @@ else
         --prefix=/usr/local
 
     rm /tmp/cmake.sh
-  echo "✅ CMake installed."
+  echo "✅ CMake $CMAKE_VERSION installed."
 fi
 
 echo "🔍 Verifying tools..."
