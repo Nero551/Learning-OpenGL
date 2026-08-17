@@ -15,31 +15,51 @@ namespace E {
 Grid::Grid() {
     SetRoot(World::Get().CreateEntity<Nova>());
 
-    /** YZ */
-    for (float y = -20; y < 20; y++) {
-        CreateGridLine({ 0, 0, 0 }, { 0, y, 0 });
-    }
+    // /** YZ */
+    // for (float y = -20; y < 20; y++) {
+    //     if (y != 0) {
+    //         CreateGridLine({0, 0, 0}, {0, y, 0});
+    //     }
+    // }
+    //
+    // for (float z = -20; z < 20; z++) {
+    //     if (z != 0) {
+    //         CreateGridLine({M::Rad(90), 0, 0}, {0, 0, z});
+    //     }
+    // }
+    //
+    // /** XZ */
+    // for (float x = -20; x < 20; x++) {
+    //     if (x != 0) {
+    //         CreateGridLine({0, 0, M::Rad(90)}, {x, 0, 0});
+    //     }
+    // }
+    //
+    // for (float z = -20; z < 20; z++) {
+    //     if (z != 0) {
+    //         CreateGridLine({M::Rad(90), 0, M::Rad(90)}, {0, 0, z});
+    //     }
+    // }
+    //
+    // /** XY */
+    // for (float x = -20; x < 20; x++) {
+    //     if (x != 0) {
+    //         CreateGridLine({M::Rad(90), 0, 0}, {x, 0, 0});
+    //     }
+    // }
+    //
+    // for (float y = -20; y < 20; y++) {
+    //     if (y != 0) {
+    //         CreateGridLine({0, M::Rad(90), 0}, {0, y, 0});
+    //     }
+    // }
 
-    for (float z = -20; z < 20; z++) {
-        CreateGridLine({ M::Rad(90), 0, 0 }, { 0, 0, z });
-    }
-
-    /** XZ */
-    for (float x = -20; x < 20; x++) {
-        CreateGridLine({ 0, 0, M::Rad(90) }, { x, 0, 0 });
-    }
-
-    for (float z = -20; z < 20; z++) {
-        CreateGridLine({ M::Rad(90), 0, M::Rad(90) }, { 0, 0, z });
-    }
-
-    /** XY */
-    for (float x = -20; x < 20; x++) {
-        CreateGridLine({ M::Rad(90), 0, 0 }, { x, 0, 0 });
-    }
-
-    for (float y = -20; y < 0; y++) {
-        CreateGridLine({ 0, M::Rad(90), 0 }, { 0, y, 0 });
+    for (int theta = 0; theta <= 360; theta++) {
+        for (int phi = 0; phi <= 360; phi++) {
+        }
+        float r = 3;
+        // CreateGridLine({M::Rad(theta), 0, 0}, 0);
+        CreateGridLine({ M::Rad(theta), M::Rad(theta), M::Rad(theta) }, 0);
     }
 }
 

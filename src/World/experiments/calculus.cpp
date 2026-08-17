@@ -70,10 +70,10 @@ void calculus::Start() {
     //  }
 
     auto& point = CreatePoint({ 0.7, 0.7, 0.7, 1 });
-    // point.GetComponent<MeshComponent>().Mesh->RenderMode = RenderMode::Wireframe;
-    point.GetComponent<Transform3DComponent>().Scale.z = 6;
+    point.GetComponent<MeshComponent>().Mesh->RenderMode = RenderMode::Wireframe;
+    point.GetComponent<Transform3DComponent>().Position.y = 6;
     // point.GetComponent<Transform3DComponent>().Rotation.y = M::Rad(90);
-    entityId = point.Id;
+    // entityId = point.Id;
 }
 
 static constexpr float step = 0.025;
