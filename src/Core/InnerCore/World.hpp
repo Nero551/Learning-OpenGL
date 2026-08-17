@@ -13,9 +13,6 @@ namespace E {
 template <typename T>
 concept EntityType = std::derived_from<T, Entity>;
 
-template <typename T>
-concept SceneType = std::derived_from<T, Scene>;
-
 /**
  * @brief Owns and manages the runtime state of the engine world.
  * The World owns all entities. It is responsible for managing the lifecycle of
@@ -28,33 +25,6 @@ struct World : SystemOwner {
 
     /** @brief Gets the global World instance. */
     static World& Get();
-
-    void Start();
-
-    void Update(double dt);
-
-    void FixedUpdate(double fdt);
-
-    void Stop();
-
-    void BeginFrame(double dt);
-
-    void EndFrame(double dt);
-
-    void Render();
-
-    /**
-     * @brief Creates a scene.
-     *
-     * Scenes are temporary containers that can be used for prototyping or
-     * constructing groups of entities.
-     *
-     * @tparam T Scene type to create.
-     * @return A newly constructed scene.
-     */
-    template <SceneType T> T CreateScene() {
-        return T();
-    }
 
     /**
      * @brief Removes an entity from the world.
@@ -117,7 +87,22 @@ private:
     unsigned int currentEntityId = 0;
 
 protected:
+    friend struct Engine;
     /** @brief Registers the systems owned by the world. */
     void AddSystems() override;
+
+    void Start();
+
+    void Update(double dt);
+
+    void FixedUpdate(double fdt);
+
+    void Stop();
+
+    void BeginFrame(double dt);
+
+    void EndFrame(double dt);
+
+    void Render();
 };
 } // namespace E

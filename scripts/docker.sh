@@ -15,7 +15,7 @@ docker run --rm -it \
     -v "$PWD/CMakeLists.txt:/Nova/CMakeLists.txt" \
     -v "$PWD/CMakePresets.json:/Nova/CMakePresets.json" \
     -v "$PWD/src:/Nova/src" \
-    -v "$PWD/Scripts:/Nova/Scripts" \
+    -v "$PWD/scripts:/Nova/scripts" \
     -v "$PWD/Tests:/Nova/Tests" \
     -v "$PWD/vcpkg.json:/Nova/vcpkg.json" \
     -v "$PWD/Doxyfile:/Nova/Doxyfile" \

@@ -33,7 +33,10 @@ public:
     /** @brief Returns the global engine instance. */
     static Engine& Get();
 
-    /** @brief Runs the engine's main loop. */
+    /**
+     * @brief Runs the engine's main loop.
+     * @remark Order: Start -> BeginFrame -> FixedUpdate -> Update -> Render -> EndFrame -> Stop
+     */
     void Run();
 
     /** @brief Requests the engine to shut down. */

@@ -10,8 +10,7 @@ The engine is organized into a simple hierarchy:
 Main
 └── Engine
     ├── Modules
-    │   ├── Systems
-    │   └── ...
+    │   └── Systems
     └── World
         └── Entities
                 └── Components
@@ -52,7 +51,7 @@ Examples include:
 
 Each module owns one or more **Systems**. The module handles the lifecycle of all related **Systems**.
 
-It can also contain **Resources**, premade **Entities** & **Components**
+It can also contain **Resources**, premade **Entities** & **Components** (in the folder hierarchy)
 
 ---
 
@@ -71,9 +70,9 @@ Examples include:
 
 ## World
 
-The world owns every scene & entity in the application.
+The world owns every entity in the application.
 
-It is responsible for creating, storing, and switching between scenes.
+It is responsible for creating, storing & removing entities.
 
 ---
 
@@ -85,7 +84,7 @@ An entity is simply:
 
 * A unique ID
 * A collection of components
-* pointers to children and parent
+* Ids of children and parent
 
 Entities contain no game logic.
 

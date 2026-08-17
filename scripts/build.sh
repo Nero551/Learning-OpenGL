@@ -3,7 +3,7 @@ set -e
 
 ROOT="$(git rev-parse --show-toplevel)"
 
-"$ROOT/Scripts/init-vcpkg.sh"
+"$ROOT/scripts/init-vcpkg.sh"
 
 echo "🔨 Building..."
 

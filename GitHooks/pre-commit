@@ -3,8 +3,8 @@ set -e
 
 ROOT="$(git rev-parse --show-toplevel)"
 
-python3 $ROOT/Scripts/format-code.py
+python3 $ROOT/scripts/format-code.py
 
 git add .
 
-"$ROOT/Scripts/run-tests.sh"
+"$ROOT/scripts/run-tests.sh"

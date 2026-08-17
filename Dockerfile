@@ -29,4 +29,4 @@ WORKDIR /Nova
 
 RUN git config --global --add safe.directory '*'
 
-CMD ["./Scripts/run.sh"]
+CMD ["./scripts/run.sh"]

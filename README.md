@@ -2,21 +2,21 @@
 
 ## Installing System Dependencies
 
-- ./Scripts.setup-linux.sh
+- ./scripts.setup-linux.sh
 
 ## Building & Running Engine
 
-- ./Scripts/build.sh
-- ./Scripts/run.sh
+- ./scripts/build.sh
+- ./scripts/run.sh
 
 ## Building & Running Tests
 
-- ./Scripts/build-tests.sh
-- ./Scripts/run-tests.sh
+- ./scripts/build-tests.sh
+- ./scripts/run-tests.sh
 
 ## Loading Docs
 
-- ./Scripts/docs.sh
+- ./scripts/docs.sh
 
 ## Progress
 
