@@ -86,8 +86,8 @@ float Function::InverseEvaluate(float y, float domainMin, float domainMax) const
     return x;
 }
 
-Function Function::Inverse(float min, float max) const {
-    return [f = *this, min, max](float y) { return f.InverseEvaluate(y, min, max); };
+Function Function::Inverse(float domainMin, float domainMax) const {
+    return [f = *this, domainMin, domainMax](float y) { return f.InverseEvaluate(y, domainMin, domainMax); };
 }
 
 float Function::operator()(float x) const {
