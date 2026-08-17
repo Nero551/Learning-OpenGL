@@ -13,7 +13,7 @@ struct Transform3DComponent : Component {
 
     [[nodiscard]] M::Matrix4 GetModelMatrix() const {
         M::Matrix4 modelMatrix = M::Matrix4::Identity;
-        modelMatrix = modelMatrix.Translate(GlobalPosition);
+        modelMatrix = modelMatrix.Translate({ GlobalPosition });
         modelMatrix = modelMatrix.Rotate(GlobalRotation);
         modelMatrix = modelMatrix.Scale(GlobalScale);
 

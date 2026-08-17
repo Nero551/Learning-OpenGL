@@ -8,6 +8,7 @@ Window::Window(const int width, const int height, const std::string& title) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
     glfwWindowHintString(GLFW_X11_CLASS_NAME, "nova_engine");
     glfwWindowHintString(GLFW_WAYLAND_APP_ID, "nova_engine");
 
@@ -76,7 +77,7 @@ void Window::SetIcon(const U::Image& icon) {
     GLFWimage image;
     image.height = icon.Height;
     image.width = icon.Width;
-    image.pixels = icon.Pixels;
+    image.pixels = const_cast<unsigned char*>(icon.Pixels.data());
     glfwSetWindowIcon(GlfwWindow, 1, &image);
 }
 

@@ -69,9 +69,9 @@ void calculus::Start() {
     //      }
     //  }
 
-    auto& point = CreatePoint({ 0.7, 0.7, 0.7, 1 });
-    point.GetComponent<MeshComponent>().Mesh->RenderMode = RenderMode::Wireframe;
-    point.GetComponent<Transform3DComponent>().Position.y = 6;
+    // auto& point = CreatePoint({0.7, 0.7, 0.7, 1});
+    // point.GetComponent<MeshComponent>().Mesh->RenderMode = RenderMode::Wireframe;
+    // point.GetComponent<Transform3DComponent>().Position.z = 6;
     // point.GetComponent<Transform3DComponent>().Rotation.y = M::Rad(90);
     // entityId = point.Id;
 }
@@ -84,23 +84,19 @@ static float elapsed = 0;
 static float passed = 0;
 
 void calculus::Update(double dt) {
-    // auto& resourceManager = Service::Get<ResourceManager>();
-    //
-    // x += step;
-    // if (x >= xRange) {
-    //     return;
-    // }
-    //
-    // M::Function f = [](const float x) {
-    //     return 2 * x;
-    // };
-    //
-    // M::Function g = [](const float x) {
-    //     return M::Pow(x, 2);
-    // };
-    // Plot({x, g(x), 0});
-    // // Plot({x, f.Integrate(-5).Derivative(x), -2}, {0, 0, 1, 1});
-    // // Plot({x, g(x), 2}, {1, 0, 0, 1});
+    auto& resourceManager = Service::Get<ResourceManager>();
+
+    x += step;
+    if (x >= xRange) {
+        return;
+    }
+
+    M::Function f = [](const float x) { return 2 * x; };
+
+    M::Function g = [](const float x) { return M::Pow(x, 2); };
+    Plot({ x, g(x), 0 });
+    Plot({ x, f.Integrate(-5).Derivative(x), -2 }, { 0, 0, 1, 1 });
+    Plot({ x, g(x), 2 }, { 1, 0, 0, 1 });
 }
 } // namespace E
 

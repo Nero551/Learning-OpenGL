@@ -9,5 +9,8 @@ struct Grid : Scene {
 
 private:
     void CreateGridLine(M::Vector3 rotation, M::Vector3 position);
+    void CreateXY();
+    void CreateXZ();
+    void CreateYZ();
 };
 } // namespace E

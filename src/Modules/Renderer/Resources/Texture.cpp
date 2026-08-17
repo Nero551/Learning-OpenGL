@@ -5,50 +5,45 @@
 #include "Utilities/Logger.hpp"
 
 namespace E {
-Texture::Texture(const std::string& name, int width, int height, unsigned char pixels[]) : Resource(name) {
+Texture::Texture(const std::string& name, const U::Image& image) : Resource(name) {
     glGenTextures(1, &Id);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, Id);
 
     SetParameters();
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
-    glGenerateMipmap(GL_TEXTURE_2D);
-
-    glActiveTexture(0);
-    glBindTexture(GL_TEXTURE_2D, 0);
-}
-
-Texture::Texture(const std::string& name, const std::string& imagePath) : Resource(name) {
-    glGenTextures(1, &Id);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, Id);
-
-    SetParameters();
-
-    U::Image image(imagePath, true);
 
     GLenum format = GL_RED;
 
-    switch (image.NrChannels) {
-    case 1:
+    switch (image.Channels) {
+    case U::Image::ColorChannels::R:
         format = GL_RED;
         break;
-    case 3:
+    case U::Image::ColorChannels::RG:
+        format = GL_RG;
+        break;
+    case U::Image::ColorChannels::RGB:
         format = GL_RGB;
         break;
-    case 4:
+    case U::Image::ColorChannels::RGBA:
         format = GL_RGBA;
         break;
     default:
         U::Logger::Error("Unsupported Texture Channel Count");
     }
 
-    glTexImage2D(
-        GL_TEXTURE_2D, 0, static_cast<GLint>(format), image.Width, image.Height, 0, format, GL_UNSIGNED_BYTE, image.Pixels);
+    glTexImage2D(GL_TEXTURE_2D,
+        0,
+        static_cast<GLint>(format),
+        image.Width,
+        image.Height,
+        0,
+        format,
+        GL_UNSIGNED_BYTE,
+        image.Pixels.data());
+
     glGenerateMipmap(GL_TEXTURE_2D);
 
-    glActiveTexture(0);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
