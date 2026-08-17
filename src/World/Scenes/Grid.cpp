@@ -1,0 +1,64 @@
+#include "Grid.hpp"
+
+#include "Core/InnerCore/World.hpp"
+#include "Core/OuterCore/Service.hpp"
+#include "Core/Services/ResourceManager.hpp"
+#include "Math/Color/Color.hpp"
+#include "Math/Common/Trigonometry.hpp"
+#include "Modules/Renderer/Primitives/Primitives.hpp"
+#include "Modules/Renderer/Resources/Shader.hpp"
+#include "Modules/Renderer/Resources/ShaderSource.hpp"
+#include "World/Novas/MeshInstance3D.hpp"
+#include "World/Novas/Nova.hpp"
+
+namespace E {
+Grid::Grid() {
+    SetRoot(World::Get().CreateEntity<Nova>());
+
+    /** YZ */
+    for (float y = -20; y < 20; y++) {
+        CreateGridLine({ 0, 0, 0 }, { 0, y, 0 });
+    }
+
+    for (float z = -20; z < 20; z++) {
+        CreateGridLine({ M::Rad(90), 0, 0 }, { 0, 0, z });
+    }
+
+    /** XZ */
+    for (float x = -20; x < 20; x++) {
+        CreateGridLine({ 0, 0, M::Rad(90) }, { x, 0, 0 });
+    }
+
+    for (float z = -20; z < 20; z++) {
+        CreateGridLine({ M::Rad(90), 0, M::Rad(90) }, { 0, 0, z });
+    }
+
+    /** XY */
+    for (float x = -20; x < 20; x++) {
+        CreateGridLine({ M::Rad(90), 0, 0 }, { x, 0, 0 });
+    }
+
+    for (float y = -20; y < 0; y++) {
+        CreateGridLine({ 0, M::Rad(90), 0 }, { 0, y, 0 });
+    }
+}
+
+void Grid::CreateGridLine(M::Vector3 rotation, M::Vector3 position) {
+    auto& resourceManager = Service::Get<ResourceManager>();
+    auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
+    shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag", ShaderStage::Fragment));
+    shader.AssignSource(resourceManager.Load<ShaderSource>("axisVert", "Assets/Shaders/axisShader.vert", ShaderStage::Vertex));
+    auto& line = Primitives::CreateLine("Line");
+
+    auto& l = World::Get().CreateEntity<MeshInstance3D>();
+    l.GetComponent<MeshComponent>().Mesh = &line;
+    l.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("GridLine Material");
+    l.GetComponent<MaterialComponent>().Material->Shader = &shader;
+
+    l.GetComponent<Transform3DComponent>().Rotation = rotation;
+    l.GetComponent<Transform3DComponent>().Position = position;
+    l.GetComponent<Transform3DComponent>().Scale = { 1, 1, 40 };
+    l.GetComponent<MaterialComponent>().Material->Color = M::Color::Gray;
+    GetRoot().AttachChild(l);
+}
+} // namespace E

@@ -43,7 +43,8 @@ struct Vector3 {
      * Avoids the square root performed by Length().
      * Prefer this when only comparing vector lengths.
      */
-    [[nodiscard]] float LengthSquared() const;
+    [[nodiscard]]
+    float LengthSquared() const;
 
     /**
      * @brief Returns the length (magnitude) of the vector.

@@ -1,5 +1,7 @@
 #include "calculus.hpp"
 
+#include <assimp/MathFunctions.h>
+
 #include "Core/InnerCore/Engine.hpp"
 #include "Core/InnerCore/World.hpp"
 #include "Core/Services/ResourceManager.hpp"
@@ -67,31 +69,38 @@ void calculus::Start() {
     //      }
     //  }
 
-    // auto& point = CreatePoint({0.7, 0.7, 0.7, 1});
-    // entityId = point.Id;
+    auto& point = CreatePoint({ 0.7, 0.7, 0.7, 1 });
+    // point.GetComponent<MeshComponent>().Mesh->RenderMode = RenderMode::Wireframe;
+    point.GetComponent<Transform3DComponent>().Scale.z = 6;
+    // point.GetComponent<Transform3DComponent>().Rotation.y = M::Rad(90);
+    entityId = point.Id;
 }
 
 static constexpr float step = 0.025;
-static constexpr float xRange = 8;
-static float x = -8;
+static constexpr float xRange = 5;
+static float x = -5;
 
 static float elapsed = 0;
 static float passed = 0;
 
 void calculus::Update(double dt) {
-    auto& resourceManager = Service::Get<ResourceManager>();
-
-    x += step;
-    if (x >= xRange) {
-        return;
-    }
-
-    M::Function f = [](const float x) { return 2 * x; };
-
-    M::Function g = [](const float x) { return M::Pow(x, 2); };
-    Plot({ x, f(x), 0 });
-    Plot({ x, f.Integral(3, x), -2 }, { 0, 0, 1, 1 });
-    Plot({ x, g(x), 2 }, { 1, 0, 0, 1 });
+    // auto& resourceManager = Service::Get<ResourceManager>();
+    //
+    // x += step;
+    // if (x >= xRange) {
+    //     return;
+    // }
+    //
+    // M::Function f = [](const float x) {
+    //     return 2 * x;
+    // };
+    //
+    // M::Function g = [](const float x) {
+    //     return M::Pow(x, 2);
+    // };
+    // Plot({x, g(x), 0});
+    // // Plot({x, f.Integrate(-5).Derivative(x), -2}, {0, 0, 1, 1});
+    // // Plot({x, g(x), 2}, {1, 0, 0, 1});
 }
 } // namespace E
 

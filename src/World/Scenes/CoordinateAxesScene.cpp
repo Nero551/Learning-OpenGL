@@ -2,6 +2,7 @@
 
 #include "Core/InnerCore/Engine.hpp"
 #include "Core/Services/ResourceManager.hpp"
+#include "Grid.hpp"
 #include "Math/Color/Color.hpp"
 #include "Modules/Input/Enums/Keys.hpp"
 #include "Modules/Input/Input.hpp"
@@ -52,7 +53,6 @@ CoordinateAxesScene::CoordinateAxesScene() {
     xAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
     xAxis.GetComponent<Transform3DComponent>().Rotation = { 0, M::Rad(90), 0 };
-    xAxis.GetComponent<Transform3DComponent>().Position = { -50, 0, 0 };
     xAxis.GetComponent<Transform3DComponent>().Scale = { 1, 1, 200 };
     xAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Red;
 
@@ -64,7 +64,6 @@ CoordinateAxesScene::CoordinateAxesScene() {
     yAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
     yAxis.GetComponent<Transform3DComponent>().Rotation = { M::Rad(-90), 0, 0 };
-    yAxis.GetComponent<Transform3DComponent>().Position = { 0, -50, 0 };
     yAxis.GetComponent<Transform3DComponent>().Scale = { 1, 1, 200 };
     yAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Green;
 
@@ -75,11 +74,12 @@ CoordinateAxesScene::CoordinateAxesScene() {
     zAxis.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("Z-Axis Material");
     zAxis.GetComponent<MaterialComponent>().Material->Shader = &shader;
 
-    zAxis.GetComponent<Transform3DComponent>().Rotation = { 0, 0, 0 };
-    zAxis.GetComponent<Transform3DComponent>().Position = { 0, 0, -50 };
     zAxis.GetComponent<Transform3DComponent>().Scale = { 1, 1, 200 };
     zAxis.GetComponent<MaterialComponent>().Material->Color = M::Color::Blue;
 
     GetRoot().AttachChild(zAxis);
+
+    Grid grid;
+    GetRoot().AttachChild(grid.GetRoot());
 }
 } // namespace E

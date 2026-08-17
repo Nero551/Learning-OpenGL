@@ -105,7 +105,7 @@ struct Function {
      * @param upperBound Upper bound of integration.
      * @param dx Width of each rectangle.
      * @param method Riemann-sum method used for integration.
-     * @return An approximation of the definite integral.
+     * @return An approximation of the definite integral (signed area).
      */
     [[nodiscard]] float Integral(
         float lowerBound, float upperBound, float dx = 0.001f, IntegrationMethod method = IntegrationMethod::Midpoint) const;
