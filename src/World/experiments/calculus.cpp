@@ -97,6 +97,7 @@ void calculus::Update(double dt) {
     M::Function f = [](const float x) { return 2 * x; };
 
     M::Function g = [](const float x) { return M::Pow(x, 2); };
+
     Plot({ x, g(x), 0 });
     Plot({ x, f.Integrate(-5).Derivative(x), -2 }, { 0, 0, 1, 1 });
     Plot({ x, g(x), 2 }, { 1, 0, 0, 1 });

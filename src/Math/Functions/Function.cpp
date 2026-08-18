@@ -40,29 +40,35 @@ Function Function::Compose(const Function& g) const {
 Function Function::Integrate(float lowerBound, float dx, IntegrationMethod method) const {
     return [f = *this, lowerBound, dx, method](float upperBound) {
         float result = 0.0f;
+
         for (float x = lowerBound; x < upperBound; x += dx) {
             const float width = std::min(dx, upperBound - x);
-            float sample = 0.0f;
+
             switch (method) {
             case IntegrationMethod::Midpoint:
-                sample = x + width / 2.0f;
+                result += f(x + width / 2.0f) * width;
                 break;
 
             case IntegrationMethod::Right:
-                sample = x + width;
+                result += f(x + width) * width;
                 break;
 
             case IntegrationMethod::Left:
-                sample = x;
+                result += f(x) * width;
                 break;
+
+            case IntegrationMethod::Trapezoid:
+                result += ((f(x) + f(x + width)) / 2.0f) * width;
+                break;
+
             default:
                 U::Logger::Fatal("Invalid Integration Method");
             }
-            result += f(sample) * width;
         }
+
         return result;
     };
-};
+}
 
 float Function::Integral(float lowerBound, float upperBound, float dx, IntegrationMethod method) const {
     return Integrate(lowerBound, dx, method).Evaluate(upperBound);

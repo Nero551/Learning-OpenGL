@@ -6,6 +6,8 @@
 
 namespace E {
 template <typename T>
+
+/** @brief Concept for all structs inheriting Resource , represents all objects loadable by ResourceManager */
 concept ResourceType = std::derived_from<T, Resource>;
 
 /**

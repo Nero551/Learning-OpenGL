@@ -7,6 +7,8 @@
 
 namespace E {
 template <typename T>
+
+/** @brief Concept for structs inheriting Uniform, used for OpenGL shader uniforms */
 concept UniformType = std::derived_from<T, Uniform>;
 
 /**
