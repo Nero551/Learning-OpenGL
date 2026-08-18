@@ -62,14 +62,13 @@ int Shader::GetUniformLocation(const std::string& name) {
     int location;
 
     if (UniformLocations.contains(name)) {
-        location = static_cast<int>(UniformLocations[name]);
+        location = UniformLocations[name];
     }
     else {
         location = glGetUniformLocation(Id, name.c_str());
 
         if (location == -1) {
-            // E::U::Logger::Warning("Shader: " + Name + " Uniform Not Found: " +
-            // name);
+            // E::U::Logger::Warning("Shader: " + Name + " Uniform Not Found: " + name);
         }
 
         UniformLocations[name] = location;

@@ -68,14 +68,14 @@ private:
     /** @brief OpenGL handle for the shader program. */
     unsigned int Id = 0;
 
-    std::unordered_map<std::string, unsigned int> UniformLocations;
+    std::unordered_map<std::string, int> UniformLocations;
 
     /**
      * @brief Uniforms waiting to be uploaded to the GPU.
      * Uniforms are stored by their OpenGL uniform location until
      * @ref UploadUniforms() is called.
      */
-    std::unordered_map<unsigned int, std::unique_ptr<Uniform>> PendingUniforms;
+    std::unordered_map<int, std::unique_ptr<Uniform>> PendingUniforms;
 
     std::vector<U::CheckedPtr<ShaderSource>> Sources;
 
