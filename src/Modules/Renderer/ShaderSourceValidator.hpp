@@ -3,55 +3,58 @@
 #include <glslang/Public/ShaderLang.h>
 #include <string>
 
-#include "../../../vcpkg/buildtrees/glslang/src/16.4.0-0420a59a83.clean/glslang/Public/ResourceLimits.h"
 #include "Enums/ShaderStage.hpp"
+#include "Resources/ShaderSource.hpp"
 
 namespace E {
+/**
+ * @brief Result produced by shader source validation.
+ */
 struct ShaderValidationResult {
+    /**
+     * @brief Whether the shader passed validation.
+     */
     bool Success;
+
+    /**
+     * @brief Validation diagnostics produced by glslang.
+     *
+     * This contains compiler errors and additional diagnostic information
+     * when validation fails.
+     */
     std::string Log;
 };
 
-class ShaderSourceValidator {
-public:
-    static EShLanguage ToEShLanguage(const ShaderStage& stage) {
-        switch (stage) {
-        case ShaderStage::Vertex:
-            return EShLangVertex;
+/**
+ * @brief Validates GLSL shader source using glslang.
+ *
+ * ShaderSourceValidator performs offline GLSL validation before the shader
+ * is passed to the OpenGL driver for compilation. The validator uses the
+ * shader stage and GLSL version provided by the ShaderSource.
+ *
+ * This validation is intended as an additional development-time check;
+ * OpenGL shader compilation should still be performed because the graphics
+ * driver remains the final authority for whether a shader can be compiled.
+ */
+struct ShaderSourceValidator {
+    /**
+     * @brief Converts a shader stage to glslang's shader stage.
+     *
+     * @param stage The shader stage used by the engine.
+     * @return The corresponding glslang shader language.
+     */
+    static EShLanguage ToEShLanguage(const ShaderStage& stage);
 
-        case ShaderStage::Fragment:
-            return EShLangFragment;
-
-        case ShaderStage::Geometry:
-            return EShLangGeometry;
-        }
-
-        return EShLangVertex;
-    }
-
-    static ShaderValidationResult Validate(const ShaderSource& source) {
-        const int version = std::stoi(source.Version.substr(8));
-        const EShLanguage language = ToEShLanguage(source.GetStage());
-
-        glslang::TShader shader(language);
-
-        const char* sourceString = source.GeneratedCode.c_str();
-        shader.setStrings(&sourceString, 1);
-
-        const bool success = shader.parse(GetDefaultResources(), version, true, EShMsgDefault);
-
-        ShaderValidationResult result{ .Success = success, .Log = {} };
-
-        if (!success) {
-            result.Log = shader.getInfoLog();
-
-            if (const char* debugLog = shader.getInfoDebugLog(); debugLog && *debugLog) {
-                result.Log += '\n';
-                result.Log += debugLog;
-            }
-        }
-
-        return result;
-    }
+    /**
+     * @brief Validates a shader source.
+     *
+     * The source should contain GLSL code.
+     * The GLSL version and shader stage are obtained from the ShaderSource.
+     *
+     * @param source Shader source to validate.
+     * @return A ShaderValidationResult containing the validation status
+     *         and any diagnostics produced by glslang.
+     */
+    static ShaderValidationResult Validate(const ShaderSource& source);
 };
 } // namespace E
