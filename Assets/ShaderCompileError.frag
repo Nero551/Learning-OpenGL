@@ -135,11 +135,10 @@ vec3 Lighting() {
 }
 
 
-uniform sampler2D Snowflake;
 
 void main()
 {
 
-    FragColor = vec4(Lighting(), 1) * MATERIAL.Color * texture(Snowflake, uv);
+    FragColor = vec4(Lighting(), 1) * MATERIAL.Colo;
 
 }

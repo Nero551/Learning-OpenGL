@@ -26,6 +26,7 @@ find_package(glad REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(assimp REQUIRED)
 find_package(nlohmann_json REQUIRED)
+find_package(glslang REQUIRED)
 #find_package(magic_enum REQUIRED)
 
 target_link_libraries(Nova
@@ -34,6 +35,9 @@ target_link_libraries(Nova
         assimp::assimp
         glad::glad
         nlohmann_json::nlohmann_json
+        glslang::glslang
+        glslang::SPIRV
+        glslang::glslang-default-resource-limits
 )
 
 target_compile_options(Nova PRIVATE

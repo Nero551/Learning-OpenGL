@@ -19,7 +19,7 @@ struct ShaderSource : Resource {
 
     /** @brief SourceCode with modifications (preprocessing) */
     std::string GeneratedCode;
-    std::string Version = "version 330 core";
+    std::string Version = "version 450 core";
 
     // TODO- it would be really cool if i could have methods for adding code
     // dynamically , like GenerateInt("MaxLights", 20)

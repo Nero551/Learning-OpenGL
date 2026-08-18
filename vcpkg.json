@@ -8,6 +8,7 @@
     "stb",
     "nlohmann-json",
     "magic-enum",
-    "catch2"
+    "catch2",
+    "glslang"
   ]
 }

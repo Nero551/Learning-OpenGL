@@ -6,23 +6,23 @@ echo "📦 Installing Nova system dependencies..."
 if command -v pacman >/dev/null 2>&1; then
     sudo pacman -S --needed \
         base-devel clang ccache ninja git curl zip unzip tar \
-        pkgconf autoconf autoconf-archive automake libtool
+        pkgconf autoconf autoconf-archive automake libtool doxygen
 
 elif command -v apt >/dev/null 2>&1; then
     sudo apt install \
         build-essential clang ccache ninja-build git curl zip unzip tar \
-        pkg-config autoconf autoconf-archive automake libtool
+        pkg-config autoconf autoconf-archive automake libtool doxygen
 
 elif command -v dnf >/dev/null 2>&1; then
     sudo dnf install \
         gcc gcc-c++ clang ccache ninja-build git curl zip unzip tar \
-        pkgconf-pkg-config autoconf autoconf-archive automake libtool
+        pkgconf-pkg-config autoconf autoconf-archive automake libtool doxygen
 
 elif command -v xbps-install >/dev/null 2>&1; then
     sudo xbps-install -S
     sudo xbps-install -y \
         base-devel clang ccache ninja git curl zip unzip tar \
-        pkg-config autoconf autoconf-archive automake libtool
+        pkg-config autoconf autoconf-archive automake libtool doxygen
 
 else
     echo "❌ Unsupported package manager."
@@ -49,7 +49,8 @@ else
         --prefix=/usr/local
 
     rm /tmp/cmake.sh
-  echo "✅ CMake $CMAKE_VERSION installed."
+
+    echo "✅ CMake $CMAKE_VERSION installed."
 fi
 
 echo "🔍 Verifying tools..."
@@ -59,5 +60,6 @@ command -v clang++
 command -v ninja
 command -v git
 command -v cmake
+command -v doxygen
 
 echo "🥳 Nova Dependencies Installed!"

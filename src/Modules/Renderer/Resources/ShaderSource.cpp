@@ -5,6 +5,7 @@
 #include <utility>
 
 #include "Core/OuterCore/Resource.hpp"
+#include "Modules/Renderer/ShaderSourceValidator.hpp"
 #include "Utilities/FileSystem/FileSystem.hpp"
 #include "Utilities/Logger.hpp"
 
@@ -15,6 +16,17 @@ void ShaderSource::Compile() {
     }
 
     Preprocess();
+
+    auto result = ShaderSourceValidator::Validate(*this);
+    if (!result.Success) {
+        U::Logger::Error("[VALIDATOR] ", result.Log);
+        if (Stage == ShaderStage::Fragment) {
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.frag", GeneratedCode);
+        }
+        if (Stage == ShaderStage::Vertex) {
+            U::FileSystem::WriteFile("Assets/ShaderCompileError.vert", GeneratedCode);
+        }
+    }
 
     const char* string = GeneratedCode.c_str();
 

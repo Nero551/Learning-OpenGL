@@ -65,5 +65,7 @@ struct Window {
 
 private:
     GLFWwindow* GlfwWindow;
+
+    void SetHints();
 };
 } // namespace E

@@ -1,5 +1,5 @@
 #pragma once
-#include "GLFWContext.hpp"
+#include "GraphicsContext.hpp"
 #include "Module.hpp"
 #include "Utilities/CheckedPtr.hpp"
 #include "Window.hpp"
@@ -16,7 +16,7 @@ concept ModuleType = std::derived_from<T, Module>;
  */
 struct Engine {
 private:
-    GLFWContext GLFWContext{};
+    GraphicsContext GraphicsContext{};
 
 public:
     Window Window;

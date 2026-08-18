@@ -4,14 +4,19 @@
 #include "Utilities/Logger.hpp"
 
 namespace E {
-Window::Window(const int width, const int height, const std::string& title) {
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+void Window::SetHints() {
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
     glfwWindowHintString(GLFW_X11_CLASS_NAME, "nova_engine");
     glfwWindowHintString(GLFW_WAYLAND_APP_ID, "nova_engine");
+}
 
+
+Window::Window(const int width, const int height, const std::string& title) {
+    SetHints();
     GLFWwindow* glfwWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
     if (!glfwWindow) {
         U::Logger::Fatal("Failed To Create Window");
@@ -21,6 +26,8 @@ Window::Window(const int width, const int height, const std::string& title) {
     if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress))) {
         U::Logger::Fatal("Failed To Initialize GLAD");
     }
+
+    U::Logger::Info(glGetString(GL_VERSION));
 
     glViewport(0, 0, width, height);
     glfwSetFramebufferSizeCallback(glfwWindow, [](GLFWwindow*, const int w, const int h) { glViewport(0, 0, w, h); });
