@@ -18,7 +18,7 @@ unsigned int Mesh::GetId() const {
 }
 
 void Mesh::Generate() {
-    if (Id != 0) {
+    if (GetId() != 0) {
         return;
     }
     CreateVAO();

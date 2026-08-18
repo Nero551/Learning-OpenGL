@@ -1,39 +1,82 @@
 #pragma once
+
 #include "../Enums/Topology.hpp"
 #include "../Vertex.hpp"
 #include "Core/OuterCore/Resource.hpp"
 #include "Modules/Renderer/Enums/RenderMode.hpp"
 
 namespace E {
+/**
+ * @brief Represents a renderable mesh resource.
+ *
+ * Stores vertex and index data and manages the OpenGL resources required
+ * to render the mesh. GPU resources are generated lazily when Generate()
+ * is called.
+ */
 struct Mesh : Resource {
+    /** Rendering mode used when drawing the mesh. */
     RenderMode RenderMode = RenderMode::Solid;
+
+    /** Primitive topology used to interpret the mesh indices. */
     Topology Topology = Topology::Triangles;
 
+    /**
+     * @brief Creates a mesh from vertex and index data.
+     *
+     * @param name Resource name.
+     * @param vertices Vertex data used to construct the mesh.
+     * @param indices Index data used to construct the mesh.
+     */
     Mesh(const std::string& name, const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices);
 
+    /** Releases the OpenGL resources owned by the mesh. */
     ~Mesh() override;
 
+    /**
+     * @brief Gets the OpenGL vertex array object ID.
+     * @return OpenGL VAO ID, or 0 if the mesh has not been generated.
+     */
     [[nodiscard]] unsigned int GetId() const;
 
-
+    /**
+     * @brief Generates the OpenGL resources required to render the mesh.
+     * Creates the vertex array, vertex buffer, element buffer, and vertex attribute
+     * configuration from the mesh's stored vertices and indices data.
+     */
     void Generate();
 
+    /**
+     * @brief Draws the mesh using its configured render mode and topology.
+     * Generates the OpenGL resources first if they have not yet been created.
+     */
     void Draw();
 
 private:
+    /** OpenGL vertex array object ID. */
     unsigned int Id = 0;
+
+    /** OpenGL vertex buffer object ID. */
     unsigned int VBO = 0;
+
+    /** OpenGL element buffer object ID. */
     unsigned int EBO = 0;
 
+    /** CPU-side vertex data used to generate the GPU resources. */
     std::vector<Vertex> Vertices;
+
+    /** CPU-side index data used to generate the GPU resources. */
     std::vector<unsigned int> Indices;
 
+    /** Creates and binds the vertex array object. */
     void CreateVAO();
 
+    /** Creates and uploads the vertex buffer object. */
     void CreateVBO();
 
+    /** Creates and uploads the element buffer object. */
     void CreateEBO();
 
+    /** Configures the vertex attribute pointers. */
     void SetupVertAttrPointers();
 };
 } // namespace E
