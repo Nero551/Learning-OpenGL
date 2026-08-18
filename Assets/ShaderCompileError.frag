@@ -78,7 +78,6 @@ vec3 CalculateEmission(){
 
 void CalculateDirectionalLight(Light light, out vec3 lightDir) {
     lightDir = normalize(-light.Direction);
-    light.Color = vec4(1, 0, 0);
 }
 
 void CalculatePointLight(Light light, out float attenuation) {
@@ -136,9 +135,11 @@ vec3 Lighting() {
 }
 
 
+uniform sampler2D Snowflake;
+
 void main()
 {
 
-    FragColor = vec4(Lighting(), 1) * MATERIAL.Color;
+    FragColor = vec4(Lighting(), 1) * MATERIAL.Color * texture(Snowflake, uv);
 
 }

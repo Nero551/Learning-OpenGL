@@ -42,6 +42,11 @@ void Renderer::OnRender() {
         }
         auto& transformComponent = entity->GetComponent<Transform3DComponent>();
 
+        if (entity->HasComponent<MeshComponent>()) {
+            auto& meshComponent = entity->GetComponent<MeshComponent>();
+            meshComponent.Mesh->Draw();
+        }
+
         if (entity->HasComponent<MaterialComponent>()) {
             auto& materialComponent = entity->GetComponent<MaterialComponent>();
             materialComponent.Material->Use();
@@ -62,12 +67,6 @@ void Renderer::OnRender() {
             materialComponent.Material->Shader->SetUniform(Matrix4Uniform("PROJECTION_MATRIX", projection));
 
             materialComponent.Material->Shader->SetUniform(Matrix3Uniform("NORMAL_MATRIX", transformComponent.GetNormalMatrix()));
-        }
-
-        if (entity->HasComponent<MeshComponent>()) {
-            auto& meshComponent = entity->GetComponent<MeshComponent>();
-
-            meshComponent.Mesh->Draw();
         }
     }
 }

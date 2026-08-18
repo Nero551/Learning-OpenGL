@@ -15,6 +15,9 @@ struct Mesh : Resource {
 
     [[nodiscard]] unsigned int GetId() const;
 
+
+    void Generate();
+
     void Draw();
 
 private:

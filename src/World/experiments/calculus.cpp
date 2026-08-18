@@ -72,6 +72,9 @@ void calculus::Start() {
     // auto& point = CreatePoint({0.7, 0.7, 0.7, 1});
     // point.GetComponent<MeshComponent>().Mesh->RenderMode = RenderMode::Wireframe;
     // point.GetComponent<Transform3DComponent>().Position.z = 6;
+    // U::Image image = {"Assets/icon.png", true};
+    // Texture& texture = resourceManager.Load<Texture>("Snowflake", image);
+    // point.GetComponent<MaterialComponent>().Material->AssignTexture(texture, 1);
     // point.GetComponent<Transform3DComponent>().Rotation.y = M::Rad(90);
     // entityId = point.Id;
 }

@@ -11,9 +11,9 @@ namespace E {
 struct Resource {
     std::string Name;
 
-    virtual ~Resource() = default;
-
     Resource(std::string name) : Name(std::move(name)) {};
+
+    virtual ~Resource() = default;
 
     Resource(const Resource&) = delete;
 

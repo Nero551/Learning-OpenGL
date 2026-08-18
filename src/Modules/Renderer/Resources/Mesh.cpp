@@ -5,11 +5,6 @@
 namespace E {
 Mesh::Mesh(const std::string& name, const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices) :
     Resource(name), Vertices(vertices), Indices(indices) {
-    CreateVAO();
-    CreateVBO();
-    CreateEBO();
-    SetupVertAttrPointers();
-    glBindVertexArray(0);
 }
 
 Mesh::~Mesh() {
@@ -22,7 +17,20 @@ unsigned int Mesh::GetId() const {
     return Id;
 }
 
+void Mesh::Generate() {
+    if (Id != 0) {
+        return;
+    }
+    CreateVAO();
+    CreateVBO();
+    CreateEBO();
+    SetupVertAttrPointers();
+    glBindVertexArray(0);
+}
+
 void Mesh::Draw() {
+    Generate();
+
     glBindVertexArray(Id);
     if (RenderMode == RenderMode::Solid) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);

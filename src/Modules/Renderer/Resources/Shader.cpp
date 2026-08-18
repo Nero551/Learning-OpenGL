@@ -43,10 +43,7 @@ unsigned int Shader::GetId() const {
 }
 
 void Shader::Use() {
-    if (!IsProgramCreated()) {
-        CreateProgram();
-    }
-
+    CreateProgram();
     glUseProgram(Id);
     UploadUniforms();
 }
@@ -81,6 +78,10 @@ int Shader::GetUniformLocation(const std::string& name) {
 }
 
 void Shader::CreateProgram() {
+    if (IsProgramCreated()) {
+        return;
+    }
+
     if (Sources.empty()) {
         U::Logger::Warning("Shader Program:" + Name + " Has No Sources");
         return;
