@@ -91,3 +91,4 @@
 ### Week 8 — August 14–20
 
 - vcpkg package management
+- basic calc 1 integration

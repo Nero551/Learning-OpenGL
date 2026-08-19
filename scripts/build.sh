@@ -11,6 +11,6 @@ export VCPKG_DISABLE_METRICS=1
 
 cmake --preset default -S "$ROOT"
 
-cmake --build --preset default
+cmake --build --preset default -j4
 
 echo "✅ Built."
