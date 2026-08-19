@@ -15,11 +15,6 @@
 #include "Uniforms/Vector3Uniform.hpp"
 
 namespace E {
-void Renderer::AddSystems() {
-    AddSystem<CameraSystem>();
-    AddSystem<LightingSystem>();
-}
-
 void Renderer::OnStart() {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -69,5 +64,10 @@ void Renderer::OnRender() {
             meshComponent.Mesh->Draw();
         }
     }
+}
+
+void Renderer::AddSystems() {
+    AddSystem<CameraSystem>();
+    AddSystem<LightingSystem>();
 }
 } // namespace E

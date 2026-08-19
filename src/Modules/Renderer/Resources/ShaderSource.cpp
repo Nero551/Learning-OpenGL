@@ -10,6 +10,23 @@
 #include "Utilities/Logger.hpp"
 
 namespace E {
+ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage, std::string version) :
+    Resource(name), Path(path), Version(std::move(version)), Stage(stage) {
+    SourceCode = U::FileSystem::ReadFile(path);
+}
+
+ShaderSource::~ShaderSource() {
+    glDeleteShader(Id);
+}
+
+unsigned int ShaderSource::GetId() const {
+    return Id;
+}
+
+ShaderStage ShaderSource::GetStage() const {
+    return Stage;
+}
+
 void ShaderSource::Compile() {
     if (IsCompiled()) {
         return;
@@ -56,6 +73,12 @@ bool ShaderSource::IsCompiled() const {
     return Id != 0;
 }
 
+void ShaderSource::Reload() {
+    SourceCode = U::FileSystem::ReadFile(Path);
+    glDeleteShader(Id);
+    Id = 0;
+}
+
 void ShaderSource::Preprocess() {
     GeneratedCode = SourceCode;
     Includes.clear();
@@ -100,28 +123,5 @@ void ShaderSource::PreprocessIncludes(
         }
         pos = code.find(include, pos + 1);
     }
-}
-
-ShaderSource::ShaderSource(const std::string& name, const std::string& path, const ShaderStage stage, std::string version) :
-    Resource(name), Path(path), Version(std::move(version)), Stage(stage) {
-    SourceCode = U::FileSystem::ReadFile(path);
-}
-
-ShaderSource::~ShaderSource() {
-    glDeleteShader(Id);
-}
-
-unsigned int ShaderSource::GetId() const {
-    return Id;
-}
-
-ShaderStage ShaderSource::GetStage() const {
-    return Stage;
-}
-
-void ShaderSource::Reload() {
-    SourceCode = U::FileSystem::ReadFile(Path);
-    glDeleteShader(Id);
-    Id = 0;
 }
 } // namespace E

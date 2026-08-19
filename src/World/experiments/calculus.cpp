@@ -39,7 +39,7 @@ static MeshInstance3D& CreatePoint(M::Vector4 col) {
 static float max = 100;
 static float min = -100;
 
-static void Plot(M::Vector3 vec3, M::Vector4 col = { 1, 1, 1, 1 }) {
+static void Plot(const M::Vector3 vec3, const M::Vector4 col = { 1, 1, 1, 1 }) {
     if (vec3.y < max && vec3.y > min) {
         const auto& point = CreatePoint(col);
         auto& transform = point.GetComponent<Transform3DComponent>();

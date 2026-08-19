@@ -10,7 +10,8 @@ namespace E {
  */
 struct GraphicsContext {
     GraphicsContext() {
-        glfwSetErrorCallback([](int error, const char* description) { U::Logger::Error("[GLFW]", error, ": ", description); });
+        glfwSetErrorCallback(
+            [](const int error, const char* description) { U::Logger::Error("[GLFW]", error, ": ", description); });
         if (!glfwInit()) {
             throw std::runtime_error("Failed to initialize GLFW");
         }

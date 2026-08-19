@@ -257,13 +257,13 @@ private:
     std::vector<unsigned int> Children;
 
     /** @brief Parent entity in the hierarchy. */
-    unsigned int Parent;
+    unsigned int Parent{};
 
     /**
      * @brief Recursively collects all descendants of an entity.
      * @param entities Vector to append discovered descendants to.
      * @param entity Entity whose descendants should be traversed.
      */
-    void RecursiveChildren(std::vector<U::CheckedPtr<Entity>>& entities, Entity& entity);
+    void RecursiveChildren(std::vector<U::CheckedPtr<Entity>>& entities, const Entity& entity);
 };
 } // namespace E

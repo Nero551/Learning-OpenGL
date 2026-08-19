@@ -11,83 +11,11 @@
 #include "World/experiments/calculus.hpp"
 
 namespace E {
-void World::AddSystems() {
-    AddSystem<Transform3DSystem>();
-    AddSystem<calculus>();
-}
-
 World& World::Get() {
     return Engine::Get().World;
 }
 
-void World::Start() {
-    AddSystems();
-    Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Disabled);
-
-    Root = &CreateEntity<Nova>();
-
-    auto& camera = CreateEntity<Camera>();
-    Root->AttachChild(camera);
-    ActiveCamera = &camera;
-
-    CoordinateAxesScene coordinateAxes;
-    Root->AttachChild(coordinateAxes.GetRoot());
-
-    for (auto& system : Systems | std::views::values) {
-        system->Start();
-    }
-}
-
-void World::Update(double dt) {
-    if (Engine::Get().GetModule<Input>().IsKeyHeld(Key::Escape)) {
-        Engine::Get().Shutdown();
-    }
-
-    if (Engine::Get().GetModule<Input>().IsKeyReleased(Key::Q)) {
-        if (Engine::Get().GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
-            Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Normal);
-        }
-        else {
-            Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Disabled);
-        }
-    }
-
-    for (auto& system : Systems | std::views::values) {
-        system->Update(dt);
-    }
-}
-
-void World::FixedUpdate(double fdt) {
-    for (auto& system : Systems | std::views::values) {
-        system->FixedUpdate(fdt);
-    }
-}
-
-void World::Render() {
-    for (auto& system : Systems | std::views::values) {
-        system->Render();
-    }
-}
-
-void World::Stop() {
-    for (auto& system : Systems | std::views::values) {
-        system->Stop();
-    }
-}
-
-void World::BeginFrame(double dt) {
-    for (auto& system : Systems | std::views::values) {
-        system->BeginFrame(dt);
-    }
-}
-
-void World::EndFrame(double dt) {
-    for (auto& system : Systems | std::views::values) {
-        system->EndFrame(dt);
-    }
-}
-
-void World::RemoveEntity(unsigned int id) {
+void World::RemoveEntity(const unsigned int id) {
     auto entity = TryFindEntity(id);
     if (!entity) {
         return;
@@ -119,7 +47,7 @@ Entity& World::FindEntity(unsigned int id) {
     return *entity->second;
 }
 
-U::CheckedPtr<Entity> World::TryFindEntity(unsigned int id) {
+U::CheckedPtr<Entity> World::TryFindEntity(const unsigned int id) {
     auto entity = Entities.find(id);
 
     if (entity == Entities.end()) {
@@ -127,5 +55,77 @@ U::CheckedPtr<Entity> World::TryFindEntity(unsigned int id) {
     }
 
     return entity->second.get();
+}
+
+void World::AddSystems() {
+    AddSystem<Transform3DSystem>();
+    AddSystem<calculus>();
+}
+
+void World::Start() {
+    AddSystems();
+    Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+
+    Root = &CreateEntity<Nova>();
+
+    auto& camera = CreateEntity<Camera>();
+    Root->AttachChild(camera);
+    ActiveCamera = &camera;
+
+    CoordinateAxesScene coordinateAxes;
+    Root->AttachChild(coordinateAxes.GetRoot());
+
+    for (auto& system : Systems | std::views::values) {
+        system->Start();
+    }
+}
+
+void World::Update(const double dt) {
+    if (Engine::Get().GetModule<Input>().IsKeyHeld(Key::Escape)) {
+        Engine::Get().Shutdown();
+    }
+
+    if (Engine::Get().GetModule<Input>().IsKeyReleased(Key::Q)) {
+        if (Engine::Get().GetModule<Input>().GetMouseMode() == MouseMode::Disabled) {
+            Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Normal);
+        }
+        else {
+            Engine::Get().GetModule<Input>().SetMouseMode(MouseMode::Disabled);
+        }
+    }
+
+    for (auto& system : Systems | std::views::values) {
+        system->Update(dt);
+    }
+}
+
+void World::FixedUpdate(const double fdt) {
+    for (auto& system : Systems | std::views::values) {
+        system->FixedUpdate(fdt);
+    }
+}
+
+void World::Stop() {
+    for (auto& system : Systems | std::views::values) {
+        system->Stop();
+    }
+}
+
+void World::BeginFrame(const double dt) {
+    for (auto& system : Systems | std::views::values) {
+        system->BeginFrame(dt);
+    }
+}
+
+void World::EndFrame(const double dt) {
+    for (auto& system : Systems | std::views::values) {
+        system->EndFrame(dt);
+    }
+}
+
+void World::Render() {
+    for (auto& system : Systems | std::views::values) {
+        system->Render();
+    }
 }
 } // namespace E

@@ -3,34 +3,34 @@
 #include "Exponentials.hpp"
 
 namespace E::M {
-float Lerp(float a, float b, float t) {
+float Lerp(const float a, const float b, const float t) {
     return a + (b - a) * t;
 }
 
-float EaseInQuad(float t) {
+float EaseInQuad(const float t) {
     return t * t;
 }
 
-float EaseOutQuad(float t) {
-    return 1 - Pow((1 - t), 2);
+float EaseOutQuad(const float t) {
+    return 1 - Pow(1 - t, 2);
 }
 
-float EaseInOutQuad(float t) {
+float EaseInOutQuad(const float t) {
     if (t < 0.5f)
         return 0.5f * EaseInQuad(t * 2.0f);
 
     return 0.5f + 0.5f * EaseOutQuad((t - 0.5f) * 2.0f);
 }
 
-float EaseInCubic(float t) {
+float EaseInCubic(const float t) {
     return t * t * t;
 }
 
-float EaseOutCubic(float t) {
-    return 1 - Pow((1 - t), 3);
+float EaseOutCubic(const float t) {
+    return 1 - Pow(1 - t, 3);
 }
 
-float EaseInOutCubic(float t) {
+float EaseInOutCubic(const float t) {
     if (t < 0.5f)
         return 4 * EaseInCubic(t);
 

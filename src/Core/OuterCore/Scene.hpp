@@ -19,7 +19,7 @@ struct Scene {
     Scene(Scene&&) = default;
 
     Entity& GetRoot();
-    void SetRoot(Entity& entity);
+    void SetRoot(const Entity& entity);
     void SetRoot(unsigned int entityId);
 
 private:

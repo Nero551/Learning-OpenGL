@@ -7,7 +7,7 @@
 #include "World/Components/Transform3DComponent.hpp"
 
 namespace E {
-void CameraSystem::Update(double dt) {
+void CameraSystem::Update(const double dt) {
     {
         auto& input = Engine::Get().GetModule<Input>();
         auto& camera = World::Get().ActiveCamera;

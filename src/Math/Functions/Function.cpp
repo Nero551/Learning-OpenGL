@@ -8,6 +8,36 @@ float Function::Evaluate(const float x) const {
     return Func(x);
 }
 
+Function Function::Compose(const Function& g) const {
+    return [f = *this, g](const float x) -> float { return f(g(x)); };
+}
+
+float Function::InverseEvaluate(const float y, float domainMin, float domainMax) const {
+    float x = 0;
+    while (!NearlyEquals(domainMax, domainMin)) {
+        x = (domainMin + domainMax) / 2.0f;
+
+        float value = Evaluate(x);
+
+        if (value < y) {
+            domainMin = x;
+        }
+        else {
+            domainMax = x;
+        }
+    }
+
+    return x;
+}
+
+Function Function::Inverse(float domainMin, float domainMax) const {
+    return [f = *this, domainMin, domainMax](const float y) { return f.InverseEvaluate(y, domainMin, domainMax); };
+}
+
+float Function::Derivative(const float x, const float dx, const DifferentiationMethod method) const {
+    return Differentiate(dx, method).Evaluate(x);
+}
+
 Function Function::Differentiate(const float dx, DifferentiationMethod method) const {
     auto derivative = [f = *this, dx, method](const float x) -> float {
         const float h = dx * std::max(1.0f, std::abs(x));
@@ -29,16 +59,8 @@ Function Function::Differentiate(const float dx, DifferentiationMethod method) c
     return derivative;
 }
 
-float Function::Derivative(const float x, const float dx, DifferentiationMethod method) const {
-    return Differentiate(dx, method).Evaluate(x);
-}
-
-Function Function::Compose(const Function& g) const {
-    return [f = *this, g](const float x) -> float { return f(g(x)); };
-}
-
 Function Function::Integrate(float lowerBound, float dx, IntegrationMethod method) const {
-    return [f = *this, lowerBound, dx, method](float upperBound) {
+    return [f = *this, lowerBound, dx, method](const float upperBound) {
         float result = 0.0f;
 
         for (float x = lowerBound; x < upperBound; x += dx) {
@@ -58,7 +80,7 @@ Function Function::Integrate(float lowerBound, float dx, IntegrationMethod metho
                 break;
 
             case IntegrationMethod::Trapezoid:
-                result += ((f(x) + f(x + width)) / 2.0f) * width;
+                result += (f(x) + f(x + width)) / 2.0f * width;
                 break;
 
             default:
@@ -70,33 +92,11 @@ Function Function::Integrate(float lowerBound, float dx, IntegrationMethod metho
     };
 }
 
-float Function::Integral(float lowerBound, float upperBound, float dx, IntegrationMethod method) const {
+float Function::Integral(const float lowerBound, const float upperBound, const float dx, const IntegrationMethod method) const {
     return Integrate(lowerBound, dx, method).Evaluate(upperBound);
 }
 
-float Function::InverseEvaluate(float y, float domainMin, float domainMax) const {
-    float x = 0;
-    while (!NearlyEquals(domainMax, domainMin)) {
-        x = (domainMin + domainMax) / 2.0f;
-
-        float value = Evaluate(x);
-
-        if (value < y) {
-            domainMin = x;
-        }
-        else {
-            domainMax = x;
-        }
-    }
-
-    return x;
-}
-
-Function Function::Inverse(float domainMin, float domainMax) const {
-    return [f = *this, domainMin, domainMax](float y) { return f.InverseEvaluate(y, domainMin, domainMax); };
-}
-
-float Function::operator()(float x) const {
+float Function::operator()(const float x) const {
     return Evaluate(x);
 }
 
@@ -109,19 +109,19 @@ Function Function::operator+(const Function& g) const {
 }
 
 Function Function::operator-(const Function& g) const {
-    return [f = *this, g](float x) { return f(x) - g(x); };
+    return [f = *this, g](const float x) { return f(x) - g(x); };
 }
 
 Function Function::operator*(const Function& g) const {
-    return [f = *this, g](float x) { return f(x) * g(x); };
+    return [f = *this, g](const float x) { return f(x) * g(x); };
 }
 
 Function Function::operator/(const Function& g) const {
-    return [f = *this, g](float x) { return f(x) / g(x); };
+    return [f = *this, g](const float x) { return f(x) / g(x); };
 }
 
 Function Function::operator-() const {
-    return [f = *this](float x) { return -f(x); };
+    return [f = *this](const float x) { return -f(x); };
 }
 
 Function Function::operator+(float scalar) const {
@@ -132,27 +132,27 @@ Function Function::operator-(float scalar) const {
     return [f = *this, scalar](const float x) -> float { return f(x) - scalar; };
 }
 
+Function Function::operator*(const float scalar) const {
+    return [f = *this, scalar](const float x) { return f(x) * scalar; };
+}
+
 Function Function::operator/(float scalar) const {
     return [f = *this, scalar](const float x) -> float { return f(x) / scalar; };
 }
 
-Function Function::operator*(const float scalar) const {
-    return [f = *this, scalar](float x) { return f(x) * scalar; };
-}
-
-Function operator+(float scalar, const Function& f) {
+Function operator+(const float scalar, const Function& f) {
     return f + scalar;
 }
 
 Function operator-(float scalar, const Function& f) {
-    return [f, scalar](float x) { return scalar - f(x); };
+    return [f, scalar](const float x) { return scalar - f(x); };
 }
 
-Function operator*(float scalar, const Function& f) {
+Function operator*(const float scalar, const Function& f) {
     return f * scalar;
 }
 
 Function operator/(float scalar, const Function& f) {
-    return [f, scalar](float x) { return scalar / f(x); };
+    return [f, scalar](const float x) { return scalar / f(x); };
 }
 } // namespace E::M

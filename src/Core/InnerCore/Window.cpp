@@ -4,17 +4,6 @@
 #include "Utilities/Logger.hpp"
 
 namespace E {
-void Window::SetHints() {
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
-    glfwWindowHintString(GLFW_X11_CLASS_NAME, "nova_engine");
-    glfwWindowHintString(GLFW_WAYLAND_APP_ID, "nova_engine");
-}
-
-
 Window::Window(const int width, const int height, const std::string& title) {
     SetHints();
     GLFWwindow* glfwWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
@@ -34,16 +23,13 @@ Window::Window(const int width, const int height, const std::string& title) {
     GlfwWindow = glfwWindow;
 }
 
+
 Window::~Window() {
     glfwDestroyWindow(GlfwWindow);
 }
 
 float Window::GetAspectRatio() const {
     return static_cast<float>(GetWidth()) / static_cast<float>(GetHeight());
-}
-
-GLFWwindow* Window::GetGlfwWindow() {
-    return GlfwWindow;
 }
 
 bool Window::ShouldClose() {
@@ -60,24 +46,6 @@ void Window::PollEvents() {
 
 void Window::SetTitle(const std::string& title) {
     glfwSetWindowTitle(GlfwWindow, title.c_str());
-}
-
-int Window::GetHeight() const {
-    int height = 0;
-    int width = 0;
-    glfwGetWindowSize(GlfwWindow, &width, &height);
-    return height;
-}
-
-int Window::GetWidth() const {
-    int height = 0;
-    int width = 0;
-    glfwGetWindowSize(GlfwWindow, &width, &height);
-    return width;
-}
-
-void Window::Close() {
-    glfwSetWindowShouldClose(GlfwWindow, GL_TRUE);
 }
 
 void Window::SetIcon(const U::Image& icon) {
@@ -99,5 +67,37 @@ void Window::SetWidth(const int width) {
 void Window::SetSize(const int width, const int height) {
     SetWidth(width);
     SetHeight(height);
+}
+
+int Window::GetHeight() const {
+    int height = 0;
+    int width = 0;
+    glfwGetWindowSize(GlfwWindow, &width, &height);
+    return height;
+}
+
+int Window::GetWidth() const {
+    int height = 0;
+    int width = 0;
+    glfwGetWindowSize(GlfwWindow, &width, &height);
+    return width;
+}
+
+void Window::Close() {
+    glfwSetWindowShouldClose(GlfwWindow, GL_TRUE);
+}
+
+GLFWwindow* Window::GetGlfwWindow() {
+    return GlfwWindow;
+}
+
+void Window::SetHints() {
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+    glfwWindowHintString(GLFW_X11_CLASS_NAME, "nova_engine");
+    glfwWindowHintString(GLFW_WAYLAND_APP_ID, "nova_engine");
 }
 } // namespace E

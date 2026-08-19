@@ -9,7 +9,7 @@ struct Vector4Uniform : Uniform {
     Vector4Uniform(const std::string& name, const M::Vector4& value) : Uniform(name), Value(value) {
     }
 
-    void Upload(int location) override {
+    void Upload(const int location) override {
         glUniform4fv(location, 1, &Value.x);
     }
 };

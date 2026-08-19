@@ -6,7 +6,7 @@
 #include "Utilities/Logger.hpp"
 
 namespace E::U {
-Image::Image(const std::string& filePath, bool flip) {
+Image::Image(const std::string& filePath, const bool flip) {
     stbi_set_flip_vertically_on_load(flip);
 
     int nrChannels = 1;
@@ -26,7 +26,7 @@ Image::Image(const std::string& filePath, bool flip) {
     stbi_image_free(pixels);
 }
 
-Image::Image(int width, int height, ColorChannels channels, const std::vector<unsigned char>& pixels) {
+Image::Image(const int width, const int height, const ColorChannels channels, const std::vector<unsigned char>& pixels) {
     Width = width;
     Height = height;
     Channels = channels;

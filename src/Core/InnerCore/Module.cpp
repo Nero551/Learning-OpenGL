@@ -9,14 +9,14 @@ void Module::Start() {
     }
 }
 
-void Module::Update(double dt) {
+void Module::Update(const double dt) {
     OnUpdate(dt);
     for (auto& system : Systems | std::views::values) {
         system->Update(dt);
     }
 }
 
-void Module::FixedUpdate(double fdt) {
+void Module::FixedUpdate(const double fdt) {
     OnFixedUpdate(fdt);
     for (auto& system : Systems | std::views::values) {
         system->FixedUpdate(fdt);
@@ -37,14 +37,14 @@ void Module::Render() {
     }
 }
 
-void Module::BeginFrame(double dt) {
+void Module::BeginFrame(const double dt) {
     OnBeginFrame(dt);
     for (auto& system : Systems | std::views::values) {
         system->BeginFrame(dt);
     }
 }
 
-void Module::EndFrame(double dt) {
+void Module::EndFrame(const double dt) {
     OnEndFrame(dt);
     for (auto& system : Systems | std::views::values) {
         system->EndFrame(dt);

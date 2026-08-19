@@ -20,6 +20,12 @@ struct Mesh : Resource {
     /** Primitive topology used to interpret the mesh indices. */
     Topology Topology = Topology::Triangles;
 
+    /** CPU-side vertex data used to generate the GPU resources. */
+    std::vector<Vertex> Vertices;
+
+    /** CPU-side index data used to generate the GPU resources. */
+    std::vector<unsigned int> Indices;
+
     /**
      * @brief Creates a mesh from vertex and index data.
      *
@@ -43,6 +49,7 @@ struct Mesh : Resource {
      * Creates the vertex array, vertex buffer, element buffer, and vertex attribute
      * configuration from the mesh's stored vertices and indices data.
      */
+    bool IsGenerated() const;
     void Generate();
 
     /**
@@ -60,12 +67,6 @@ private:
 
     /** OpenGL element buffer object ID. */
     unsigned int EBO = 0;
-
-    /** CPU-side vertex data used to generate the GPU resources. */
-    std::vector<Vertex> Vertices;
-
-    /** CPU-side index data used to generate the GPU resources. */
-    std::vector<unsigned int> Indices;
 
     /** Creates and binds the vertex array object. */
     void CreateVAO();

@@ -32,7 +32,6 @@ void LightingSystem::Start() {
 }
 
 void LightingSystem::Render() {
-    auto& camera = World::Get().ActiveCamera;
 
     for (auto& entity : World::Get().Root->GetDescendants()) {
         if (!entity->HasComponent<Transform3DComponent, MaterialComponent>() || entity->HasComponent<LightComponent>()) {

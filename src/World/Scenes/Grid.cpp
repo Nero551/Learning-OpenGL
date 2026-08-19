@@ -27,6 +27,25 @@ Grid::Grid() {
     // CreateGridLine({ M::Rad(theta), M::Rad(theta), M::Rad(theta) }, 0);
 }
 
+void Grid::CreateGridLine(const M::Vector3 rotation, const M::Vector3 position) {
+    auto& resourceManager = Service::Get<ResourceManager>();
+    auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
+    shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag", ShaderStage::Fragment));
+    shader.AssignSource(resourceManager.Load<ShaderSource>("axisVert", "Assets/Shaders/axisShader.vert", ShaderStage::Vertex));
+    auto& line = Primitives::CreateLine("Line");
+
+    auto& l = World::Get().CreateEntity<MeshInstance3D>();
+    l.GetComponent<MeshComponent>().Mesh = &line;
+    l.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("GridLine Material");
+    l.GetComponent<MaterialComponent>().Material->Shader = &shader;
+
+    l.GetComponent<Transform3DComponent>().Rotation = rotation;
+    l.GetComponent<Transform3DComponent>().Position = position;
+    l.GetComponent<Transform3DComponent>().Scale = { 1, 1, 40 };
+    l.GetComponent<MaterialComponent>().Material->Color = M::Color::Gray;
+    GetRoot().AttachChild(l);
+}
+
 void Grid::CreateXY() {
     for (float x = -20; x < 20; x++) {
         if (x != 0) {
@@ -67,24 +86,5 @@ void Grid::CreateYZ() {
             CreateGridLine({ M::Rad(90), 0, 0 }, { 0, 0, z });
         }
     }
-}
-
-void Grid::CreateGridLine(M::Vector3 rotation, M::Vector3 position) {
-    auto& resourceManager = Service::Get<ResourceManager>();
-    auto& shader = Service::Get<ResourceManager>().Load<Shader>("AxisShader");
-    shader.AssignSource(resourceManager.Load<ShaderSource>("axisFrag", "Assets/Shaders/axisShader.frag", ShaderStage::Fragment));
-    shader.AssignSource(resourceManager.Load<ShaderSource>("axisVert", "Assets/Shaders/axisShader.vert", ShaderStage::Vertex));
-    auto& line = Primitives::CreateLine("Line");
-
-    auto& l = World::Get().CreateEntity<MeshInstance3D>();
-    l.GetComponent<MeshComponent>().Mesh = &line;
-    l.GetComponent<MaterialComponent>().Material = &resourceManager.Load<Material>("GridLine Material");
-    l.GetComponent<MaterialComponent>().Material->Shader = &shader;
-
-    l.GetComponent<Transform3DComponent>().Rotation = rotation;
-    l.GetComponent<Transform3DComponent>().Position = position;
-    l.GetComponent<Transform3DComponent>().Scale = { 1, 1, 40 };
-    l.GetComponent<MaterialComponent>().Material->Color = M::Color::Gray;
-    GetRoot().AttachChild(l);
 }
 } // namespace E

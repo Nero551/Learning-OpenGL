@@ -17,8 +17,12 @@ unsigned int Mesh::GetId() const {
     return Id;
 }
 
+bool Mesh::IsGenerated() const {
+    return GetId() != 0;
+}
+
 void Mesh::Generate() {
-    if (GetId() != 0) {
+    if (IsGenerated()) {
         return;
     }
     CreateVAO();
@@ -43,8 +47,7 @@ void Mesh::Draw() {
     }
 
     else if (RenderMode == RenderMode::SolidWireframe) {
-        // TODO- the lines and solid overlap in depth , fix this by reading depth
-        // testing chapter in the book then trying again.
+        // TODO- the lines and solid overlap in depth , fix this by reading depth testing chapter in the book then trying again.
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glDrawElements(static_cast<int>(Topology), Indices.size(), GL_UNSIGNED_INT, nullptr);
 
@@ -61,7 +64,7 @@ void Mesh::CreateVAO() {
 void Mesh::CreateVBO() {
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * Vertices.size(), Vertices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, Vertices.size() * sizeof(Vertex), Vertices.data(), GL_STATIC_DRAW);
 }
 
 void Mesh::CreateEBO() {

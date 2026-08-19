@@ -20,7 +20,7 @@ template <ComponentType T> struct ComponentPool : IComponentPool {
         return Get(entityId);
     }
 
-    T& Get(unsigned int entityId) {
+    T& Get(const unsigned int entityId) {
         return Components[Indices.at(entityId)];
     }
 

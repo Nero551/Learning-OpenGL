@@ -13,19 +13,19 @@ float Deg(const float rad) {
     return rad * 180 / PI;
 }
 
-float DSin(float deg) {
+float DSin(const float deg) {
     return std::sin(Rad(deg));
 }
 
-float DCos(float deg) {
+float DCos(const float deg) {
     return std::cos(Rad(deg));
 }
 
-float DTan(float deg) {
+float DTan(const float deg) {
     return std::tan(Rad(deg));
 }
 
-float Sin(float rad) {
+float Sin(const float rad) {
     float angle = Rad(90);
     float s = 1;
     float c = 0;

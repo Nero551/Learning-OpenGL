@@ -4,6 +4,23 @@
 #include "Core/InnerCore/Engine.hpp"
 
 namespace E {
+std::vector<U::CheckedPtr<Component>> Entity::GetAllComponents() {
+    std::vector<U::CheckedPtr<Component>> components;
+    for (auto& component : Components | std::views::values) {
+        components.emplace_back(&*component);
+    }
+
+    return components;
+}
+
+void Entity::DestroyChild(const unsigned int id) {
+    if (!HasChild(id)) {
+        return;
+    }
+    auto& child = World::Get().FindEntity(id);
+    child.Destroy();
+}
+
 void Entity::AttachChild(Entity& child) {
     if (HasChild(child.Id)) {
         U::Logger::Error("Child Entity already exists: " + std::to_string(child.Id));
@@ -29,6 +46,40 @@ void Entity::AttachChild(Entity& child) {
     child.Parent = this->Id;
 }
 
+void Entity::DetachChild(const unsigned int id) {
+    const auto it = std::ranges::find(Children, id);
+
+    if (it != Children.end()) {
+        World::Get().FindEntity(id).Parent = 0;
+        Children.erase(it);
+    }
+}
+
+Entity& Entity::GetChild(unsigned int id) {
+    if (HasChild(id)) {
+        return World::Get().FindEntity(id);
+    }
+
+    U::Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
+}
+
+U::CheckedPtr<Entity> Entity::TryGetChild(const unsigned int id) {
+    if (HasChild(id)) {
+        return &World::Get().FindEntity(id);
+    }
+
+    return nullptr;
+}
+
+bool Entity::HasChild(const unsigned int id) const {
+    auto it = std::ranges::find(Children, id);
+    return it != Children.end();
+}
+
+size_t Entity::ChildCount() const {
+    return Children.size();
+}
+
 std::vector<U::CheckedPtr<Entity>> Entity::GetChildren() {
     std::vector<U::CheckedPtr<Entity>> children;
     children.reserve(Children.size());
@@ -40,31 +91,10 @@ std::vector<U::CheckedPtr<Entity>> Entity::GetChildren() {
     return children;
 }
 
-std::vector<U::CheckedPtr<Component>> Entity::GetAllComponents() {
-    std::vector<U::CheckedPtr<Component>> components;
-    for (auto& component : Components | std::views::values) {
-        components.emplace_back(&*component);
-    }
-
-    return components;
-}
-
-void Entity::Destroy() {
-    World::Get().RemoveEntity(Id);
-}
-
 void Entity::DestroyChildren() {
     while (!Children.empty()) {
         DestroyChild(Children.back());
     }
-}
-
-void Entity::DestroyChild(unsigned int id) {
-    if (!HasChild(id)) {
-        return;
-    }
-    auto& child = World::Get().FindEntity(id);
-    child.Destroy();
 }
 
 std::vector<U::CheckedPtr<Entity>> Entity::GetDescendants() {
@@ -76,41 +106,13 @@ std::vector<U::CheckedPtr<Entity>> Entity::GetDescendants() {
     return descendants;
 }
 
-bool Entity::HasDescendant(unsigned int id) const {
-    U::CheckedPtr<Entity> descendant = World::Get().TryFindEntity(id);
+bool Entity::HasDescendant(const unsigned int id) const {
+    const U::CheckedPtr<Entity> descendant = World::Get().TryFindEntity(id);
     return descendant && descendant->IsDescendantOf(*this);
 }
 
-bool Entity::HasAncestor(unsigned int id) const {
-    U::CheckedPtr<Entity> ancestor = World::Get().TryFindEntity(id);
-    return ancestor && ancestor->IsAncestorOf(*this);
-}
-
-void Entity::DetachChild(unsigned int id) {
-    auto it = std::ranges::find(Children, id);
-
-    if (it != Children.end()) {
-        World::Get().FindEntity(id).Parent = 0;
-        Children.erase(it);
-    }
-}
-
-void Entity::SetParent(Entity& parent) {
-    parent.AttachChild(*this);
-}
-
-Entity& Entity::GetParent() {
-    return World::Get().FindEntity(Parent);
-}
-
-void Entity::ClearParent() {
-    if (HasParent()) {
-        World::Get().FindEntity(Parent).DetachChild(Id);
-    }
-}
-
-bool Entity::HasParent() const {
-    return Parent != 0;
+bool Entity::IsDescendantOf(const Entity& entity) {
+    return std::ranges::any_of(GetAncestors(), [&entity](const auto& ancestor) { return ancestor->Id == entity.Id; });
 }
 
 std::vector<U::CheckedPtr<Entity>> Entity::GetAncestors() {
@@ -127,12 +129,35 @@ std::vector<U::CheckedPtr<Entity>> Entity::GetAncestors() {
     return ancestors;
 }
 
-bool Entity::IsDescendantOf(const Entity& entity) {
-    return std::ranges::any_of(GetAncestors(), [&entity](const auto& ancestor) { return ancestor->Id == entity.Id; });
-}
-
 bool Entity::IsAncestorOf(const Entity& entity) {
     return std::ranges::any_of(GetDescendants(), [&entity](const auto& descendant) { return descendant->Id == entity.Id; });
+}
+
+bool Entity::HasAncestor(const unsigned int id) const {
+    U::CheckedPtr<Entity> ancestor = World::Get().TryFindEntity(id);
+    return ancestor && ancestor->IsAncestorOf(*this);
+}
+
+Entity& Entity::GetParent() {
+    return World::Get().FindEntity(Parent);
+}
+
+void Entity::SetParent(Entity& parent) {
+    parent.AttachChild(*this);
+}
+
+void Entity::ClearParent() {
+    if (HasParent()) {
+        World::Get().FindEntity(Parent).DetachChild(Id);
+    }
+}
+
+bool Entity::HasParent() const {
+    return Parent != 0;
+}
+
+void Entity::Destroy() {
+    World::Get().RemoveEntity(Id);
 }
 
 Entity& Entity::GetRoot() {
@@ -144,32 +169,7 @@ Entity& Entity::GetRoot() {
     return *current;
 }
 
-bool Entity::HasChild(unsigned int id) const {
-    auto it = std::ranges::find(Children, id);
-    return it != Children.end();
-}
-
-Entity& Entity::GetChild(unsigned int id) {
-    if (HasChild(id)) {
-        return World::Get().FindEntity(id);
-    }
-
-    U::Logger::Fatal(std::format("Entity {} has no child {}", Id, id));
-}
-
-U::CheckedPtr<Entity> Entity::TryGetChild(unsigned int id) {
-    if (HasChild(id)) {
-        return &World::Get().FindEntity(id);
-    }
-
-    return nullptr;
-}
-
-size_t Entity::ChildCount() const {
-    return Children.size();
-}
-
-void Entity::RecursiveChildren(std::vector<U::CheckedPtr<Entity>>& entities, Entity& entity) {
+void Entity::RecursiveChildren(std::vector<U::CheckedPtr<Entity>>& entities, const Entity& entity) {
     for (unsigned int id : entity.Children) {
         Entity& child = World::Get().FindEntity(id);
 

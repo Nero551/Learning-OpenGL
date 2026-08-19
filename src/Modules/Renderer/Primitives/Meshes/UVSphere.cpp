@@ -3,7 +3,7 @@
 #include "Math/Color/Color.hpp"
 
 namespace E {
-Mesh& Primitives::CreateUVSphere(const std::string& name, float radius, int sectors, int stacks) {
+Mesh& Primitives::CreateUVSphere(const std::string& name, const float radius, const int sectors, const int stacks) {
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
 

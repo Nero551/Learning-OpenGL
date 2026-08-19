@@ -65,7 +65,7 @@ static Material& ProcessMaterial(const aiScene* scene, const aiMesh* mesh, const
     return material;
 }
 
-void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& directory, Entity& parent) {
+static void ProcessNode(const aiNode* node, const aiScene* scene, const std::string& directory, Entity& parent) {
     auto& resourceManager = Service::Get<ResourceManager>();
     auto& entity = World::Get().CreateEntity<Nova3D>();
 

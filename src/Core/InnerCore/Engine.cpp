@@ -21,28 +21,6 @@ Engine& Engine::Get() {
     return *Instance;
 }
 
-double Engine::GetTime() const {
-    return Time;
-}
-
-void Engine::Shutdown() {
-    Running = false;
-}
-
-void Engine::Configure() {
-    Window.SetIcon({ "Assets/icon.png" });
-    // Window.SetSize(1980, 1200);
-    glfwSwapInterval(1);
-
-    AddModule<Renderer>();
-    AddModule<Input>();
-    AddModule<Profiling>();
-    AddModule<Physics>();
-
-    Service::Add<ResourceManager>();
-    Service::Add<EventBus>();
-}
-
 void Engine::Run() {
     double accumulator = 0;
     Running = true;
@@ -66,6 +44,28 @@ void Engine::Run() {
     Stop();
 }
 
+void Engine::Shutdown() {
+    Running = false;
+}
+
+double Engine::GetTime() const {
+    return Time;
+}
+
+void Engine::Configure() {
+    Window.SetIcon({ "Assets/icon.png" });
+    // Window.SetSize(1980, 1200);
+    glfwSwapInterval(1);
+
+    AddModule<Renderer>();
+    AddModule<Input>();
+    AddModule<Profiling>();
+    AddModule<Physics>();
+
+    Service::Add<ResourceManager>();
+    Service::Add<EventBus>();
+}
+
 void Engine::Start() {
     Configure();
 
@@ -80,6 +80,23 @@ void Engine::Start() {
     }
 }
 
+void Engine::Stop() {
+    World.Stop();
+    for (auto& module : Modules | std::views::values) {
+        module->Stop();
+    }
+
+    for (auto& service : Service::GetAll()) {
+        service->Stop();
+    }
+
+    Service::DestroyServices();
+
+    if (Instance == this) {
+        Instance.Reset();
+    }
+}
+
 void Engine::BeginFrame() {
     Time = glfwGetTime();
     Window.PollEvents();
@@ -91,39 +108,6 @@ void Engine::BeginFrame() {
 
     for (auto& service : Service::GetAll()) {
         service->BeginFrame(DeltaTime);
-    }
-}
-
-void Engine::FixedUpdate() {
-    World.FixedUpdate(FixedDeltaTime);
-    for (auto& module : Modules | std::views::values) {
-        module->FixedUpdate(FixedDeltaTime);
-    }
-
-    for (auto& service : Service::GetAll()) {
-        service->FixedUpdate(FixedDeltaTime);
-    }
-}
-
-void Engine::Update() {
-    World.Update(DeltaTime);
-
-    for (auto& module : Modules | std::views::values) {
-        module->Update(DeltaTime);
-    }
-
-    for (auto& service : Service::GetAll()) {
-        service->Update(DeltaTime);
-    }
-}
-
-void Engine::Render() {
-    for (auto& module : Modules | std::views::values) {
-        module->Render();
-    }
-
-    for (auto& service : Service::GetAll()) {
-        service->Render();
     }
 }
 
@@ -144,20 +128,36 @@ void Engine::EndFrame() {
     }
 }
 
-void Engine::Stop() {
-    World.Stop();
+void Engine::Update() {
+    World.Update(DeltaTime);
+
     for (auto& module : Modules | std::views::values) {
-        module->Stop();
+        module->Update(DeltaTime);
     }
 
     for (auto& service : Service::GetAll()) {
-        service->Stop();
+        service->Update(DeltaTime);
+    }
+}
+
+void Engine::FixedUpdate() {
+    World.FixedUpdate(FixedDeltaTime);
+    for (auto& module : Modules | std::views::values) {
+        module->FixedUpdate(FixedDeltaTime);
     }
 
-    Service::DestroyServices();
+    for (auto& service : Service::GetAll()) {
+        service->FixedUpdate(FixedDeltaTime);
+    }
+}
 
-    if (Instance == this) {
-        Instance.Reset();
+void Engine::Render() {
+    for (auto& module : Modules | std::views::values) {
+        module->Render();
+    }
+
+    for (auto& service : Service::GetAll()) {
+        service->Render();
     }
 }
 } // namespace E

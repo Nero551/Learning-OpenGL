@@ -5,13 +5,70 @@
 #include "Core/InnerCore/Engine.hpp"
 
 namespace E {
+bool Input::IsKeyHeld(const Key key) {
+    return CurrentKeys[ToIndex(key)];
+}
+
+bool Input::IsKeyPressed(const Key key) {
+    return CurrentKeys[ToIndex(key)] && !PreviousKeys[ToIndex(key)];
+}
+
+bool Input::IsKeyReleased(const Key key) {
+    return !CurrentKeys[ToIndex(key)] && PreviousKeys[ToIndex(key)];
+}
+
+bool Input::IsMouseButtonHeld(const MouseButton button) {
+    return CurrentMouseButtons[ToIndex(button)];
+}
+
+bool Input::IsMouseButtonPressed(const MouseButton button) {
+    return CurrentMouseButtons[ToIndex(button)] && !PreviousMouseButtons[ToIndex(button)];
+}
+
+bool Input::IsMouseButtonReleased(const MouseButton button) {
+    return !CurrentMouseButtons[ToIndex(button)] && PreviousMouseButtons[ToIndex(button)];
+}
+
+M::Vector2 Input::GetMousePosition() const {
+    return MousePosition;
+}
+
+M::Vector2 Input::GetMouseDelta() const {
+    return GetMousePosition() - PreviousMousePosition;
+}
+
+M::Vector2 Input::GetScrollDelta() const {
+    return ScrollOffset;
+}
+
+bool Input::IsScrolling() const {
+    return ScrollOffset != M::Vector2::Zero;
+}
+
+MouseMode Input::GetMouseMode() const {
+    return MouseMode;
+}
+
+void Input::SetMouseMode(enum MouseMode mode) {
+    MouseMode = mode;
+    glfwSetInputMode(Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
+}
+
+constexpr unsigned int Input::ToIndex(Key key) {
+    return static_cast<unsigned int>(key);
+}
+
+constexpr unsigned int Input::ToIndex(MouseButton button) {
+    return static_cast<unsigned int>(button);
+}
+
 void Input::OnStart() {
     Window& window = Engine::Get().Window;
-    glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xPos, double yPos) {
+    glfwSetCursorPosCallback(window.GetGlfwWindow(), [](GLFWwindow*, const double xPos, const double yPos) {
         Engine::Get().GetModule<Input>().MousePosition = { static_cast<float>(xPos), static_cast<float>(yPos) };
     });
 
-    glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, double xOffset, double yOffset) {
+    glfwSetScrollCallback(window.GetGlfwWindow(), [](GLFWwindow*, const double xOffset, const double yOffset) {
         Engine::Get().GetModule<Input>().ScrollOffset = { static_cast<float>(xOffset), static_cast<float>(yOffset) };
     });
 }
@@ -37,62 +94,5 @@ void Input::OnEndFrame(double dt) {
     PreviousMousePosition = MousePosition;
     PreviousKeys = CurrentKeys;
     PreviousMouseButtons = CurrentMouseButtons;
-}
-
-bool Input::IsKeyHeld(Key key) {
-    return CurrentKeys[ToIndex(key)];
-}
-
-bool Input::IsKeyPressed(Key key) {
-    return CurrentKeys[ToIndex(key)] && !PreviousKeys[ToIndex(key)];
-}
-
-bool Input::IsKeyReleased(Key key) {
-    return !CurrentKeys[ToIndex(key)] && PreviousKeys[ToIndex(key)];
-}
-
-bool Input::IsMouseButtonHeld(MouseButton button) {
-    return CurrentMouseButtons[ToIndex(button)];
-}
-
-bool Input::IsMouseButtonPressed(MouseButton button) {
-    return CurrentMouseButtons[ToIndex(button)] && !PreviousMouseButtons[ToIndex(button)];
-}
-
-bool Input::IsMouseButtonReleased(MouseButton button) {
-    return !CurrentMouseButtons[ToIndex(button)] && PreviousMouseButtons[ToIndex(button)];
-}
-
-void Input::SetMouseMode(enum MouseMode mode) {
-    MouseMode = mode;
-    glfwSetInputMode(Engine::Get().Window.GetGlfwWindow(), GLFW_CURSOR, static_cast<int>(mode));
-}
-
-M::Vector2 Input::GetMousePosition() const {
-    return MousePosition;
-}
-
-M::Vector2 Input::GetMouseDelta() const {
-    return GetMousePosition() - PreviousMousePosition;
-}
-
-MouseMode Input::GetMouseMode() const {
-    return MouseMode;
-}
-
-M::Vector2 Input::GetScrollDelta() const {
-    return ScrollOffset;
-}
-
-bool Input::IsScrolling() const {
-    return ScrollOffset != M::Vector2::Zero;
-}
-
-constexpr unsigned int Input::ToIndex(Key key) {
-    return static_cast<unsigned int>(key);
-}
-
-constexpr unsigned int Input::ToIndex(MouseButton button) {
-    return static_cast<unsigned int>(button);
 }
 } // namespace E

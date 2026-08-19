@@ -6,36 +6,11 @@
 #include "Utilities/Logger.hpp"
 
 namespace E {
-void Shader::AssignSource(ShaderSource& source) {
-    for (auto& existing : Sources) {
-        if (existing->GetStage() == source.GetStage()) {
-            // E::U::Logger::Error("Shader: " + Name + " Duplicate Shader Stage.");
-            return;
-        }
-    }
-
-    Sources.emplace_back(&source);
-}
-
-std::vector<U::CheckedPtr<ShaderSource>>& Shader::GetSources() {
-    return Sources;
-}
-
 Shader::Shader(const std::string& name) : Resource(name) {
 }
 
 Shader::~Shader() {
     glDeleteProgram(Id);
-}
-
-void Shader::Reload() {
-    for (auto& source : Sources) {
-        source->Reload();
-    }
-
-    UniformLocations.clear();
-    glDeleteProgram(Id);
-    Id = 0;
 }
 
 unsigned int Shader::GetId() const {
@@ -52,28 +27,29 @@ bool Shader::IsProgramCreated() const {
     return Id != 0;
 }
 
-void Shader::UploadUniforms() {
-    for (auto& [location, uniform] : PendingUniforms) {
-        uniform->Upload(location);
+void Shader::AssignSource(ShaderSource& source) {
+    for (auto& existing : Sources) {
+        if (existing->GetStage() == source.GetStage()) {
+            // E::U::Logger::Error("Shader: " + Name + " Duplicate Shader Stage.");
+            return;
+        }
     }
+
+    Sources.emplace_back(&source);
 }
 
-int Shader::GetUniformLocation(const std::string& name) {
-    int location;
-
-    if (UniformLocations.contains(name)) {
-        location = UniformLocations[name];
+void Shader::Reload() {
+    for (auto& source : Sources) {
+        source->Reload();
     }
-    else {
-        location = glGetUniformLocation(Id, name.c_str());
 
-        if (location == -1) {
-            // E::U::Logger::Warning("Shader: " + Name + " Uniform Not Found: " + name);
-        }
+    UniformLocations.clear();
+    glDeleteProgram(Id);
+    Id = 0;
+}
 
-        UniformLocations[name] = location;
-    }
-    return location;
+std::vector<U::CheckedPtr<ShaderSource>>& Shader::GetSources() {
+    return Sources;
 }
 
 void Shader::CreateProgram() {
@@ -102,6 +78,30 @@ void Shader::CreateProgram() {
     if (!success) {
         glGetProgramInfoLog(Id, 512, nullptr, infoLog);
         U::Logger::Error(std::string("Shader Program: " + Name + " Linking Failed: ") + infoLog);
+    }
+}
+
+int Shader::GetUniformLocation(const std::string& name) {
+    int location;
+
+    if (UniformLocations.contains(name)) {
+        location = UniformLocations[name];
+    }
+    else {
+        location = glGetUniformLocation(Id, name.c_str());
+
+        if (location == -1) {
+            // E::U::Logger::Warning("Shader: " + Name + " Uniform Not Found: " + name);
+        }
+
+        UniformLocations[name] = location;
+    }
+    return location;
+}
+
+void Shader::UploadUniforms() {
+    for (auto& [location, uniform] : PendingUniforms) {
+        uniform->Upload(location);
     }
 }
 } // namespace E

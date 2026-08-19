@@ -16,6 +16,26 @@ Material::Material(const std::string& name) : Resource(name) {
     EmissionMap = &whiteTexture;
 }
 
+void Material::AssignTexture(Texture& texture, const unsigned int slot) {
+    if (slot >= MaxCustomTextures) {
+        U::Logger::Error("Material: ", Name, " Texture slot out of bounds: " + texture.Name);
+        return;
+    }
+    CustomTextures[slot] = &texture;
+}
+
+void Material::Use() {
+    Shader->Use();
+    SetProperties();
+
+    for (int slot = 0; slot < MaxCustomTextures; slot++) {
+        if (CustomTextures[slot]) {
+            Shader->SetUniform(IntUniform(CustomTextures[slot]->Name, slot));
+            CustomTextures[slot]->Bind(slot);
+        }
+    }
+}
+
 void Material::SetProperties() const {
     Shader->SetUniform(Vector3Uniform("MATERIAL.Ambient", Ambient));
     Shader->SetUniform(Vector3Uniform("MATERIAL.Diffuse", Diffuse));
@@ -32,25 +52,5 @@ void Material::SetProperties() const {
 
     Shader->SetUniform(IntUniform("MATERIAL.EmissionMap", 14));
     EmissionMap->Bind(14);
-}
-
-void Material::Use() {
-    Shader->Use();
-    SetProperties();
-
-    for (int slot = 0; slot < MaxCustomTextures; slot++) {
-        if (CustomTextures[slot]) {
-            Shader->SetUniform(IntUniform(CustomTextures[slot]->Name, slot));
-            CustomTextures[slot]->Bind(slot);
-        }
-    }
-}
-
-void Material::AssignTexture(Texture& texture, unsigned int slot) {
-    if (slot >= MaxCustomTextures) {
-        U::Logger::Error("Material: ", Name, " Texture slot out of bounds: " + texture.Name);
-        return;
-    }
-    CustomTextures[slot] = &texture;
 }
 } // namespace E
