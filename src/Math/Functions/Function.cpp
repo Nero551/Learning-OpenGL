@@ -1,6 +1,7 @@
 #include "Function.hpp"
 
 #include "../Common/Comparison.hpp"
+#include "Math/Common/Exponentials.hpp"
 #include "Utilities/Logger.hpp"
 
 namespace E::M {
@@ -95,6 +96,28 @@ Function Function::Integrate(float lowerBound, float dx, IntegrationMethod metho
 float Function::Integral(const float lowerBound, const float upperBound, const float dx, const IntegrationMethod method) const {
     return Integrate(lowerBound, dx, method).Evaluate(upperBound);
 }
+
+Function Function::Taylor(int terms, float a) {
+    Function taylor = [terms, a, f = *this](const float x) {
+        float result = 0.0f;
+        int n = 0;
+        auto currentFunc = f;
+        for (int i = 0; i < terms; i++) {
+            result += currentFunc(a) * Pow(x - a, n) / Factorial(n);
+            n += 1;
+            currentFunc = currentFunc.Differentiate();
+        }
+
+        return result;
+    };
+
+    return taylor;
+}
+
+Function Function::Maclurin(int terms) {
+    return Taylor(terms, 0);
+}
+
 
 float Function::operator()(const float x) const {
     return Evaluate(x);

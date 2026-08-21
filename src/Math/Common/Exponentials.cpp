@@ -12,4 +12,12 @@ float Sqrt(const float x) {
 float Exp(const float x) {
     return std::exp(x);
 }
+
+float Factorial(int x) {
+    float result = 1.0f;
+    for (int i = x; i > 0; i--) {
+        result *= static_cast<float>(i);
+    }
+    return result;
+}
 } // namespace E::M

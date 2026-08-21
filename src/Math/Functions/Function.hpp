@@ -110,6 +110,10 @@ struct Function {
     [[nodiscard]] float Integral(
         float lowerBound, float upperBound, float dx = 0.001f, IntegrationMethod method = IntegrationMethod::Midpoint) const;
 
+    [[nodiscard]] Function Taylor(int terms, float a);
+
+    [[nodiscard]] Function Maclurin(int terms);
+
     /**
      * @brief Evaluates the function at x.
      * @param x Input value.
