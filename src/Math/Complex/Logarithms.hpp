@@ -2,6 +2,6 @@
 #include "Math/Complex/Complex.hpp"
 
 namespace E::M {
-float Ln(float x);
-float Log(float base, float x);
+Complex Ln(const Complex& z);
+Complex Log(const Complex& base, const Complex& z);
 } // namespace E::M

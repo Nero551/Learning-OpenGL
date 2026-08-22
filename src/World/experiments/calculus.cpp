@@ -1,13 +1,10 @@
 #include "calculus.hpp"
 
-#include <assimp/MathFunctions.h>
-
 #include "Core/InnerCore/Engine.hpp"
 #include "Core/InnerCore/World.hpp"
 #include "Core/Services/ResourceManager.hpp"
-#include "Math/Common/Exponentials.hpp"
-#include "Math/Common/Random.hpp"
-#include "Math/Functions/Function.hpp"
+#include "Math/Complex/Complex.hpp"
+#include "Math/Complex/Constants.hpp"
 #include "Math/Vector/Vector4.hpp"
 #include "Modules/Input/Input.hpp"
 #include "Modules/Renderer/Primitives/Primitives.hpp"

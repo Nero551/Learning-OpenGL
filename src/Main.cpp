@@ -4,7 +4,7 @@
 #include "Math/Common/Constants.hpp"
 #include "Math/Common/Exponentials.hpp"
 #include "Math/Common/Trigonometry.hpp"
-#include "Math/Complex.hpp"
+#include "Math/Complex/Complex.hpp"
 #include "Math/Functions/Function.hpp"
 #include "Math/Quaternion.hpp"
 #include "Math/Vector/Vector2.hpp"
@@ -15,17 +15,17 @@ static void Testing() {
     //
     // E::U::Logger::Info(q2);
 
-    E::M::Complex c = E::M::Complex::FromPolar(E::M::Rad(30), 3);
-    E::M::Complex d = E::M::Complex::FromPolar(E::M::Rad(45), 2);
+    E::M::Complex c = E::M::Complex::FromPolar({ E::M::Rad(30), 3 });
+    E::M::Complex d = E::M::Complex::FromPolar({ E::M::Rad(45), 2 });
     E::U::Logger::Info(E::M::Deg((c * d).Argument()));
     E::U::Logger::Info((c * d).Magnitude());
 
-    E::M::Vector2 a = E::M::Vector2::FromPolar(E::M::Rad(30), 3);
-    E::M::Vector2 b = E::M::Vector2::FromPolar(E::M::Rad(45), 2);
+    E::M::Vector2 a = E::M::Vector2::FromPolar({ E::M::Rad(30), 3 });
+    E::M::Vector2 b = E::M::Vector2::FromPolar({ E::M::Rad(45), 2 });
     E::U::Logger::Info(E::M::Deg((a + b).Angle()));
     E::U::Logger::Info((a + b).Length());
 
-    E::M::Complex j = E::M::Complex::FromPolar(E::M::Rad(30), 5);
+    E::M::Complex j = E::M::Complex::FromPolar({ E::M::Rad(30), 5 });
     E::U::Logger::Info(j.Normalized().Magnitude());
 
     // E::M::Function cosine = [](const float x) {

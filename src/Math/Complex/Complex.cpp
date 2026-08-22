@@ -1,7 +1,7 @@
 #include "Complex.hpp"
 
-#include "Common/Comparison.hpp"
-#include "Common/Exponentials.hpp"
+#include "../Common/Comparison.hpp"
+#include "../Common/Exponentials.hpp"
 
 namespace E::M {
 Complex::Complex() : Real(0), Imaginary(0) {
@@ -9,8 +9,8 @@ Complex::Complex() : Real(0), Imaginary(0) {
 Complex::Complex(float real, float imaginary) : Real(real), Imaginary(imaginary) {
 }
 
-Complex Complex::FromPolar(float argument, float magnitude) {
-    return { magnitude * std::cos(argument), magnitude * std::sin(argument) };
+Complex Complex::FromPolar(Polar polar) {
+    return { polar.Magnitude * std::cos(polar.Angle), polar.Magnitude * std::sin(polar.Angle) };
 }
 
 float Complex::MagnitudeSquared() const {
@@ -43,6 +43,10 @@ Complex Complex::Inverse() const {
 
 Complex Complex::Normalized() const {
     return *this / Magnitude();
+}
+
+Polar Complex::ToPolar() const {
+    return { Argument(), Magnitude() };
 }
 
 bool Complex::NearlyEquals(const Complex& b, float epsilon) const {

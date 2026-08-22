@@ -6,8 +6,8 @@
 #include "Math/Common/Interpolation.hpp"
 
 namespace E::M {
-Vector2 Vector2::FromPolar(float rad, float length) {
-    return { length * std::cos(rad), length * std::sin(rad) };
+Vector2 Vector2::FromPolar(Polar polar) {
+    return { polar.Magnitude * std::cos(polar.Angle), polar.Magnitude * std::sin(polar.Angle) };
 }
 
 Vector2::Vector2() : x(0), y(0) {
@@ -52,6 +52,10 @@ Vector2 Vector2::Lerp(const Vector2& vec2, const float t) const {
 
 float Vector2::Distance(const Vector2& vec2) const {
     return (*this - vec2).Length();
+}
+
+Polar Vector2::ToPolar() const {
+    return { Angle(), Length() };
 }
 
 bool Vector2::NearlyEquals(const Vector2& vec2, const float epsilon) const {

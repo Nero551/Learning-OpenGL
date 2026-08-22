@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Math/Common/Constants.hpp"
+#include "Math/Coordinates/Polar.hpp"
 
 // TODO- add FromPolar() and Angle(), as a path to polar cords from cartesian
 //  for vector3 make Elevation() and Azimuth() methods and FromSpherical()
@@ -21,10 +22,9 @@ struct Vector2 {
 
     /**
      * @brief Constructs a vector from polar coordinates (r,theta)
-     * @param rad angle in radians
-     * @param length length of the vector
+     * @param polar Polar coords to use.
      */
-    [[nodiscard]] static Vector2 FromPolar(float rad, float length);
+    [[nodiscard]] static Vector2 FromPolar(Polar polar);
 
     /**
      * @brief Creates a zero vector.
@@ -91,6 +91,11 @@ struct Vector2 {
      * @brief Calculates the distance to another vector.
      */
     [[nodiscard]] float Distance(const Vector2& vec2) const;
+
+    /**
+     * @brief returns vector in polar coords
+     */
+    [[nodiscard]] Polar ToPolar() const;
 
     /**
      * @brief Compares two vectors using an absolute error tolerance.
