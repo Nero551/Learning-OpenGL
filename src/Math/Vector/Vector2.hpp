@@ -2,6 +2,9 @@
 
 #include "Math/Common/Constants.hpp"
 
+// TODO- add FromPolar() and Angle(), as a path to polar cords from cartesian
+//  for vector3 make Elevation() and Azimuth() methods and FromSpherical()
+//  for vector4 make Elevation(), Azimuth() , idk what for the 3rd one , also do FromHyperSpherical.
 namespace E::M {
 /**
  * @brief 2D floating-point vector.
@@ -15,6 +18,13 @@ namespace E::M {
 struct Vector2 {
     float x;
     float y;
+
+    /**
+     * @brief Constructs a vector from polar coordinates (r,theta)
+     * @param rad angle in radians
+     * @param length length of the vector
+     */
+    [[nodiscard]] static Vector2 FromPolar(float rad, float length);
 
     /**
      * @brief Creates a zero vector.
@@ -45,6 +55,12 @@ struct Vector2 {
      * @brief Returns the length (magnitude) of the vector.
      */
     [[nodiscard]] float Length() const;
+
+    /**
+     * @brief Returns the angle of the vector measured from the positive x-axis.
+     * @return The angle in radians, in the range [-PI, PI].
+     */
+    [[nodiscard]] float Angle() const;
 
     /**
      * @brief Returns a normalized copy of the vector.

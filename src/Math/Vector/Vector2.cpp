@@ -6,6 +6,10 @@
 #include "Math/Common/Interpolation.hpp"
 
 namespace E::M {
+Vector2 Vector2::FromPolar(float rad, float length) {
+    return { length * std::cos(rad), length * std::sin(rad) };
+}
+
 Vector2::Vector2() : x(0), y(0) {
 }
 
@@ -24,6 +28,10 @@ float Vector2::LengthSquared() const {
 
 float Vector2::Length() const {
     return std::sqrt(LengthSquared());
+}
+
+float Vector2::Angle() const {
+    return std::atan2(y, x);
 }
 
 Vector2 Vector2::Normalized() const {

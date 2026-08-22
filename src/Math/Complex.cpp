@@ -8,12 +8,20 @@ Complex::Complex() : Real(0), Imaginary(0) {
 Complex::Complex(float real, float imaginary) : Real(real), Imaginary(imaginary) {
 }
 
+Complex Complex::FromPolar(float argument, float magnitude) {
+    return { magnitude * std::cos(argument), magnitude * std::sin(argument) };
+}
+
 float Complex::MagnitudeSquared() const {
     return Real * Real + Imaginary * Imaginary;
 }
 
 float Complex::Magnitude() const {
     return Sqrt(MagnitudeSquared());
+}
+
+float Complex::Argument() const {
+    return atan2(Imaginary, Real);
 }
 
 Complex Complex::Conjugate() const {
@@ -24,9 +32,10 @@ Complex Complex::Inverse() const {
     Complex result;
 
     const float denominator = MagnitudeSquared();
+    const Complex conjugate = Conjugate();
 
-    result.Real = Real / denominator;
-    result.Imaginary = -Imaginary / denominator;
+    result.Real = conjugate.Real / denominator;
+    result.Imaginary = conjugate.Imaginary / denominator;
 
     return result;
 }
