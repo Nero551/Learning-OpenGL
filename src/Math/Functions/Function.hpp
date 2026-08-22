@@ -110,9 +110,42 @@ struct Function {
     [[nodiscard]] float Integral(
         float lowerBound, float upperBound, float dx = 0.001f, IntegrationMethod method = IntegrationMethod::Midpoint) const;
 
+    /**
+     * @brief Creates a Taylor polynomial approximation of the function.
+     *
+     * The returned function approximates this function around the specified
+     * center point `a` using the first `terms` terms of its Taylor series:
+     *
+     *     f(a) + f'(a)(x - a) + f''(a)(x - a)^2 / 2! + ...
+     *
+     * Each derivative is evaluated at the center point `a`.
+     *
+     * Note that `terms` specifies the number of terms, not the highest
+     * polynomial degree. For example, `Taylor(4, a)` produces terms of
+     * degrees 0 through 3.
+     *
+     * @remark Since the derivatives are computed numerically, higher-order Taylor
+     * approximations will become increasingly affected by numerical error.
+     *
+     * @param terms Number of Taylor series terms to include.
+     * @param a Point around which the function is approximated.
+     * @return A function representing the Taylor polynomial approximation.
+     */
     [[nodiscard]] Function Taylor(int terms, float a);
 
-    [[nodiscard]] Function Maclurin(int terms);
+    /**
+     * @brief Creates a Maclaurin polynomial approximation of the function.
+     *
+     * A Maclaurin polynomial is a Taylor polynomial centered at zero.
+     * Equivalent to:
+     * @code
+     * Taylor(terms, 0)
+     * @endcode
+     *
+     * @param terms Number of terms to include in the Maclaurin polynomial.
+     * @return A function representing the Maclaurin polynomial approximation.
+     */
+    [[nodiscard]] Function Maclaurin(int terms);
 
     /**
      * @brief Evaluates the function at x.

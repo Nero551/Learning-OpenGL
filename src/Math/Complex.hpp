@@ -8,6 +8,27 @@ struct Complex {
     Complex();
     Complex(float real, float imaginary);
 
+    float MagnitudeSquared() const;
+    float Magnitude() const;
+    Complex Conjugate() const;
+    Complex Inverse() const;
+
+    Complex operator-() const;
+
+    Complex operator*(const Complex& b) const;
+    Complex operator/(const Complex& b) const;
+    Complex operator+(const Complex& b) const;
+    Complex operator-(const Complex& b) const;
+
+    Complex operator*(float scalar) const;
+    Complex operator/(float scalar) const;
+    Complex operator+(float scalar) const;
+    Complex operator-(float scalar) const;
+    friend Complex operator*(float scalar, const Complex& a);
+    friend Complex operator/(float scalar, const Complex& a);
+    friend Complex operator+(float scalar, const Complex& a);
+    friend Complex operator-(float scalar, const Complex& a);
+
     friend std::ostream& operator<<(std::ostream& os, const Complex& complex);
 };
 } // namespace E::M

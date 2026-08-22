@@ -1,5 +1,6 @@
 #include "Quaternion.hpp"
 
+
 namespace E::M {
 Quaternion::Quaternion() : w(0), x(0), y(0), z(0) {
 }

@@ -1,9 +1,90 @@
 #include "Complex.hpp"
 
+#include "Common/Exponentials.hpp"
+
 namespace E::M {
 Complex::Complex() : Real(0), Imaginary(0) {
 }
 Complex::Complex(float real, float imaginary) : Real(real), Imaginary(imaginary) {
+}
+
+float Complex::MagnitudeSquared() const {
+    return Real * Real + Imaginary * Imaginary;
+}
+
+float Complex::Magnitude() const {
+    return Sqrt(MagnitudeSquared());
+}
+
+Complex Complex::Conjugate() const {
+    return { Real, -Imaginary };
+}
+
+Complex Complex::Inverse() const {
+    Complex result;
+
+    const float denominator = MagnitudeSquared();
+
+    result.Real = Real / denominator;
+    result.Imaginary = -Imaginary / denominator;
+
+    return result;
+}
+
+Complex Complex::operator-() const {
+    return -1 * *this;
+}
+
+Complex Complex::operator*(const Complex& b) const {
+    Complex result;
+    result.Real = Real * b.Real - Imaginary * b.Imaginary;
+    result.Imaginary = Real * b.Imaginary + Imaginary * b.Real;
+
+    return result;
+}
+
+Complex Complex::operator/(const Complex& b) const {
+    return *this * b.Inverse();
+}
+
+Complex Complex::operator+(const Complex& b) const {
+    return { Real + b.Real, Imaginary + b.Imaginary };
+}
+
+Complex Complex::operator-(const Complex& b) const {
+    return { Real - b.Real, Imaginary - b.Imaginary };
+}
+
+Complex Complex::operator*(const float scalar) const {
+    return { Real * scalar, Imaginary * scalar };
+}
+
+Complex Complex::operator/(const float scalar) const {
+    return { Real / scalar, Imaginary / scalar };
+}
+
+Complex Complex::operator+(float scalar) const {
+    return { Real + scalar, Imaginary };
+}
+
+Complex Complex::operator-(float scalar) const {
+    return { Real - scalar, Imaginary };
+}
+
+Complex operator*(float scalar, const Complex& a) {
+    return a * scalar;
+}
+
+Complex operator/(float scalar, const Complex& a) {
+    return scalar * a.Inverse();
+}
+
+Complex operator+(float scalar, const Complex& a) {
+    return a + scalar;
+}
+
+Complex operator-(float scalar, const Complex& a) {
+    return { scalar - a.Real, -a.Imaginary };
 }
 
 std::ostream& operator<<(std::ostream& os, const Complex& complex) {

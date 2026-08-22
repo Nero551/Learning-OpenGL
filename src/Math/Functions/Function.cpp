@@ -100,11 +100,9 @@ float Function::Integral(const float lowerBound, const float upperBound, const f
 Function Function::Taylor(int terms, float a) {
     Function taylor = [terms, a, f = *this](const float x) {
         float result = 0.0f;
-        int n = 0;
         auto currentFunc = f;
-        for (int i = 0; i < terms; i++) {
+        for (int n = 0; n < terms; n++) {
             result += currentFunc(a) * Pow(x - a, n) / Factorial(n);
-            n += 1;
             currentFunc = currentFunc.Differentiate();
         }
 
@@ -114,7 +112,7 @@ Function Function::Taylor(int terms, float a) {
     return taylor;
 }
 
-Function Function::Maclurin(int terms) {
+Function Function::Maclaurin(int terms) {
     return Taylor(terms, 0);
 }
 
