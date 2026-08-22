@@ -25,6 +25,9 @@ static void Testing() {
     E::U::Logger::Info(E::M::Deg((a + b).Angle()));
     E::U::Logger::Info((a + b).Length());
 
+    E::M::Complex j = E::M::Complex::FromPolar(E::M::Rad(30), 5);
+    E::U::Logger::Info(j.Normalized().Magnitude());
+
     // E::M::Function cosine = [](const float x) {
     // return std::cos(x);
     // };

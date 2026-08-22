@@ -1,4 +1,5 @@
 #pragma once
+#include "Common/Constants.hpp"
 
 namespace E::M {
 struct Complex {
@@ -14,6 +15,11 @@ struct Complex {
     float Argument() const;
     Complex Conjugate() const;
     Complex Inverse() const;
+    Complex Normalized() const;
+    bool NearlyEquals(const Complex& b, float epsilon = EPSILON) const;
+
+    bool operator==(const Complex& b) const;
+    bool operator!=(const Complex& b) const;
 
     Complex operator-() const;
 
@@ -33,4 +39,6 @@ struct Complex {
 
     friend std::ostream& operator<<(std::ostream& os, const Complex& complex);
 };
+
+inline const Complex I{ 0, 1 };
 } // namespace E::M

@@ -1,5 +1,6 @@
 #include "Complex.hpp"
 
+#include "Common/Comparison.hpp"
 #include "Common/Exponentials.hpp"
 
 namespace E::M {
@@ -38,6 +39,22 @@ Complex Complex::Inverse() const {
     result.Imaginary = conjugate.Imaginary / denominator;
 
     return result;
+}
+
+Complex Complex::Normalized() const {
+    return *this / Magnitude();
+}
+
+bool Complex::NearlyEquals(const Complex& b, float epsilon) const {
+    return M::NearlyEquals(Real, b.Real, epsilon) && M::NearlyEquals(Imaginary, b.Imaginary, epsilon);
+}
+
+bool Complex::operator==(const Complex& b) const {
+    return Real == b.Real && Imaginary == b.Imaginary;
+}
+
+bool Complex::operator!=(const Complex& b) const {
+    return !(*this == b);
 }
 
 Complex Complex::operator-() const {

@@ -88,12 +88,12 @@ void calculus::Update(double dt) {
         period -= 0.1;
     }
 
-    for (auto& point : points) {
-        auto& transform = point->GetComponent<Transform3DComponent>();
-        M::Complex a = r * (std::cos(transform.Position.z * period) + M::I * std::sin(transform.Position.z * period));
-        transform.Position.x = a.Real;
-        transform.Position.y = a.Imaginary;
-    }
+    // for (auto& point : points) {
+    //     auto& transform = point->GetComponent<Transform3DComponent>();
+    //     M::Complex a = r * (std::cos(transform.Position.z * period) + M::I * std::sin(transform.Position.z * period));
+    //     transform.Position.x = a.Real;
+    //     transform.Position.y = a.Imaginary;
+    // }
     // Plot({a.Real, a.Imaginary, x});
 }
 } // namespace E
